@@ -1,0 +1,47 @@
+// ============================================================
+// balco.nyc Solar Calculator — API Configuration
+// ============================================================
+// Copy this file to config.js and fill in your API keys.
+// config.js is gitignored — never commit real keys.
+// ============================================================
+
+const SolarConfig = {
+  // Google Maps JavaScript API — domain-restricted in Google Cloud Console
+  // Used for: Places Autocomplete, Geocoding
+  GOOGLE_API_KEY: 'YOUR_GOOGLE_API_KEY',
+
+  // NREL API key — free, client-safe, get from https://developer.nrel.gov/signup/
+  // Rate limit: 1,000 requests/hour
+  NREL_API_KEY: 'YOUR_NREL_API_KEY',
+
+  // NYC Socrata app token — optional, increases rate limits
+  // Without token: throttled. With token: 1,000 req/hour
+  // Get from: https://data.cityofnewyork.us/profile/edit/developer_settings
+  SOCRATA_APP_TOKEN: '',
+
+  // Endpoints
+  GEOCLIENT_PROXY_URL: '/api/geoclient',
+  PVWATTS_URL: 'https://developer.nrel.gov/api/pvwatts/v8.json',
+  SOLAR_RESOURCE_URL: 'https://developer.nrel.gov/api/solar/solar_resource/v1.json',
+  PLUTO_URL: 'https://data.cityofnewyork.us/resource/64uk-42ks.json',
+  FOOTPRINTS_URL: 'https://data.cityofnewyork.us/resource/5zhs-2jue.geojson',
+  VISUALIZE_URL: '/api/visualize',
+
+  // NYC bounds for autocomplete biasing
+  NYC_BOUNDS: {
+    south: 40.4774,
+    west: -74.2591,
+    north: 40.9176,
+    east: -73.7004,
+  },
+
+  // Con Edison SC-1 residential all-in rate (supply + delivery)
+  ELECTRICITY_RATE: 0.22,
+  RATE_ESCALATION: 0.03,
+  PANEL_DEGRADATION: 0.005,
+  THERMAL_BONUS: 1.03,
+  CO2_FACTOR: 0.65, // lbs CO2 per kWh (NYC grid)
+
+  // PVWatts reference: annual kWh per kW DC for NYC at optimal tilt (~40°)
+  PVWATTS_NYC_KWH_PER_KW_OPTIMAL: 1400,
+};

@@ -18,7 +18,7 @@ export default async function handler(req, res) {
   const googleKey = process.env.GOOGLE_SV_KEY || process.env.GOOGLE_API_KEY;
   if (!googleKey) return res.status(500).json({ error: 'Google API key not configured' });
 
-  const { lat, lon, floor, totalFloors, address } = req.body || {};
+  const { lat, lon, floor, totalFloors, address, styleImage } = req.body || {};
   if (!lat || !lon) return res.status(400).json({ error: 'Missing lat/lon' });
 
   try {
@@ -92,19 +92,24 @@ export default async function handler(req, res) {
     const userFloor = floor || 3;
     const floorCount = totalFloors || 6;
 
-    const generationPrompt = `You are a world-class architectural visualization artist. Using the attached photograph of a real building as your reference, generate a stunning new photorealistic image.
+    const styleNote = styleImage
+      ? `\n\nSTYLE REFERENCE:
+I've also attached a second image — this is a STYLE REFERENCE showing the visual treatment and composition we want. Match its photographic style, color grading, warmth, mood, and overall aesthetic. The output should feel like it belongs in the same series as this reference image. Use the same kind of framing, color palette, and atmospheric quality — but show the ACTUAL building from the Street View photo, not the building in the style reference.`
+      : '';
+
+    const generationPrompt = `You are a world-class architectural visualization artist. I'm attaching a Street View photograph of a real building. Generate a stunning new photorealistic image of THIS building.
 
 BUILDING ANALYSIS (from expert assessment):
 ${buildingAnalysis}
 
 YOUR TASK:
-Create a beautiful, professional architectural photograph of this exact building with solar panels installed on the balconies. This should look like it was shot by a top architectural photographer for a magazine.
+Create a beautiful image of this exact building with solar panels installed on the balconies. The output should look like a hero image for a premium website — cinematic, aspirational, magazine-quality.${styleNote}
 
 COMPOSITION:
-- Straight-on, face-on perspective — perfectly frontal view of the building facade
-- Tightly cropped to show the building filling the frame
-- No street, no cars, no sidewalk clutter — just the building
-- Sharp focus throughout, professional depth of field
+- Show the building facade prominently, well-framed
+- The building should be the clear subject filling most of the frame
+- Include some environmental context (sky, neighboring buildings faintly) for realism
+- Professional architectural photography composition
 
 SOLAR PANELS:
 - The user lives on floor ${userFloor} of ${floorCount}. Their balcony should have the most prominent, well-lit solar panels
@@ -115,28 +120,43 @@ SOLAR PANELS:
 
 LIGHTING & STYLE:
 - Warm, natural daylight — golden hour quality
-- Rich colors, high dynamic range
+- Rich colors, high dynamic range, cinematic feel
 - Professional real estate / architectural photography quality
-- The image should make someone want to live here
+- The image should make someone want to live here and go solar
 
 CRITICAL: Preserve the building's real architectural character, materials, colors, and style. This must look like a real photograph of a real building, not a rendering or CGI.`;
 
     const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${geminiKey}`;
+
+    // Build parts array — Street View image + optional style reference
+    const imageParts = [
+      { text: generationPrompt },
+      {
+        inlineData: {
+          mimeType: 'image/jpeg',
+          data: originalBase64,
+        },
+      },
+    ];
+
+    if (styleImage) {
+      // Strip data URL prefix if present
+      const styleData = styleImage.replace(/^data:image\/[^;]+;base64,/, '');
+      imageParts.push({ text: 'Style reference image (match this visual treatment):' });
+      imageParts.push({
+        inlineData: {
+          mimeType: 'image/png',
+          data: styleData,
+        },
+      });
+    }
 
     const geminiRes = await fetch(geminiUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: [{
-          parts: [
-            { text: generationPrompt },
-            {
-              inlineData: {
-                mimeType: 'image/jpeg',
-                data: originalBase64,
-              },
-            },
-          ],
+          parts: imageParts,
         }],
         generationConfig: {
           responseModalities: ['TEXT', 'IMAGE'],

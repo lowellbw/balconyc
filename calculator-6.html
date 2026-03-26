@@ -50,7 +50,9 @@
     .hero-bg {
       position: absolute; inset: 0;
       background: url('Gemini_Generated_Image_d2ucutd2ucutd2uc.png') center center / cover no-repeat;
+      transition: opacity 0.8s ease;
     }
+    .hero-bg.swapping { opacity: 0; }
     .hero-bg::after {
       content: ''; position: absolute; inset: 0;
       background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.7) 100%);
@@ -392,7 +394,26 @@ let vizState = {
   originalImage: null,
   buildingAnalysis: null,
   generating: false,
+  bannerBase64: null, // preloaded banner image for style reference
 };
+
+// Preload banner image as base64 for style reference
+(function preloadBanner() {
+  var img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = function() {
+    var canvas = document.createElement('canvas');
+    // Scale down to reasonable size for API (max 1024px)
+    var scale = Math.min(1, 1024 / Math.max(img.width, img.height));
+    canvas.width = img.width * scale;
+    canvas.height = img.height * scale;
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    vizState.bannerBase64 = canvas.toDataURL('image/png');
+    console.log('[Calculator-6] Banner preloaded for style reference');
+  };
+  img.src = 'Gemini_Generated_Image_d2ucutd2ucutd2uc.png';
+})();
 
 // Nav scroll
 window.addEventListener('scroll', function() {
@@ -483,16 +504,21 @@ async function generateVisualization() {
 
   try {
     var url = (typeof SolarConfig !== 'undefined' && SolarConfig.VISUALIZE_V3_URL) || '/api/visualize-v3';
+    var payload = {
+      lat: SolarState.lat,
+      lon: SolarState.lon,
+      floor: floor,
+      totalFloors: totalFloors,
+      address: SolarState.address || '',
+    };
+    // Include banner as style reference if preloaded
+    if (vizState.bannerBase64) {
+      payload.styleImage = vizState.bannerBase64;
+    }
     var res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        lat: SolarState.lat,
-        lon: SolarState.lon,
-        floor: floor,
-        totalFloors: totalFloors,
-        address: SolarState.address || '',
-      }),
+      body: JSON.stringify(payload),
     });
 
     clearInterval(msgInterval);
@@ -521,6 +547,9 @@ async function generateVisualization() {
         }
         showImage('solar');
         document.getElementById('vizResult').classList.add('visible');
+
+        // Swap the hero banner background with the generated image
+        swapHeroBanner(vizState.heroImage);
       } else if (vizState.originalImage) {
         // Gemini failed but we have Street View
         document.getElementById('vizHeroImage').src = vizState.originalImage;
@@ -591,6 +620,25 @@ function downloadImage() {
 function regenerate() {
   document.querySelector('.viz-toggle').style.display = '';
   generateVisualization();
+}
+
+// ── SWAP HERO BANNER ──
+function swapHeroBanner(imageDataUrl) {
+  var heroBg = document.querySelector('.hero-bg');
+  if (!heroBg || !imageDataUrl) return;
+
+  // Preload the image first
+  var img = new Image();
+  img.onload = function() {
+    // Fade out current banner
+    heroBg.classList.add('swapping');
+    setTimeout(function() {
+      // Swap background and fade back in
+      heroBg.style.backgroundImage = 'url(' + imageDataUrl + ')';
+      heroBg.classList.remove('swapping');
+    }, 800);
+  };
+  img.src = imageDataUrl;
 }
 </script>
 </body>

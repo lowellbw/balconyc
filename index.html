@@ -11,7 +11,7 @@
       setTimeout(function() {
         if (typeof SolarConfig !== 'undefined' && SolarConfig.GOOGLE_API_KEY) {
           var s = document.createElement('script');
-          s.src = 'https://maps.googleapis.com/maps/api/js?key=' + SolarConfig.GOOGLE_API_KEY + '&libraries=places&callback=initGooglePlaces';
+          s.src = 'https://maps.googleapis.com/maps/api/js?key=' + SolarConfig.GOOGLE_API_KEY + '&libraries=places&v=alpha&callback=initGooglePlaces';
           s.async = true; s.defer = true;
           document.head.appendChild(s);
         }
@@ -36,7 +36,7 @@
     nav.scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
     nav .container { display: flex; justify-content: space-between; align-items: center; }
     .logo { display: inline-block; text-decoration: none; line-height: 0; }
-    .logo img { height: 100px; width: auto; filter: brightness(0) invert(1); transition: filter 0.3s; }
+    .logo img { height: 72px; width: auto; filter: brightness(0) invert(1); transition: filter 0.3s; }
     nav.scrolled .logo img { filter: none; }
     .nav-links { display: flex; align-items: center; gap: 24px; }
     .nav-links a { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: opacity 0.2s, color 0.3s; }
@@ -89,6 +89,35 @@
     }
     .scene3d-wrap canvas { display: block; width: 100%; height: 100%; cursor: grab; }
     .scene3d-wrap canvas.clickable { cursor: crosshair; }
+
+    /* Google 3D photorealistic view */
+    .google3d-wrap {
+      position: absolute; inset: 0; z-index: 3;
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: opacity 0.8s ease;
+    }
+    .google3d-wrap.hidden { opacity: 0; pointer-events: none; }
+    .google3d-wrap gmp-map-3d { width: 100%; height: 100%; display: block; }
+    .google3d-confirm {
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 5;
+      display: flex; gap: 10px; align-items: center;
+    }
+    .google3d-confirm-btn {
+      padding: 14px 28px; background: #fff; color: var(--text);
+      border: none; border-radius: 12px; font-family: inherit;
+      font-size: 0.95rem; font-weight: 700; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .google3d-confirm-btn:hover { transform: translateY(-1px); }
+    .google3d-label {
+      position: absolute; top: 20px; left: 50%; transform: translateX(-50%); z-index: 5;
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+      border-radius: 10px; padding: 10px 20px;
+      color: #fff; font-size: 0.9rem; font-weight: 600;
+      pointer-events: none; text-align: center;
+    }
+    .google3d-label .g3d-sub { font-size: 0.75rem; font-weight: 400; opacity: 0.6; margin-top: 3px; }
 
     /* Click prompt overlay */
     .click-prompt {
@@ -412,16 +441,65 @@
     }
     @media (max-width: 768px) {
       .container { padding: 0 20px; }
+
+      /* NAV — compact for mobile */
+      nav { padding: 4px 0; }
+      .logo img { height: 56px; }
+      .nav-links { gap: 12px; }
+      .nav-links a:not(.btn-pill) { font-size: 0.82rem; }
+      .btn-pill { padding: 10px 18px; font-size: 0.82rem; }
+
+      /* HERO — fix text overflow & sizing */
+      .hero { min-height: auto; padding: 100px 0 48px; }
       .hero-layout { padding: 0 20px; }
-      .results-card { position: relative; bottom: auto; right: auto; max-width: 100%; margin: 20px; }
+      .hero h1 { font-size: clamp(1.6rem, 7vw, 2.4rem); white-space: normal; }
+      .hero p { font-size: 1rem; margin-bottom: 20px; }
+      .hero-input { padding: 16px 20px; padding-right: 44px; font-size: 0.95rem; }
+      .hero-input-wrap { max-width: 100%; }
+      .hero.has-scene { padding: 90px 0 32px; min-height: auto; }
+      .hero.has-scene h1 { font-size: clamp(1.4rem, 5vw, 1.8rem); }
+      .hero.has-scene .hero-content { padding-bottom: 16px; }
+
+      /* 3D scene on mobile */
+      .scene3d-wrap { height: 360px; }
+      .scene3d-month-btns { display: none; }
+      .scene3d-controls { padding: 8px 10px; gap: 8px; }
+      .results-card { position: relative; bottom: auto; right: auto; max-width: 100%; margin: 16px 0 0; border-radius: 12px; padding: 20px; }
+      .results-card .rc-value { font-size: 1.6rem; }
+      .results-card .rc-value-sm { font-size: 1.2rem; }
+
+      /* Results section */
       .result-stats { grid-template-columns: 1fr 1fr; }
       .impact-grid { grid-template-columns: 1fr 1fr; }
-      .scene3d-wrap { height: 400px; }
-      .scene3d-month-btns { display: none; }
-      .stats-grid { grid-template-columns: 1fr; gap: 40px; }
-      .lp-stat-number { font-size: 4rem; }
+
+      /* Stats */
+      .stats { padding: 64px 0 56px; }
+      .stats-grid { grid-template-columns: 1fr; gap: 32px; }
+      .lp-stat-number { font-size: 3.2rem; }
+      .lp-stat-label { font-size: 1rem; }
+
+      /* Feature rows */
+      .feature-row { padding: 64px 0; }
+      .feature-text h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+      .feature-text p { font-size: 1.05rem; }
+      .feature-card { aspect-ratio: 1/0.75; }
+
+      /* Offerings */
+      .offerings { padding: 64px 0; }
       .offerings-grid { grid-template-columns: 1fr; gap: 16px; }
       .offering-card { aspect-ratio: 1/0.7; }
+      .offerings-header h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+
+      /* FAQ */
+      #faq { padding: 64px 0; }
+
+      /* Bottom CTA */
+      .bottom-cta { padding: 80px 0; }
+      .bottom-cta h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+      .bottom-cta p { font-size: 1rem; }
+
+      /* Footer */
+      footer { padding: 32px 0; }
     }
   </style>
 </head>
@@ -456,6 +534,17 @@
     <!-- 3D viewport appears here after address -->
     <div class="scene-frame" id="sceneFrame">
       <div class="scene3d-wrap" id="scene3dContainer">
+        <!-- Google Photorealistic 3D (shown first) -->
+        <div class="google3d-wrap" id="google3dWrap" style="display:none">
+          <div class="google3d-label">
+            Your neighborhood in 3D
+            <div class="g3d-sub">Orbit to explore, then continue to shadow analysis</div>
+          </div>
+          <div class="google3d-confirm">
+            <button class="google3d-confirm-btn" onclick="transitionToShadowModel()">Continue to Shadow Analysis &rarr;</button>
+          </div>
+        </div>
+
         <canvas id="scene3dCanvas"></canvas>
 
     <!-- Click prompt -->

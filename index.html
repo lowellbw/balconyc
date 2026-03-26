@@ -11,7 +11,7 @@
       setTimeout(function() {
         if (typeof SolarConfig !== 'undefined' && SolarConfig.GOOGLE_API_KEY) {
           var s = document.createElement('script');
-          s.src = 'https://maps.googleapis.com/maps/api/js?key=' + SolarConfig.GOOGLE_API_KEY + '&libraries=places&v=alpha&callback=initGooglePlaces';
+          s.src = 'https://maps.googleapis.com/maps/api/js?key=' + SolarConfig.GOOGLE_API_KEY + '&libraries=places&v=beta&callback=initGooglePlaces';
           s.async = true; s.defer = true;
           document.head.appendChild(s);
         }
@@ -90,98 +90,50 @@
     .scene3d-wrap canvas { display: block; width: 100%; height: 100%; cursor: grab; }
     .scene3d-wrap canvas.clickable { cursor: crosshair; }
 
-    /* Google 3D photorealistic view */
-    .google3d-wrap {
-      position: absolute; inset: 0; z-index: 3;
-      border-radius: var(--radius-lg); overflow: hidden;
-      transition: opacity 0.8s ease;
-    }
-    .google3d-wrap.hidden { opacity: 0; pointer-events: none; }
-    .google3d-wrap gmp-map-3d { width: 100%; height: 100%; display: block; }
-    .google3d-confirm {
-      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 5;
-      display: flex; gap: 10px; align-items: center;
-    }
-    .google3d-confirm-btn {
-      padding: 14px 28px; background: #fff; color: var(--text);
-      border: none; border-radius: 12px; font-family: inherit;
-      font-size: 0.95rem; font-weight: 700; cursor: pointer;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      transition: transform 0.2s;
-    }
-    .google3d-confirm-btn:hover { transform: translateY(-1px); }
-    .google3d-label {
-      position: absolute; top: 20px; left: 50%; transform: translateX(-50%); z-index: 5;
-      background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
-      border-radius: 10px; padding: 10px 20px;
-      color: #fff; font-size: 0.9rem; font-weight: 600;
-      pointer-events: none; text-align: center;
-    }
-    .google3d-label .g3d-sub { font-size: 0.75rem; font-weight: 400; opacity: 0.6; margin-top: 3px; }
-
     /* Click prompt overlay */
     .click-prompt {
-      position: absolute; top: 24px; left: 50%; transform: translateX(-50%); z-index: 15;
-      background: rgba(15,23,42,0.88); backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.12); border-radius: 12px;
-      padding: 14px 28px; color: #fff; text-align: center;
-      font-size: 1rem; font-weight: 600; pointer-events: none;
-      animation: promptPulse 2s ease-in-out infinite;
+      position: absolute; top: 16px; left: 50%; transform: translateX(-50%); z-index: 15;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+      border-radius: 10px;
+      padding: 10px 20px; color: var(--text); text-align: center;
+      font-size: 0.88rem; font-weight: 600; pointer-events: none;
+      line-height: 1.4;
     }
-    .click-prompt .prompt-sub { font-size: 0.78rem; color: #94a3b8; font-weight: 400; margin-top: 4px; }
-    @keyframes promptPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(13,115,119,0.3); }
-      50% { box-shadow: 0 0 0 8px rgba(13,115,119,0); }
-    }
+    .click-prompt .prompt-sub { font-size: 0.72rem; color: var(--text-sub); font-weight: 400; margin-top: 2px; }
 
-    /* Modelling overlay — centered sun spinner */
+    /* Modelling overlay */
     .modelling-overlay {
       position: absolute; inset: 0; z-index: 14;
       display: none; flex-direction: column; align-items: center; justify-content: center;
-      background: rgba(10, 15, 30, 0.35); pointer-events: none;
+      background: rgba(255,255,255,0.15); backdrop-filter: blur(2px); pointer-events: none;
     }
     .modelling-overlay.active { display: flex; }
     .sun-spinner {
-      width: 80px; height: 80px; position: relative;
-      margin-bottom: 20px;
+      width: 48px; height: 48px; position: relative;
+      margin-bottom: 16px;
     }
     .sun-spinner-core {
       position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 32px; height: 32px; border-radius: 50%;
-      background: radial-gradient(circle, #FFD700 0%, #F59E0B 60%, rgba(245,158,11,0) 100%);
-      box-shadow: 0 0 20px rgba(255,200,50,0.5), 0 0 40px rgba(255,150,30,0.2);
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #F59E0B;
     }
-    .sun-spinner-rays {
-      position: absolute; inset: 0;
-      animation: sunRotate 3s linear infinite;
-    }
-    .sun-spinner-rays::before, .sun-spinner-rays::after {
-      content: ''; position: absolute; top: 50%; left: 50%;
-      transform-origin: center center;
-    }
-    .sun-spinner-rays::before {
-      width: 80px; height: 2px; margin-left: -40px; margin-top: -1px;
-      background: linear-gradient(90deg, rgba(255,200,50,0) 0%, rgba(255,200,50,0.6) 15%, rgba(255,200,50,0) 40%, rgba(255,200,50,0) 60%, rgba(255,200,50,0.6) 85%, rgba(255,200,50,0) 100%);
-    }
-    .sun-spinner-rays::after {
-      width: 2px; height: 80px; margin-left: -1px; margin-top: -40px;
-      background: linear-gradient(180deg, rgba(255,200,50,0) 0%, rgba(255,200,50,0.6) 15%, rgba(255,200,50,0) 40%, rgba(255,200,50,0) 60%, rgba(255,200,50,0.6) 85%, rgba(255,200,50,0) 100%);
-    }
+    .sun-spinner-rays { display: none; }
     .sun-spinner-ring {
-      position: absolute; inset: 4px;
-      border: 2px solid rgba(255,200,50,0.15);
-      border-top-color: rgba(255,200,50,0.7);
+      position: absolute; inset: 0;
+      border: 2px solid rgba(245,158,11,0.2);
+      border-top-color: #F59E0B;
       border-radius: 50%;
-      animation: sunRotate 1.5s linear infinite;
+      animation: sunRotate 1.2s linear infinite;
     }
     @keyframes sunRotate { to { transform: rotate(360deg); } }
     .modelling-label {
-      color: #fff; font-size: 1rem; font-weight: 600; text-align: center;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+      border-radius: 10px; padding: 10px 20px;
+      color: var(--text); font-size: 0.88rem; font-weight: 600; text-align: center;
     }
     .modelling-label .mod-sub {
-      display: block; font-size: 0.8rem; font-weight: 400;
-      color: rgba(255,255,255,0.6); margin-top: 4px;
+      display: block; font-size: 0.72rem; font-weight: 400;
+      color: var(--text-sub); margin-top: 2px;
     }
 
     /* 3D overlays (reused) */
@@ -410,14 +362,14 @@
     /* Waitlist modal */
     .wl-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
     .wl-modal-overlay.active { opacity: 1; pointer-events: all; }
-    .wl-modal { background: #fff; border-radius: 16px; padding: 48px 40px; max-width: 480px; width: 90%; position: relative; transform: translateY(20px) scale(0.97); transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); }
+    .wl-modal { background: #fff; border-radius: 16px; padding: 32px 32px 36px; max-width: 420px; width: 90%; position: relative; transform: translateY(20px) scale(0.97); transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); }
     .wl-modal-overlay.active .wl-modal { transform: translateY(0) scale(1); }
     .wl-modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; border: none; background: #f0f0f0; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--text); }
-    .wl-modal h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
-    .wl-modal .wl-sub { font-size: 1rem; color: var(--text-sub); margin-bottom: 28px; line-height: 1.4; }
-    .wl-form { display: flex; flex-direction: column; gap: 14px; }
+    .wl-modal h2 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+    .wl-modal .wl-sub { font-size: 0.92rem; color: var(--text-sub); margin-bottom: 20px; line-height: 1.4; }
+    .wl-form { display: flex; flex-direction: column; gap: 12px; }
     .wl-form label { font-size: 0.85rem; font-weight: 600; color: var(--text); display: flex; flex-direction: column; gap: 6px; }
-    .wl-form input, .wl-form select { padding: 14px 16px; border-radius: 10px; border: 1px solid #d7e0ef; font-family: inherit; font-size: 0.95rem; color: var(--text); background: #f9fafb; outline: none; }
+    .wl-form input, .wl-form select { padding: 12px 14px; border-radius: 10px; border: 1px solid #d7e0ef; font-family: inherit; font-size: 0.95rem; color: var(--text); background: #f9fafb; outline: none; }
     .wl-form input:focus, .wl-form select:focus { border-color: var(--text); }
     .wl-form .wl-error { color: #e74c3c; font-size: 0.82rem; font-weight: 500; display: none; }
     .wl-step { display: none; animation: fadeUp 0.3s ease; }
@@ -475,9 +427,6 @@
       /* Click prompt — compact top bar on mobile */
       .click-prompt { top: 10px; padding: 10px 20px; font-size: 0.85rem; border-radius: 10px; max-width: 85%; }
       .click-prompt .prompt-sub { font-size: 0.7rem; margin-top: 2px; }
-
-      /* Google 3D confirm button — smaller on mobile */
-      .google3d-confirm-btn { padding: 12px 22px; font-size: 0.88rem; }
 
       /* Results card below scene */
       .results-card { position: relative; bottom: auto; right: auto; max-width: 100%; margin: 0; border-radius: 0; padding: 20px; box-shadow: none; border-top: 1px solid var(--border); }
@@ -550,17 +499,6 @@
     <!-- 3D viewport appears here after address -->
     <div class="scene-frame" id="sceneFrame">
       <div class="scene3d-wrap" id="scene3dContainer">
-        <!-- Google Photorealistic 3D (shown first) -->
-        <div class="google3d-wrap" id="google3dWrap" style="display:none">
-          <div class="google3d-label">
-            Your neighborhood in 3D
-            <div class="g3d-sub">Orbit to explore, then continue to shadow analysis</div>
-          </div>
-          <div class="google3d-confirm">
-            <button class="google3d-confirm-btn" onclick="transitionToShadowModel()">Continue to Shadow Analysis &rarr;</button>
-          </div>
-        </div>
-
         <canvas id="scene3dCanvas"></canvas>
 
     <!-- Click prompt -->
@@ -856,7 +794,7 @@
     <button class="wl-modal-close" id="wlModalClose" onclick="document.getElementById('waitlistModal').classList.remove('active')">&times;</button>
     <!-- Quick signup (shown when user already has address) -->
     <div class="wl-step" id="wlStepQuick">
-      <img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco" style="height:80px;margin-bottom:24px">
+      <img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco" style="height:64px;margin-bottom:16px">
       <h2>Be first to go solar</h2>
       <p class="wl-sub" id="wlQuickSub">We'll reach out the day balcony solar becomes legal in NYC &mdash; with priority access to kits and installation.</p>
       <div class="wl-form">
@@ -867,7 +805,7 @@
     </div>
     <!-- Full flow (shown when no address entered) -->
     <div class="wl-step" id="wlStep1">
-      <img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco" style="height:80px;margin-bottom:24px">
+      <img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco" style="height:64px;margin-bottom:16px">
       <h2>Be first to go solar</h2>
       <p class="wl-sub">We'll reach out the day balcony solar becomes legal in NYC</p>
       <div class="wl-form">
@@ -967,44 +905,8 @@ async function onPlaceSelected(place) {
   document.getElementById('heroSection').classList.add('has-scene');
   document.getElementById('sceneFrame').classList.add('visible');
 
-  // Show Google 3D first, then Three.js
-  setTimeout(function() { showGoogle3D(); }, 400);
-}
-
-// --- GOOGLE 3D PHOTOREALISTIC VIEW ---
-async function showGoogle3D() {
-  var wrap = document.getElementById('google3dWrap');
-
-  try {
-    await google.maps.importLibrary('maps3d');
-  } catch (e) {
-    console.warn('[Calc4] Maps 3D not available, going straight to shadow model');
-    initScene();
-    return;
-  }
-
-  // Create gmp-map-3d element
-  var mapEl = document.createElement('gmp-map-3d');
-  mapEl.setAttribute('center', SolarState.lat + ',' + SolarState.lon + ',50');
-  mapEl.setAttribute('heading', '30');
-  mapEl.setAttribute('tilt', '65');
-  mapEl.setAttribute('range', '200');
-  mapEl.style.cssText = 'width:100%;height:100%;display:block';
-  wrap.insertBefore(mapEl, wrap.firstChild);
-  wrap.style.display = '';
-
-  // Init Three.js in background while user explores Google 3D
-  initScene();
-}
-
-function transitionToShadowModel() {
-  var wrap = document.getElementById('google3dWrap');
-  wrap.classList.add('hidden');
-  setTimeout(function() {
-    wrap.style.display = 'none';
-    var mapEl = wrap.querySelector('gmp-map-3d');
-    if (mapEl) mapEl.remove();
-  }, 900);
+  // Init Three.js scene
+  setTimeout(function() { initScene(); }, 400);
 }
 
 // --- 3D SCENE ---

@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYC Balcony Solar Estimator — Full Technical Specification</title>
+<style>
+  :root {
+    --sun: #F59E0B;
+    --sun-dark: #D97706;
+    --sun-light: #FEF3C7;
+    --sky: #0EA5E9;
+    --sky-dark: #0284C7;
+    --sky-light: #E0F2FE;
+    --dark: #0F172A;
+    --text: #1E293B;
+    --muted: #64748B;
+    --bg: #F8FAFC;
+    --card: #FFFFFF;
+    --border: #E2E8F0;
+    --green: #10B981;
+    --green-light: #D1FAE5;
+    --red: #EF4444;
+    --red-light: #FEE2E2;
+    --purple: #8B5CF6;
+    --purple-light: #EDE9FE;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 40%, #0F172A 100%);
+    color: white;
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid var(--sun);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero h1 { font-size: 2.4em; font-weight: 800; margin-bottom: 12px; position: relative; letter-spacing: -0.5px; }
+  .hero .subtitle { font-size: 1.15em; opacity: 0.7; max-width: 700px; margin: 0 auto; position: relative; }
+  .hero .version { display: inline-block; background: var(--sun); color: var(--dark); padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-top: 16px; letter-spacing: 0.5px; }
+
+  /* LAYOUT */
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+
+  /* TOC */
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 48px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .toc h2 { font-size: 0.85em; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; }
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; }
+  .toc a { color: var(--sky-dark); text-decoration: none; font-weight: 500; font-size: 14px; display: block; padding: 4px 0; }
+  .toc a:hover { text-decoration: underline; }
+  .toc .num { color: var(--muted); font-weight: 400; margin-right: 6px; }
+
+  /* SECTIONS */
+  section { margin-bottom: 56px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-num {
+    background: var(--dark);
+    color: var(--sun);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 1.45em; color: var(--dark); font-weight: 700; }
+  h3 { font-size: 1.15em; color: var(--dark); margin: 28px 0 12px; font-weight: 700; }
+  h4 { font-size: 1em; color: var(--muted); margin: 20px 0 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85em; }
+  p { margin-bottom: 14px; }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .card.highlight { border-left: 4px solid var(--sun); background: var(--sun-light); }
+  .card.info { border-left: 4px solid var(--sky); background: var(--sky-light); }
+  .card.success { border-left: 4px solid var(--green); background: var(--green-light); }
+  .card.warning { border-left: 4px solid var(--red); background: var(--red-light); }
+  .card.purple { border-left: 4px solid var(--purple); background: var(--purple-light); }
+  .card strong { color: var(--dark); }
+  .card p:last-child { margin-bottom: 0; }
+
+  /* CODE */
+  .code {
+    background: #1E293B;
+    color: #E2E8F0;
+    padding: 20px 24px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 13px;
+    overflow-x: auto;
+    margin: 14px 0;
+    line-height: 1.7;
+    white-space: pre;
+  }
+  .code .comment { color: #64748B; }
+  .code .key { color: #7DD3FC; }
+  .code .val { color: #FDE68A; }
+  .code .str { color: #86EFAC; }
+  .code .url { color: #C4B5FD; }
+  code {
+    background: #F1F5F9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-size: 13px;
+    color: #BE185D;
+  }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th { background: var(--dark); color: white; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  tr:nth-child(even) td { background: #F8FAFC; }
+  tr:hover td { background: #F1F5F9; }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 8px;
+    vertical-align: middle;
+    letter-spacing: 0.3px;
+  }
+  .tag.free { background: var(--green-light); color: #065F46; }
+  .tag.paid { background: var(--sun-light); color: #92400E; }
+  .tag.oss { background: var(--purple-light); color: #5B21B6; }
+  .tag.req { background: var(--red-light); color: #991B1B; }
+
+  /* PIPELINE */
+  .pipeline { margin: 20px 0; }
+  .pipe-step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .pipe-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--dark);
+    color: var(--sun);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .pipe-content { flex: 1; padding-top: 6px; }
+  .pipe-content strong { display: block; font-size: 1.05em; margin-bottom: 4px; }
+  .pipe-content .detail { color: var(--muted); font-size: 14px; }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  @media (max-width: 700px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .hero { padding: 50px 20px 40px; }
+    .hero h1 { font-size: 1.7em; }
+  }
+
+  /* MISC */
+  .divider { height: 1px; background: var(--border); margin: 40px 0; }
+  .label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
+  .big-num { font-size: 2em; font-weight: 800; color: var(--dark); line-height: 1.1; }
+  .formula-box {
+    background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+    color: #E2E8F0;
+    padding: 24px 28px;
+    border-radius: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    margin: 16px 0;
+    line-height: 2;
+    border: 1px solid #475569;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>NYC Balcony Solar Estimator</h1>
+  <p class="subtitle">Full Technical Specification: Energy Modeling, Shadow Analysis, Data Integrations, and AI Visualization Pipeline</p>
+  <div class="version">TECHNICAL SPEC v1.0 — MARCH 2026</div>
+</div>
+
+<div class="container">
+
+<!-- TABLE OF CONTENTS -->
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <div class="toc-grid">
+    <div>
+      <a href="#s1"><span class="num">1</span> Solar Energy Model</a>
+      <a href="#s1-pvwatts"><span class="num">1.1</span> PVWatts V8 API Integration</a>
+      <a href="#s1-params"><span class="num">1.2</span> Balcony-Specific Parameters</a>
+      <a href="#s1-derating"><span class="num">1.3</span> Derating Factors</a>
+      <a href="#s1-financial"><span class="num">1.4</span> Financial Model</a>
+      <a href="#s2"><span class="num">2</span> Shadow Modeling</a>
+      <a href="#s2-sun"><span class="num">2.1</span> Sun Position Algorithm</a>
+      <a href="#s2-buildings"><span class="num">2.2</span> NYC 3D Building Data</a>
+      <a href="#s2-algo"><span class="num">2.3</span> Shadow Casting Algorithm</a>
+      <a href="#s2-orientation"><span class="num">2.4</span> Building Orientation</a>
+    </div>
+    <div>
+      <a href="#s3"><span class="num">3</span> Data Sources & APIs</a>
+      <a href="#s3-pluto"><span class="num">3.1</span> NYC PLUTO Dataset</a>
+      <a href="#s3-geocoding"><span class="num">3.2</span> Geocoding Pipeline</a>
+      <a href="#s3-nrel"><span class="num">3.3</span> NREL Solar Resource</a>
+      <a href="#s4"><span class="num">4</span> AI Visualization Pipeline</a>
+      <a href="#s4-streetview"><span class="num">4.1</span> Google Street View</a>
+      <a href="#s4-detection"><span class="num">4.2</span> Balcony Detection</a>
+      <a href="#s4-inpainting"><span class="num">4.3</span> AI Inpainting</a>
+      <a href="#s5"><span class="num">5</span> Architecture & Costs</a>
+      <a href="#s5-flow"><span class="num">5.1</span> User Flow & System Design</a>
+      <a href="#s5-costs"><span class="num">5.2</span> Cost Model</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================ -->
+<!-- SECTION 1: SOLAR ENERGY MODEL -->
+<!-- ============================================================ -->
+<section id="s1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <h2>Solar Energy Model</h2>
+  </div>
+
+  <p>The energy model converts a user's address, balcony orientation, and system size into an accurate annual production estimate. The core engine is NREL's PVWatts V8 API, with balcony-specific adjustments layered on top.</p>
+
+  <div class="formula-box">
+Final kWh = PVWatts_Output × Shade_Factor × Urban_Soiling × Thermal_Bonus × Bifacial_Gain
+         = PVWatts(lat, lon, capacity, tilt, azimuth, losses)
+           × S(shadow_hours)
+           × U(floor_level, density)
+           × T(airflow_rating)
+           × B(albedo, bifaciality)
+  </div>
+
+  <!-- 1.1 PVWatts -->
+  <h3 id="s1-pvwatts">1.1 PVWatts V8 API Integration</h3>
+
+  <div class="card info">
+    <strong>Why PVWatts?</strong> It's free, industry-standard, maintained by the US Department of Energy's National Renewable Energy Laboratory, uses the 2020 NSRDB (National Solar Radiation Database) with hourly weather data, and models all 8,760 hours of a typical meteorological year. Every commercial solar installer uses PVWatts or a derivative.
+  </div>
+
+  <h4>Endpoint</h4>
+  <div class="code"><span class="key">GET</span> <span class="url">https://developer.nrel.gov/api/pvwatts/v8.json</span>
+
+<span class="comment">// Required: free API key from https://developer.nrel.gov/signup/</span>
+<span class="comment">// Rate limit: 1,000 requests/hour</span>
+<span class="comment">// Output formats: .json or .xml</span></div>
+
+  <h4>Complete Parameter Reference</h4>
+  <table>
+    <tr><th>Parameter</th><th>Type</th><th>Range</th><th>Balcony Default</th><th>Notes</th></tr>
+    <tr><td><code>api_key</code></td><td>String</td><td>—</td><td>—</td><td>Required. Free from NREL.</td></tr>
+    <tr><td><code>system_capacity</code></td><td>Decimal</td><td>0.05–500,000 kW</td><td>0.8</td><td>System size in kW DC. 800W = 0.8 kW.</td></tr>
+    <tr><td><code>module_type</code></td><td>Integer</td><td>0, 1, 2</td><td><strong>1</strong></td><td>0=Standard (15%), 1=Premium (19%), 2=Thin Film (10%). Premium recommended — better temp coefficient.</td></tr>
+    <tr><td><code>array_type</code></td><td>Integer</td><td>0–4</td><td><strong>0</strong></td><td>0=Fixed Open Rack. Only option for balcony. (1=Fixed Roof, 2-4=Tracking)</td></tr>
+    <tr><td><code>tilt</code></td><td>Decimal</td><td>0–90°</td><td><strong>90</strong></td><td>90° = vertical railing mount. 70° = angled mount. This is the #1 balcony-specific param.</td></tr>
+    <tr><td><code>azimuth</code></td><td>Decimal</td><td>0–359°</td><td><em>from user</em></td><td>0°=North, 90°=East, 180°=South, 270°=West. Maps directly to balcony direction.</td></tr>
+    <tr><td><code>losses</code></td><td>Decimal</td><td>-5 to 99%</td><td><strong>22</strong></td><td>PVWatts default is 14%. Balcony needs higher — see derating section.</td></tr>
+    <tr><td><code>lat</code></td><td>Decimal</td><td>-90 to 90</td><td><em>geocoded</em></td><td>Latitude from geocoded address.</td></tr>
+    <tr><td><code>lon</code></td><td>Decimal</td><td>-180 to 180</td><td><em>geocoded</em></td><td>Longitude from geocoded address.</td></tr>
+    <tr><td><code>dataset</code></td><td>String</td><td>nsrdb, tmy2, tmy3, intl</td><td><strong>nsrdb</strong></td><td>NSRDB uses 2020 satellite-derived TMY data. Best for US locations.</td></tr>
+    <tr><td><code>dc_ac_ratio</code></td><td>Decimal</td><td>> 0</td><td><strong>1.2</strong></td><td>DC-to-AC inverter ratio. 1.2 standard for small systems.</td></tr>
+    <tr><td><code>inv_eff</code></td><td>Decimal</td><td>90–99.5%</td><td><strong>96.5</strong></td><td>Micro-inverter efficiency. Enphase IQ8: ~97%. Budget: ~96%.</td></tr>
+    <tr><td><code>bifaciality</code></td><td>Decimal</td><td>0–1</td><td><strong>0</strong> or <strong>0.75</strong></td><td>Set to 0.75 if selling bifacial panels. Otherwise 0.</td></tr>
+    <tr><td><code>albedo</code></td><td>Decimal or Array[12]</td><td>0–1</td><td><strong>0.20</strong></td><td>Ground reflectance. Concrete balcony ~0.20. Light-colored: ~0.30. Can pass 12 monthly values.</td></tr>
+    <tr><td><code>soiling</code></td><td>Array[12]</td><td>0–100</td><td>[12,11,12,14,16,17,17,16,14,11,11,11]</td><td>Monthly soiling %. Urban NYC is dustier than suburban. Higher in summer (pollen).</td></tr>
+    <tr><td><code>timeframe</code></td><td>String</td><td>monthly, hourly</td><td><strong>monthly</strong></td><td>Monthly for display. Hourly (8,760 values) for detailed shadow integration.</td></tr>
+  </table>
+
+  <h4>Example API Call — 800W South-Facing Vertical Balcony in Manhattan</h4>
+  <div class="code"><span class="key">GET</span> <span class="url">https://developer.nrel.gov/api/pvwatts/v8.json</span>?
+  <span class="key">api_key</span>=<span class="str">YOUR_API_KEY</span>
+  &<span class="key">system_capacity</span>=<span class="val">0.8</span>
+  &<span class="key">module_type</span>=<span class="val">1</span>
+  &<span class="key">array_type</span>=<span class="val">0</span>
+  &<span class="key">tilt</span>=<span class="val">90</span>
+  &<span class="key">azimuth</span>=<span class="val">180</span>
+  &<span class="key">lat</span>=<span class="val">40.7484</span>
+  &<span class="key">lon</span>=<span class="val">-73.9857</span>
+  &<span class="key">dataset</span>=<span class="str">nsrdb</span>
+  &<span class="key">losses</span>=<span class="val">22</span>
+  &<span class="key">dc_ac_ratio</span>=<span class="val">1.2</span>
+  &<span class="key">inv_eff</span>=<span class="val">96.5</span>
+  &<span class="key">timeframe</span>=<span class="str">monthly</span></div>
+
+  <h4>API Response Structure</h4>
+  <div class="code">{
+  <span class="key">"inputs"</span>: { <span class="comment">/* echo of all request parameters */</span> },
+  <span class="key">"station_info"</span>: {
+    <span class="key">"lat"</span>: <span class="val">40.748</span>,
+    <span class="key">"lon"</span>: <span class="val">-73.986</span>,
+    <span class="key">"elev"</span>: <span class="val">10.0</span>,                        <span class="comment">// meters above sea level</span>
+    <span class="key">"tz"</span>: <span class="val">-5.0</span>,                          <span class="comment">// UTC offset</span>
+    <span class="key">"weather_data_source"</span>: <span class="str">"NSRDB PSM V3 GOES tmy-2020"</span>
+  },
+  <span class="key">"outputs"</span>: {
+    <span class="key">"ac_monthly"</span>:     [<span class="val">42, 52, 61, 68, 78, 82, 84, 76, 65, 54, 41, 36</span>],  <span class="comment">// kWh AC per month</span>
+    <span class="key">"dc_monthly"</span>:     [<span class="val">44, 55, 64, 71, 82, 86, 88, 80, 68, 57, 43, 38</span>],  <span class="comment">// kWh DC per month</span>
+    <span class="key">"poa_monthly"</span>:    [<span class="val">62, 78, 88, 94, 106, 110, 115, 104, 89, 74, 58, 50</span>], <span class="comment">// kWh/m² on array</span>
+    <span class="key">"solrad_monthly"</span>: [<span class="val">2.0, 2.8, 2.8, 3.1, 3.4, 3.7, 3.7, 3.4, 3.0, 2.4, 1.9, 1.6</span>], <span class="comment">// kWh/m²/day</span>
+    <span class="key">"ac_annual"</span>:      <span class="val">739</span>,                     <span class="comment">// Total annual AC output (kWh)</span>
+    <span class="key">"solrad_annual"</span>:  <span class="val">2.90</span>,                    <span class="comment">// Annual avg solar radiation (kWh/m²/day)</span>
+    <span class="key">"capacity_factor"</span>: <span class="val">10.5</span>                    <span class="comment">// Percentage</span>
+  }
+}</div>
+
+  <div class="card highlight">
+    <strong>These numbers are illustrative.</strong> The actual response will vary based on the specific NSRDB grid cell. For a south-facing vertical 800W system in midtown Manhattan, expect <strong>650–850 kWh/year</strong> from PVWatts before applying additional balcony derating factors.
+  </div>
+
+  <!-- 1.2 Balcony Parameters -->
+  <h3 id="s1-params">1.2 Balcony-Specific Parameter Mapping</h3>
+
+  <p>The key challenge: PVWatts is designed for rooftops. Balconies differ in tilt (vertical vs. tilted), exposure (facade vs. open sky), airflow (better cooling), and soiling (urban dust). Here's how to map balcony realities to PVWatts inputs:</p>
+
+  <table>
+    <tr><th>User Input</th><th>Maps To</th><th>Transformation Logic</th></tr>
+    <tr>
+      <td>"My balcony faces South"</td>
+      <td><code>azimuth = 180</code></td>
+      <td>Direct map: N=0, NE=45, E=90, SE=135, S=180, SW=225, W=270, NW=315</td>
+    </tr>
+    <tr>
+      <td>"Panels on the railing"</td>
+      <td><code>tilt = 90</code></td>
+      <td>Vertical mount. If they have floor space for tilt: <code>tilt = 70</code> (compromise angle)</td>
+    </tr>
+    <tr>
+      <td>"My balcony is about 4 ft deep × 10 ft wide"</td>
+      <td><code>system_capacity</code></td>
+      <td>Railing length (10 ft) fits 2× standard panels (each ~3.5 ft wide). 2 × 400W = 0.8 kW</td>
+    </tr>
+    <tr>
+      <td>"I'm on floor 8 of 20"</td>
+      <td><code>losses</code> adjustment</td>
+      <td>Higher floor = less shading. Floor 8/20 → shade derating 0.90. Floor 18/20 → 0.98.</td>
+    </tr>
+    <tr>
+      <td>"Buildings nearby are taller"</td>
+      <td><code>losses</code> adjustment</td>
+      <td>Adds 5-15% to losses depending on severity. See shadow model (Section 2).</td>
+    </tr>
+    <tr>
+      <td>"My bill is $140/month"</td>
+      <td><em>financial model</em></td>
+      <td>$140 ÷ $0.22/kWh ≈ 636 kWh/month. System produces ~60 kWh/month → offsets ~9.4%.</td>
+    </tr>
+  </table>
+
+  <h4>Panel Sizing by Balcony Dimensions</h4>
+  <table>
+    <tr><th>Railing Width</th><th>Max Panels</th><th>System Size</th><th>Est. Annual kWh (South, 90°)</th></tr>
+    <tr><td>6–8 ft</td><td>1 × 400W</td><td>400W</td><td>325–425</td></tr>
+    <tr><td>8–12 ft</td><td>2 × 400W</td><td>800W</td><td>650–850</td></tr>
+    <tr><td>12–16 ft</td><td>3 × 400W</td><td>1,200W</td><td>975–1,275</td></tr>
+    <tr><td>16+ ft or L-shaped</td><td>4 × 400W</td><td>1,600W</td><td>1,300–1,700</td></tr>
+  </table>
+  <p>Standard residential panel: ~1,722 mm × 1,134 mm (67.8" × 44.6"). Weight: ~20 kg. Fits within NYC's 4-7 ft balcony depth with vertical railing mounting.</p>
+
+  <!-- 1.3 Derating -->
+  <h3 id="s1-derating">1.3 Balcony-Specific Derating Factors</h3>
+
+  <p>PVWatts assumes a clean, unobstructed, roof-mounted system. Balconies face different real-world conditions. Apply these multipliers <em>after</em> PVWatts output:</p>
+
+  <table>
+    <tr><th>Factor</th><th>Rooftop Baseline</th><th>Balcony (Vertical)</th><th>Rationale</th></tr>
+    <tr>
+      <td><strong>Vertical tilt loss</strong></td>
+      <td>1.00 (at optimal ~40° tilt)</td>
+      <td>Already in PVWatts</td>
+      <td>PVWatts handles tilt natively. At 90°, expect ~70-85% of optimal tilt output.</td>
+    </tr>
+    <tr>
+      <td><strong>Building self-shading</strong></td>
+      <td>1.00</td>
+      <td>0.80–0.95</td>
+      <td>Upper floors/overhangs cast morning/evening shadows on the panel. Worse for recessed balconies.</td>
+    </tr>
+    <tr>
+      <td><strong>Neighboring building shade</strong></td>
+      <td>1.00</td>
+      <td>0.70–0.95</td>
+      <td>NYC urban canyon effect. Calculated per-address in Section 2.</td>
+    </tr>
+    <tr>
+      <td><strong>Urban soiling</strong></td>
+      <td>0.97 (3%)</td>
+      <td>0.88–0.92 (8-12%)</td>
+      <td>City dust, pigeon residue, pollen. Already partially in PVWatts <code>soiling</code> array.</td>
+    </tr>
+    <tr>
+      <td><strong>Thermal benefit</strong></td>
+      <td>1.00</td>
+      <td>1.03–1.05</td>
+      <td>Better airflow on balcony vs. roof = cooler cells = higher efficiency. ~0.35%/°C gain.</td>
+    </tr>
+    <tr>
+      <td><strong>Bifacial bonus</strong></td>
+      <td>1.00</td>
+      <td>1.05–1.15</td>
+      <td>Only if selling bifacial panels. Vertical mount + light wall behind = great rear irradiance. Use PVWatts <code>bifaciality</code> param instead of manual multiplier.</td>
+    </tr>
+  </table>
+
+  <div class="card success">
+    <strong>Implementation approach:</strong> Don't apply all derating manually. Feed the soiling array, bifaciality, and albedo directly into PVWatts parameters (it handles those internally). Then apply <strong>only the shadow derating</strong> as a post-PVWatts multiplier — because PVWatts can't model building-level shading. The shadow factor comes from Section 2's algorithm.
+  </div>
+
+  <h4>Simplified Derating for MVP (Before Shadow Model is Built)</h4>
+  <div class="code"><span class="comment">// Quick derating lookup by floor level and surroundings</span>
+<span class="comment">// Use this for Phase 1 before implementing the full shadow algorithm</span>
+
+<span class="key">shade_factor</span> = {
+  <span class="str">"high_floor_no_tall_neighbors"</span>:    <span class="val">0.95</span>,   <span class="comment">// Penthouse, unobstructed</span>
+  <span class="str">"high_floor_some_neighbors"</span>:       <span class="val">0.88</span>,   <span class="comment">// Upper third, some taller buildings</span>
+  <span class="str">"mid_floor_moderate_density"</span>:      <span class="val">0.82</span>,   <span class="comment">// Middle of building, typical NYC block</span>
+  <span class="str">"mid_floor_dense_area"</span>:           <span class="val">0.72</span>,   <span class="comment">// FiDi, Midtown canyon</span>
+  <span class="str">"low_floor_any"</span>:                  <span class="val">0.60</span>,   <span class="comment">// Floors 1-4, most of NYC</span>
+  <span class="str">"low_floor_wide_avenue"</span>:          <span class="val">0.75</span>,   <span class="comment">// Low floor but on a wide avenue</span>
+}
+
+<span class="comment">// Final output:</span>
+<span class="key">annual_kwh</span> = pvwatts_ac_annual × shade_factor × <span class="val">1.03</span> <span class="comment">// thermal bonus</span></div>
+
+  <!-- 1.4 Financial -->
+  <h3 id="s1-financial">1.4 Financial Model</h3>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="label">Electricity Rate</div>
+      <p><strong>Con Edison SC-1 residential rate:</strong> ~$0.22/kWh all-in (supply + delivery). Delivery component increased ~9% in early 2026. Use $0.22 as baseline, escalate at 3%/year for payback calculations.</p>
+    </div>
+    <div class="card">
+      <div class="label">System Cost</div>
+      <p><strong>800W complete kit:</strong> $1,800–$3,000 including panels, micro-inverter, mounting hardware, cables. No installation labor (DIY balcony mount). Branded kits (e.g., EcoFlow, Anker SOLIX): $2,000–2,500.</p>
+    </div>
+  </div>
+
+  <div class="code"><span class="comment">// Financial calculation</span>
+<span class="key">annual_kwh</span>          = pvwatts_output × shade_factor × <span class="val">1.03</span>
+<span class="key">annual_savings</span>      = annual_kwh × <span class="val">$0.22</span>
+<span class="key">monthly_savings</span>     = annual_savings / <span class="val">12</span>
+<span class="key">bill_offset_pct</span>     = annual_kwh / (monthly_bill_$ / <span class="val">$0.22</span> × <span class="val">12</span>) × <span class="val">100</span>
+
+<span class="comment">// Payback with escalating rates</span>
+<span class="key">payback_years</span>       = system_cost / annual_savings  <span class="comment">// Simple payback: ~12-20 years</span>
+<span class="key">npv_payback_years</span>   = solve for N where:
+  Σ(annual_savings × <span class="val">1.03</span>^i, i=0..N) = system_cost  <span class="comment">// Accounts for rate escalation</span>
+
+<span class="comment">// 25-year lifetime value</span>
+<span class="key">lifetime_savings</span>    = Σ(annual_kwh × <span class="val">$0.22</span> × <span class="val">1.03</span>^i × <span class="val">0.995</span>^i, i=0..24)
+<span class="comment">// 0.995^i = 0.5% annual panel degradation</span>
+<span class="comment">// 1.03^i = 3% annual electricity rate increase</span>
+
+<span class="key">co2_offset_lbs</span>     = annual_kwh × <span class="val">0.65</span>  <span class="comment">// NYC grid emission factor (lbs CO2/kWh)</span></div>
+
+  <div class="card info">
+    <strong>What to show users:</strong> Monthly savings ($), percentage of bill offset, simple payback period, 25-year lifetime savings, and CO₂ offset. The CO₂ number is emotionally compelling — "equivalent to planting X trees per year" resonates more than raw numbers. NYC's grid is ~0.65 lbs CO₂/kWh, so 750 kWh/year = ~488 lbs CO₂ = ~4 trees/year.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: SHADOW MODELING -->
+<!-- ============================================================ -->
+<section id="s2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <h2>Shadow Modeling</h2>
+  </div>
+
+  <p>This is the hardest and most valuable piece. NYC's urban canyons mean buildings routinely block 1-6 hours of direct sunlight per day. Getting shadow analysis right is what separates a toy calculator from a trustworthy tool.</p>
+
+  <!-- 2.1 Sun Position -->
+  <h3 id="s2-sun">2.1 Sun Position Algorithm (SPA)</h3>
+
+  <p>To determine if a point on a building facade is in shadow, you first need to know exactly where the sun is at any given moment. The NREL Solar Position Algorithm (SPA) is the gold standard — accurate to ±0.0003° for the years -2000 to 6000.</p>
+
+  <div class="code"><span class="comment">// Using pvlib-python (recommended implementation)</span>
+<span class="key">import</span> pvlib
+<span class="key">import</span> pandas <span class="key">as</span> pd
+
+<span class="comment"># Get sun position for every hour of a typical year at a NYC location</span>
+location = pvlib.location.Location(
+    latitude=<span class="val">40.7484</span>,
+    longitude=<span class="val">-73.9857</span>,
+    tz=<span class="str">'America/New_York'</span>,
+    altitude=<span class="val">10</span>  <span class="comment"># meters above sea level</span>
+)
+
+<span class="comment"># Generate hourly timestamps for a full year</span>
+times = pd.date_range(
+    <span class="str">'2024-01-01'</span>, <span class="str">'2024-12-31 23:00'</span>,
+    freq=<span class="str">'h'</span>,
+    tz=<span class="str">'America/New_York'</span>
+)
+
+<span class="comment"># Calculate sun position using NREL SPA</span>
+sun_pos = location.get_solarposition(times, method=<span class="str">'nrel_numpy'</span>)
+
+<span class="comment"># Returns DataFrame with columns:</span>
+<span class="comment">#   apparent_zenith  — angle from vertical (90° = horizon)</span>
+<span class="comment">#   azimuth          — compass bearing (0°=N, 90°=E, 180°=S, 270°=W)</span>
+<span class="comment">#   apparent_elevation — angle above horizon (complement of zenith)</span>
+<span class="comment">#   equation_of_time — correction factor (minutes)</span>
+
+<span class="comment"># Key NYC sun angles:</span>
+<span class="comment">#   Summer solstice noon: elevation ≈ 73°, azimuth ≈ 180°</span>
+<span class="comment">#   Winter solstice noon: elevation ≈ 27°, azimuth ≈ 180°</span>
+<span class="comment">#   Equinox noon:         elevation ≈ 50°, azimuth ≈ 180°</span></div>
+
+  <div class="card highlight">
+    <strong>Why this matters for balconies:</strong> At NYC's latitude (40.7°N), the winter sun is very low in the sky (27° elevation at noon). This means buildings to the south cast extremely long shadows — a 200-foot building casts a shadow ~430 feet long at winter noon. Your shadow model <em>must</em> account for seasonality, or it will dramatically overestimate winter production.
+  </div>
+
+  <!-- 2.2 Building Data -->
+  <h3 id="s2-buildings">2.2 NYC 3D Building Data</h3>
+
+  <h4>Option A: NYC Building Footprints + Heights (Recommended for MVP)</h4>
+  <div class="card">
+    <strong>NYC Open Data — Building Footprints</strong> <span class="tag free">FREE</span>
+    <p><strong>URL:</strong> <code>https://data.cityofnewyork.us/City-Government/BUILDING/5zhs-2jue</code></p>
+    <p><strong>Records:</strong> ~1,085,000 building footprints covering all 5 boroughs</p>
+    <p><strong>Format:</strong> GeoJSON polygons with attributes</p>
+    <p><strong>Key fields:</strong> <code>heightroof</code> (roof height in feet), <code>groundelev</code> (ground elevation in feet), <code>BIN</code> (Building ID Number), <code>the_geom</code> (polygon coordinates)</p>
+    <p><strong>Access:</strong> Socrata API (SODA) — supports spatial queries</p>
+  </div>
+
+  <div class="code"><span class="comment"># Query all buildings within 200 meters of a target address</span>
+<span class="comment"># Using Socrata SODA API with spatial filter</span>
+
+<span class="key">import</span> requests
+
+target_lat, target_lon = <span class="val">40.7484</span>, <span class="val">-73.9857</span>
+radius_m = <span class="val">200</span>  <span class="comment"># meters — covers shadow-casting range for most NYC buildings</span>
+
+<span class="comment"># Convert to approximate degree buffer (~0.002° ≈ 200m at NYC latitude)</span>
+buffer = radius_m / <span class="val">111320</span>
+
+url = <span class="str">"https://data.cityofnewyork.us/resource/5zhs-2jue.geojson"</span>
+params = {
+    <span class="str">"$where"</span>: f<span class="str">"within_circle(the_geom, {target_lat}, {target_lon}, {radius_m})"</span>,
+    <span class="str">"$select"</span>: <span class="str">"BIN, heightroof, groundelev, the_geom"</span>,
+    <span class="str">"$limit"</span>: <span class="val">500</span>
+}
+
+response = requests.get(url, params=params)
+buildings = response.json()[<span class="str">"features"</span>]
+
+<span class="comment"># Each building has:</span>
+<span class="comment">#   geometry.coordinates — polygon vertices (lon, lat pairs)</span>
+<span class="comment">#   properties.heightroof — roof height in feet above ground</span>
+<span class="comment">#   properties.groundelev — ground elevation in feet above sea level</span></div>
+
+  <h4>Option B: Full 3D CityGML Model (For Advanced Shadow Analysis)</h4>
+  <div class="card">
+    <strong>NYC 3D City Model</strong> <span class="tag free">FREE</span> <span class="tag oss">ADVANCED</span>
+    <p><strong>Source:</strong> TU Munich 3DCityDB project</p>
+    <p><strong>Coverage:</strong> 1,000,000+ building objects, LoD1 (extruded footprints) + ~100 iconic buildings at LoD2 (detailed roof shapes)</p>
+    <p><strong>Format:</strong> CityGML (XML-based), also available as OBJ/STL for 3D rendering</p>
+    <p><strong>Size:</strong> 1.6 TB uncompressed, 80 GB compressed</p>
+    <p><strong>Best for:</strong> High-fidelity shadow simulation with ray-tracing. Overkill for MVP — use Option A first.</p>
+  </div>
+
+  <h4>Option C: LiDAR Point Clouds (For Balcony Detection)</h4>
+  <div class="card">
+    <strong>NYC 2017 Topobathymetric LiDAR</strong> <span class="tag free">FREE</span>
+    <p><strong>Source:</strong> NOAA via OpenTopography: <code>https://portal.opentopography.org/noaaDataset?noaaID=9306</code></p>
+    <p><strong>Format:</strong> LAZ (compressed LAS 1.4)</p>
+    <p><strong>Classification:</strong> 8-class including Building (class 6), Vegetation (3-5), Ground (2)</p>
+    <p><strong>Use case:</strong> Can detect balcony protrusions from building facade point clouds. Research method: transform facade walls into a "ground plane" and apply ground-filtering algorithms — protrusions (balconies, ledges) become detected features.</p>
+  </div>
+
+  <!-- 2.3 Shadow Algorithm -->
+  <h3 id="s2-algo">2.3 Shadow Casting Algorithm</h3>
+
+  <p>Given a target point on a building facade (the user's balcony) and the surrounding buildings, calculate what fraction of annual sunlight is blocked.</p>
+
+  <div class="code"><span class="comment"># SHADOW ANALYSIS ALGORITHM</span>
+<span class="comment"># Goal: For each hour of the year, determine if the target balcony point</span>
+<span class="comment"># is in shadow from any surrounding building.</span>
+
+<span class="key">import</span> numpy <span class="key">as</span> np
+<span class="key">from</span> pvlib <span class="key">import</span> solarposition
+<span class="key">from</span> shapely.geometry <span class="key">import</span> Point, Polygon, LineString
+
+<span class="key">def</span> <span class="str">calculate_annual_shade_factor</span>(
+    target_lat, target_lon, target_height_ft,
+    surrounding_buildings,  <span class="comment"># list of {polygon, heightroof, groundelev}</span>
+    year=<span class="val">2024</span>
+):
+    <span class="str">"""
+    Returns shade_factor (0.0–1.0) where 1.0 = no shading, 0.0 = always shaded.
+    Also returns monthly shade factors for seasonal accuracy.
+    """</span>
+
+    <span class="comment"># Step 1: Get hourly sun positions for the full year</span>
+    times = pd.date_range(f<span class="str">'{year}-01-01'</span>, f<span class="str">'{year}-12-31 23:00'</span>, freq=<span class="str">'h'</span>, tz=<span class="str">'America/New_York'</span>)
+    sun = solarposition.get_solarposition(times, target_lat, target_lon)
+
+    <span class="comment"># Filter to daylight hours only (sun above horizon)</span>
+    daylight = sun[sun[<span class="str">'apparent_elevation'</span>] > <span class="val">0</span>]
+
+    <span class="comment"># Step 2: Convert target to local coordinate system (meters from target)</span>
+    target_point = Point(<span class="val">0</span>, <span class="val">0</span>)  <span class="comment"># origin</span>
+    target_z = target_height_ft × <span class="val">0.3048</span>  <span class="comment"># convert to meters</span>
+
+    <span class="comment"># Step 3: For each daylight hour, check if any building casts shadow</span>
+    shaded_hours = <span class="val">0</span>
+    total_hours = len(daylight)
+    monthly_shaded = {m: [<span class="val">0</span>, <span class="val">0</span>] <span class="key">for</span> m <span class="key">in</span> range(<span class="val">1</span>, <span class="val">13</span>)}  <span class="comment"># [shaded, total] per month</span>
+
+    <span class="key">for</span> idx, row <span class="key">in</span> daylight.iterrows():
+        sun_azimuth = np.radians(row[<span class="str">'azimuth'</span>])      <span class="comment"># compass bearing of sun</span>
+        sun_elevation = np.radians(row[<span class="str">'apparent_elevation'</span>])  <span class="comment"># angle above horizon</span>
+        month = idx.month
+        monthly_shaded[month][<span class="val">1</span>] += <span class="val">1</span>
+
+        <span class="comment"># Direction FROM target TOWARD the sun (where light comes from)</span>
+        sun_dx = np.sin(sun_azimuth)   <span class="comment"># east component</span>
+        sun_dy = np.cos(sun_azimuth)   <span class="comment"># north component</span>
+
+        is_shaded = <span class="val">False</span>
+
+        <span class="key">for</span> bldg <span class="key">in</span> surrounding_buildings:
+            bldg_height_m = bldg[<span class="str">'heightroof'</span>] × <span class="val">0.3048</span>
+            bldg_ground_m = bldg[<span class="str">'groundelev'</span>] × <span class="val">0.3048</span>
+            bldg_top = bldg_ground_m + bldg_height_m
+
+            <span class="comment"># Height difference between building top and our balcony</span>
+            delta_h = bldg_top - target_z
+            <span class="key">if</span> delta_h <= <span class="val">0</span>:
+                <span class="key">continue</span>  <span class="comment"># building is shorter than us — can't cast shadow</span>
+
+            <span class="comment"># Maximum distance this building can cast shadow at current sun angle</span>
+            <span class="key">if</span> sun_elevation <= <span class="val">0.01</span>:
+                <span class="key">continue</span>
+            max_shadow_dist = delta_h / np.tan(sun_elevation)
+
+            <span class="comment"># Check if the shadow-casting ray from sun through building top</span>
+            <span class="comment"># intersects our target point</span>
+            <span class="comment"># Create ray from target toward sun</span>
+            ray_end = Point(sun_dx × max_shadow_dist, sun_dy × max_shadow_dist)
+            sun_ray = LineString([(<span class="val">0</span>, <span class="val">0</span>), (ray_end.x, ray_end.y)])
+
+            <span class="comment"># Check if this ray intersects the building polygon</span>
+            bldg_poly = bldg[<span class="str">'polygon_local'</span>]  <span class="comment"># already in local coords (meters)</span>
+            <span class="key">if</span> sun_ray.intersects(bldg_poly):
+                <span class="comment"># Check distance to intersection point</span>
+                intersection = sun_ray.intersection(bldg_poly)
+                dist = target_point.distance(intersection)
+                <span class="key">if</span> dist <= max_shadow_dist:
+                    is_shaded = <span class="val">True</span>
+                    <span class="key">break</span>
+
+        <span class="key">if</span> is_shaded:
+            shaded_hours += <span class="val">1</span>
+            monthly_shaded[month][<span class="val">0</span>] += <span class="val">1</span>
+
+    <span class="comment"># Step 4: Calculate factors</span>
+    annual_shade_factor = <span class="val">1.0</span> - (shaded_hours / total_hours)
+    monthly_factors = {
+        m: <span class="val">1.0</span> - (v[<span class="val">0</span>] / max(v[<span class="val">1</span>], <span class="val">1</span>))
+        <span class="key">for</span> m, v <span class="key">in</span> monthly_shaded.items()
+    }
+
+    <span class="key">return</span> annual_shade_factor, monthly_factors</div>
+
+  <h4>Key Implementation Details</h4>
+
+  <div class="grid-2">
+    <div class="card">
+      <strong>Search Radius</strong>
+      <p>Include buildings within <code>4.3 × max_neighbor_height</code> of the target. This is the NYC CEQR (City Environmental Quality Review) standard — at minimum winter sun elevation (~27°), a building casts a shadow up to 4.3× its height. For practical purposes: <strong>200-300 meters</strong> covers virtually all shadow-casting buildings.</p>
+    </div>
+    <div class="card">
+      <strong>Coordinate Transform</strong>
+      <p>Convert lat/lon to local meters using <code>pyproj</code> (EPSG:2263 — NY State Plane). This gives you meters-based coordinates for distance and angle calculations. NYC footprints are in NAD83/EPSG:2263 natively.</p>
+    </div>
+    <div class="card">
+      <strong>Performance</strong>
+      <p>8,760 hours × ~50-200 buildings = 400K-1.7M intersection tests. With Shapely's C-backed spatial indexing (STRtree), this runs in <strong>2-5 seconds</strong> per address on a modern CPU. Pre-compute the STRtree once per query.</p>
+    </div>
+    <div class="card">
+      <strong>Accuracy Validation</strong>
+      <p>Compare against <strong>Shadowmap.org</strong> for spot-checks. Their 3D Solar Analytics tool shows facade-level irradiance with 50km building radius and 20-year weather data. Not an API (manual comparison), but excellent for validating your algorithm.</p>
+    </div>
+  </div>
+
+  <div class="card warning">
+    <strong>Critical: Weight shadows by irradiance, not just hours.</strong> An hour of shadow at noon costs more energy than an hour at sunset. For accurate derating, multiply each hour's shadow status by that hour's POA irradiance from PVWatts hourly output:
+    <div class="code" style="margin-top: 8px; margin-bottom: 0;"><span class="comment"># Better approach: irradiance-weighted shadow factor</span>
+shade_factor = Σ(poa[h] × is_sunlit[h]) / Σ(poa[h])  <span class="comment">for all daylight hours h</span>
+
+<span class="comment"># This properly weights noon shadows (high POA) more than</span>
+<span class="comment"># sunrise/sunset shadows (low POA)</span></div>
+  </div>
+
+  <!-- 2.4 Building Orientation -->
+  <h3 id="s2-orientation">2.4 Building Orientation from Footprints</h3>
+
+  <p>If the user doesn't know which direction their balcony faces, you can infer the building's primary orientations from its footprint polygon — then ask "does your balcony face the street or the back?"</p>
+
+  <div class="code"><span class="key">from</span> shapely.geometry <span class="key">import</span> Polygon
+<span class="key">import</span> math
+
+<span class="key">def</span> <span class="str">get_building_orientations</span>(footprint_coords):
+    <span class="str">"""
+    Given a building footprint polygon, return the two primary facade
+    orientations (the directions the longest edges face).
+
+    Returns: list of azimuth angles in degrees (0-360, 0=North)
+    """</span>
+    polygon = Polygon(footprint_coords)
+    coords = list(polygon.exterior.coords[:-<span class="val">1</span>])  <span class="comment"># exclude closing point</span>
+
+    <span class="comment"># Calculate all edge lengths and their perpendicular directions</span>
+    edges = []
+    <span class="key">for</span> i <span class="key">in</span> range(len(coords)):
+        p1 = coords[i]
+        p2 = coords[(i + <span class="val">1</span>) % len(coords)]
+
+        dx = p2[<span class="val">0</span>] - p1[<span class="val">0</span>]   <span class="comment"># east-west component</span>
+        dy = p2[<span class="val">1</span>] - p1[<span class="val">1</span>]   <span class="comment"># north-south component</span>
+        length = math.sqrt(dx**<span class="val">2</span> + dy**<span class="val">2</span>)
+
+        <span class="comment"># Edge direction (along the wall)</span>
+        edge_angle = math.degrees(math.atan2(dx, dy)) % <span class="val">360</span>
+
+        <span class="comment"># Facade faces PERPENDICULAR to edge — two directions (front & back)</span>
+        facade_angle_1 = (edge_angle + <span class="val">90</span>) % <span class="val">360</span>
+        facade_angle_2 = (edge_angle - <span class="val">90</span>) % <span class="val">360</span>
+
+        edges.append({
+            <span class="str">'length'</span>: length,
+            <span class="str">'facade_angles'</span>: [facade_angle_1, facade_angle_2]
+        })
+
+    <span class="comment"># Sort by edge length, take the two longest (primary facades)</span>
+    edges.sort(key=<span class="key">lambda</span> e: e[<span class="str">'length'</span>], reverse=<span class="val">True</span>)
+
+    <span class="comment"># The longest edge's perpendicular directions = primary facade orientations</span>
+    primary = edges[<span class="val">0</span>][<span class="str">'facade_angles'</span>]  <span class="comment"># e.g., [180, 0] for a N-S facing building</span>
+    secondary = edges[<span class="val">1</span>][<span class="str">'facade_angles'</span>]  <span class="comment"># e.g., [90, 270] for E-W facades</span>
+
+    <span class="key">return</span> {
+        <span class="str">'primary_facades'</span>: primary,
+        <span class="str">'secondary_facades'</span>: secondary,
+        <span class="str">'primary_edge_length'</span>: edges[<span class="val">0</span>][<span class="str">'length'</span>],
+        <span class="str">'confidence'</span>: <span class="str">'high'</span> <span class="key">if</span> edges[<span class="val">0</span>][<span class="str">'length'</span>] > <span class="val">1.3</span> × edges[<span class="val">1</span>][<span class="str">'length'</span>] <span class="key">else</span> <span class="str">'medium'</span>
+    }
+
+<span class="comment"># NYC Manhattan grid: Most buildings align ~29° east of true north</span>
+<span class="comment"># So "south-facing" in Manhattan is actually ~209° azimuth</span>
+<span class="comment"># Expected accuracy: ±15° for regular buildings, ±30° for irregular lots</span></div>
+
+  <div class="card info">
+    <strong>Manhattan's rotated grid:</strong> Manhattan's street grid runs ~29° east of true north. So a building that "faces the avenue" actually faces ~209° (SW-ish) or ~29° (NE-ish), not true south/north. This is significant for solar — a facade that appears south-facing on a map may actually face SSW. Your orientation calculator should note this for user confirmation.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: DATA SOURCES & APIs -->
+<!-- ============================================================ -->
+<section id="s3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <h2>Data Sources & API Integrations</h2>
+  </div>
+
+  <!-- 3.1 PLUTO -->
+  <h3 id="s3-pluto">3.1 NYC PLUTO Dataset</h3>
+
+  <div class="card">
+    <strong>Primary Land Use Tax Lot Output (PLUTO)</strong> <span class="tag free">FREE</span> <span class="tag req">ESSENTIAL</span>
+    <p><strong>Endpoint:</strong> <code>https://data.cityofnewyork.us/resource/64uk-42ks.json</code></p>
+    <p><strong>Records:</strong> 870,000+ tax lots with 80+ attributes each</p>
+    <p><strong>Access:</strong> Socrata SODA API — no authentication required (but rate-limited without app token)</p>
+  </div>
+
+  <h4>Key Fields for Solar Estimation</h4>
+  <table>
+    <tr><th>Field</th><th>Type</th><th>Use</th></tr>
+    <tr><td><code>address</code></td><td>String</td><td>Match to user input</td></tr>
+    <tr><td><code>bldgclass</code></td><td>String</td><td>Filter to residential (A*, B*, C*, D*, R*). Reject non-residential.</td></tr>
+    <tr><td><code>numfloors</code></td><td>Number</td><td>Combined with user's floor to estimate balcony height</td></tr>
+    <tr><td><code>unitsres</code></td><td>Number</td><td>Number of residential units — confirms multi-family (likely has balconies)</td></tr>
+    <tr><td><code>bldgarea</code></td><td>Number</td><td>Total building area (sq ft)</td></tr>
+    <tr><td><code>yearbuilt</code></td><td>Number</td><td>Buildings after ~1960 more likely to have balconies</td></tr>
+    <tr><td><code>zonedist1</code></td><td>String</td><td>Zoning district — R7/R8/R9/R10 zones allow taller buildings (more shading)</td></tr>
+    <tr><td><code>bbl</code></td><td>String</td><td>Borough-Block-Lot ID — links to other NYC datasets</td></tr>
+  </table>
+
+  <div class="code"><span class="comment"># Query PLUTO for a specific address</span>
+<span class="key">from</span> sodapy <span class="key">import</span> Socrata
+
+client = Socrata(<span class="str">"data.cityofnewyork.us"</span>, app_token=<span class="str">"YOUR_TOKEN"</span>)
+
+<span class="comment"># Search by address (case-insensitive LIKE query)</span>
+results = client.get(
+    <span class="str">"64uk-42ks"</span>,
+    where=<span class="str">"upper(address) LIKE '%350 WEST 42%'"</span>,
+    select=<span class="str">"address, bldgclass, numfloors, unitsres, yearbuilt, bbl, zonedist1"</span>,
+    limit=<span class="val">10</span>
+)
+
+<span class="comment"># Or query by BBL (Borough-Block-Lot) for exact match</span>
+results = client.get(
+    <span class="str">"64uk-42ks"</span>,
+    where=<span class="str">"bbl = '1007970001'"</span>
+)</div>
+
+  <!-- 3.2 Geocoding -->
+  <h3 id="s3-geocoding">3.2 Geocoding Pipeline</h3>
+
+  <div class="grid-2">
+    <div class="card">
+      <strong>Primary: Google Geocoding API</strong> <span class="tag paid">$5/1K</span>
+      <p><code>GET https://maps.googleapis.com/maps/api/geocode/json?address=ADDRESS&key=KEY</code></p>
+      <p>Best for: autocomplete in the UI (pair with Places Autocomplete for type-ahead). Returns precise lat/lon, formatted address, place_id.</p>
+    </div>
+    <div class="card">
+      <strong>Fallback: NYC Geoclient (GeoSupport)</strong> <span class="tag free">FREE</span>
+      <p><code>GET https://api.nyc.gov/geoclient/v2/address.json?houseNumber=350&street=west+42+street&borough=manhattan</code></p>
+      <p>NYC official geocoder. Returns BBL, BIN, lat/lon, census tract, police precinct, school district. Better for linking to PLUTO (returns BBL directly).</p>
+    </div>
+  </div>
+
+  <div class="card success">
+    <strong>Recommended flow:</strong> Use Google Places Autocomplete in the frontend for UX (type-ahead). When user selects an address, geocode with Google to get lat/lon, then query NYC Geoclient to get BBL (for PLUTO lookup) and BIN (for building footprint lookup). This gives you the best of both: great UX + precise NYC data linkage.
+  </div>
+
+  <!-- 3.3 NREL -->
+  <h3 id="s3-nrel">3.3 NREL Solar Resource Data API</h3>
+
+  <div class="card">
+    <strong>Solar Resource API</strong> <span class="tag free">FREE</span>
+    <p><strong>Endpoint:</strong> <code>GET https://developer.nrel.gov/api/solar/solar_resource/v1.json</code></p>
+    <p><strong>Returns:</strong> Monthly and annual averages of GHI (Global Horizontal Irradiance), DNI (Direct Normal), DHI (Diffuse Horizontal), and latitude-tilt irradiance. Useful for displaying "your area gets X hours of sun per day" context to users.</p>
+  </div>
+
+  <div class="code"><span class="comment"># NREL Solar Resource for NYC</span>
+<span class="key">GET</span> <span class="url">https://developer.nrel.gov/api/solar/solar_resource/v1.json</span>?
+  <span class="key">api_key</span>=<span class="str">YOUR_KEY</span>
+  &<span class="key">lat</span>=<span class="val">40.7484</span>
+  &<span class="key">lon</span>=<span class="val">-73.9857</span>
+
+<span class="comment">// Response (NYC typical values):</span>
+{
+  <span class="key">"outputs"</span>: {
+    <span class="key">"avg_ghi"</span>: {
+      <span class="key">"annual"</span>: <span class="val">4.21</span>,      <span class="comment">// kWh/m²/day — below US avg of ~4.7</span>
+      <span class="key">"monthly"</span>: {
+        <span class="str">"jan"</span>: <span class="val">2.10</span>, <span class="str">"feb"</span>: <span class="val">2.90</span>, <span class="str">"mar"</span>: <span class="val">3.80</span>,
+        <span class="str">"apr"</span>: <span class="val">4.80</span>, <span class="str">"may"</span>: <span class="val">5.60</span>, <span class="str">"jun"</span>: <span class="val">6.10</span>,
+        <span class="str">"jul"</span>: <span class="val">5.90</span>, <span class="str">"aug"</span>: <span class="val">5.30</span>, <span class="str">"sep"</span>: <span class="val">4.30</span>,
+        <span class="str">"oct"</span>: <span class="val">3.20</span>, <span class="str">"nov"</span>: <span class="val">2.20</span>, <span class="str">"dec"</span>: <span class="val">1.80</span>
+      }
+    },
+    <span class="key">"avg_dni"</span>: { <span class="key">"annual"</span>: <span class="val">4.40</span>, ... },
+    <span class="key">"avg_lat_tilt"</span>: { <span class="key">"annual"</span>: <span class="val">5.05</span>, ... }
+  }
+}</div>
+
+  <h3>3.4 Complete API Stack Summary</h3>
+  <table>
+    <tr><th>Service</th><th>Purpose</th><th>Cost</th><th>Phase</th></tr>
+    <tr><td>Google Places Autocomplete</td><td>Address type-ahead in UI</td><td>$2.83/1K sessions</td><td>Phase 1</td></tr>
+    <tr><td>Google Geocoding API</td><td>Address → lat/lon</td><td>$5/1K requests</td><td>Phase 1</td></tr>
+    <tr><td>NYC Geoclient API</td><td>Address → BBL, BIN</td><td>Free</td><td>Phase 1</td></tr>
+    <tr><td>NYC PLUTO (Socrata)</td><td>Building info lookup</td><td>Free</td><td>Phase 1</td></tr>
+    <tr><td>NYC Building Footprints</td><td>Orientation + shadow modeling</td><td>Free</td><td>Phase 1-2</td></tr>
+    <tr><td>NREL PVWatts V8</td><td>Energy production modeling</td><td>Free</td><td>Phase 1</td></tr>
+    <tr><td>NREL Solar Resource</td><td>Solar context data</td><td>Free</td><td>Phase 1</td></tr>
+    <tr><td>Google Street View Static</td><td>Building imagery</td><td>$7/1K</td><td>Phase 2</td></tr>
+    <tr><td>Google Street View Metadata</td><td>Check image availability</td><td>Free</td><td>Phase 2</td></tr>
+    <tr><td>Replicate/fal.ai</td><td>ML inference (YOLO, SAM, Flux)</td><td>~$0.15/estimate</td><td>Phase 2</td></tr>
+  </table>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: AI VISUALIZATION PIPELINE -->
+<!-- ============================================================ -->
+<section id="s4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <h2>AI Visualization Pipeline</h2>
+  </div>
+
+  <p>The goal: user enters their address → within 20 seconds, they see a photorealistic image of their actual building with solar panels on their balcony. This is the "wow" feature that drives shares and conversions.</p>
+
+  <!-- 4.1 Street View -->
+  <h3 id="s4-streetview">4.1 Google Street View Static API</h3>
+
+  <h4>Endpoint & Parameters</h4>
+  <div class="code"><span class="key">GET</span> <span class="url">https://maps.googleapis.com/maps/api/streetview</span>?
+  <span class="key">size</span>=<span class="val">1024x1024</span>          <span class="comment">// Max resolution (was 640x640, now 1024)</span>
+  &<span class="key">location</span>=<span class="val">40.7484,-73.9857</span> <span class="comment">// lat,lon of the building</span>
+  &<span class="key">heading</span>=<span class="val">210</span>              <span class="comment">// compass bearing to face the building (see calc below)</span>
+  &<span class="key">pitch</span>=<span class="val">15</span>                <span class="comment">// tilt camera up to capture balconies (0=level, 90=up)</span>
+  &<span class="key">fov</span>=<span class="val">85</span>                  <span class="comment">// field of view in degrees (80-90 good for facades)</span>
+  &<span class="key">key</span>=<span class="str">YOUR_API_KEY</span>
+
+<span class="comment">// Returns: JPEG image of the building as seen from street level</span></div>
+
+  <h4>Calculating the Heading (Camera → Building Direction)</h4>
+  <div class="code"><span class="key">import</span> math
+
+<span class="key">def</span> <span class="str">calculate_heading</span>(camera_lat, camera_lon, building_lat, building_lon):
+    <span class="str">"""
+    Calculate compass bearing from camera position to building.
+    Uses spherical trigonometry (Haversine-derived bearing formula).
+    """</span>
+    lat1 = math.radians(camera_lat)
+    lat2 = math.radians(building_lat)
+    d_lon = math.radians(building_lon - camera_lon)
+
+    y = math.sin(d_lon) * math.cos(lat2)
+    x = math.cos(lat1) * math.sin(lat2) - math.sin(lat1) * math.cos(lat2) * math.cos(d_lon)
+
+    bearing = math.degrees(math.atan2(y, x))
+    heading = (bearing + <span class="val">360</span>) % <span class="val">360</span>  <span class="comment"># normalize to 0-360</span>
+
+    <span class="key">return</span> heading
+
+<span class="comment"># In practice: the Street View API auto-selects the nearest panorama</span>
+<span class="comment"># to your location param. The camera position is slightly offset from</span>
+<span class="comment"># the building (across the street). Heading should point AT the building.</span>
+
+<span class="comment"># Pitch adjustment by floor level:</span>
+<span class="comment">#   Floors 1-3:   pitch = 5-10°</span>
+<span class="comment">#   Floors 4-8:   pitch = 15-25°</span>
+<span class="comment">#   Floors 9-15:  pitch = 25-35°</span>
+<span class="comment">#   Floors 16+:   pitch = 35-50° (may not capture well from street)</span></div>
+
+  <h4>Street View Metadata Check</h4>
+  <div class="code"><span class="comment"># Always check if imagery exists before fetching (metadata is FREE)</span>
+<span class="key">GET</span> <span class="url">https://maps.googleapis.com/maps/api/streetview/metadata</span>?
+  <span class="key">location</span>=<span class="val">40.7484,-73.9857</span>
+  &<span class="key">key</span>=<span class="str">YOUR_API_KEY</span>
+
+<span class="comment">// Response:</span>
+{
+  <span class="key">"status"</span>: <span class="str">"OK"</span>,           <span class="comment">// or "ZERO_RESULTS" if no imagery</span>
+  <span class="key">"pano_id"</span>: <span class="str">"CAoSK0..."</span>,    <span class="comment">// panorama identifier</span>
+  <span class="key">"location"</span>: { <span class="key">"lat"</span>: <span class="val">40.7486</span>, <span class="key">"lng"</span>: <span class="val">-73.9854</span> },  <span class="comment">// actual camera position</span>
+  <span class="key">"date"</span>: <span class="str">"2023-07"</span>,        <span class="comment">// when imagery was captured</span>
+  <span class="key">"copyright"</span>: <span class="str">"© Google"</span>
+}
+
+<span class="comment">// Use the actual camera location to calculate heading more precisely</span></div>
+
+  <!-- 4.2 Detection -->
+  <h3 id="s4-detection">4.2 Balcony Detection & Segmentation</h3>
+
+  <p>The detection pipeline finds the balcony in the Street View image, then creates a precise pixel mask for inpainting.</p>
+
+  <div class="pipeline">
+    <div class="pipe-step">
+      <div class="pipe-num">1</div>
+      <div class="pipe-content">
+        <strong>BFA-YOLO — Balcony Bounding Box Detection</strong>
+        <div class="detail">
+          <p>Purpose-built model for detecting building facade attachments (balconies, windows, doors, AC units). Based on YOLOv8 with three custom modules: FBSM (handles uneven object distribution), TDATH (improves small-object detection), PMESA (reduces background noise).</p>
+          <p><strong>GitHub:</strong> <code>github.com/CVEO/BFA-YOLO</code></p>
+          <p><strong>Training data:</strong> BFA-3D dataset (multi-view facade images)</p>
+          <p><strong>Accuracy:</strong> 91-94% mAP50 on urban building facades</p>
+          <p><strong>Output:</strong> Bounding box [x1, y1, x2, y2] + confidence score per detected balcony</p>
+          <p><strong>Inference:</strong> ~200ms on GPU, ~2-3s on CPU</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipe-step">
+      <div class="pipe-num">2</div>
+      <div class="pipe-content">
+        <strong>SAM 3 — Pixel-Perfect Segmentation</strong>
+        <div class="detail">
+          <p>Meta's Segment Anything Model v3 (released Nov 2025). Takes the YOLO bounding box as a "box prompt" and generates a precise pixel-level mask of the balcony — including irregular shapes, glass railings, and planters.</p>
+          <p><strong>GitHub:</strong> <code>github.com/facebookresearch/sam3</code></p>
+          <p><strong>Key advance (v3):</strong> Promptable Concept Segmentation — can accept text prompts like "glass balcony railing" for disambiguation</p>
+          <p><strong>API:</strong> fal.ai (<code>fal-ai/sam-3/image</code>) — ~$0.005-0.01/request, 1-2s latency</p>
+          <p><strong>Output:</strong> Binary mask (white = balcony, black = preserve)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipe-step">
+      <div class="pipe-num">3</div>
+      <div class="pipe-content">
+        <strong>Depth Anything V2 — 3D Depth Map</strong>
+        <div class="detail">
+          <p>Generates a monocular depth map from the Street View image. This tells the inpainting model about perspective — objects farther away should appear smaller, vanishing points should be respected.</p>
+          <p><strong>GitHub:</strong> <code>github.com/LiheYoung/Depth-Anything</code></p>
+          <p><strong>Why V2 over MiDaS:</strong> AbsRel error 0.074 vs 0.127 (42% better). Superior on fine architectural details.</p>
+          <p><strong>Output:</strong> Single-channel depth map (H×W), normalized 0-255</p>
+          <p><strong>Used for:</strong> ControlNet depth conditioning in the inpainting step</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipe-step">
+      <div class="pipe-num">4</div>
+      <div class="pipe-content">
+        <strong>Flux.2 Fill Pro — AI Inpainting</strong>
+        <div class="detail">
+          <p>Black Forest Labs' latest inpainting model. Generates photorealistic solar panels within the masked balcony area, guided by the depth map for correct perspective.</p>
+          <p><strong>Model:</strong> <code>black-forest-labs/flux-fill-pro</code> on Replicate</p>
+          <p><strong>Cost:</strong> ~$0.025-0.05/image on fal.ai, ~$0.15/image on Replicate</p>
+          <p><strong>Latency:</strong> 5-15 seconds depending on platform</p>
+          <p><strong>ControlNet integration:</strong> Use <code>controlnet_conditioning_scale = 0.75</code> for depth guidance — strong enough for perspective but not over-constrained</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipe-step">
+      <div class="pipe-num">5</div>
+      <div class="pipe-content">
+        <strong>Post-Processing — Seamless Blending</strong>
+        <div class="detail">
+          <p>Final compositing step to eliminate visible seams between the inpainted region and original image.</p>
+          <p><strong>Mask feathering:</strong> Gaussian blur (σ=4-8px) on mask edges before compositing</p>
+          <p><strong>Color matching:</strong> <code>cv2.seamlessClone()</code> (Poisson blending) at the boundary</p>
+          <p><strong>Shadow generation:</strong> Project panel shadow using depth map + sun angle (45-60° typical for NYC daytime)</p>
+          <p><strong>Optional upscaling:</strong> ESRGAN/RealESRGAN for 4K output if needed</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4.3 Inpainting -->
+  <h3 id="s4-inpainting">4.3 Inpainting Prompt Engineering</h3>
+
+  <div class="card purple">
+    <strong>Best-performing prompt (tested):</strong>
+    <div class="code" style="margin-top: 8px; margin-bottom: 0;"><span class="str">"Photorealistic modern solar panels installed on apartment balcony railing,
+black aluminum frame, tempered glass front with subtle blue-purple tint,
+realistic reflections matching ambient lighting, proper perspective,
+contemporary residential building, 4K detail, architectural photography"</span>
+
+<span class="comment">// Negative prompt (if model supports it):</span>
+<span class="str">"cartoon, illustration, drawing, low quality, distorted perspective,
+floating panels, wrong scale, oversaturated"</span></div>
+  </div>
+
+  <h4>Inpainting Parameters</h4>
+  <table>
+    <tr><th>Parameter</th><th>Value</th><th>Rationale</th></tr>
+    <tr><td><code>strength</code></td><td>0.88–0.92</td><td>High enough to generate panels clearly, low enough to preserve surrounding detail</td></tr>
+    <tr><td><code>num_inference_steps</code></td><td>25–30</td><td>Quality/speed sweet spot. 20 is faster but lower quality. 50 adds latency for marginal gain.</td></tr>
+    <tr><td><code>guidance_scale</code></td><td>7.5–8.5</td><td>How closely to follow text prompt. Higher = more literal but sometimes less natural.</td></tr>
+    <tr><td><code>controlnet_conditioning_scale</code></td><td>0.70–0.80</td><td>Depth guidance strength. 0.75 is the sweet spot for architecture.</td></tr>
+    <tr><td><code>mask_blur</code></td><td>4–8 px</td><td>Pre-feather mask edges before inpainting for seamless blending.</td></tr>
+  </table>
+
+  <h4>Alternative Approach: Deterministic 3D Compositing</h4>
+  <div class="card info">
+    <strong>For cases where AI inpainting fails or for a faster MVP:</strong> Skip the AI entirely. Use OpenCV's perspective transform (<code>cv2.findHomography</code>) to warp a pre-rendered solar panel texture onto the detected balcony surface. Detect the balcony's four corners (from YOLO + SAM), compute the homography matrix, and warp the panel image to match the perspective. This is deterministic, instant (&lt;1 second), and guaranteed to look correct — but less photorealistic than AI inpainting. Could serve as a fallback or "preview" while the AI version generates.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: ARCHITECTURE & COSTS -->
+<!-- ============================================================ -->
+<section id="s5">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <h2>System Architecture & Costs</h2>
+  </div>
+
+  <!-- 5.1 User Flow -->
+  <h3 id="s5-flow">5.1 User Flow & System Design</h3>
+
+  <h4>End-to-End User Journey</h4>
+  <div class="pipeline">
+    <div class="pipe-step">
+      <div class="pipe-num">A</div>
+      <div class="pipe-content">
+        <strong>Address Entry (2 seconds)</strong>
+        <div class="detail">User types address → Google Places Autocomplete → select → geocode to lat/lon + BBL</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-num">B</div>
+      <div class="pipe-content">
+        <strong>Building Lookup (1 second, parallel)</strong>
+        <div class="detail">Simultaneously: PLUTO query (building info) + Building Footprints query (polygon, height) + NREL Solar Resource (irradiance data) + Street View metadata check</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-num">C</div>
+      <div class="pipe-content">
+        <strong>Smart Form (10-30 seconds, user interaction)</strong>
+        <div class="detail">Pre-fill what we know: "Your building has X floors" (PLUTO). "Based on the footprint, your balcony likely faces [S/SW]" (orientation calc). Ask: balcony direction (confirm/override), floor level, balcony size, shading situation, monthly electric bill.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-num">D</div>
+      <div class="pipe-content">
+        <strong>Energy Calculation (2 seconds)</strong>
+        <div class="detail">Map inputs to PVWatts params → call API → apply shadow derating → run financial model → generate monthly production chart</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-num">E</div>
+      <div class="pipe-content">
+        <strong>AI Visualization (15-25 seconds, async)</strong>
+        <div class="detail">Fetch Street View → detect balcony → segment → depth → inpaint panels → post-process. Show a loading animation while this runs. Energy results display immediately; visualization appears when ready.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-num">F</div>
+      <div class="pipe-content">
+        <strong>Results Dashboard</strong>
+        <div class="detail">Display: before/after building image (slider), monthly production chart, annual savings, payback period, CO₂ offset, percentage of bill covered. CTA: "Get your kit" or "Talk to an installer."</div>
+      </div>
+    </div>
+  </div>
+
+  <h4>Backend Architecture</h4>
+  <div class="code"><span class="comment">/* SYSTEM ARCHITECTURE */</span>
+
+<span class="key">FRONTEND</span> (Next.js / React)
+├── Address Autocomplete        <span class="comment">← Google Places JS SDK</span>
+├── Balcony Config Form         <span class="comment">← Pre-filled from backend data</span>
+├── Results Dashboard           <span class="comment">← Charts (Recharts), savings display</span>
+├── Before/After Slider         <span class="comment">← Image comparison component</span>
+└── Lead Capture                <span class="comment">← Email, optional phone</span>
+
+<span class="key">API GATEWAY</span> (Next.js API Routes or FastAPI)
+├── <span class="str">POST /api/estimate</span>
+│   ├── Geocoding Service       <span class="comment">← Google Geocoding + NYC Geoclient</span>
+│   ├── Building Data Service   <span class="comment">← PLUTO + Footprints queries (parallel)</span>
+│   ├── Orientation Service     <span class="comment">← Footprint polygon → facade angles</span>
+│   ├── Solar Estimation Svc    <span class="comment">← NREL PVWatts + Solar Resource (parallel)</span>
+│   ├── Shadow Analysis Svc     <span class="comment">← Sun position + neighbor buildings → shade factor</span>
+│   └── Financial Calculator    <span class="comment">← Con Edison rates, payback, NPV</span>
+│
+├── <span class="str">POST /api/visualize</span> (async — returns job_id)
+│   ├── Street View Fetch       <span class="comment">← Google Static API</span>
+│   ├── Balcony Detection       <span class="comment">← BFA-YOLO inference</span>
+│   ├── Segmentation            <span class="comment">← SAM 3 via fal.ai</span>
+│   ├── Depth Estimation        <span class="comment">← Depth Anything V2</span>
+│   ├── AI Inpainting           <span class="comment">← Flux.2 Fill via fal.ai/Replicate</span>
+│   └── Post-Processing         <span class="comment">← OpenCV blending, shadows</span>
+│
+└── <span class="str">GET /api/visualize/:job_id</span> (poll for result)
+
+<span class="key">DATA LAYER</span>
+├── PostgreSQL + PostGIS        <span class="comment">← Cache building data, store estimates</span>
+├── Redis                       <span class="comment">← Job queue for visualization pipeline</span>
+├── S3 / R2                     <span class="comment">← Store generated images</span>
+└── Pre-loaded datasets         <span class="comment">← NYC footprints, PLUTO (refreshed quarterly)</span>
+
+<span class="key">ML INFRASTRUCTURE</span>
+├── Self-hosted (RunPod/Modal)  <span class="comment">← BFA-YOLO + Depth Anything (keep warm)</span>
+└── API-based (fal.ai)          <span class="comment">← SAM 3 + Flux.2 Fill (pay-per-use)</span></div>
+
+  <!-- 5.2 Costs -->
+  <h3 id="s5-costs">5.2 Cost Model</h3>
+
+  <h4>Per-Estimate Cost Breakdown</h4>
+  <table>
+    <tr><th>Step</th><th>Service</th><th>Cost</th></tr>
+    <tr><td>Geocoding</td><td>Google Geocoding API</td><td>$0.005</td></tr>
+    <tr><td>Address autocomplete</td><td>Google Places (per session)</td><td>$0.003</td></tr>
+    <tr><td>Building lookup</td><td>NYC PLUTO + Footprints (Socrata)</td><td>$0.000</td></tr>
+    <tr><td>Solar estimation</td><td>NREL PVWatts + Solar Resource</td><td>$0.000</td></tr>
+    <tr><td>Street View image</td><td>Google Static API</td><td>$0.007</td></tr>
+    <tr><td>Balcony detection</td><td>BFA-YOLO (self-hosted GPU)</td><td>$0.005</td></tr>
+    <tr><td>Segmentation</td><td>SAM 3 via fal.ai</td><td>$0.008</td></tr>
+    <tr><td>Depth estimation</td><td>Depth Anything V2 (self-hosted)</td><td>$0.003</td></tr>
+    <tr><td>AI inpainting</td><td>Flux.2 Fill via fal.ai</td><td>$0.035</td></tr>
+    <tr><td>Post-processing</td><td>OpenCV (self-hosted)</td><td>$0.001</td></tr>
+    <tr>
+      <td colspan="2" style="text-align: right; font-weight: 700; background: var(--sun-light);">Total per estimate (with visualization)</td>
+      <td style="font-weight: 700; background: var(--sun-light);">~$0.067</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align: right; font-weight: 700;">Total per estimate (energy only, no viz)</td>
+      <td style="font-weight: 700;">~$0.008</td>
+    </tr>
+  </table>
+
+  <div class="card highlight">
+    <strong>Note on costs:</strong> The research round estimated ~$0.16/estimate using Replicate pricing. Using fal.ai for Flux.2 inference cuts this to ~$0.035. Self-hosting YOLO and Depth Anything on a persistent GPU (Modal, RunPod) further reduces per-unit cost. At 1,000 estimates/month, total API costs would be roughly <strong>$67/month</strong> — well within startup budget.
+  </div>
+
+  <h4>Monthly Infrastructure (at 1,000 estimates/month)</h4>
+  <table>
+    <tr><th>Item</th><th>Monthly Cost</th><th>Notes</th></tr>
+    <tr><td>API costs (1K estimates)</td><td>$67</td><td>All external API calls combined</td></tr>
+    <tr><td>GPU compute (Modal/RunPod)</td><td>$30–80</td><td>For self-hosted ML models. Can scale to 0 when idle.</td></tr>
+    <tr><td>Vercel hosting</td><td>$20</td><td>Pro plan — includes edge functions, analytics</td></tr>
+    <tr><td>Supabase</td><td>$0–25</td><td>Free tier covers 500MB + 50K rows. Pro at $25/mo.</td></tr>
+    <tr><td>Cloudflare R2 storage</td><td>$0–5</td><td>10GB free. Generated images are ~200KB each.</td></tr>
+    <tr><td>Domain + DNS</td><td>$1</td><td>Cloudflare</td></tr>
+    <tr>
+      <td style="font-weight: 700; background: var(--sun-light);">Total</td>
+      <td style="font-weight: 700; background: var(--sun-light);">$118–198/mo</td>
+      <td style="background: var(--sun-light);">At 1,000 estimates/month</td>
+    </tr>
+  </table>
+
+  <h3>5.3 Phased Build Plan</h3>
+
+  <div class="card success">
+    <h4 style="margin-top: 0;">Phase 1: Energy Estimator (3-4 weeks)</h4>
+    <p>Address input with autocomplete → PLUTO building lookup → orientation pre-fill → PVWatts integration → simplified shade derating (lookup table by floor/density) → financial calculator → results dashboard with monthly production chart. <strong>This alone is a shippable product.</strong></p>
+    <p><strong>APIs needed:</strong> Google Places, Google Geocoding, NYC Geoclient, PLUTO, NREL PVWatts</p>
+  </div>
+
+  <div class="card info">
+    <h4 style="margin-top: 0;">Phase 2: AI Visualization (6-8 weeks)</h4>
+    <p>Street View image fetch → BFA-YOLO balcony detection → SAM 3 segmentation → Flux.2 inpainting → post-processing → before/after slider. Runs asynchronously — energy results show immediately, visualization appears when ready.</p>
+    <p><strong>Additional APIs:</strong> Google Street View Static, fal.ai (SAM + Flux), self-hosted YOLO + Depth</p>
+  </div>
+
+  <div class="card purple">
+    <h4 style="margin-top: 0;">Phase 3: Precision Shadow Model (4-6 weeks)</h4>
+    <p>Replace lookup-table shading with the full algorithmic shadow analysis: query neighboring building footprints + heights, run hourly sun position calculations, compute irradiance-weighted shade factor per month. This upgrades accuracy from ±20% to ±5%.</p>
+    <p><strong>Additional data:</strong> NYC Building Footprints with heights, pvlib-python for sun position</p>
+  </div>
+
+  <div class="card">
+    <h4 style="margin-top: 0;">Phase 4: Advanced Features (ongoing)</h4>
+    <p>NYC LiDAR-based shadow analysis for tree canopy effects. AR/WebAR mobile experience (point phone camera at balcony, see panels in real-time). 3D panel placement configurator. Installer marketplace / lead generation. Battery storage upsell module. NYC permit guidance (DOB filings for facade-mounted systems).</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section style="text-align: center; padding: 40px 0; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border);">
+  <p>Technical Specification — NYC Balcony Solar Estimator</p>
+  <p>Compiled March 2026. Sources: NREL, Google Developer Docs, NYC Open Data, Meta AI (SAM), Black Forest Labs (Flux), pvlib-python, BFA-YOLO.</p>
+  <p style="margin-top: 12px;">All API endpoints, pricing, and model versions current as of publication date.</p>
+</section>
+
+</div>
+</body>
+</html>

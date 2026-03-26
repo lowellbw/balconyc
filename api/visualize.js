@@ -1,0 +1,146 @@
+// Vercel Serverless Function — AI Solar Panel Visualization
+// Fetches Google Street View image of the building, then uses Gemini
+// to edit the image with solar panels on the balcony.
+//
+// Env vars: GEMINI_API_KEY, GOOGLE_API_KEY (or GOOGLE_SV_KEY)
+// Usage: POST /api/visualize { lat, lon, floor, totalFloors }
+
+export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+
+  const geminiKey = process.env.GEMINI_API_KEY;
+  if (!geminiKey) return res.status(500).json({ error: 'Gemini API key not configured' });
+
+  const googleKey = process.env.GOOGLE_SV_KEY || process.env.GOOGLE_API_KEY;
+  if (!googleKey) return res.status(500).json({ error: 'Google API key not configured' });
+
+  const { lat, lon, floor, totalFloors } = req.body || {};
+  if (!lat || !lon) return res.status(400).json({ error: 'Missing lat/lon' });
+
+  try {
+    // 1. Check Street View availability (free metadata call)
+    const metaUrl = `https://maps.googleapis.com/maps/api/streetview/metadata?location=${lat},${lon}&key=${googleKey}`;
+    const metaRes = await fetch(metaUrl);
+    const meta = await metaRes.json();
+
+    if (meta.status !== 'OK') {
+      return res.status(404).json({ error: 'No Street View imagery available for this location' });
+    }
+
+    // 2. Calculate heading (bearing from camera to building)
+    const camLat = meta.location.lat;
+    const camLng = meta.location.lng;
+    const heading = calculateBearing(camLat, camLng, lat, lon);
+
+    // 3. Calculate pitch based on floor level
+    const pitch = calculatePitch(floor || 3, totalFloors || 6);
+
+    // 4. Fetch Street View image
+    const svUrl = `https://maps.googleapis.com/maps/api/streetview?size=1024x1024&location=${lat},${lon}&heading=${heading}&pitch=${pitch}&fov=85&key=${googleKey}`;
+    const svRes = await fetch(svUrl);
+
+    if (!svRes.ok) {
+      return res.status(502).json({ error: 'Failed to fetch Street View image' });
+    }
+
+    const svBuffer = await svRes.arrayBuffer();
+    const svBase64 = Buffer.from(svBuffer).toString('base64');
+
+    // 5. Send to Gemini for image editing
+    const floorDesc = floor ? `The user lives on floor ${floor} of ${totalFloors || 'the building'}. Focus the solar panels prominently on floor ${floor}'s balcony.` : '';
+    const prompt = `Edit this photo of a real building. Find the EXISTING balconies that are already visible in the image and add photorealistic solar panels mounted on their railings. ${floorDesc} IMPORTANT: Do NOT add any new balconies — only add solar panels to balconies that already exist in the photo. The panels should have black aluminum frames with tempered glass fronts showing a subtle blue-purple tint. They should look naturally installed, matching the existing lighting, shadows, and perspective. Keep the rest of the building and surroundings completely unchanged. The result must look like a real photograph.`;
+
+    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${geminiKey}`;
+
+    const geminiRes = await fetch(geminiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{
+          parts: [
+            { text: prompt },
+            {
+              inlineData: {
+                mimeType: 'image/jpeg',
+                data: svBase64,
+              },
+            },
+          ],
+        }],
+        generationConfig: {
+          responseModalities: ['TEXT', 'IMAGE'],
+        },
+      }),
+    });
+
+    if (!geminiRes.ok) {
+      const errText = await geminiRes.text();
+      console.error('Gemini API error:', geminiRes.status, errText);
+      // Return the Street View image even if Gemini fails
+      return res.status(200).json({
+        originalImage: `data:image/jpeg;base64,${svBase64}`,
+        editedImage: null,
+        error: 'AI visualization generation failed',
+      });
+    }
+
+    const geminiData = await geminiRes.json();
+
+    // Extract the generated image from Gemini response
+    let editedImageData = null;
+    if (geminiData.candidates && geminiData.candidates[0]) {
+      const parts = geminiData.candidates[0].content.parts;
+      for (const part of parts) {
+        if (part.inlineData && part.inlineData.mimeType.startsWith('image/')) {
+          editedImageData = `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`;
+          break;
+        }
+      }
+    }
+
+    return res.status(200).json({
+      originalImage: `data:image/jpeg;base64,${svBase64}`,
+      editedImage: editedImageData,
+      error: editedImageData ? null : 'No image generated by AI',
+    });
+
+  } catch (err) {
+    console.error('Visualize error:', err);
+    return res.status(500).json({ error: 'Visualization pipeline failed' });
+  }
+}
+
+// Calculate compass bearing from point A to point B
+function calculateBearing(lat1, lon1, lat2, lon2) {
+  const toRad = (d) => d * Math.PI / 180;
+  const toDeg = (r) => r * 180 / Math.PI;
+
+  const dLon = toRad(lon2 - lon1);
+  const y = Math.sin(dLon) * Math.cos(toRad(lat2));
+  const x = Math.cos(toRad(lat1)) * Math.sin(toRad(lat2)) -
+            Math.sin(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.cos(dLon);
+
+  return (toDeg(Math.atan2(y, x)) + 360) % 360;
+}
+
+// Calculate camera pitch angle based on floor level
+function calculatePitch(floor, totalFloors) {
+  // Approximate: Street View cameras are ~2.5m high
+  // Each floor is ~3m. Target the middle of the specified floor.
+  const floorHeight = (floor - 1) * 3 + 1.5; // meters above ground to balcony center
+  const cameraHeight = 2.5;
+  const heightDiff = floorHeight - cameraHeight;
+
+  // Assume camera is ~15-20m from building (typical NYC street width)
+  const distance = 18;
+  const pitchRad = Math.atan2(heightDiff, distance);
+  const pitch = pitchRad * 180 / Math.PI;
+
+  // Clamp between -10 and 50 degrees
+  return Math.max(-10, Math.min(50, Math.round(pitch)));
+}

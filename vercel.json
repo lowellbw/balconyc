@@ -1,0 +1,11 @@
+{
+  "cleanUrls": true,
+  "functions": {
+    "api/visualize.js": {
+      "maxDuration": 30
+    },
+    "api/visualize-v2.js": {
+      "maxDuration": 30
+    }
+  }
+}

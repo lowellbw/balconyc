@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>balco.nyc — 3D Visualization Specs (Version A & B)</title>
+<style>
+  :root {
+    --sun: #F59E0B; --sun-light: #FEF3C7;
+    --sky: #0EA5E9; --sky-light: #E0F2FE;
+    --dark: #0F172A; --text: #1E293B; --muted: #64748B;
+    --bg: #F8FAFC; --card: #FFFFFF; --border: #E2E8F0;
+    --green: #10B981; --green-light: #D1FAE5;
+    --red: #EF4444; --red-light: #FEE2E2;
+    --purple: #8B5CF6; --purple-light: #EDE9FE;
+    --a-color: #3B82F6; --b-color: #EC4899;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; font-size: 15px; }
+
+  .hero {
+    background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 40%, #0F172A 100%);
+    color: white; padding: 60px 40px; text-align: center;
+    border-bottom: 4px solid var(--sun);
+  }
+  .hero h1 { font-size: 2.2em; font-weight: 800; letter-spacing: -0.5px; }
+  .hero p { opacity: 0.7; max-width: 650px; margin: 8px auto 0; font-size: 1.05em; }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+
+  .version-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700;
+    letter-spacing: 0.5px; margin-bottom: 12px;
+  }
+  .version-label.a { background: rgba(59,130,246,0.12); color: var(--a-color); border: 1px solid rgba(59,130,246,0.25); }
+  .version-label.b { background: rgba(236,72,153,0.12); color: var(--b-color); border: 1px solid rgba(236,72,153,0.25); }
+
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
+  .section-num { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0; }
+  .section-num.a { background: var(--a-color); color: white; }
+  .section-num.b { background: var(--b-color); color: white; }
+  .section-header h2 { font-size: 1.4em; color: var(--dark); font-weight: 700; }
+
+  h3 { font-size: 1.1em; color: var(--dark); margin: 24px 0 10px; font-weight: 700; }
+  h4 { font-size: 0.85em; color: var(--muted); margin: 18px 0 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  p { margin-bottom: 12px; }
+  section { margin-bottom: 48px; }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin-bottom: 14px; }
+  .card.a { border-left: 4px solid var(--a-color); background: #EFF6FF; }
+  .card.b { border-left: 4px solid var(--b-color); background: #FDF2F8; }
+  .card.info { border-left: 4px solid var(--sky); background: var(--sky-light); }
+  .card.warn { border-left: 4px solid var(--sun); background: var(--sun-light); }
+  .card.success { border-left: 4px solid var(--green); background: var(--green-light); }
+  .card strong { color: var(--dark); }
+  .card p:last-child { margin-bottom: 0; }
+
+  .code {
+    background: #1E293B; color: #E2E8F0; padding: 18px 22px; border-radius: 8px;
+    font-family: 'JetBrains Mono', 'SF Mono', monospace; font-size: 13px;
+    overflow-x: auto; margin: 12px 0; line-height: 1.7; white-space: pre;
+  }
+  .code .c { color: #64748B; } .code .k { color: #7DD3FC; } .code .v { color: #FDE68A; }
+  .code .s { color: #86EFAC; } .code .u { color: #C4B5FD; }
+  code { background: #F1F5F9; padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #BE185D; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: var(--dark); color: white; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  @media (max-width: 700px) { .compare { grid-template-columns: 1fr; } }
+
+  .divider { height: 2px; background: linear-gradient(90deg, var(--a-color), var(--b-color)); margin: 56px 0; border-radius: 2px; }
+
+  .wireframe {
+    background: #0F172A; border: 1px solid #334155; border-radius: 10px;
+    padding: 24px; margin: 16px 0; color: #94A3B8; font-family: monospace;
+    font-size: 12px; line-height: 1.8; white-space: pre;
+  }
+  .wireframe .highlight { color: var(--sun); font-weight: 700; }
+  .wireframe .dim { color: #475569; }
+  .wireframe .accent-a { color: var(--a-color); }
+  .wireframe .accent-b { color: var(--b-color); }
+
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-left: 6px; }
+  .tag.api { background: var(--purple-light); color: #5B21B6; }
+  .tag.data { background: var(--green-light); color: #065F46; }
+  .tag.ml { background: var(--red-light); color: #991B1B; }
+  .tag.free { background: var(--green-light); color: #065F46; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>3D Visualization Specs</h1>
+  <p>Two complementary views: analytical shadow modeling (Version A) and photorealistic hybrid (Version B)</p>
+</div>
+
+<div class="container">
+
+<!-- ============================================================ -->
+<!-- OVERVIEW: BOTH VERSIONS -->
+<!-- ============================================================ -->
+<section>
+  <h2 style="font-size: 1.3em; margin-bottom: 20px;">How They Work Together</h2>
+
+  <p>These are two views of the same underlying data — the user's building, the neighboring footprints, and the sun path. They serve different emotional purposes and appear on the same results page, likely as tabs or a toggle.</p>
+
+  <div class="compare">
+    <div class="card a">
+      <strong>Version A: "Shadow Model"</strong>
+      <p>Pure 3D extruded blocks. Every building is a geometric solid, color-coded by shadow impact. Interactive sun path animation. The analytical view — shows <em>why</em> the numbers are what they are. Builds trust through transparency.</p>
+      <p style="font-size: 13px; color: var(--muted);">Think: Google Earth meets engineering software</p>
+    </div>
+    <div class="card b">
+      <strong>Version B: "Your Building"</strong>
+      <p>The user's building rendered with its actual Street View texture mapped onto the 3D block. Surrounding buildings remain as simplified semi-transparent volumes. The emotional view — shows <em>this is real, this is your home</em>.</p>
+      <p style="font-size: 13px; color: var(--muted);">Think: architectural rendering meets augmented reality</p>
+    </div>
+  </div>
+
+  <div class="card info">
+    <strong>Shared data pipeline.</strong> Both versions use the exact same backend query: geocode the address → fetch building footprint polygon + height → fetch neighboring footprints within 200m → compute sun positions → calculate shadow factors. The only difference is rendering.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- VERSION A: PURE 3D SHADOW MODEL -->
+<!-- ============================================================ -->
+<div class="divider"></div>
+
+<section>
+  <div class="version-label a">VERSION A</div>
+  <div class="section-header">
+    <div class="section-num a">A</div>
+    <h2>3D Shadow Model</h2>
+  </div>
+
+  <h3>Purpose</h3>
+  <p>Show the user exactly which buildings block their sun and when. Every building in the scene is an extruded polygon from real NYC data. The user can scrub through time and seasons to see shadows move in real-time. Buildings are color-coded by how much shadow they cast on the target balcony.</p>
+
+  <h3>Scene Composition</h3>
+
+  <div class="wireframe">
+<span class="dim">┌─────────────────────────────────────────────────────────────┐</span>
+<span class="dim">│</span>  <span class="highlight">☀ Sun sphere</span> (animated along arc)              <span class="dim">│</span>
+<span class="dim">│</span>         ╲                                                   <span class="dim">│</span>
+<span class="dim">│</span>          ╲  <span class="dim">--- dashed sun path arc ---</span>                    <span class="dim">│</span>
+<span class="dim">│</span>           ╲                                                  <span class="dim">│</span>
+<span class="dim">│</span>   ┌──┐    ╲  ┌────┐      ┌───┐                              <span class="dim">│</span>
+<span class="dim">│</span>   │  │ <span class="dim">gray</span> ╲ │<span class="highlight">RED </span>│tall  │   │                              <span class="dim">│</span>
+<span class="dim">│</span>   │  │     ╲ │    │      │   │ <span class="dim">gray</span>                         <span class="dim">│</span>
+<span class="dim">│</span>   └──┘      ╲│    │ ┌──┐ │   │      ┌──┐                     <span class="dim">│</span>
+<span class="dim">│</span>              ╲│    │ │  │ └───┘      │  │ <span class="dim">yellow</span>             <span class="dim">│</span>
+<span class="dim">│</span>     ┌──┐     ╲└────┘ │  │    ┌──────┐│  │                     <span class="dim">│</span>
+<span class="dim">│</span>     │  │      ╲shadow│  │    │<span class="accent-a">██████</span>│└──┘                     <span class="dim">│</span>
+<span class="dim">│</span>     └──┘       ╲▒▒▒▒▒└──┘    │<span class="accent-a">█YOU█</span>│                          <span class="dim">│</span>
+<span class="dim">│</span>                 ╲▒▒▒▒▒▒▒▒    │<span class="accent-a">██████</span>│ <span class="accent-a">← blue + balcony marker</span> <span class="dim">│</span>
+<span class="dim">│</span>    <span class="dim">───────────── street ─────</span>│<span class="accent-a">██████</span>│<span class="dim">──────────────</span>        <span class="dim">│</span>
+<span class="dim">│</span>  <span class="dim">▒▒▒▒▒ = shadow on ground</span>    └──────┘                          <span class="dim">│</span>
+<span class="dim">│</span>                                                               <span class="dim">│</span>
+<span class="dim">│</span>  <span class="dim">[▶ Play]  [═══════●═══════ 2:30 PM ═══════]  [Jun│Dec│Mar]</span>  <span class="dim">│</span>
+<span class="dim">└─────────────────────────────────────────────────────────────┘</span>
+  </div>
+
+  <h3>Data Requirements</h3>
+
+  <table>
+    <tr><th>Data</th><th>Source</th><th>Fields Used</th><th>Tag</th></tr>
+    <tr><td>Target building polygon</td><td>NYC Building Footprints (by BIN)</td><td><code>the_geom</code>, <code>heightroof</code>, <code>groundelev</code></td><td><span class="tag data">FREE</span></td></tr>
+    <tr><td>Neighbor buildings (200m radius)</td><td>NYC Building Footprints (spatial query)</td><td>Same fields, for all buildings in radius</td><td><span class="tag data">FREE</span></td></tr>
+    <tr><td>User's floor / balcony direction</td><td>User input (form)</td><td>Floor number, compass direction</td><td>—</td></tr>
+    <tr><td>Building metadata</td><td>PLUTO (by BBL)</td><td><code>numfloors</code>, <code>yearbuilt</code>, <code>bldgclass</code></td><td><span class="tag data">FREE</span></td></tr>
+    <tr><td>Sun positions</td><td>Computed client-side (SPA algorithm)</td><td>Altitude, azimuth for every hour of year</td><td>—</td></tr>
+  </table>
+
+  <h3>Rendering Spec</h3>
+
+  <h4>Building Geometry</h4>
+  <div class="code"><span class="c">// Convert each NYC footprint polygon to a Three.js ExtrudeGeometry</span>
+
+<span class="k">function</span> <span class="s">footprintToMesh</span>(feature, isTarget) {
+  <span class="k">const</span> coords = feature.geometry.coordinates[<span class="v">0</span>]; <span class="c">// exterior ring</span>
+  <span class="k">const</span> height = feature.properties.heightroof * <span class="v">0.3048</span>; <span class="c">// ft → meters</span>
+
+  <span class="c">// Convert lat/lon to local meters (origin = target building centroid)</span>
+  <span class="k">const</span> shape = <span class="k">new</span> THREE.Shape();
+  coords.forEach(([lon, lat], i) => {
+    <span class="k">const</span> x = (lon - targetLon) * M_PER_DEG_LON;
+    <span class="k">const</span> z = -(lat - targetLat) * M_PER_DEG_LAT;
+    i === <span class="v">0</span> ? shape.moveTo(x, z) : shape.lineTo(x, z);
+  });
+
+  <span class="k">const</span> geo = <span class="k">new</span> THREE.ExtrudeGeometry(shape, {
+    depth: height,
+    bevelEnabled: <span class="v">false</span>
+  });
+
+  <span class="c">// Rotate so extrusion goes up (Y-axis) instead of forward (Z)</span>
+  geo.rotateX(-Math.PI / <span class="v">2</span>);
+
+  <span class="k">return</span> geo;
+}
+
+<span class="c">// This gives you ACTUAL building shapes — not boxes.</span>
+<span class="c">// L-shaped buildings, irregular lots, courtyards all render correctly.</span></div>
+
+  <div class="card warn">
+    <strong>ExtrudeGeometry vs BoxGeometry:</strong> The prototype used BoxGeometry (rectangular blocks) for speed. In production, switch to ExtrudeGeometry from the actual footprint polygon Shape. This means L-shaped buildings, triangular lots, buildings with courtyards — they all render with their real shape. It's a single function change and uses the data you already have.
+  </div>
+
+  <h4>Color Coding Logic</h4>
+  <div class="code"><span class="c">// Each frame, recalculate shadow influence scores and update colors</span>
+
+<span class="k">Building color states:</span>
+
+  <span class="s">Target building</span>     →  <span class="v">Bright blue (#3399FF)</span> + glow outline + balcony marker
+  <span class="s">High shadow impact</span>  →  <span class="v">Red (#D03030)</span>         score > 0.5
+  <span class="s">Med shadow impact</span>   →  <span class="v">Orange (#E07020)</span>      score 0.2–0.5
+  <span class="s">Low shadow impact</span>   →  <span class="v">Yellow (#E8B030)</span>      score 0.05–0.2
+  <span class="s">No shadow impact</span>    →  <span class="v">Dark gray (#556677)</span>   score < 0.05
+
+<span class="c">// Colors update in real-time as user scrubs the time slider.</span>
+<span class="c">// A building that's red at 9 AM (blocking morning sun) may be</span>
+<span class="c">// gray at 3 PM (sun has moved past it). This is the "aha" moment.</span></div>
+
+  <h4>Shadow Casting (GPU-based)</h4>
+  <div class="code"><span class="c">// Three.js handles shadow mapping natively via DirectionalLight</span>
+
+<span class="k">sunLight</span>.castShadow = <span class="v">true</span>;
+<span class="k">sunLight</span>.shadow.mapSize = <span class="k">new</span> THREE.Vector2(<span class="v">2048</span>, <span class="v">2048</span>);
+<span class="k">sunLight</span>.shadow.camera.near = <span class="v">1</span>;
+<span class="k">sunLight</span>.shadow.camera.far = <span class="v">600</span>;
+<span class="k">sunLight</span>.shadow.camera.left = <span class="v">-250</span>;
+<span class="k">sunLight</span>.shadow.camera.right = <span class="v">250</span>;
+<span class="k">sunLight</span>.shadow.camera.top = <span class="v">250</span>;
+<span class="k">sunLight</span>.shadow.camera.bottom = <span class="v">-250</span>;
+<span class="k">sunLight</span>.shadow.normalBias = <span class="v">0.5</span>;
+
+<span class="c">// Every building mesh: castShadow = true, receiveShadow = true</span>
+<span class="c">// Ground plane: receiveShadow = true</span>
+<span class="c">// Result: realistic shadow silhouettes on the ground and on building facades</span>
+
+<span class="c">// The DirectionalLight position is updated each frame from the SPA:</span>
+<span class="k">const</span> sun = getSunPosition(month, hour);
+<span class="k">const</span> r = <span class="v">300</span>; <span class="c">// distance (arbitrary, just needs to cover scene)</span>
+sunLight.position.set(
+  -r * Math.sin(sun.azimuth) * Math.cos(sun.altitude),
+   r * Math.sin(sun.altitude),
+  -r * Math.cos(sun.azimuth) * Math.cos(sun.altitude)
+);</div>
+
+  <h4>UI Controls</h4>
+  <table>
+    <tr><th>Control</th><th>Behavior</th></tr>
+    <tr><td><strong>Time slider</strong></td><td>5:30 AM → 7:30 PM, step 6 minutes. Updates sun position, shadow map, and building colors in real-time. Dragging feels smooth (60fps).</td></tr>
+    <tr><td><strong>Play/Pause</strong></td><td>Animates a full day sunrise→sunset in ~8 seconds. Loops or stops at sunset.</td></tr>
+    <tr><td><strong>Month selector</strong></td><td>Quick-pick buttons: Jan, Mar, Jun, Sep, Dec. Covers solstices + equinoxes. Dramatically changes shadow lengths (winter sun at 27° vs summer at 73°).</td></tr>
+    <tr><td><strong>Orbit (drag)</strong></td><td>Click + drag to rotate camera around the target building. Constrained: can't go below ground or directly overhead.</td></tr>
+    <tr><td><strong>Zoom (scroll)</strong></td><td>Scroll to zoom in/out. Min distance: 80m (see individual balconies). Max: 500m (see full neighborhood).</td></tr>
+    <tr><td><strong>Building hover</strong></td><td>Hovering a building shows tooltip: address (if known), height, floors, shadow score. Target building always shows info panel.</td></tr>
+  </table>
+
+  <h4>Info Panels (Overlaid on 3D Viewport)</h4>
+  <div class="code"><span class="c">// TOP-LEFT: Sun Info</span>
+┌──────────────────┐
+│ <span class="k">SUN POSITION</span>      │
+│ <span class="v">2:30 PM</span>           │
+│ Jun 15 • NYC      │
+│ Altitude: <span class="v">68.2°</span>   │
+│ Azimuth: <span class="v">225.1°</span>   │
+└──────────────────┘
+
+<span class="c">// TOP-RIGHT: Your Building</span>
+┌────────────────────────┐
+│ <span class="k">YOUR BUILDING</span>           │
+│ 350 W 42nd St           │
+│ 25 floors • 80ft        │
+│ Floor 15, South-facing  │
+│ 800W system             │
+│ ┌────────────────────┐  │
+│ │ <span class="s">SHADOW: Minimal</span>    │  │
+│ │ 8% blocked now     │  │
+│ └────────────────────┘  │
+└────────────────────────┘
+
+<span class="c">// BOTTOM-LEFT: Legend</span>
+┌─────────────────────────────────────────┐
+│ ■ <span class="s">None</span>  ■ <span class="v">Low</span>  ■ <span class="v">Med</span>  ■ <span class="v">High</span>  ■ <span class="k">You</span> │
+└─────────────────────────────────────────┘
+
+<span class="c">// BOTTOM: Time controls</span>
+┌─────────────────────────────────────────────────┐
+│ [▶]  6AM ═══════●═══════════ 7PM  [Jun│Dec│Mar] │
+└─────────────────────────────────────────────────┘</div>
+
+  <h3>Data Flow</h3>
+  <div class="code"><span class="c">// Backend: /api/shadow-data?address=350+W+42nd+St&floor=15&direction=S</span>
+
+<span class="k">Response</span>: {
+  <span class="s">"target"</span>: {
+    <span class="s">"bin"</span>: <span class="v">"1234567"</span>,
+    <span class="s">"address"</span>: <span class="v">"350 W 42ND ST"</span>,
+    <span class="s">"footprint"</span>: { <span class="s">"type"</span>: <span class="v">"Polygon"</span>, <span class="s">"coordinates"</span>: [...] },
+    <span class="s">"heightroof"</span>: <span class="v">245</span>,    <span class="c">// feet</span>
+    <span class="s">"groundelev"</span>: <span class="v">32</span>,     <span class="c">// feet above sea level</span>
+    <span class="s">"numfloors"</span>: <span class="v">25</span>,
+    <span class="s">"yearbuilt"</span>: <span class="v">1968</span>,
+    <span class="s">"centroid"</span>: [<span class="v">-73.9912</span>, <span class="v">40.7587</span>]
+  },
+  <span class="s">"neighbors"</span>: [
+    {
+      <span class="s">"bin"</span>: <span class="v">"1234568"</span>,
+      <span class="s">"footprint"</span>: { <span class="s">"type"</span>: <span class="v">"Polygon"</span>, <span class="s">"coordinates"</span>: [...] },
+      <span class="s">"heightroof"</span>: <span class="v">410</span>,
+      <span class="s">"groundelev"</span>: <span class="v">30</span>,
+      <span class="s">"distance_m"</span>: <span class="v">45</span>
+    },
+    <span class="c">// ... 40-120 buildings within 200m</span>
+  ],
+  <span class="s">"shadow_summary"</span>: {
+    <span class="s">"annual_shade_factor"</span>: <span class="v">0.82</span>,   <span class="c">// 18% of annual sunlight blocked</span>
+    <span class="s">"monthly_factors"</span>: [<span class="v">0.68, 0.72, 0.78, 0.84, 0.88, 0.90, 0.91, 0.89, 0.85, 0.79, 0.71, 0.66</span>],
+    <span class="s">"worst_month"</span>: <span class="v">"December"</span>,
+    <span class="s">"best_month"</span>: <span class="v">"July"</span>,
+    <span class="s">"top_blockers"</span>: [
+      { <span class="s">"bin"</span>: <span class="v">"1234568"</span>, <span class="s">"address"</span>: <span class="v">"1 Times Square"</span>, <span class="s">"impact"</span>: <span class="v">0.42</span> },
+      { <span class="s">"bin"</span>: <span class="v">"1234570"</span>, <span class="s">"address"</span>: <span class="v">"345 W 42nd"</span>, <span class="s">"impact"</span>: <span class="v">0.15</span> }
+    ]
+  }
+}</div>
+
+  <div class="card success">
+    <strong>Key insight: pre-compute the shadow summary on the backend, render interactively on the frontend.</strong> The backend runs the full 8,760-hour shadow algorithm (2-5 seconds) and returns both the raw polygon data (for 3D rendering) and the pre-computed annual/monthly shade factors (for the energy calculation). The frontend Three.js scene handles the visual shadow casting in real-time using GPU shadow maps — this is approximate but visually convincing. The actual energy numbers use the precise backend calculation.
+  </div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- VERSION B: HYBRID STREET VIEW + 3D -->
+<!-- ============================================================ -->
+<div class="divider"></div>
+
+<section>
+  <div class="version-label b">VERSION B</div>
+  <div class="section-header">
+    <div class="section-num b">B</div>
+    <h2>Hybrid Street View + 3D Model</h2>
+  </div>
+
+  <h3>Purpose</h3>
+  <p>Make it personal. The user's building is rendered with its actual Google Street View photograph texture-mapped onto the 3D geometry. Surrounding buildings appear as semi-transparent architectural volumes — present enough to show context and shadow sources, but faded so the user's building is the clear focal point. The balcony is highlighted, and optionally the AI-generated solar panel overlay appears on it.</p>
+
+  <h3>Scene Composition</h3>
+
+  <div class="wireframe">
+<span class="dim">┌─────────────────────────────────────────────────────────────┐</span>
+<span class="dim">│</span>                                                               <span class="dim">│</span>
+<span class="dim">│</span>   ┌──┐       ┌────┐      ┌───┐                               <span class="dim">│</span>
+<span class="dim">│</span>   <span class="dim">│░░│</span>       <span class="dim">│░░░░│</span>      <span class="dim">│░░░│</span>                               <span class="dim">│</span>
+<span class="dim">│</span>   <span class="dim">│░░│ ghost</span> <span class="dim">│░░░░│ghost</span> <span class="dim">│░░░│ ghost</span>                         <span class="dim">│</span>
+<span class="dim">│</span>   <span class="dim">└──┘</span>       <span class="dim">│░░░░│</span> ┌──┐ <span class="dim">│░░░│</span>      ┌──┐                     <span class="dim">│</span>
+<span class="dim">│</span>              <span class="dim">│░░░░│</span> <span class="dim">│░░│</span> <span class="dim">└───┘</span>      <span class="dim">│░░│ ghost</span>             <span class="dim">│</span>
+<span class="dim">│</span>     ┌──┐     <span class="dim">└────┘</span> <span class="dim">│░░│</span>    ┌──────┐<span class="dim">└──┘</span>                     <span class="dim">│</span>
+<span class="dim">│</span>     <span class="dim">│░░│</span>             <span class="dim">│░░│</span>    │<span class="accent-b">▓▓▓▓▓▓</span>│                          <span class="dim">│</span>
+<span class="dim">│</span>     <span class="dim">└──┘</span>             <span class="dim">└──┘</span>    │<span class="accent-b">▓PHOTO▓</span>│                          <span class="dim">│</span>
+<span class="dim">│</span>                              │<span class="accent-b">▓▓▓▓▓▓</span>│ <span class="accent-b">← Street View texture</span>    <span class="dim">│</span>
+<span class="dim">│</span>                              │<span class="accent-b">▓▓▓▓▓▓</span>│                          <span class="dim">│</span>
+<span class="dim">│</span>    <span class="dim">░░░ = semi-transparent</span>    │<span class="accent-b">▓▓</span><span class="highlight">☀</span><span class="accent-b">▓▓▓</span>│ <span class="highlight">← balcony with panels</span>   <span class="dim">│</span>
+<span class="dim">│</span>    <span class="dim">▓▓▓ = full-color photo</span>    └──────┘                          <span class="dim">│</span>
+<span class="dim">│</span>                                                               <span class="dim">│</span>
+<span class="dim">└─────────────────────────────────────────────────────────────┘</span>
+  </div>
+
+  <h3>How the Street View Texture Mapping Works</h3>
+
+  <p>This is the core technical challenge of Version B. You're projecting a 2D photograph onto one face of a 3D extruded polygon. Here's the exact approach:</p>
+
+  <h4>Step 1: Fetch the Street View Image</h4>
+  <div class="code"><span class="c">// Fetch Street View image facing the user's building facade</span>
+<span class="c">// The balcony direction tells us which facade to photograph</span>
+
+<span class="k">const</span> balconyAzimuth = <span class="v">180</span>;  <span class="c">// south-facing balcony</span>
+
+<span class="c">// Camera should be OPPOSITE the balcony (looking at it from across the street)</span>
+<span class="c">// So if balcony faces south, camera is south of building looking north</span>
+<span class="k">const</span> cameraOffset = <span class="v">30</span>;  <span class="c">// meters from building</span>
+<span class="k">const</span> cameraLat = targetLat - (cameraOffset / <span class="v">110540</span>) * Math.cos(balconyAzimuth * DEG2RAD);
+<span class="k">const</span> cameraLon = targetLon - (cameraOffset / M_PER_DEG_LON) * Math.sin(balconyAzimuth * DEG2RAD);
+
+<span class="c">// Heading: camera looks BACK toward the building</span>
+<span class="k">const</span> heading = (balconyAzimuth + <span class="v">180</span>) % <span class="v">360</span>;  <span class="c">// opposite of balcony direction</span>
+
+<span class="c">// Pitch: tilt up to capture the balcony floor level</span>
+<span class="k">const</span> balconyHeight = numFloors * <span class="v">3.2</span> * userFloorFraction;
+<span class="k">const</span> pitch = Math.atan2(balconyHeight, cameraOffset) * (<span class="v">180</span> / Math.PI);
+
+<span class="k">const</span> url = <span class="s">`https://maps.googleapis.com/maps/api/streetview`</span>
+  + <span class="s">`?size=1024x1024`</span>
+  + <span class="s">`&location=${targetLat},${targetLon}`</span>
+  + <span class="s">`&heading=${heading}`</span>
+  + <span class="s">`&pitch=${Math.min(pitch, 45)}`</span>    <span class="c">// cap at 45° — higher gets distorted</span>
+  + <span class="s">`&fov=80`</span>
+  + <span class="s">`&key=${GOOGLE_API_KEY}`</span>;
+
+<span class="c">// Cost: $0.007 per image</span></div>
+
+  <h4>Step 2: Identify the Target Facade Edge</h4>
+  <div class="code"><span class="c">// From the building footprint polygon, find the edge that faces</span>
+<span class="c">// the balcony direction. This is the edge we'll texture.</span>
+
+<span class="k">function</span> <span class="s">findFacadeEdge</span>(footprintCoords, balconyAzimuth) {
+  <span class="k">const</span> targetAngle = balconyAzimuth * DEG2RAD;
+  <span class="k">let</span> bestEdge = <span class="v">null</span>, bestScore = -<span class="v">Infinity</span>;
+
+  <span class="k">for</span> (<span class="k">let</span> i = <span class="v">0</span>; i < coords.length; i++) {
+    <span class="k">const</span> p1 = coords[i], p2 = coords[(i + <span class="v">1</span>) % coords.length];
+
+    <span class="c">// Edge direction</span>
+    <span class="k">const</span> edgeDx = p2.x - p1.x, edgeDz = p2.z - p1.z;
+    <span class="k">const</span> edgeLen = Math.sqrt(edgeDx**<span class="v">2</span> + edgeDz**<span class="v">2</span>);
+
+    <span class="c">// Outward-facing normal (perpendicular, pointing away from building center)</span>
+    <span class="k">const</span> normalAngle = Math.atan2(-edgeDz, edgeDx); <span class="c">// perpendicular</span>
+
+    <span class="c">// Score: how closely does this edge's normal match the balcony direction?</span>
+    <span class="c">// Also weight by edge length (prefer the main facade, not a tiny notch)</span>
+    <span class="k">const</span> angleDiff = Math.abs(normalAngle - targetAngle) % (Math.PI * <span class="v">2</span>);
+    <span class="k">const</span> alignment = Math.cos(angleDiff);
+    <span class="k">const</span> score = alignment * edgeLen;
+
+    <span class="k">if</span> (score > bestScore) { bestScore = score; bestEdge = { p1, p2, edgeLen }; }
+  }
+
+  <span class="k">return</span> bestEdge; <span class="c">// { p1, p2, edgeLen } — the edge to texture</span>
+}</div>
+
+  <h4>Step 3: Map the Image onto the Facade</h4>
+  <div class="code"><span class="c">// Create a PlaneGeometry sized to the facade, position it on the correct edge,</span>
+<span class="c">// and apply the Street View image as a texture.</span>
+
+<span class="k">function</span> <span class="s">createTexturedFacade</span>(edge, buildingHeight, streetViewUrl) {
+  <span class="k">const</span> facadeWidth = edge.edgeLen;  <span class="c">// meters (from footprint)</span>
+  <span class="k">const</span> facadeHeight = buildingHeight;
+
+  <span class="c">// Load Street View image as texture</span>
+  <span class="k">const</span> texture = <span class="k">new</span> THREE.TextureLoader().load(streetViewUrl);
+  texture.colorSpace = THREE.SRGBColorSpace;
+
+  <span class="c">// Create facade plane</span>
+  <span class="k">const</span> geo = <span class="k">new</span> THREE.PlaneGeometry(facadeWidth, facadeHeight);
+  <span class="k">const</span> mat = <span class="k">new</span> THREE.MeshStandardMaterial({
+    map: texture,
+    roughness: <span class="v">0.8</span>,
+    metalness: <span class="v">0.05</span>,
+    side: THREE.FrontSide
+  });
+
+  <span class="k">const</span> mesh = <span class="k">new</span> THREE.Mesh(geo, mat);
+
+  <span class="c">// Position at edge midpoint, half-height up</span>
+  <span class="k">const</span> midX = (edge.p1.x + edge.p2.x) / <span class="v">2</span>;
+  <span class="k">const</span> midZ = (edge.p1.z + edge.p2.z) / <span class="v">2</span>;
+  mesh.position.set(midX, facadeHeight / <span class="v">2</span>, midZ);
+
+  <span class="c">// Rotate to align with edge direction</span>
+  <span class="k">const</span> angle = Math.atan2(edge.p2.x - edge.p1.x, edge.p2.z - edge.p1.z);
+  mesh.rotation.y = angle;
+
+  <span class="c">// Slight offset outward to prevent z-fighting with the 3D block behind</span>
+  <span class="k">const</span> normal = <span class="k">new</span> THREE.Vector3(-Math.cos(angle), <span class="v">0</span>, Math.sin(angle));
+  mesh.position.add(normal.multiplyScalar(<span class="v">0.15</span>));
+
+  <span class="k">return</span> mesh;
+}</div>
+
+  <h4>Step 4: Style the Scene for Contrast</h4>
+  <div class="code"><span class="c">// Target building: full-color extruded geometry + textured facade</span>
+<span class="k">targetMaterial</span> = {
+  color: <span class="v">0xCCDDEE</span>,         <span class="c">// light neutral — non-textured faces</span>
+  roughness: <span class="v">0.7</span>,
+  opacity: <span class="v">1.0</span>,
+  transparent: <span class="v">false</span>,
+  <span class="c">// The Street View plane sits ON TOP of this face</span>
+};
+
+<span class="c">// Neighbor buildings: semi-transparent ghost volumes</span>
+<span class="k">neighborMaterial</span> = {
+  color: <span class="v">0x445566</span>,         <span class="c">// dark blue-gray</span>
+  roughness: <span class="v">0.9</span>,
+  opacity: <span class="v">0.35</span>,           <span class="c">// key: see-through, but shadows still cast</span>
+  transparent: <span class="v">true</span>,
+  depthWrite: <span class="v">false</span>,        <span class="c">// prevents transparency sorting artifacts</span>
+};
+
+<span class="c">// Neighbor buildings that CAST SHADOW on target: slightly more opaque</span>
+<span class="k">shadowCasterMaterial</span> = {
+  color: <span class="v">0x556677</span>,
+  opacity: <span class="v">0.55</span>,           <span class="c">// more visible to show "this is blocking you"</span>
+  transparent: <span class="v">true</span>,
+  depthWrite: <span class="v">false</span>,
+};
+
+<span class="c">// Edge wireframes on all neighbors for architectural definition</span>
+<span class="k">wireframeMaterial</span> = {
+  color: <span class="v">0x667788</span>,
+  opacity: <span class="v">0.25</span>,
+  transparent: <span class="v">true</span>,
+};</div>
+
+  <h4>Step 5 (Optional): Overlay AI-Generated Solar Panels</h4>
+  <div class="code"><span class="c">// If the AI visualization pipeline has already run (Version B, Phase 2),</span>
+<span class="c">// the inpainted Street View image (with panels) can be used INSTEAD of</span>
+<span class="c">// the raw Street View image.</span>
+
+<span class="c">// Toggle between before/after:</span>
+<span class="k">const</span> [showPanels, setShowPanels] = useState(<span class="v">false</span>);
+
+<span class="c">// Swap texture on the facade plane:</span>
+facadeMesh.material.map = showPanels ? panelTexture : originalTexture;
+facadeMesh.material.needsUpdate = <span class="v">true</span>;
+
+<span class="c">// This gives you a 3D "before/after" that's way more compelling than</span>
+<span class="c">// a flat 2D image comparison — you can orbit around it.</span></div>
+
+  <h3>Handling Edge Cases</h3>
+  <table>
+    <tr><th>Edge Case</th><th>Solution</th></tr>
+    <tr><td>Street View image not available for this address</td><td>Fall back to Version A styling (solid colored block, no texture). Show message: "Street imagery isn't available for this location — showing modeled view."</td></tr>
+    <tr><td>Building is too tall — Street View can't capture upper floors</td><td>Texture the lower portion of the facade. Upper portion uses a solid color or tiled window pattern. For buildings >15 floors, consider fetching multiple Street View images at different pitch angles and stitching.</td></tr>
+    <tr><td>Street View image shows the wrong facade</td><td>Use the balcony direction to calculate the correct heading. If multiple panoramas exist (corners), pick the one closest to the balcony-facing side. The metadata endpoint returns available panoramas.</td></tr>
+    <tr><td>Irregular building shape (L-shaped, etc.)</td><td>Only texture the specific edge matching the balcony direction. Other faces of the target building use solid color, same as Version A.</td></tr>
+    <tr><td>User on a very high floor (>20)</td><td>Street View can't capture that high. Show the full building in color but annotate the balcony floor with a glowing horizontal band: "Your balcony (Floor 22)" with an arrow.</td></tr>
+    <tr><td>Multiple Street View dates available</td><td>Prefer the most recent image. The metadata endpoint returns <code>date</code> (e.g., "2023-07"). Fetch the newest.</td></tr>
+  </table>
+
+  <h3>Scene Enhancements (Nice-to-Have)</h3>
+  <div class="card b">
+    <strong>Balcony floor highlight:</strong> A glowing horizontal band at the user's floor level, visible from any camera angle. Pulses gently. On the textured facade, this appears as a semi-transparent overlay stripe at the correct height: <code>balconyY = buildingHeight × (userFloor / totalFloors)</code>.
+  </div>
+  <div class="card b">
+    <strong>Shadow on facade:</strong> When a neighboring building casts shadow on the target facade, the Three.js shadow map darkens that portion of the Street View texture in real-time. The user literally sees the shadow creep across their building as they scrub the time slider. This is automatic — Three.js shadow mapping handles it with <code>receiveShadow = true</code>.
+  </div>
+  <div class="card b">
+    <strong>Ground plane:</strong> Dark with subtle street grid lines. Could optionally use a satellite tile (Google Static Maps API, $2/1K) for the block around the building, but the dark grid is cleaner and cheaper.
+  </div>
+  <div class="card b">
+    <strong>Depth of field:</strong> Use Three.js post-processing (<code>BokehPass</code> or <code>DepthOfFieldEffect</code>) to gently blur distant buildings. Draws the eye to the target building. Performance cost: minimal on modern GPUs.
+  </div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- SHARED: WHAT BOTH VERSIONS NEED -->
+<!-- ============================================================ -->
+<div class="divider"></div>
+
+<section>
+  <h2 style="font-size: 1.3em; margin-bottom: 20px;">Shared Infrastructure (Both Versions)</h2>
+
+  <h3>Backend API Endpoint</h3>
+  <div class="code"><span class="k">POST</span> <span class="u">/api/3d-scene</span>
+
+<span class="k">Request</span>: {
+  <span class="s">"address"</span>: <span class="v">"350 W 42nd St, New York, NY"</span>,
+  <span class="s">"floor"</span>: <span class="v">15</span>,
+  <span class="s">"direction"</span>: <span class="v">"S"</span>,  <span class="c">// balcony compass direction</span>
+  <span class="s">"include_streetview"</span>: <span class="v">true</span>  <span class="c">// false for Version A only</span>
+}
+
+<span class="k">Response</span>: {
+  <span class="s">"target"</span>: {
+    <span class="s">"footprint"</span>: { GeoJSON polygon },
+    <span class="s">"heightroof"</span>: <span class="v">245</span>,
+    <span class="s">"groundelev"</span>: <span class="v">32</span>,
+    <span class="s">"numfloors"</span>: <span class="v">25</span>,
+    <span class="s">"centroid"</span>: [lon, lat],
+    <span class="s">"facade_edge"</span>: { <span class="s">"p1"</span>: [x,z], <span class="s">"p2"</span>: [x,z] },  <span class="c">// for texture mapping</span>
+    <span class="s">"streetview_url"</span>: <span class="v">"https://maps...&heading=0&pitch=20"</span> <span class="c">// pre-computed</span>
+  },
+  <span class="s">"neighbors"</span>: [ <span class="c">// 40-120 buildings</span>
+    { <span class="s">"footprint"</span>: {...}, <span class="s">"heightroof"</span>: <span class="v">410</span>, <span class="s">"groundelev"</span>: <span class="v">30</span> },
+    ...
+  ],
+  <span class="s">"shadow"</span>: {
+    <span class="s">"annual_factor"</span>: <span class="v">0.82</span>,
+    <span class="s">"monthly_factors"</span>: [<span class="v">12 values</span>],
+    <span class="s">"top_blockers"</span>: [{ <span class="s">"index"</span>: <span class="v">3</span>, <span class="s">"impact"</span>: <span class="v">0.42</span> }, ...]
+  }
+}</div>
+
+  <h3>Performance Targets</h3>
+  <table>
+    <tr><th>Metric</th><th>Version A</th><th>Version B</th></tr>
+    <tr><td>Backend response time</td><td>2-5s (shadow computation)</td><td>3-6s (shadow + Street View fetch)</td></tr>
+    <tr><td>Scene initialization</td><td>< 500ms</td><td>< 1s (texture load adds ~500ms)</td></tr>
+    <tr><td>Frame rate</td><td>60fps (< 200 meshes)</td><td>60fps (same mesh count + 1 texture)</td></tr>
+    <tr><td>Memory</td><td>~30-50 MB</td><td>~40-60 MB (texture adds ~10MB)</td></tr>
+    <tr><td>Mobile performance</td><td>Good (reduce shadow map to 1024)</td><td>Good (reduce texture to 512x512)</td></tr>
+  </table>
+
+  <h3>How They Appear on the Results Page</h3>
+  <div class="wireframe">
+<span class="highlight">RESULTS PAGE LAYOUT</span>
+
+┌─────────────────────────────────────────────────────────────────┐
+│                                                                   │
+│  <span class="highlight">Your Solar Estimate</span>                                              │
+│  350 W 42nd St, Floor 15, South-facing                           │
+│                                                                   │
+│  ┌──────────────────────────────────────────────────────────┐    │
+│  │                                                            │    │
+│  │   [<span class="accent-b"> Your Building </span>]  [<span class="accent-a"> Shadow Model </span>]     ← tab toggle  │    │
+│  │                                                            │    │
+│  │   ┌──────────────────────────────────────────────────┐    │    │
+│  │   │                                                    │    │    │
+│  │   │           3D VIEWPORT (640px tall)                 │    │    │
+│  │   │                                                    │    │    │
+│  │   │    Whichever version is active renders here.      │    │    │
+│  │   │    Same camera position preserved on tab switch.  │    │    │
+│  │   │                                                    │    │    │
+│  │   │   [▶]  ═══════●═══════  [Jun│Dec│Mar]            │    │    │
+│  │   └──────────────────────────────────────────────────┘    │    │
+│  └──────────────────────────────────────────────────────────┘    │
+│                                                                   │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐           │
+│  │ <span class="highlight">680 kWh/yr</span>    │  │ <span class="highlight">$150/yr</span>      │  │ <span class="highlight">442 lbs CO₂</span>  │           │
+│  │ Annual output │  │ Savings      │  │ Offset       │           │
+│  └──────────────┘  └──────────────┘  └──────────────┘           │
+│                                                                   │
+│  ┌──────────────────────────────────────────────────────────┐    │
+│  │  Monthly Production Chart (bar chart, 12 months)          │    │
+│  └──────────────────────────────────────────────────────────┘    │
+│                                                                   │
+│  ┌──────────────────────────────────────────────────────────┐    │
+│  │  <span class="highlight">[ Get Your Kit → ]</span>                CTA button                │    │
+│  └──────────────────────────────────────────────────────────┘    │
+│                                                                   │
+└─────────────────────────────────────────────────────────────────┘
+  </div>
+
+  <div class="card info">
+    <strong>Tab switching preserves camera state.</strong> Both versions share the same camera angle/position/zoom. When you orbit in Version A, switch to Version B, the camera is in the same spot — the building just gains its photo texture and the neighbors become translucent. This creates a satisfying "same scene, different lens" feeling.
+  </div>
+
+  <h3>Cost per Visualization</h3>
+  <table>
+    <tr><th>Component</th><th>Version A</th><th>Version B (adds)</th></tr>
+    <tr><td>NYC Building Footprints query</td><td>$0.000</td><td>—</td></tr>
+    <tr><td>Shadow computation (backend)</td><td>~$0.002 (CPU time)</td><td>—</td></tr>
+    <tr><td>Google Street View image</td><td>—</td><td>$0.007</td></tr>
+    <tr><td>AI panel overlay (if enabled)</td><td>—</td><td>$0.035 (Flux.2)</td></tr>
+    <tr>
+      <td style="font-weight: 700;">Total</td>
+      <td style="font-weight: 700;">~$0.002</td>
+      <td style="font-weight: 700;">~$0.044</td>
+    </tr>
+  </table>
+</section>
+
+<section style="text-align: center; padding: 32px 0; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border);">
+  <p>balco.nyc — 3D Visualization Specifications v1.0 — March 2026</p>
+</section>
+
+</div>
+</body>
+</html>

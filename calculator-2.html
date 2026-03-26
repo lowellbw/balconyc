@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Calculator — balco.nyc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+  <script>
+    // Load Google Maps after config.js is ready (loaded at end of body)
+    function loadGoogleMaps() {
+      if (typeof SolarConfig !== 'undefined' && SolarConfig.GOOGLE_API_KEY) {
+        var s = document.createElement('script');
+        s.src = 'https://maps.googleapis.com/maps/api/js?key=' + SolarConfig.GOOGLE_API_KEY + '&libraries=places&callback=initGooglePlaces';
+        s.async = true;
+        s.defer = true;
+        document.head.appendChild(s);
+      } else {
+        // Config not ready yet, retry
+        setTimeout(loadGoogleMaps, 100);
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FFFFFF;
+      --text: #171717;
+      --text-sub: #596580;
+      --text-muted: #8896AB;
+      --teal: #0d7377;
+      --teal-dark: #095456;
+      --teal-light: #e6f4f4;
+      --border: #E2E8F0;
+      --card: #FFFFFF;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --warm-start: #E0C4A7;
+      --warm-end: #2C3248;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 12px 0;
+      background: transparent;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    nav .container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { display: inline-block; text-decoration: none; line-height: 0; }
+    .logo img {
+      height: 72px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s;
+    }
+    nav.scrolled .logo img { filter: none; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: opacity 0.2s;
+    }
+    nav.scrolled .nav-links a { color: var(--text); }
+    .nav-links a:hover { opacity: 0.8; }
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 24px;
+      background: var(--text);
+      color: #fff !important;
+      border: none;
+      border-radius: 24px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      gap: 8px;
+    }
+    .btn-pill:hover { background: #333; transform: translateY(-1px); }
+
+    /* ─── HERO BANNER (matches homepage) ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('Gemini_Generated_Image_d2ucutd2ucutd2uc.png') center center / cover no-repeat;
+      overflow: hidden;
+      transition: background-image 1s ease;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.7) 100%);
+    }
+    .hero-top-gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 150px;
+      background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 100%);
+      z-index: 1;
+    }
+    .hero-frame {
+      position: absolute;
+      inset: 40px;
+      border: 1px solid rgba(255,255,255,0.6);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      max-width: 640px;
+      padding: 0 40px;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+    .hero.has-results {
+      justify-content: flex-start;
+      padding-left: 80px;
+    }
+    .hero.has-results .hero-content {
+      text-align: left;
+    }
+
+    /* ─── STEPS ─── */
+    .step { display: none; animation: fadeUp 0.4s ease; }
+    .step.active { display: block; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 12px;
+    }
+    .step h1 {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .step p.sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 32px;
+    }
+
+    /* Address input */
+    .hero-input {
+      width: 100%;
+      padding: 16px 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 1.1rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .hero-input::placeholder { color: rgba(255,255,255,0.35); }
+    .hero-input:focus {
+      border-color: rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.12);
+    }
+
+    /* Google Places dropdown — must sit above hero overlay */
+    .pac-container {
+      z-index: 10000 !important;
+      border-radius: 12px;
+      border: none;
+      margin-top: 4px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Lookup status */
+    .lookup-status {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      min-height: 24px;
+    }
+    .lookup-status.active { color: rgba(255,255,255,0.6); }
+
+    /* Step buttons */
+    .step-options {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .step-option {
+      padding: 14px 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .step-option:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.3);
+    }
+    .step-option.selected {
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.5);
+      color: #fff;
+    }
+    .step-option small {
+      display: block;
+      font-weight: 400;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 2px;
+    }
+
+    /* Inline number inputs in hero */
+    .hero-inline-fields {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .hero-field {
+      flex: 1;
+    }
+    .hero-field label {
+      display: block;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 6px;
+      text-align: left;
+    }
+    .hero-num-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-size: 1.1rem;
+      font-family: inherit;
+      outline: none;
+      -moz-appearance: textfield;
+    }
+    .hero-num-input:focus {
+      border-color: rgba(255,255,255,0.4);
+    }
+    .auto-tag {
+      font-size: 0.65rem;
+      color: var(--teal);
+      margin-top: 4px;
+      display: none;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: #fff;
+      color: var(--text);
+      border: none;
+      border-radius: 99px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .hero-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .hero-btn.loading .btn-text { visibility: hidden; }
+    .hero-btn.loading::after {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      border: 2px solid var(--border);
+      border-top-color: var(--text);
+      border-radius: 50%;
+      animation: vizSpin 0.6s linear infinite;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .hero-btn { position: relative; }
+
+    .hero-skip {
+      display: block;
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: inherit;
+    }
+    .hero-skip:hover { color: rgba(255,255,255,0.6); }
+
+    /* Step progress dots */
+    .step-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      transition: background 0.3s;
+    }
+    .step-dot.active { background: rgba(255,255,255,0.6); }
+    .step-dot.done { background: var(--teal); }
+
+    /* Loading spinner */
+    @keyframes vizSpin { to { transform: rotate(360deg); } }
+    .hero-spinner {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: vizSpin 0.8s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    /* ─── FLOATING RESULTS CARD (on hero) ─── */
+    .results-card {
+      display: none;
+      position: absolute;
+      bottom: 60px;
+      right: 60px;
+      z-index: 5;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(16px);
+      border-radius: 16px;
+      padding: 28px 24px;
+      width: 340px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+      animation: fadeUp 0.5s ease;
+      color: var(--text);
+    }
+    .results-card.visible { display: block; }
+    .results-card-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .results-card-hero {
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .results-card-sub {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      margin-bottom: 20px;
+    }
+    .results-card-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .rc-stat {
+      padding: 12px;
+      background: #f7f9fa;
+      border-radius: 10px;
+    }
+    .rc-stat-value {
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    .rc-stat.highlight .rc-stat-value { color: var(--teal-dark); }
+    .rc-stat-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .results-card-env {
+      display: flex;
+      gap: 16px;
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+    .rc-env-item { flex: 1; text-align: center; }
+    .rc-env-value { font-size: 1rem; font-weight: 800; }
+    .rc-env-label { font-size: 0.6rem; color: var(--text-muted); }
+    .results-card-expand {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background: var(--text);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .results-card-expand:hover { background: #333; }
+    .results-card-badge {
+      position: absolute;
+      top: -8px;
+      right: 16px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: var(--teal);
+      color: #fff;
+      padding: 3px 10px;
+      border-radius: 99px;
+    }
+
+    /* ─── EXPANDED RESULTS SECTION ─── */
+    .results-section {
+      display: none;
+      background: var(--bg);
+      padding: 60px 0;
+    }
+    .results-section.visible { display: block; }
+    .results-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .result-hero { text-align: center; margin-bottom: 32px; }
+    .result-hero-label { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px; }
+    .result-hero-value { font-size: 3rem; font-weight: 900; letter-spacing: -0.03em; }
+    .result-hero-sub { font-size: 0.9rem; color: var(--text-sub); margin-top: 4px; }
+
+    .result-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .result-stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+    }
+    .result-stat-card.highlight { background: var(--teal-light); border-color: transparent; }
+    .stat-label { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 6px; }
+    .stat-value { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.02em; }
+    .result-stat-card.highlight .stat-value { color: var(--teal-dark); }
+    .stat-detail { font-size: 0.75rem; color: var(--text-sub); margin-top: 4px; }
+
+    .result-chart-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px; margin-bottom: 32px;
+    }
+    .result-chart-card h3 { font-size: 0.95rem; margin-bottom: 16px; }
+    .chart-container { display: flex; align-items: flex-end; gap: 4px; height: 140px; }
+    .chart-bar-wrapper { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; }
+    .chart-bar-value { font-size: 0.6rem; color: var(--text-muted); margin-bottom: 4px; }
+    .chart-bar { width: 100%; background: var(--teal); border-radius: 3px 3px 0 0; transition: height 0.6s ease; min-height: 2px; }
+    .chart-bar-label { font-size: 0.6rem; color: var(--text-muted); margin-top: 6px; }
+
+    .result-impact { margin-bottom: 32px; }
+    .result-impact h3 { font-size: 0.95rem; margin-bottom: 16px; }
+    .impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .impact-item { text-align: center; }
+    .impact-value { font-size: 1.4rem; font-weight: 900; }
+    .impact-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+
+    .result-details-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px; margin-bottom: 24px;
+    }
+    .result-details-card h3 { font-size: 0.95rem; margin-bottom: 12px; }
+    .detail-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.85rem; }
+    .detail-label { color: var(--text-sub); }
+    .detail-value { font-weight: 600; }
+    .detail-row:last-child { border-bottom: none; }
+
+    .result-disclaimer { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin: 24px 0; }
+    .fallback-banner { display: none; background: #fffbe6; border: 1px solid #f5d67b; border-radius: 8px; padding: 12px 16px; font-size: 0.85rem; color: #856404; margin-bottom: 20px; }
+    .fallback-banner.visible { display: block; }
+    .solar-context { font-size: 0.85rem; color: var(--text-sub); display: none; margin-bottom: 12px; }
+    .solar-context.visible { display: block; }
+    .data-sources { margin-top: 16px; }
+    .data-sources summary { font-size: 0.85rem; color: var(--text-sub); cursor: pointer; }
+    .ds-item { font-size: 0.8rem; padding: 4px 0; color: var(--text-muted); }
+    .ds-item.success .ds-icon { color: var(--teal); }
+    .ds-item.fallback .ds-icon { color: var(--text-muted); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-content { padding: 0 24px; }
+      .hero-frame { inset: 16px; }
+      .hero { min-height: auto; padding: 120px 0 80px; }
+      .step-options { grid-template-columns: repeat(2, 1fr); }
+      .result-stats { grid-template-columns: repeat(2, 1fr); }
+      .impact-grid { grid-template-columns: repeat(2, 1fr); }
+      .results-container { padding: 0 24px; }
+      .nav-links a:not(.btn-pill) { display: none; }
+      .logo img { height: 72px !important; }
+      .results-card {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        width: 100%;
+        margin-top: 32px;
+        box-shadow: none;
+        border: 1px solid rgba(255,255,255,0.15);
+        background: rgba(255,255,255,0.92);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco.nyc">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#waitlist" class="btn-pill">Join Waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO BANNER WITH WIZARD -->
+<section class="hero" id="heroSection">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-top-gradient"></div>
+  <div class="hero-frame"></div>
+  <div class="hero-content">
+
+    <div class="step-dots" id="stepDots">
+      <div class="step-dot active" data-step="1"></div>
+      <div class="step-dot" data-step="2"></div>
+      <div class="step-dot" data-step="3"></div>
+      <div class="step-dot" data-step="4"></div>
+    </div>
+
+    <!-- STEP 1: Address -->
+    <div class="step active" id="step1">
+      <div class="step-label">Solar Calculator</div>
+      <h1>Model your balcony's solar potential</h1>
+      <p class="sub">Enter your address and we'll estimate your energy production, savings, and show you what it looks like.</p>
+      <input type="text" id="addressInput" class="hero-input" placeholder="Start typing your NYC address..." autocomplete="off">
+      <div class="lookup-status" id="lookupStatus"></div>
+      <button class="hero-skip" onclick="skipToManual()">Skip — I'll enter details manually</button>
+    </div>
+
+    <!-- STEP 2: Floor -->
+    <div class="step" id="step2">
+      <div class="step-label">Step 2</div>
+      <h1>Which floor?</h1>
+      <p class="sub" id="step2sub">Tell us about your apartment.</p>
+      <div class="hero-inline-fields">
+        <div class="hero-field">
+          <label>Your floor</label>
+          <input type="number" id="floor" class="hero-num-input" min="1" max="80" value="3">
+        </div>
+        <div class="hero-field">
+          <label>Total floors</label>
+          <input type="number" id="totalFloors" class="hero-num-input" min="2" max="80" value="6">
+          <div class="auto-tag" id="totalFloorsAuto">auto-detected</div>
+        </div>
+      </div>
+      <button class="hero-btn" onclick="goStep(3)"><span class="btn-text">Continue</span></button>
+    </div>
+
+    <!-- STEP 3: Direction -->
+    <div class="step" id="step3">
+      <div class="step-label">Step 3</div>
+      <h1>Which way does it face?</h1>
+      <p class="sub" id="step3sub">Which direction does your balcony face?</p>
+      <div class="step-options" id="directionOptions">
+        <button class="step-option" data-value="180" onclick="selectDirection(this)">S<small>South</small></button>
+        <button class="step-option" data-value="225" onclick="selectDirection(this)">SW<small>Southwest</small></button>
+        <button class="step-option" data-value="135" onclick="selectDirection(this)">SE<small>Southeast</small></button>
+        <button class="step-option" data-value="270" onclick="selectDirection(this)">W<small>West</small></button>
+        <button class="step-option" data-value="90" onclick="selectDirection(this)">E<small>East</small></button>
+        <button class="step-option" data-value="315" onclick="selectDirection(this)">NW<small>Northwest</small></button>
+        <button class="step-option" data-value="45" onclick="selectDirection(this)">NE<small>Northeast</small></button>
+        <button class="step-option" data-value="0" onclick="selectDirection(this)">N<small>North</small></button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Loading / Result Teaser -->
+    <div class="step" id="step4">
+      <div class="step-label">Calculating</div>
+      <h1 id="step4title"><span class="hero-spinner"></span> Crunching numbers...</h1>
+      <p class="sub" id="step4sub">Modeling your solar potential with NREL PVWatts.</p>
+    </div>
+
+  </div>
+
+  <!-- Floating results card on hero -->
+  <div class="results-card" id="resultsCard">
+    <div class="results-card-badge">Your Estimate</div>
+    <div class="results-card-title">Annual Production</div>
+    <div class="results-card-hero" id="rcKwh">&mdash;</div>
+    <div class="results-card-sub" id="rcSub">&mdash;</div>
+    <div class="results-card-stats">
+      <div class="rc-stat highlight">
+        <div class="rc-stat-value" id="rcSavings">&mdash;</div>
+        <div class="rc-stat-label">Annual savings</div>
+      </div>
+      <div class="rc-stat">
+        <div class="rc-stat-value" id="rcBillOffset">&mdash;</div>
+        <div class="rc-stat-label">Bill offset</div>
+      </div>
+      <div class="rc-stat">
+        <div class="rc-stat-value" id="rcPayback">&mdash;</div>
+        <div class="rc-stat-label">Payback</div>
+      </div>
+      <div class="rc-stat">
+        <div class="rc-stat-value" id="rcLifetime">&mdash;</div>
+        <div class="rc-stat-label">25-yr savings</div>
+      </div>
+    </div>
+    <div class="results-card-env">
+      <div class="rc-env-item">
+        <div class="rc-env-value" id="rcCo2">&mdash;</div>
+        <div class="rc-env-label">lbs CO&#8322;/yr</div>
+      </div>
+      <div class="rc-env-item">
+        <div class="rc-env-value" id="rcTrees">&mdash;</div>
+        <div class="rc-env-label">trees equiv.</div>
+      </div>
+    </div>
+    <button class="results-card-expand" onclick="expandResults()">See Full Breakdown</button>
+  </div>
+
+</section>
+
+<!-- EXPANDED RESULTS -->
+<section class="results-section" id="resultsSection">
+  <div class="results-container">
+
+    <div class="fallback-banner" id="fallbackBanner">
+      Using estimated model &mdash; enter your address for a precise PVWatts-powered estimate.
+    </div>
+    <p class="solar-context" id="solarContext"></p>
+
+    <!-- Hero number -->
+    <div class="result-hero">
+      <div class="result-hero-label">Estimated Annual Production</div>
+      <div class="result-hero-value" id="annualKwh">&mdash;</div>
+      <div class="result-hero-sub" id="annualKwhContext">&mdash;</div>
+    </div>
+
+    <!-- Key stats -->
+    <div class="result-stats">
+      <div class="result-stat-card highlight">
+        <div class="stat-label">Annual Savings</div>
+        <div class="stat-value" id="annualSavings">&mdash;</div>
+        <div class="stat-detail" id="monthlySavings">&mdash;</div>
+      </div>
+      <div class="result-stat-card">
+        <div class="stat-label">Bill Offset</div>
+        <div class="stat-value" id="billOffset">&mdash;</div>
+        <div class="stat-detail">of your electric bill</div>
+      </div>
+      <div class="result-stat-card">
+        <div class="stat-label">Simple Payback</div>
+        <div class="stat-value" id="paybackYears">&mdash;</div>
+        <div class="stat-detail" id="paybackDetail">&mdash;</div>
+      </div>
+      <div class="result-stat-card">
+        <div class="stat-label">25-Year Savings</div>
+        <div class="stat-value" id="lifetimeSavings">&mdash;</div>
+        <div class="stat-detail">with rate escalation</div>
+      </div>
+    </div>
+
+    <!-- Monthly chart -->
+    <div class="result-chart-card">
+      <h3>Monthly Energy Production (kWh)</h3>
+      <div class="chart-container" id="monthlyChart"></div>
+    </div>
+
+    <!-- Environmental impact -->
+    <div class="result-impact">
+      <h3>Environmental Impact (Annual)</h3>
+      <div class="impact-grid">
+        <div class="impact-item">
+          <div class="impact-value" id="co2Offset">&mdash;</div>
+          <div class="impact-label">lbs CO&#8322; avoided</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-value" id="treesEquiv">&mdash;</div>
+          <div class="impact-label">trees planted equivalent</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-value" id="milesOffset">&mdash;</div>
+          <div class="impact-label">miles of driving offset</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-value" id="phonesCharged">&mdash;</div>
+          <div class="impact-label">smartphone charges</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- System details -->
+    <div class="result-details-card">
+      <h3>System Configuration</h3>
+      <div class="detail-row">
+        <span class="detail-label">System size</span>
+        <span class="detail-value" id="detailSystemSize">&mdash;</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Panel orientation</span>
+        <span class="detail-value" id="detailOrientation">&mdash;</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Tilt angle</span>
+        <span class="detail-value" id="detailTilt">&mdash;</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Shade factor</span>
+        <span class="detail-value" id="detailShadeFactor">&mdash;</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Effective capacity factor</span>
+        <span class="detail-value" id="detailCapacity">&mdash;</span>
+      </div>
+      <div class="detail-row" id="detailWeatherStation" style="display:none">
+        <span class="detail-label">Weather station</span>
+        <span class="detail-value" id="detailWeatherStationVal">&mdash;</span>
+      </div>
+      <div class="detail-row" id="detailBuildingYear" style="display:none">
+        <span class="detail-label">Building year</span>
+        <span class="detail-value" id="detailBuildingYearVal">&mdash;</span>
+      </div>
+      <div class="detail-row" id="detailNeighbors" style="display:none">
+        <span class="detail-label">Taller buildings nearby</span>
+        <span class="detail-value" id="detailNeighborsVal">&mdash;</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Electricity rate</span>
+        <span class="detail-value">$0.22/kWh (Con Ed SC-1)</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Rate escalation</span>
+        <span class="detail-value">3%/year</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Panel degradation</span>
+        <span class="detail-value">0.5%/year</span>
+      </div>
+    </div>
+
+    <p class="result-disclaimer" id="resultDisclaimer"></p>
+
+    <details class="data-sources">
+      <summary>Data sources used</summary>
+      <div id="dataSourcesList"></div>
+    </details>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/solar-api.js"></script>
+<script src="js/visualization-v2.js"></script>
+<script>
+// ============================================================
+// CALCULATOR V2 — Step-by-step wizard in hero banner
+// ============================================================
+
+let currentStep = 1;
+let selectedDirection = 180; // default South
+let manualMode = false;
+
+// DIRECTION_LABELS and MONTH_LABELS are defined in solar-api.js
+
+// --- SUPABASE ---
+const SUPABASE_URL = 'https://lbjcfqxfztbaoxuwhrhd.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxiamNmcXhmenRiYW94dXdocmhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzMzU2NjcsImV4cCI6MjA4OTkxMTY2N30.wp27pbHIwDVLn2CRbPga6olEZOeJdDIO_qRhaDK2l5s';
+let supabaseClient = null;
+try { supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch(e) {}
+
+function logEstimate(result, inputs) {
+  if (!supabaseClient) return;
+  try {
+    supabaseClient.from('estimates').insert({
+      address: SolarState.address || null, lat: SolarState.lat, lon: SolarState.lon,
+      azimuth: inputs.azimuth, tilt: inputs.tilt, system_watts: inputs.systemWatts,
+      floor_level: inputs.floor, total_floors: inputs.totalFloors, shading: inputs.shading,
+      annual_kwh: Math.round(result.annualKwh * 10) / 10,
+      annual_savings: Math.round(result.annualSavings * 100) / 100,
+      shade_factor: result.shadeFactor, used_pvwatts: result.usedPVWatts,
+      data_sources: result.dataSources,
+    });
+  } catch(e) {}
+}
+
+// --- NAVIGATION ---
+function goStep(n) {
+  document.getElementById('step' + currentStep).classList.remove('active');
+  currentStep = n;
+  document.getElementById('step' + n).classList.add('active');
+
+  // Update dots
+  document.querySelectorAll('.step-dot').forEach(dot => {
+    const s = parseInt(dot.dataset.step);
+    dot.className = 'step-dot' + (s === n ? ' active' : s < n ? ' done' : '');
+  });
+
+  // If hitting step 4, auto-calculate
+  if (n === 4) runCalculation();
+}
+
+function skipToManual() {
+  manualMode = true;
+  goStep(2);
+}
+
+// --- GOOGLE PLACES ---
+function initGooglePlaces() {
+  const input = document.getElementById('addressInput');
+  const success = SolarAPI.initAutocomplete(input, onPlaceSelected);
+  if (!success) console.log('[Calc2] Google Places not available');
+}
+window.initGooglePlaces = initGooglePlaces;
+
+async function onPlaceSelected(place) {
+  const status = document.getElementById('lookupStatus');
+  status.className = 'lookup-status active';
+  status.innerHTML = '<span class="hero-spinner"></span> Looking up building data...';
+
+  await SolarAPI.runBuildingLookup((service, s) => {
+    // silently track
+  });
+
+  status.textContent = '';
+
+  // Auto-fill floors
+  if (SolarState.numfloors) {
+    document.getElementById('totalFloors').value = SolarState.numfloors;
+    document.getElementById('totalFloorsAuto').style.display = 'block';
+    const floorInput = document.getElementById('floor');
+    if (parseInt(floorInput.value) > SolarState.numfloors) {
+      floorInput.value = Math.ceil(SolarState.numfloors / 2);
+    }
+    document.getElementById('step2sub').textContent =
+      SolarState.address.split(',')[0] + ' — ' + SolarState.numfloors + ' floors detected.';
+  }
+
+  // Auto-select direction
+  if (SolarState.orientationSuggestion) {
+    selectedDirection = SolarState.orientationSuggestion.bestDirection;
+    document.getElementById('step3sub').textContent =
+      'Detected: ' + (DIRECTION_LABELS[selectedDirection] || selectedDirection + '°') +
+      '-facing (' + SolarState.orientationSuggestion.confidence + ' confidence). Tap to change.';
+  }
+
+  // Start AI visualization immediately
+  if (typeof SolarViz !== 'undefined' && SolarState.lat && SolarState.lon) {
+    const floor = parseInt(document.getElementById('floor').value) || 3;
+    const totalFloors = parseInt(document.getElementById('totalFloors').value) || 6;
+    SolarViz.start(SolarState.lat, SolarState.lon, floor, totalFloors);
+  }
+
+  // Advance to step 2
+  goStep(2);
+}
+
+// --- DIRECTION ---
+function selectDirection(el) {
+  document.querySelectorAll('#directionOptions .step-option').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedDirection = parseInt(el.dataset.value);
+  // Auto-advance after a short delay
+  setTimeout(() => goStep(4), 300);
+}
+
+// Pre-select direction when step 3 loads
+function highlightDirection() {
+  const btns = document.querySelectorAll('#directionOptions .step-option');
+  btns.forEach(b => {
+    b.classList.toggle('selected', parseInt(b.dataset.value) === selectedDirection);
+  });
+}
+
+// Watch for step 3 activation
+const stepObserver = new MutationObserver(() => {
+  if (document.getElementById('step3').classList.contains('active')) highlightDirection();
+});
+stepObserver.observe(document.getElementById('step3'), { attributes: true, attributeFilter: ['class'] });
+
+// --- CALCULATION ---
+async function runCalculation() {
+  const formInputs = {
+    azimuth: selectedDirection,
+    tilt: 90,            // default railing mount
+    systemWatts: 800,    // default 2 panels
+    floor: parseInt(document.getElementById('floor').value) || 3,
+    totalFloors: parseInt(document.getElementById('totalFloors').value) || 6,
+    shading: 'some',     // default
+    monthlyBill: 140,    // default
+    systemCost: 2200,    // default
+  };
+
+  try {
+    const result = await SolarAPI.calculateEstimate(formInputs);
+
+    // Swap hero background to the AI-generated building image
+    if (SolarViz._cache && SolarViz._cache.heroImage) {
+      const bg = document.getElementById('heroBg');
+      bg.style.backgroundImage = 'url(' + SolarViz._cache.heroImage + ')';
+    }
+
+    // Update step 4 to show teaser
+    document.getElementById('step4title').textContent = Math.round(result.annualKwh).toLocaleString() + ' kWh/year';
+    document.getElementById('step4sub').textContent =
+      '$' + Math.round(result.annualSavings) + '/year in savings from your balcony.';
+
+    // Populate floating results card
+    document.getElementById('rcKwh').textContent = Math.round(result.annualKwh).toLocaleString() + ' kWh';
+    document.getElementById('rcSub').textContent =
+      Math.round(result.annualKwh / 12) + ' kWh/month from a ' + result.systemWatts + 'W system';
+    document.getElementById('rcSavings').textContent = '$' + Math.round(result.annualSavings);
+    document.getElementById('rcBillOffset').textContent = Math.round(result.billOffsetPct) + '%';
+    document.getElementById('rcPayback').textContent =
+      result.npvPayback < 25 ? result.npvPayback.toFixed(1) + ' yrs' : '25+';
+    document.getElementById('rcLifetime').textContent = '$' + Math.round(result.lifetimeSavings).toLocaleString();
+    document.getElementById('rcCo2').textContent = Math.round(result.co2Lbs);
+    document.getElementById('rcTrees').textContent = result.treesEquiv.toFixed(1);
+
+    // Show the floating card and shift layout
+    document.getElementById('resultsCard').classList.add('visible');
+    document.getElementById('heroSection').classList.add('has-results');
+
+    // Populate the full results section (hidden until expanded)
+    renderResults(result, formInputs);
+    logEstimate(result, formInputs);
+  } catch(err) {
+    document.getElementById('step4title').textContent = 'Something went wrong';
+    document.getElementById('step4sub').textContent = err.message;
+  }
+}
+
+// --- RENDER RESULTS ---
+function renderResults(r, inputs) {
+  const banner = document.getElementById('fallbackBanner');
+  if (!r.usedPVWatts) banner.classList.add('visible');
+  else banner.classList.remove('visible');
+
+  if (SolarState.solarResource && SolarState.solarResource.avg_ghi) {
+    const ghi = SolarState.solarResource.avg_ghi.annual;
+    const ctx = document.getElementById('solarContext');
+    ctx.textContent = 'Your location receives ' + ghi.toFixed(1) + ' kWh/m\u00B2/day of solar energy (NYC avg: 4.21)';
+    ctx.classList.add('visible');
+  }
+
+  document.getElementById('annualKwh').textContent = Math.round(r.annualKwh).toLocaleString() + ' kWh';
+  document.getElementById('annualKwhContext').textContent =
+    'That\u2019s ' + Math.round(r.annualKwh / 12) + ' kWh/month from a ' + r.systemWatts + 'W system';
+
+  document.getElementById('annualSavings').textContent = '$' + Math.round(r.annualSavings).toLocaleString();
+  document.getElementById('monthlySavings').textContent = '$' + Math.round(r.monthlySavings) + '/month';
+  document.getElementById('billOffset').textContent = Math.round(r.billOffsetPct) + '%';
+  document.getElementById('paybackYears').textContent =
+    r.npvPayback < 25 ? r.npvPayback.toFixed(1) + ' yrs' : '25+ yrs';
+  document.getElementById('paybackDetail').textContent =
+    r.npvPayback < 25 ? 'Simple: ' + r.simplePayback.toFixed(1) + ' yrs' : 'May not pay back in 25 years';
+  document.getElementById('lifetimeSavings').textContent = '$' + Math.round(r.lifetimeSavings).toLocaleString();
+
+  renderChart(r.monthlyKwh);
+
+  document.getElementById('co2Offset').textContent = Math.round(r.co2Lbs).toLocaleString();
+  document.getElementById('treesEquiv').textContent = r.treesEquiv.toFixed(1);
+  document.getElementById('milesOffset').textContent = Math.round(r.milesOffset).toLocaleString();
+  document.getElementById('phonesCharged').textContent = Math.round(r.phonesCharged).toLocaleString();
+
+  document.getElementById('detailSystemSize').textContent = r.systemWatts + 'W (' + r.systemKw + ' kW)';
+  document.getElementById('detailOrientation').textContent = DIRECTION_LABELS[r.azimuth] + ' (' + r.azimuth + '\u00B0)';
+  document.getElementById('detailTilt').textContent = r.tilt + '\u00B0 (' + (r.tilt === 90 ? 'vertical railing' : 'angled mount') + ')';
+  document.getElementById('detailShadeFactor').textContent = (r.shadeFactor * 100).toFixed(0) + '% sunlight reaching panels';
+  document.getElementById('detailCapacity').textContent = r.capacityFactor.toFixed(1) + '%';
+
+  if (r.pvwattsData && r.pvwattsData.station_info) {
+    const si = r.pvwattsData.station_info;
+    document.getElementById('detailWeatherStationVal').textContent =
+      (si.weather_data_source || 'NSRDB') + ' (' + (si.lat || '').toString().substring(0,5) + ', ' + (si.lon || '').toString().substring(0,7) + ')';
+    document.getElementById('detailWeatherStation').style.display = '';
+  }
+  if (SolarState.yearbuilt) {
+    document.getElementById('detailBuildingYearVal').textContent = SolarState.yearbuilt;
+    document.getElementById('detailBuildingYear').style.display = '';
+  }
+  if (SolarState.neighborBuildings && SolarState.neighborBuildings.length > 0) {
+    const userHeightFt = (inputs.floor / inputs.totalFloors) * (SolarState.heightroof || inputs.totalFloors * 10);
+    const taller = SolarState.neighborBuildings.filter(b => {
+      const h = (b.properties || b).heightroof;
+      return h && parseFloat(h) > userHeightFt;
+    });
+    document.getElementById('detailNeighborsVal').textContent = taller.length + ' of ' + SolarState.neighborBuildings.length + ' within 200m';
+    document.getElementById('detailNeighbors').style.display = '';
+  }
+
+  const disclaimer = document.getElementById('resultDisclaimer');
+  if (r.usedPVWatts) {
+    disclaimer.textContent = 'This estimate uses real-time data from NREL PVWatts V8 API for your exact location. Actual production may vary by \u00B115%. Financial calculations use Con Edison SC-1 rate of $0.22/kWh with 3% annual escalation.';
+  } else {
+    disclaimer.textContent = 'This estimate uses modeled reference data for NYC. For a more precise estimate, enter your address. Actual production may vary by \u00B120%.';
+  }
+  renderDataSources(r.dataSources);
+}
+
+function renderDataSources(ds) {
+  const list = document.getElementById('dataSourcesList');
+  list.innerHTML = '';
+  const sources = [
+    { key: 'pvwatts', label: 'NREL PVWatts V8' },
+    { key: 'solarResource', label: 'NREL Solar Resource' },
+    { key: 'pluto', label: 'NYC PLUTO' },
+    { key: 'footprints', label: 'NYC Building Footprints' },
+    { key: 'geoclient', label: 'NYC Geoclient' },
+    { key: 'googlePlaces', label: 'Google Places' },
+  ];
+  sources.forEach(s => {
+    const item = document.createElement('div');
+    const success = ds[s.key];
+    item.className = 'ds-item ' + (success ? 'success' : 'fallback');
+    item.innerHTML = '<span class="ds-icon">' + (success ? '\u2713' : '\u2212') + '</span> ' + s.label;
+    list.appendChild(item);
+  });
+}
+
+function renderChart(monthlyKwh) {
+  const container = document.getElementById('monthlyChart');
+  container.innerHTML = '';
+  const maxKwh = Math.max(...monthlyKwh);
+  monthlyKwh.forEach((kwh, i) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'chart-bar-wrapper';
+    const value = document.createElement('div');
+    value.className = 'chart-bar-value';
+    value.textContent = Math.round(kwh);
+    const bar = document.createElement('div');
+    bar.className = 'chart-bar';
+    bar.style.height = '0%';
+    const label = document.createElement('div');
+    label.className = 'chart-bar-label';
+    label.textContent = MONTH_LABELS[i];
+    wrapper.appendChild(value);
+    wrapper.appendChild(bar);
+    wrapper.appendChild(label);
+    container.appendChild(wrapper);
+    const heightPct = maxKwh > 0 ? (kwh / maxKwh) * 100 : 0;
+    requestAnimationFrame(() => { requestAnimationFrame(() => { bar.style.height = heightPct + '%'; }); });
+  });
+}
+
+function expandResults() {
+  document.getElementById('resultsSection').classList.add('visible');
+  setTimeout(() => {
+    document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+  }, 100);
+}
+
+// --- NAV SCROLL ---
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Kick off Google Maps loading now that config.js is available
+loadGoogleMaps();
+</script>
+
+</body>
+</html>

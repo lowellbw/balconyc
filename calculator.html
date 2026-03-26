@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Calculator — balco.nyc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+  <!-- Google Maps JS API — key must be set in js/config.js and restricted to your domain -->
+  <!-- The callback triggers autocomplete initialization after the API loads -->
+  <script>
+    // Dynamic Google Maps loader — only loads if API key is configured
+    window.addEventListener('DOMContentLoaded', function() {
+      // Wait for config.js to load, then check for key
+      setTimeout(function() {
+        if (typeof SolarConfig !== 'undefined' && SolarConfig.GOOGLE_API_KEY) {
+          var s = document.createElement('script');
+          s.src = 'https://maps.googleapis.com/maps/api/js?key=' + SolarConfig.GOOGLE_API_KEY + '&libraries=places&callback=initGooglePlaces';
+          s.async = true;
+          s.defer = true;
+          document.head.appendChild(s);
+        }
+      }, 50);
+    });
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FFFFFF;
+      --bg-alt: #F7F9FA;
+      --text: #171717;
+      --text-sub: #596580;
+      --text-muted: #8896AB;
+      --accent: #171717;
+      --accent-hover: #333333;
+      --teal: #0d7377;
+      --teal-dark: #095456;
+      --teal-light: #e6f4f4;
+      --amber: #f4a261;
+      --amber-dark: #e76f51;
+      --green: #10B981;
+      --green-light: #D1FAE5;
+      --border: #E2E8F0;
+      --card: #FFFFFF;
+      --warm-start: #E0C4A7;
+      --warm-end: #2C3248;
+      --radius: 12px;
+      --radius-lg: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 12px 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: inline-block;
+      text-decoration: none;
+      line-height: 0;
+    }
+    .logo img {
+      height: 72px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: opacity 0.2s;
+    }
+    .nav-links a:hover { opacity: 0.7; }
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      background: var(--accent);
+      color: #fff !important;
+      border: none;
+      border-radius: 24px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      gap: 8px;
+    }
+    .btn-pill:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding: 140px 0 60px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .page-header p {
+      font-size: 1.15rem;
+      color: var(--text-sub);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* ─── CALCULATOR LAYOUT ─── */
+    .calc-wrapper {
+      padding: 0 0 120px;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* ─── FORM PANEL ─── */
+    .form-panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      position: sticky;
+      top: 120px;
+    }
+    .form-panel h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .form-panel .form-sub {
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      margin-bottom: 32px;
+      line-height: 1.4;
+    }
+
+    .form-section {
+      margin-bottom: 28px;
+    }
+    .form-section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .form-group .hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--bg-alt);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(13,115,119,0.1);
+    }
+    .form-group input::placeholder { color: #a0a8b8; }
+
+    /* Direction picker */
+    .direction-picker {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .direction-picker label {
+      position: relative;
+      cursor: pointer;
+    }
+    .direction-picker input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .direction-picker .dir-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 8px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-alt);
+      transition: all 0.15s;
+      text-align: center;
+    }
+    .direction-picker .dir-btn .dir-icon {
+      font-size: 1.2rem;
+      margin-bottom: 2px;
+    }
+    .direction-picker .dir-btn .dir-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      letter-spacing: 0.02em;
+    }
+    .direction-picker input:checked + .dir-btn {
+      border-color: var(--teal);
+      background: var(--teal-light);
+      box-shadow: 0 0 0 2px rgba(13,115,119,0.15);
+    }
+    .direction-picker input:checked + .dir-btn .dir-label {
+      color: var(--teal-dark);
+      font-weight: 700;
+    }
+
+    /* Mount type toggle */
+    .mount-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .mount-toggle label {
+      position: relative;
+      cursor: pointer;
+    }
+    .mount-toggle input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .mount-toggle .mount-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-alt);
+      transition: all 0.15s;
+      text-align: center;
+    }
+    .mount-toggle .mount-btn .mount-icon {
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+    }
+    .mount-toggle .mount-btn .mount-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .mount-toggle .mount-btn .mount-desc {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .mount-toggle input:checked + .mount-btn {
+      border-color: var(--teal);
+      background: var(--teal-light);
+      box-shadow: 0 0 0 2px rgba(13,115,119,0.15);
+    }
+
+    /* Shading selector */
+    .shading-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .shading-options label {
+      position: relative;
+      cursor: pointer;
+    }
+    .shading-options input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .shading-option-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-alt);
+      transition: all 0.15s;
+    }
+    .shading-option-btn .shade-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      width: 32px;
+      text-align: center;
+    }
+    .shading-option-btn .shade-text {
+      flex: 1;
+    }
+    .shading-option-btn .shade-text strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .shading-option-btn .shade-text span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .shading-options input:checked + .shading-option-btn {
+      border-color: var(--teal);
+      background: var(--teal-light);
+      box-shadow: 0 0 0 2px rgba(13,115,119,0.15);
+    }
+
+    /* Range slider */
+    .range-display {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+    .range-display .range-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--teal);
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--border);
+      outline: none;
+      padding: 0;
+      margin: 0;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--teal);
+      cursor: pointer;
+      border: 3px solid white;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--teal);
+      cursor: pointer;
+      border: 3px solid white;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+
+    .calc-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 8px;
+    }
+    .calc-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    /* ─── RESULTS PANEL ─── */
+    .results-panel {
+      position: sticky;
+      top: 120px;
+    }
+
+    .results-placeholder {
+      background: var(--bg-alt);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-lg);
+      padding: 80px 40px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+    .results-placeholder .placeholder-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+    .results-placeholder p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .results-content {
+      display: none;
+    }
+    .results-content.visible {
+      display: block;
+      animation: fadeUp 0.5s ease;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero result card */
+    .result-hero {
+      background: linear-gradient(135deg, #0a2e2f, var(--teal-dark), var(--teal));
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .result-hero .result-hero-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+    .result-hero .result-hero-value {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .result-hero .result-hero-sub {
+      font-size: 1rem;
+      opacity: 0.7;
+    }
+
+    /* Stats grid */
+    .result-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .result-stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .result-stat-card .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .result-stat-card .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .result-stat-card .stat-detail {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      margin-top: 2px;
+    }
+    .result-stat-card.highlight {
+      background: var(--green-light);
+      border-color: var(--green);
+    }
+    .result-stat-card.highlight .stat-value {
+      color: #065F46;
+    }
+
+    /* Monthly chart */
+    .result-chart-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .result-chart-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .chart-container {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 160px;
+      padding-bottom: 24px;
+      position: relative;
+    }
+    .chart-bar-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: flex-end;
+    }
+    .chart-bar-value {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      margin-bottom: 4px;
+    }
+    .chart-bar {
+      width: 100%;
+      max-width: 40px;
+      background: linear-gradient(180deg, var(--teal), var(--teal-dark));
+      border-radius: 4px 4px 0 0;
+      transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      min-height: 4px;
+    }
+    .chart-bar-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* System details */
+    .result-details-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .result-details-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .detail-row:last-child {
+      border-bottom: none;
+    }
+    .detail-row .detail-label {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+    }
+    .detail-row .detail-value {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Impact card */
+    .result-impact {
+      background: linear-gradient(135deg, #064E3B, #065F46, #047857);
+      border-radius: var(--radius);
+      padding: 28px;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .result-impact h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      opacity: 0.9;
+    }
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .impact-item .impact-value {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .impact-item .impact-label {
+      font-size: 0.78rem;
+      opacity: 0.75;
+      margin-top: 2px;
+    }
+
+    /* Disclaimer */
+    .result-disclaimer {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      padding: 16px 0 0;
+    }
+
+    /* ─── METHODOLOGY ─── */
+    .methodology {
+      padding: 80px 0 120px;
+      border-top: 1px solid var(--border);
+    }
+    .methodology h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .methodology > .container > p {
+      font-size: 1rem;
+      color: var(--text-sub);
+      margin-bottom: 40px;
+      max-width: 700px;
+    }
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .method-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .method-card h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .method-card p {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+    .method-card code {
+      background: rgba(13,115,119,0.1);
+      color: var(--teal-dark);
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.5);
+      padding: 40px 0;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.85rem;
+    }
+    footer a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+    }
+    footer a:hover { color: #fff; }
+
+    /* ─── ADDRESS SECTION ─── */
+    .address-input-wrapper {
+      position: relative;
+    }
+    .address-input-wrapper input {
+      padding-right: 44px;
+    }
+    .address-spinner {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border: 2.5px solid var(--border);
+      border-top-color: var(--teal);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    .address-spinner.active { display: block; }
+    @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+    .skip-link {
+      display: inline-block;
+      font-size: 0.82rem;
+      color: var(--teal);
+      cursor: pointer;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .skip-link:hover { text-decoration: underline; }
+
+    /* Lookup progress */
+    .lookup-progress {
+      margin-top: 12px;
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .lookup-progress.active { display: flex; }
+    .lookup-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .lookup-item .lookup-icon {
+      width: 16px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+    .lookup-item.done { color: var(--green); }
+    .lookup-item.done .lookup-icon::after { content: '\2713'; }
+    .lookup-item.loading .lookup-icon::after { content: ''; }
+    .lookup-item.loading .lookup-icon {
+      width: 14px; height: 14px;
+      border: 2px solid var(--border);
+      border-top-color: var(--teal);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    .lookup-item.failed { color: var(--text-muted); }
+    .lookup-item.failed .lookup-icon::after { content: '\2212'; }
+
+    /* Building info card */
+    .building-info-card {
+      background: var(--teal-light);
+      border: 1px solid rgba(13,115,119,0.2);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 16px;
+      display: none;
+      animation: fadeUp 0.3s ease;
+    }
+    .building-info-card.visible { display: block; }
+    .building-info-card h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--teal-dark);
+      margin-bottom: 8px;
+    }
+    .building-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 16px;
+    }
+    .building-info-item {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+    }
+    .building-info-item strong {
+      color: var(--text);
+    }
+
+    /* Auto-detected hint */
+    .auto-detected-hint {
+      display: none;
+      font-size: 0.78rem;
+      color: var(--teal);
+      font-weight: 500;
+      margin-top: 6px;
+      animation: fadeUp 0.3s ease;
+    }
+    .auto-detected-hint.visible { display: block; }
+
+    /* Form sections collapsible */
+    .form-section.dimmed {
+      opacity: 0.45;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .form-section.dimmed.expanded {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Calc button loading state */
+    .calc-btn.loading {
+      opacity: 0.7;
+      pointer-events: none;
+      position: relative;
+    }
+    .calc-btn-spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 8px;
+    }
+    .calc-btn.loading .calc-btn-spinner { display: inline-block; }
+    .calc-btn.loading .calc-btn-text { opacity: 0.8; }
+
+    /* Fallback indicator */
+    .fallback-banner {
+      background: #FEF3C7;
+      border: 1px solid #F59E0B;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.8rem;
+      color: #92400E;
+      margin-bottom: 12px;
+      display: none;
+    }
+    .fallback-banner.visible { display: block; }
+
+    /* Data sources card */
+    .data-sources-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-top: 16px;
+    }
+    .data-sources-card summary {
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-sub);
+      list-style: none;
+    }
+    .data-sources-card summary::-webkit-details-marker { display: none; }
+    .data-sources-card summary::before {
+      content: '\25B6';
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 0.7rem;
+      transition: transform 0.2s;
+    }
+    .data-sources-card[open] summary::before { transform: rotate(90deg); }
+    .data-sources-list {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .ds-item {
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ds-item .ds-icon { width: 16px; text-align: center; }
+    .ds-item.success { color: var(--green); }
+    .ds-item.fallback { color: var(--text-muted); }
+
+    /* Solar resource context */
+    .solar-context {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      padding: 8px 0 4px;
+      display: none;
+    }
+    .solar-context.visible { display: block; }
+
+    /* ─── INLINE NUMBER FIELDS ─── */
+    .inline-fields {
+      display: flex;
+      gap: 16px;
+    }
+    .inline-field {
+      flex: 1;
+      position: relative;
+    }
+    .inline-field label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-sub);
+      margin-bottom: 6px;
+    }
+    .num-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: var(--bg);
+      color: var(--text);
+      -moz-appearance: textfield;
+    }
+    .num-input::-webkit-inner-spin-button,
+    .num-input::-webkit-outer-spin-button {
+      opacity: 1;
+    }
+    .num-input:focus {
+      outline: none;
+      border-color: var(--teal);
+    }
+    .auto-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--teal);
+      margin-top: 4px;
+    }
+
+    /* ─── VISUALIZATION ─── */
+    .viz-section {
+      display: none;
+      margin: 24px 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+    .viz-section h3 {
+      padding: 16px 20px 0;
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .viz-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: var(--teal-light);
+      color: var(--teal);
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+    .viz-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 20px;
+      gap: 16px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .viz-spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid var(--border);
+      border-top-color: var(--teal);
+      border-radius: 50%;
+      animation: vizSpin 0.8s linear infinite;
+    }
+    @keyframes vizSpin {
+      to { transform: rotate(360deg); }
+    }
+    .viz-slider {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      cursor: ew-resize;
+      user-select: none;
+    }
+    .viz-slider img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .viz-after-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      clip-path: inset(0 0 0 50%);
+    }
+    .viz-handle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 4px;
+      height: 100%;
+      background: white;
+      transform: translateX(-50%);
+      cursor: ew-resize;
+      z-index: 10;
+      box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    }
+    .viz-handle::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px;
+      height: 36px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2'%3E%3Cpath d='M8 4l-6 8 6 8M16 4l6 8-6 8'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .viz-labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 16px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .viz-error {
+      display: none;
+      padding: 12px 20px;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      text-align: center;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-panel, .results-panel {
+        position: static;
+      }
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .form-panel { padding: 28px 20px; }
+      .direction-picker {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .page-header { padding: 120px 0 40px; }
+      .nav-links a:not(.btn-pill) { display: none; }
+      .result-stats { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco.nyc">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#methodology">Methodology</a>
+      <a href="index.html#waitlist" class="btn-pill">Join Waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="container">
+    <h1>Model Your Balcony's Solar Potential</h1>
+    <p>Enter your balcony details below and we'll estimate your annual energy production, savings, and environmental impact using NREL's PVWatts methodology.</p>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calc-wrapper">
+  <div class="container">
+    <div class="calc-grid">
+
+      <!-- LEFT: Form -->
+      <div class="form-panel">
+        <h2>Your Balcony Details</h2>
+        <p class="form-sub">Enter your address for a precise estimate using real building data and NREL's PVWatts API, or skip to enter details manually.</p>
+
+        <!-- Address Entry -->
+        <div class="form-section" id="addressSection">
+          <div class="form-section-label">Address</div>
+          <div class="form-group">
+            <label for="addressInput">Your NYC address</label>
+            <div class="address-input-wrapper">
+              <input type="text" id="addressInput" placeholder="Start typing your address..." autocomplete="off">
+              <div class="address-spinner" id="addressSpinner"></div>
+            </div>
+            <span class="skip-link" id="skipAddress" onclick="skipAddressEntry()">Skip &mdash; enter details manually</span>
+
+            <!-- Lookup progress -->
+            <div class="lookup-progress" id="lookupProgress">
+              <div class="lookup-item" id="lp-geoclient"><span class="lookup-icon"></span> NYC building registry</div>
+              <div class="lookup-item" id="lp-pluto"><span class="lookup-icon"></span> Building data (PLUTO)</div>
+              <div class="lookup-item" id="lp-footprints"><span class="lookup-icon"></span> Building orientation</div>
+              <div class="lookup-item" id="lp-solarResource"><span class="lookup-icon"></span> Solar resource data</div>
+            </div>
+
+            <!-- Building info card (shown after lookup) -->
+            <div class="building-info-card" id="buildingInfoCard">
+              <h4>Building Found</h4>
+              <div class="building-info-grid">
+                <div class="building-info-item" id="biAddress"></div>
+                <div class="building-info-item" id="biFloors"></div>
+                <div class="building-info-item" id="biYear"></div>
+                <div class="building-info-item" id="biClass"></div>
+                <div class="building-info-item" id="biUnits"></div>
+                <div class="building-info-item" id="biHeight"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Balcony Direction -->
+        <div class="form-section">
+          <div class="form-section-label">Orientation</div>
+          <div class="form-group">
+            <label>Which direction does your balcony face?</label>
+            <div class="direction-picker">
+              <label><input type="radio" name="direction" value="0"><div class="dir-btn"><span class="dir-icon">N</span><span class="dir-label">North</span></div></label>
+              <label><input type="radio" name="direction" value="45"><div class="dir-btn"><span class="dir-icon">NE</span><span class="dir-label">Northeast</span></div></label>
+              <label><input type="radio" name="direction" value="90"><div class="dir-btn"><span class="dir-icon">E</span><span class="dir-label">East</span></div></label>
+              <label><input type="radio" name="direction" value="135"><div class="dir-btn"><span class="dir-icon">SE</span><span class="dir-label">Southeast</span></div></label>
+              <label><input type="radio" name="direction" value="180" checked><div class="dir-btn"><span class="dir-icon">S</span><span class="dir-label">South</span></div></label>
+              <label><input type="radio" name="direction" value="225"><div class="dir-btn"><span class="dir-icon">SW</span><span class="dir-label">Southwest</span></div></label>
+              <label><input type="radio" name="direction" value="270"><div class="dir-btn"><span class="dir-icon">W</span><span class="dir-label">West</span></div></label>
+              <label><input type="radio" name="direction" value="315"><div class="dir-btn"><span class="dir-icon">NW</span><span class="dir-label">Northwest</span></div></label>
+            </div>
+            <p class="hint">South-facing gets the most sun in NYC. If unsure, check which side of your building faces the street.</p>
+            <p class="auto-detected-hint" id="orientationHint"></p>
+          </div>
+        </div>
+
+        <!-- Mount Type -->
+        <div class="form-section">
+          <div class="form-section-label">Panel Mounting</div>
+          <div class="form-group">
+            <label>How will the panels be mounted?</label>
+            <div class="mount-toggle">
+              <label>
+                <input type="radio" name="mount" value="90" checked>
+                <div class="mount-btn">
+                  <span class="mount-icon">|</span>
+                  <span class="mount-label">Railing Mount</span>
+                  <span class="mount-desc">Vertical (90&deg;)</span>
+                </div>
+              </label>
+              <label>
+                <input type="radio" name="mount" value="70">
+                <div class="mount-btn">
+                  <span class="mount-icon">/</span>
+                  <span class="mount-label">Angled Mount</span>
+                  <span class="mount-desc">Tilted (70&deg;)</span>
+                </div>
+              </label>
+            </div>
+            <p class="hint">Railing mount is most common. Angled mount gets ~15% more energy but needs floor space.</p>
+          </div>
+        </div>
+
+        <!-- Balcony Size -->
+        <div class="form-section">
+          <div class="form-section-label">System Size</div>
+          <div class="form-group">
+            <label>Balcony railing width</label>
+            <select id="railingWidth">
+              <option value="400">6-8 ft (1 panel, 400W)</option>
+              <option value="800" selected>8-12 ft (2 panels, 800W)</option>
+              <option value="1200">12-16 ft (3 panels, 1,200W)</option>
+              <option value="1600">16+ ft (4 panels, 1,600W)</option>
+            </select>
+            <p class="hint">Standard panels are ~3.5 ft wide. Most NYC balconies fit 2 panels.</p>
+          </div>
+        </div>
+
+        <!-- Building Info -->
+        <div class="form-section">
+          <div class="form-section-label">Building Info</div>
+          <div class="inline-fields">
+            <div class="inline-field">
+              <label for="floor">Your floor</label>
+              <input type="number" id="floor" min="1" max="80" value="8" class="num-input">
+            </div>
+            <div class="inline-field">
+              <label for="totalFloors">Total floors</label>
+              <input type="number" id="totalFloors" min="2" max="80" value="20" class="num-input">
+              <span class="auto-tag" id="totalFloorsAuto" style="display:none">auto-detected</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shading -->
+        <div class="form-section">
+          <div class="form-section-label">Shading Environment</div>
+          <div class="form-group">
+            <label>What's in front of your balcony?</label>
+            <div class="shading-options">
+              <label>
+                <input type="radio" name="shading" value="open">
+                <div class="shading-option-btn">
+                  <span class="shade-icon">&#9728;</span>
+                  <div class="shade-text">
+                    <strong>Wide open</strong>
+                    <span>No tall buildings nearby, unobstructed sky</span>
+                  </div>
+                </div>
+              </label>
+              <label>
+                <input type="radio" name="shading" value="some" checked>
+                <div class="shading-option-btn">
+                  <span class="shade-icon">&#9729;</span>
+                  <div class="shade-text">
+                    <strong>Some buildings</strong>
+                    <span>Typical NYC block, a few taller buildings nearby</span>
+                  </div>
+                </div>
+              </label>
+              <label>
+                <input type="radio" name="shading" value="dense">
+                <div class="shading-option-btn">
+                  <span class="shade-icon">&#9899;</span>
+                  <div class="shade-text">
+                    <strong>Dense urban canyon</strong>
+                    <span>Midtown/FiDi, tall buildings on all sides</span>
+                  </div>
+                </div>
+              </label>
+              <label>
+                <input type="radio" name="shading" value="wide_avenue">
+                <div class="shading-option-btn">
+                  <span class="shade-icon">&#9776;</span>
+                  <div class="shade-text">
+                    <strong>Wide avenue</strong>
+                    <span>Faces a wide street/avenue (Broadway, Park Ave, etc.)</span>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Electric Bill -->
+        <div class="form-section">
+          <div class="form-section-label">Your Electric Bill</div>
+          <div class="form-group">
+            <label for="monthlyBill">Monthly electric bill ($)</label>
+            <input type="number" id="monthlyBill" min="20" max="1000" value="140" step="10" class="num-input">
+            <p class="hint">Average NYC apartment: $120-180/month (Con Edison SC-1 rate)</p>
+          </div>
+        </div>
+
+        <!-- System Cost -->
+        <div class="form-section">
+          <div class="form-section-label">System Budget</div>
+          <div class="form-group">
+            <label>Estimated system cost</label>
+            <select id="systemCost">
+              <option value="1200">Budget kit (~$1,200)</option>
+              <option value="2200" selected>Mid-range kit (~$2,200)</option>
+              <option value="3000">Premium branded kit (~$3,000)</option>
+            </select>
+            <p class="hint">Includes panels, micro-inverter, mounting hardware, cables. DIY install.</p>
+          </div>
+        </div>
+
+        <button class="calc-btn" id="calcBtn" onclick="calculate()">
+          <span class="calc-btn-spinner"></span>
+          <span class="calc-btn-text">Calculate My Solar Potential</span>
+        </button>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="results-panel">
+        <div class="results-placeholder" id="placeholder">
+          <div class="placeholder-icon">&#9728;</div>
+          <p>Fill in your balcony details and hit calculate to see your personalized solar estimate.</p>
+        </div>
+
+        <div class="results-content" id="results">
+          <!-- Fallback banner -->
+          <div class="fallback-banner" id="fallbackBanner">
+            Using estimated model &mdash; enter your address above for a precise PVWatts-powered estimate.
+          </div>
+
+          <!-- Solar resource context -->
+          <p class="solar-context" id="solarContext"></p>
+
+          <!-- Hero number -->
+          <div class="result-hero">
+            <div class="result-hero-label">Estimated Annual Production</div>
+            <div class="result-hero-value" id="annualKwh">—</div>
+            <div class="result-hero-sub" id="annualKwhContext">—</div>
+          </div>
+
+          <!-- Key stats -->
+          <div class="result-stats">
+            <div class="result-stat-card highlight">
+              <div class="stat-label">Annual Savings</div>
+              <div class="stat-value" id="annualSavings">—</div>
+              <div class="stat-detail" id="monthlySavings">—</div>
+            </div>
+            <div class="result-stat-card">
+              <div class="stat-label">Bill Offset</div>
+              <div class="stat-value" id="billOffset">—</div>
+              <div class="stat-detail">of your electric bill</div>
+            </div>
+            <div class="result-stat-card">
+              <div class="stat-label">Simple Payback</div>
+              <div class="stat-value" id="paybackYears">—</div>
+              <div class="stat-detail" id="paybackDetail">—</div>
+            </div>
+            <div class="result-stat-card">
+              <div class="stat-label">25-Year Savings</div>
+              <div class="stat-value" id="lifetimeSavings">—</div>
+              <div class="stat-detail">with rate escalation</div>
+            </div>
+          </div>
+
+          <!-- AI Visualization -->
+          <div class="viz-section" id="vizSection">
+            <h3>Your Building with Solar Panels <span class="viz-badge">Beta</span></h3>
+            <div class="viz-loading" id="vizLoading">
+              <div class="viz-spinner"></div>
+              <span>Generating your solar visualization...</span>
+            </div>
+            <div class="viz-slider" id="vizSlider" style="display:none">
+              <img id="vizBefore" alt="Before: Street View of your building">
+              <div class="viz-after-wrap" id="vizAfterWrap">
+                <img id="vizAfter" alt="After: Your building with solar panels">
+              </div>
+              <div class="viz-handle" id="vizHandle"></div>
+            </div>
+            <div class="viz-labels" id="vizLabels" style="display:none">
+              <span>Before</span>
+              <span>Drag to compare</span>
+              <span>After</span>
+            </div>
+            <div class="viz-error" id="vizError"></div>
+          </div>
+
+          <!-- Monthly chart -->
+          <div class="result-chart-card">
+            <h3>Monthly Energy Production (kWh)</h3>
+            <div class="chart-container" id="monthlyChart"></div>
+          </div>
+
+          <!-- Environmental impact -->
+          <div class="result-impact">
+            <h3>Environmental Impact (Annual)</h3>
+            <div class="impact-grid">
+              <div class="impact-item">
+                <div class="impact-value" id="co2Offset">—</div>
+                <div class="impact-label">lbs CO&#8322; avoided</div>
+              </div>
+              <div class="impact-item">
+                <div class="impact-value" id="treesEquiv">—</div>
+                <div class="impact-label">trees planted equivalent</div>
+              </div>
+              <div class="impact-item">
+                <div class="impact-value" id="milesOffset">—</div>
+                <div class="impact-label">miles of driving offset</div>
+              </div>
+              <div class="impact-item">
+                <div class="impact-value" id="phonesCharged">—</div>
+                <div class="impact-label">smartphone charges</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- System details -->
+          <div class="result-details-card">
+            <h3>System Configuration</h3>
+            <div class="detail-row">
+              <span class="detail-label">System size</span>
+              <span class="detail-value" id="detailSystemSize">—</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Panel orientation</span>
+              <span class="detail-value" id="detailOrientation">—</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Tilt angle</span>
+              <span class="detail-value" id="detailTilt">—</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Shade factor</span>
+              <span class="detail-value" id="detailShadeFactor">—</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Effective capacity factor</span>
+              <span class="detail-value" id="detailCapacity">—</span>
+            </div>
+            <div class="detail-row" id="detailWeatherStation" style="display:none">
+              <span class="detail-label">Weather station</span>
+              <span class="detail-value" id="detailWeatherStationVal">—</span>
+            </div>
+            <div class="detail-row" id="detailBuildingYear" style="display:none">
+              <span class="detail-label">Building year</span>
+              <span class="detail-value" id="detailBuildingYearVal">—</span>
+            </div>
+            <div class="detail-row" id="detailNeighbors" style="display:none">
+              <span class="detail-label">Taller buildings nearby</span>
+              <span class="detail-value" id="detailNeighborsVal">—</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Electricity rate used</span>
+              <span class="detail-value">$0.22/kWh (Con Ed SC-1)</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Rate escalation</span>
+              <span class="detail-value">3%/year</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Panel degradation</span>
+              <span class="detail-value">0.5%/year</span>
+            </div>
+          </div>
+
+          <p class="result-disclaimer" id="resultDisclaimer">
+            Estimates are based on NREL PVWatts V8 methodology with NYC-specific balcony derating factors. Actual production may vary by &plusmn;20% based on exact shading conditions, weather variability, panel brand, and installation quality. Shadow modeling uses simplified lookup tables; for precision estimates, a site assessment is recommended. Financial calculations assume Con Edison SC-1 residential rate of $0.22/kWh with 3% annual escalation and 0.5% annual panel degradation.
+          </p>
+
+          <!-- Data sources -->
+          <details class="data-sources-card" id="dataSourcesCard">
+            <summary>Data Sources</summary>
+            <div class="data-sources-list" id="dataSourcesList"></div>
+          </details>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="methodology" id="methodology">
+  <div class="container">
+    <h2>How We Calculate This</h2>
+    <p>Our model is grounded in the same industry-standard tools that professional solar installers use, adapted for the unique realities of NYC balcony installations.</p>
+
+    <div class="method-grid">
+      <div class="method-card">
+        <h4>NREL PVWatts V8 Engine</h4>
+        <p>The core energy model is NREL's PVWatts, maintained by the US Department of Energy. It uses the 2020 National Solar Radiation Database with 8,760 hourly weather data points for a typical meteorological year at NYC's coordinates.</p>
+      </div>
+      <div class="method-card">
+        <h4>Azimuth-Based Production</h4>
+        <p>We model production for all 8 compass directions using PVWatts reference data for NYC (40.75&deg;N). South-facing produces ~100% of baseline, SE/SW ~92%, E/W ~72%, NE/NW ~45%, North ~32%. These factors account for NYC's latitude and solar geometry.</p>
+      </div>
+      <div class="method-card">
+        <h4>Vertical Tilt Adjustment</h4>
+        <p>Balcony panels at 90&deg; (vertical railing mount) produce ~70-85% of optimal tilt output. PVWatts handles this natively. Angled mounts at 70&deg; recover ~12-15% more energy. We use <code>tilt=90</code> or <code>tilt=70</code> depending on your selection.</p>
+      </div>
+      <div class="method-card">
+        <h4>Shadow Derating Model</h4>
+        <p>NYC's urban canyon effect is the biggest variable. We use a simplified derating model based on floor level, building height, and neighborhood density. Factors range from <code>0.60</code> (low floor, dense) to <code>0.95</code> (penthouse, clear). We also apply a <code>1.03</code> thermal bonus for better balcony airflow.</p>
+      </div>
+      <div class="method-card">
+        <h4>Financial Model</h4>
+        <p>Savings use Con Edison SC-1 all-in residential rate of $0.22/kWh. Payback accounts for 3% annual electricity rate escalation. 25-year lifetime value includes both rate escalation and 0.5% annual panel degradation. CO&#8322; uses NYC grid factor of 0.65 lbs/kWh.</p>
+      </div>
+      <div class="method-card">
+        <h4>Monthly Distribution</h4>
+        <p>Monthly production follows NYC's seasonal solar resource pattern from NREL data. Peak production in June-July (~12% of annual), minimum in December (~5%). This seasonal curve is adjusted by your specific orientation and shade profile.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <a href="index.html">balco.nyc</a> &mdash; Balcony solar for NYC renters</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/solar-api.js"></script>
+<script src="js/visualization.js"></script>
+<script>
+// ============================================================
+// CALCULATOR PAGE — Thin orchestration layer
+// All API logic is in js/solar-api.js, constants in js/config.js
+// ============================================================
+
+let manualMode = false; // true if user skipped address entry
+
+// --- SUPABASE INIT ---
+const SUPABASE_URL = 'https://lbjcfqxfztbaoxuwhrhd.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxiamNmcXhmenRiYW94dXdocmhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzMzU2NjcsImV4cCI6MjA4OTkxMTY2N30.wp27pbHIwDVLn2CRbPga6olEZOeJdDIO_qRhaDK2l5s';
+let supabaseClient = null;
+try {
+  supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+} catch (e) {
+  console.warn('[Calculator] Supabase init failed:', e.message);
+}
+
+// Fire-and-forget estimate logging
+function logEstimate(result, inputs) {
+  if (!supabaseClient) return;
+  try {
+    supabaseClient.from('estimates').insert({
+      address: SolarState.address || null,
+      lat: SolarState.lat,
+      lon: SolarState.lon,
+      azimuth: inputs.azimuth,
+      tilt: inputs.tilt,
+      system_watts: inputs.systemWatts,
+      floor_level: inputs.floor,
+      total_floors: inputs.totalFloors,
+      shading: inputs.shading,
+      annual_kwh: Math.round(result.annualKwh * 10) / 10,
+      annual_savings: Math.round(result.annualSavings * 100) / 100,
+      shade_factor: result.shadeFactor,
+      used_pvwatts: result.usedPVWatts,
+      data_sources: result.dataSources,
+    }).then(() => {
+      console.log('[Calculator] Estimate logged to Supabase');
+    });
+  } catch (e) {
+    // Silent failure — logging should never block UX
+  }
+}
+
+// --- GOOGLE PLACES INITIALIZATION ---
+function initGooglePlaces() {
+  const input = document.getElementById('addressInput');
+  const success = SolarAPI.initAutocomplete(input, onPlaceSelected);
+  if (!success) {
+    console.log('[Calculator] Google Places not available, manual mode only');
+  }
+}
+
+// Called when Google Maps JS API loads (via callback in script tag)
+window.initGooglePlaces = initGooglePlaces;
+
+// --- ADDRESS SELECTION HANDLER ---
+async function onPlaceSelected(place) {
+  const spinner = document.getElementById('addressSpinner');
+  const progress = document.getElementById('lookupProgress');
+  const skipLink = document.getElementById('skipAddress');
+
+  spinner.classList.add('active');
+  progress.classList.add('active');
+  skipLink.style.display = 'none';
+
+  // Run the parallel building data pipeline
+  await SolarAPI.runBuildingLookup((service, status) => {
+    const el = document.getElementById('lp-' + service);
+    if (el) {
+      el.className = 'lookup-item ' + status;
+    }
+  });
+
+  spinner.classList.remove('active');
+
+  // Pre-fill form with discovered data
+  prefillForm();
+
+  // Expand form sections
+  expandFormSections();
+
+  // Start AI visualization immediately (don't wait for Calculate)
+  if (typeof SolarViz !== 'undefined' && SolarState.lat && SolarState.lon) {
+    const floor = parseInt(document.getElementById('floor').value) || 3;
+    const totalFloors = parseInt(document.getElementById('totalFloors').value) || 6;
+    SolarViz.start(SolarState.lat, SolarState.lon, floor, totalFloors);
+  }
+}
+
+// --- SKIP ADDRESS ---
+function skipAddressEntry() {
+  manualMode = true;
+  document.getElementById('skipAddress').style.display = 'none';
+  expandFormSections();
+}
+
+// --- FORM PRE-FILL ---
+function prefillForm() {
+  // Building info card
+  const card = document.getElementById('buildingInfoCard');
+  let hasInfo = false;
+
+  if (SolarState.address) {
+    document.getElementById('biAddress').innerHTML = '<strong>' + SolarState.address.split(',')[0] + '</strong>';
+    hasInfo = true;
+  }
+  if (SolarState.numfloors) {
+    document.getElementById('biFloors').innerHTML = 'Floors: <strong>' + SolarState.numfloors + '</strong>';
+    // Auto-set total floors input
+    const totalInput = document.getElementById('totalFloors');
+    totalInput.value = SolarState.numfloors;
+    document.getElementById('totalFloorsAuto').style.display = 'inline-block';
+    // If user's floor is higher than total, adjust
+    const floorInput = document.getElementById('floor');
+    if (parseInt(floorInput.value) > SolarState.numfloors) {
+      floorInput.value = Math.ceil(SolarState.numfloors / 2);
+    }
+    hasInfo = true;
+  }
+  if (SolarState.yearbuilt) {
+    document.getElementById('biYear').innerHTML = 'Built: <strong>' + SolarState.yearbuilt + '</strong>';
+    hasInfo = true;
+  }
+  if (SolarState.bldgclass) {
+    const isResidential = /^[ABCDR]/i.test(SolarState.bldgclass);
+    document.getElementById('biClass').innerHTML = 'Class: <strong>' + SolarState.bldgclass + '</strong>' +
+      (isResidential ? '' : ' <span style="color:#e74c3c;font-size:0.75rem">(non-residential)</span>');
+    hasInfo = true;
+  }
+  if (SolarState.unitsres) {
+    document.getElementById('biUnits').innerHTML = 'Units: <strong>' + SolarState.unitsres + '</strong>';
+    hasInfo = true;
+  }
+  if (SolarState.heightroof) {
+    document.getElementById('biHeight').innerHTML = 'Height: <strong>' + Math.round(SolarState.heightroof) + ' ft</strong>';
+    hasInfo = true;
+  }
+
+  if (hasInfo) {
+    card.classList.add('visible');
+  }
+
+  // Auto-select orientation from footprint detection
+  if (SolarState.orientationSuggestion) {
+    const bestDir = SolarState.orientationSuggestion.bestDirection;
+    const radio = document.querySelector(`input[name="direction"][value="${bestDir}"]`);
+    if (radio) {
+      radio.checked = true;
+      const dirName = DIRECTION_LABELS[bestDir] || bestDir + '°';
+      const hint = document.getElementById('orientationHint');
+      hint.textContent = 'Detected from building footprint: ' + dirName + ' (' + SolarState.orientationSuggestion.confidence + ' confidence). Adjust if needed.';
+      hint.classList.add('visible');
+    }
+  }
+}
+
+// --- FORM SECTION EXPANSION ---
+function expandFormSections() {
+  document.querySelectorAll('.form-section.dimmed').forEach(el => {
+    el.classList.add('expanded');
+  });
+}
+
+// --- CORE CALCULATION (async, uses SolarAPI) ---
+async function calculate() {
+  const btn = document.getElementById('calcBtn');
+  btn.classList.add('loading');
+
+  try {
+    const formInputs = {
+      azimuth: parseInt(document.querySelector('input[name="direction"]:checked').value),
+      tilt: parseInt(document.querySelector('input[name="mount"]:checked').value),
+      systemWatts: parseInt(document.getElementById('railingWidth').value),
+      floor: parseInt(document.getElementById('floor').value),
+      totalFloors: parseInt(document.getElementById('totalFloors').value),
+      shading: document.querySelector('input[name="shading"]:checked').value,
+      monthlyBill: parseInt(document.getElementById('monthlyBill').value),
+      systemCost: parseInt(document.getElementById('systemCost').value),
+    };
+
+    const result = await SolarAPI.calculateEstimate(formInputs);
+    renderResults(result, formInputs);
+    logEstimate(result, formInputs);
+
+    // Kick off AI visualization (non-blocking)
+    if (typeof SolarViz !== 'undefined' && SolarState.lat && SolarState.lon) {
+      SolarViz.start(SolarState.lat, SolarState.lon, formInputs.floor, formInputs.totalFloors);
+    }
+  } catch (err) {
+    console.error('[Calculator] Calculation failed:', err);
+  } finally {
+    btn.classList.remove('loading');
+  }
+}
+
+// --- RENDER RESULTS ---
+function renderResults(r, inputs) {
+  document.getElementById('placeholder').style.display = 'none';
+  document.getElementById('results').classList.add('visible');
+
+  // Fallback banner
+  const banner = document.getElementById('fallbackBanner');
+  if (!r.usedPVWatts) {
+    banner.classList.add('visible');
+  } else {
+    banner.classList.remove('visible');
+  }
+
+  // Solar resource context
+  if (SolarState.solarResource && SolarState.solarResource.avg_ghi) {
+    const ghi = SolarState.solarResource.avg_ghi.annual;
+    const ctx = document.getElementById('solarContext');
+    ctx.textContent = 'Your location receives ' + ghi.toFixed(1) + ' kWh/m\u00B2/day of solar energy (NYC avg: 4.21)';
+    ctx.classList.add('visible');
+  }
+
+  // Hero
+  document.getElementById('annualKwh').textContent = Math.round(r.annualKwh).toLocaleString() + ' kWh';
+  document.getElementById('annualKwhContext').textContent =
+    'That\u2019s ' + Math.round(r.annualKwh / 12) + ' kWh/month from a ' + r.systemWatts + 'W system';
+
+  // Stats
+  document.getElementById('annualSavings').textContent = '$' + Math.round(r.annualSavings).toLocaleString();
+  document.getElementById('monthlySavings').textContent = '$' + Math.round(r.monthlySavings) + '/month';
+  document.getElementById('billOffset').textContent = Math.round(r.billOffsetPct) + '%';
+  document.getElementById('paybackYears').textContent =
+    r.npvPayback < 25 ? r.npvPayback.toFixed(1) + ' yrs' : '25+ yrs';
+  document.getElementById('paybackDetail').textContent =
+    r.npvPayback < 25 ? 'Simple: ' + r.simplePayback.toFixed(1) + ' yrs' : 'May not pay back in 25 years';
+  document.getElementById('lifetimeSavings').textContent = '$' + Math.round(r.lifetimeSavings).toLocaleString();
+
+  // Monthly chart
+  renderChart(r.monthlyKwh);
+
+  // Environmental
+  document.getElementById('co2Offset').textContent = Math.round(r.co2Lbs).toLocaleString();
+  document.getElementById('treesEquiv').textContent = r.treesEquiv.toFixed(1);
+  document.getElementById('milesOffset').textContent = Math.round(r.milesOffset).toLocaleString();
+  document.getElementById('phonesCharged').textContent = Math.round(r.phonesCharged).toLocaleString();
+
+  // System details
+  document.getElementById('detailSystemSize').textContent = r.systemWatts + 'W (' + r.systemKw + ' kW)';
+  document.getElementById('detailOrientation').textContent = DIRECTION_LABELS[r.azimuth] + ' (' + r.azimuth + '\u00B0)';
+  document.getElementById('detailTilt').textContent = r.tilt + '\u00B0 (' + (r.tilt === 90 ? 'vertical railing' : 'angled mount') + ')';
+  document.getElementById('detailShadeFactor').textContent = (r.shadeFactor * 100).toFixed(0) + '% sunlight reaching panels';
+  document.getElementById('detailCapacity').textContent = r.capacityFactor.toFixed(1) + '%';
+
+  // PVWatts weather station info
+  if (r.pvwattsData && r.pvwattsData.station_info) {
+    const si = r.pvwattsData.station_info;
+    const wsRow = document.getElementById('detailWeatherStation');
+    document.getElementById('detailWeatherStationVal').textContent =
+      (si.weather_data_source || 'NSRDB') + ' (' + (si.lat || '').toString().substring(0,5) + ', ' + (si.lon || '').toString().substring(0,7) + ')';
+    wsRow.style.display = '';
+  }
+
+  // Building year
+  if (SolarState.yearbuilt) {
+    document.getElementById('detailBuildingYearVal').textContent = SolarState.yearbuilt;
+    document.getElementById('detailBuildingYear').style.display = '';
+  }
+
+  // Neighbor buildings count
+  if (SolarState.neighborBuildings && SolarState.neighborBuildings.length > 0) {
+    const userHeightFt = (inputs.floor / inputs.totalFloors) * (SolarState.heightroof || inputs.totalFloors * 10);
+    const taller = SolarState.neighborBuildings.filter(b => {
+      const h = (b.properties || b).heightroof;
+      return h && parseFloat(h) > userHeightFt;
+    });
+    document.getElementById('detailNeighborsVal').textContent = taller.length + ' of ' + SolarState.neighborBuildings.length + ' within 200m';
+    document.getElementById('detailNeighbors').style.display = '';
+  }
+
+  // Dynamic disclaimer
+  const disclaimer = document.getElementById('resultDisclaimer');
+  if (r.usedPVWatts) {
+    disclaimer.textContent = 'This estimate uses real-time data from NREL PVWatts V8 API for your exact location, combined with NYC building data and balcony-specific derating factors. Actual production may vary by \u00B115% based on exact shading, weather variability, and installation quality. Financial calculations use Con Edison SC-1 rate of $0.22/kWh with 3% annual escalation.';
+  } else {
+    disclaimer.textContent = 'This estimate uses modeled reference data for NYC (not your exact location). For a more precise estimate, enter your address above. Actual production may vary by \u00B120%. Financial calculations use Con Edison SC-1 rate of $0.22/kWh with 3% annual escalation and 0.5% annual panel degradation.';
+  }
+
+  // Data sources
+  renderDataSources(r.dataSources);
+
+  // Scroll to results on mobile
+  if (window.innerWidth <= 1024) {
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// --- DATA SOURCES DISPLAY ---
+function renderDataSources(ds) {
+  const list = document.getElementById('dataSourcesList');
+  list.innerHTML = '';
+
+  const sources = [
+    { key: 'pvwatts', label: 'NREL PVWatts V8 (energy model)' },
+    { key: 'solarResource', label: 'NREL Solar Resource (irradiance)' },
+    { key: 'pluto', label: 'NYC PLUTO (building data)' },
+    { key: 'footprints', label: 'NYC Building Footprints (orientation)' },
+    { key: 'geoclient', label: 'NYC Geoclient (building registry)' },
+    { key: 'googlePlaces', label: 'Google Places (geocoding)' },
+    { key: 'neighbors', label: 'Neighbor buildings (shadow context)' },
+  ];
+
+  sources.forEach(s => {
+    const item = document.createElement('div');
+    const success = ds[s.key];
+    item.className = 'ds-item ' + (success ? 'success' : 'fallback');
+    item.innerHTML = '<span class="ds-icon">' + (success ? '\u2713' : '\u2212') + '</span> ' +
+      s.label + (success ? '' : ' (using defaults)');
+    list.appendChild(item);
+  });
+}
+
+
+// --- CHART RENDERING ---
+function renderChart(monthlyKwh) {
+  const container = document.getElementById('monthlyChart');
+  container.innerHTML = '';
+
+  const maxKwh = Math.max(...monthlyKwh);
+
+  monthlyKwh.forEach((kwh, i) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'chart-bar-wrapper';
+
+    const value = document.createElement('div');
+    value.className = 'chart-bar-value';
+    value.textContent = Math.round(kwh);
+
+    const bar = document.createElement('div');
+    bar.className = 'chart-bar';
+    const heightPct = maxKwh > 0 ? (kwh / maxKwh) * 100 : 0;
+    bar.style.height = '0%';
+
+    const label = document.createElement('div');
+    label.className = 'chart-bar-label';
+    label.textContent = MONTH_LABELS[i];
+
+    wrapper.appendChild(value);
+    wrapper.appendChild(bar);
+    wrapper.appendChild(label);
+    container.appendChild(wrapper);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        bar.style.height = heightPct + '%';
+      });
+    });
+  });
+}
+
+
+// --- UI EVENT HANDLERS ---
+
+document.getElementById('floor').addEventListener('input', function() {
+  const totalFloors = document.getElementById('totalFloors');
+  if (parseInt(this.value) > parseInt(totalFloors.value)) {
+    totalFloors.value = this.value;
+  }
+});
+
+document.getElementById('totalFloors').addEventListener('input', function() {
+  const floor = document.getElementById('floor');
+  if (parseInt(floor.value) > parseInt(this.value)) {
+    floor.value = this.value;
+  }
+  // Clear auto-detected tag if user changes value
+  document.getElementById('totalFloorsAuto').style.display = 'none';
+});
+
+
+// Auto-recalculate on input change (after initial calculation)
+(function setupAutoRecalc() {
+  const inputs = document.querySelectorAll('input[type="radio"], select, input[type="range"], input[type="number"]');
+  inputs.forEach(input => {
+    input.addEventListener('change', () => {
+      if (document.getElementById('results').classList.contains('visible')) {
+        calculate();
+      }
+    });
+  });
+  document.querySelectorAll('input[type="range"]').forEach(input => {
+    input.addEventListener('input', () => {
+      if (document.getElementById('results').classList.contains('visible')) {
+        calculate();
+      }
+    });
+  });
+})();
+
+// Try to init Google Places on load (if API is available)
+if (typeof google !== 'undefined' && google.maps) {
+  initGooglePlaces();
+}
+</script>
+
+</body>
+</html>

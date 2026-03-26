@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>balco.nyc — Balcony Solar for NYC Renters</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FFFFFF;
+      --text: #171717;
+      --text-sub: #596580;
+      --purple: #171717;
+      --purple-hover: #333333;
+      --warm-start: #E0C4A7;
+      --warm-end: #2C3248;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 12px 0;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: inline-block;
+      text-decoration: none;
+      line-height: 0;
+    }
+    .logo img {
+      height: 72px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s;
+    }
+    nav.scrolled .logo img {
+      filter: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: opacity 0.2s;
+    }
+    .nav-links a:hover { opacity: 0.8; }
+    nav.scrolled .nav-links a { color: var(--text); }
+
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      background: var(--purple);
+      color: #fff !important;
+      border: none;
+      border-radius: 24px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      gap: 8px;
+    }
+    .btn-pill:hover { background: var(--purple-hover); transform: translateY(-1px); }
+    .btn-pill svg { width: 16px; height: 16px; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('Gemini_Generated_Image_d2ucutd2ucutd2uc.png') center center / cover no-repeat;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.7) 100%);
+    }
+    .hero-frame {
+      position: absolute;
+      inset: 40px;
+      border: 1px solid rgba(255,255,255,0.6);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero-top-gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 150px;
+      background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 1100px;
+      padding: 0 40px;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      white-space: nowrap;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+    }
+    .hero .btn-pill {
+      font-size: 1.125rem;
+      padding: 16px 28px;
+    }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 16px;
+      padding: 48px 40px;
+      max-width: 480px;
+      width: 90%;
+      position: relative;
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-overlay.active .modal {
+      transform: translateY(0) scale(1);
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: #f0f0f0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--text);
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: #e0e0e0; }
+    .modal-logo {
+      height: 48px;
+      margin-bottom: 24px;
+    }
+    .modal h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .modal .modal-sub {
+      font-size: 1rem;
+      color: var(--text-sub);
+      margin-bottom: 28px;
+      line-height: 1.4;
+    }
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .modal-form label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .modal-form input, .modal-form select {
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid #d7e0ef;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: #f9fafb;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .modal-form input:focus, .modal-form select:focus {
+      border-color: var(--text);
+    }
+    .modal-form input::placeholder { color: #a0a8b8; }
+    .modal-form .btn-pill {
+      margin-top: 8px;
+      padding: 16px 24px;
+      font-size: 1rem;
+      width: 100%;
+    }
+    .modal-form .error-text {
+      color: #e74c3c;
+      font-size: 0.82rem;
+      font-weight: 500;
+      display: none;
+    }
+
+    /* Modal steps */
+    .modal-step {
+      display: none;
+    }
+    .modal-step.active {
+      display: block;
+      animation: fadeUp 0.3s ease;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .modal-success {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .modal-success .checkmark {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #e8f5e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 2rem;
+    }
+    .modal-success h2 {
+      margin-bottom: 12px;
+    }
+    .modal-success p {
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+
+    /* ─── STATS ─── */
+    .stats {
+      padding: 100px 0 80px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      font-feature-settings: 'pnum' on, 'lnum' on;
+    }
+    .stat-label {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-top: 8px;
+    }
+
+    /* ─── PRODUCT FEATURE ROWS ─── */
+    .feature-row {
+      padding: 100px 0;
+    }
+    .feature-row .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .feature-row.reverse .feature-text { order: 2; }
+    .feature-row.reverse .feature-visual { order: 1; }
+
+    .feature-text h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .feature-text p {
+      font-size: 1.2rem;
+      font-weight: 450;
+      color: var(--text);
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+    }
+
+    .feature-card {
+      background: linear-gradient(123deg, var(--warm-start) 2%, var(--warm-end) 93%);
+      border-radius: 8px;
+      padding: 24px;
+      aspect-ratio: 1 / 0.9;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: blur(5px) brightness(0.75);
+      transform: scale(1.05);
+    }
+    .feature-card-inner {
+      position: relative;
+      z-index: 2;
+    }
+    .feature-card h3 {
+      font-size: 1.9rem;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+    .feature-card p {
+      font-size: 1.15rem;
+      color: #fff;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-top: 4px;
+    }
+    .feature-card .arrow-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+    }
+    .feature-card .arrow-circle svg {
+      width: 16px;
+      height: 16px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    /* ─── PHOTO SECTION ─── */
+    .photo-section {
+      position: relative;
+      overflow: hidden;
+    }
+    .photo-section img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ─── OFFERINGS ─── */
+    .offerings {
+      padding: 100px 0;
+    }
+    .offerings-header {
+      margin-bottom: 56px;
+    }
+    .offerings-header h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .offerings-header p {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .offerings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .offering-card {
+      background: linear-gradient(123deg, var(--warm-start) 2%, var(--warm-end) 93%);
+      border-radius: 8px;
+      padding: 24px;
+      aspect-ratio: 1 / 1.1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .offering-card:hover { transform: translateY(-4px); }
+    .offering-card-inner {
+      position: relative;
+      z-index: 2;
+    }
+    .offering-card h3 {
+      font-size: 1.9rem;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+    .offering-card p {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .offering-card .arrow-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+    }
+    .offering-card .arrow-circle svg {
+      width: 16px;
+      height: 16px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+    }
+    .offering-deco {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -65%);
+      width: 140px;
+      height: 140px;
+      z-index: 1;
+    }
+    .offering-deco svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ─── BOTTOM CTA ─── */
+    .bottom-cta {
+      position: relative;
+      padding: 120px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+    .bottom-cta-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, var(--warm-end) 0%, #1a1d28 100%);
+    }
+    .bottom-cta .hero-frame {
+      inset: 40px;
+    }
+    .bottom-cta-content {
+      position: relative;
+      z-index: 3;
+    }
+    .bottom-cta h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .bottom-cta p {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+      max-width: 500px;
+      margin: 0 auto 32px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid #E8E8EE;
+      padding: 40px 0;
+      text-align: center;
+    }
+    footer .logo {
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    footer .logo img {
+      filter: none;
+      height: 48px;
+    }
+    footer p {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 900px) {
+      .container { padding: 0 24px; }
+      .hero { min-height: 80vh; }
+      .hero-frame { inset: 16px; }
+      .hero h1 { font-size: 2.2rem; }
+      .stats-grid { grid-template-columns: 1fr; gap: 40px; }
+      .stat-number { font-size: 4rem; }
+      .feature-row .container { grid-template-columns: 1fr; gap: 40px; }
+      .feature-row.reverse .feature-text { order: 1; }
+      .feature-row.reverse .feature-visual { order: 2; }
+      .offerings-grid { grid-template-columns: 1fr; gap: 16px; }
+      .offering-card { aspect-ratio: 1 / 0.7; }
+      .photo-section img { height: 300px; }
+      .bottom-cta .hero-frame { inset: 16px; }
+      .nav-links a:not(.btn-pill) { display: none; }
+      .logo img { height: 72px !important; }
+      .modal { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="container">
+      <a href="#" class="logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco"></a>
+      <div class="nav-links">
+        <a href="#how">How It Works</a>
+        <a href="javascript:void(0)" class="btn-pill open-waitlist" style="padding: 10px 24px; font-size: 0.9rem;">Join Waitlist</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- WAITLIST MODAL -->
+  <div class="modal-overlay" id="waitlistModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+
+      <!-- Step 1: Email -->
+      <div class="modal-step active" id="step1">
+        <img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco" class="modal-logo">
+        <h2 data-key="modal_title">Join the waitlist</h2>
+        <p class="modal-sub" data-key="modal_sub">We'll reach out the moment balcony solar is legal in NYC</p>
+        <div class="modal-form">
+          <label>
+            Email
+            <input type="email" id="modalEmail" placeholder="you@email.com">
+          </label>
+          <span class="error-text" id="emailError">Please enter a valid email</span>
+          <button class="btn-pill" type="button" onclick="goToStep2()">Continue</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Details -->
+      <div class="modal-step" id="step2">
+        <h2 data-key="modal_step2_title">A few quick details</h2>
+        <p class="modal-sub" data-key="modal_step2_sub">Help us understand your setup so we can prioritize you</p>
+        <div class="modal-form">
+          <label>
+            Your name
+            <input type="text" id="modalName" placeholder="First name">
+          </label>
+          <label>
+            Borough
+            <select id="modalBorough">
+              <option value="" disabled selected>Select your borough</option>
+              <option value="Manhattan">Manhattan</option>
+              <option value="Brooklyn">Brooklyn</option>
+              <option value="Queens">Queens</option>
+              <option value="Bronx">Bronx</option>
+              <option value="Staten Island">Staten Island</option>
+            </select>
+          </label>
+          <label>
+            Balcony direction (if you know)
+            <select id="modalDirection">
+              <option value="" disabled selected>Which way does it face?</option>
+              <option value="South">South</option>
+              <option value="Southwest">Southwest</option>
+              <option value="Southeast">Southeast</option>
+              <option value="West">West</option>
+              <option value="East">East</option>
+              <option value="North">North</option>
+              <option value="Not sure">Not sure</option>
+            </select>
+          </label>
+          <button class="btn-pill" type="button" onclick="submitWaitlist()">Join Waitlist</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Success -->
+      <div class="modal-step" id="step3">
+        <div class="modal-success">
+          <div class="checkmark">&#10003;</div>
+          <h2 data-key="modal_success_title">You're on the list</h2>
+          <p data-key="modal_success_desc">We'll be in touch the moment balcony solar goes live in NYC. Keep an eye on your inbox.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-bg"></div>
+    <div class="hero-top-gradient"></div>
+    <div class="hero-content">
+      <h1 data-key="hero_title">Solar for every balcony in NYC</h1>
+      <p data-key="hero_subtitle">Plug-in panels and batteries for NYC apartments — installed same-day</p>
+      <a href="javascript:void(0)" class="btn-pill open-waitlist">Join the Waitlist <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div>
+          <div class="stat-number" data-key="stat1_number">31¢/kWh</div>
+          <div class="stat-label" data-key="stat1_label">NYC electricity rate — 56% above the national average</div>
+        </div>
+        <div>
+          <div class="stat-number" data-key="stat2_number">1M+</div>
+          <div class="stat-label" data-key="stat2_label">balcony solar systems registered in Germany alone — up to 4M operating across Europe</div>
+        </div>
+        <div>
+          <div class="stat-number" data-key="stat3_number">$279/yr</div>
+          <div class="stat-label" data-key="stat3_label">projected annual savings for NYC renters under the SUNNY Act</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE ROW 1: Instant Install -->
+  <section class="feature-row" id="how">
+    <div class="container">
+      <div class="feature-text">
+        <h2 data-key="install_title">Book an install like you'd order a ride</h2>
+        <p data-key="install_desc">Pick a time slot, tell us about your balcony, and a certified NYC-based installer shows up same-day with panels and batteries. Done in under 2 hours. Already happening in the Bronx — where one of the city's first plug-and-play solar panels is up and running.</p>
+        <a href="javascript:void(0)" class="btn-pill open-waitlist">Learn More <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+      <div class="feature-visual">
+        <div class="feature-card">
+          <div class="feature-card-bg" style="background-image: url('assets/yuma-solar-oZ4IhVjyFwk-unsplash.jpg');"></div>
+          <div class="feature-card-inner">
+            <h3 data-key="install_card_title">Same-Day Install</h3>
+            <p data-key="install_card_desc">Professional wiring, secure mounting, full system test.</p>
+          </div>
+          <div class="arrow-circle"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H5M12 4v7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE ROW 2: Maintenance -->
+  <section class="feature-row reverse">
+    <div class="container">
+      <div class="feature-text">
+        <h2 data-key="om_title">We handle everything after install, too</h2>
+        <p data-key="om_desc">In Europe, you're on your own after purchase. We're different — monitoring, maintenance, and replacements are included. If something breaks, we fix it. That's the balco.nyc subscription.</p>
+        <a href="javascript:void(0)" class="btn-pill open-waitlist">Learn More <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+      <div class="feature-visual">
+        <div class="feature-card">
+          <div class="feature-card-bg" style="background-image: url('Gemini_Generated_Image_d2ucutd2ucutd2uc.png'); background-position: left bottom;"></div>
+          <div class="feature-card-inner">
+            <h3 data-key="om_card_title">Ongoing O&amp;M</h3>
+            <p data-key="om_card_desc">Track your energy production, savings, and system health in real time.</p>
+          </div>
+          <div class="arrow-circle"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H5M12 4v7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERINGS GRID -->
+  <section class="offerings">
+    <div class="container">
+      <div class="offerings-header">
+        <h2 data-key="offerings_title">What we provide</h2>
+        <p data-key="offerings_desc">Everything you need to go solar from your balcony — no roof access, no building modifications, no landlord approval.</p>
+      </div>
+      <div class="offerings-grid">
+        <div class="offering-card" style="background: none;">
+          <div class="feature-card-bg" style="background-image: url('assets/yuma-solar-oZ4IhVjyFwk-unsplash.jpg'); background-position: center;"></div>
+          <div class="offering-card-inner">
+            <h3 data-key="panel_title">Panels</h3>
+            <p data-key="panel_desc">800W plug-in solar panels that mount to your railing and connect to a standard 120V outlet. UL-certified. No electrician required.</p>
+          </div>
+          <div class="arrow-circle"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H5M12 4v7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="offering-card" style="background: none;">
+          <div class="feature-card-bg" style="background-image: url('Gemini_Generated_Image_d2ucutd2ucutd2uc.png'); background-position: right center;"></div>
+          <div class="offering-card-inner">
+            <h3 data-key="battery_title">Batteries</h3>
+            <p data-key="battery_desc">Store daytime solar and use it at night. Our compact battery systems cap at 1,200W export — designed to comply with pending NYC legislation.</p>
+          </div>
+          <div class="arrow-circle"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H5M12 4v7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="offering-card" style="background: none;">
+          <div class="feature-card-bg" style="background-image: url('Gemini_Generated_Image_d2ucutd2ucutd2uc.png'); background-position: left top;"></div>
+          <div class="offering-card-inner">
+            <h3 data-key="installer_title">Installers</h3>
+            <p data-key="installer_desc">A vetted network of NYC-based, certified installers. Same-day availability. Average install: under 2 hours.</p>
+          </div>
+          <div class="arrow-circle"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H5M12 4v7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGISLATION CALLOUT -->
+  <section class="feature-row">
+    <div class="container">
+      <div class="feature-text">
+        <h2 data-key="legis_title">The SUNNY Act is moving through Albany</h2>
+        <p data-key="legis_desc">The SUNNY Act (S8512/A9111), sponsored by Senator Liz Krueger and Assemblymember Emily Gallagher, would legalize plug-in solar for millions of NYC renters. Utah passed first in March 2025. Virginia passed 96-0 in March 2026. 30 states have introduced balcony solar bills this year.</p>
+        <p data-key="legis_quote" style="margin-bottom: 0;">"Plug-in solar is a powerful tool to deliver enhanced energy independence and affordability to millions of New Yorkers who are currently shut out of the solar economy." — Senator Liz Krueger</p>
+      </div>
+      <div class="feature-visual">
+        <div class="feature-card">
+          <div class="feature-card-bg" style="background-image: url('Gemini_Generated_Image_d2ucutd2ucutd2uc.png'); background-position: top center;"></div>
+          <div class="feature-card-inner">
+            <h3 data-key="legis_card_title">The SUNNY Act</h3>
+            <p data-key="legis_card_desc">30 states with active balcony solar bills in 2026 — NYC is next.</p>
+          </div>
+          <div class="arrow-circle"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H5M12 4v7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="offerings" id="faq">
+    <div class="container">
+      <div class="offerings-header">
+        <h2 data-key="faq_title">Frequently asked questions</h2>
+      </div>
+      <div style="max-width: 720px;">
+        <details style="border-bottom: 1px solid #E8E8EE; padding: 24px 0; cursor: pointer;">
+          <summary data-key="faq1_q" style="font-size: 1.15rem; font-weight: 500; letter-spacing: -0.01em; list-style: none; display: flex; justify-content: space-between; align-items: center;">Is this legal in NYC?<span style="font-size: 1.5rem; font-weight: 300; transition: transform 0.2s;">+</span></summary>
+          <p data-key="faq1_a" style="margin-top: 12px; color: var(--text-sub); line-height: 1.6;">Not yet. The SUNNY Act (S8512/A9111) is currently moving through the New York State Legislature. Once passed, it will legalize plug-in solar panels up to 800W for residential use. We're ready to install the moment it clears.</p>
+        </details>
+        <details style="border-bottom: 1px solid #E8E8EE; padding: 24px 0; cursor: pointer;">
+          <summary data-key="faq2_q" style="font-size: 1.15rem; font-weight: 500; letter-spacing: -0.01em; list-style: none; display: flex; justify-content: space-between; align-items: center;">Do I need my landlord's permission?<span style="font-size: 1.5rem; font-weight: 300; transition: transform 0.2s;">+</span></summary>
+          <p data-key="faq2_a" style="margin-top: 12px; color: var(--text-sub); line-height: 1.6;">No. Once the SUNNY Act passes, tenants will have the right to install plug-in solar without landlord approval — similar to how window AC units work today.</p>
+        </details>
+        <details style="border-bottom: 1px solid #E8E8EE; padding: 24px 0; cursor: pointer;">
+          <summary data-key="faq3_q" style="font-size: 1.15rem; font-weight: 500; letter-spacing: -0.01em; list-style: none; display: flex; justify-content: space-between; align-items: center;">Can I take it with me when I move?<span style="font-size: 1.5rem; font-weight: 300; transition: transform 0.2s;">+</span></summary>
+          <p data-key="faq3_a" style="margin-top: 12px; color: var(--text-sub); line-height: 1.6;">Yes. Plug-in solar panels are portable by design — they mount to your railing and plug into a standard outlet. When you move, we'll reinstall at your new place.</p>
+        </details>
+        <details style="border-bottom: 1px solid #E8E8EE; padding: 24px 0; cursor: pointer;">
+          <summary data-key="faq4_q" style="font-size: 1.15rem; font-weight: 500; letter-spacing: -0.01em; list-style: none; display: flex; justify-content: space-between; align-items: center;">How much will I save?<span style="font-size: 1.5rem; font-weight: 300; transition: transform 0.2s;">+</span></summary>
+          <p data-key="faq4_a" style="margin-top: 12px; color: var(--text-sub); line-height: 1.6;">Based on the SUNNY Act's fiscal analysis, NYC renters can expect to save approximately $279 per year. With NYC's electricity rate at 31¢/kWh — 56% above the national average — balcony solar pays for itself fast.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="bottom-cta" id="waitlist">
+    <div class="bottom-cta-bg"></div>
+    <div class="hero-frame"></div>
+    <div class="bottom-cta-content">
+      <h2 data-key="cta_title">Be first in line when NYC goes solar</h2>
+      <p data-key="cta_desc">Early access members get priority scheduling and launch pricing. Join 1,200+ NYC renters already on the waitlist.</p>
+      <button class="btn-pill open-waitlist" style="font-size: 1.1rem; padding: 16px 32px;">Join the Waitlist <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <a href="#" class="logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco"></a>
+      <p>&copy; 2026 balco.nyc. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ─── SUPABASE ───
+    const SUPABASE_URL = 'https://lbjcfqxfztbaoxuwhrhd.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxiamNmcXhmenRiYW94dXdocmhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzMzU2NjcsImV4cCI6MjA4OTkxMTY2N30.wp27pbHIwDVLn2CRbPga6olEZOeJdDIO_qRhaDK2l5s';
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // ─── LOAD EDITABLE CONTENT ───
+    (async function loadContent() {
+      try {
+        const { data, error } = await supabaseClient.from('site_content').select('*');
+        if (!error && data && data.length > 0) {
+          data.forEach(row => {
+            const el = document.querySelector(`[data-key="${row.key}"]`);
+            if (el) {
+              // For summary elements, preserve the +/- span
+              const span = el.querySelector('span');
+              el.textContent = row.value;
+              if (span) el.appendChild(span);
+            }
+          });
+        }
+      } catch (e) {
+        console.log('Content load skipped:', e);
+      }
+    })();
+
+    // ─── NAVBAR SCROLL ───
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ─── MODAL ───
+    const modal = document.getElementById('waitlistModal');
+    const modalClose = document.getElementById('modalClose');
+
+    document.querySelectorAll('.open-waitlist').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => document.getElementById('modalEmail').focus(), 350);
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // ─── STEP NAVIGATION ───
+    function goToStep2() {
+      const email = document.getElementById('modalEmail').value.trim();
+      const errorEl = document.getElementById('emailError');
+      if (!email || !email.includes('@') || !email.includes('.')) {
+        errorEl.style.display = 'block';
+        document.getElementById('modalEmail').style.borderColor = '#e74c3c';
+        return;
+      }
+      errorEl.style.display = 'none';
+      document.getElementById('step1').classList.remove('active');
+      document.getElementById('step2').classList.add('active');
+    }
+
+    async function submitWaitlist() {
+      const email = document.getElementById('modalEmail').value.trim();
+      const name = document.getElementById('modalName').value.trim();
+      const borough = document.getElementById('modalBorough').value;
+      const direction = document.getElementById('modalDirection').value;
+
+      // Save to Supabase
+      if (supabaseClient) {
+        try {
+          await supabaseClient.from('waitlist').insert([{
+            email,
+            name: name || null,
+            borough: borough || null,
+            balcony_direction: direction || null,
+            created_at: new Date().toISOString()
+          }]);
+        } catch (err) {
+          console.error('Supabase error:', err);
+        }
+      } else {
+        console.log('Waitlist signup (Supabase not configured):', { email, name, borough, direction });
+      }
+
+      // Show success
+      document.getElementById('step2').classList.remove('active');
+      document.getElementById('step3').classList.add('active');
+    }
+
+    // ─── SMOOTH SCROLL ───
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Shadow Model — balco.nyc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        if (typeof SolarConfig !== 'undefined' && SolarConfig.GOOGLE_API_KEY) {
+          var s = document.createElement('script');
+          s.src = 'https://maps.googleapis.com/maps/api/js?key=' + SolarConfig.GOOGLE_API_KEY + '&libraries=places&callback=initGooglePlaces';
+          s.async = true;
+          s.defer = true;
+          document.head.appendChild(s);
+        }
+      }, 50);
+    });
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FFFFFF;
+      --bg-alt: #F7F9FA;
+      --text: #171717;
+      --text-sub: #596580;
+      --text-muted: #8896AB;
+      --accent: #171717;
+      --accent-hover: #333333;
+      --teal: #0d7377;
+      --teal-dark: #095456;
+      --teal-light: #e6f4f4;
+      --amber: #f4a261;
+      --amber-dark: #e76f51;
+      --green: #10B981;
+      --green-light: #D1FAE5;
+      --border: #E2E8F0;
+      --card: #FFFFFF;
+      --radius: 12px;
+      --radius-lg: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 1360px; margin: 0 auto; padding: 0 40px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 12px 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { display: inline-block; text-decoration: none; line-height: 0; }
+    .logo img { height: 72px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: opacity 0.2s; }
+    .nav-links a:hover { opacity: 0.7; }
+    .btn-pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 24px; background: var(--accent); color: #fff !important;
+      border: none; border-radius: 24px; font-family: inherit;
+      font-weight: 700; font-size: 0.95rem; text-decoration: none;
+      cursor: pointer; transition: background 0.2s, transform 0.2s; gap: 8px;
+    }
+    .btn-pill:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+    /* PAGE HEADER */
+    .page-header { padding: 140px 0 60px; text-align: center; }
+    .page-header h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700;
+      letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 12px;
+    }
+    .page-header p {
+      font-size: 1.15rem; color: var(--text-sub);
+      max-width: 650px; margin: 0 auto; line-height: 1.5;
+    }
+    .page-header .version-tag {
+      display: inline-block; padding: 4px 14px; border-radius: 99px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+      background: rgba(59,130,246,0.1); color: #3B82F6;
+      border: 1px solid rgba(59,130,246,0.25); margin-bottom: 16px;
+    }
+
+    /* CALCULATOR LAYOUT */
+    .calc-wrapper { padding: 0 0 120px; }
+    .calc-grid { display: grid; grid-template-columns: 380px 1fr; gap: 40px; align-items: start; }
+
+    /* FORM PANEL */
+    .form-panel {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 32px;
+      position: sticky; top: 120px; max-height: calc(100vh - 140px);
+      overflow-y: auto;
+    }
+    .form-panel h2 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+    .form-panel .form-sub { font-size: 0.9rem; color: var(--text-sub); margin-bottom: 24px; line-height: 1.4; }
+
+    .form-section { margin-bottom: 24px; }
+    .form-section-label {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 5px; color: var(--text); }
+    .form-group .hint { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+    .form-group input, .form-group select {
+      width: 100%; padding: 10px 14px; border: 1px solid var(--border);
+      border-radius: 10px; font-family: inherit; font-size: 0.92rem;
+      color: var(--text); background: var(--bg-alt); outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--teal); box-shadow: 0 0 0 3px rgba(13,115,119,0.1);
+    }
+    .form-group input::placeholder { color: #a0a8b8; }
+
+    /* Direction picker */
+    .direction-picker { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .direction-picker label { position: relative; cursor: pointer; }
+    .direction-picker input { position: absolute; opacity: 0; pointer-events: none; }
+    .direction-picker .dir-btn {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 10px 6px; border: 1.5px solid var(--border); border-radius: 8px;
+      background: var(--bg-alt); transition: all 0.15s; text-align: center;
+    }
+    .direction-picker .dir-btn .dir-icon { font-size: 1rem; margin-bottom: 1px; }
+    .direction-picker .dir-btn .dir-label { font-size: 0.68rem; font-weight: 600; color: var(--text-sub); }
+    .direction-picker input:checked + .dir-btn {
+      border-color: var(--teal); background: var(--teal-light);
+      box-shadow: 0 0 0 2px rgba(13,115,119,0.15);
+    }
+    .direction-picker input:checked + .dir-btn .dir-label { color: var(--teal-dark); font-weight: 700; }
+
+    /* Mount type toggle */
+    .mount-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .mount-toggle label { position: relative; cursor: pointer; }
+    .mount-toggle input { position: absolute; opacity: 0; pointer-events: none; }
+    .mount-toggle .mount-btn {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 12px 8px; border: 1.5px solid var(--border); border-radius: 10px;
+      background: var(--bg-alt); transition: all 0.15s; text-align: center;
+    }
+    .mount-toggle .mount-btn .mount-icon { font-size: 1.3rem; margin-bottom: 4px; }
+    .mount-toggle .mount-btn .mount-label { font-size: 0.8rem; font-weight: 600; color: var(--text); }
+    .mount-toggle .mount-btn .mount-desc { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
+    .mount-toggle input:checked + .mount-btn {
+      border-color: var(--teal); background: var(--teal-light);
+      box-shadow: 0 0 0 2px rgba(13,115,119,0.15);
+    }
+
+    /* Shading selector */
+    .shading-options { display: flex; flex-direction: column; gap: 6px; }
+    .shading-options label { position: relative; cursor: pointer; }
+    .shading-options input { position: absolute; opacity: 0; pointer-events: none; }
+    .shading-option-btn {
+      display: flex; align-items: center; gap: 10px; padding: 12px 14px;
+      border: 1.5px solid var(--border); border-radius: 10px;
+      background: var(--bg-alt); transition: all 0.15s;
+    }
+    .shading-option-btn .shade-icon { font-size: 1.1rem; flex-shrink: 0; width: 28px; text-align: center; }
+    .shading-option-btn .shade-text { flex: 1; }
+    .shading-option-btn .shade-text strong { display: block; font-size: 0.82rem; font-weight: 600; }
+    .shading-option-btn .shade-text span { font-size: 0.72rem; color: var(--text-muted); }
+    .shading-options input:checked + .shading-option-btn {
+      border-color: var(--teal); background: var(--teal-light);
+      box-shadow: 0 0 0 2px rgba(13,115,119,0.15);
+    }
+
+    .calc-btn {
+      width: 100%; padding: 14px; background: var(--accent); color: #fff;
+      border: none; border-radius: 12px; font-family: inherit;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      transition: background 0.2s, transform 0.15s; margin-top: 6px;
+    }
+    .calc-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .calc-btn.loading { opacity: 0.7; pointer-events: none; }
+    .calc-btn-spinner {
+      display: none; width: 18px; height: 18px;
+      border: 2.5px solid rgba(255,255,255,0.3); border-top-color: #fff;
+      border-radius: 50%; animation: spin 0.7s linear infinite; margin-right: 8px;
+    }
+    .calc-btn.loading .calc-btn-spinner { display: inline-block; }
+
+    /* Address section */
+    .address-input-wrapper { position: relative; }
+    .address-input-wrapper input { padding-right: 44px; }
+    .address-spinner {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      width: 20px; height: 20px; border: 2.5px solid var(--border);
+      border-top-color: var(--teal); border-radius: 50%;
+      animation: spin 0.7s linear infinite; display: none;
+    }
+    .address-spinner.active { display: block; }
+    @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+    .skip-link {
+      display: inline-block; font-size: 0.8rem; color: var(--teal);
+      cursor: pointer; margin-top: 6px; font-weight: 500;
+    }
+    .skip-link:hover { text-decoration: underline; }
+
+    .lookup-progress { margin-top: 10px; display: none; flex-direction: column; gap: 5px; }
+    .lookup-progress.active { display: flex; }
+    .lookup-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text-muted); }
+    .lookup-item .lookup-icon { width: 14px; text-align: center; font-size: 0.8rem; }
+    .lookup-item.done { color: var(--green); }
+    .lookup-item.done .lookup-icon::after { content: '\2713'; }
+    .lookup-item.loading .lookup-icon::after { content: ''; }
+    .lookup-item.loading .lookup-icon {
+      width: 14px; height: 14px; border: 2px solid var(--border);
+      border-top-color: var(--teal); border-radius: 50%; animation: spin 0.7s linear infinite;
+    }
+    .lookup-item.failed { color: var(--text-muted); }
+    .lookup-item.failed .lookup-icon::after { content: '\2212'; }
+
+    .building-info-card {
+      background: var(--teal-light); border: 1px solid rgba(13,115,119,0.2);
+      border-radius: 10px; padding: 12px 16px; margin-top: 12px; display: none;
+      animation: fadeUp 0.3s ease;
+    }
+    .building-info-card.visible { display: block; }
+    .building-info-card h4 {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--teal-dark); margin-bottom: 6px;
+    }
+    .building-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 12px; }
+    .building-info-item { font-size: 0.78rem; color: var(--text-sub); }
+    .building-info-item strong { color: var(--text); }
+
+    .auto-detected-hint {
+      display: none; font-size: 0.76rem; color: var(--teal);
+      font-weight: 500; margin-top: 5px; animation: fadeUp 0.3s ease;
+    }
+    .auto-detected-hint.visible { display: block; }
+
+    .inline-fields { display: flex; gap: 12px; }
+    .inline-field { flex: 1; }
+    .inline-field label { display: block; font-size: 0.82rem; font-weight: 500; color: var(--text-sub); margin-bottom: 5px; }
+    .num-input {
+      width: 100%; padding: 10px 12px; border: 1px solid var(--border);
+      border-radius: 8px; font-size: 1rem; font-family: inherit;
+      background: var(--bg); color: var(--text); -moz-appearance: textfield;
+    }
+    .num-input:focus { outline: none; border-color: var(--teal); }
+    .auto-tag {
+      display: inline-block; font-size: 0.63rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.04em; color: var(--teal); margin-top: 3px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── 3D VIEWPORT ─── */
+    .scene3d-container {
+      position: relative;
+      width: 100%;
+      height: 560px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #1a1a2e;
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .scene3d-container canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .scene3d-loading {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: #1a1a2e; color: #8896AB; font-size: 0.9rem; gap: 16px; z-index: 5;
+    }
+    .scene3d-loading .viz-spinner {
+      width: 36px; height: 36px;
+      border: 3px solid #334; border-top-color: var(--teal);
+      border-radius: 50%; animation: vizSpin 0.8s linear infinite;
+    }
+    @keyframes vizSpin { to { transform: rotate(360deg); } }
+
+    /* Overlay panels */
+    .scene3d-info-panel {
+      position: absolute; z-index: 10;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 12px 16px;
+      color: #e2e8f0; font-size: 0.78rem;
+      pointer-events: none;
+    }
+    .scene3d-info-panel .info-title {
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 4px;
+    }
+    .scene3d-info-panel .info-value {
+      font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 2px;
+    }
+    .scene3d-info-panel .info-detail { color: #94a3b8; line-height: 1.5; }
+    .scene3d-info-panel .info-shadow {
+      margin-top: 8px; padding: 6px 10px; border-radius: 6px;
+      border: 1px solid; background: rgba(0,0,0,0.2); font-size: 0.78rem;
+    }
+    #sunInfoPanel { top: 14px; left: 14px; }
+    #bldgInfoPanel { top: 14px; right: 14px; max-width: 220px; }
+
+    /* Legend */
+    .scene3d-legend {
+      position: absolute; bottom: 72px; left: 14px; z-index: 10;
+      display: flex; gap: 12px; align-items: center;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px; padding: 8px 14px;
+      font-size: 0.72rem; color: #94a3b8;
+      pointer-events: none;
+    }
+    .legend-item { display: flex; align-items: center; gap: 5px; }
+    .legend-dot {
+      width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
+    }
+
+    /* Controls bar */
+    .scene3d-controls {
+      position: absolute; bottom: 12px; left: 12px; right: 12px; z-index: 10;
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 10px 14px;
+    }
+    .scene3d-play-btn {
+      width: 34px; height: 34px; border: none; border-radius: 8px;
+      background: rgba(255,255,255,0.1); color: #fff;
+      font-size: 14px; cursor: pointer; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+    .scene3d-play-btn:hover { background: rgba(255,255,255,0.2); }
+
+    .scene3d-time-slider {
+      flex: 1; height: 6px; -webkit-appearance: none; appearance: none;
+      background: rgba(255,255,255,0.15); border-radius: 3px; outline: none;
+    }
+    .scene3d-time-slider::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%;
+      background: #F59E0B; cursor: pointer; border: 2px solid #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    .scene3d-time-slider::-moz-range-thumb {
+      width: 16px; height: 16px; border-radius: 50%;
+      background: #F59E0B; cursor: pointer; border: 2px solid #fff;
+    }
+
+    .scene3d-time-label {
+      color: #fff; font-size: 0.82rem; font-weight: 700;
+      min-width: 72px; text-align: center; flex-shrink: 0;
+    }
+
+    .scene3d-month-btns { display: flex; gap: 3px; flex-shrink: 0; }
+    .scene3d-month-btn {
+      padding: 4px 8px; border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px; background: transparent;
+      color: #94a3b8; font-size: 0.7rem; font-weight: 600;
+      cursor: pointer; transition: all 0.15s; font-family: inherit;
+    }
+    .scene3d-month-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .scene3d-month-btn.selected {
+      background: rgba(245,158,11,0.2); color: #F59E0B;
+      border-color: rgba(245,158,11,0.4);
+    }
+
+    /* Hover tooltip */
+    .scene3d-tooltip {
+      position: absolute; z-index: 20; display: none;
+      background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+      padding: 8px 12px; color: #e2e8f0; font-size: 0.75rem;
+      pointer-events: none; line-height: 1.5; white-space: nowrap;
+    }
+
+    /* ─── RESULTS ─── */
+    .results-panel { }
+
+    .results-placeholder {
+      background: var(--bg-alt); border: 2px dashed var(--border);
+      border-radius: var(--radius-lg); padding: 60px 30px;
+      text-align: center; color: var(--text-muted);
+    }
+    .results-placeholder .placeholder-icon { font-size: 2.5rem; margin-bottom: 12px; opacity: 0.5; }
+    .results-placeholder p { font-size: 0.95rem; line-height: 1.5; }
+
+    .results-content { display: none; }
+    .results-content.visible { display: block; animation: fadeUp 0.5s ease; }
+
+    .result-hero {
+      background: linear-gradient(135deg, #0a2e2f, var(--teal-dark), var(--teal));
+      border-radius: var(--radius-lg); padding: 32px; color: #fff; margin-bottom: 14px;
+    }
+    .result-hero .result-hero-label {
+      font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.1em; opacity: 0.7; margin-bottom: 6px;
+    }
+    .result-hero .result-hero-value {
+      font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 700;
+      letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 4px;
+    }
+    .result-hero .result-hero-sub { font-size: 0.95rem; opacity: 0.7; }
+
+    .result-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+    .result-stat-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px;
+    }
+    .result-stat-card .stat-label {
+      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 5px;
+    }
+    .result-stat-card .stat-value { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; }
+    .result-stat-card .stat-detail { font-size: 0.78rem; color: var(--text-sub); margin-top: 2px; }
+    .result-stat-card.highlight { background: var(--green-light); border-color: var(--green); }
+    .result-stat-card.highlight .stat-value { color: #065F46; }
+
+    .result-chart-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px; margin-bottom: 14px;
+    }
+    .result-chart-card h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 16px; }
+    .chart-container {
+      display: flex; align-items: flex-end; gap: 5px;
+      height: 140px; padding-bottom: 22px; position: relative;
+    }
+    .chart-bar-wrapper {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      height: 100%; justify-content: flex-end;
+    }
+    .chart-bar-value { font-size: 0.62rem; font-weight: 600; color: var(--text-sub); margin-bottom: 3px; }
+    .chart-bar {
+      width: 100%; max-width: 36px;
+      background: linear-gradient(180deg, var(--teal), var(--teal-dark));
+      border-radius: 3px 3px 0 0;
+      transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1); min-height: 3px;
+    }
+    .chart-bar-label { font-size: 0.62rem; font-weight: 500; color: var(--text-muted); margin-top: 5px; }
+
+    .result-details-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px; margin-bottom: 14px;
+    }
+    .result-details-card h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 14px; }
+    .detail-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0; border-bottom: 1px solid var(--border);
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-row .detail-label { font-size: 0.85rem; color: var(--text-sub); }
+    .detail-row .detail-value { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+
+    .result-impact {
+      background: linear-gradient(135deg, #064E3B, #065F46, #047857);
+      border-radius: var(--radius); padding: 24px; color: #fff; margin-bottom: 14px;
+    }
+    .result-impact h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 14px; opacity: 0.9; }
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .impact-item .impact-value { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; }
+    .impact-item .impact-label { font-size: 0.75rem; opacity: 0.75; margin-top: 2px; }
+
+    .result-disclaimer { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; padding: 14px 0 0; }
+
+    .fallback-banner {
+      background: #FEF3C7; border: 1px solid #F59E0B; border-radius: 8px;
+      padding: 10px 14px; font-size: 0.78rem; color: #92400E;
+      margin-bottom: 10px; display: none;
+    }
+    .fallback-banner.visible { display: block; }
+
+    .solar-context { font-size: 0.82rem; color: var(--text-sub); padding: 6px 0 4px; display: none; }
+    .solar-context.visible { display: block; }
+
+    .data-sources-card {
+      background: var(--bg-alt); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 16px; margin-top: 14px;
+    }
+    .data-sources-card summary {
+      font-size: 0.82rem; font-weight: 600; cursor: pointer;
+      color: var(--text-sub); list-style: none;
+    }
+    .data-sources-card summary::-webkit-details-marker { display: none; }
+    .data-sources-card summary::before {
+      content: '\25B6'; display: inline-block; margin-right: 8px;
+      font-size: 0.68rem; transition: transform 0.2s;
+    }
+    .data-sources-card[open] summary::before { transform: rotate(90deg); }
+    .data-sources-list { margin-top: 10px; display: flex; flex-direction: column; gap: 5px; }
+    .ds-item { font-size: 0.78rem; display: flex; align-items: center; gap: 6px; }
+    .ds-item .ds-icon { width: 14px; text-align: center; }
+    .ds-item.success { color: var(--green); }
+    .ds-item.fallback { color: var(--text-muted); }
+
+    /* FOOTER */
+    footer {
+      background: var(--text); color: rgba(255,255,255,0.5);
+      padding: 40px 0; text-align: center;
+    }
+    footer p { font-size: 0.85rem; }
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .form-panel { position: static; max-height: none; }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .form-panel { padding: 24px 18px; }
+      .page-header { padding: 120px 0 40px; }
+      .nav-links a:not(.btn-pill) { display: none; }
+      .result-stats { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: 1fr; }
+      .scene3d-container { height: 400px; }
+      .scene3d-month-btns { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco.nyc">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="calculator.html">Calculator v1</a>
+      <a href="calculator-3b.html">3D Hybrid</a>
+      <a href="index.html#waitlist" class="btn-pill">Join Waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="container">
+    <span class="version-tag">VERSION A</span>
+    <h1>3D Shadow Analysis</h1>
+    <p>See exactly which buildings block your sun and when. Every building is rendered from real NYC data with interactive shadow simulation across time and seasons.</p>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calc-wrapper">
+  <div class="container">
+    <div class="calc-grid">
+
+      <!-- LEFT: Form -->
+      <div class="form-panel">
+        <h2>Your Balcony Details</h2>
+        <p class="form-sub">Enter your address for real building data, or skip to enter manually.</p>
+
+        <!-- Address -->
+        <div class="form-section" id="addressSection">
+          <div class="form-section-label">Address</div>
+          <div class="form-group">
+            <label for="addressInput">Your NYC address</label>
+            <div class="address-input-wrapper">
+              <input type="text" id="addressInput" placeholder="Start typing your address..." autocomplete="off">
+              <div class="address-spinner" id="addressSpinner"></div>
+            </div>
+            <span class="skip-link" id="skipAddress" onclick="skipAddressEntry()">Skip &mdash; enter details manually</span>
+            <div class="lookup-progress" id="lookupProgress">
+              <div class="lookup-item" id="lp-geoclient"><span class="lookup-icon"></span> NYC building registry</div>
+              <div class="lookup-item" id="lp-pluto"><span class="lookup-icon"></span> Building data (PLUTO)</div>
+              <div class="lookup-item" id="lp-footprints"><span class="lookup-icon"></span> Building orientation</div>
+              <div class="lookup-item" id="lp-solarResource"><span class="lookup-icon"></span> Solar resource data</div>
+            </div>
+            <div class="building-info-card" id="buildingInfoCard">
+              <h4>Building Found</h4>
+              <div class="building-info-grid">
+                <div class="building-info-item" id="biAddress"></div>
+                <div class="building-info-item" id="biFloors"></div>
+                <div class="building-info-item" id="biYear"></div>
+                <div class="building-info-item" id="biClass"></div>
+                <div class="building-info-item" id="biUnits"></div>
+                <div class="building-info-item" id="biHeight"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direction -->
+        <div class="form-section">
+          <div class="form-section-label">Orientation</div>
+          <div class="form-group">
+            <label>Which direction does your balcony face?</label>
+            <div class="direction-picker">
+              <label><input type="radio" name="direction" value="0"><div class="dir-btn"><span class="dir-icon">N</span><span class="dir-label">North</span></div></label>
+              <label><input type="radio" name="direction" value="45"><div class="dir-btn"><span class="dir-icon">NE</span><span class="dir-label">Northeast</span></div></label>
+              <label><input type="radio" name="direction" value="90"><div class="dir-btn"><span class="dir-icon">E</span><span class="dir-label">East</span></div></label>
+              <label><input type="radio" name="direction" value="135"><div class="dir-btn"><span class="dir-icon">SE</span><span class="dir-label">Southeast</span></div></label>
+              <label><input type="radio" name="direction" value="180" checked><div class="dir-btn"><span class="dir-icon">S</span><span class="dir-label">South</span></div></label>
+              <label><input type="radio" name="direction" value="225"><div class="dir-btn"><span class="dir-icon">SW</span><span class="dir-label">Southwest</span></div></label>
+              <label><input type="radio" name="direction" value="270"><div class="dir-btn"><span class="dir-icon">W</span><span class="dir-label">West</span></div></label>
+              <label><input type="radio" name="direction" value="315"><div class="dir-btn"><span class="dir-icon">NW</span><span class="dir-label">Northwest</span></div></label>
+            </div>
+            <p class="hint">South-facing gets the most sun in NYC.</p>
+            <p class="auto-detected-hint" id="orientationHint"></p>
+          </div>
+        </div>
+
+        <!-- Mount Type -->
+        <div class="form-section">
+          <div class="form-section-label">Panel Mounting</div>
+          <div class="form-group">
+            <label>How will the panels be mounted?</label>
+            <div class="mount-toggle">
+              <label>
+                <input type="radio" name="mount" value="90" checked>
+                <div class="mount-btn">
+                  <span class="mount-icon">|</span>
+                  <span class="mount-label">Railing Mount</span>
+                  <span class="mount-desc">Vertical (90&deg;)</span>
+                </div>
+              </label>
+              <label>
+                <input type="radio" name="mount" value="70">
+                <div class="mount-btn">
+                  <span class="mount-icon">/</span>
+                  <span class="mount-label">Angled Mount</span>
+                  <span class="mount-desc">Tilted (70&deg;)</span>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- System Size -->
+        <div class="form-section">
+          <div class="form-section-label">System Size</div>
+          <div class="form-group">
+            <label>Balcony railing width</label>
+            <select id="railingWidth">
+              <option value="400">6-8 ft (1 panel, 400W)</option>
+              <option value="800" selected>8-12 ft (2 panels, 800W)</option>
+              <option value="1200">12-16 ft (3 panels, 1,200W)</option>
+              <option value="1600">16+ ft (4 panels, 1,600W)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Building Info -->
+        <div class="form-section">
+          <div class="form-section-label">Building Info</div>
+          <div class="inline-fields">
+            <div class="inline-field">
+              <label for="floor">Your floor</label>
+              <input type="number" id="floor" min="1" max="80" value="8" class="num-input">
+            </div>
+            <div class="inline-field">
+              <label for="totalFloors">Total floors</label>
+              <input type="number" id="totalFloors" min="2" max="80" value="20" class="num-input">
+              <span class="auto-tag" id="totalFloorsAuto" style="display:none">auto-detected</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shading -->
+        <div class="form-section">
+          <div class="form-section-label">Shading Environment</div>
+          <div class="form-group">
+            <label>What's in front of your balcony?</label>
+            <div class="shading-options">
+              <label>
+                <input type="radio" name="shading" value="open">
+                <div class="shading-option-btn">
+                  <span class="shade-icon">&#9728;</span>
+                  <div class="shade-text"><strong>Wide open</strong><span>No tall buildings nearby</span></div>
+                </div>
+              </label>
+              <label>
+                <input type="radio" name="shading" value="some" checked>
+                <div class="shading-option-btn">
+                  <span class="shade-icon">&#9729;</span>
+                  <div class="shade-text"><strong>Some buildings</strong><span>Typical NYC block</span></div>
+                </div>
+              </label>
+              <label>
+                <input type="radio" name="shading" value="dense">
+                <div class="shading-option-btn">
+                  <span class="shade-icon">&#9899;</span>
+                  <div class="shade-text"><strong>Dense urban canyon</strong><span>Tall buildings all sides</span></div>
+                </div>
+              </label>
+              <label>
+                <input type="radio" name="shading" value="wide_avenue">
+                <div class="shading-option-btn">
+                  <span class="shade-icon">&#9776;</span>
+                  <div class="shade-text"><strong>Wide avenue</strong><span>Faces a wide street</span></div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Electric Bill -->
+        <div class="form-section">
+          <div class="form-section-label">Your Electric Bill</div>
+          <div class="form-group">
+            <label for="monthlyBill">Monthly electric bill ($)</label>
+            <input type="number" id="monthlyBill" min="20" max="1000" value="140" step="10" class="num-input">
+          </div>
+        </div>
+
+        <!-- System Cost -->
+        <div class="form-section">
+          <div class="form-section-label">System Budget</div>
+          <div class="form-group">
+            <label>Estimated system cost</label>
+            <select id="systemCost">
+              <option value="1200">Budget kit (~$1,200)</option>
+              <option value="2200" selected>Mid-range kit (~$2,200)</option>
+              <option value="3000">Premium branded kit (~$3,000)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="calc-btn" id="calcBtn" onclick="calculate()">
+          <span class="calc-btn-spinner"></span>
+          <span class="calc-btn-text">Calculate My Solar Potential</span>
+        </button>
+      </div>
+
+      <!-- RIGHT: 3D Viewport + Results -->
+      <div class="results-panel">
+        <!-- 3D Scene -->
+        <div class="scene3d-container" id="scene3dContainer">
+          <div class="scene3d-loading" id="scene3dLoading">
+            <div class="viz-spinner"></div>
+            <span>Enter an address to load the 3D shadow model</span>
+          </div>
+          <canvas id="scene3dCanvas"></canvas>
+
+          <!-- Sun info -->
+          <div class="scene3d-info-panel" id="sunInfoPanel" style="display:none">
+            <div class="info-title">SUN POSITION</div>
+            <div class="info-value">12:30 PM</div>
+            <div class="info-detail">Jun 15 &bull; NYC</div>
+          </div>
+
+          <!-- Building info -->
+          <div class="scene3d-info-panel" id="bldgInfoPanel" style="display:none">
+            <div class="info-title">YOUR BUILDING</div>
+          </div>
+
+          <!-- Legend -->
+          <div class="scene3d-legend" id="sceneLegend" style="display:none">
+            <div class="legend-item"><div class="legend-dot" style="background:#556677"></div>None</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#E8B030"></div>Low</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#E07020"></div>Med</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#D03030"></div>High</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#3399FF"></div>You</div>
+          </div>
+
+          <!-- Tooltip -->
+          <div class="scene3d-tooltip" id="hoverTooltip"></div>
+
+          <!-- Controls -->
+          <div class="scene3d-controls" id="sceneControls" style="display:none">
+            <button class="scene3d-play-btn" id="playBtn">&#9654;</button>
+            <input type="range" class="scene3d-time-slider" id="timeSlider" min="330" max="1170" value="750" step="6">
+            <span class="scene3d-time-label" id="timeLabel">12:30 PM</span>
+            <div class="scene3d-month-btns">
+              <button class="scene3d-month-btn" data-month="0">Jan</button>
+              <button class="scene3d-month-btn" data-month="2">Mar</button>
+              <button class="scene3d-month-btn selected" data-month="5">Jun</button>
+              <button class="scene3d-month-btn" data-month="8">Sep</button>
+              <button class="scene3d-month-btn" data-month="11">Dec</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results (hidden until calculated) -->
+        <div class="results-placeholder" id="placeholder">
+          <div class="placeholder-icon">&#9728;</div>
+          <p>Fill in your balcony details and hit calculate to see your solar estimate alongside the 3D shadow analysis.</p>
+        </div>
+
+        <div class="results-content" id="results">
+          <div class="fallback-banner" id="fallbackBanner">
+            Using estimated model &mdash; enter your address above for a PVWatts-powered estimate.
+          </div>
+          <p class="solar-context" id="solarContext"></p>
+
+          <div class="result-hero">
+            <div class="result-hero-label">Estimated Annual Production</div>
+            <div class="result-hero-value" id="annualKwh">&mdash;</div>
+            <div class="result-hero-sub" id="annualKwhContext">&mdash;</div>
+          </div>
+
+          <div class="result-stats">
+            <div class="result-stat-card highlight">
+              <div class="stat-label">Annual Savings</div>
+              <div class="stat-value" id="annualSavings">&mdash;</div>
+              <div class="stat-detail" id="monthlySavings">&mdash;</div>
+            </div>
+            <div class="result-stat-card">
+              <div class="stat-label">Bill Offset</div>
+              <div class="stat-value" id="billOffset">&mdash;</div>
+              <div class="stat-detail">of your electric bill</div>
+            </div>
+            <div class="result-stat-card">
+              <div class="stat-label">Simple Payback</div>
+              <div class="stat-value" id="paybackYears">&mdash;</div>
+              <div class="stat-detail" id="paybackDetail">&mdash;</div>
+            </div>
+            <div class="result-stat-card">
+              <div class="stat-label">25-Year Savings</div>
+              <div class="stat-value" id="lifetimeSavings">&mdash;</div>
+              <div class="stat-detail">with rate escalation</div>
+            </div>
+          </div>
+
+          <div class="result-chart-card">
+            <h3>Monthly Energy Production (kWh)</h3>
+            <div class="chart-container" id="monthlyChart"></div>
+          </div>
+
+          <div class="result-impact">
+            <h3>Environmental Impact (Annual)</h3>
+            <div class="impact-grid">
+              <div class="impact-item">
+                <div class="impact-value" id="co2Offset">&mdash;</div>
+                <div class="impact-label">lbs CO&#8322; avoided</div>
+              </div>
+              <div class="impact-item">
+                <div class="impact-value" id="treesEquiv">&mdash;</div>
+                <div class="impact-label">trees planted equivalent</div>
+              </div>
+              <div class="impact-item">
+                <div class="impact-value" id="milesOffset">&mdash;</div>
+                <div class="impact-label">miles of driving offset</div>
+              </div>
+              <div class="impact-item">
+                <div class="impact-value" id="phonesCharged">&mdash;</div>
+                <div class="impact-label">smartphone charges</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-details-card">
+            <h3>System Configuration</h3>
+            <div class="detail-row"><span class="detail-label">System size</span><span class="detail-value" id="detailSystemSize">&mdash;</span></div>
+            <div class="detail-row"><span class="detail-label">Panel orientation</span><span class="detail-value" id="detailOrientation">&mdash;</span></div>
+            <div class="detail-row"><span class="detail-label">Tilt angle</span><span class="detail-value" id="detailTilt">&mdash;</span></div>
+            <div class="detail-row"><span class="detail-label">Shade factor</span><span class="detail-value" id="detailShadeFactor">&mdash;</span></div>
+            <div class="detail-row"><span class="detail-label">Effective capacity factor</span><span class="detail-value" id="detailCapacity">&mdash;</span></div>
+            <div class="detail-row" id="detailWeatherStation" style="display:none"><span class="detail-label">Weather station</span><span class="detail-value" id="detailWeatherStationVal">&mdash;</span></div>
+            <div class="detail-row" id="detailBuildingYear" style="display:none"><span class="detail-label">Building year</span><span class="detail-value" id="detailBuildingYearVal">&mdash;</span></div>
+            <div class="detail-row" id="detailNeighbors" style="display:none"><span class="detail-label">Taller buildings nearby</span><span class="detail-value" id="detailNeighborsVal">&mdash;</span></div>
+            <div class="detail-row"><span class="detail-label">Electricity rate used</span><span class="detail-value">$0.22/kWh (Con Ed SC-1)</span></div>
+            <div class="detail-row"><span class="detail-label">Rate escalation</span><span class="detail-value">3%/year</span></div>
+            <div class="detail-row"><span class="detail-label">Panel degradation</span><span class="detail-value">0.5%/year</span></div>
+          </div>
+
+          <p class="result-disclaimer" id="resultDisclaimer">
+            Estimates are based on NREL PVWatts V8 methodology with NYC-specific balcony derating factors. Actual production may vary by &plusmn;20%. Financial calculations assume Con Edison SC-1 residential rate of $0.22/kWh with 3% annual escalation and 0.5% annual panel degradation.
+          </p>
+
+          <details class="data-sources-card" id="dataSourcesCard">
+            <summary>Data Sources</summary>
+            <div class="data-sources-list" id="dataSourcesList"></div>
+          </details>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <a href="index.html">balco.nyc</a> &mdash; Balcony solar for NYC renters</p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="js/config.js"></script>
+<script src="js/solar-api.js"></script>
+<script src="js/sun-position.js"></script>
+<script src="js/3d-scene.js"></script>
+<script src="js/3d-shadow-model.js"></script>
+<script>
+// ============================================================
+// CALCULATOR 3A — 3D Shadow Model Orchestration
+// ============================================================
+
+let manualMode = false;
+let scene3dInitialized = false;
+
+// --- SUPABASE ---
+const SUPABASE_URL = 'https://lbjcfqxfztbaoxuwhrhd.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxiamNmcXhmenRiYW94dXdocmhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzMzU2NjcsImV4cCI6MjA4OTkxMTY2N30.wp27pbHIwDVLn2CRbPga6olEZOeJdDIO_qRhaDK2l5s';
+let supabaseClient = null;
+try { supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch (e) {}
+
+function logEstimate(result, inputs) {
+  if (!supabaseClient) return;
+  try {
+    supabaseClient.from('estimates').insert({
+      address: SolarState.address || null,
+      lat: SolarState.lat, lon: SolarState.lon,
+      azimuth: inputs.azimuth, tilt: inputs.tilt,
+      system_watts: inputs.systemWatts, floor_level: inputs.floor,
+      total_floors: inputs.totalFloors, shading: inputs.shading,
+      annual_kwh: Math.round(result.annualKwh * 10) / 10,
+      annual_savings: Math.round(result.annualSavings * 100) / 100,
+      shade_factor: result.shadeFactor, used_pvwatts: result.usedPVWatts,
+      data_sources: result.dataSources,
+      calculator_version: '3a',
+    }).then(() => console.log('[3A] Estimate logged'));
+  } catch (e) {}
+}
+
+// --- GOOGLE PLACES ---
+function initGooglePlaces() {
+  const input = document.getElementById('addressInput');
+  SolarAPI.initAutocomplete(input, onPlaceSelected);
+}
+window.initGooglePlaces = initGooglePlaces;
+
+// --- ADDRESS HANDLER ---
+async function onPlaceSelected(place) {
+  const spinner = document.getElementById('addressSpinner');
+  const progress = document.getElementById('lookupProgress');
+  spinner.classList.add('active');
+  progress.classList.add('active');
+  document.getElementById('skipAddress').style.display = 'none';
+
+  await SolarAPI.runBuildingLookup((service, status) => {
+    const el = document.getElementById('lp-' + service);
+    if (el) el.className = 'lookup-item ' + status;
+  });
+
+  spinner.classList.remove('active');
+  prefillForm();
+
+  // Await neighbor buildings explicitly for 3D scene
+  if (!SolarState.neighborBuildings) {
+    document.getElementById('scene3dLoading').querySelector('span').textContent = 'Loading neighbor buildings...';
+    await SolarAPI.fetchNeighborBuildings();
+  }
+
+  // Initialize 3D scene
+  init3DScene();
+}
+
+function skipAddressEntry() {
+  manualMode = true;
+  document.getElementById('skipAddress').style.display = 'none';
+}
+
+// --- 3D SCENE INITIALIZATION ---
+function init3DScene() {
+  if (scene3dInitialized) return;
+  if (!SolarState.footprintCoords) {
+    console.warn('[3A] No footprint data available for 3D scene');
+    return;
+  }
+
+  const loading = document.getElementById('scene3dLoading');
+  loading.querySelector('span').textContent = 'Building 3D model...';
+
+  // Build target feature from SolarState
+  const targetFeature = {
+    geometry: { type: 'Polygon', coordinates: [SolarState.footprintCoords] },
+    properties: {
+      bin: SolarState.bin,
+      height_roof: SolarState.heightroof || 60,
+      ground_elevation: SolarState.groundelev || 0,
+    },
+  };
+
+  // Initialize scene
+  Scene3D.init('scene3dCanvas', {
+    onSunUpdate: function(sunPos, month, minutes) {
+      ShadowModel.updateColors(sunPos, month, minutes);
+      ShadowModel.updateInfoPanels(sunPos, month, minutes);
+    },
+    onBuildingHover: function(entry, x, y) {
+      ShadowModel.updateTooltip(entry, x, y);
+    },
+  });
+
+  // Add buildings
+  Scene3D.addBuildings(targetFeature, SolarState.neighborBuildings || []);
+
+  // Initialize shadow model
+  const floor = parseInt(document.getElementById('floor').value) || 8;
+  const totalFloors = parseInt(document.getElementById('totalFloors').value) || 20;
+  const azimuth = parseInt(document.querySelector('input[name="direction"]:checked').value);
+  ShadowModel.init(
+    Scene3D.targetBuilding,
+    floor, totalFloors,
+    SolarState.heightroof || 60,
+    azimuth
+  );
+
+  // Draw sun arc
+  Scene3D.updateSunArc();
+
+  // Show UI overlays
+  loading.style.display = 'none';
+  document.getElementById('sunInfoPanel').style.display = '';
+  document.getElementById('bldgInfoPanel').style.display = '';
+  document.getElementById('sceneLegend').style.display = '';
+  document.getElementById('sceneControls').style.display = '';
+
+  scene3dInitialized = true;
+  console.log('[3A] 3D scene initialized');
+}
+
+// --- TIME CONTROLS ---
+document.getElementById('timeSlider').addEventListener('input', function() {
+  Scene3D.setTimeAndMonth(parseInt(this.value), undefined);
+  document.getElementById('timeLabel').textContent = SunPosition.formatTime(parseInt(this.value));
+});
+
+document.getElementById('playBtn').addEventListener('click', function() {
+  if (Scene3D.isPlaying) {
+    Scene3D.stopAnimation();
+    this.innerHTML = '&#9654;';
+  } else {
+    Scene3D.startAnimation();
+    this.innerHTML = '&#9646;&#9646;';
+  }
+});
+
+document.querySelectorAll('.scene3d-month-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.scene3d-month-btn').forEach(b => b.classList.remove('selected'));
+    this.classList.add('selected');
+    const month = parseInt(this.dataset.month);
+    Scene3D.setTimeAndMonth(undefined, month);
+    Scene3D.updateSunArc();
+  });
+});
+
+// --- FORM PRE-FILL ---
+function prefillForm() {
+  const card = document.getElementById('buildingInfoCard');
+  let hasInfo = false;
+
+  if (SolarState.address) {
+    document.getElementById('biAddress').innerHTML = '<strong>' + SolarState.address.split(',')[0] + '</strong>';
+    hasInfo = true;
+  }
+  if (SolarState.numfloors) {
+    document.getElementById('biFloors').innerHTML = 'Floors: <strong>' + SolarState.numfloors + '</strong>';
+    document.getElementById('totalFloors').value = SolarState.numfloors;
+    document.getElementById('totalFloorsAuto').style.display = 'inline-block';
+    const floorInput = document.getElementById('floor');
+    if (parseInt(floorInput.value) > SolarState.numfloors) {
+      floorInput.value = Math.ceil(SolarState.numfloors / 2);
+    }
+    hasInfo = true;
+  }
+  if (SolarState.yearbuilt) {
+    document.getElementById('biYear').innerHTML = 'Built: <strong>' + SolarState.yearbuilt + '</strong>';
+    hasInfo = true;
+  }
+  if (SolarState.bldgclass) {
+    document.getElementById('biClass').innerHTML = 'Class: <strong>' + SolarState.bldgclass + '</strong>';
+    hasInfo = true;
+  }
+  if (SolarState.unitsres) {
+    document.getElementById('biUnits').innerHTML = 'Units: <strong>' + SolarState.unitsres + '</strong>';
+    hasInfo = true;
+  }
+  if (SolarState.heightroof) {
+    document.getElementById('biHeight').innerHTML = 'Height: <strong>' + Math.round(SolarState.heightroof) + ' ft</strong>';
+    hasInfo = true;
+  }
+  if (hasInfo) card.classList.add('visible');
+
+  if (SolarState.orientationSuggestion) {
+    const bestDir = SolarState.orientationSuggestion.bestDirection;
+    const radio = document.querySelector('input[name="direction"][value="' + bestDir + '"]');
+    if (radio) {
+      radio.checked = true;
+      const dirName = DIRECTION_LABELS[bestDir] || bestDir + '\u00B0';
+      const hint = document.getElementById('orientationHint');
+      hint.textContent = 'Detected from building footprint: ' + dirName + ' (' + SolarState.orientationSuggestion.confidence + ' confidence)';
+      hint.classList.add('visible');
+    }
+  }
+}
+
+// --- CALCULATION ---
+async function calculate() {
+  const btn = document.getElementById('calcBtn');
+  btn.classList.add('loading');
+  try {
+    const formInputs = {
+      azimuth: parseInt(document.querySelector('input[name="direction"]:checked').value),
+      tilt: parseInt(document.querySelector('input[name="mount"]:checked').value),
+      systemWatts: parseInt(document.getElementById('railingWidth').value),
+      floor: parseInt(document.getElementById('floor').value),
+      totalFloors: parseInt(document.getElementById('totalFloors').value),
+      shading: document.querySelector('input[name="shading"]:checked').value,
+      monthlyBill: parseInt(document.getElementById('monthlyBill').value),
+      systemCost: parseInt(document.getElementById('systemCost').value),
+    };
+
+    const result = await SolarAPI.calculateEstimate(formInputs);
+    renderResults(result, formInputs);
+    logEstimate(result, formInputs);
+
+    // Re-init shadow model if floor/direction changed
+    if (scene3dInitialized && Scene3D.targetBuilding) {
+      ShadowModel.init(
+        Scene3D.targetBuilding,
+        formInputs.floor, formInputs.totalFloors,
+        SolarState.heightroof || 60,
+        formInputs.azimuth
+      );
+    }
+  } catch (err) {
+    console.error('[3A] Calculation failed:', err);
+  } finally {
+    btn.classList.remove('loading');
+  }
+}
+
+// --- RENDER RESULTS ---
+function renderResults(r, inputs) {
+  document.getElementById('placeholder').style.display = 'none';
+  document.getElementById('results').classList.add('visible');
+
+  const banner = document.getElementById('fallbackBanner');
+  if (!r.usedPVWatts) banner.classList.add('visible');
+  else banner.classList.remove('visible');
+
+  if (SolarState.solarResource && SolarState.solarResource.avg_ghi) {
+    const ghi = SolarState.solarResource.avg_ghi.annual;
+    const ctx = document.getElementById('solarContext');
+    ctx.textContent = 'Your location receives ' + ghi.toFixed(1) + ' kWh/m\u00B2/day of solar energy (NYC avg: 4.21)';
+    ctx.classList.add('visible');
+  }
+
+  document.getElementById('annualKwh').textContent = Math.round(r.annualKwh).toLocaleString() + ' kWh';
+  document.getElementById('annualKwhContext').textContent = 'That\u2019s ' + Math.round(r.annualKwh / 12) + ' kWh/month from a ' + r.systemWatts + 'W system';
+  document.getElementById('annualSavings').textContent = '$' + Math.round(r.annualSavings).toLocaleString();
+  document.getElementById('monthlySavings').textContent = '$' + Math.round(r.monthlySavings) + '/month';
+  document.getElementById('billOffset').textContent = Math.round(r.billOffsetPct) + '%';
+  document.getElementById('paybackYears').textContent = r.npvPayback < 25 ? r.npvPayback.toFixed(1) + ' yrs' : '25+ yrs';
+  document.getElementById('paybackDetail').textContent = r.npvPayback < 25 ? 'Simple: ' + r.simplePayback.toFixed(1) + ' yrs' : 'May not pay back in 25 years';
+  document.getElementById('lifetimeSavings').textContent = '$' + Math.round(r.lifetimeSavings).toLocaleString();
+
+  renderChart(r.monthlyKwh);
+
+  document.getElementById('co2Offset').textContent = Math.round(r.co2Lbs).toLocaleString();
+  document.getElementById('treesEquiv').textContent = r.treesEquiv.toFixed(1);
+  document.getElementById('milesOffset').textContent = Math.round(r.milesOffset).toLocaleString();
+  document.getElementById('phonesCharged').textContent = Math.round(r.phonesCharged).toLocaleString();
+
+  document.getElementById('detailSystemSize').textContent = r.systemWatts + 'W (' + r.systemKw + ' kW)';
+  document.getElementById('detailOrientation').textContent = DIRECTION_LABELS[r.azimuth] + ' (' + r.azimuth + '\u00B0)';
+  document.getElementById('detailTilt').textContent = r.tilt + '\u00B0 (' + (r.tilt === 90 ? 'vertical railing' : 'angled mount') + ')';
+  document.getElementById('detailShadeFactor').textContent = (r.shadeFactor * 100).toFixed(0) + '% sunlight reaching panels';
+  document.getElementById('detailCapacity').textContent = r.capacityFactor.toFixed(1) + '%';
+
+  if (r.pvwattsData && r.pvwattsData.station_info) {
+    const si = r.pvwattsData.station_info;
+    document.getElementById('detailWeatherStationVal').textContent =
+      (si.weather_data_source || 'NSRDB') + ' (' + (si.lat || '').toString().substring(0,5) + ', ' + (si.lon || '').toString().substring(0,7) + ')';
+    document.getElementById('detailWeatherStation').style.display = '';
+  }
+  if (SolarState.yearbuilt) {
+    document.getElementById('detailBuildingYearVal').textContent = SolarState.yearbuilt;
+    document.getElementById('detailBuildingYear').style.display = '';
+  }
+  if (SolarState.neighborBuildings && SolarState.neighborBuildings.length > 0) {
+    const userHeightFt = (inputs.floor / inputs.totalFloors) * (SolarState.heightroof || inputs.totalFloors * 10);
+    const taller = SolarState.neighborBuildings.filter(b => {
+      const h = (b.properties || b).height_roof;
+      return h && parseFloat(h) > userHeightFt;
+    });
+    document.getElementById('detailNeighborsVal').textContent = taller.length + ' of ' + SolarState.neighborBuildings.length + ' within 200m';
+    document.getElementById('detailNeighbors').style.display = '';
+  }
+
+  renderDataSources(r.dataSources);
+
+  if (window.innerWidth <= 1024) {
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function renderDataSources(ds) {
+  const list = document.getElementById('dataSourcesList');
+  list.innerHTML = '';
+  const sources = [
+    { key: 'pvwatts', label: 'NREL PVWatts V8 (energy model)' },
+    { key: 'solarResource', label: 'NREL Solar Resource (irradiance)' },
+    { key: 'pluto', label: 'NYC PLUTO (building data)' },
+    { key: 'footprints', label: 'NYC Building Footprints (orientation)' },
+    { key: 'geoclient', label: 'NYC Geoclient (building registry)' },
+    { key: 'googlePlaces', label: 'Google Places (geocoding)' },
+    { key: 'neighbors', label: 'Neighbor buildings (shadow context)' },
+  ];
+  sources.forEach(s => {
+    const item = document.createElement('div');
+    const success = ds[s.key];
+    item.className = 'ds-item ' + (success ? 'success' : 'fallback');
+    item.innerHTML = '<span class="ds-icon">' + (success ? '\u2713' : '\u2212') + '</span> ' +
+      s.label + (success ? '' : ' (using defaults)');
+    list.appendChild(item);
+  });
+}
+
+function renderChart(monthlyKwh) {
+  const container = document.getElementById('monthlyChart');
+  container.innerHTML = '';
+  const maxKwh = Math.max(...monthlyKwh);
+  monthlyKwh.forEach((kwh, i) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'chart-bar-wrapper';
+    const value = document.createElement('div');
+    value.className = 'chart-bar-value';
+    value.textContent = Math.round(kwh);
+    const bar = document.createElement('div');
+    bar.className = 'chart-bar';
+    const heightPct = maxKwh > 0 ? (kwh / maxKwh) * 100 : 0;
+    bar.style.height = '0%';
+    const label = document.createElement('div');
+    label.className = 'chart-bar-label';
+    label.textContent = MONTH_LABELS[i];
+    wrapper.appendChild(value);
+    wrapper.appendChild(bar);
+    wrapper.appendChild(label);
+    container.appendChild(wrapper);
+    requestAnimationFrame(() => { requestAnimationFrame(() => { bar.style.height = heightPct + '%'; }); });
+  });
+}
+
+// --- UI EVENT HANDLERS ---
+document.getElementById('floor').addEventListener('input', function() {
+  const totalFloors = document.getElementById('totalFloors');
+  if (parseInt(this.value) > parseInt(totalFloors.value)) totalFloors.value = this.value;
+});
+
+document.getElementById('totalFloors').addEventListener('input', function() {
+  const floor = document.getElementById('floor');
+  if (parseInt(floor.value) > parseInt(this.value)) floor.value = this.value;
+  document.getElementById('totalFloorsAuto').style.display = 'none';
+});
+
+// Auto-recalc
+(function setupAutoRecalc() {
+  const inputs = document.querySelectorAll('input[type="radio"], select, input[type="number"]');
+  inputs.forEach(input => {
+    input.addEventListener('change', () => {
+      if (document.getElementById('results').classList.contains('visible')) calculate();
+    });
+  });
+})();
+
+if (typeof google !== 'undefined' && google.maps) initGooglePlaces();
+</script>
+</body>
+</html>

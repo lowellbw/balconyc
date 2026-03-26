@@ -456,15 +456,31 @@
       .hero p { font-size: 1rem; margin-bottom: 20px; }
       .hero-input { padding: 16px 20px; padding-right: 44px; font-size: 0.95rem; }
       .hero-input-wrap { max-width: 100%; }
-      .hero.has-scene { padding: 90px 0 32px; min-height: auto; }
-      .hero.has-scene h1 { font-size: clamp(1.4rem, 5vw, 1.8rem); }
-      .hero.has-scene .hero-content { padding-bottom: 16px; }
 
-      /* 3D scene on mobile */
-      .scene3d-wrap { height: 360px; }
+      /* HERO with 3D scene active — compact header, full-width scene */
+      .hero.has-scene { padding: 72px 0 0; min-height: auto; }
+      .hero.has-scene .hero-layout { padding: 0; gap: 0; flex-direction: column; }
+      .hero.has-scene .hero-content { padding: 12px 20px 16px; max-width: 100%; text-align: center; }
+      .hero.has-scene h1 { font-size: 1.2rem; margin-bottom: 8px; }
+      .hero.has-scene p { font-size: 0.85rem; margin-bottom: 12px; }
+      .hero.has-scene .hero-input { padding: 12px 16px; padding-right: 40px; font-size: 0.88rem; }
+      .hero.has-scene .hero-building-info { font-size: 0.75rem; margin-top: 10px; }
+
+      /* 3D scene — full-width, taller on mobile */
+      .scene-frame { width: 100%; }
+      .scene3d-wrap { height: 65vh; min-height: 420px; border-radius: 0; border-left: none; border-right: none; box-shadow: none; }
       .scene3d-month-btns { display: none; }
-      .scene3d-controls { padding: 8px 10px; gap: 8px; }
-      .results-card { position: relative; bottom: auto; right: auto; max-width: 100%; margin: 16px 0 0; border-radius: 12px; padding: 20px; }
+      .scene3d-controls { padding: 8px 10px; gap: 8px; border-radius: 0; }
+
+      /* Click prompt — compact top bar on mobile */
+      .click-prompt { top: 10px; padding: 10px 20px; font-size: 0.85rem; border-radius: 10px; max-width: 85%; }
+      .click-prompt .prompt-sub { font-size: 0.7rem; margin-top: 2px; }
+
+      /* Google 3D confirm button — smaller on mobile */
+      .google3d-confirm-btn { padding: 12px 22px; font-size: 0.88rem; }
+
+      /* Results card below scene */
+      .results-card { position: relative; bottom: auto; right: auto; max-width: 100%; margin: 0; border-radius: 0; padding: 20px; box-shadow: none; border-top: 1px solid var(--border); }
       .results-card .rc-value { font-size: 1.6rem; }
       .results-card .rc-value-sm { font-size: 1.2rem; }
 

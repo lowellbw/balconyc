@@ -265,7 +265,7 @@ const Scene3D = {
       const h = this.targetBuilding.heightMeters;
       const d = this.cameraDistance;
       this.controls.target.set(0, h * 0.4, 0);
-      this.camera.position.set(120 * d, h + 60 * d, 180 * d);
+      this.camera.position.set(100 * d, h + 140 * d, 150 * d);
       this.controls.update();
     }
 

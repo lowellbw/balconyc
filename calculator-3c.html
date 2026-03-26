@@ -73,9 +73,7 @@
       background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.7) 100%);
     }
     .hero-frame {
-      position: absolute; inset: 40px;
-      border: 1px solid rgba(255,255,255,0.6);
-      pointer-events: none; z-index: 2;
+      display: none;
     }
     .hero-top-gradient {
       position: absolute; top: 0; left: 0; right: 0; height: 150px;
@@ -542,6 +540,7 @@ let currentStep = 1;
 let calculationResult = null;
 let scene3dReady = false;
 let vizImageUrl = null;
+let vizPromise = null;
 
 // --- SUPABASE ---
 const SUPABASE_URL = 'https://lbjcfqxfztbaoxuwhrhd.supabase.co';
@@ -599,8 +598,8 @@ async function onPlaceSelected(place) {
     SolarAPI.fetchNeighborBuildings();
   }
 
-  // Start AI visualization fetch in background
-  fetchVisualization();
+  // Start AI visualization fetch in background (store promise)
+  vizPromise = fetchVisualization();
 
   // Open modal
   openModal();
@@ -679,7 +678,11 @@ async function runCalculation() {
     systemCost: 2200,
   };
 
-  const result = await SolarAPI.calculateEstimate(formInputs);
+  // Run calculation + wait for AI image in parallel
+  const [result] = await Promise.all([
+    SolarAPI.calculateEstimate(formInputs),
+    vizPromise || Promise.resolve(), // wait for AI visualization to finish
+  ]);
   calculationResult = result;
 
   // Log to Supabase
@@ -698,8 +701,16 @@ async function runCalculation() {
     } catch (e) {}
   }
 
+  // Update loading text while waiting
+  const calcDetail = document.querySelector('.calc-detail');
+  if (calcDetail && !vizImageUrl) {
+    calcDetail.textContent = 'Generating AI visualization of your building...';
+    // If viz still not done, give it a bit more time
+    if (!vizImageUrl) await new Promise(r => setTimeout(r, 2000));
+  }
+
   // Brief delay for drama
-  await new Promise(r => setTimeout(r, 1500));
+  await new Promise(r => setTimeout(r, 800));
 
   // REVEAL
   reveal(result, formInputs);

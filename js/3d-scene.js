@@ -63,7 +63,7 @@ const Scene3D = {
     this.cameraDistance = options.cameraDistance || 1.0; // multiplier for default camera distance
 
     const width = this.container.clientWidth;
-    const height = options.containerHeight || 560;
+    const height = this.container.clientHeight || options.containerHeight || 560;
 
     // Renderer
     this.renderer = new THREE.WebGLRenderer({
@@ -78,11 +78,11 @@ const Scene3D = {
     this.renderer.shadowMap.autoUpdate = false;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.0;
-    this.renderer.setClearColor(0x1a1a2e);
+    this.renderer.setClearColor(0x1c1816);
 
     // Scene
     this.scene = new THREE.Scene();
-    this.scene.fog = new THREE.FogExp2(0x1a1a2e, 0.0015);
+    this.scene.fog = new THREE.FogExp2(0x1c1816, 0.0012);
 
     // Camera
     this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 2000);
@@ -100,11 +100,11 @@ const Scene3D = {
     this.controls.update();
 
     // Ambient light
-    this.ambientLight = new THREE.AmbientLight(0x8899bb, 0.5);
+    this.ambientLight = new THREE.AmbientLight(0xaa9988, 0.5);
     this.scene.add(this.ambientLight);
 
     // Hemisphere light for subtle sky/ground color
-    const hemiLight = new THREE.HemisphereLight(0x87ceeb, 0x444444, 0.3);
+    const hemiLight = new THREE.HemisphereLight(0xccb090, 0x332820, 0.3);
     this.scene.add(hemiLight);
 
     // Sun directional light with shadows
@@ -138,8 +138,8 @@ const Scene3D = {
     const groundGeo = new THREE.PlaneGeometry(800, 800);
     const groundMat = new THREE.ShaderMaterial({
       uniforms: {
-        centerColor: { value: new THREE.Color(0x243344) },
-        edgeColor: { value: new THREE.Color(0x111820) },
+        centerColor: { value: new THREE.Color(0x2a2520) },
+        edgeColor: { value: new THREE.Color(0x151210) },
         radius: { value: 350.0 },
       },
       vertexShader: [
@@ -312,17 +312,17 @@ const Scene3D = {
       material = customMaterial.clone();
     } else if (isTarget) {
       material = new THREE.MeshStandardMaterial({
-        color: 0x3399ff,
-        roughness: 0.6,
-        metalness: 0.1,
-        emissive: 0x112244,
+        color: 0xb05533,
+        roughness: 0.75,
+        metalness: 0.05,
+        emissive: 0x331108,
         emissiveIntensity: 0.15,
       });
     } else {
       material = new THREE.MeshStandardMaterial({
-        color: 0x556677,
-        roughness: 0.85,
-        metalness: 0.05,
+        color: 0x544840,
+        roughness: 0.9,
+        metalness: 0.02,
       });
     }
 
@@ -503,7 +503,7 @@ const Scene3D = {
   _onResize() {
     if (!this.container || !this.renderer) return;
     const width = this.container.clientWidth;
-    const height = this.canvas.clientHeight || 560;
+    const height = this.container.clientHeight || 560;
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height);
@@ -556,20 +556,20 @@ const Scene3D = {
     const u = this.skyDome.material.uniforms;
 
     if (factor === 0) {
-      // Night
-      u.topColor.value.setRGB(0.02, 0.03, 0.08);
-      u.horizonColor.value.setRGB(0.05, 0.05, 0.12);
-      u.bottomColor.value.setRGB(0.02, 0.02, 0.05);
+      // Night — warm dark
+      u.topColor.value.setRGB(0.04, 0.03, 0.03);
+      u.horizonColor.value.setRGB(0.08, 0.06, 0.05);
+      u.bottomColor.value.setRGB(0.03, 0.02, 0.02);
     } else if (warmth > 0.4) {
       // Sunrise/sunset — warm horizon
-      u.topColor.value.setRGB(0.08 + factor * 0.15, 0.10 + factor * 0.18, 0.25 + factor * 0.15);
-      u.horizonColor.value.setRGB(0.6 * warmth, 0.25 * warmth, 0.12 * warmth);
-      u.bottomColor.value.setRGB(0.04, 0.04, 0.08);
+      u.topColor.value.setRGB(0.12 + factor * 0.1, 0.08 + factor * 0.12, 0.06 + factor * 0.1);
+      u.horizonColor.value.setRGB(0.55 * warmth, 0.28 * warmth, 0.10 * warmth);
+      u.bottomColor.value.setRGB(0.06, 0.04, 0.03);
     } else {
-      // Daytime — blue sky
-      u.topColor.value.setRGB(0.12 + factor * 0.08, 0.18 + factor * 0.22, 0.45 + factor * 0.15);
-      u.horizonColor.value.setRGB(0.45 + factor * 0.2, 0.55 + factor * 0.15, 0.7 + factor * 0.1);
-      u.bottomColor.value.setRGB(0.04, 0.04, 0.08);
+      // Daytime — warm muted sky
+      u.topColor.value.setRGB(0.20 + factor * 0.15, 0.22 + factor * 0.18, 0.28 + factor * 0.12);
+      u.horizonColor.value.setRGB(0.50 + factor * 0.15, 0.45 + factor * 0.12, 0.38 + factor * 0.08);
+      u.bottomColor.value.setRGB(0.06, 0.05, 0.04);
     }
 
     // Also update fog color to match horizon
@@ -607,7 +607,7 @@ const Scene3D = {
 
   _addStreetGrid() {
     const gridMaterial = new THREE.LineBasicMaterial({
-      color: 0x2a3a4a,
+      color: 0x3a3025,
       transparent: true,
       opacity: 0.3,
     });

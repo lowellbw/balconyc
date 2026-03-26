@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>balco.nyc — Balcony Solar for NYC Renters</title>
+  <title>Solar Calculator — balco.nyc</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
   <script>
@@ -22,7 +22,8 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --bg: #FFFFFF; --text: #171717; --text-sub: #596580; --text-muted: #8896AB;
-      --teal: #b05533; --teal-dark: #8c3f24; --teal-light: #f8ece6;
+      --teal: #171717; --teal-dark: #111111; --teal-light: #f5f5f5;
+      --brick-img: url('red-and-brown-brick-wall-texture-background-building-concrete-masonry-pattern-red-brickwork-vintage-template-stone-material-construction-backdrop-abstract-wallpaper-design-illustration-vector.jpg');
       --green: #10B981; --green-light: #D1FAE5; --border: #E2E8F0;
       --card: #FFFFFF; --radius: 12px; --radius-lg: 16px;
     }
@@ -199,8 +200,28 @@
     .rc-detail-row strong { color: var(--text); font-weight: 700; }
     .rc-cta { display: block; width: 100%; text-align: center; padding: 13px; background: var(--text); color: #fff; border: none; border-radius: 10px; font-family: inherit; font-size: 0.92rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.2s; }
     .rc-cta:hover { background: #333; }
-    .rc-cta-accent { background: var(--teal) !important; }
-    .rc-cta-accent:hover { background: var(--teal-dark) !important; }
+    .rc-cta-accent {
+      background-image: var(--brick-img) !important;
+      background-size: cover !important;
+      background-position: center !important;
+      color: #fff !important;
+      border: none !important;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+    .rc-cta-accent:hover { opacity: 0.9; }
+
+    /* Brick accent button — used sparingly */
+    .btn-brick {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 14px 28px; border: none; border-radius: 12px;
+      font-family: inherit; font-size: 0.95rem; font-weight: 700;
+      color: #fff; cursor: pointer; text-decoration: none; gap: 8px;
+      background-image: var(--brick-img);
+      background-size: cover; background-position: center;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-brick:hover { opacity: 0.9; transform: translateY(-1px); }
 
     /* RESULTS SECTION */
     .results-section { padding: 60px 0 80px; display: none; }
@@ -304,15 +325,21 @@
     .bd-offset-text strong { color: var(--text); }
 
     /* Section 3: Email capture */
-    .bd-cta-section { background: var(--teal-dark); border-radius: 0 0 20px 20px; padding: 32px 40px; color: #fff; }
+    .bd-cta-section { background: var(--text); border-radius: 0 0 20px 20px; padding: 32px 40px; color: #fff; }
     .bd-cta-section h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }
     .bd-cta-section p { font-size: 0.9rem; opacity: 0.75; margin-bottom: 16px; line-height: 1.4; }
     .bd-email-row { display: flex; gap: 10px; }
     .bd-email-input { flex: 1; padding: 14px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; background: rgba(255,255,255,0.1); color: #fff; font-family: inherit; font-size: 0.95rem; outline: none; }
     .bd-email-input::placeholder { color: rgba(255,255,255,0.4); }
     .bd-email-input:focus { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.15); }
-    .bd-email-btn { padding: 14px 24px; background: #fff; color: var(--teal-dark); border: none; border-radius: 10px; font-family: inherit; font-size: 0.95rem; font-weight: 700; cursor: pointer; flex-shrink: 0; }
-    .bd-email-btn:hover { background: #f0f0f0; }
+    .bd-email-btn {
+      padding: 14px 24px; border: none; border-radius: 10px;
+      font-family: inherit; font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; flex-shrink: 0; color: #fff;
+      background-image: var(--brick-img); background-size: cover; background-position: center;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .bd-email-btn:hover { opacity: 0.9; }
     .bd-email-note { font-size: 0.72rem; opacity: 0.45; margin-top: 10px; }
     .bd-email-success { display: none; text-align: center; padding: 8px 0; }
     .bd-email-success .wl-check { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 1.5rem; }
@@ -437,9 +464,9 @@
   <div class="hero-layout">
     <div class="hero-content" id="heroContent">
       <h1>Solar for every<br>balcony in NYC</h1>
-      <p>Free estimate for any NYC address &mdash; see how much your balcony could save you.</p>
+      <p>DIY kits or professionally installed &mdash; plug-in panels and batteries for NYC apartments.</p>
       <div class="hero-input-wrap">
-        <input type="text" class="hero-input" id="addressInput" placeholder="What's your address?" autocomplete="off">
+        <input type="text" class="hero-input" id="addressInput" placeholder="Enter your address to model your solar potential..." autocomplete="off">
         <div class="hero-input-spinner" id="heroSpinner"></div>
       </div>
       <div class="hero-building-info" id="heroBuildingInfo"></div>

@@ -15,12 +15,12 @@ const ShadowModel = {
 
   // Color thresholds
   COLORS: {
-    target:  0x3399FF,
-    high:    0xD03030,  // score > 0.5
-    medium:  0xE07020,  // score 0.2 – 0.5
-    low:     0xE8B030,  // score 0.05 – 0.2
-    none:    0x556677,  // score < 0.05
-    night:   0x334455,
+    target:  0xb05533,  // warm brick
+    high:    0xCC3322,  // deep red
+    medium:  0xD06830,  // burnt orange
+    low:     0xCCA050,  // warm amber
+    none:    0x544840,  // warm grey
+    night:   0x2a2420,  // dark warm
   },
 
   /**

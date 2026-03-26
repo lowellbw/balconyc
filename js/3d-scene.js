@@ -312,10 +312,10 @@ const Scene3D = {
       material = customMaterial.clone();
     } else if (isTarget) {
       material = new THREE.MeshStandardMaterial({
-        color: 0xb05533,
-        roughness: 0.75,
-        metalness: 0.05,
-        emissive: 0x331108,
+        color: 0x3399ff,
+        roughness: 0.6,
+        metalness: 0.1,
+        emissive: 0x112244,
         emissiveIntensity: 0.15,
       });
     } else {

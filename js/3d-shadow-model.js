@@ -15,7 +15,7 @@ const ShadowModel = {
 
   // Color thresholds
   COLORS: {
-    target:  0xb05533,  // warm brick
+    target:  0x3399FF,  // blue
     high:    0xCC3322,  // deep red
     medium:  0xD06830,  // burnt orange
     low:     0xCCA050,  // warm amber

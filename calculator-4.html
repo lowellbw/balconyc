@@ -243,7 +243,7 @@
     .chart-container { display: flex; align-items: flex-end; gap: 6px; height: 160px; padding-bottom: 24px; }
     .chart-bar-wrapper { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; }
     .chart-bar-value { font-size: 0.65rem; font-weight: 600; color: var(--text-sub); margin-bottom: 4px; }
-    .chart-bar { width: 100%; max-width: 40px; background: linear-gradient(180deg, var(--teal), var(--teal-dark)); border-radius: 4px 4px 0 0; transition: height 0.6s cubic-bezier(0.16,1,0.3,1); min-height: 4px; }
+    .chart-bar { width: 100%; max-width: 40px; background: linear-gradient(180deg, #333, #171717); border-radius: 4px 4px 0 0; transition: height 0.6s cubic-bezier(0.16,1,0.3,1); min-height: 4px; }
     .chart-bar-label { font-size: 0.65rem; font-weight: 500; color: var(--text-muted); margin-top: 6px; }
     .result-impact { background: linear-gradient(135deg, #064E3B, #065F46, #047857); border-radius: var(--radius); padding: 28px; color: #fff; margin-bottom: 16px; }
     .result-impact h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 16px; opacity: 0.9; }
@@ -309,7 +309,7 @@
     .bd-payback-bar .bar-label { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 6px; display: flex; justify-content: space-between; }
     .bd-payback-track { height: 20px; border-radius: 10px; background: #f0f0f0; overflow: hidden; display: flex; }
     .bd-payback-fill { background: var(--text); border-radius: 10px 0 0 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.62rem; font-weight: 700; }
-    .bd-payback-free { background: var(--teal); flex: 1; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.62rem; font-weight: 700; border-radius: 0 10px 10px 0; }
+    .bd-payback-free { background-image: var(--brick-img); background-size: cover; background-position: center; flex: 1; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.62rem; font-weight: 700; border-radius: 0 10px 10px 0; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
 
     /* Right: chart + offset */
     .bd-chart-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
@@ -622,7 +622,7 @@
             <div class="bd-offset-ring">
               <svg width="52" height="52" viewBox="0 0 52 52">
                 <circle cx="26" cy="26" r="22" fill="none" stroke="#E2E8F0" stroke-width="4"/>
-                <circle cx="26" cy="26" r="22" fill="none" stroke="#b05533" stroke-width="4" stroke-dasharray="138.2" stroke-dashoffset="128.7" id="offsetCircle" stroke-linecap="round"/>
+                <circle cx="26" cy="26" r="22" fill="none" stroke="#171717" stroke-width="4" stroke-dasharray="138.2" stroke-dashoffset="128.7" id="offsetCircle" stroke-linecap="round"/>
               </svg>
               <div class="ring-pct" id="billOffset">&mdash;</div>
             </div>
@@ -763,7 +763,7 @@
   <div class="bottom-cta-content">
     <h2>Be first in line when NYC goes solar</h2>
     <p>Early access members get priority scheduling and launch pricing. Join 1,200+ NYC renters already on the waitlist.</p>
-    <button class="lp-btn-pill open-waitlist" style="background:#fff;color:var(--text)!important;font-size:1.1rem;padding:16px 32px">Be first to go solar <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+    <button class="btn-brick open-waitlist" style="font-size:1.1rem;padding:16px 32px;border-radius:24px">Be first to go solar <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
   </div>
 </section>
 

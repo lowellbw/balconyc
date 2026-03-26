@@ -81,8 +81,7 @@
     .hero-post-results.visible { display: flex; animation: fadeUp 0.4s ease; }
     .hero-post-results .hpr-summary { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
     .hero-post-results .hpr-summary strong { color: #fff; }
-    .hero-post-results .hpr-cta { display: block; width: 100%; text-align: center; padding: 14px; background: #fff; color: var(--text); border: none; border-radius: 10px; font-family: inherit; font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: transform 0.2s; }
-    .hero-post-results .hpr-cta:hover { transform: translateY(-1px); }
+    .hero-post-results .btn-pill { font-size: 0.95rem; }
     .hero-post-results .hpr-reset { background: none; border: none; color: rgba(255,255,255,0.5); font-family: inherit; font-size: 0.82rem; cursor: pointer; padding: 4px 0; text-decoration: underline; text-underline-offset: 2px; transition: color 0.2s; }
     .hero-post-results .hpr-reset:hover { color: rgba(255,255,255,0.8); }
 
@@ -537,7 +536,7 @@
       <!-- Replaces input area after results are shown -->
       <div class="hero-post-results" id="heroPostResults">
         <div class="hpr-summary" id="hprSummary"></div>
-        <a href="javascript:void(0)" class="hpr-cta open-waitlist">Join the Waitlist</a>
+        <a href="javascript:void(0)" class="btn-pill open-waitlist" style="justify-content:center;width:100%">Join Waitlist</a>
         <button class="hpr-reset" onclick="resetCalculator()">Try a different address</button>
       </div>
     </div>
@@ -723,8 +722,28 @@
   </div>
 </section>
 
+<!-- LEGISLATION — right after stats -->
+<section class="feature-row" style="padding-top:40px;padding-bottom:40px">
+  <div class="container">
+    <div class="feature-text">
+      <h2>The SUNNY Act is moving through Albany</h2>
+      <p>The SUNNY Act (S8512/A9111) would legalize plug-in solar for millions of NYC renters. Utah passed first in March 2025. Virginia passed 96-0 in March 2026. 30 states have introduced balcony solar bills this year.</p>
+      <p style="margin-bottom:0">&ldquo;Plug-in solar is a powerful tool to deliver enhanced energy independence and affordability to millions of New Yorkers.&rdquo; &mdash; Senator Liz Krueger</p>
+    </div>
+    <div class="feature-visual">
+      <a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:block">
+        <div class="feature-card">
+          <div class="feature-card-bg" style="background-image:url('Gemini_Generated_Image_d2ucutd2ucutd2uc.png');background-position:top center"></div>
+          <div class="feature-card-inner"><h3>The SUNNY Act</h3><p>30 states with active balcony solar bills in 2026 &mdash; NYC is next.</p></div>
+          <div class="arrow-circle"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H5M12 4v7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- FEATURE: Install -->
-<section class="feature-row" id="how">
+<section class="feature-row reverse" id="how">
   <div class="container">
     <div class="feature-text">
       <h2>Book an install like you'd order a ride</h2>
@@ -742,7 +761,7 @@
 </section>
 
 <!-- FEATURE: Maintenance -->
-<section class="feature-row reverse">
+<section class="feature-row">
   <div class="container">
     <div class="feature-text">
       <h2>We handle everything after install, too</h2>
@@ -925,6 +944,17 @@ async function onPlaceSelected(place) {
   // Slide hero left, show 3D viewport
   document.getElementById('heroSection').classList.add('has-scene');
   document.getElementById('sceneFrame').classList.add('visible');
+
+  // Swap left panel: hide input, show CTAs immediately
+  document.querySelector('.hero-input-wrap').style.display = 'none';
+  document.getElementById('heroBuildingInfo').style.display = 'none';
+  document.querySelector('#heroContent > p').style.display = 'none';
+  var addrShort = SolarState.address ? SolarState.address.split(',')[0] : '';
+  document.getElementById('hprSummary').innerHTML =
+    '<strong>' + addrShort + '</strong>' +
+    (SolarState.numfloors ? ' &bull; ' + SolarState.numfloors + ' floors' : '') +
+    (SolarState.heightroof ? ' &bull; ' + Math.round(SolarState.heightroof) + 'ft' : '');
+  document.getElementById('heroPostResults').classList.add('visible');
 
   // Init Three.js scene
   setTimeout(function() { initScene(); }, 400);
@@ -1305,18 +1335,12 @@ function showResults(r, inputs) {
   document.getElementById('floatingCard').classList.add('visible');
   document.getElementById('bldgInfoPanel').style.display = 'none';
 
-  // Swap left panel: hide input, show post-results CTAs
-  document.querySelector('.hero-input-wrap').style.display = 'none';
-  document.getElementById('heroBuildingInfo').style.display = 'none';
-  document.querySelector('.hero.has-scene h1').style.display = 'none';
-  document.querySelector('.hero.has-scene p').style.display = 'none';
+  // Update summary with production data
   var dirLabel = DIRECTION_LABELS[selectedAzimuth] || '';
   var addrShort = SolarState.address ? SolarState.address.split(',')[0] : '';
   document.getElementById('hprSummary').innerHTML =
-    '<strong>' + addrShort + '</strong><br>' +
-    'Floor ' + selectedFloor + ', ' + dirLabel + '-facing<br>' +
+    '<strong>' + addrShort + '</strong> &bull; Floor ' + selectedFloor + ', ' + dirLabel + '-facing<br>' +
     Math.round(r.annualKwh) + ' kWh/year &bull; $' + Math.round(r.annualSavings) + ' saved';
-  document.getElementById('heroPostResults').classList.add('visible');
 
   // Breakdown modal content
   document.getElementById('annualKwh').textContent = Math.round(r.annualKwh).toLocaleString();

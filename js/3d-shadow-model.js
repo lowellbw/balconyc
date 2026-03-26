@@ -293,30 +293,10 @@ const ShadowModel = {
    * Update hover tooltip for a building.
    */
   updateTooltip(entry, clientX, clientY) {
+    // Tooltip disabled — keep canvas clean
     const tooltip = document.getElementById('hoverTooltip');
-    if (!tooltip) return;
-
-    if (!entry) {
-      tooltip.style.display = 'none';
-      return;
-    }
-
-    const props = entry.feature.properties || entry.feature;
-    const height = entry.heightFt.toFixed(0);
-    const score = entry.shadowScore || 0;
-    const scoreLabel = score > 0.5 ? 'High' : score > 0.2 ? 'Medium' : score > 0.05 ? 'Low' : 'None';
-    const scorePct = (score * 100).toFixed(0);
-
-    tooltip.innerHTML = `
-      <strong>${entry.isTarget ? 'Your Building' : (props.bin || 'Neighbor')}</strong><br>
-      Height: ${height}ft<br>
-      ${!entry.isTarget ? `Shadow: ${scoreLabel} (${scorePct}%)` : ''}
-    `;
-    tooltip.style.display = 'block';
-
-    // Position near cursor
-    const rect = Scene3D.container.getBoundingClientRect();
-    tooltip.style.left = (clientX - rect.left + 15) + 'px';
+    if (tooltip) tooltip.style.display = 'none';
+    return;
     tooltip.style.top = (clientY - rect.top - 10) + 'px';
   },
 };

@@ -88,7 +88,7 @@
       box-shadow: 0 8px 40px rgba(0,0,0,0.4);
     }
     .scene3d-wrap canvas { display: block; width: 100%; height: 100%; cursor: grab; }
-    .scene3d-wrap canvas.clickable { cursor: crosshair; }
+    .scene3d-wrap canvas.clickable { cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><rect x='4' y='6' width='24' height='18' rx='2' fill='%23334155' stroke='%2394a3b8' stroke-width='1'/><line x1='4' y1='12' x2='28' y2='12' stroke='%2394a3b8' stroke-width='0.8'/><line x1='4' y1='18' x2='28' y2='18' stroke='%2394a3b8' stroke-width='0.8'/><line x1='12' y1='6' x2='12' y2='24' stroke='%2394a3b8' stroke-width='0.8'/><line x1='20' y1='6' x2='20' y2='24' stroke='%2394a3b8' stroke-width='0.8'/><rect x='14' y='24' width='4' height='3' fill='%23334155'/></svg>") 16 16, crosshair; }
 
     /* Click prompt overlay */
     .click-prompt {
@@ -105,7 +105,7 @@
     .modelling-overlay {
       position: absolute; inset: 0; z-index: 14;
       display: none; flex-direction: column; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.15); backdrop-filter: blur(2px); pointer-events: none;
+      pointer-events: none;
     }
     .modelling-overlay.active { display: flex; }
     .sun-spinner {
@@ -127,37 +127,36 @@
     }
     @keyframes sunRotate { to { transform: rotate(360deg); } }
     .modelling-label {
-      background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
-      border-radius: 10px; padding: 10px 20px;
-      color: var(--text); font-size: 0.88rem; font-weight: 600; text-align: center;
+      color: #fff; font-size: 0.88rem; font-weight: 600; text-align: center;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.5);
     }
     .modelling-label .mod-sub {
       display: block; font-size: 0.72rem; font-weight: 400;
-      color: var(--text-sub); margin-top: 2px;
+      color: rgba(255,255,255,0.7); margin-top: 2px;
     }
 
     /* 3D overlays (reused) */
-    .scene3d-info-panel { position: absolute; z-index: 10; background: rgba(15,23,42,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 12px 16px; color: #e2e8f0; font-size: 0.78rem; pointer-events: none; }
-    .scene3d-info-panel .info-title { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 4px; }
-    .scene3d-info-panel .info-value { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 2px; }
-    .scene3d-info-panel .info-detail { color: #94a3b8; line-height: 1.5; }
-    .scene3d-info-panel .info-shadow { margin-top: 8px; padding: 6px 10px; border-radius: 6px; border: 1px solid; background: rgba(0,0,0,0.2); font-size: 0.78rem; }
+    .scene3d-info-panel { position: absolute; z-index: 10; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-radius: 10px; padding: 10px 14px; color: var(--text); font-size: 0.75rem; pointer-events: none; }
+    .scene3d-info-panel .info-title { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 3px; }
+    .scene3d-info-panel .info-value { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+    .scene3d-info-panel .info-detail { color: var(--text-sub); line-height: 1.5; }
+    .scene3d-info-panel .info-shadow { margin-top: 6px; padding: 5px 8px; border-radius: 6px; border: 1px solid; background: rgba(0,0,0,0.04); font-size: 0.75rem; }
     #sunInfoPanel { top: 14px; left: 14px; }
-    #bldgInfoPanel { top: 14px; right: 14px; max-width: 220px; }
-    .scene3d-legend { position: absolute; bottom: 72px; left: 14px; z-index: 10; display: flex; gap: 12px; align-items: center; background: rgba(15,23,42,0.8); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 8px 14px; font-size: 0.72rem; color: #94a3b8; pointer-events: none; }
-    .legend-item { display: flex; align-items: center; gap: 5px; }
-    .legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
-    .scene3d-controls { position: absolute; bottom: 12px; left: 12px; right: 12px; z-index: 10; display: flex; align-items: center; gap: 10px; background: rgba(15,23,42,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 10px 14px; }
-    .scene3d-play-btn { width: 34px; height: 34px; border: none; border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-    .scene3d-play-btn:hover { background: rgba(255,255,255,0.2); }
-    .scene3d-time-slider { flex: 1; height: 6px; -webkit-appearance: none; appearance: none; background: rgba(255,255,255,0.15); border-radius: 3px; outline: none; }
-    .scene3d-time-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: #F59E0B; cursor: pointer; border: 2px solid #fff; }
-    .scene3d-time-label { color: #fff; font-size: 0.82rem; font-weight: 700; min-width: 72px; text-align: center; flex-shrink: 0; }
+    #bldgInfoPanel { display: none !important; }
+    .scene3d-legend { position: absolute; bottom: 72px; left: 14px; z-index: 10; display: flex; gap: 10px; align-items: center; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-radius: 8px; padding: 6px 12px; font-size: 0.68rem; color: var(--text-sub); pointer-events: none; }
+    .legend-item { display: flex; align-items: center; gap: 4px; }
+    .legend-dot { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
+    .scene3d-controls { position: absolute; bottom: 12px; left: 12px; right: 12px; z-index: 10; display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-radius: 10px; padding: 10px 14px; }
+    .scene3d-play-btn { width: 32px; height: 32px; border: none; border-radius: 8px; background: var(--text); color: #fff; font-size: 13px; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .scene3d-play-btn:hover { background: #333; }
+    .scene3d-time-slider { flex: 1; height: 5px; -webkit-appearance: none; appearance: none; background: rgba(0,0,0,0.1); border-radius: 3px; outline: none; }
+    .scene3d-time-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: #F59E0B; cursor: pointer; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
+    .scene3d-time-label { color: var(--text); font-size: 0.82rem; font-weight: 700; min-width: 72px; text-align: center; flex-shrink: 0; }
     .scene3d-month-btns { display: flex; gap: 3px; flex-shrink: 0; }
-    .scene3d-month-btn { padding: 4px 8px; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; background: transparent; color: #94a3b8; font-size: 0.7rem; font-weight: 600; cursor: pointer; font-family: inherit; }
-    .scene3d-month-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
-    .scene3d-month-btn.selected { background: rgba(245,158,11,0.2); color: #F59E0B; border-color: rgba(245,158,11,0.4); }
-    .scene3d-tooltip { position: absolute; z-index: 20; display: none; background: rgba(15,23,42,0.92); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 12px; color: #e2e8f0; font-size: 0.75rem; pointer-events: none; line-height: 1.5; white-space: nowrap; }
+    .scene3d-month-btn { padding: 4px 8px; border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; background: transparent; color: var(--text-sub); font-size: 0.7rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+    .scene3d-month-btn:hover { background: rgba(0,0,0,0.05); color: var(--text); }
+    .scene3d-month-btn.selected { background: rgba(245,158,11,0.12); color: #D97706; border-color: rgba(245,158,11,0.3); }
+    .scene3d-tooltip { position: absolute; z-index: 20; display: none; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-radius: 8px; padding: 8px 12px; color: var(--text); font-size: 0.75rem; pointer-events: none; line-height: 1.5; white-space: nowrap; }
 
     /* Floating results card */
     .results-card {
@@ -424,9 +423,9 @@
       .scene3d-month-btns { display: none; }
       .scene3d-controls { padding: 8px 10px; gap: 8px; border-radius: 0; }
 
-      /* Click prompt — compact top bar on mobile */
-      .click-prompt { top: 10px; padding: 10px 20px; font-size: 0.85rem; border-radius: 10px; max-width: 85%; }
-      .click-prompt .prompt-sub { font-size: 0.7rem; margin-top: 2px; }
+      /* Click prompt — compact pill on mobile */
+      .click-prompt { top: 8px; padding: 8px 16px; font-size: 0.78rem; border-radius: 8px; max-width: 80%; }
+      .click-prompt .prompt-sub { font-size: 0.65rem; margin-top: 1px; }
 
       /* Results card below scene */
       .results-card { position: relative; bottom: auto; right: auto; max-width: 100%; margin: 0; border-radius: 0; padding: 20px; box-shadow: none; border-top: 1px solid var(--border); }
@@ -524,14 +523,6 @@
     <div class="scene3d-info-panel" id="sunInfoPanel" style="display:none"></div>
     <div class="scene3d-info-panel" id="bldgInfoPanel" style="display:none"></div>
 
-    <!-- Legend -->
-    <div class="scene3d-legend" id="sceneLegend" style="display:none">
-      <div class="legend-item"><div class="legend-dot" style="background:#544840"></div>None</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#CCA050"></div>Low</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#D06830"></div>Med</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#CC3322"></div>High</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#3399FF"></div>You</div>
-    </div>
 
     <div class="scene3d-tooltip" id="hoverTooltip"></div>
 
@@ -1147,12 +1138,38 @@ function onCanvasClick(event) {
   balconySelected = true;
   document.getElementById('scene3dCanvas').classList.remove('clickable');
 
-  // Place marker at click point
-  var markerGeo = new THREE.SphereGeometry(1.5, 16, 16);
-  var markerMat = new THREE.MeshBasicMaterial({ color: 0x00ffaa, transparent: true, opacity: 0.8 });
-  var marker = new THREE.Mesh(markerGeo, markerMat);
-  marker.position.copy(hit.point);
-  Scene3D.scene.add(marker);
+  // Place solar panel at click point
+  var panelGroup = new THREE.Group();
+  // Panel body (dark blue-gray)
+  var panelGeo = new THREE.PlaneGeometry(4, 3);
+  var panelCanvas = document.createElement('canvas');
+  panelCanvas.width = 128; panelCanvas.height = 96;
+  var pctx = panelCanvas.getContext('2d');
+  pctx.fillStyle = '#1e293b';
+  pctx.fillRect(0, 0, 128, 96);
+  // Grid lines
+  pctx.strokeStyle = '#475569';
+  pctx.lineWidth = 1;
+  for (var gx = 0; gx < 128; gx += 32) { pctx.beginPath(); pctx.moveTo(gx, 0); pctx.lineTo(gx, 96); pctx.stroke(); }
+  for (var gy = 0; gy < 96; gy += 32) { pctx.beginPath(); pctx.moveTo(0, gy); pctx.lineTo(128, gy); pctx.stroke(); }
+  // Cell sheen
+  pctx.fillStyle = 'rgba(100,160,255,0.15)';
+  pctx.fillRect(0, 0, 128, 96);
+  var panelTexture = new THREE.CanvasTexture(panelCanvas);
+  var panelMat = new THREE.MeshBasicMaterial({ map: panelTexture, side: THREE.DoubleSide });
+  var panelMesh = new THREE.Mesh(panelGeo, panelMat);
+  // Frame
+  var frameGeo = new THREE.PlaneGeometry(4.4, 3.4);
+  var frameMat = new THREE.MeshBasicMaterial({ color: 0x94a3b8, side: THREE.DoubleSide });
+  var frameMesh = new THREE.Mesh(frameGeo, frameMat);
+  frameMesh.position.z = -0.05;
+  panelGroup.add(frameMesh);
+  panelGroup.add(panelMesh);
+  // Orient panel flat against the wall face
+  panelGroup.position.copy(hit.point);
+  panelGroup.position.addScaledVector(worldNormal, 0.3);
+  panelGroup.lookAt(panelGroup.position.clone().add(worldNormal));
+  Scene3D.scene.add(panelGroup);
 
   // Initialize shadow model
   ShadowModel.init(entry, selectedFloor, totalFloors, SolarState.heightroof || 60, selectedAzimuth);
@@ -1160,8 +1177,6 @@ function onCanvasClick(event) {
   // Update UI
   document.getElementById('clickPrompt').style.display = 'none';
   document.getElementById('modellingOverlay').classList.add('active');
-  document.getElementById('sceneLegend').style.display = '';
-
   // Show info panels
   document.getElementById('sunInfoPanel').style.display = '';
   document.getElementById('bldgInfoPanel').style.display = '';

@@ -243,11 +243,11 @@
       display: flex; align-items: center; justify-content: center;
       opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
     }
-    .breakdown-overlay.active { opacity: 1; pointer-events: all; overflow-y: auto; }
+    .breakdown-overlay.active { opacity: 1; pointer-events: all; overflow-y: auto; padding: 40px 0; }
     .breakdown-modal {
       background: #fff; border-radius: 20px; padding: 0;
-      max-width: 900px; width: 94%; max-height: 92vh; overflow-y: auto;
-      position: relative;
+      max-width: 900px; width: 94%; overflow-y: visible;
+      position: relative; margin: auto;
       transform: translateY(20px) scale(0.97);
       transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
     }
@@ -267,9 +267,11 @@
     .bd-hero .rh-value { font-size: clamp(2.8rem, 5vw, 3.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
     .bd-hero .rh-unit { font-size: 1.4rem; font-weight: 400; opacity: 0.5; margin-bottom: 4px; }
     .bd-hero .rh-sub { font-size: 0.95rem; opacity: 0.45; margin-bottom: 20px; }
-    .bd-env-row { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.82rem; color: rgba(255,255,255,0.6); }
-    .bd-env-row strong { color: #fff; font-weight: 700; margin-right: 3px; }
-    .bd-env-row .env-fun { font-weight: 400; opacity: 0.5; }
+    .bd-env-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+    .bd-env-item { text-align: center; padding: 0 8px; }
+    .bd-env-item:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.1); }
+    .bd-env-val { font-size: 1.5rem; font-weight: 700; color: #fff; display: block; line-height: 1.2; }
+    .bd-env-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); display: block; margin-top: 2px; }
 
     /* Section 2: Two columns */
     .bd-body { padding: 32px 40px; }
@@ -294,7 +296,7 @@
     .bd-payback-bar .bar-label { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 6px; display: flex; justify-content: space-between; }
     .bd-payback-track { height: 20px; border-radius: 10px; background: #f0f0f0; overflow: hidden; display: flex; }
     .bd-payback-fill { background: var(--text); border-radius: 10px 0 0 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.62rem; font-weight: 700; }
-    .bd-payback-free { background: var(--teal); flex: 1; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.62rem; font-weight: 700; border-radius: 0 10px 10px 0; }
+    .bd-payback-free { background-image: var(--brick-img); background-size: cover; background-position: center; flex: 1; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.62rem; font-weight: 700; border-radius: 0 10px 10px 0; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
 
     /* Right: chart + offset */
     .bd-chart-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
@@ -310,15 +312,15 @@
     .bd-offset-text strong { color: var(--text); }
 
     /* Section 3: Email capture */
-    .bd-cta-section { background: var(--teal-dark); border-radius: 0 0 20px 20px; padding: 32px 40px; color: #fff; }
+    .bd-cta-section { background: var(--text); border-radius: 0 0 20px 20px; padding: 32px 40px; color: #fff; }
     .bd-cta-section h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }
     .bd-cta-section p { font-size: 0.9rem; opacity: 0.75; margin-bottom: 16px; line-height: 1.4; }
     .bd-email-row { display: flex; gap: 10px; }
     .bd-email-input { flex: 1; padding: 14px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; background: rgba(255,255,255,0.1); color: #fff; font-family: inherit; font-size: 0.95rem; outline: none; }
     .bd-email-input::placeholder { color: rgba(255,255,255,0.4); }
     .bd-email-input:focus { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.15); }
-    .bd-email-btn { padding: 14px 24px; background: #fff; color: var(--teal-dark); border: none; border-radius: 10px; font-family: inherit; font-size: 0.95rem; font-weight: 700; cursor: pointer; flex-shrink: 0; }
-    .bd-email-btn:hover { background: #f0f0f0; }
+    .bd-email-btn { padding: 14px 24px; border: none; border-radius: 10px; font-family: inherit; font-size: 0.95rem; font-weight: 700; cursor: pointer; flex-shrink: 0; color: #fff; background-image: var(--brick-img); background-size: cover; background-position: center; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+    .bd-email-btn:hover { opacity: 0.9; }
     .bd-email-note { font-size: 0.72rem; opacity: 0.45; margin-top: 10px; }
     .bd-email-success { display: none; text-align: center; padding: 8px 0; }
     .bd-email-success .wl-check { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 1.5rem; }
@@ -328,7 +330,7 @@
       .bd-hero { padding: 32px 24px 24px; }
       .bd-body { padding: 24px; }
       .bd-cta-section { padding: 24px; }
-      .bd-env-row { gap: 12px; }
+      .bd-env-row { grid-template-columns: repeat(2, 1fr); gap: 16px; }
       .bd-impact-grid { grid-template-columns: 1fr 1fr; }
       .bd-email-row { flex-direction: column; }
     }
@@ -543,13 +545,10 @@
       </div>
       <div class="rh-sub" id="annualKwhSub">from an 800W balcony system</div>
       <div class="bd-env-row">
-        <span><strong id="co2Offset">&mdash;</strong> lbs CO2 avoided</span>
-        <span>&middot;</span>
-        <span><strong id="treesEquiv">&mdash;</strong> trees equivalent</span>
-        <span>&middot;</span>
-        <span><strong id="milesOffset">&mdash;</strong> miles of driving avoided</span>
-        <span>&middot;</span>
-        <span class="env-fun"><strong id="phonesCharged">&mdash;</strong> phone charges</span>
+        <div class="bd-env-item"><span class="bd-env-val" id="co2Offset">&mdash;</span><span class="bd-env-label">lbs CO2 avoided</span></div>
+        <div class="bd-env-item"><span class="bd-env-val" id="treesEquiv">&mdash;</span><span class="bd-env-label">trees equivalent</span></div>
+        <div class="bd-env-item"><span class="bd-env-val" id="milesOffset">&mdash;</span><span class="bd-env-label">miles not driven</span></div>
+        <div class="bd-env-item"><span class="bd-env-val" id="phonesCharged">&mdash;</span><span class="bd-env-label">phone charges</span></div>
       </div>
     </div>
 
@@ -742,7 +741,7 @@
   <div class="bottom-cta-content">
     <h2>Be first in line when NYC goes solar</h2>
     <p>Early access members get priority scheduling and launch pricing. Join 1,200+ NYC renters already on the waitlist.</p>
-    <button class="lp-btn-pill open-waitlist" style="background:#fff;color:var(--text)!important;font-size:1.1rem;padding:16px 32px">Be first to go solar <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+    <button class="open-waitlist" style="display:inline-flex;align-items:center;gap:8px;font-size:1.1rem;padding:16px 32px;border:none;border-radius:24px;font-family:inherit;font-weight:700;cursor:pointer;color:#fff;background-image:var(--brick-img);background-size:cover;background-position:center;text-shadow:0 1px 3px rgba(0,0,0,0.3)">Be first to go solar <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
   </div>
 </section>
 

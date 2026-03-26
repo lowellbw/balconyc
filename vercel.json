@@ -6,6 +6,9 @@
     },
     "api/visualize-v2.js": {
       "maxDuration": 30
+    },
+    "api/visualize-v3.js": {
+      "maxDuration": 60
     }
   }
 }

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>See Your Building With Solar — balco.nyc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        if (typeof SolarConfig !== 'undefined' && SolarConfig.GOOGLE_API_KEY) {
+          var s = document.createElement('script');
+          s.src = 'https://maps.googleapis.com/maps/api/js?key=' + SolarConfig.GOOGLE_API_KEY + '&libraries=places&callback=initGooglePlaces';
+          s.async = true; s.defer = true;
+          document.head.appendChild(s);
+        }
+      }, 50);
+    });
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #FFFFFF; --text: #171717; --text-sub: #596580; --text-muted: #8896AB;
+      --border: #E2E8F0; --card: #FFFFFF; --radius: 12px; --radius-lg: 16px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 6px 0; transition: background 0.3s, box-shadow 0.3s; }
+    nav.scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1360px; margin: 0 auto; padding: 0 40px; }
+    .logo { display: inline-block; text-decoration: none; line-height: 0; }
+    .logo img { height: 72px; width: auto; filter: brightness(0) invert(1); transition: filter 0.3s; }
+    nav.scrolled .logo img { filter: none; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: opacity 0.2s, color 0.3s; }
+    .nav-links a:hover { opacity: 0.7; }
+    nav.scrolled .nav-links a { color: var(--text); }
+    .btn-pill { display: inline-flex; align-items: center; padding: 12px 24px; background: #fff; color: var(--text) !important; border: none; border-radius: 24px; font-family: inherit; font-weight: 700; font-size: 0.95rem; text-decoration: none; cursor: pointer; transition: transform 0.2s; gap: 8px; }
+    .btn-pill:hover { transform: translateY(-1px); }
+    nav.scrolled .btn-pill { background: var(--text); color: #fff !important; }
+
+    /* HERO */
+    .hero {
+      position: relative; min-height: 100vh; display: flex; align-items: center;
+      justify-content: center; overflow: hidden; text-align: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('Gemini_Generated_Image_d2ucutd2ucutd2uc.png') center center / cover no-repeat;
+    }
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.7) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 3; max-width: 680px; padding: 0 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 700; color: #fff;
+      line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 1.15rem; font-weight: 500; color: rgba(255,255,255,0.85);
+      margin-bottom: 28px;
+    }
+    .hero-input-wrap { max-width: 480px; margin: 0 auto; position: relative; }
+    .hero-input {
+      width: 100%; padding: 18px 24px; padding-right: 50px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 14px; font-family: inherit; font-size: 1.05rem; color: #fff;
+      outline: none; backdrop-filter: blur(8px); transition: background 0.2s, border-color 0.2s;
+    }
+    .hero-input::placeholder { color: rgba(255,255,255,0.5); }
+    .hero-input:focus { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.4); }
+    .hero-input-spinner {
+      position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+      width: 20px; height: 20px; border: 2.5px solid rgba(255,255,255,0.2);
+      border-top-color: #fff; border-radius: 50%; display: none;
+      animation: spin 0.7s linear infinite;
+    }
+    .hero-input-spinner.active { display: block; }
+    @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+    /* Building info */
+    .hero-building-info {
+      margin-top: 16px; font-size: 0.85rem; color: rgba(255,255,255,0.6); display: none;
+    }
+    .hero-building-info.visible { display: block; animation: fadeUp 0.3s ease; }
+    .hero-building-info strong { color: rgba(255,255,255,0.85); }
+
+    /* Floor selector */
+    .floor-selector {
+      margin-top: 20px; display: none; animation: fadeUp 0.4s ease;
+    }
+    .floor-selector.visible { display: block; }
+    .floor-selector label {
+      display: block; font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.7);
+      text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;
+    }
+    .floor-select-row { display: flex; gap: 12px; justify-content: center; align-items: center; }
+    .floor-select {
+      padding: 12px 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 10px; font-family: inherit; font-size: 1rem; color: #fff;
+      outline: none; cursor: pointer; -webkit-appearance: none; appearance: none;
+      min-width: 100px; text-align: center;
+    }
+    .floor-select option { background: #1a1a1a; color: #fff; }
+    .generate-btn {
+      padding: 14px 28px; background: #fff; color: var(--text); border: none;
+      border-radius: 12px; font-family: inherit; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .generate-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(0,0,0,0.3); }
+    .generate-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* VISUALIZATION STAGE */
+    .viz-stage {
+      display: none; padding: 0; background: #0a0a0a;
+    }
+    .viz-stage.visible { display: block; animation: fadeUp 0.5s ease; }
+
+    /* Loading state */
+    .viz-loading {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 500px; color: #fff; text-align: center; padding: 40px 24px;
+    }
+    .sun-spinner { width: 80px; height: 80px; position: relative; margin-bottom: 24px; }
+    .sun-spinner-core {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 32px; height: 32px; border-radius: 50%;
+      background: radial-gradient(circle, #FFD700 0%, #F59E0B 60%, rgba(245,158,11,0) 100%);
+      box-shadow: 0 0 20px rgba(255,200,50,0.5), 0 0 40px rgba(255,150,30,0.2);
+    }
+    .sun-spinner-ring {
+      position: absolute; inset: 4px;
+      border: 2px solid rgba(255,200,50,0.15); border-top-color: rgba(255,200,50,0.7);
+      border-radius: 50%; animation: sunRotate 1.5s linear infinite;
+    }
+    @keyframes sunRotate { to { transform: rotate(360deg); } }
+    .viz-loading-text { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    .viz-loading-sub { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+    .viz-progress {
+      width: 200px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;
+      margin-top: 24px; overflow: hidden;
+    }
+    .viz-progress-bar {
+      height: 100%; width: 0%; background: linear-gradient(90deg, #F59E0B, #FFD700);
+      border-radius: 2px; transition: width 0.8s ease;
+    }
+
+    /* Result state */
+    .viz-result { display: none; position: relative; }
+    .viz-result.visible { display: block; }
+
+    .viz-image-container {
+      position: relative; max-width: 1200px; margin: 0 auto;
+      background: #0a0a0a; overflow: hidden;
+    }
+    .viz-image-container img {
+      width: 100%; height: auto; display: block;
+      max-height: 80vh; object-fit: contain;
+    }
+
+    /* Toggle tabs */
+    .viz-toggle {
+      display: flex; justify-content: center; gap: 4px; padding: 16px 24px;
+      background: #0a0a0a;
+    }
+    .viz-toggle-btn {
+      padding: 10px 24px; border: 1px solid rgba(255,255,255,0.15); background: transparent;
+      color: rgba(255,255,255,0.6); font-family: inherit; font-size: 0.88rem;
+      font-weight: 600; cursor: pointer; transition: all 0.2s; border-radius: 8px;
+    }
+    .viz-toggle-btn:first-child { border-radius: 8px 0 0 8px; }
+    .viz-toggle-btn:last-child { border-radius: 0 8px 8px 0; }
+    .viz-toggle-btn.active {
+      background: #fff; color: var(--text); border-color: #fff;
+    }
+
+    /* Actions bar */
+    .viz-actions {
+      display: flex; justify-content: center; gap: 12px; padding: 0 24px 24px;
+      background: #0a0a0a;
+    }
+    .viz-action-btn {
+      padding: 10px 20px; border: 1px solid rgba(255,255,255,0.15); background: transparent;
+      color: rgba(255,255,255,0.7); font-family: inherit; font-size: 0.85rem;
+      font-weight: 600; cursor: pointer; border-radius: 8px; transition: all 0.2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .viz-action-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .viz-action-btn svg { width: 16px; height: 16px; }
+
+    /* Building analysis card */
+    .viz-analysis {
+      max-width: 800px; margin: 0 auto; padding: 32px 24px;
+      background: #0a0a0a; color: rgba(255,255,255,0.7);
+    }
+    .viz-analysis h3 {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 12px;
+    }
+    .viz-analysis p { font-size: 0.92rem; line-height: 1.6; }
+
+    /* Error state */
+    .viz-error {
+      display: none; min-height: 300px; flex-direction: column; align-items: center;
+      justify-content: center; color: #fff; text-align: center; padding: 40px 24px;
+    }
+    .viz-error.visible { display: flex; }
+    .viz-error p { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 16px; max-width: 400px; }
+    .viz-error button {
+      padding: 12px 24px; background: #fff; color: var(--text); border: none;
+      border-radius: 10px; font-family: inherit; font-size: 0.92rem; font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 80px 24px; text-align: center; background: var(--bg);
+    }
+    .cta-section h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700;
+      letter-spacing: -0.02em; margin-bottom: 12px;
+    }
+    .cta-section p {
+      font-size: 1.05rem; color: var(--text-sub); margin-bottom: 28px;
+      max-width: 480px; margin-left: auto; margin-right: auto;
+    }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+      background: var(--text); color: #fff; border: none; border-radius: 24px;
+      font-family: inherit; font-size: 1rem; font-weight: 700; text-decoration: none;
+      cursor: pointer; transition: transform 0.2s;
+    }
+    .cta-btn:hover { transform: translateY(-1px); }
+    .cta-btn svg { width: 16px; height: 16px; }
+
+    /* Footer */
+    footer { border-top: 1px solid #E8E8EE; padding: 40px 0; text-align: center; }
+    footer .footer-logo { display: inline-block; margin-bottom: 8px; }
+    footer .footer-logo img { filter: none; height: 48px; }
+    footer p { font-size: 0.82rem; color: var(--text-sub); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav .container { padding: 0 20px; }
+      nav { padding: 4px 0; }
+      .logo img { height: 56px; }
+      .nav-links { gap: 12px; }
+      .nav-links a:not(.btn-pill) { font-size: 0.82rem; }
+      .btn-pill { padding: 10px 18px; font-size: 0.82rem; }
+
+      .hero { min-height: auto; padding: 100px 0 48px; }
+      .hero h1 { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+      .hero p { font-size: 1rem; }
+      .hero-input { padding: 14px 18px; padding-right: 40px; font-size: 0.92rem; }
+      .floor-select-row { flex-direction: column; gap: 10px; }
+      .generate-btn { width: 100%; }
+
+      .viz-loading { min-height: 360px; }
+      .viz-image-container img { max-height: 60vh; }
+      .viz-toggle { padding: 12px 16px; }
+      .viz-toggle-btn { padding: 8px 16px; font-size: 0.82rem; }
+      .viz-actions { padding: 0 16px 16px; }
+      .viz-analysis { padding: 24px 20px; }
+      .cta-section { padding: 56px 20px; }
+      footer { padding: 32px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="container">
+    <a href="index.html" class="logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco.nyc"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#how">How It Works</a>
+      <a href="javascript:void(0)" class="btn-pill" id="joinWaitlistNav">Join Waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="heroSection">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>See your building with solar</h1>
+    <p>Enter your NYC address and we'll generate a photorealistic visualization of your building with balcony solar panels.</p>
+    <div class="hero-input-wrap">
+      <input type="text" class="hero-input" id="addressInput" placeholder="What's your address?" autocomplete="off">
+      <div class="hero-input-spinner" id="heroSpinner"></div>
+    </div>
+    <div class="hero-building-info" id="heroBuildingInfo"></div>
+
+    <!-- Floor selector (shown after building lookup) -->
+    <div class="floor-selector" id="floorSelector">
+      <label>Select your floor</label>
+      <div class="floor-select-row">
+        <select class="floor-select" id="floorSelect"></select>
+        <button class="generate-btn" id="generateBtn" onclick="generateVisualization()">Generate Visualization</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISUALIZATION STAGE -->
+<section class="viz-stage" id="vizStage">
+
+  <!-- Loading -->
+  <div class="viz-loading" id="vizLoading">
+    <div class="sun-spinner">
+      <div class="sun-spinner-ring"></div>
+      <div class="sun-spinner-core"></div>
+    </div>
+    <div class="viz-loading-text" id="vizLoadingText">Capturing street views...</div>
+    <div class="viz-loading-sub" id="vizLoadingSub">This takes 20-30 seconds</div>
+    <div class="viz-progress">
+      <div class="viz-progress-bar" id="vizProgressBar"></div>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div class="viz-result" id="vizResult">
+    <div class="viz-image-container">
+      <img id="vizHeroImage" alt="Your building with solar panels">
+      <img id="vizOriginalImage" alt="Original Street View" style="display:none">
+    </div>
+    <div class="viz-toggle">
+      <button class="viz-toggle-btn active" id="toggleSolar" onclick="showImage('solar')">With Solar</button>
+      <button class="viz-toggle-btn" id="toggleOriginal" onclick="showImage('original')">Original</button>
+    </div>
+    <div class="viz-actions">
+      <button class="viz-action-btn" onclick="downloadImage()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v9M4 8l4 4 4-4M2 14h12"/></svg>
+        Download
+      </button>
+      <button class="viz-action-btn" onclick="regenerate()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8a6 6 0 0111.5-2M14 8a6 6 0 01-11.5 2"/><path d="M14 2v4h-4M2 14v-4h4"/></svg>
+        Regenerate
+      </button>
+    </div>
+    <div class="viz-analysis" id="vizAnalysis" style="display:none">
+      <h3>Building Analysis</h3>
+      <p id="vizAnalysisText"></p>
+    </div>
+  </div>
+
+  <!-- Error -->
+  <div class="viz-error" id="vizError">
+    <p id="vizErrorText">Something went wrong. Please try again.</p>
+    <button onclick="regenerate()">Try Again</button>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Want a full solar estimate?</h2>
+  <p>See how much your balcony could save you with our interactive 3D shadow analysis calculator.</p>
+  <a href="index.html" class="cta-btn">
+    Try the Calculator
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <a href="index.html" class="footer-logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco"></a>
+    <p>&copy; 2026 balco.nyc. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="js/config.js"></script>
+<script src="js/solar-api.js"></script>
+<script>
+// ============================================================
+// CALCULATOR 6 — Premium AI Building Visualization
+// ============================================================
+
+let vizState = {
+  heroImage: null,
+  originalImage: null,
+  buildingAnalysis: null,
+  generating: false,
+};
+
+// Nav scroll
+window.addEventListener('scroll', function() {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Google Places
+function initGooglePlaces() {
+  SolarAPI.initAutocomplete(document.getElementById('addressInput'), onPlaceSelected);
+}
+window.initGooglePlaces = initGooglePlaces;
+
+// ── ADDRESS SELECTED ──
+async function onPlaceSelected(place) {
+  const spinner = document.getElementById('heroSpinner');
+  spinner.classList.add('active');
+
+  await SolarAPI.runBuildingLookup();
+  spinner.classList.remove('active');
+
+  var totalFloors = SolarState.numfloors || 6;
+
+  // Show building info
+  var infoHtml = '';
+  if (SolarState.address) infoHtml += '<strong>' + SolarState.address.split(',')[0] + '</strong>';
+  if (SolarState.numfloors) infoHtml += ' &bull; ' + SolarState.numfloors + ' floors';
+  if (SolarState.heightroof) infoHtml += ' &bull; ' + Math.round(SolarState.heightroof) + 'ft';
+  if (SolarState.yearbuilt) infoHtml += ' &bull; Built ' + SolarState.yearbuilt;
+  var infoEl = document.getElementById('heroBuildingInfo');
+  if (infoHtml) { infoEl.innerHTML = infoHtml; infoEl.classList.add('visible'); }
+
+  // Populate floor selector
+  var select = document.getElementById('floorSelect');
+  select.innerHTML = '';
+  var defaultFloor = Math.ceil(totalFloors * 0.6);
+  for (var i = 1; i <= totalFloors; i++) {
+    var opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = 'Floor ' + i + (i === 1 ? ' (Ground)' : i === totalFloors ? ' (Top)' : '');
+    if (i === defaultFloor) opt.selected = true;
+    select.appendChild(opt);
+  }
+
+  document.getElementById('floorSelector').classList.add('visible');
+}
+
+// ── GENERATE VISUALIZATION ──
+async function generateVisualization() {
+  if (vizState.generating) return;
+  vizState.generating = true;
+
+  var btn = document.getElementById('generateBtn');
+  btn.disabled = true;
+  btn.textContent = 'Generating...';
+
+  var floor = parseInt(document.getElementById('floorSelect').value);
+  var totalFloors = SolarState.numfloors || 6;
+
+  // Show viz stage with loading
+  var stage = document.getElementById('vizStage');
+  stage.classList.add('visible');
+  stage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  document.getElementById('vizLoading').style.display = 'flex';
+  document.getElementById('vizResult').classList.remove('visible');
+  document.getElementById('vizError').classList.remove('visible');
+
+  // Animate progress bar and loading messages
+  var progressBar = document.getElementById('vizProgressBar');
+  var loadingText = document.getElementById('vizLoadingText');
+  var messages = [
+    { text: 'Capturing street views...', pct: 15 },
+    { text: 'Selecting best angle...', pct: 30 },
+    { text: 'Analyzing building architecture...', pct: 50 },
+    { text: 'Rendering your building with solar...', pct: 70 },
+    { text: 'Adding finishing touches...', pct: 85 },
+  ];
+  var msgIndex = 0;
+  progressBar.style.width = '5%';
+
+  var msgInterval = setInterval(function() {
+    if (msgIndex < messages.length) {
+      loadingText.textContent = messages[msgIndex].text;
+      progressBar.style.width = messages[msgIndex].pct + '%';
+      msgIndex++;
+    }
+  }, 5000);
+
+  try {
+    var url = (typeof SolarConfig !== 'undefined' && SolarConfig.VISUALIZE_V3_URL) || '/api/visualize-v3';
+    var res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        lat: SolarState.lat,
+        lon: SolarState.lon,
+        floor: floor,
+        totalFloors: totalFloors,
+        address: SolarState.address || '',
+      }),
+    });
+
+    clearInterval(msgInterval);
+    var data = await res.json();
+
+    if (!res.ok && !data.originalImage) {
+      throw new Error(data.error || 'Visualization failed');
+    }
+
+    vizState.originalImage = data.originalImage || null;
+    vizState.heroImage = data.heroImage || null;
+    vizState.buildingAnalysis = data.buildingAnalysis || null;
+
+    // Complete progress
+    progressBar.style.width = '100%';
+    loadingText.textContent = 'Done!';
+
+    setTimeout(function() {
+      document.getElementById('vizLoading').style.display = 'none';
+
+      if (vizState.heroImage) {
+        // Show hero image
+        document.getElementById('vizHeroImage').src = vizState.heroImage;
+        if (vizState.originalImage) {
+          document.getElementById('vizOriginalImage').src = vizState.originalImage;
+        }
+        showImage('solar');
+        document.getElementById('vizResult').classList.add('visible');
+      } else if (vizState.originalImage) {
+        // Gemini failed but we have Street View
+        document.getElementById('vizHeroImage').src = vizState.originalImage;
+        document.getElementById('vizOriginalImage').src = vizState.originalImage;
+        document.getElementById('vizResult').classList.add('visible');
+        // Hide toggle since both images are the same
+        document.querySelector('.viz-toggle').style.display = 'none';
+      } else {
+        throw new Error('No images returned');
+      }
+
+      // Show building analysis if available
+      if (vizState.buildingAnalysis) {
+        document.getElementById('vizAnalysisText').textContent = vizState.buildingAnalysis;
+        document.getElementById('vizAnalysis').style.display = 'block';
+      }
+    }, 600);
+
+  } catch (err) {
+    clearInterval(msgInterval);
+    console.error('[Calculator-6] Visualization failed:', err);
+    document.getElementById('vizLoading').style.display = 'none';
+    document.getElementById('vizErrorText').textContent = err.message || 'Something went wrong. Please try again.';
+    document.getElementById('vizError').classList.add('visible');
+  }
+
+  vizState.generating = false;
+  btn.disabled = false;
+  btn.textContent = 'Generate Visualization';
+}
+
+// ── IMAGE TOGGLE ──
+function showImage(mode) {
+  var heroImg = document.getElementById('vizHeroImage');
+  var origImg = document.getElementById('vizOriginalImage');
+  var btnSolar = document.getElementById('toggleSolar');
+  var btnOrig = document.getElementById('toggleOriginal');
+
+  if (mode === 'solar' && vizState.heroImage) {
+    heroImg.src = vizState.heroImage;
+    heroImg.style.display = 'block';
+    origImg.style.display = 'none';
+    btnSolar.classList.add('active');
+    btnOrig.classList.remove('active');
+  } else if (mode === 'original' && vizState.originalImage) {
+    origImg.src = vizState.originalImage;
+    origImg.style.display = 'block';
+    heroImg.style.display = 'none';
+    btnOrig.classList.add('active');
+    btnSolar.classList.remove('active');
+  }
+}
+
+// ── DOWNLOAD ──
+function downloadImage() {
+  var img = vizState.heroImage || vizState.originalImage;
+  if (!img) return;
+
+  var a = document.createElement('a');
+  a.href = img;
+  a.download = 'balco-solar-visualization.png';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+// ── REGENERATE ──
+function regenerate() {
+  document.querySelector('.viz-toggle').style.display = '';
+  generateVisualization();
+}
+</script>
+</body>
+</html>

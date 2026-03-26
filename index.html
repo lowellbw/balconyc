@@ -76,6 +76,16 @@
     .hero-building-info.visible { display: block; animation: fadeUp 0.3s ease; }
     .hero-building-info strong { color: rgba(255,255,255,0.85); }
 
+    /* Post-results CTA block (replaces input after results) */
+    .hero-post-results { display: none; flex-direction: column; gap: 14px; }
+    .hero-post-results.visible { display: flex; animation: fadeUp 0.4s ease; }
+    .hero-post-results .hpr-summary { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
+    .hero-post-results .hpr-summary strong { color: #fff; }
+    .hero-post-results .hpr-cta { display: block; width: 100%; text-align: center; padding: 14px; background: #fff; color: var(--text); border: none; border-radius: 10px; font-family: inherit; font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: transform 0.2s; }
+    .hero-post-results .hpr-cta:hover { transform: translateY(-1px); }
+    .hero-post-results .hpr-reset { background: none; border: none; color: rgba(255,255,255,0.5); font-family: inherit; font-size: 0.82rem; cursor: pointer; padding: 4px 0; text-decoration: underline; text-underline-offset: 2px; transition: color 0.2s; }
+    .hero-post-results .hpr-reset:hover { color: rgba(255,255,255,0.8); }
+
     /* 3D viewport inside hero */
     .scene-frame { display: none; flex: 1; min-width: 0; }
     .scene-frame.visible { display: block; animation: fadeUp 0.5s ease; }
@@ -89,6 +99,8 @@
     }
     .scene3d-wrap canvas { display: block; width: 100%; height: 100%; cursor: grab; }
     .scene3d-wrap canvas.clickable { cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><rect x='4' y='6' width='24' height='18' rx='2' fill='%23334155' stroke='%2394a3b8' stroke-width='1'/><line x1='4' y1='12' x2='28' y2='12' stroke='%2394a3b8' stroke-width='0.8'/><line x1='4' y1='18' x2='28' y2='18' stroke='%2394a3b8' stroke-width='0.8'/><line x1='12' y1='6' x2='12' y2='24' stroke='%2394a3b8' stroke-width='0.8'/><line x1='20' y1='6' x2='20' y2='24' stroke='%2394a3b8' stroke-width='0.8'/><rect x='14' y='24' width='4' height='3' fill='%23334155'/></svg>") 16 16, crosshair; }
+    .scene-modal-close { display: none; }
+    @keyframes modalSlideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
     /* Click prompt overlay */
     .click-prompt {
@@ -417,20 +429,48 @@
       .hero.has-scene .hero-input { padding: 12px 16px; padding-right: 40px; font-size: 0.88rem; }
       .hero.has-scene .hero-building-info { font-size: 0.75rem; margin-top: 10px; }
 
-      /* 3D scene — full-width, taller on mobile */
-      .scene-frame { width: 100%; }
-      .scene3d-wrap { height: 65vh; min-height: 420px; border-radius: 0; border-left: none; border-right: none; box-shadow: none; }
+      /* 3D scene — full-screen modal on mobile */
+      .scene-frame.visible {
+        position: fixed; inset: 0; z-index: 100;
+        background: #000; width: 100%;
+        animation: modalSlideUp 0.4s cubic-bezier(0.16,1,0.3,1);
+      }
+      .scene3d-wrap { height: 100%; min-height: 0; border-radius: 0; border: none; box-shadow: none; }
       .scene3d-month-btns { display: none; }
       .scene3d-controls { padding: 8px 10px; gap: 8px; border-radius: 0; }
+      .scene-modal-close {
+        display: flex; align-items: center; justify-content: center;
+        position: absolute; top: 10px; left: 10px; z-index: 110;
+        width: 36px; height: 36px; border-radius: 50%;
+        background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+        border: none; font-size: 20px; cursor: pointer;
+        color: var(--text); font-family: inherit;
+      }
 
-      /* Click prompt — compact pill on mobile */
-      .click-prompt { top: 8px; padding: 8px 16px; font-size: 0.78rem; border-radius: 8px; max-width: 80%; }
-      .click-prompt .prompt-sub { font-size: 0.65rem; margin-top: 1px; }
+      /* Hide nav when modal is open */
+      .scene-frame.visible ~ * nav,
+      .hero.has-scene nav { z-index: 99; }
+      #mainNav { position: relative; z-index: 99; }
+      .scene-frame.visible { z-index: 200; }
 
-      /* Results card below scene */
-      .results-card { position: relative; bottom: auto; right: auto; max-width: 100%; margin: 0; border-radius: 0; padding: 20px; box-shadow: none; border-top: 1px solid var(--border); }
-      .results-card .rc-value { font-size: 1.6rem; }
-      .results-card .rc-value-sm { font-size: 1.2rem; }
+      /* Sun info panel — push below close button on mobile */
+      #sunInfoPanel { top: 54px; left: 10px; font-size: 0.7rem; padding: 8px 10px; }
+
+      /* Click prompt — full-width bar at top on mobile */
+      .click-prompt { top: 10px; left: 50px; right: 50px; transform: none; padding: 8px 12px; font-size: 0.75rem; border-radius: 8px; max-width: none; width: auto; }
+      .click-prompt .prompt-sub { font-size: 0.62rem; margin-top: 1px; }
+
+      /* Results card — floating inside modal, compact */
+      .results-card {
+        position: absolute; bottom: 12px; right: 12px; left: 12px;
+        max-width: none; margin: 0; border-radius: 14px; padding: 16px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.15); border-top: none;
+        max-height: 55vh; overflow-y: auto;
+      }
+      .results-card .rc-value { font-size: 1.4rem; }
+      .results-card .rc-value-sm { font-size: 1.1rem; }
+      .results-card .rc-topline { margin-bottom: 10px; gap: 16px; }
+      .results-card .rc-detail-row { padding: 6px 0; font-size: 0.82rem; }
 
       /* Results section */
       .result-stats { grid-template-columns: 1fr 1fr; }
@@ -493,12 +533,20 @@
         <div class="hero-input-spinner" id="heroSpinner"></div>
       </div>
       <div class="hero-building-info" id="heroBuildingInfo"></div>
+
+      <!-- Replaces input area after results are shown -->
+      <div class="hero-post-results" id="heroPostResults">
+        <div class="hpr-summary" id="hprSummary"></div>
+        <a href="javascript:void(0)" class="hpr-cta open-waitlist">Join the Waitlist</a>
+        <button class="hpr-reset" onclick="resetCalculator()">Try a different address</button>
+      </div>
     </div>
 
     <!-- 3D viewport appears here after address -->
     <div class="scene-frame" id="sceneFrame">
       <div class="scene3d-wrap" id="scene3dContainer">
         <canvas id="scene3dCanvas"></canvas>
+        <button class="scene-modal-close" id="sceneModalClose" aria-label="Close">&#8592;</button>
 
     <!-- Click prompt -->
     <div class="click-prompt" id="clickPrompt">
@@ -732,24 +780,6 @@
       <div class="offering-card" style="background:none">
         <div class="feature-card-bg" style="background-image:url('Gemini_Generated_Image_d2ucutd2ucutd2uc.png');background-position:left top"></div>
         <div class="offering-card-inner"><h3>Installers</h3><p>A vetted network of NYC-based, certified installers. Same-day availability. Under 2 hours.</p></div>
-        <div class="arrow-circle"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H5M12 4v7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LEGISLATION -->
-<section class="feature-row">
-  <div class="container">
-    <div class="feature-text">
-      <h2>The SUNNY Act is moving through Albany</h2>
-      <p>The SUNNY Act (S8512/A9111) would legalize plug-in solar for millions of NYC renters. Utah passed first in March 2025. Virginia passed 96-0 in March 2026. 30 states have introduced balcony solar bills this year.</p>
-      <p style="margin-bottom:0">&ldquo;Plug-in solar is a powerful tool to deliver enhanced energy independence and affordability to millions of New Yorkers.&rdquo; &mdash; Senator Liz Krueger</p>
-    </div>
-    <div class="feature-visual">
-      <div class="feature-card">
-        <div class="feature-card-bg" style="background-image:url('Gemini_Generated_Image_d2ucutd2ucutd2uc.png');background-position:top center"></div>
-        <div class="feature-card-inner"><h3>The SUNNY Act</h3><p>30 states with active balcony solar bills in 2026 &mdash; NYC is next.</p></div>
         <div class="arrow-circle"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H5M12 4v7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
     </div>
@@ -1275,6 +1305,19 @@ function showResults(r, inputs) {
   document.getElementById('floatingCard').classList.add('visible');
   document.getElementById('bldgInfoPanel').style.display = 'none';
 
+  // Swap left panel: hide input, show post-results CTAs
+  document.querySelector('.hero-input-wrap').style.display = 'none';
+  document.getElementById('heroBuildingInfo').style.display = 'none';
+  document.querySelector('.hero.has-scene h1').style.display = 'none';
+  document.querySelector('.hero.has-scene p').style.display = 'none';
+  var dirLabel = DIRECTION_LABELS[selectedAzimuth] || '';
+  var addrShort = SolarState.address ? SolarState.address.split(',')[0] : '';
+  document.getElementById('hprSummary').innerHTML =
+    '<strong>' + addrShort + '</strong><br>' +
+    'Floor ' + selectedFloor + ', ' + dirLabel + '-facing<br>' +
+    Math.round(r.annualKwh) + ' kWh/year &bull; $' + Math.round(r.annualSavings) + ' saved';
+  document.getElementById('heroPostResults').classList.add('visible');
+
   // Breakdown modal content
   document.getElementById('annualKwh').textContent = Math.round(r.annualKwh).toLocaleString();
   document.getElementById('annualKwhSub').textContent = 'from an ' + r.systemWatts + 'W balcony system';
@@ -1327,6 +1370,44 @@ function renderChart(monthlyKwh) {
 function openBreakdownModal() {
   document.getElementById('breakdownOverlay').classList.add('active');
 }
+
+function resetCalculator() {
+  // Reset state
+  balconySelected = false;
+  animationDone = false;
+  selectedFloor = null;
+  selectedAzimuth = null;
+  totalFloors = 20;
+  SolarState.reset();
+
+  // Reset UI — hero
+  document.getElementById('heroSection').classList.remove('has-scene');
+  document.getElementById('sceneFrame').classList.remove('visible');
+  document.getElementById('heroPostResults').classList.remove('visible');
+  document.querySelector('.hero-input-wrap').style.display = '';
+  document.getElementById('heroBuildingInfo').style.display = '';
+  document.getElementById('heroBuildingInfo').classList.remove('visible');
+  var h1 = document.querySelector('#heroContent h1');
+  var p = document.querySelector('#heroContent > p');
+  if (h1) h1.style.display = '';
+  if (p) p.style.display = '';
+
+  // Clear input
+  document.getElementById('addressInput').value = '';
+
+  // Hide results
+  document.getElementById('floatingCard').classList.remove('visible');
+  document.getElementById('breakdownOverlay').classList.remove('active');
+
+  // Clean up 3D scene
+  if (Scene3D.scene) {
+    while (Scene3D.scene.children.length > 0) {
+      Scene3D.scene.remove(Scene3D.scene.children[0]);
+    }
+  }
+  Scene3D.buildingMeshes = [];
+  Scene3D.targetBuilding = null;
+}
 document.getElementById('breakdownOverlay').addEventListener('click', function(e) {
   if (e.target === this) this.classList.remove('active');
 });
@@ -1336,6 +1417,10 @@ document.getElementById('timeSlider').addEventListener('input', function() {
   if (!animationDone) return;
   Scene3D.setTimeAndMonth(parseInt(this.value), undefined);
   document.getElementById('timeLabel').textContent = SunPosition.formatTime(parseInt(this.value));
+});
+
+document.getElementById('sceneModalClose').addEventListener('click', function() {
+  document.getElementById('sceneFrame').classList.remove('visible');
 });
 
 document.getElementById('playBtn').addEventListener('click', function() {

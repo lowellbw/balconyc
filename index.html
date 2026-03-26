@@ -840,7 +840,7 @@
     <button class="wl-modal-close" id="wlModalClose" onclick="document.getElementById('waitlistModal').classList.remove('active')">&times;</button>
     <!-- Quick signup (shown when user already has address) -->
     <div class="wl-step" id="wlStepQuick">
-      <img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco" style="height:48px;margin-bottom:24px">
+      <img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco" style="height:80px;margin-bottom:24px">
       <h2>Be first to go solar</h2>
       <p class="wl-sub" id="wlQuickSub">We'll reach out the day balcony solar becomes legal in NYC &mdash; with priority access to kits and installation.</p>
       <div class="wl-form">
@@ -851,7 +851,7 @@
     </div>
     <!-- Full flow (shown when no address entered) -->
     <div class="wl-step" id="wlStep1">
-      <img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco" style="height:48px;margin-bottom:24px">
+      <img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco" style="height:80px;margin-bottom:24px">
       <h2>Be first to go solar</h2>
       <p class="wl-sub">We'll reach out the day balcony solar becomes legal in NYC</p>
       <div class="wl-form">
@@ -951,8 +951,44 @@ async function onPlaceSelected(place) {
   document.getElementById('heroSection').classList.add('has-scene');
   document.getElementById('sceneFrame').classList.add('visible');
 
-  // Init 3D scene (delay so container has final layout dimensions after CSS transition)
-  setTimeout(function() { initScene(); }, 350);
+  // Show Google 3D first, then Three.js
+  setTimeout(function() { showGoogle3D(); }, 400);
+}
+
+// --- GOOGLE 3D PHOTOREALISTIC VIEW ---
+async function showGoogle3D() {
+  var wrap = document.getElementById('google3dWrap');
+
+  try {
+    await google.maps.importLibrary('maps3d');
+  } catch (e) {
+    console.warn('[Calc4] Maps 3D not available, going straight to shadow model');
+    initScene();
+    return;
+  }
+
+  // Create gmp-map-3d element
+  var mapEl = document.createElement('gmp-map-3d');
+  mapEl.setAttribute('center', SolarState.lat + ',' + SolarState.lon + ',50');
+  mapEl.setAttribute('heading', '30');
+  mapEl.setAttribute('tilt', '65');
+  mapEl.setAttribute('range', '200');
+  mapEl.style.cssText = 'width:100%;height:100%;display:block';
+  wrap.insertBefore(mapEl, wrap.firstChild);
+  wrap.style.display = '';
+
+  // Init Three.js in background while user explores Google 3D
+  initScene();
+}
+
+function transitionToShadowModel() {
+  var wrap = document.getElementById('google3dWrap');
+  wrap.classList.add('hidden');
+  setTimeout(function() {
+    wrap.style.display = 'none';
+    var mapEl = wrap.querySelector('gmp-map-3d');
+    if (mapEl) mapEl.remove();
+  }, 900);
 }
 
 // --- 3D SCENE ---

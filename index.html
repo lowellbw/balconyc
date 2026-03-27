@@ -430,41 +430,40 @@
 
       /* 3D scene — full-screen modal on mobile */
       .scene-frame.visible {
-        position: fixed; inset: 0; z-index: 100;
+        position: fixed; inset: 0; z-index: 200;
         background: #000; width: 100%;
         animation: modalSlideUp 0.4s cubic-bezier(0.16,1,0.3,1);
       }
       .scene3d-wrap { height: 100%; min-height: 0; border-radius: 0; border: none; box-shadow: none; }
       .scene3d-month-btns { display: none; }
       .scene3d-controls { padding: 8px 10px; gap: 8px; border-radius: 0; }
+
+      /* Back button — top left, no overlap */
       .scene-modal-close {
         display: flex; align-items: center; justify-content: center;
-        position: absolute; top: 10px; left: 10px; z-index: 110;
+        position: absolute; top: 12px; left: 12px; z-index: 210;
         width: 36px; height: 36px; border-radius: 50%;
         background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
         border: none; font-size: 20px; cursor: pointer;
         color: var(--text); font-family: inherit;
       }
 
-      /* Hide nav when modal is open */
-      .scene-frame.visible ~ * nav,
-      .hero.has-scene nav { z-index: 99; }
-      #mainNav { position: relative; z-index: 99; }
-      .scene-frame.visible { z-index: 200; }
+      /* Hide nav when 3D modal is open */
+      body.scene-modal-open #mainNav { display: none; }
 
-      /* Sun info panel — push below close button on mobile */
-      #sunInfoPanel { top: 54px; left: 10px; font-size: 0.7rem; padding: 8px 10px; }
+      /* Hide sun info panel on mobile — too cluttered */
+      #sunInfoPanel { display: none !important; }
 
-      /* Click prompt — full-width bar at top on mobile */
-      .click-prompt { top: 10px; left: 50px; right: 50px; transform: none; padding: 8px 12px; font-size: 0.75rem; border-radius: 8px; max-width: none; width: auto; }
-      .click-prompt .prompt-sub { font-size: 0.62rem; margin-top: 1px; }
+      /* Click prompt — below back button */
+      .click-prompt { top: 56px; left: 12px; right: 12px; transform: none; padding: 10px 16px; font-size: 0.78rem; border-radius: 8px; max-width: none; width: auto; }
+      .click-prompt .prompt-sub { font-size: 0.65rem; margin-top: 1px; }
 
       /* Results card — floating inside modal, compact */
       .results-card {
-        position: absolute; bottom: 12px; right: 12px; left: 12px;
+        position: absolute; bottom: 60px; right: 12px; left: 12px;
         max-width: none; margin: 0; border-radius: 14px; padding: 16px;
         box-shadow: 0 4px 24px rgba(0,0,0,0.15); border-top: none;
-        max-height: 55vh; overflow-y: auto;
+        max-height: 50vh; overflow-y: auto;
       }
       .results-card .rc-value { font-size: 1.4rem; }
       .results-card .rc-value-sm { font-size: 1.1rem; }
@@ -944,6 +943,7 @@ async function onPlaceSelected(place) {
   // Slide hero left, show 3D viewport
   document.getElementById('heroSection').classList.add('has-scene');
   document.getElementById('sceneFrame').classList.add('visible');
+  document.body.classList.add('scene-modal-open');
 
   // Swap left panel: hide input, show CTAs immediately
   document.querySelector('.hero-input-wrap').style.display = 'none';
@@ -1250,13 +1250,31 @@ async function runSunAnimation() {
   // Set to sunrise
   Scene3D.setTimeAndMonth(330, 5); // 5:30 AM, June
 
-  // Animate sunrise to sunset over ~6 seconds
+  // Kick off shade computation + API call immediately (runs during animation)
+  var shadeProfile = ShadowModel.computeAnnualShadeProfile();
+  console.log('[Calc4] 3D shade factor:', shadeProfile.annualShadeFactor.toFixed(3));
+
+  var formInputs = {
+    azimuth: selectedAzimuth,
+    tilt: 90,
+    systemWatts: 800,
+    floor: selectedFloor,
+    totalFloors: totalFloors,
+    shading: 'some',
+    monthlyBill: 140,
+    systemCost: 1000,
+    shadeProfile: shadeProfile,
+  };
+
+  var calcPromise = SolarAPI.calculateEstimate(formInputs);
+
+  // Animate sunrise to sunset over ~6 seconds (runs in parallel with API call)
   var startTime = performance.now();
-  var duration = 6000; // 6 seconds
+  var duration = 6000;
   var startMinutes = 330;
   var endMinutes = 1170;
 
-  await new Promise(function(resolve) {
+  var animPromise = new Promise(function(resolve) {
     function animate() {
       var elapsed = performance.now() - startTime;
       var progress = Math.min(1, elapsed / duration);
@@ -1264,7 +1282,6 @@ async function runSunAnimation() {
 
       Scene3D.setTimeAndMonth(currentMinutes, undefined);
 
-      // Update slider
       var slider = document.getElementById('timeSlider');
       if (slider) slider.value = Math.round(currentMinutes);
       var label = document.getElementById('timeLabel');
@@ -1279,34 +1296,18 @@ async function runSunAnimation() {
     requestAnimationFrame(animate);
   });
 
-  // Animation complete — calculate and show results
+  // Wait for both animation and calculation to finish
+  var results = await Promise.all([animPromise, calcPromise]);
+  var result = results[1];
+
+  // Both done — show results instantly
   animationDone = true;
   document.getElementById('modellingOverlay').classList.remove('active');
-  // Controls hidden — kept simple for v4
 
   // Reset to noon for a nice static view
   Scene3D.setTimeAndMonth(720, 5);
   document.getElementById('timeSlider').value = 720;
   document.getElementById('timeLabel').textContent = SunPosition.formatTime(720);
-
-  // Compute shade profile from actual 3D neighbor geometry
-  var shadeProfile = ShadowModel.computeAnnualShadeProfile();
-  console.log('[Calc4] Using 3D shade factor:', shadeProfile.annualShadeFactor.toFixed(3));
-
-  // Run calculation with real shade data
-  var formInputs = {
-    azimuth: selectedAzimuth,
-    tilt: 90,
-    systemWatts: 800,
-    floor: selectedFloor,
-    totalFloors: totalFloors,
-    shading: 'some',
-    monthlyBill: 140,
-    systemCost: 1000,
-    shadeProfile: shadeProfile, // 3D-derived monthly shade factors
-  };
-
-  var result = await SolarAPI.calculateEstimate(formInputs);
 
   // Show floating card + populate breakdown modal
   showResults(result, formInputs);
@@ -1450,6 +1451,7 @@ document.getElementById('timeSlider').addEventListener('input', function() {
 
 document.getElementById('sceneModalClose').addEventListener('click', function() {
   document.getElementById('sceneFrame').classList.remove('visible');
+  document.body.classList.remove('scene-modal-open');
 });
 
 document.getElementById('playBtn').addEventListener('click', function() {

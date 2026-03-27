@@ -139,12 +139,14 @@ OUTPUT QUALITY:
     ];
 
     if (styleImage) {
-      // Strip data URL prefix if present
+      // Strip data URL prefix if present, detect mime type
+      const mimeMatch = styleImage.match(/^data:(image\/[^;]+);base64,/);
+      const styleMime = mimeMatch ? mimeMatch[1] : 'image/jpeg';
       const styleData = styleImage.replace(/^data:image\/[^;]+;base64,/, '');
       imageParts.push({ text: 'Style reference image (match this visual treatment):' });
       imageParts.push({
         inlineData: {
-          mimeType: 'image/png',
+          mimeType: styleMime,
           data: styleData,
         },
       });

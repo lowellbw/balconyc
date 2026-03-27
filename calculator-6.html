@@ -83,8 +83,8 @@
     .hero-post-results .hpr-summary { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
     .hero-post-results .hpr-summary strong { color: #fff; }
     .hero-post-results .btn-pill { font-size: 0.95rem; }
-    .hero-post-results .hpr-reset { background: none; border: none; color: rgba(255,255,255,0.5); font-family: inherit; font-size: 0.82rem; cursor: pointer; padding: 4px 0; text-decoration: underline; text-underline-offset: 2px; transition: color 0.2s; }
-    .hero-post-results .hpr-reset:hover { color: rgba(255,255,255,0.8); }
+    .hero-post-results .hpr-reset { background: none; border: none; color: rgba(255,255,255,0.85); font-family: inherit; font-size: 0.88rem; cursor: pointer; padding: 6px 0; text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+    .hero-post-results .hpr-reset:hover { color: #fff; }
 
     /* 3D viewport inside hero */
     .scene-frame { display: none; flex: 1; min-width: 0; }
@@ -99,7 +99,16 @@
     }
     .scene3d-wrap canvas { display: block; width: 100%; height: 100%; cursor: grab; }
     .scene3d-wrap canvas.clickable { cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><rect x='4' y='6' width='24' height='18' rx='2' fill='%23334155' stroke='%2394a3b8' stroke-width='1'/><line x1='4' y1='12' x2='28' y2='12' stroke='%2394a3b8' stroke-width='0.8'/><line x1='4' y1='18' x2='28' y2='18' stroke='%2394a3b8' stroke-width='0.8'/><line x1='12' y1='6' x2='12' y2='24' stroke='%2394a3b8' stroke-width='0.8'/><line x1='20' y1='6' x2='20' y2='24' stroke='%2394a3b8' stroke-width='0.8'/><rect x='14' y='24' width='4' height='3' fill='%23334155'/></svg>") 16 16, crosshair; }
-    .scene-modal-close { display: none; }
+    .scene-modal-close {
+      display: flex; align-items: center; justify-content: center;
+      position: absolute; top: 12px; right: 12px; z-index: 20;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(15,23,42,0.85); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.12); color: #fff;
+      font-size: 18px; cursor: pointer; font-family: inherit;
+      transition: background 0.2s;
+    }
+    .scene-modal-close:hover { background: rgba(15,23,42,1); }
     @keyframes modalSlideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
     /* Click prompt overlay */
@@ -439,12 +448,9 @@
       .scene3d-month-btns { display: none; }
       .scene3d-controls { padding: 8px 10px; gap: 8px; border-radius: 0; }
       .scene-modal-close {
-        display: flex; align-items: center; justify-content: center;
-        position: absolute; top: 10px; left: 10px; z-index: 110;
-        width: 36px; height: 36px; border-radius: 50%;
-        background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
-        border: none; font-size: 20px; cursor: pointer;
-        color: var(--text); font-family: inherit;
+        top: 10px; right: 10px; left: auto; z-index: 110;
+        background: rgba(255,255,255,0.92);
+        color: var(--text); border: none;
       }
 
       /* Hide nav when modal is open */
@@ -546,7 +552,7 @@
     <div class="scene-frame" id="sceneFrame">
       <div class="scene3d-wrap" id="scene3dContainer">
         <canvas id="scene3dCanvas"></canvas>
-        <button class="scene-modal-close" id="sceneModalClose" aria-label="Close">&#8592;</button>
+        <button class="scene-modal-close" id="sceneModalClose" aria-label="Close">&times;</button>
 
     <!-- Click prompt -->
     <div class="click-prompt" id="clickPrompt">

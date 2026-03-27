@@ -94,37 +94,36 @@ export default async function handler(req, res) {
 
     const styleNote = styleImage
       ? `\n\nSTYLE REFERENCE:
-I've also attached a second image — this is a STYLE REFERENCE showing the visual treatment and composition we want. Match its photographic style, color grading, warmth, mood, and overall aesthetic. The output should feel like it belongs in the same series as this reference image. Use the same kind of framing, color palette, and atmospheric quality — but show the ACTUAL building from the Street View photo, not the building in the style reference.`
+I've also attached a second image — this is a STYLE REFERENCE for visual treatment only. Match its color grading, warmth, mood, cinematic quality, and photographic aesthetic. You are FREE to change the camera angle, surroundings, sky, lighting, and atmosphere to make a beautiful image — but the BUILDING ITSELF must be the exact same building from the Street View photo. Do NOT show the building from the style reference — show the building from the Street View.`
       : '';
 
-    const generationPrompt = `You are a world-class architectural visualization artist. I'm attaching a Street View photograph of a real building. Generate a stunning new photorealistic image of THIS building.
+    const generationPrompt = `You are a world-class architectural visualization artist. I'm attaching a Street View photograph of a real NYC building. Your job is to create a stunning hero image featuring THIS EXACT BUILDING with solar panels on its balconies.
+
+BUILDING IDENTITY — THIS IS THE #1 RULE:
+The building in your output MUST be the same building shown in the attached Street View photo. Same number of floors, same architectural style, same materials, same window pattern, same facade details, same balcony layout. Do NOT replace it with a generic or different building. Do NOT add floors, remove floors, change the facade material, alter the window layout, or structurally modify the building in any way. The building's architecture is SACRED — it must be recognizably the same structure.
+
+WHAT YOU CAN FREELY CHANGE:
+- Camera angle and perspective (you don't need to match the Street View angle)
+- Time of day, lighting, sky, weather, atmosphere
+- Surroundings, background, street scene
+- Overall mood, color grading, vibes
+- Crop and framing
 
 BUILDING ANALYSIS (from expert assessment):
 ${buildingAnalysis}
-
-YOUR TASK:
-Create a beautiful image of this exact building with solar panels installed on the balconies. The output should look like a hero image for a premium website — cinematic, aspirational, magazine-quality.${styleNote}
-
-COMPOSITION:
-- Show the building facade prominently, well-framed
-- The building should be the clear subject filling most of the frame
-- Include some environmental context (sky, neighboring buildings faintly) for realism
-- Professional architectural photography composition
+${styleNote}
 
 SOLAR PANELS:
-- The user lives on floor ${userFloor} of ${floorCount}. Their balcony should have the most prominent, well-lit solar panels
-- Panels: sleek black aluminum frames with tempered glass, subtle blue-purple photovoltaic tint
-- Mount panels on existing balcony railings only — do NOT add balconies that don't exist
-- If other floors have balconies, add panels there too, but floor ${userFloor} is the hero
-- Panels should look naturally integrated — matching the building's lighting, shadows, and materials
+- The user lives on floor ${userFloor} of ${floorCount}. Add solar panels to EXISTING balconies — especially prominently on floor ${userFloor}
+- Panels: sleek black aluminum frames, tempered glass with subtle blue-purple photovoltaic tint
+- Do NOT invent balconies that don't exist on the real building — only add panels to balconies already present
+- Panels should look naturally mounted on railings, integrated with the building's real structure
 
-LIGHTING & STYLE:
-- Warm, natural daylight — golden hour quality
-- Rich colors, high dynamic range, cinematic feel
-- Professional real estate / architectural photography quality
-- The image should make someone want to live here and go solar
-
-CRITICAL: Preserve the building's real architectural character, materials, colors, and style. This must look like a real photograph of a real building, not a rendering or CGI.`;
+OUTPUT QUALITY:
+- Hero image quality — cinematic, aspirational, magazine-cover worthy
+- Warm natural light, rich colors, high dynamic range
+- This should make someone want to live here and go solar
+- Must look like a real photograph, not CGI or a rendering`;
 
     const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${geminiKey}`;
 

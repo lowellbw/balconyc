@@ -940,6 +940,11 @@ function startAiBackground(defaultFloor) {
   aiBgState.generating = true;
   aiBgState.ready = false;
 
+  console.log('[Calc6] Starting AI background generation...',
+    'lat:', SolarState.lat, 'lon:', SolarState.lon,
+    'floor:', defaultFloor, 'totalFloors:', SolarState.numfloors,
+    'bannerLoaded:', !!aiBgState.bannerBase64);
+
   var payload = {
     lat: SolarState.lat,
     lon: SolarState.lon,
@@ -951,29 +956,42 @@ function startAiBackground(defaultFloor) {
     payload.styleImage = aiBgState.bannerBase64;
   }
 
+  var payloadSize = JSON.stringify(payload).length;
+  console.log('[Calc6] Payload size:', Math.round(payloadSize / 1024) + 'KB');
+
   var url = (typeof SolarConfig !== 'undefined' && SolarConfig.VISUALIZE_V3_URL) || '/api/visualize-v3';
+  console.log('[Calc6] Fetching:', url);
+
   fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   })
-  .then(function(res) { return res.json(); })
+  .then(function(res) {
+    console.log('[Calc6] Response status:', res.status);
+    return res.json();
+  })
   .then(function(data) {
     aiBgState.generating = false;
+    console.log('[Calc6] Response data:', {
+      hasOriginal: !!data.originalImage,
+      hasHero: !!data.heroImage,
+      error: data.error,
+      anglesEvaluated: data.anglesEvaluated,
+    });
     if (data.heroImage) {
       aiBgState.heroImage = data.heroImage;
       aiBgState.ready = true;
-      console.log('[Calc6] AI background ready');
-      // If scene is currently hidden (user closed it), swap immediately
-      var sceneFrame = document.getElementById('sceneFrame');
-      if (!sceneFrame.classList.contains('visible')) {
-        swapHeroBanner(aiBgState.heroImage);
-      }
+      console.log('[Calc6] AI background ready — swapping banner');
+      // Swap immediately regardless of scene state
+      swapHeroBanner(aiBgState.heroImage);
+    } else {
+      console.warn('[Calc6] No hero image in response:', data.error);
     }
   })
   .catch(function(err) {
     aiBgState.generating = false;
-    console.warn('[Calc6] AI background generation failed:', err);
+    console.error('[Calc6] AI background generation failed:', err);
   });
 }
 

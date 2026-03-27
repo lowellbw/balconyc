@@ -676,12 +676,22 @@ const SolarAPI = {
   async calculateEstimate(formInputs) {
     const {
       azimuth, tilt, systemWatts, floor, totalFloors,
-      shading, monthlyBill, systemCost,
+      shading, monthlyBill, systemCost, shadeProfile,
     } = formInputs;
 
     const systemKw = systemWatts / 1000;
     const adjustedCost = systemCost * (systemWatts / 800);
-    const shadeFactor = getShadeFactor(floor, totalFloors, shading);
+
+    // Use 3D-derived shade profile if available, otherwise fall back to static lookup
+    const has3DShade = shadeProfile && shadeProfile.monthlyShadeFactors;
+    const shadeFactor = has3DShade ? shadeProfile.annualShadeFactor : getShadeFactor(floor, totalFloors, shading);
+    const monthlyShadeFactors = has3DShade ? shadeProfile.monthlyShadeFactors : null;
+
+    if (has3DShade) {
+      console.log(`[SolarAPI] Using 3D shade profile (annual: ${shadeFactor.toFixed(3)})`);
+    } else {
+      console.log(`[SolarAPI] Using static shade factor: ${shadeFactor.toFixed(3)}`);
+    }
 
     let annualKwh;
     let monthlyKwh;
@@ -702,17 +712,21 @@ const SolarAPI = {
       const outputs = pvwattsData.outputs;
       const rawAnnual = outputs.ac_annual;
 
-      // Apply post-PVWatts multipliers (shade + thermal)
-      // PVWatts already handles tilt, azimuth, and base losses
-      // We only add shadow derating (building-level, not modeled by PVWatts)
-      annualKwh = rawAnnual * shadeFactor * SolarConfig.THERMAL_BONUS;
-
-      // Monthly values from PVWatts, scaled by shade + thermal
-      const scale = shadeFactor * SolarConfig.THERMAL_BONUS;
-      monthlyKwh = outputs.ac_monthly.map(v => v * scale);
+      if (monthlyShadeFactors) {
+        // Apply per-month 3D shade factors to PVWatts monthly output
+        monthlyKwh = outputs.ac_monthly.map((v, i) =>
+          v * monthlyShadeFactors[i] * SolarConfig.THERMAL_BONUS
+        );
+        annualKwh = monthlyKwh.reduce((s, v) => s + v, 0);
+      } else {
+        // Uniform shade factor across all months
+        annualKwh = rawAnnual * shadeFactor * SolarConfig.THERMAL_BONUS;
+        const scale = shadeFactor * SolarConfig.THERMAL_BONUS;
+        monthlyKwh = outputs.ac_monthly.map(v => v * scale);
+      }
       usedPVWatts = true;
 
-      console.log(`[SolarAPI] Using PVWatts data: raw=${rawAnnual.toFixed(0)} kWh, after derating=${annualKwh.toFixed(0)} kWh`);
+      console.log(`[SolarAPI] PVWatts: raw=${rawAnnual.toFixed(0)} kWh, after 3D shade=${annualKwh.toFixed(0)} kWh`);
     } else {
       // Fallback: client-side formula (used when PVWatts API unavailable)
       const tiltFactor = TILT_FACTORS[tilt] || 0.72;
@@ -727,19 +741,26 @@ const SolarAPI = {
       // PVWatts handles this via the soiling[] array param; fallback must apply manually
       const URBAN_SOILING_FACTOR = 0.90;
 
-      annualKwh = SolarConfig.PVWATTS_NYC_KWH_PER_KW_OPTIMAL
+      const baseKwh = SolarConfig.PVWATTS_NYC_KWH_PER_KW_OPTIMAL
         * systemKw
         * tiltFactor
         * azimuthFactor
         * balconyLossAdj
         * URBAN_SOILING_FACTOR
-        * shadeFactor
         * SolarConfig.THERMAL_BONUS;
 
       const distribution = SolarState.monthlyDistribution || DEFAULT_MONTHLY_DISTRIBUTION;
-      monthlyKwh = distribution.map(pct => annualKwh * pct);
 
-      console.log(`[SolarAPI] Using fallback model: ${annualKwh.toFixed(0)} kWh`);
+      if (monthlyShadeFactors) {
+        // Apply per-month 3D shade factors
+        monthlyKwh = distribution.map((pct, i) => baseKwh * pct * monthlyShadeFactors[i]);
+        annualKwh = monthlyKwh.reduce((s, v) => s + v, 0);
+      } else {
+        annualKwh = baseKwh * shadeFactor;
+        monthlyKwh = distribution.map(pct => annualKwh * pct);
+      }
+
+      console.log(`[SolarAPI] Fallback model: ${annualKwh.toFixed(0)} kWh`);
     }
 
     // Financial model

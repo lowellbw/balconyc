@@ -1289,7 +1289,11 @@ async function runSunAnimation() {
   document.getElementById('timeSlider').value = 720;
   document.getElementById('timeLabel').textContent = SunPosition.formatTime(720);
 
-  // Run calculation
+  // Compute shade profile from actual 3D neighbor geometry
+  var shadeProfile = ShadowModel.computeAnnualShadeProfile();
+  console.log('[Calc4] Using 3D shade factor:', shadeProfile.annualShadeFactor.toFixed(3));
+
+  // Run calculation with real shade data
   var formInputs = {
     azimuth: selectedAzimuth,
     tilt: 90,
@@ -1299,6 +1303,7 @@ async function runSunAnimation() {
     shading: 'some',
     monthlyBill: 140,
     systemCost: 1000,
+    shadeProfile: shadeProfile, // 3D-derived monthly shade factors
   };
 
   var result = await SolarAPI.calculateEstimate(formInputs);

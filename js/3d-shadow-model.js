@@ -297,6 +297,85 @@ const ShadowModel = {
     const tooltip = document.getElementById('hoverTooltip');
     if (tooltip) tooltip.style.display = 'none';
     return;
-    tooltip.style.top = (clientY - rect.top - 10) + 'px';
+  },
+
+  /**
+   * Simulate shadow impact across all daylight hours for every month.
+   * Returns per-month shade factors (0-1, where 1 = no shadow, 0 = fully shaded).
+   * Uses the actual 3D neighbor buildings and sun position algorithm.
+   *
+   * @returns {{ monthlyShadeFactors: number[], annualShadeFactor: number }}
+   */
+  computeAnnualShadeProfile() {
+    if (!this.initialized || !this.targetBalconyPoint) {
+      return { monthlyShadeFactors: new Array(12).fill(0.80), annualShadeFactor: 0.80 };
+    }
+
+    const neighbors = Scene3D.buildingMeshes.filter(e => !e.isTarget);
+    if (neighbors.length === 0) {
+      return { monthlyShadeFactors: new Array(12).fill(0.95), annualShadeFactor: 0.95 };
+    }
+
+    const monthlyFactors = [];
+    const STEP = 30; // sample every 30 minutes
+
+    for (let month = 0; month < 12; month++) {
+      const bounds = SunPosition.getDayBounds(month);
+      let totalSamples = 0;
+      let unshadedSum = 0;
+
+      for (let minute = bounds.sunrise; minute <= bounds.sunset; minute += STEP) {
+        const sunPos = SunPosition.calculate(month, minute);
+        if (sunPos.altitude <= 0) continue;
+
+        totalSamples++;
+
+        // Check if the sun is on the balcony's side of the building.
+        // If sun is behind the building relative to the balcony face, it's self-shaded.
+        let sunBehindFacade = false;
+        const sunAz = sunPos.azimuth; // radians, from north clockwise
+        let facadeDiff = sunAz - this.balconyAzimuth;
+        while (facadeDiff > Math.PI) facadeDiff -= 2 * Math.PI;
+        while (facadeDiff < -Math.PI) facadeDiff += 2 * Math.PI;
+        if (Math.abs(facadeDiff) > Math.PI / 2) {
+          // Sun is behind the building — balcony gets no direct sun
+          sunBehindFacade = true;
+        }
+
+        if (sunBehindFacade) {
+          // No direct sun regardless of neighbor shadows
+          unshadedSum += 0;
+          continue;
+        }
+
+        // Find max shadow score from any neighbor at this sun position
+        let maxShadow = 0;
+        for (const entry of neighbors) {
+          const score = this._scoreShadowImpact(entry, sunPos);
+          if (score > maxShadow) maxShadow = score;
+        }
+
+        // Invert: 1 - shadow = sunlight fraction for this sample
+        unshadedSum += (1 - maxShadow);
+      }
+
+      // Monthly shade factor = fraction of daylight hours with sun
+      const factor = totalSamples > 0 ? unshadedSum / totalSamples : 0.80;
+      // Clamp to reasonable range (at least some diffuse light)
+      monthlyFactors.push(Math.max(0.15, Math.min(0.98, factor)));
+    }
+
+    // Annual = weighted average using default monthly GHI distribution
+    const ghiWeights = [0.056, 0.068, 0.082, 0.092, 0.105, 0.112,
+                        0.114, 0.103, 0.088, 0.073, 0.056, 0.051];
+    let annualFactor = 0;
+    for (let i = 0; i < 12; i++) {
+      annualFactor += monthlyFactors[i] * ghiWeights[i];
+    }
+
+    console.log('[ShadowModel] 3D shade profile:', monthlyFactors.map(f => f.toFixed(2)).join(', '));
+    console.log('[ShadowModel] Annual shade factor:', annualFactor.toFixed(3));
+
+    return { monthlyShadeFactors: monthlyFactors, annualShadeFactor: annualFactor };
   },
 };

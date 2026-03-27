@@ -1567,12 +1567,26 @@ document.getElementById('timeSlider').addEventListener('input', function() {
 });
 
 document.getElementById('sceneModalClose').addEventListener('click', function() {
+  // Kill transitions so layout snaps instantly (no dramatic animation)
+  var hero = document.getElementById('heroSection');
+  var layout = hero.querySelector('.hero-layout');
+  hero.style.transition = 'none';
+  layout.style.transition = 'none';
+
   document.getElementById('sceneFrame').classList.remove('visible');
-  // Remove has-scene so hero goes back to centered layout with background visible
-  document.getElementById('heroSection').classList.remove('has-scene');
-  // If AI background is ready, swap it in
+  hero.classList.remove('has-scene');
+
+  // Re-enable transitions after a frame
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      hero.style.transition = '';
+      layout.style.transition = '';
+    });
+  });
+
+  // If AI background is ready, set it directly (no fade animation)
   if (aiBgState.ready && aiBgState.heroImage) {
-    swapHeroBanner(aiBgState.heroImage);
+    document.querySelector('.hero-bg').style.backgroundImage = 'url(' + aiBgState.heroImage + ')';
   }
 });
 

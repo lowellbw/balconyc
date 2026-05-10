@@ -389,17 +389,9 @@
     .faq-item p { margin-top: 12px; color: var(--text-sub); line-height: 1.6; font-size: 0.98rem; }
     .faq-item p a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
 
-    .resources { padding: 96px 0 110px; background: #fff; }
-    .resources-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 980px; margin: 0 auto; }
-    .resource-card { display: block; padding: 28px; background: #fff; border: 1px solid #E8E8EE; border-radius: 16px; text-decoration: none; color: var(--text); transition: border-color 0.15s, transform 0.15s; }
-    .resource-card:hover { border-color: var(--text); transform: translateY(-2px); }
-    .resource-card-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #b05533; margin-bottom: 14px; }
-    .resource-card h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
-    .resource-card p { font-size: 0.92rem; color: var(--text-sub); line-height: 1.5; }
-
     @media (max-width: 768px) {
-      .explainer-grid, .resources-grid { grid-template-columns: 1fr; }
-      .explainer, .methodology, .faq, .resources { padding: 64px 0; }
+      .explainer-grid { grid-template-columns: 1fr; }
+      .explainer, .methodology, .faq { padding: 64px 0; }
       .method-step-num { width: 44px; height: 44px; font-size: 1.15rem; }
       .method-step { gap: 16px; }
     }
@@ -889,38 +881,6 @@
       <details class="faq-item"><summary>What does a kit cost?<span class="faq-toggle">+</span></summary><p>2026 retail for an 800W kit ranges from about $1,200 (budget) to $1,800 (premium) at U.S. retailers like Anker, EcoFlow, and Bright Saver. The breakdown modal lets you choose a tier to see how cost affects payback.</p></details>
       <details class="faq-item"><summary>What rate is used to compute savings?<span class="faq-toggle">+</span></summary><p>34&cent;/kWh, the 2026 Con Edison SC-1 all-in marginal rate (supply + delivery + taxes, excluding the flat customer charge). Default rate escalation is 3%/yr; the breakdown modal lets you switch to 2% (low) or 4% (high).</p></details>
       <details class="faq-item"><summary>Does this site sell solar panels?<span class="faq-toggle">+</span></summary><p>No. This is a free, open calculator. We don&rsquo;t install, sell, or recommend specific kits, and we don&rsquo;t collect commissions on any links.</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- RESOURCES -->
-<section class="resources">
-  <div class="container">
-    <div class="explainer-header">
-      <span class="section-eyebrow">Further reading</span>
-      <h2>Resources</h2>
-    </div>
-    <div class="resources-grid">
-      <a class="resource-card" href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">
-        <div class="resource-card-tag">Legislation</div>
-        <h3>The SUNNY Act</h3>
-        <p>S8512 (Krueger) &mdash; the New York bill that would legalize plug-in solar up to 800W and exempt it from interconnection.</p>
-      </a>
-      <a class="resource-card" href="https://nysolarmap.com" target="_blank" rel="noopener">
-        <div class="resource-card-tag">NY State</div>
-        <h3>NY Solar Map (NYSERDA)</h3>
-        <p>Official solar potential mapping for NY State, with rooftop-focused production assumptions.</p>
-      </a>
-      <a class="resource-card" href="https://pvwatts.nrel.gov/" target="_blank" rel="noopener">
-        <div class="resource-card-tag">NREL</div>
-        <h3>PVWatts Calculator</h3>
-        <p>The U.S. Department of Energy&rsquo;s public solar production tool. The engine behind this page&rsquo;s production estimates.</p>
-      </a>
-      <a class="resource-card" href="https://solar.htw-berlin.de" target="_blank" rel="noopener">
-        <div class="resource-card-tag">Research</div>
-        <h3>HTW Berlin Plug-In Simulator</h3>
-        <p>Academic calibration data for vertical-mount, balcony-style solar &mdash; used as a reference for this calculator&rsquo;s NYC-specific tilt factors.</p>
-      </a>
     </div>
   </div>
 </section>

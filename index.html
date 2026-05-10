@@ -352,31 +352,27 @@
     }
 
     /* ─── EDUCATIONAL SECTIONS ─── */
-    .section-eyebrow { display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-sub); margin-bottom: 16px; }
     .explainer-header { max-width: 720px; margin: 0 auto 56px; text-align: center; }
     .explainer-header h2 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 600; letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 18px; }
     .explainer-header .section-lede { font-size: 1.15rem; font-weight: 400; color: var(--text-sub); line-height: 1.55; }
     .explainer-header .section-lede a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
 
     .explainer { padding: 96px 0; background: #FBF7EF; }
-    .explainer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 980px; margin: 0 auto; }
+    .explainer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1080px; margin: 0 auto; }
     .explainer-card { background: #fff; border: 1px solid #ECE5D6; border-radius: 16px; padding: 28px 28px 30px; }
     .ex-num { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; color: #b05533; margin-bottom: 14px; font-feature-settings: 'tnum'; }
     .explainer-card h3 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 10px; }
     .explainer-card p { font-size: 0.98rem; font-weight: 400; color: var(--text-sub); line-height: 1.55; }
 
     .methodology { padding: 96px 0; background: #fff; }
-    .method-steps { max-width: 760px; margin: 0 auto 64px; display: flex; flex-direction: column; gap: 28px; }
+    .method-steps { max-width: 760px; margin: 0 auto 40px; display: flex; flex-direction: column; gap: 28px; }
     .method-step { display: flex; gap: 24px; align-items: flex-start; }
     .method-step-num { flex-shrink: 0; width: 56px; height: 56px; border-radius: 50%; background: var(--text); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; font-feature-settings: 'tnum'; }
     .method-step-body h3 { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
     .method-step-body p { font-size: 1rem; color: var(--text-sub); line-height: 1.55; }
-    .method-sources { max-width: 760px; margin: 0 auto; padding: 32px; background: #FBF7EF; border-radius: 16px; }
-    .method-sources h3 { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-sub); margin-bottom: 14px; }
-    .method-sources ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
-    .method-sources li { font-size: 0.95rem; line-height: 1.45; color: var(--text); }
-    .method-sources a { color: var(--text); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(0,0,0,0.25); }
-    .method-sources a:hover { text-decoration-color: var(--text); }
+    .method-sources-line { max-width: 760px; margin: 0 auto; text-align: center; font-size: 0.95rem; color: var(--text-sub); line-height: 1.5; }
+    .method-sources-line a { color: var(--text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(0,0,0,0.25); margin-left: 4px; white-space: nowrap; }
+    .method-sources-line a:hover { text-decoration-color: var(--text); }
 
     .faq { padding: 96px 0; background: #FBF7EF; }
     .faq-list { max-width: 760px; margin: 0 auto; }
@@ -536,7 +532,7 @@
   <div class="hero-layout">
     <div class="hero-content" id="heroContent">
       <h1>How much sun does your NYC balcony get?</h1>
-      <p>A free, open tool for estimating the solar potential of any NYC apartment. Enter your address to see how much electricity a plug-in panel could produce on your balcony.</p>
+      <p>Enter your NYC address. We'll model your building, simulate a year of sun, and tell you what an 800W panel would produce.</p>
       <div class="hero-input-wrap">
         <input type="text" class="hero-input" id="addressInput" placeholder="What's your address?" autocomplete="off">
         <div class="hero-input-spinner" id="heroSpinner"></div>
@@ -715,7 +711,7 @@
         <div class="bd-cust-field">
           <label class="bd-cust-label">Mount tilt</label>
           <div class="bd-cust-segments" data-cust="tilt">
-            <button type="button" data-val="90" class="active">Vertical</button>
+            <button type="button" data-val="90" class="active">90&deg;</button>
             <button type="button" data-val="70">70&deg;</button>
             <button type="button" data-val="60">60&deg;</button>
             <button type="button" data-val="35">35&deg;</button>
@@ -747,7 +743,7 @@
             <button type="button" data-val="open">Open</button>
             <button type="button" data-val="some" class="active">Some</button>
             <button type="button" data-val="dense">Dense</button>
-            <button type="button" data-val="wide_avenue">Wide ave</button>
+            <button type="button" data-val="wide_avenue">Wide avenue</button>
           </div>
         </div>
 
@@ -772,11 +768,6 @@
       </div>
     </details>
 
-    <!-- Footer note in modal -->
-    <div class="bd-cta-section">
-      <h3>How this estimate is built</h3>
-      <p>This page combines NREL PVWatts hourly modeling with NYC building data and a 3D shadow simulation of your block. See <a href="#methodology" onclick="document.getElementById('breakdownOverlay').classList.remove('active')" style="color:#fff;text-decoration:underline">methodology</a> for the full data sources and assumptions.</p>
-    </div>
   </div>
 </div>
 
@@ -784,7 +775,6 @@
 <section class="explainer" id="about">
   <div class="container">
     <div class="explainer-header">
-      <span class="section-eyebrow">About</span>
       <h2>What is balcony solar?</h2>
       <p class="section-lede">Plug-in solar &mdash; sometimes called &ldquo;balcony solar&rdquo; or by its German name <em>Balkonkraftwerk</em> &mdash; is a small panel that clamps to a railing and plugs into a regular outlet. The electricity it produces flows back into the apartment&rsquo;s circuit, offsetting whatever&rsquo;s drawing power at that moment.</p>
     </div>
@@ -804,11 +794,6 @@
         <h3>Offsets your bill in real time</h3>
         <p>Every watt the panel produces is one less watt the grid has to supply. Whatever&rsquo;s on at the moment &mdash; fridge, AC, laptop &mdash; uses the panel&rsquo;s electricity first.</p>
       </div>
-      <div class="explainer-card">
-        <div class="ex-num">04</div>
-        <h3>~1M+ in Europe</h3>
-        <p>Germany has registered over a million plug-in solar systems; up to 4M are estimated operating across Europe. Utah, Vermont, and Virginia have all passed legalization bills in 2025&ndash;2026.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -817,7 +802,6 @@
 <section class="methodology" id="methodology">
   <div class="container">
     <div class="explainer-header">
-      <span class="section-eyebrow">Methodology</span>
       <h2>How this calculator works</h2>
       <p class="section-lede">This page combines the U.S. Department of Energy&rsquo;s solar production model with NYC building data and a 3D shadow simulation of your specific block. It&rsquo;s an estimate &mdash; we don&rsquo;t install panels and don&rsquo;t collect any commission. <a href="docs/METHODOLOGY_V2.md" target="_blank" rel="noopener">Read the full methodology &rarr;</a></p>
     </div>
@@ -853,17 +837,7 @@
       </div>
     </div>
 
-    <div class="method-sources">
-      <h3>Data sources</h3>
-      <ul>
-        <li><a href="https://developer.nrel.gov/api/pvwatts/v8.json" target="_blank" rel="noopener">NREL PVWatts V8</a> &mdash; hourly production simulation</li>
-        <li><a href="https://nysolarmap.com/about/map-assumptions" target="_blank" rel="noopener">NYSERDA NY Solar Map</a> &mdash; NYC-specific yield baseline</li>
-        <li><a href="https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf" target="_blank" rel="noopener">Con Edison historical rates</a> &mdash; SC-1 residential rate</li>
-        <li><a href="https://www.epa.gov/egrid/summary-data" target="_blank" rel="noopener">EPA eGRID2023</a> &mdash; NYC grid CO&#8322; factor</li>
-        <li><a href="https://data.cityofnewyork.us/resource/64uk-42ks" target="_blank" rel="noopener">NYC PLUTO</a> &amp; <a href="https://data.cityofnewyork.us/resource/5zhs-2jue" target="_blank" rel="noopener">Building Footprints</a> &mdash; building geometry</li>
-        <li><a href="https://solar.htw-berlin.de" target="_blank" rel="noopener">HTW Berlin Stecker-Solar-Simulator</a> &mdash; vertical-mount calibration reference</li>
-      </ul>
-    </div>
+    <p class="method-sources-line">Built on NREL PVWatts, NYC PLUTO, Con Edison SC-1 rates, and EPA eGRID. <a href="docs/METHODOLOGY_V2.md" target="_blank" rel="noopener">Full methodology &rarr;</a></p>
   </div>
 </section>
 
@@ -871,7 +845,6 @@
 <section class="faq" id="faq">
   <div class="container">
     <div class="explainer-header">
-      <span class="section-eyebrow">FAQ</span>
       <h2>Common questions</h2>
     </div>
     <div class="faq-list">

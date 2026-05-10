@@ -185,12 +185,16 @@ const ShadowModel = {
       }
 
       const score = this._scoreShadowImpact(entry, sunPos);
-      entry.shadowScore = score;
+      // Color thresholds use the display score (physics × 1.8 cap-1)
+      entry.shadowScore = score.display;
+      // Keep physics score around for any downstream debug/inspection
+      entry.shadowPhysics = score.physics;
 
-      if (score > 0.5)       entry.mesh.material.color.setHex(this.COLORS.high);
-      else if (score > 0.2)  entry.mesh.material.color.setHex(this.COLORS.medium);
-      else if (score > 0.05) entry.mesh.material.color.setHex(this.COLORS.low);
-      else                   entry.mesh.material.color.setHex(this.COLORS.none);
+      const d = score.display;
+      if (d > 0.5)       entry.mesh.material.color.setHex(this.COLORS.high);
+      else if (d > 0.2)  entry.mesh.material.color.setHex(this.COLORS.medium);
+      else if (d > 0.05) entry.mesh.material.color.setHex(this.COLORS.low);
+      else               entry.mesh.material.color.setHex(this.COLORS.none);
     }
   },
 
@@ -198,45 +202,63 @@ const ShadowModel = {
    * Score how much shadow a building casts on the target balcony at the current sun position.
    * @returns {number} 0-1 (0 = no shadow, 1 = fully blocking)
    */
+  /**
+   * Compute the angular span of a building polygon as seen from the balcony.
+   * Returns { minAz, maxAz, span, nearestDist }; null if degenerate.
+   */
+  _polygonAngularSpan(polygon, viewerPoint) {
+    if (!polygon || polygon.length < 2) return null;
+    const azimuths = [];
+    let nearestDist = Infinity;
+    for (const p of polygon) {
+      const dx = p.x - viewerPoint.x;
+      const dz = p.z - viewerPoint.z;
+      const dist = Math.sqrt(dx * dx + dz * dz);
+      if (dist < nearestDist) nearestDist = dist;
+      azimuths.push(Math.atan2(dx, -dz));
+    }
+    azimuths.sort((a, b) => a - b);
+    let minAz = azimuths[0];
+    let maxAz = azimuths[azimuths.length - 1];
+    // Wrap-around handling: if the apparent span is > PI the polygon straddles the
+    // -PI/+PI branch cut; the true outside-angle is the largest gap, so re-anchor.
+    if (maxAz - minAz > Math.PI) {
+      let bestGap = 0, bestIdx = 0;
+      for (let i = 0; i < azimuths.length - 1; i++) {
+        const gap = azimuths[i + 1] - azimuths[i];
+        if (gap > bestGap) { bestGap = gap; bestIdx = i; }
+      }
+      minAz = azimuths[bestIdx + 1];
+      maxAz = azimuths[bestIdx] + 2 * Math.PI;
+    }
+    return { minAz, maxAz, span: maxAz - minAz, nearestDist };
+  },
+
   _scoreShadowImpact(entry, sunPos) {
-    // Direction from balcony to building centroid
-    const toBldg = new THREE.Vector3().subVectors(entry.centroid, this.targetBalconyPoint);
-    const horizontalDist = Math.sqrt(toBldg.x * toBldg.x + toBldg.z * toBldg.z);
+    const ZERO = { physics: 0, display: 0 };
 
-    if (horizontalDist < 1) return 0;
+    const span = this._polygonAngularSpan(entry.localCoords, this.targetBalconyPoint);
+    if (!span || span.nearestDist < 1) return ZERO;
 
-    // Building azimuth from balcony point (from north, clockwise)
-    const bldgAzimuth = Math.atan2(toBldg.x, -toBldg.z);
+    // Normalize sun azimuth into the same wrap window as the polygon span
+    let sunAz = sunPos.azimuth;
+    if (sunAz < span.minAz) sunAz += 2 * Math.PI;
+    if (sunAz < span.minAz || sunAz > span.maxAz) return ZERO;
 
-    // Angular difference between sun azimuth and building direction
-    let azDiff = sunPos.azimuth - bldgAzimuth;
-    while (azDiff > Math.PI) azDiff -= 2 * Math.PI;
-    while (azDiff < -Math.PI) azDiff += 2 * Math.PI;
-
-    // If building is not roughly between us and the sun, no shadow
-    // Sun must be approximately behind the building (from our perspective)
-    if (Math.abs(azDiff) > Math.PI / 4) return 0; // >45° off sun direction
-
-    // Building top height relative to balcony
+    const horizontalDist = span.nearestDist;
     const bldgTopY = entry.heightMeters + (entry.elevOffset || 0);
     const heightAboveBalcony = bldgTopY - this.targetBalconyPoint.y;
-    if (heightAboveBalcony <= 0) return 0; // shorter than our balcony
+    if (heightAboveBalcony <= 0) return ZERO;
 
-    // Angular height of the building top as seen from balcony
     const blockAngle = Math.atan2(heightAboveBalcony, horizontalDist);
+    if (sunPos.altitude > blockAngle) return ZERO;
 
-    // If sun is higher than the building top, no shadow
-    if (sunPos.altitude > blockAngle) return 0;
-
-    // Score: how much the building blocks the sun
     const verticalBlock = Math.min(1, (blockAngle - sunPos.altitude) / (blockAngle + 0.01));
-    const azimuthFactor = 1 - (Math.abs(azDiff) / (Math.PI / 4));
+    const widthFactor = Math.min(1, span.span / 0.1);
 
-    // Angular width of building (approximate)
-    const angularWidth = Math.atan2(10, horizontalDist); // rough approximation
-    const widthFactor = Math.min(1, angularWidth / 0.1);
-
-    return Math.min(1, verticalBlock * azimuthFactor * widthFactor * 1.8);
+    const physics = Math.min(1, verticalBlock * widthFactor);
+    const display = Math.min(1, physics * 1.8); // UI contrast only — never fed back to physics
+    return { physics, display };
   },
 
   /**
@@ -318,50 +340,57 @@ const ShadowModel = {
 
     const monthlyFactors = [];
     const STEP = 30; // sample every 30 minutes
+    // Diffuse-sky fraction reaching a self-shaded vertical facade in a dense urban canyon.
+    // Roughly half of a hemispherical sky-view factor; supported by vertical-facade SVF studies.
+    const DIFFUSE_FRACTION = 0.30;
 
     for (let month = 0; month < 12; month++) {
       const bounds = SunPosition.getDayBounds(month);
-      let totalSamples = 0;
+      let totalWeight = 0;
       let unshadedSum = 0;
 
       for (let minute = bounds.sunrise; minute <= bounds.sunset; minute += STEP) {
         const sunPos = SunPosition.calculate(month, minute);
         if (sunPos.altitude <= 0) continue;
 
-        totalSamples++;
+        // Irradiance-weighted sampling: noon sun >> dawn sun.
+        // sin(altitude)^0.6 is a clear-sky direct-irradiance proxy that flattens the
+        // solar-noon spike vs sin(altitude) alone.
+        const irradianceWeight = Math.pow(Math.max(0, Math.sin(sunPos.altitude)), 0.6);
 
-        // Check if the sun is on the balcony's side of the building.
-        // If sun is behind the building relative to the balcony face, it's self-shaded.
-        let sunBehindFacade = false;
-        const sunAz = sunPos.azimuth; // radians, from north clockwise
-        let facadeDiff = sunAz - this.balconyAzimuth;
+        // Check if sun is on balcony's side of the facade.
+        let facadeDiff = sunPos.azimuth - this.balconyAzimuth;
         while (facadeDiff > Math.PI) facadeDiff -= 2 * Math.PI;
         while (facadeDiff < -Math.PI) facadeDiff += 2 * Math.PI;
-        if (Math.abs(facadeDiff) > Math.PI / 2) {
-          // Sun is behind the building — balcony gets no direct sun
-          sunBehindFacade = true;
-        }
+        const sunBehindFacade = Math.abs(facadeDiff) > Math.PI / 2;
 
         if (sunBehindFacade) {
-          // No direct sun regardless of neighbor shadows
-          unshadedSum += 0;
+          // Self-shaded: only diffuse-sky contribution. Weight at the panel's expected
+          // diffuse intake (no facade-incidence multiplier — diffuse is roughly isotropic).
+          const diffuseSampleWeight = irradianceWeight;
+          totalWeight += diffuseSampleWeight;
+          unshadedSum += DIFFUSE_FRACTION * diffuseSampleWeight;
           continue;
         }
 
-        // Find max shadow score from any neighbor at this sun position
+        // Direct sun reaches facade: weight by panel-incidence (cos of off-axis angle).
+        const facadeIncidence = Math.max(0, Math.cos(sunPos.altitude) * Math.cos(facadeDiff));
+        const sampleWeight = irradianceWeight * facadeIncidence;
+        if (sampleWeight <= 0) continue;
+
+        // Max shadow physics-score from any neighbor at this sun position
         let maxShadow = 0;
         for (const entry of neighbors) {
           const score = this._scoreShadowImpact(entry, sunPos);
-          if (score > maxShadow) maxShadow = score;
+          if (score.physics > maxShadow) maxShadow = score.physics;
         }
 
-        // Invert: 1 - shadow = sunlight fraction for this sample
-        unshadedSum += (1 - maxShadow);
+        totalWeight += sampleWeight;
+        unshadedSum += (1 - maxShadow) * sampleWeight;
       }
 
-      // Monthly shade factor = fraction of daylight hours with sun
-      const factor = totalSamples > 0 ? unshadedSum / totalSamples : 0.80;
-      // Clamp to reasonable range (at least some diffuse light)
+      // Monthly shade factor = irradiance-weighted unshaded fraction
+      const factor = totalWeight > 0 ? unshadedSum / totalWeight : 0.80;
       monthlyFactors.push(Math.max(0.15, Math.min(0.98, factor)));
     }
 

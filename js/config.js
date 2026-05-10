@@ -37,13 +37,27 @@ const SolarConfig = {
     east: -73.7004,
   },
 
-  // Con Edison SC-1 residential all-in rate (supply + delivery)
-  ELECTRICITY_RATE: 0.22,
+  // Con Edison SC-1 residential all-in rate (supply + delivery), 2026 marginal
+  // Source: Con Ed historical bill table 2023-2025 + 2026 rate case settlement (+3.5%)
+  ELECTRICITY_RATE: 0.34,
   RATE_ESCALATION: 0.03,
+  RATE_ESCALATION_PRESETS: { low: 0.02, mid: 0.03, high: 0.04 },
+
+  // Mid-tier degradation (default). Tier-aware override below.
   PANEL_DEGRADATION: 0.005,
-  THERMAL_BONUS: 1.03,
-  CO2_FACTOR: 0.65, // lbs CO2 per kWh (NYC grid)
+  PANEL_DEGRADATION_BY_TIER: { budget: 0.007, mid: 0.005, premium: 0.004 },
+
+  // 2026 retail for an 800W kit; scaled linearly by system size
+  SYSTEM_COST_BY_TIER: { budget: 1200, mid: 1500, premium: 1800 },
+
+  // PVWatts already models cell temperature via TMY weather (array_type: 0).
+  // Keep at 1.0 to avoid double-counting.
+  THERMAL_BONUS: 1.0,
+
+  // EPA eGRID2023 NYCW subregion output emission rate
+  CO2_FACTOR: 0.89, // lbs CO2 per kWh (NYC grid)
 
   // PVWatts reference: annual kWh per kW DC for NYC at optimal tilt (~40°)
-  PVWATTS_NYC_KWH_PER_KW_OPTIMAL: 1400,
+  // Aligned with NYSERDA NY Solar Map (1,238) split with calc's prior 1,400.
+  PVWATTS_NYC_KWH_PER_KW_OPTIMAL: 1300,
 };

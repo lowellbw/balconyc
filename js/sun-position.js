@@ -12,12 +12,16 @@ const SunPosition = {
   LON: -73.9960,
   LAT_RAD: 40.7128 * Math.PI / 180,
 
-  // Timezone offsets by month (EST = -5, EDT = -4)
-  // Mar 8 – Nov 1 is roughly EDT; we use month as proxy
+  // Day-of-year for the 15th of each month (matches calculate's representative day)
+  DOY_TABLE: [15, 46, 74, 105, 135, 166, 196, 227, 258, 288, 319, 349],
+
+  // Timezone offset (EST = -5, EDT = -4) by day-of-year.
+  // 2026 DST: starts Mar 8 (DOY 67), ends Nov 1 (DOY 305). Using the 15th-of-month
+  // representative day gives correct offsets for Mar/Nov without the off-by-week errors
+  // from a pure month-based switch.
   _tzOffset(month) {
-    // month 0-11: Jan=0, Feb=1, ... Dec=11
-    // EDT: March (2) through October (10)
-    return (month >= 2 && month <= 10) ? -4 : -5;
+    const doy = this.DOY_TABLE[month] ?? 166;
+    return (doy >= 67 && doy < 305) ? -4 : -5;
   },
 
   /**
@@ -31,13 +35,11 @@ const SunPosition = {
     const DEG = Math.PI / 180;
 
     // Use the 15th of the given month as representative day
-    // Day of year for the 15th of each month:
-    const doyTable = [15, 46, 74, 105, 135, 166, 196, 227, 258, 288, 319, 349];
-    const dayOfYear = doyTable[month] || 166; // default June 15
+    const dayOfYear = this.DOY_TABLE[month] ?? 166; // default June 15
 
     // --- Julian Century from J2000.0 ---
-    // Approximate: assume year 2026 for consistency
-    const jd = 2451545.0 + (2026 - 2000) * 365.25 + dayOfYear;
+    const year = new Date().getFullYear();
+    const jd = 2451545.0 + (year - 2000) * 365.25 + dayOfYear;
     const T = (jd - 2451545.0) / 36525.0;
 
     // --- Solar Mean Anomaly (degrees) ---
@@ -77,31 +79,14 @@ const SunPosition = {
     const sinAlt = sinLat * Math.sin(dec) + cosLat * cosDec * Math.cos(hourAngle);
     const altitude = Math.asin(Math.max(-1, Math.min(1, sinAlt)));
 
-    // --- Solar Azimuth ---
-    // Measured clockwise from north
+    // --- Solar Azimuth (atan2 form, robust at all altitudes) ---
     const cosAlt = Math.cos(altitude);
-    let cosAz;
-    if (cosAlt === 0) {
-      cosAz = 0;
-    } else {
-      cosAz = (Math.sin(dec) - sinLat * sinAlt) / (cosLat * cosAlt);
-      cosAz = Math.max(-1, Math.min(1, cosAz));
-    }
-    let azimuth = Math.acos(cosAz);
-
-    // Azimuth is measured from south in the formula; convert to from-north clockwise
-    // Before solar noon (negative hour angle): azimuth is east of south
-    // After solar noon (positive hour angle): azimuth is west of south
-    if (hourAngle > 0) {
-      azimuth = 2 * Math.PI - azimuth;
-    }
-    // Convert from "from south" to "from north" (add 180°)
-    // Actually the acos formula gives from-north when sinLat term is used correctly
-    // Let's use the atan2 method for robustness:
-    const sinAz = -cosDec * Math.sin(hourAngle) / cosAlt;
-    azimuth = Math.atan2(sinAz, cosAz);
-    // This gives azimuth from south. Convert to from-north clockwise:
-    azimuth = (azimuth + Math.PI) % (2 * Math.PI);
+    const cosAz = cosAlt === 0
+      ? 0
+      : Math.max(-1, Math.min(1, (Math.sin(dec) - sinLat * sinAlt) / (cosLat * cosAlt)));
+    const sinAz = cosAlt === 0 ? 0 : -cosDec * Math.sin(hourAngle) / cosAlt;
+    // atan2 returns azimuth measured from south; convert to from-north clockwise:
+    let azimuth = (Math.atan2(sinAz, cosAz) + Math.PI) % (2 * Math.PI);
 
     return {
       altitude,

@@ -82,9 +82,12 @@ const SolarState = {
 // --- CONSTANTS ---
 
 // Tilt factor: production relative to optimal ~40° tilt
+// Calibrated against PVWatts vertical NYC + HTW Berlin Stecker-Solar reference.
 const TILT_FACTORS = {
-  90: 0.72,  // Vertical railing mount
-  70: 0.83,  // Angled mount
+  90: 0.60,  // Vertical railing mount
+  70: 0.78,  // Angled mount
+  60: 0.85,  // Angled (shallower)
+  35: 1.00,  // Top-mount, near optimal for NYC
 };
 
 // Azimuth production factors relative to south-facing (180°)
@@ -112,18 +115,13 @@ const DIRECTION_LABELS = {
   180: 'South', 225: 'Southwest', 270: 'West', 315: 'Northwest',
 };
 
-// Borough zip code mapping for Geoclient
-const BOROUGH_FROM_ZIP = {};
-// Manhattan
-['100','101','102','103','104','105','106','107','108','109','110','111','112','113','114','115','116','117','118','119','120','121','122','123','124','125','126','127','128','129','130'].forEach(z => BOROUGH_FROM_ZIP['10' + z.slice(1)] = 'manhattan');
-// Fix: use actual NYC zip prefixes
+// Borough zip code mapping for Geoclient (USPS NYC ZIP atlas)
 const BOROUGH_ZIP_RANGES = [
   { prefix: '100', borough: 'manhattan' },
   { prefix: '101', borough: 'manhattan' },
   { prefix: '102', borough: 'manhattan' },
   { prefix: '103', borough: 'staten island' },
-  { prefix: '104', borough: 'staten island' },
-  { prefix: '110', borough: 'bronx' },
+  { prefix: '104', borough: 'bronx' },
   { prefix: '111', borough: 'queens' },
   { prefix: '112', borough: 'brooklyn' },
   { prefix: '113', borough: 'queens' },
@@ -165,22 +163,16 @@ function getBoroughFromComponents(components) {
 // --- SHADE FACTOR MODEL ---
 
 function getShadeFactor(floor, totalFloors, shading) {
-  const floorRatio = floor / totalFloors;
-
-  let floorTier;
-  if (floorRatio >= 0.85) floorTier = 'top';
-  else if (floorRatio >= 0.55) floorTier = 'high';
-  else if (floorRatio >= 0.25) floorTier = 'mid';
-  else floorTier = 'low';
-
-  const matrix = {
-    top:  { open: 0.96, some: 0.93, dense: 0.85, wide_avenue: 0.95 },
-    high: { open: 0.93, some: 0.88, dense: 0.78, wide_avenue: 0.90 },
-    mid:  { open: 0.88, some: 0.82, dense: 0.72, wide_avenue: 0.84 },
-    low:  { open: 0.78, some: 0.68, dense: 0.60, wide_avenue: 0.75 },
-  };
-
-  return matrix[floorTier][shading] || 0.80;
+  const ratio = (totalFloors > 0) ? floor / totalFloors : 0.5;
+  // tanh sigmoid: smooth transition centred near mid-floor
+  const baseExposure = 0.5 + 0.5 * Math.tanh(3 * (ratio - 0.45));
+  const range = {
+    open:        { min: 0.85, max: 0.97 },
+    some:        { min: 0.65, max: 0.94 },
+    dense:       { min: 0.45, max: 0.87 },
+    wide_avenue: { min: 0.70, max: 0.96 },
+  }[shading] || { min: 0.65, max: 0.94 };
+  return range.min + baseExposure * (range.max - range.min);
 }
 
 
@@ -564,13 +556,13 @@ const SolarAPI = {
         azimuth: params.azimuth.toString(),
         lat: SolarState.lat.toString(),
         lon: SolarState.lon.toString(),
-        losses: '22',           // Balcony-specific: higher than 14% rooftop default
+        losses: '14',           // PVWatts default; soiling moved into soiling[] array
         dc_ac_ratio: '1.2',
         inv_eff: '96.5',        // Micro-inverter efficiency (Enphase IQ8 ~97%, budget ~96%)
         dataset: 'nsrdb',
         timeframe: 'monthly',
-        // NYC urban soiling profile — dustier than suburban, higher in summer (pollen)
-        soiling: '[12,11,12,14,16,17,17,16,14,11,11,11]',
+        // NYC urban soiling profile — calibrated to urban-PV literature (3-7% monthly)
+        soiling: '[3,3,4,5,6,7,7,7,6,5,4,3]',
         // Concrete balcony ground reflectance (light-colored: ~0.30)
         albedo: '0.20',
         // Monofacial panels (set to 0.75 if selling bifacial panels)
@@ -677,10 +669,22 @@ const SolarAPI = {
     const {
       azimuth, tilt, systemWatts, floor, totalFloors,
       shading, monthlyBill, systemCost, shadeProfile,
+      costTier, escalationPreset,
     } = formInputs;
 
     const systemKw = systemWatts / 1000;
-    const adjustedCost = systemCost * (systemWatts / 800);
+    // Resolve tier-aware system cost when no explicit override provided
+    const tier = costTier || 'mid';
+    const baseCost = (systemCost != null)
+      ? systemCost
+      : (SolarConfig.SYSTEM_COST_BY_TIER[tier] || SolarConfig.SYSTEM_COST_BY_TIER.mid);
+    const adjustedCost = baseCost * (systemWatts / 800);
+
+    // Resolve tier-aware degradation + escalation
+    const panelDegradation = (SolarConfig.PANEL_DEGRADATION_BY_TIER || {})[tier]
+      || SolarConfig.PANEL_DEGRADATION;
+    const rateEscalation = (SolarConfig.RATE_ESCALATION_PRESETS || {})[escalationPreset]
+      || SolarConfig.RATE_ESCALATION;
 
     // Use 3D-derived shade profile if available, otherwise fall back to static lookup
     const has3DShade = shadeProfile && shadeProfile.monthlyShadeFactors;
@@ -729,23 +733,16 @@ const SolarAPI = {
       console.log(`[SolarAPI] PVWatts: raw=${rawAnnual.toFixed(0)} kWh, after 3D shade=${annualKwh.toFixed(0)} kWh`);
     } else {
       // Fallback: client-side formula (used when PVWatts API unavailable)
-      const tiltFactor = TILT_FACTORS[tilt] || 0.72;
+      const tiltFactor = TILT_FACTORS[tilt] || 0.60;
       const azimuthFactor = AZIMUTH_FACTORS[azimuth] || 0.72;
 
-      // The baseline (1400 kWh/kW) assumes PVWatts default 14% losses.
-      // Balconies use 22% losses. This factor adjusts: (1-0.22)/(1-0.14) = 0.907
-      // DO NOT REMOVE — this is intentional, not a duplicate of the PVWatts losses param.
-      const balconyLossAdj = (1 - 0.22) / (1 - 0.14);
-
-      // Urban soiling derating (~10% avg for NYC, not included in shade factor table)
-      // PVWatts handles this via the soiling[] array param; fallback must apply manually
-      const URBAN_SOILING_FACTOR = 0.90;
+      // Urban soiling derating, ~5% avg (matches PVWatts soiling[] array average).
+      const URBAN_SOILING_FACTOR = 0.95;
 
       const baseKwh = SolarConfig.PVWATTS_NYC_KWH_PER_KW_OPTIMAL
         * systemKw
         * tiltFactor
         * azimuthFactor
-        * balconyLossAdj
         * URBAN_SOILING_FACTOR
         * SolarConfig.THERMAL_BONUS;
 
@@ -768,19 +765,21 @@ const SolarAPI = {
     const monthlySavings = annualSavings / 12;
 
     const monthlyConsumption = monthlyBill / SolarConfig.ELECTRICITY_RATE;
-    const annualConsumption = monthlyConsumption * 12;
-    const billOffsetPct = (annualKwh / annualConsumption) * 100;
+    const annualConsumption = Math.max(1, monthlyConsumption * 12);
+    const billOffsetPct = Math.min(100, (annualKwh / annualConsumption) * 100);
 
     const simplePayback = adjustedCost / annualSavings;
 
-    // NPV payback with rate escalation
+    // NPV payback + 25-year lifetime savings (single loop)
     let cumSavings = 0;
+    let lifetimeSavings = 0;
     let npvPayback = 25;
     for (let i = 0; i < 25; i++) {
       const yearSavings = annualKwh
-        * Math.pow(1 - SolarConfig.PANEL_DEGRADATION, i)
+        * Math.pow(1 - panelDegradation, i)
         * SolarConfig.ELECTRICITY_RATE
-        * Math.pow(1 + SolarConfig.RATE_ESCALATION, i);
+        * Math.pow(1 + rateEscalation, i);
+      lifetimeSavings += yearSavings;
       cumSavings += yearSavings;
       if (cumSavings >= adjustedCost && npvPayback === 25) {
         const prevCum = cumSavings - yearSavings;
@@ -788,18 +787,9 @@ const SolarAPI = {
       }
     }
 
-    // 25-year lifetime savings
-    let lifetimeSavings = 0;
-    for (let i = 0; i < 25; i++) {
-      lifetimeSavings += annualKwh
-        * Math.pow(1 - SolarConfig.PANEL_DEGRADATION, i)
-        * SolarConfig.ELECTRICITY_RATE
-        * Math.pow(1 + SolarConfig.RATE_ESCALATION, i);
-    }
-
     // Environmental impact
     const co2Lbs = annualKwh * SolarConfig.CO2_FACTOR;
-    const treesEquiv = co2Lbs / 120;
+    const treesEquiv = co2Lbs / 48; // EPA average lb CO2/yr per mature tree
     const milesOffset = co2Lbs / 0.89;
     const phonesCharged = annualKwh * 1000 / 12;
 
@@ -834,6 +824,10 @@ const SolarAPI = {
       azimuth,
       tilt,
       shadeFactor,
+      costTier: tier,
+      escalationPreset: escalationPreset || 'mid',
+      panelDegradation,
+      rateEscalation,
 
       // Data quality
       dataSources: { ...SolarState.dataSources },

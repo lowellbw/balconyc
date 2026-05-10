@@ -302,6 +302,31 @@
     .bd-offset-text { font-size: 0.85rem; color: var(--text-sub); line-height: 1.4; }
     .bd-offset-text strong { color: var(--text); }
 
+    /* Customize panel */
+    .bd-customize { border-top: 1px solid var(--border); padding: 24px 40px 32px; background: #fafbfc; }
+    .bd-customize > summary { cursor: pointer; font-size: 1.05rem; font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
+    .bd-customize > summary::-webkit-details-marker { display: none; }
+    .bd-customize > summary .cust-toggle { font-size: 1.4rem; font-weight: 300; color: var(--text-sub); transition: transform 0.2s; }
+    .bd-customize[open] > summary .cust-toggle { transform: rotate(45deg); }
+    .bd-customize-sub { font-size: 0.82rem; color: var(--text-sub); margin-top: 6px; margin-bottom: 18px; line-height: 1.5; }
+    .bd-cust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; margin-bottom: 18px; }
+    .bd-cust-field { display: flex; flex-direction: column; gap: 6px; }
+    .bd-cust-label { font-size: 0.78rem; font-weight: 600; color: var(--text-sub); letter-spacing: 0.01em; }
+    .bd-cust-segments { display: flex; gap: 4px; background: #f0f2f5; border-radius: 8px; padding: 3px; }
+    .bd-cust-segments button { flex: 1; padding: 8px 4px; border: none; border-radius: 6px; background: transparent; cursor: pointer; font-family: inherit; font-size: 0.78rem; font-weight: 600; color: var(--text-sub); transition: all 0.15s; }
+    .bd-cust-segments button.active { background: #fff; color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .bd-cust-input { padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.9rem; background: #fff; color: var(--text); outline: none; }
+    .bd-cust-input:focus { border-color: var(--text-sub); }
+    .bd-cust-actions { display: flex; align-items: center; gap: 12px; margin-top: 4px; }
+    .bd-cust-recalc { padding: 12px 24px; border: none; border-radius: 10px; background: var(--text); color: #fff; font-family: inherit; font-size: 0.92rem; font-weight: 700; cursor: pointer; }
+    .bd-cust-recalc:hover { opacity: 0.9; }
+    .bd-cust-recalc:disabled { opacity: 0.5; cursor: progress; }
+    .bd-cust-reset { background: transparent; border: none; color: var(--text-sub); font-family: inherit; font-size: 0.85rem; font-weight: 500; cursor: pointer; text-decoration: underline; padding: 6px 4px; }
+    @media (max-width: 768px) {
+      .bd-cust-grid { grid-template-columns: 1fr; }
+      .bd-customize { padding: 20px 24px 24px; }
+    }
+
     /* Section 3: Email capture */
     .bd-cta-section { background: var(--text); border-radius: 0 0 20px 20px; padding: 32px 40px; color: #fff; }
     .bd-cta-section h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }
@@ -693,6 +718,75 @@
       </div>
     </div>
 
+    <!-- Customize -->
+    <details class="bd-customize" id="bdCustomize">
+      <summary>
+        <span>Customize this estimate</span>
+        <span class="cust-toggle">+</span>
+      </summary>
+      <div class="bd-customize-sub">Adjust the assumptions below and recompute. Defaults reflect a typical 800W mid-tier kit on Con Ed SC-1.</div>
+
+      <div class="bd-cust-grid">
+        <div class="bd-cust-field">
+          <label class="bd-cust-label">Mount tilt</label>
+          <div class="bd-cust-segments" data-cust="tilt">
+            <button type="button" data-val="90" class="active">Vertical</button>
+            <button type="button" data-val="70">70&deg;</button>
+            <button type="button" data-val="60">60&deg;</button>
+            <button type="button" data-val="35">35&deg;</button>
+          </div>
+        </div>
+
+        <div class="bd-cust-field">
+          <label class="bd-cust-label">System size</label>
+          <div class="bd-cust-segments" data-cust="systemWatts">
+            <button type="button" data-val="400">400W</button>
+            <button type="button" data-val="800" class="active">800W</button>
+            <button type="button" data-val="1200">1200W</button>
+            <button type="button" data-val="1600">1600W</button>
+          </div>
+        </div>
+
+        <div class="bd-cust-field">
+          <label class="bd-cust-label">Equipment tier</label>
+          <div class="bd-cust-segments" data-cust="costTier">
+            <button type="button" data-val="budget">Budget ($1.2k)</button>
+            <button type="button" data-val="mid" class="active">Mid ($1.5k)</button>
+            <button type="button" data-val="premium">Premium ($1.8k)</button>
+          </div>
+        </div>
+
+        <div class="bd-cust-field">
+          <label class="bd-cust-label">Surrounding shading</label>
+          <div class="bd-cust-segments" data-cust="shading">
+            <button type="button" data-val="open">Open</button>
+            <button type="button" data-val="some" class="active">Some</button>
+            <button type="button" data-val="dense">Dense</button>
+            <button type="button" data-val="wide_avenue">Wide ave</button>
+          </div>
+        </div>
+
+        <div class="bd-cust-field">
+          <label class="bd-cust-label">Monthly electric bill</label>
+          <input class="bd-cust-input" type="number" id="custMonthlyBill" min="20" max="800" step="10" value="200">
+        </div>
+
+        <div class="bd-cust-field">
+          <label class="bd-cust-label">Rate escalation</label>
+          <div class="bd-cust-segments" data-cust="escalationPreset">
+            <button type="button" data-val="low">Low (2%)</button>
+            <button type="button" data-val="mid" class="active">Mid (3%)</button>
+            <button type="button" data-val="high">High (4%)</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bd-cust-actions">
+        <button type="button" class="bd-cust-recalc" id="custRecalcBtn">Recalculate</button>
+        <button type="button" class="bd-cust-reset" id="custResetBtn">Reset to defaults</button>
+      </div>
+    </details>
+
     <!-- Section 3: Email capture -->
     <div class="bd-cta-section">
       <h3>Want to go solar on your balcony?</h3>
@@ -714,7 +808,7 @@
 <section class="stats">
   <div class="container">
     <div class="stats-grid">
-      <div><div class="lp-stat-number">31&cent;/kWh</div><div class="lp-stat-label">NYC electricity rate, 56% above the national average</div></div>
+      <div><div class="lp-stat-number">34&cent;/kWh</div><div class="lp-stat-label">NYC electricity rate &mdash; more than double the national average</div></div>
       <div><div class="lp-stat-number">1M+</div><div class="lp-stat-label">balcony solar systems registered in Germany alone. Up to 4M operating across Europe</div></div>
       <div><div class="lp-stat-number">$279/yr</div><div class="lp-stat-label">projected annual savings for NYC renters under the SUNNY Act</div></div>
     </div>
@@ -809,10 +903,10 @@
   <div class="container">
     <div class="offerings-header"><h2>Frequently asked questions</h2></div>
     <div style="max-width:720px">
-      <details style="border-bottom:1px solid #E8E8EE;padding:24px 0;cursor:pointer"><summary style="font-size:1.15rem;font-weight:500;letter-spacing:-0.01em;list-style:none;display:flex;justify-content:space-between;align-items:center">Is this legal in NYC?<span style="font-size:1.5rem;font-weight:300">+</span></summary><p style="margin-top:12px;color:var(--text-sub);line-height:1.6">Not yet. The SUNNY Act (S8512/A9111) is currently moving through the New York State Legislature. Once passed, it will legalize plug-in solar panels up to 800W for residential use.</p></details>
+      <details style="border-bottom:1px solid #E8E8EE;padding:24px 0;cursor:pointer"><summary style="font-size:1.15rem;font-weight:500;letter-spacing:-0.01em;list-style:none;display:flex;justify-content:space-between;align-items:center">Is this legal in NYC?<span style="font-size:1.5rem;font-weight:300">+</span></summary><p style="margin-top:12px;color:var(--text-sub);line-height:1.6">Almost. The SUNNY Act (S8512/A9111) passed the NY Senate unanimously on April 21, 2026 and is awaiting Assembly action. Once enacted, it will exempt plug-in solar systems up to 800W from interconnection and net-metering rules, prohibiting utilities from charging fees or requiring approval. The savings figures on this page assume the bill passes; until it does, plug-in solar in NY technically requires Con Ed interconnection.</p></details>
       <details style="border-bottom:1px solid #E8E8EE;padding:24px 0;cursor:pointer"><summary style="font-size:1.15rem;font-weight:500;letter-spacing:-0.01em;list-style:none;display:flex;justify-content:space-between;align-items:center">Do I need my landlord's permission?<span style="font-size:1.5rem;font-weight:300">+</span></summary><p style="margin-top:12px;color:var(--text-sub);line-height:1.6">No. Once the SUNNY Act passes, tenants will have the right to install plug-in solar without landlord approval, similar to how window AC units work today.</p></details>
       <details style="border-bottom:1px solid #E8E8EE;padding:24px 0;cursor:pointer"><summary style="font-size:1.15rem;font-weight:500;letter-spacing:-0.01em;list-style:none;display:flex;justify-content:space-between;align-items:center">Can I take it with me when I move?<span style="font-size:1.5rem;font-weight:300">+</span></summary><p style="margin-top:12px;color:var(--text-sub);line-height:1.6">Yes. Plug-in solar panels are portable by design. They mount to your railing and plug into a standard outlet. When you move, we'll reinstall at your new place.</p></details>
-      <details style="border-bottom:1px solid #E8E8EE;padding:24px 0;cursor:pointer"><summary style="font-size:1.15rem;font-weight:500;letter-spacing:-0.01em;list-style:none;display:flex;justify-content:space-between;align-items:center">How much will I save?<span style="font-size:1.5rem;font-weight:300">+</span></summary><p style="margin-top:12px;color:var(--text-sub);line-height:1.6">Based on the SUNNY Act's fiscal analysis, NYC renters can expect to save approximately $279 per year. With NYC's electricity rate at 31&cent;/kWh (56% above the national average), balcony solar pays for itself fast.</p></details>
+      <details style="border-bottom:1px solid #E8E8EE;padding:24px 0;cursor:pointer"><summary style="font-size:1.15rem;font-weight:500;letter-spacing:-0.01em;list-style:none;display:flex;justify-content:space-between;align-items:center">How much will I save?<span style="font-size:1.5rem;font-weight:300">+</span></summary><p style="margin-top:12px;color:var(--text-sub);line-height:1.6">Based on the SUNNY Act's fiscal analysis, NYC renters can expect to save approximately $279 per year. With NYC's electricity rate at 34&cent;/kWh &mdash; more than double the national average &mdash; balcony solar pays for itself fast.</p></details>
     </div>
   </div>
 </section>
@@ -899,6 +993,92 @@ let selectedFloor = null;
 let selectedAzimuth = null;
 let animationDone = false;
 let totalFloors = 20;
+let lastShadeProfile = null;
+let lastFormInputs = null;
+
+// Default customizable assumptions (mirrors the modal's initial .active states)
+const CUSTOMIZE_DEFAULTS = {
+  tilt: 90,
+  systemWatts: 800,
+  costTier: 'mid',
+  shading: 'some',
+  monthlyBill: 200,
+  escalationPreset: 'mid',
+};
+
+function readCustomizeInputs() {
+  const root = document.getElementById('bdCustomize');
+  if (!root) return Object.assign({}, CUSTOMIZE_DEFAULTS);
+  const out = Object.assign({}, CUSTOMIZE_DEFAULTS);
+  root.querySelectorAll('.bd-cust-segments').forEach(function(seg) {
+    const key = seg.getAttribute('data-cust');
+    const active = seg.querySelector('button.active');
+    if (key && active) {
+      const raw = active.getAttribute('data-val');
+      out[key] = (key === 'tilt' || key === 'systemWatts') ? Number(raw) : raw;
+    }
+  });
+  const billEl = document.getElementById('custMonthlyBill');
+  if (billEl && billEl.value) {
+    const v = Number(billEl.value);
+    if (Number.isFinite(v) && v > 0) out.monthlyBill = v;
+  }
+  return out;
+}
+
+function setCustomizeInputs(values) {
+  const root = document.getElementById('bdCustomize');
+  if (!root) return;
+  root.querySelectorAll('.bd-cust-segments').forEach(function(seg) {
+    const key = seg.getAttribute('data-cust');
+    const target = String(values[key]);
+    seg.querySelectorAll('button').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-val') === target);
+    });
+  });
+  const billEl = document.getElementById('custMonthlyBill');
+  if (billEl) billEl.value = values.monthlyBill;
+}
+
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('.bd-cust-segments button');
+  if (!btn) return;
+  const seg = btn.parentElement;
+  seg.querySelectorAll('button').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const recalcBtn = document.getElementById('custRecalcBtn');
+  const resetBtn = document.getElementById('custResetBtn');
+  if (recalcBtn) recalcBtn.addEventListener('click', recalculateFromCustomize);
+  if (resetBtn) resetBtn.addEventListener('click', function() {
+    setCustomizeInputs(CUSTOMIZE_DEFAULTS);
+    recalculateFromCustomize();
+  });
+});
+
+async function recalculateFromCustomize() {
+  if (selectedFloor == null || selectedAzimuth == null) return;
+  const btn = document.getElementById('custRecalcBtn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Calculating...'; }
+  const custom = readCustomizeInputs();
+  const formInputs = Object.assign({
+    azimuth: selectedAzimuth,
+    floor: selectedFloor,
+    totalFloors: totalFloors,
+    shadeProfile: lastShadeProfile,
+  }, custom);
+  try {
+    const result = await SolarAPI.calculateEstimate(formInputs);
+    lastFormInputs = formInputs;
+    showResults(result, formInputs);
+  } catch (err) {
+    console.warn('[Calc4] Recalculation failed:', err);
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = 'Recalculate'; }
+  }
+}
 
 // Supabase
 const SUPABASE_URL = 'https://lbjcfqxfztbaoxuwhrhd.supabase.co';
@@ -1254,17 +1434,16 @@ async function runSunAnimation() {
   var shadeProfile = ShadowModel.computeAnnualShadeProfile();
   console.log('[Calc4] 3D shade factor:', shadeProfile.annualShadeFactor.toFixed(3));
 
-  var formInputs = {
+  // Collect customizable assumptions from the breakdown modal (or defaults).
+  var customInputs = readCustomizeInputs();
+  var formInputs = Object.assign({
     azimuth: selectedAzimuth,
-    tilt: 90,
-    systemWatts: 800,
     floor: selectedFloor,
     totalFloors: totalFloors,
-    shading: 'some',
-    monthlyBill: 140,
-    systemCost: 1000,
     shadeProfile: shadeProfile,
-  };
+  }, customInputs);
+  // Stash for recalculation
+  lastShadeProfile = shadeProfile;
 
   var calcPromise = SolarAPI.calculateEstimate(formInputs);
 
@@ -1310,6 +1489,7 @@ async function runSunAnimation() {
   document.getElementById('timeLabel').textContent = SunPosition.formatTime(720);
 
   // Show floating card + populate breakdown modal
+  lastFormInputs = formInputs;
   showResults(result, formInputs);
 
   // Log
@@ -1408,6 +1588,11 @@ function resetCalculator() {
   selectedFloor = null;
   selectedAzimuth = null;
   totalFloors = 20;
+  lastShadeProfile = null;
+  lastFormInputs = null;
+  setCustomizeInputs(CUSTOMIZE_DEFAULTS);
+  var custDetails = document.getElementById('bdCustomize');
+  if (custDetails) custDetails.removeAttribute('open');
   SolarState.reset();
 
   // Reset UI — hero

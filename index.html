@@ -192,13 +192,6 @@
     .rc-detail-row strong { color: var(--text); font-weight: 700; }
     .rc-cta { display: block; width: 100%; text-align: center; padding: 13px; background: var(--text); color: #fff; border: none; border-radius: 10px; font-family: inherit; font-size: 0.92rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.2s; }
     .rc-cta:hover { background: #333; }
-    .rc-cta-accent {
-      background-image: var(--brick-img) !important;
-      background-size: cover !important; background-position: center !important;
-      color: #fff !important; border: none !important;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-    }
-    .rc-cta-accent:hover { opacity: 0.9; }
 
     /* RESULTS SECTION */
     .results-section { padding: 60px 0 80px; display: none; }
@@ -336,7 +329,7 @@
     .bd-email-input { flex: 1; padding: 14px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; background: rgba(255,255,255,0.1); color: #fff; font-family: inherit; font-size: 0.95rem; outline: none; }
     .bd-email-input::placeholder { color: rgba(255,255,255,0.4); }
     .bd-email-input:focus { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.15); }
-    .bd-email-btn { padding: 14px 24px; border: none; border-radius: 10px; font-family: inherit; font-size: 0.95rem; font-weight: 700; cursor: pointer; flex-shrink: 0; color: #fff; background-image: var(--brick-img); background-size: cover; background-position: center; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+    .bd-email-btn { padding: 14px 24px; border: none; border-radius: 10px; font-family: inherit; font-size: 0.95rem; font-weight: 700; cursor: pointer; flex-shrink: 0; color: #fff; background: var(--text); transition: opacity 0.2s; }
     .bd-email-btn:hover { opacity: 0.9; }
     .bd-email-note { font-size: 0.72rem; opacity: 0.45; margin-top: 10px; }
     .bd-email-success { display: none; text-align: center; padding: 8px 0; }
@@ -610,7 +603,7 @@
       <div class="rc-detail-row"><span>CO2 avoided annually</span><strong id="rcCo2">&mdash;</strong></div>
       <div class="rc-detail-row"><span>Bill offset</span><strong id="rcOffset">&mdash;</strong></div>
       <div class="rc-detail-row" style="border:none"><span>Payback period</span><strong id="rcPayback">&mdash;</strong></div>
-      <a href="javascript:void(0)" class="rc-cta rc-cta-accent" onclick="openBreakdownModal()">See Full Breakdown</a>
+      <a href="javascript:void(0)" class="rc-cta" onclick="openBreakdownModal()">See Full Breakdown</a>
     </div>
   </div>
     </div><!-- /scene-frame -->

@@ -6,6 +6,8 @@
   <meta name="description" content="Enter any NYC address. See how much electricity, money, and CO₂ an 800W plug-in solar panel could produce on your balcony — modeled from real building geometry and a year of sun.">
   <title>balco.nyc — NYC's Balcony Solar Calculator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="Gemini_Generated_Image_d2ucutd2ucutd2uc.webp" type="image/webp" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
   <script>
     window.addEventListener('DOMContentLoaded', function() {
@@ -51,7 +53,8 @@
     /* HERO */
     .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: left; transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
     .hero.has-scene { min-height: 100vh; text-align: left; justify-content: flex-start; padding: 120px 0 60px; }
-    .hero-bg { position: absolute; inset: 0; background: url('Gemini_Generated_Image_d2ucutd2ucutd2uc.png') center center / cover no-repeat; }
+    .hero-bg { position: absolute; inset: 0; overflow: hidden; background: #1c1816; }
+    .hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 35%, rgba(0,0,0,0.35) 70%, rgba(0,0,0,0.08) 100%); }
     .hero-top-gradient { position: absolute; top: 0; left: 0; right: 0; height: 150px; background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 100%); z-index: 1; }
 
@@ -516,7 +519,7 @@
 <!-- NAV -->
 <nav id="mainNav">
   <div class="container">
-    <a href="index.html" class="logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco.nyc"></a>
+    <a href="index.html" class="logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco.nyc" width="400" height="218" decoding="async"></a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#faq">FAQ</a>
@@ -526,7 +529,12 @@
 
 <!-- HERO -->
 <section class="hero" id="heroSection">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <picture>
+      <source srcset="Gemini_Generated_Image_d2ucutd2ucutd2uc.webp" type="image/webp">
+      <img src="Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg" alt="" width="1920" height="1047" fetchpriority="high" decoding="async">
+    </picture>
+  </div>
   <div class="hero-top-gradient"></div>
   <div class="hero-layout">
     <div class="hero-content" id="heroContent">
@@ -782,7 +790,10 @@
     </div>
     <div class="explainer-grid">
       <div class="explainer-image">
-        <img src="assets/yuma-solar-oZ4IhVjyFwk-unsplash.jpg" alt="Solar panel on an apartment balcony" loading="lazy">
+        <picture>
+          <source srcset="assets/yuma-solar-oZ4IhVjyFwk-unsplash.webp" type="image/webp">
+          <img src="assets/yuma-solar-oZ4IhVjyFwk-unsplash.jpg" alt="Solar panel on an apartment balcony" width="1200" height="800" loading="lazy" decoding="async">
+        </picture>
       </div>
       <div class="explainer-cards">
         <div class="explainer-card">
@@ -835,7 +846,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <a href="#" class="footer-logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png" alt="balco"></a>
+    <a href="#" class="footer-logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
     <p class="footer-disclaimer">balco.nyc &mdash; an independent open tool for estimating NYC balcony solar potential. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL. Estimates are for educational purposes and may vary &plusmn;12&ndash;18% from real-world production. Plug-in solar is not currently legal for residential use in New York.</p>
     <p class="footer-meta">&copy; 2026</p>
   </div>

@@ -358,15 +358,20 @@
     .explainer-header .section-lede { font-size: 1.15rem; font-weight: 400; color: var(--text-sub); line-height: 1.55; }
     .explainer-header .section-lede a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
 
-    .explainer { padding: 96px 0; background: #FBF7EF; }
-    .explainer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1080px; margin: 0 auto; }
-    .explainer-card { background: #fff; border: 1px solid #ECE5D6; border-radius: 16px; padding: 28px 28px 30px; }
-    .ex-num { display: inline-block; color: #b05533; font-feature-settings: 'tnum'; margin-right: 8px; position: relative; padding-right: 14px; }
-    .ex-num::after { content: '·'; position: absolute; right: 2px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-weight: 400; }
-    .explainer-card h3 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 10px; }
-    .explainer-card p { font-size: 0.98rem; font-weight: 400; color: var(--text-sub); line-height: 1.55; }
+    .explainer { padding: 96px 0; background: #fff; }
+    .explainer .explainer-header { max-width: 920px; margin: 0 0 56px; text-align: left; }
+    .explainer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; max-width: 1180px; margin: 0 auto; }
+    .explainer-image { aspect-ratio: 4 / 5; background: #FBF7EF; border-radius: 16px; overflow: hidden; }
+    .explainer-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .explainer-cards { display: flex; flex-direction: column; }
+    .explainer-card { display: grid; grid-template-columns: 44px 1fr; column-gap: 24px; padding: 26px 0; border-top: 1px solid #E5E7EB; background: none; border-radius: 0; align-items: start; }
+    .explainer-card:first-child { padding-top: 4px; border-top: none; }
+    .explainer-card:last-child { padding-bottom: 4px; }
+    .ex-num { width: 36px; height: 36px; border-radius: 50%; background: #b05533; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 700; font-feature-settings: 'tnum'; flex-shrink: 0; }
+    .explainer-card h3 { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 8px; }
+    .explainer-card p { font-size: 1rem; font-weight: 400; color: var(--text-sub); line-height: 1.55; }
 
-    .section-eyebrow { display: block; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; color: #b05533; margin-bottom: 14px; }
+    .section-eyebrow { display: block; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #b05533; margin-bottom: 18px; }
 
     .methodology { padding: 80px 0; background: #fff; }
     .method-callout { display: block; max-width: 760px; margin: 0 auto; padding: 36px 40px; border: 1px solid var(--border); border-radius: 16px; background: #FBF7EF; text-decoration: none; color: var(--text); transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
@@ -782,17 +787,31 @@
       <p class="section-lede">Plug-in solar &mdash; sometimes called &ldquo;balcony solar&rdquo; or by its German name <em>Balkonkraftwerk</em> &mdash; is a small panel that clamps to a railing and plugs into a regular outlet. The electricity it produces flows back into the apartment&rsquo;s circuit, offsetting whatever&rsquo;s drawing power at that moment.</p>
     </div>
     <div class="explainer-grid">
-      <div class="explainer-card">
-        <h3><span class="ex-num">1</span> A panel on your railing</h3>
-        <p>Typical kits are 400&ndash;800W &mdash; one or two solar panels that mount on the outside of a balcony railing or sit on a stand. No roof, no permits in most of Europe.</p>
+      <div class="explainer-image">
+        <img src="assets/yuma-solar-oZ4IhVjyFwk-unsplash.jpg" alt="Solar panel on an apartment balcony" loading="lazy">
       </div>
-      <div class="explainer-card">
-        <h3><span class="ex-num">2</span> Plugs into any outlet</h3>
-        <p>A small micro-inverter converts the DC output to standard 120V AC and feeds it into the apartment&rsquo;s wiring through a normal outlet. No electrician required.</p>
-      </div>
-      <div class="explainer-card">
-        <h3><span class="ex-num">3</span> Offsets your bill in real time</h3>
-        <p>Every watt the panel produces is one less watt the grid has to supply. Whatever&rsquo;s on at the moment &mdash; fridge, AC, laptop &mdash; uses the panel&rsquo;s electricity first.</p>
+      <div class="explainer-cards">
+        <div class="explainer-card">
+          <div class="ex-num">1</div>
+          <div>
+            <h3>A panel on your railing</h3>
+            <p>Typical kits are 400&ndash;800W &mdash; one or two solar panels that mount on the outside of a balcony railing or sit on a stand. No roof, no permits in most of Europe.</p>
+          </div>
+        </div>
+        <div class="explainer-card">
+          <div class="ex-num">2</div>
+          <div>
+            <h3>Plugs into any outlet</h3>
+            <p>A small micro-inverter converts the DC output to standard 120V AC and feeds it into the apartment&rsquo;s wiring through a normal outlet. No electrician required.</p>
+          </div>
+        </div>
+        <div class="explainer-card">
+          <div class="ex-num">3</div>
+          <div>
+            <h3>Offsets your bill in real time</h3>
+            <p>Every watt the panel produces is one less watt the grid has to supply. Whatever&rsquo;s on at the moment &mdash; fridge, AC, laptop &mdash; uses the panel&rsquo;s electricity first.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

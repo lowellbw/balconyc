@@ -25,6 +25,7 @@
       --bg: #FFFFFF; --text: #171717; --text-sub: #596580; --text-muted: #8896AB;
       --teal: #171717; --teal-dark: #111111; --teal-light: #f5f5f5;
       --brick-img: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('bricks-2.jpg');
+      --accent: #2563EB; --accent-hover: #1D4ED8;
       --green: #10B981; --green-light: #D1FAE5; --border: #E2E8F0;
       --card: #FFFFFF; --radius: 12px; --radius-lg: 16px;
     }
@@ -51,7 +52,7 @@
     .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: left; transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
     .hero.has-scene { min-height: 100vh; text-align: left; justify-content: flex-start; padding: 120px 0 60px; }
     .hero-bg { position: absolute; inset: 0; background: url('Gemini_Generated_Image_d2ucutd2ucutd2uc.png') center center / cover no-repeat; }
-    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.7) 100%); }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 30%, rgba(0,0,0,0.2) 65%, rgba(0,0,0,0) 100%); }
     .hero-top-gradient { position: absolute; top: 0; left: 0; right: 0; height: 150px; background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 100%); z-index: 1; }
 
     .hero-layout { position: relative; z-index: 3; width: 100%; max-width: 1360px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: flex-start; gap: 40px; transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
@@ -63,13 +64,17 @@
     .hero.has-scene h1 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); max-width: 100%; text-wrap: balance; }
     .hero p { font-size: 1.15rem; font-weight: 500; color: rgba(255,255,255,0.85); margin-bottom: 28px; transition: font-size 0.5s; }
     .hero.has-scene p { font-size: 0.95rem; margin-bottom: 20px; }
-    .hero-input-wrap { max-width: 480px; margin: 0; position: relative; }
+    .hero-input-wrap { max-width: 580px; margin: 0; display: flex; align-items: center; gap: 6px; padding: 6px 6px 6px 4px; background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; backdrop-filter: blur(10px); transition: border-color 0.2s, background 0.2s; }
+    .hero-input-wrap:focus-within { border-color: rgba(255,255,255,0.35); background: rgba(0,0,0,0.55); }
     .hero.has-scene .hero-input-wrap { max-width: 100%; margin: 0; }
-    .hero-input { width: 100%; padding: 18px 24px; padding-right: 50px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 14px; font-family: inherit; font-size: 1.05rem; color: #fff; outline: none; backdrop-filter: blur(8px); transition: background 0.2s, border-color 0.2s; }
-    .hero-input::placeholder { color: rgba(255,255,255,0.5); }
-    .hero-input:focus { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.4); }
-    .hero-input-spinner { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; border: 2.5px solid rgba(255,255,255,0.2); border-top-color: #fff; border-radius: 50%; display: none; animation: spin 0.7s linear infinite; }
+    .hero-input-field { flex: 1; position: relative; min-width: 0; }
+    .hero-input { width: 100%; padding: 16px 18px; background: transparent; border: none; font-family: inherit; font-size: 1.05rem; color: #fff; outline: none; }
+    .hero-input::placeholder { color: rgba(255,255,255,0.55); }
+    .hero-input-spinner { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,0.2); border-top-color: #fff; border-radius: 50%; display: none; animation: spin 0.7s linear infinite; }
     .hero-input-spinner.active { display: block; }
+    .hero-input-submit { padding: 14px 22px; background: var(--accent); color: #fff; border: none; border-radius: 12px; font-family: inherit; font-size: 0.98rem; font-weight: 700; cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s, transform 0.15s; }
+    .hero-input-submit:hover { background: var(--accent-hover); }
+    .hero-input-submit:active { transform: translateY(1px); }
     @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
 
     /* Building info below input (shown after address) */
@@ -360,11 +365,11 @@
     .explainer-card { display: grid; grid-template-columns: 44px 1fr; column-gap: 24px; padding: 26px 0; border-top: 1px solid #E5E7EB; background: none; border-radius: 0; align-items: start; }
     .explainer-card:first-child { padding-top: 4px; border-top: none; }
     .explainer-card:last-child { padding-bottom: 4px; }
-    .ex-num { width: 36px; height: 36px; border-radius: 50%; background: #b05533; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 700; font-feature-settings: 'tnum'; flex-shrink: 0; }
+    .ex-num { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 700; font-feature-settings: 'tnum'; flex-shrink: 0; }
     .explainer-card h3 { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 8px; }
     .explainer-card p { font-size: 1rem; font-weight: 400; color: var(--text-sub); line-height: 1.55; }
 
-    .section-eyebrow { display: block; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #b05533; margin-bottom: 18px; }
+    .section-eyebrow { display: block; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
 
 
     .faq { padding: 96px 0; background: #fff; border-top: 1px solid #EEF0F3; }
@@ -416,8 +421,9 @@
       .hero-layout { padding: 0 20px; }
       .hero h1 { font-size: clamp(1.6rem, 7vw, 2.4rem); max-width: 100%; }
       .hero p { font-size: 1rem; margin-bottom: 20px; }
-      .hero-input { padding: 16px 20px; padding-right: 44px; font-size: 0.95rem; }
+      .hero-input { padding: 14px 14px; font-size: 0.95rem; }
       .hero-input-wrap { max-width: 100%; }
+      .hero-input-submit { padding: 12px 16px; font-size: 0.9rem; }
 
       /* HERO with 3D scene active — compact header, full-width scene */
       .hero.has-scene { padding: 72px 0 0; min-height: auto; }
@@ -527,8 +533,11 @@
       <h1 id="heroH1" data-default="How much could solar on your balcony save you?">How much could solar on your balcony save you?</h1>
       <p>Enter your NYC address. We'll model your building, simulate a year of sun, and estimate what an 800W panel could produce &mdash; in kWh, dollars, and CO&#8322; avoided.</p>
       <div class="hero-input-wrap">
-        <input type="text" class="hero-input" id="addressInput" placeholder="Enter an NYC address" autocomplete="off">
-        <div class="hero-input-spinner" id="heroSpinner"></div>
+        <div class="hero-input-field">
+          <input type="text" class="hero-input" id="addressInput" placeholder="Enter an NYC address" autocomplete="off">
+          <div class="hero-input-spinner" id="heroSpinner"></div>
+        </div>
+        <button type="button" class="hero-input-submit" id="heroSubmit" onclick="document.getElementById('addressInput').focus()" aria-label="Run the model">Run the model &rarr;</button>
       </div>
       <div class="hero-building-info" id="heroBuildingInfo"></div>
 
@@ -678,7 +687,7 @@
             <div class="bd-offset-ring">
               <svg width="52" height="52" viewBox="0 0 52 52">
                 <circle cx="26" cy="26" r="22" fill="none" stroke="#E2E8F0" stroke-width="4"/>
-                <circle cx="26" cy="26" r="22" fill="none" stroke="#b05533" stroke-width="4" stroke-dasharray="138.2" stroke-dashoffset="128.7" id="offsetCircle" stroke-linecap="round"/>
+                <circle cx="26" cy="26" r="22" fill="none" stroke="#2563EB" stroke-width="4" stroke-dasharray="138.2" stroke-dashoffset="128.7" id="offsetCircle" stroke-linecap="round"/>
               </svg>
               <div class="ring-pct" id="billOffset">&mdash;</div>
             </div>

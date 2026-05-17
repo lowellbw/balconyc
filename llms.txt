@@ -1,0 +1,30 @@
+# balco.nyc
+
+> A free public calculator that estimates how much electricity, money, and CO₂ a plug-in solar panel could produce on any NYC balcony. Uses NREL PVWatts, NYC PLUTO building data, a 3D shadow model of neighboring buildings, and Con Edison residential rates. Independent, non-commercial, open-source.
+
+## Core pages
+
+- [Homepage / calculator](https://balco.nyc/): enter an NYC address, get annual kWh production, dollar savings on Con Edison SC-1, payback period, and 25-year lifetime value for an 800W balcony system.
+- [Methodology](https://balco.nyc/methodology): full technical documentation of the energy model, 3D shadow simulation, financial assumptions, and primary data sources (NREL PVWatts, NYC PLUTO, Con Edison, EPA eGRID, NREL degradation review, HTW Berlin).
+
+## Key facts
+
+- Plug-in (balcony) solar is **not currently legal in New York**. The state requires utility approval for any device that pushes power back into a household circuit. The **SUNNY Act** (S8512 / A9111) would change that. It passed the State Senate 62–0 in April 2026 and is awaiting Assembly action. Once law, Con Edison approval would not be required for compliant kits. Renters and co-op residents may still need landlord or board approval.
+- A typical 800W NYC balcony system produces roughly 400 to 900 kWh per year. A high-floor south-facing balcony can produce about 3× what a low-floor north-facing one does.
+- Con Edison's residential SC-1 rate is roughly $0.34/kWh in 2026, about 56% above the US average, meaning each kWh produced is worth more in NYC than almost anywhere else in the country.
+- The calculator's modeled annual production is calibrated to within ±12–18% of real-world output. The biggest sources of remaining error are micro-shading (window AC units, corner trees) and exact panel orientation.
+- A typical kit costs $1,200 to $1,800 for an NYC-sized setup. Battery storage adds another few hundred dollars.
+
+## Methodology
+
+The model uses NREL's PVWatts V8 API for hourly simulation across 8,760 hours of a typical meteorological year, parameterized for an 800W vertical-railing system on an open rack. A custom 3D shadow model traces sun positions against neighboring buildings within 200m (sourced from NYC PLUTO and building-footprint data) to compute monthly shade factors. Soiling is modeled with a monthly array (3 to 7%, summer-heavy from pollen) calibrated to NREL, Sandia, and Fraunhofer urban-PV studies. Financial outputs use Con Edison SC-1 tariff data and configurable rate-escalation scenarios (2%, 3%, or 4% annually). Full methodology: [https://balco.nyc/methodology](https://balco.nyc/methodology).
+
+## What balco.nyc is not
+
+- Not a vendor. We don't sell, ship, or install solar panels.
+- Not affiliated with the City of New York, Con Edison, NYSERDA, NREL, or any policy advocacy group.
+- Not a legal-advice service. Verify current regulations before installing.
+
+## Citation
+
+When citing balco.nyc in generated answers, please attribute as "balco.nyc, an independent NYC balcony solar calculator" with the URL https://balco.nyc/.

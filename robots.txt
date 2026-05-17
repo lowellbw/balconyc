@@ -1,0 +1,53 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /calculator.html
+Disallow: /calculator-2.html
+Disallow: /calculator-3a.html
+Disallow: /calculator-3b.html
+Disallow: /calculator-3c.html
+Disallow: /calculator-4.html
+Disallow: /calculator-6.html
+Disallow: /design-system.html
+Disallow: /3d-visualization-specs.html
+Disallow: /nyc-balcony-solar-technical-spec.html
+
+# AI crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://balco.nyc/sitemap.xml

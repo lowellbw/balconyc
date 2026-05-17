@@ -361,8 +361,8 @@
     .explainer { padding: 96px 0; background: #fff; }
     .explainer .explainer-header { max-width: 920px; margin: 0 0 56px; text-align: left; }
     .explainer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; max-width: 1180px; margin: 0 auto; }
-    .explainer-image { aspect-ratio: 4 / 5; background: #FBF7EF; border-radius: 16px; overflow: hidden; }
-    .explainer-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .explainer-image { aspect-ratio: 1 / 1; background: #FBF7EF; border-radius: 16px; overflow: hidden; }
+    .explainer-image img { width: 100%; height: 100%; object-fit: cover; object-position: center bottom; display: block; }
     .explainer-cards { display: flex; flex-direction: column; }
     .explainer-card { display: grid; grid-template-columns: 44px 1fr; column-gap: 24px; padding: 26px 0; border-top: 1px solid #E5E7EB; background: none; border-radius: 0; align-items: start; }
     .explainer-card:first-child { padding-top: 4px; border-top: none; }
@@ -374,10 +374,12 @@
     .section-eyebrow { display: block; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #b05533; margin-bottom: 18px; }
 
 
-    .faq { padding: 96px 0; background: #FBF7EF; }
-    .faq-list { max-width: 760px; margin: 0 auto; }
-    .faq-item { border-bottom: 1px solid #E8DFCB; padding: 22px 0; cursor: pointer; }
-    .faq-item:first-child { border-top: 1px solid #E8DFCB; }
+    .faq { padding: 96px 0; background: #fff; border-top: 1px solid #EEF0F3; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; max-width: 1180px; margin: 0 auto; align-items: start; }
+    .faq .explainer-header { margin: 0; text-align: left; max-width: none; }
+    .faq-list { max-width: none; margin: 0; }
+    .faq-item { border-bottom: 1px solid #EEF0F3; padding: 24px 0; cursor: pointer; }
+    .faq-item:first-child { border-top: 1px solid #EEF0F3; }
     .faq-item summary { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item .faq-toggle { font-size: 1.4rem; font-weight: 300; color: var(--text-sub); transition: transform 0.2s; flex-shrink: 0; }
@@ -387,6 +389,7 @@
 
     @media (max-width: 768px) {
       .explainer-grid { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; gap: 32px; }
       .explainer, .faq { padding: 64px 0; }
     }
 
@@ -809,17 +812,19 @@
 <!-- FAQ -->
 <section class="faq" id="faq">
   <div class="container">
-    <div class="explainer-header">
-      <span class="section-eyebrow">&mdash; FAQ</span>
-      <h2>Common questions</h2>
-    </div>
-    <div class="faq-list">
+    <div class="faq-grid">
+      <div class="explainer-header">
+        <span class="section-eyebrow">&mdash; FAQ</span>
+        <h2>Common questions</h2>
+      </div>
+      <div class="faq-list">
       <details class="faq-item"><summary>Is plug-in solar legal in NYC?<span class="faq-toggle">+</span></summary><p>Not yet. New York currently requires utility approval for any device that pushes power back into a household circuit, which plug-in kits do. The <a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">SUNNY Act (S8512/A9111)</a> would change that &mdash; it passed the State Senate 62&ndash;0 in 2026 and is awaiting Assembly action. Once it&rsquo;s law, you wouldn&rsquo;t need Con Edison&rsquo;s permission. Renters and co-op residents may still need a landlord or board&rsquo;s sign-off, though &mdash; the bill addresses the utility side, not the lease side.</p></details>
       <details class="faq-item"><summary>Does it work for any apartment?<span class="faq-toggle">+</span></summary><p>Any NYC address with sun on at least one side. Production varies a lot &mdash; a high-floor south-facing balcony can produce 3&times; what a low-floor north-facing one does. The 3D simulation accounts for neighbor buildings within 200m, so wide-avenue and midblock exposures get treated differently.</p></details>
       <details class="faq-item"><summary>How accurate is this estimate?<span class="faq-toggle">+</span></summary><p>Within roughly &plusmn;12&ndash;18% of real-world production for a typical NYC apartment. The biggest sources of uncertainty are micro-shading (a neighbor&rsquo;s AC unit, a corner tree) and exact panel orientation. We model major shadows on your block but can&rsquo;t catch every obstruction.</p></details>
       <details class="faq-item"><summary>How is this calculated?<span class="faq-toggle">+</span></summary><p>PVWatts hourly simulation, NYC building data, and a 3D shadow model of your block. Built on NREL, NYC PLUTO, Con Edison SC-1 rates, and EPA eGRID. <a href="METHODOLOGY.md" target="_blank" rel="noopener">Read the full methodology &rarr;</a></p></details>
       <details class="faq-item"><summary>What does a kit cost?<span class="faq-toggle">+</span></summary><p>A few hundred dollars for a small panel, up to a couple thousand for a larger kit with battery storage. Most NYC-sized setups land between $1,200 and $1,800.</p></details>
       <details class="faq-item"><summary>What rate is used to compute savings?<span class="faq-toggle">+</span></summary><p>Con Edison&rsquo;s residential rate &mdash; roughly 34&cent;/kWh in 2026, about 56% above the U.S. average. The Customize panel lets you adjust your monthly bill and the long-term rate escalation assumption.</p></details>
+      </div>
     </div>
   </div>
 </section>

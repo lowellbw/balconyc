@@ -5,6 +5,7 @@
 ## Core pages
 
 - [Homepage / calculator](https://balco.nyc/): enter an NYC address, get annual kWh production, dollar savings on Con Edison SC-1, payback period, and 25-year lifetime value for an 800W balcony system.
+- [Methodology](https://balco.nyc/methodology): full technical documentation of the energy model, 3D shadow simulation, financial assumptions, and primary data sources (NREL PVWatts, NYC PLUTO, Con Edison, EPA eGRID, NREL degradation review, HTW Berlin).
 
 ## Key facts
 
@@ -16,7 +17,7 @@
 
 ## Methodology
 
-The model uses NREL's PVWatts V8 API for hourly simulation across 8,760 hours of a typical meteorological year, parameterized for an 800W vertical-railing system on an open rack. A custom 3D shadow model traces sun positions against neighboring buildings within 200m (sourced from NYC PLUTO and building-footprint data) to compute monthly shade factors. Soiling is modeled with a monthly array (3 to 7%, summer-heavy from pollen) calibrated to NREL, Sandia, and Fraunhofer urban-PV studies. Financial outputs use Con Edison SC-1 tariff data and configurable rate-escalation scenarios (2%, 3%, or 4% annually). Full methodology: [METHODOLOGY.md](https://balco.nyc/METHODOLOGY.md).
+The model uses NREL's PVWatts V8 API for hourly simulation across 8,760 hours of a typical meteorological year, parameterized for an 800W vertical-railing system on an open rack. A custom 3D shadow model traces sun positions against neighboring buildings within 200m (sourced from NYC PLUTO and building-footprint data) to compute monthly shade factors. Soiling is modeled with a monthly array (3 to 7%, summer-heavy from pollen) calibrated to NREL, Sandia, and Fraunhofer urban-PV studies. Financial outputs use Con Edison SC-1 tariff data and configurable rate-escalation scenarios (2%, 3%, or 4% annually). Full methodology: [https://balco.nyc/methodology](https://balco.nyc/methodology).
 
 ## What balco.nyc is not
 

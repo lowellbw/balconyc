@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Technical documentation of the energy model, 3D shadow simulation, and financial assumptions behind balco.nyc, the NYC balcony solar calculator. Sources: NREL PVWatts, NYC PLUTO, Con Edison, EPA eGRID.">
+  <title>Methodology · balco.nyc Balcony Solar Calculator</title>
+  <link rel="canonical" href="https://balco.nyc/methodology">
+  <meta name="theme-color" content="#7F1D1D">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="balco.nyc">
+  <meta property="og:url" content="https://balco.nyc/methodology">
+  <meta property="og:title" content="How balco.nyc calculates balcony solar production in NYC">
+  <meta property="og:description" content="Technical documentation of the energy model, 3D shadow simulation, and financial assumptions behind balco.nyc, the NYC balcony solar calculator.">
+  <meta property="og:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How balco.nyc calculates balcony solar production in NYC">
+  <meta name="twitter:description" content="Technical documentation of the energy model, 3D shadow simulation, and financial assumptions behind balco.nyc.">
+  <meta name="twitter:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.webp">
+  <meta property="article:published_time" content="2026-05-17">
+  <meta property="article:modified_time" content="2026-05-17">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #FFFFFF; --text: #171717; --text-sub: #596580; --text-muted: #8896AB;
+      --accent: #7F1D1D; --accent-hover: #5C1212;
+      --border: #E2E8F0; --border-soft: #EEF0F3;
+      --code-bg: #F7F7F8; --callout-bg: #FAF7F4;
+      --radius: 12px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1360px; margin: 0 auto; padding: 0 40px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    /* NAV (matches index.html scrolled style, but always solid on doc pages) */
+    nav.doc-nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-soft); }
+    nav.doc-nav .container { display: flex; justify-content: space-between; align-items: center; padding-top: 6px; padding-bottom: 6px; }
+    .logo { display: inline-block; text-decoration: none; line-height: 0; }
+    .logo img { height: 64px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
+    .nav-links a:hover { opacity: 0.7; text-decoration: none; }
+
+    /* DOC LAYOUT */
+    main { padding: 56px 0 96px; }
+    .doc-header { max-width: 760px; margin: 0 0 48px; }
+    .doc-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .doc-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .doc-header h1 { font-size: clamp(2rem, 3.6vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; text-wrap: balance; }
+    .doc-header .lede { font-size: 1.15rem; color: var(--text-sub); max-width: 65ch; }
+    .doc-meta-row { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; margin-top: 20px; font-size: 0.88rem; color: var(--text-muted); }
+    .doc-meta-row strong { color: var(--text-sub); font-weight: 600; }
+    .doc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .doc-tag { font-size: 0.78rem; padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--text-sub); }
+
+    /* TWO-COLUMN LAYOUT */
+    .doc-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 64px; align-items: start; }
+    .doc-toc { position: sticky; top: 88px; max-height: calc(100vh - 120px); overflow-y: auto; padding-right: 16px; }
+    .doc-toc h2 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .doc-toc ol { list-style: none; padding: 0; counter-reset: tocsec; }
+    .doc-toc li { counter-increment: tocsec; margin: 0; }
+    .doc-toc a { display: block; padding: 6px 0 6px 28px; position: relative; font-size: 0.92rem; color: var(--text-sub); border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; text-decoration: none; }
+    .doc-toc a::before { content: counter(tocsec) "."; position: absolute; left: 8px; top: 6px; font-variant-numeric: tabular-nums; color: var(--text-muted); font-size: 0.85rem; }
+    .doc-toc a:hover, .doc-toc a.active { color: var(--text); border-left-color: var(--accent); }
+
+    /* DOC CONTENT */
+    .doc-content { max-width: 760px; min-width: 0; }
+    .doc-content section { padding-top: 24px; margin-bottom: 48px; scroll-margin-top: 80px; }
+    .doc-content section + section { border-top: 1px solid var(--border-soft); }
+    .doc-content h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; margin: 0 0 20px; }
+    .doc-content h2 .sec-num { color: var(--text-muted); font-weight: 500; margin-right: 12px; font-variant-numeric: tabular-nums; }
+    .doc-content h3 { font-size: 1.18rem; font-weight: 700; letter-spacing: -0.01em; margin: 36px 0 14px; }
+    .doc-content h4 { font-size: 1rem; font-weight: 700; margin: 24px 0 10px; }
+    .doc-content p { margin-bottom: 16px; color: var(--text); }
+    .doc-content p + p { margin-top: -4px; }
+    .doc-content ul, .doc-content ol { padding-left: 24px; margin-bottom: 18px; }
+    .doc-content li { margin-bottom: 6px; }
+    .doc-content li > ul, .doc-content li > ol { margin: 8px 0; }
+    .doc-content strong { font-weight: 700; }
+    .doc-content em { font-style: italic; color: var(--text-sub); }
+
+    /* CODE */
+    code, pre { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em; }
+    p code, li code, td code { background: var(--code-bg); padding: 1px 6px; border-radius: 4px; color: var(--text); font-size: 0.86em; }
+    pre { background: var(--code-bg); border: 1px solid var(--border-soft); border-radius: 8px; padding: 16px 20px; overflow-x: auto; margin: 12px 0 20px; line-height: 1.55; }
+    pre code { background: none; padding: 0; font-size: 0.86em; }
+
+    /* TABLES */
+    .table-wrap { margin: 8px 0 24px; overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    table th, table td { padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+    table th { background: #FAFAFB; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.02em; text-transform: uppercase; color: var(--text-sub); }
+    table tr:last-child td { border-bottom: none; }
+    table td code { font-size: 0.84em; }
+
+    /* CALLOUT */
+    .callout { background: var(--callout-bg); border-left: 3px solid var(--accent); padding: 14px 18px; border-radius: 4px; margin: 12px 0 22px; font-size: 0.95rem; }
+    .callout p:last-child { margin-bottom: 0; }
+    .callout strong { color: var(--accent); }
+
+    /* SOURCES LIST */
+    .sources-list a { font-weight: 500; }
+    .sources-list .src-host { color: var(--text-muted); font-size: 0.85em; font-family: 'JetBrains Mono', monospace; }
+
+    /* BACK TO TOP / DOC FOOTER */
+    .doc-foot { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-soft); display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.9rem; }
+    .btn-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--accent); color: #fff; border-radius: 999px; font-weight: 700; font-size: 0.92rem; text-decoration: none; }
+    .btn-cta:hover { background: var(--accent-hover); text-decoration: none; }
+
+    /* FOOTER */
+    footer { padding: 48px 0 32px; border-top: 1px solid var(--border-soft); margin-top: 48px; }
+    footer .container { display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; }
+    .footer-logo img { height: 56px; width: auto; opacity: 0.85; }
+    .footer-disclaimer { font-size: 0.84rem; color: var(--text-muted); max-width: 64ch; line-height: 1.6; }
+    .footer-meta { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* MOBILE */
+    @media (max-width: 960px) {
+      .container { padding: 0 24px; }
+      .doc-layout { grid-template-columns: 1fr; gap: 24px; }
+      .doc-toc { position: static; max-height: none; padding: 16px; border: 1px solid var(--border-soft); border-radius: 8px; }
+      .doc-toc a { padding-left: 24px; }
+      main { padding: 32px 0 64px; }
+      .doc-header { margin-bottom: 28px; }
+      .doc-content section { margin-bottom: 36px; }
+      .doc-content h2 { font-size: 1.4rem; }
+      .doc-content h3 { font-size: 1.08rem; }
+      .logo img { height: 52px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": "https://balco.nyc/methodology#article",
+    "headline": "How balco.nyc calculates balcony solar production in NYC",
+    "alternativeHeadline": "Solar Calculator Methodology",
+    "description": "Technical documentation of the energy model, 3D shadow simulation, and financial assumptions behind balco.nyc, the NYC balcony solar calculator.",
+    "url": "https://balco.nyc/methodology",
+    "mainEntityOfPage": "https://balco.nyc/methodology",
+    "datePublished": "2026-05-17",
+    "dateModified": "2026-05-17",
+    "inLanguage": "en-US",
+    "author": {
+      "@type": "Organization",
+      "name": "balco.nyc",
+      "url": "https://balco.nyc/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "balco.nyc",
+      "url": "https://balco.nyc/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://balco.nyc/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp"
+      }
+    },
+    "image": "https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.webp",
+    "about": [
+      { "@type": "Thing", "name": "Plug-in balcony solar" },
+      { "@type": "Thing", "name": "PVWatts solar simulation" },
+      { "@type": "Place", "name": "New York City" }
+    ],
+    "keywords": "balcony solar, plug-in solar, NYC, PVWatts, NREL, NYC PLUTO, Con Edison, solar calculator methodology",
+    "citation": [
+      { "@type": "CreativeWork", "name": "NREL PVWatts V8", "url": "https://developer.nrel.gov/docs/solar/pvwatts/v8/" },
+      { "@type": "CreativeWork", "name": "NYC PLUTO", "url": "https://www.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" },
+      { "@type": "CreativeWork", "name": "NYC Building Footprints", "url": "https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" },
+      { "@type": "CreativeWork", "name": "EPA eGRID2023", "url": "https://www.epa.gov/egrid" },
+      { "@type": "CreativeWork", "name": "NYSERDA NY Solar Map", "url": "https://www.nysolarmap.com/about/map-assumptions/" },
+      { "@type": "CreativeWork", "name": "NREL 2024 PV Degradation Review", "url": "https://www.nrel.gov/docs/fy24osti/87524.pdf" },
+      { "@type": "CreativeWork", "name": "HTW Berlin Stecker-Solar-Simulator", "url": "https://solar.htw-berlin.de/rechner/stecker-solar-simulator/" }
+    ],
+    "isAccessibleForFree": true,
+    "license": "https://balco.nyc/"
+  }
+  </script>
+</head>
+<body>
+
+<nav class="doc-nav">
+  <div class="container">
+    <a href="/" class="logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco.nyc" width="400" height="218" decoding="async"></a>
+    <div class="nav-links">
+      <a href="/#about">About</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/">Calculator</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <header class="doc-header">
+      <div class="doc-eyebrow"><span class="dot"></span> Methodology</div>
+      <h1>How balco.nyc calculates balcony solar production in NYC</h1>
+      <p class="lede">balco.nyc estimates how much electricity, money, and CO₂ a plug-in solar panel could produce on any NYC balcony. The model combines NREL's PVWatts hourly simulation, a custom 3D shadow model of the surrounding block, NYC building data, and Con Edison residential rates. Expected accuracy is within ±12 to 18% of real-world annual output. This page documents every assumption, source, and formula.</p>
+      <div class="doc-meta-row">
+        <div><strong>Last updated:</strong> <time datetime="2026-05-17">May 17, 2026</time></div>
+        <div><strong>Reading time:</strong> ~15 minutes</div>
+        <div class="doc-tags">
+          <span class="doc-tag">PVWatts V8</span>
+          <span class="doc-tag">NYC PLUTO</span>
+          <span class="doc-tag">Con Edison SC-1</span>
+          <span class="doc-tag">EPA eGRID</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="doc-layout">
+      <aside class="doc-toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#energy-production">Energy production model</a></li>
+          <li><a href="#shadow-derating">Shadow derating</a></li>
+          <li><a href="#orientation">Building orientation</a></li>
+          <li><a href="#financial">Financial model</a></li>
+          <li><a href="#sun-position">Sun position</a></li>
+          <li><a href="#environmental">Environmental impact</a></li>
+          <li><a href="#data-pipeline">Data pipeline</a></li>
+          <li><a href="#sources">Data sources</a></li>
+          <li><a href="#accuracy">Accuracy &amp; limitations</a></li>
+        </ol>
+      </aside>
+
+      <article class="doc-content">
+
+        <section id="energy-production">
+          <h2><span class="sec-num">1</span>Energy production model</h2>
+          <p>Annual production is computed by <a href="https://developer.nrel.gov/docs/solar/pvwatts/v8/" target="_blank" rel="noopener">NREL's PVWatts V8 API</a>, which simulates 8,760 hourly performance values across a typical meteorological year using the <a href="https://nsrdb.nrel.gov/" target="_blank" rel="noopener">NSRDB satellite weather dataset</a>. A client-side fallback formula is used if PVWatts is unavailable.</p>
+
+          <h3>1.1 Primary model: NREL PVWatts V8</h3>
+          <p>PVWatts is the US Department of Energy's reference solar production model. balco.nyc calls it with parameters tuned for vertical, railing-mounted panels in an urban setting:</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Parameter</th><th>Value</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td><code>system_capacity</code></td><td>0.4 to 1.6 kW</td><td>From user's railing width (1 to 4 panels × 400W)</td></tr>
+                <tr><td><code>module_type</code></td><td>1 (Premium)</td><td>19% efficiency, better temperature coefficient</td></tr>
+                <tr><td><code>array_type</code></td><td>0 (Fixed Open Rack)</td><td>Balcony rails have open airflow; PVWatts models cell temperature from TMY weather under this setting, so no separate thermal multiplier is applied</td></tr>
+                <tr><td><code>tilt</code></td><td>35°, 60°, 70°, or 90°</td><td>90° = vertical railing, 70°/60° = angled mounts, 35° ≈ optimal for NYC latitude</td></tr>
+                <tr><td><code>azimuth</code></td><td>0 to 315°</td><td>User's balcony direction (8 compass points)</td></tr>
+                <tr><td><code>losses</code></td><td>14%</td><td>PVWatts default. Soiling is broken out into the monthly array below to avoid double-counting</td></tr>
+                <tr><td><code>dc_ac_ratio</code></td><td>1.2</td><td>Standard for small systems with micro-inverters</td></tr>
+                <tr><td><code>inv_eff</code></td><td>96.5%</td><td>Micro-inverter efficiency (Enphase IQ8 ~97%, budget ~96%)</td></tr>
+                <tr><td><code>dataset</code></td><td>nsrdb</td><td>Satellite-derived TMY data, best for US locations</td></tr>
+                <tr><td><code>soiling</code></td><td><code>[3,3,4,5,6,7,7,7,6,5,4,3]</code></td><td>Monthly soiling %, NYC urban profile calibrated to <a href="https://www.nrel.gov/docs/fy18osti/72589.pdf" target="_blank" rel="noopener">NREL</a>, Sandia, and Fraunhofer urban-PV studies (3 to 7% range, summer-heavy from pollen)</td></tr>
+                <tr><td><code>albedo</code></td><td>0.20</td><td>Concrete balcony floor reflectance (light-painted walls would be ~0.30)</td></tr>
+                <tr><td><code>bifaciality</code></td><td>0</td><td>Monofacial panels (would be 0.75 for bifacial)</td></tr>
+                <tr><td><code>timeframe</code></td><td>monthly</td><td>Returns 12-month production array</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p><strong>PVWatts outputs used:</strong></p>
+          <ul>
+            <li><code>ac_monthly</code>: 12 values of monthly AC energy (kWh), used for the production chart and for applying per-month 3D shade factors.</li>
+            <li><code>ac_annual</code>: total annual AC output (kWh), used when the shade model returns only an annual factor.</li>
+          </ul>
+
+          <h4>Losses decomposition</h4>
+          <p>The 14% bundle approximates: mismatch 3%, wiring 4% (longer DC runs from balcony to junction than rooftop), connections 0.5%, light-induced degradation 1.5%, nameplate 1%, availability 3%, snow 1%. Soiling and shading are modeled separately. There is no rooftop-vs-balcony "balcony loss adder". The difference shows up in the soiling array and in the shade factor.</p>
+
+          <h3>1.2 Fallback model (no API available)</h3>
+          <p>When PVWatts is unavailable (no API key, network failure, no address entered), the calculator uses a client-side formula:</p>
+          <pre><code>annual_kwh = BASELINE × system_kw × tilt_factor × azimuth_factor
+             × urban_soiling × thermal_bonus × shade_factor</code></pre>
+
+          <p>Where:</p>
+          <ul>
+            <li><strong>BASELINE</strong> = 1,300 kWh/kW/year. NYC PVWatts reference at optimal ~40° tilt with default losses. Aligned with the <a href="https://www.nysolarmap.com/about/map-assumptions/" target="_blank" rel="noopener">NYSERDA NY Solar Map</a> published assumption of 1,238 kWh/kW/yr.</li>
+            <li><strong>tilt_factor</strong>, calibrated against PVWatts vertical NYC and the <a href="https://solar.htw-berlin.de/rechner/stecker-solar-simulator/" target="_blank" rel="noopener">HTW Berlin Stecker-Solar reference</a>:
+              <ul>
+                <li>35° → 1.00 (top-mount, near-optimal for NYC)</li>
+                <li>60° → 0.85</li>
+                <li>70° → 0.78</li>
+                <li>90° → 0.60 (vertical railing)</li>
+              </ul>
+            </li>
+            <li><strong>azimuth_factor</strong>: S=1.00, SE/SW=0.92, E/W=0.72, NE/NW=0.45, N=0.32</li>
+            <li><strong>urban_soiling</strong> = 0.95. Matches the annual average of the PVWatts soiling array.</li>
+            <li><strong>thermal_bonus</strong> = 1.0. No double-count; PVWatts (and this fallback for consistency) treats cell-temperature effects as part of the baseline.</li>
+            <li><strong>shade_factor</strong>: see <a href="#shadow-derating">Section 2</a>.</li>
+          </ul>
+
+          <p><strong>Monthly distribution</strong> uses either NREL Solar Resource API data (location-specific GHI) or a hardcoded NYC seasonal curve:</p>
+          <pre><code>Jan: 5.6%, Feb: 6.8%, Mar:  8.2%, Apr:  9.2%, May: 10.5%, Jun: 11.2%
+Jul: 11.4%, Aug: 10.3%, Sep: 8.8%, Oct:  7.3%, Nov:  5.6%, Dec:  5.1%</code></pre>
+        </section>
+
+        <section id="shadow-derating">
+          <h2><span class="sec-num">2</span>Shadow derating model</h2>
+          <p>PVWatts assumes an unobstructed installation. NYC balconies face building-level shading that PVWatts cannot see. We apply a <strong>post-PVWatts shade multiplier</strong> computed either from a 3D model of the surrounding buildings (when available) or from a static lookup as a fallback.</p>
+
+          <h3>2.1 3D shadow model (when 3D scene is loaded)</h3>
+          <p>For addresses with <a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank" rel="noopener">NYC Building Footprints</a> data, we build a local 3D scene of all buildings within 200m and run a per-month, per-half-hour irradiance-weighted shadow simulation against the user's balcony point.</p>
+
+          <p><strong>Per-sample loop</strong> (<code>computeAnnualShadeProfile</code>, sampling every 30 min from sunrise to sunset for each of 12 representative days):</p>
+          <ol>
+            <li><strong>Sun position</strong>: compute altitude and azimuth from <code>SunPosition.calculate(month, minute)</code> (<a href="#sun-position">Section 5</a>).</li>
+            <li><strong>Irradiance weight</strong> = <code>sin(altitude)^0.6</code>. A clear-sky direct-irradiance proxy that gives a noon sample roughly 5× the weight of a dawn sample but doesn't over-spike at solar noon.</li>
+            <li><strong>Self-shading test</strong>: if the sun is behind the facade (<code>|sun_azimuth − balcony_azimuth| &gt; 90°</code>), the panel only sees diffuse sky. We add a <code>DIFFUSE_FRACTION = 0.30</code> contribution weighted by the irradiance weight. This corrects a v1 omission where self-shaded periods contributed zero. A vertical NYC facade still receives ~30% of its energy from diffuse sky.</li>
+            <li><strong>Direct-sun samples</strong>: when the sun is on the panel's side, weight the sample by <code>irradiance_weight × cos(altitude) × cos(facade_diff)</code> (panel-incidence cosine). This shifts shade math toward "what fraction of high-irradiance hours are blocked" rather than "what fraction of daylight".</li>
+            <li><strong>Neighbor blocking</strong>: for each non-target building, compute its angular span as seen from the balcony point (<code>_polygonAngularSpan</code> projects every polygon vertex onto the balcony's view azimuth). If the sun's azimuth falls inside that span and its altitude is below the angle subtended by the building top, the building is blocking. Severity = <code>min(1, vertical_block × width_factor)</code>. We take the maximum across all neighbors.</li>
+            <li><strong>Aggregate</strong>: <code>unshaded_sum += (1 − max_shadow) × sample_weight</code>, <code>total_weight += sample_weight</code>.</li>
+          </ol>
+
+          <p><strong>Per-month shade factor</strong> = <code>unshaded_sum / total_weight</code>, clamped to <code>[0.15, 0.98]</code>.</p>
+          <p><strong>Annual shade factor</strong> = monthly factors weighted by the NYC GHI distribution (the same array used in §1.2).</p>
+
+          <div class="callout">
+            <p><strong>Physics-vs-display separation.</strong> The colored shadow heatmap in the 3D scene uses <code>display_score = min(1, physics_score × 1.8)</code> for UI contrast only. Only <code>physics_score</code> ever feeds back into the energy calculation. This prevents the display amplification from leaking into kWh numbers.</p>
+          </div>
+
+          <p><strong>Polygon-edge angular projection.</strong> Earlier versions of the model approximated each neighbor as "centroid + 10m". The actual polygon footprint is now projected to angular extents from the viewer, including correct wrap-around handling when a building straddles the ±π azimuth seam.</p>
+
+          <h3>2.2 Static shade factor (fallback)</h3>
+          <p>When the 3D scene isn't loaded (no footprint data, mobile path, or in-page calculator without WebGL), shade is interpolated from a continuous function:</p>
+          <pre><code>ratio = floor / total_floors
+base_exposure = 0.5 + 0.5 × tanh(3 × (ratio − 0.45))
+shade_factor = range.min + base_exposure × (range.max − range.min)</code></pre>
+
+          <p>Per-shading-environment ranges:</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Shading</th><th>min (low floors)</th><th>max (top floors)</th></tr></thead>
+              <tbody>
+                <tr><td>Open</td><td>0.85</td><td>0.97</td></tr>
+                <tr><td>Some buildings</td><td>0.65</td><td>0.94</td></tr>
+                <tr><td>Dense canyon</td><td>0.45</td><td>0.87</td></tr>
+                <tr><td>Wide avenue</td><td>0.70</td><td>0.96</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>The tanh sigmoid is centred at the 45th-percentile floor and is steepest in the middle of the building, so the floor-tier transition zones are smooth rather than step-functions.</p>
+
+          <h3>2.3 Neighbor building query</h3>
+          <p>When address data is available, we query <a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank" rel="noopener">NYC Building Footprints</a> within a 200-meter radius. These footprints feed the 3D scene and the polygon-edge shadow projection. Without them, the calculator falls back to the static shade factor above.</p>
+
+          <h3>2.4 Final energy formula</h3>
+          <pre><code>final_kwh = pvwatts_ac_annual × shade_factor       (uniform shade case)
+final_kwh = Σ(pvwatts_ac_monthly[i] × monthly_shade_factor[i])   (3D case)</code></pre>
+          <p><code>THERMAL_BONUS</code> is set to 1.0, so it doesn't appear above. The shade factor is the only post-PVWatts multiplier.</p>
+        </section>
+
+        <section id="orientation">
+          <h2><span class="sec-num">3</span>Building orientation detection</h2>
+          <p>When the user enters an address, we query <a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank" rel="noopener">NYC Building Footprints</a> for the polygon geometry and detect facade directions.</p>
+          <p><strong>Algorithm:</strong></p>
+          <ol>
+            <li>Extract exterior ring coordinates from the building footprint polygon.</li>
+            <li>Compute edge vectors (dx, dy) between consecutive vertices.</li>
+            <li>Calculate each edge's compass bearing: <code>atan2(dx, dy)</code> converted to degrees.</li>
+            <li>Compute perpendicular facade directions: <code>edge_bearing ± 90°</code>.</li>
+            <li>Sort edges by length (longest edge = primary facade).</li>
+            <li>Map facade directions to the nearest 45° compass increment.</li>
+            <li>Rank by solar potential: S &gt; SE/SW &gt; E/W &gt; NE/NW &gt; N.</li>
+            <li>Return the best solar-facing direction as the suggestion.</li>
+          </ol>
+          <p><strong>Confidence:</strong> "high" if the longest edge is more than 1.3× the second-longest; "medium" otherwise.</p>
+          <div class="callout">
+            <p><strong>Manhattan grid note.</strong> Manhattan's street grid runs ~29° east of true north. A building that "faces the avenue" actually faces ~209° (SSW) or ~29° (NE). The algorithm reads this from the actual polygon, not from grid assumptions.</p>
+          </div>
+        </section>
+
+        <section id="financial">
+          <h2><span class="sec-num">4</span>Financial model</h2>
+
+          <h3>4.1 Electricity rate</h3>
+          <p><strong>Con Edison SC-1 residential rate: $0.34/kWh</strong> all-in marginal rate (supply + delivery + GRT + sales tax, excluding the flat customer charge). Sources: <a href="https://www.coned.com/-/media/files/coned/documents/customer-service/historical-average-full-service-electric-rates.pdf" target="_blank" rel="noopener">Con Edison historical bill table 2023 to 2025</a>, projected forward by the 2026 <a href="https://dps.ny.gov/system/files/documents/2025/01/con-edison-rate-case-visual-supplement.pdf" target="_blank" rel="noopener">PSC-approved rate-case settlement</a> (+3.5% in 2026).</p>
+          <p>The marginal rate is the right number for solar offset: every kWh produced replaces one extra kWh the household would have bought. The Customer Charge is intentionally excluded because solar can't offset a flat fee.</p>
+
+          <h3>4.2 Annual savings</h3>
+          <pre><code>annual_savings  = annual_kwh × 0.34
+monthly_savings = annual_savings / 12
+bill_offset_%   = annual_kwh / (monthly_bill / 0.34 × 12) × 100</code></pre>
+          <p>Bill offset is clamped to a max of 100% and guarded against a $0 monthly bill (the consumption denominator is clamped to ≥1 kWh).</p>
+
+          <h3>4.3 Payback period</h3>
+          <p><strong>Simple payback:</strong></p>
+          <pre><code>simple_payback = adjusted_cost / annual_savings</code></pre>
+          <p><strong>NPV payback</strong> runs inside the same 25-year loop as lifetime savings (below), interpolating within the crossover year for a fractional result.</p>
+
+          <h3>4.4 25-year lifetime value</h3>
+          <pre><code>lifetime_savings = Σ(annual_kwh × (1 − degradation)^i × 0.34 × (1 + escalation)^i,  i=0..24)</code></pre>
+          <p>Where:</p>
+          <ul>
+            <li><strong>degradation</strong> is tier-aware (default mid-tier 0.5%/yr), per the <a href="https://www.nrel.gov/docs/fy24osti/87524.pdf" target="_blank" rel="noopener">NREL 2024 PV degradation review</a>:
+              <ul>
+                <li>Premium: 0.4%/yr → 90.5% of original output at year 25</li>
+                <li>Mid: 0.5%/yr → 88.7%</li>
+                <li>Budget: 0.7%/yr → 84.3%</li>
+              </ul>
+            </li>
+            <li><strong>escalation</strong> is user-selectable, default 3%/yr (mid), with low (2%) and high (4%) presets exposed in the Customize panel. Long-run national <a href="https://www.eia.gov/electricity/data.php" target="_blank" rel="noopener">EIA</a> data tracks ~2 to 2.5%/yr; recent Con Ed history is closer to 7%/yr but skewed by one-off settlements. 3% is a reasonable central estimate; the band conveys honest uncertainty.</li>
+          </ul>
+
+          <h3>4.5 System cost scaling</h3>
+          <p>The user selects a cost tier (budget / mid / premium) calibrated to an 800W kit. For other system sizes, cost scales linearly:</p>
+          <pre><code>adjusted_cost = tier_cost × (system_watts / 800)</code></pre>
+          <p><strong>Reference costs (800W complete kit, 2026 US retail):</strong></p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Tier</th><th>Cost</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Budget</td><td>$1,200</td><td>No-name panel + cheap micro-inverter</td></tr>
+                <tr><td>Mid</td><td>$1,500</td><td>EcoFlow PowerStream, Anker SOLIX entry</td></tr>
+                <tr><td>Premium</td><td>$1,800</td><td>Anker SOLIX RS40P, Bright Saver complete kit</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>The Federal Residential Clean Energy Credit (<a href="https://www.irs.gov/credits-deductions/residential-clean-energy-credit" target="_blank" rel="noopener">§25D</a>) expired for expenditures after December 31, 2025 under <a href="https://www.congress.gov/bill/119th-congress/house-bill/21" target="_blank" rel="noopener">P.L. 119-21</a>. Cost figures are gross; no federal credit is netted out.</p>
+
+          <h3>4.6 Offset assumption</h3>
+          <p>Production is assumed to offset household consumption 1:1 at the marginal retail rate. For typical balcony users, production is well below consumption so there is no excess export to model. <a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">NY's SUNNY Act (S8512/A9111)</a>, which would formalize this for small plug-in solar, has not yet been enacted as of this writing.</p>
+        </section>
+
+        <section id="sun-position">
+          <h2><span class="sec-num">5</span>Sun position (NOAA simplified algorithm)</h2>
+          <p><code>js/sun-position.js</code> implements a simplified <a href="https://gml.noaa.gov/grad/solcalc/calcdetails.html" target="_blank" rel="noopener">NOAA solar-position algorithm</a> tuned for NYC.</p>
+          <ul>
+            <li><strong>Day of year</strong> uses the 15th of each month (<code>DOY_TABLE</code>) as the representative day.</li>
+            <li><strong>Year</strong> is read dynamically from <code>new Date().getFullYear()</code> so the Julian-day base advances with time instead of drifting.</li>
+            <li><strong>DST switch</strong> is keyed off day-of-year, not month: EDT (UTC−4) for DOY 67 to 304 (Mar 8 to Nov 1 in 2026), EST (UTC−5) otherwise. This avoids the off-by-week errors that month-based switching produced in early March and late October.</li>
+            <li><strong>Azimuth</strong> is computed via <code>atan2(sin_az, cos_az)</code>, robust at all altitudes, with no separate <code>acos</code> branch.</li>
+          </ul>
+          <p><code>getDayBounds(month)</code> searches for sunrise and sunset by scanning altitude crossings, used by the 3D shade simulation to bound its sampling loop.</p>
+        </section>
+
+        <section id="environmental">
+          <h2><span class="sec-num">6</span>Environmental impact</h2>
+          <h3>CO₂ offset</h3>
+          <pre><code>co2_lbs = annual_kwh × 0.89</code></pre>
+          <p>0.89 lbs CO₂/kWh, from the <a href="https://www.epa.gov/egrid/summary-data" target="_blank" rel="noopener">EPA eGRID2023</a> output emission rate for the <strong>NYCW subregion</strong> (released 2025, latest available). This is the "average grid" number, conservative relative to the eGRID non-baseload rate (~0.97 lbs/kWh).</p>
+          <h3>Equivalencies</h3>
+          <ul>
+            <li><strong>Trees:</strong> <code>co2_lbs / 48</code>, the <a href="https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator" target="_blank" rel="noopener">EPA's averaged-across-all-trees figure</a> for annual sequestration.</li>
+            <li><strong>Driving miles offset:</strong> <code>co2_lbs / 0.89</code>, the EPA 2024 average passenger-car emission rate (0.906 lbs/mile rounded).</li>
+            <li><strong>Smartphone charges:</strong> <code>annual_kwh × 1000 / 12</code>, ~12 Wh per full smartphone charge.</li>
+          </ul>
+        </section>
+
+        <section id="data-pipeline">
+          <h2><span class="sec-num">7</span>Data pipeline</h2>
+
+          <h3>7.1 Address resolution</h3>
+          <ol>
+            <li><strong>Google Places Autocomplete</strong>: user types address, gets type-ahead suggestions bounded to NYC (40.48°N to 40.92°N, 74.26°W to 73.70°W).</li>
+            <li>On selection, extract lat/lon, formatted address, and address components.</li>
+          </ol>
+
+          <h3>7.2 Building data lookup</h3>
+          <p><a href="https://api.nyc.gov/geoclient/v2/address.json" target="_blank" rel="noopener">NYC Geoclient</a> runs first (its output BBL/BIN feeds the other queries), then three queries fire concurrently via <code>Promise.allSettled()</code>:</p>
+          <p><strong>a) NYC Geoclient → PLUTO</strong></p>
+          <ul>
+            <li>Parse address into houseNumber, street, borough (with a corrected USPS ZIP atlas: prefix <code>104</code> → Bronx; Long Island <code>110</code> is intentionally excluded as it isn't NYC).</li>
+            <li>Call NYC Geoclient (via server proxy for CORS), get BBL and BIN.</li>
+            <li>Query <a href="https://www.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" target="_blank" rel="noopener">PLUTO</a> by BBL, get <code>numfloors</code>, <code>yearbuilt</code>, <code>bldgclass</code>, <code>unitsres</code>, <code>bldgarea</code>, <code>zonedist1</code>.</li>
+          </ul>
+          <p><strong>b) NYC Building Footprints</strong></p>
+          <ul>
+            <li>Query by BIN, get polygon, <code>heightroof</code>, <code>groundelev</code>.</li>
+            <li>Run orientation detection (<a href="#orientation">Section 3</a>), suggest a balcony direction.</li>
+          </ul>
+          <p><strong>c) NREL Solar Resource</strong></p>
+          <ul>
+            <li>Query by lat/lon, get monthly GHI.</li>
+            <li>Normalize into a per-month distribution.</li>
+          </ul>
+          <p><strong>d) Neighbor query (background, non-blocking)</strong></p>
+          <ul>
+            <li>200m radius, up to 500 buildings, feeds the 3D scene and shadow model.</li>
+          </ul>
+
+          <h3>7.3 Form pre-fill</h3>
+          <p>Auto-populated from building data:</p>
+          <ul>
+            <li>Total floors ← PLUTO <code>numfloors</code></li>
+            <li>Direction picker ← footprint orientation algorithm</li>
+            <li>Building info card ← address, floors, year built, building class, height</li>
+          </ul>
+
+          <h3>7.4 User-adjustable inputs (Customize panel)</h3>
+          <p>The breakdown modal exposes the previously hardcoded modeling assumptions:</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Input</th><th>Options</th><th>Default</th></tr></thead>
+              <tbody>
+                <tr><td>Mount tilt</td><td>35° / 60° / 70° / 90°</td><td>90°</td></tr>
+                <tr><td>System size</td><td>400W / 800W / 1200W / 1600W</td><td>800W</td></tr>
+                <tr><td>Equipment tier</td><td>Budget / Mid / Premium</td><td>Mid</td></tr>
+                <tr><td>Surrounding shading</td><td>Open / Some / Dense / Wide avenue</td><td>Some</td></tr>
+                <tr><td>Monthly electric bill</td><td>$20 to $800</td><td>$200</td></tr>
+                <tr><td>Rate escalation</td><td>Low (2%) / Mid (3%) / High (4%)</td><td>Mid</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>7.5 Energy calculation</h3>
+          <ol>
+            <li>Map form inputs to PVWatts parameters.</li>
+            <li>Call PVWatts V8 API (or use the fallback formula).</li>
+            <li>If a 3D scene is initialized, apply per-month shade factors; otherwise apply the static shade factor.</li>
+            <li>Run the financial model with the selected tier and escalation preset.</li>
+            <li>Compute environmental impact.</li>
+          </ol>
+
+          <h3>7.6 Graceful degradation</h3>
+          <p>Every API has a fallback. The calculator works in full manual mode with zero API calls.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>API failure</th><th>Fallback behavior</th></tr></thead>
+              <tbody>
+                <tr><td>Google Places unavailable</td><td>"Skip" link, manual entry</td></tr>
+                <tr><td>Geoclient fails</td><td>Query PLUTO by address string</td></tr>
+                <tr><td>PLUTO fails</td><td>Sliders keep defaults</td></tr>
+                <tr><td>Footprints fail</td><td>User picks direction manually; no 3D shade</td></tr>
+                <tr><td>PVWatts fails</td><td>Client-side fallback formula (<a href="#energy-production">Section 1.2</a>), yellow banner shown</td></tr>
+                <tr><td>Solar Resource fails</td><td>Hardcoded NYC monthly distribution</td></tr>
+                <tr><td>Neighbor query fails</td><td>No 3D shade; static shade factor used</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="sources">
+          <h2><span class="sec-num">8</span>Data sources</h2>
+          <p>Every number in the calculator traces to one of the public datasets below.</p>
+          <div class="table-wrap sources-list">
+            <table>
+              <thead><tr><th>Source</th><th>Used for</th></tr></thead>
+              <tbody>
+                <tr><td><a href="https://developer.nrel.gov/docs/solar/pvwatts/v8/" target="_blank" rel="noopener">NREL PVWatts V8</a><br><span class="src-host">developer.nrel.gov</span></td><td>Hourly-simulated production</td></tr>
+                <tr><td><a href="https://developer.nrel.gov/docs/solar/solar-resource-v1/" target="_blank" rel="noopener">NREL Solar Resource</a><br><span class="src-host">developer.nrel.gov</span></td><td>Monthly GHI irradiance</td></tr>
+                <tr><td><a href="https://www.nysolarmap.com/about/map-assumptions/" target="_blank" rel="noopener">NYSERDA NY Solar Map</a><br><span class="src-host">nysolarmap.com</span></td><td>Yield baseline cross-check (1,238 kWh/kW/yr)</td></tr>
+                <tr><td><a href="https://www.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" target="_blank" rel="noopener">NYC PLUTO</a><br><span class="src-host">data.cityofnewyork.us</span></td><td>Building floors, class, year, units</td></tr>
+                <tr><td><a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank" rel="noopener">NYC Building Footprints</a><br><span class="src-host">data.cityofnewyork.us</span></td><td>Polygon, height, elevation, neighbor query</td></tr>
+                <tr><td><a href="https://api.nyc.gov/geoclient/v2/address.json" target="_blank" rel="noopener">NYC Geoclient</a><br><span class="src-host">api.nyc.gov</span></td><td>BBL and BIN from address</td></tr>
+                <tr><td><a href="https://developers.google.com/maps/documentation/places/web-service/overview" target="_blank" rel="noopener">Google Places</a><br><span class="src-host">developers.google.com</span></td><td>Address autocomplete and geocoding</td></tr>
+                <tr><td><a href="https://www.coned.com/-/media/files/coned/documents/customer-service/historical-average-full-service-electric-rates.pdf" target="_blank" rel="noopener">Con Edison SC-1 historical bills</a><br><span class="src-host">coned.com</span></td><td>Electricity rate</td></tr>
+                <tr><td><a href="https://dps.ny.gov/system/files/documents/2025/01/con-edison-rate-case-visual-supplement.pdf" target="_blank" rel="noopener">Con Edison 2026 to 2028 rate case</a><br><span class="src-host">dps.ny.gov</span></td><td>Rate escalation</td></tr>
+                <tr><td><a href="https://www.epa.gov/egrid/summary-data" target="_blank" rel="noopener">EPA eGRID2023</a><br><span class="src-host">epa.gov</span></td><td>CO₂ factor (NYCW subregion)</td></tr>
+                <tr><td><a href="https://solar.htw-berlin.de/rechner/stecker-solar-simulator/" target="_blank" rel="noopener">HTW Berlin Stecker-Solar Simulator</a><br><span class="src-host">solar.htw-berlin.de</span></td><td>Vertical-mount yield calibration</td></tr>
+                <tr><td><a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">NY SUNNY Act (S8512/A9111)</a><br><span class="src-host">nysenate.gov</span></td><td>Plug-in solar regulatory status</td></tr>
+                <tr><td><a href="https://www.nrel.gov/docs/fy24osti/87524.pdf" target="_blank" rel="noopener">NREL 2024 PV Degradation Review</a><br><span class="src-host">nrel.gov</span></td><td>Degradation rates by tier</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="accuracy">
+          <h2><span class="sec-num">9</span>Accuracy &amp; limitations</h2>
+          <p><strong>Expected accuracy:</strong></p>
+          <ul>
+            <li><strong>±12%</strong> on annual production with PVWatts V8 and the 3D shadow model active</li>
+            <li><strong>±18%</strong> with the client-side fallback (no PVWatts, no 3D)</li>
+          </ul>
+
+          <p><strong>What the model captures:</strong></p>
+          <ul>
+            <li>Latitude-specific solar resource and seasonal variation (PVWatts NSRDB)</li>
+            <li>Vertical and near-vertical tilt production loss, calibrated against PVWatts and HTW Berlin</li>
+            <li>Azimuth-dependent production across all 8 compass directions</li>
+            <li>NYC urban soiling, in the right ballpark (3 to 7% monthly) rather than the older 11 to 17% over-derate</li>
+            <li>Floor-level shadow estimation with a smooth tanh response, plus full polygon-edge 3D shadowing when neighbor footprints are available</li>
+            <li>Diffuse-sky contribution to self-shaded periods (~30% of clear-sky)</li>
+            <li>Irradiance-weighted shadow sampling (a noon shadow costs more than a dawn shadow)</li>
+            <li>Tier-aware degradation and rate-escalation bands in the 25-year financial projection</li>
+          </ul>
+
+          <p><strong>What the model still does NOT capture:</strong></p>
+          <ul>
+            <li>Micro-shading from things not in the building footprint dataset, like trees, awnings, AC units, signage</li>
+            <li>Snow coverage in winter months (a vertical panel sheds quickly but not instantly)</li>
+            <li>Future electricity-rate trajectory, the single largest swing factor in lifetime savings (2% vs 4% escalation ≈ ±15% on lifetime $)</li>
+            <li>Bifacial panels and light-painted walls (<code>albedo</code> and <code>bifaciality</code> are currently fixed)</li>
+          </ul>
+
+          <p><strong>Validation anchors:</strong></p>
+          <ul>
+            <li>HTW Berlin Stecker-Solar Simulator: 800W vertical south at 52.5°N → ~500 kWh/yr; scaled to NYC's 40.7°N latitude (~+25% irradiance) → ~625 kWh/yr unshaded vertical south, which the fallback model now reproduces within ±5%.</li>
+            <li>NYSERDA NY Solar Map baseline: 1,238 kWh/kW/yr at optimal tilt; PVWatts with the calculator's parameters produces ~1,300 kWh/kW/yr for premium fixed-tilt NYC, within bounds.</li>
+          </ul>
+        </section>
+
+        <div class="doc-foot">
+          <div>Questions about the methodology? <a href="/#faq">See the FAQ</a> or open an issue on GitHub.</div>
+          <a href="/" class="btn-cta">Try the calculator →</a>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <a href="/" class="footer-logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
+    <p class="footer-disclaimer">balco.nyc is an independent open tool for estimating balcony solar potential in NYC. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL. Estimates are educational and may vary ±12 to 18% from real-world production. Plug-in solar is not currently legal for residential use in New York.</p>
+    <p class="footer-meta">&copy; 2026</p>
+  </div>
+</footer>
+
+<script>
+  // Highlight the TOC entry corresponding to the visible section.
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.doc-toc a'));
+    var sections = links.map(function (a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    }).filter(Boolean);
+
+    if (!('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          links.forEach(function (a) {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(function (s) { observer.observe(s); });
+  }());
+</script>
+
+</body>
+</html>

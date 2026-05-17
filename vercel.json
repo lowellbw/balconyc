@@ -1,5 +1,9 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/METHODOLOGY.md", "destination": "/methodology", "permanent": true },
+    { "source": "/methodology.md", "destination": "/methodology", "permanent": true }
+  ],
   "functions": {
     "api/visualize.js": {
       "maxDuration": 30

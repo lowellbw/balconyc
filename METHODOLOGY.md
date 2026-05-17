@@ -203,11 +203,11 @@ adjusted_cost = tier_cost × (system_watts / 800)
 | Mid | $1,500 | EcoFlow PowerStream, Anker SOLIX entry |
 | Premium | $1,800 | Anker SOLIX RS40P, Bright Saver complete kit |
 
-### 4.6 Net Metering / SUNNY Act
+Federal Residential Clean Energy Credit (§25D) expired for expenditures after Dec 31, 2025 under P.L. 119-21. Cost figures are gross — no federal credit is netted out.
 
-For typical balcony users, production is well below household consumption, so excess export is rare and the calculator assumes 1:1 offset at the marginal retail rate.
+### 4.6 Offset Assumption
 
-The NY **SUNNY Act (S8512 Krueger / A9111 Gallagher)** passed the State Senate unanimously on April 21, 2026 and is awaiting Assembly action as of this writing. If enacted, it would exempt small plug-in solar (up to 800W) from interconnection and net-metering requirements outright. The calculator's savings figures assume this regime; until the bill is enacted, plug-in solar in NY technically requires Con Ed interconnection like any distributed generator.
+Production is assumed to offset household consumption 1:1 at the marginal retail rate. For typical balcony users, production is well below consumption so there is no excess export to model. (NY's SUNNY Act, which would formalize this for small plug-in solar, has not yet been enacted as of this writing.)
 
 ---
 

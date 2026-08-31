@@ -11,6 +11,10 @@
     {
       "id": "page-3",
       "name": "Block City"
+    },
+    {
+      "id": "page-4",
+      "name": "Gov · white"
     }
   ],
   "artboards": [
@@ -86,6 +90,33 @@
       "y": 0,
       "w": 1280,
       "h": 1060
+    },
+    {
+      "file": "GovPublicRecord.dc.html",
+      "title": "Public Record",
+      "page": "page-4",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 1060
+    },
+    {
+      "file": "GovStandardsManual.dc.html",
+      "title": "Standards Manual",
+      "page": "page-4",
+      "x": 1400,
+      "y": 0,
+      "w": 1280,
+      "h": 1060
+    },
+    {
+      "file": "GovOpenData.dc.html",
+      "title": "Open Data",
+      "page": "page-4",
+      "x": 2800,
+      "y": 0,
+      "w": 1280,
+      "h": 1060
     }
   ],
   "annotations": [
@@ -152,10 +183,42 @@
       "y": -210,
       "w": 1280,
       "text": "BLOCK CITY — E as the page's own background, with D's sun palette\nThe outline is real: 4,826 blocks rasterised from the city's own borough boundaries, so Staten Island, the Manhattan strip, the Harlem and East River channels, Jamaica Bay and the Rockaways are all where they actually are. Low sun rakes in from the east and the copy sits in the harbour, west of Manhattan.\nWhat is NOT real: the per-block shading. It is derived from how open each block's sky is (a genuine consequence of the coastline), not from running the model citywide. Marked [NOT YET COMPUTED] in the legend.\nTradeoff: the deep red accent has no room here — amber owns the page. That is a brand decision, not a layout one."
+    },
+    {
+      "id": "note-gov-a",
+      "page": "page-4",
+      "x": 0,
+      "y": -250,
+      "w": 1280,
+      "text": "PUBLIC RECORD — the closest to nyc.gov\nNavy bar, Helvetica furniture, a statutory notice box, sources printed on the page. The affiliation disclaimer becomes designed furniture at the very top, which is both honest and exactly the register.\nTradeoff: municipal enough that some readers will assume it IS the city. That top strip is doing a lot of work."
+    },
+    {
+      "id": "note-gov-b",
+      "page": "page-4",
+      "x": 1400,
+      "y": -250,
+      "w": 1280,
+      "text": "STANDARDS MANUAL — Vignelli, not nyc.gov\nBlack, white, Helvetica, thick rules, the facts as a ruled table. The city in solid black is the strongest image of the three, and one red square carries the whole legal warning.\nTradeoff: no colour system left over. Results, charts and states all have to be invented later."
+    },
+    {
+      "id": "note-gov-c",
+      "page": "page-4",
+      "x": 2800,
+      "y": -250,
+      "w": 1280,
+      "text": "OPEN DATA — the portal register\nSplit screen: the city on the left, a worked estimate on the right. The only one showing a number before you type, and the only one whose map colour carries real data (borough).\nTradeoff: reads as a dashboard rather than a home page. Weakest hero of the three."
+    },
+    {
+      "id": "note-gov-data",
+      "page": "page-4",
+      "x": 0,
+      "y": 1130,
+      "w": 2680,
+      "text": "ON THE BLOCKS BEING REPRESENTATIVE\nThe geometry is real and unchanged: every square is rasterised from the city's published borough boundary files, at square ground cells. A rectangular cell was tried and dropped — it implies a street orientation that is only correct in part of Manhattan.\nThe per-block SHADING is gone. The dark Block City version tinted blocks by how open each block's sky is; that is a real consequence of the coastline but it is not model output, and it read as though it were. Doing it properly needs building heights for every lot, and NYC Open Data is blocked from this environment. So these three show the city plain, and every number on them is either published or computed by the site's own model. Open Data states the gap in a [NOT BUILT] box rather than filling it."
     }
   ],
   "launch": {
     "view": "canvas",
-    "page": "page-3"
+    "page": "page-4"
   }
 }

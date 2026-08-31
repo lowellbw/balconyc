@@ -16,3 +16,4 @@ design/**/nyc.geojson
 design/**/preview-*.png
 design/**/city.svg.frag
 design/**/__pycache__/
+design/**/shot-*.png

@@ -209,7 +209,8 @@ class Component extends DCLogic {
     var self = this;
     var FACING = { N: 0.40, NE: 0.50, E: 0.66, SE: 0.88, S: 1.00, SW: 0.88, W: 0.66, NW: 0.50 };
     var ORDER = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
-    var DIST = [0.045, 0.055, 0.079, 0.094, 0.110, 0.116, 0.113, 0.104, 0.086, 0.069, 0.070, 0.059];
+    var DIST = [0.056, 0.068, 0.082, 0.092, 0.105, 0.112, 0.114, 0.103, 0.088, 0.073, 0.056, 0.051];
+    var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     var st = this.state;
     var isLand = st.step === 'land';
@@ -275,7 +276,7 @@ class Component extends DCLogic {
       payback: m.payback,
       offset: m.offset,
       bandLine: 'Modelled range $' + Math.round(m.dollars * 0.85) + ' to $' + Math.round(m.dollars * 1.15) + ', about ' + kwh.toLocaleString() + ' kWh',
-      peakLine: 'peaks at ' + Math.round(peak) + ' kWh in June'
+      peakLine: 'peaks at ' + Math.round(peak) + ' kWh in ' + MONTHS[monthly.indexOf(peak)]
     };
   }
 }

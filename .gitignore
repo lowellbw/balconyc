@@ -12,3 +12,7 @@ node_modules/
 
 # Seeded design-canvas output (~2MB build artifact; re-seeded from the .dc.html sources)
 design/**/balco-home-page-directions.html
+design/**/nyc.geojson
+design/**/preview-*.png
+design/**/city.svg.frag
+design/**/__pycache__/

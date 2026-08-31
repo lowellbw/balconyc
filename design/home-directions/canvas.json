@@ -10,7 +10,7 @@
     },
     {
       "id": "page-3",
-      "name": "Block City"
+      "name": "Sun City"
     },
     {
       "id": "page-4",
@@ -84,9 +84,9 @@
     },
     {
       "file": "BlockCity.dc.html",
-      "title": "Block City · home page",
+      "title": "Block City · static (superseded)",
       "page": "page-3",
-      "x": 0,
+      "x": 1400,
       "y": 0,
       "w": 1280,
       "h": 1060
@@ -117,6 +117,16 @@
       "y": 0,
       "w": 1280,
       "h": 1060
+    },
+    {
+      "file": "SunCity.dc.html",
+      "title": "Sun City · move your cursor",
+      "page": "page-3",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 1060,
+      "is_interactive": true
     }
   ],
   "annotations": [
@@ -179,10 +189,10 @@
     {
       "id": "note-blockcity",
       "page": "page-3",
-      "x": 0,
+      "x": 1400,
       "y": -210,
       "w": 1280,
-      "text": "BLOCK CITY — E as the page's own background, with D's sun palette\nThe outline is real: 4,826 blocks rasterised from the city's own borough boundaries, so Staten Island, the Manhattan strip, the Harlem and East River channels, Jamaica Bay and the Rockaways are all where they actually are. Low sun rakes in from the east and the copy sits in the harbour, west of Manhattan.\nWhat is NOT real: the per-block shading. It is derived from how open each block's sky is (a genuine consequence of the coastline), not from running the model citywide. Marked [NOT YET COMPUTED] in the legend.\nTradeoff: the deep red accent has no room here — amber owns the page. That is a brand decision, not a layout one."
+      "text": "BLOCK CITY — the earlier static version, kept for comparison\nSame look, but each block's tint is fixed: it comes from how open that block's sky is. That is a real consequence of the coastline, yet it reads as though each block's brightness were its solar output, which nobody has computed. Superseded by Sun City on its left."
     },
     {
       "id": "note-gov-a",
@@ -215,10 +225,18 @@
       "y": 1130,
       "w": 2680,
       "text": "ON THE BLOCKS BEING REPRESENTATIVE\nThe geometry is real and unchanged: every square is rasterised from the city's published borough boundary files, at square ground cells. A rectangular cell was tried and dropped — it implies a street orientation that is only correct in part of Manhattan.\nThe per-block SHADING is gone. The dark Block City version tinted blocks by how open each block's sky is; that is a real consequence of the coastline but it is not model output, and it read as though it were. Doing it properly needs building heights for every lot, and NYC Open Data is blocked from this environment. So these three show the city plain, and every number on them is either published or computed by the site's own model. Open Data states the gap in a [NOT BUILT] box rather than filling it."
+    },
+    {
+      "id": "note-suncity",
+      "page": "page-3",
+      "x": 0,
+      "y": -250,
+      "w": 1280,
+      "text": "SUN CITY — the shaded blocks, lit by a sun that follows you\nMove your cursor and the sun walks the sky; the city relights under it and the clock keeps up. Right is east and morning, left is west and evening, because the map is north-up. Left alone it drifts on its own until you touch it.\nThis also settles the honesty problem the static version had. The tint is no longer pretending to be per-block output — it is plainly light, and it moves, so nobody can read it as data. The blocks stay real; the number still comes from your address.\nCheap to run: all 5,141 blocks are one SVG path filled from a single radial gradient, so relighting the whole city is two attribute writes a frame, not five thousand."
     }
   ],
   "launch": {
     "view": "canvas",
-    "page": "page-4"
+    "page": "page-3"
   }
 }

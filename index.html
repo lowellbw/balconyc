@@ -15,13 +15,15 @@
   <meta property="og:url" content="https://balco.nyc/">
   <meta property="og:title" content="balco.nyc · NYC's Balcony Solar Calculator">
   <meta property="og:description" content="Enter any NYC address. See how much electricity, money, and CO₂ an 800W plug-in solar panel could produce on your balcony, modeled from real building geometry and a year of sun.">
-  <meta property="og:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.webp">
+  <!-- JPEG rather than WebP: several link scrapers still refuse WebP previews. -->
+  <meta property="og:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1920">
-  <meta property="og:image:height" content="1080">
+  <meta property="og:image:height" content="1047">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="balco.nyc · NYC's Balcony Solar Calculator">
   <meta name="twitter:description" content="Enter any NYC address. See how much electricity, money, and CO₂ an 800W plug-in solar panel could produce on your balcony, modeled from real building geometry and a year of sun.">
-  <meta name="twitter:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.webp">
+  <meta name="twitter:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="Gemini_Generated_Image_d2ucutd2ucutd2uc.webp" type="image/webp" fetchpriority="high">
@@ -245,6 +247,62 @@
     .impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .impact-item .impact-value { font-size: 1.4rem; font-weight: 700; }
     .impact-item .impact-label { font-size: 0.75rem; opacity: 0.75; margin-top: 2px; }
+
+    /* Manual entry panel (no footprint / no WebGL) */
+    .manual-panel {
+      position: fixed; inset: 0; z-index: 900;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+      display: none; align-items: center; justify-content: center; padding: 24px;
+      overflow-y: auto;
+    }
+    .manual-panel.visible { display: flex; }
+    .manual-card {
+      background: #fff; border-radius: 18px; padding: 32px; width: 100%; max-width: 560px;
+      position: relative; margin: auto; box-shadow: 0 12px 48px rgba(0,0,0,0.28);
+    }
+    .manual-card h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .manual-note { font-size: 0.9rem; color: var(--text-sub); line-height: 1.5; margin-bottom: 22px; }
+    .manual-note:empty { display: none; }
+    .manual-close {
+      position: absolute; top: 14px; right: 14px; width: 34px; height: 34px;
+      border: none; border-radius: 50%; background: #F1F1F1; color: var(--text);
+      font-size: 1.2rem; cursor: pointer; line-height: 1;
+    }
+    .manual-close:hover { background: #E4E4E4; }
+    .manual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 18px; margin-bottom: 22px; }
+    .manual-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+    .manual-field label { font-size: 0.8rem; font-weight: 600; color: var(--text-sub); }
+    .manual-field input, .manual-field select {
+      padding: 11px 12px; border: 1px solid var(--border); border-radius: 9px;
+      font-family: inherit; font-size: 0.95rem; background: #fff; color: var(--text);
+    }
+    .manual-field input:focus, .manual-field select:focus,
+    .manual-submit:focus-visible, .manual-close:focus-visible {
+      outline: 2px solid var(--accent); outline-offset: 2px; border-color: var(--accent);
+    }
+    .manual-hint { font-size: 0.74rem; color: var(--text-muted); line-height: 1.45; }
+    .manual-submit {
+      width: 100%; padding: 14px; border: none; border-radius: 10px;
+      background: var(--text); color: #fff; font-family: inherit;
+      font-size: 0.98rem; font-weight: 700; cursor: pointer; margin-bottom: 12px;
+    }
+    .manual-submit:hover { background: #333; }
+    .manual-submit:disabled { opacity: 0.55; cursor: progress; }
+    @media (max-width: 560px) {
+      .manual-grid { grid-template-columns: 1fr; }
+      .manual-card { padding: 24px 20px; }
+    }
+
+    /* Fallback / data-quality banner */
+    .estimate-banner {
+      display: none; align-items: flex-start; gap: 10px;
+      margin: 0 40px 20px; padding: 12px 14px; border-radius: 10px;
+      background: var(--warn-bg, #FAF3E3); border: 1px solid #E8CE8E;
+      font-size: 0.82rem; line-height: 1.5; color: #6B4E12;
+    }
+    .estimate-banner.visible { display: flex; }
+    .estimate-banner strong { font-weight: 700; }
+    @media (max-width: 768px) { .estimate-banner { margin: 0 24px 16px; } }
 
     /* Breakdown modal */
     .breakdown-overlay {
@@ -572,7 +630,7 @@
             "name": "Is plug-in solar legal in NYC?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Not yet. New York requires utility approval for any device that pushes power back into a household circuit, which plug-in kits do. The SUNNY Act (S8512/A9111) would change that. It passed the State Senate 62–0 in 2026 and is awaiting Assembly action. Once it's law, you won't need Con Edison's permission. Renters and co-op residents may still need a landlord or board sign-off, though. The bill covers the utility side, not the lease side."
+              "text": "Not yet, but it is close. New York requires utility approval for any device that pushes power back into a household circuit, which plug-in kits do. The SUNNY Act (S8512/A9111) changes that. It passed the State Senate unanimously in April 2026 and the Assembly on May 28, 2026, and is now awaiting the Governor's signature. It takes effect 90 days after being signed, so the realistic opening is early 2027. Note that the Act removes the utility barrier only. It grants no right to install, so renters and co-op residents may still need landlord or board sign-off."
             }
           },
           {
@@ -596,7 +654,7 @@
             "name": "How accurate is this estimate?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Roughly within ±12–18% of real-world production for a typical NYC apartment. We model the major shadows on your block but can't see micro-shading (a neighbor's AC unit, a corner tree) or know your exact panel orientation."
+              "text": "Roughly within 15% of real-world production for a typical NYC apartment. We model the major shadows on your block but can't see micro-shading (a neighbor's AC unit, a corner tree) or know your exact panel orientation. That figure is a modeled uncertainty band, not a field-validated one; no measured NYC installations have been compared against it yet."
             }
           },
           {
@@ -612,7 +670,7 @@
             "name": "What does a balcony solar kit cost?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A few hundred dollars for a small panel, up to a couple thousand for a larger kit with battery storage. Most NYC-sized setups land between $1,200 and $1,800."
+              "text": "Less than it used to. Since Bright Saver, a nonprofit, began selling complete kits nationwide at cost in July 2026, a 360W kit runs about $414 for members and $699 otherwise. For a typical 800W NYC setup, budget roughly $850 at the wholesale end, $1,200 mid-range, and $1,600 for premium hardware."
             }
           },
           {
@@ -660,7 +718,7 @@
           <input type="text" class="hero-input" id="addressInput" placeholder="Enter an NYC address" autocomplete="off">
           <div class="hero-input-spinner" id="heroSpinner"></div>
         </div>
-        <button type="button" class="hero-input-submit" id="heroSubmit" onclick="document.getElementById('addressInput').focus()" aria-label="Calculate">Calculate &rarr;</button>
+        <button type="button" class="hero-input-submit" id="heroSubmit" aria-label="Calculate">Calculate &rarr;</button>
       </div>
       <div class="hero-building-info" id="heroBuildingInfo"></div>
 
@@ -742,6 +800,52 @@
   </div><!-- /hero-layout -->
 </section>
 
+<!-- MANUAL ENTRY (no footprint data, or no WebGL) -->
+<div class="manual-panel" id="manualPanel" role="dialog" aria-modal="true" aria-labelledby="manualTitle">
+  <div class="manual-card">
+    <button type="button" class="manual-close" id="manualClose" aria-label="Close">&times;</button>
+    <h2 id="manualTitle">Tell us about your balcony</h2>
+    <p class="manual-note" id="manualNote"></p>
+
+    <div class="manual-grid">
+      <div class="manual-field">
+        <label for="manualFloor">Your floor</label>
+        <input type="number" id="manualFloor" min="1" max="120" step="1" value="5">
+      </div>
+      <div class="manual-field">
+        <label for="manualTotalFloors">Floors in the building</label>
+        <input type="number" id="manualTotalFloors" min="1" max="120" step="1" value="20">
+      </div>
+      <div class="manual-field">
+        <label for="manualDirection">Balcony faces</label>
+        <select id="manualDirection">
+          <option value="180">South</option>
+          <option value="135">Southeast</option>
+          <option value="225">Southwest</option>
+          <option value="90">East</option>
+          <option value="270">West</option>
+          <option value="45">Northeast</option>
+          <option value="315">Northwest</option>
+          <option value="0">North</option>
+        </select>
+        <span class="manual-hint" id="manualDirectionHint"></span>
+      </div>
+      <div class="manual-field">
+        <label for="manualShading">Surroundings</label>
+        <select id="manualShading">
+          <option value="open">Open, little around you</option>
+          <option value="some" selected>Some buildings nearby</option>
+          <option value="dense">Dense block, tall neighbors</option>
+          <option value="wide_avenue">Facing a wide avenue</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="button" class="manual-submit" id="manualSubmit">Calculate my estimate</button>
+    <p class="manual-hint">Without building geometry we use NYC floor and density averages, so this estimate is less precise than the 3D one.</p>
+  </div>
+</div>
+
 <!-- BREAKDOWN MODAL -->
 <div class="breakdown-overlay" id="breakdownOverlay">
   <div class="breakdown-modal">
@@ -762,6 +866,9 @@
       </div>
     </div>
 
+    <!-- Data-quality notice: shown when the estimate did not use the full pipeline -->
+    <div class="estimate-banner" id="estimateBanner" role="status"></div>
+
     <!-- Section 2: Two columns -->
     <div class="bd-body">
       <div class="bd-columns">
@@ -781,10 +888,10 @@
             <div class="bd-tl-item">
               <div class="tl-label">System pays for itself in</div>
               <div class="tl-value" id="paybackYears">&mdash;</div>
-              <div class="tl-note">Then free electricity for the remaining panel lifespan (25+ years)</div>
+              <div class="tl-note">Assumes electricity keeps rising at the rate set in Customize. Not discounted to present value.</div>
             </div>
             <div class="bd-tl-item highlight">
-              <div class="tl-label">25-year total value</div>
+              <div class="tl-label">25-year total savings (nominal)</div>
               <div class="tl-value" id="lifetimeSavings">&mdash;</div>
             </div>
           </div>
@@ -829,7 +936,7 @@
         <span>Customize this estimate</span>
         <span class="cust-toggle">+</span>
       </summary>
-      <div class="bd-customize-sub">Adjust the assumptions and recompute. Defaults reflect a typical 800W mid-tier kit on Con Edison SC-1.</div>
+      <div class="bd-customize-sub">Adjust the assumptions and recompute. Defaults reflect a typical 800W mid-tier kit on Con Edison SC-1. Prices reflect August 2026 retail.</div>
 
       <div class="bd-cust-grid">
         <div class="bd-cust-field">
@@ -855,9 +962,9 @@
         <div class="bd-cust-field">
           <label class="bd-cust-label">Equipment tier</label>
           <div class="bd-cust-segments" data-cust="costTier">
-            <button type="button" data-val="budget">Budget ($1.2k)</button>
-            <button type="button" data-val="mid" class="active">Mid ($1.5k)</button>
-            <button type="button" data-val="premium">Premium ($1.8k)</button>
+            <button type="button" data-val="budget">Budget ($850)</button>
+            <button type="button" data-val="mid" class="active">Mid ($1.2k)</button>
+            <button type="button" data-val="premium">Premium ($1.6k)</button>
           </div>
         </div>
 
@@ -873,7 +980,7 @@
 
         <div class="bd-cust-field">
           <label class="bd-cust-label">Monthly electric bill</label>
-          <input class="bd-cust-input" type="number" id="custMonthlyBill" min="20" max="800" step="10" value="200">
+          <input class="bd-cust-input" type="number" id="custMonthlyBill" min="20" max="800" step="10" value="140">
         </div>
 
         <div class="bd-cust-field">
@@ -946,12 +1053,12 @@
         <h2>Common questions</h2>
       </div>
       <div class="faq-list">
-      <details class="faq-item"><summary>Is plug-in solar legal in NYC?<span class="faq-toggle">+</span></summary><p>Not yet. New York requires utility approval for any device that pushes power back into a household circuit, which plug-in kits do. The <a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">SUNNY Act (S8512/A9111)</a> would change that. It passed the State Senate 62&ndash;0 in 2026 and is awaiting Assembly action. Once it&rsquo;s law, you won&rsquo;t need Con Edison&rsquo;s permission. Renters and co-op residents may still need a landlord or board sign-off, though. The bill covers the utility side, not the lease side.</p></details>
+      <details class="faq-item"><summary>Is plug-in solar legal in NYC?<span class="faq-toggle">+</span></summary><p>Not yet, but it is close. New York requires utility approval for any device that pushes power back into a household circuit, which plug-in kits do. The <a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">SUNNY Act (S8512/A9111)</a> changes that. It passed the State Senate unanimously in April 2026 and the Assembly on 28 May 2026, and now awaits the Governor&rsquo;s signature. It takes effect 90 days after signing, so the realistic opening is early 2027. One thing to know: the Act removes the <em>utility</em> barrier only. It grants no right to install, so renters and co-op residents may still need landlord or board sign-off.</p></details>
       <details class="faq-item"><summary>Does it work for any apartment?<span class="faq-toggle">+</span></summary><p>Any NYC address with sun on at least one side. A high-floor south-facing balcony can produce 3&times; what a low-floor north-facing one does. The 3D simulation accounts for neighbor buildings within 200m, so wide-avenue and midblock exposures come out differently.</p></details>
       <details class="faq-item"><summary>How does it actually plug in?<span class="faq-toggle">+</span></summary><p>The panel connects to a small micro-inverter with a cord ending in a standard 120V plug, the same as anything else you plug into a household outlet. NYC balconies almost never have an outdoor outlet, so in practice the cord runs from the panel through a window or sliding door to an indoor outlet, often the same circuit you&rsquo;d use for a window AC. Secure the cord to the railing so it doesn&rsquo;t catch on anyone, and don&rsquo;t daisy-chain it through an extension cord. Kit manufacturers sell longer panel cables for runs over ~10 feet.</p></details>
-      <details class="faq-item"><summary>How accurate is this estimate?<span class="faq-toggle">+</span></summary><p>Within about 15% of real-world production for a typical NYC apartment. We model the major shadows on your block but can&rsquo;t see micro-shading (a neighbor&rsquo;s AC unit, a corner tree) or know your exact panel orientation.</p></details>
+      <details class="faq-item"><summary>How accurate is this estimate?<span class="faq-toggle">+</span></summary><p>Within about 15% of real-world production for a typical NYC apartment. We model the major shadows on your block but can&rsquo;t see micro-shading (a neighbor&rsquo;s AC unit, a corner tree) or know your exact panel orientation. That band is modeled, not measured: no NYC installations have been metered against it yet, so treat it as a considered estimate rather than a validated tolerance.</p></details>
       <details class="faq-item"><summary>How is this calculated?<span class="faq-toggle">+</span></summary><p>PVWatts hourly simulation, NYC building data, and a 3D shadow model of your block. Built on NREL, NYC PLUTO, Con Edison SC-1 rates, and EPA eGRID. <a href="/methodology">Read the full methodology &rarr;</a></p></details>
-      <details class="faq-item"><summary>What does a kit cost?<span class="faq-toggle">+</span></summary><p>A few hundred dollars for a small panel, up to a couple thousand for a larger kit with battery storage. Most NYC-sized setups land between $1,200 and $1,800.</p></details>
+      <details class="faq-item"><summary>What does a kit cost?<span class="faq-toggle">+</span></summary><p>Less than it used to. Since <a href="https://www.brightsaver.org/balcony-solar-kits" target="_blank" rel="noopener">Bright Saver</a>, a nonprofit, began selling complete kits nationwide at cost in July 2026, a 360W kit runs about $414 for members and $699 otherwise. For a typical 800W NYC setup, budget roughly $850 at the wholesale end, $1,200 mid-range, and $1,600 for premium hardware. The Customize panel lets you switch tiers.</p></details>
       <details class="faq-item"><summary>What rate is used to compute savings?<span class="faq-toggle">+</span></summary><p>Con Edison&rsquo;s residential rate, roughly 34&cent;/kWh in 2026, about 56% above the U.S. average. The Customize panel lets you adjust your monthly bill and the long-term rate escalation assumption.</p></details>
       </div>
     </div>
@@ -962,20 +1069,18 @@
 <footer>
   <div class="container">
     <a href="#" class="footer-logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
-    <p class="footer-disclaimer">balco.nyc is an independent open tool for estimating balcony solar potential in NYC. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL. Estimates are educational and may vary &plusmn;12&ndash;18% from real-world production. Plug-in solar is not currently legal for residential use in New York.</p>
+    <p class="footer-disclaimer">balco.nyc is an independent open tool for estimating balcony solar potential in NYC. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL. Estimates are educational and may vary by about 15% from real-world production. Plug-in solar is not yet legal for residential use in New York: the SUNNY Act has passed both chambers and awaits the Governor&rsquo;s signature. <a href="/methodology">Full methodology &rarr;</a></p>
     <p class="footer-meta">&copy; 2026</p>
   </div>
 </footer>
 
 <!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<!-- The model itself is small and needed on first interaction. The 3D stack
+     (Three.js + OrbitControls + scene code) is ~600KB and is only needed once
+     an address resolves, so it is injected on demand by loadSceneStack(). -->
 <script src="js/config.js"></script>
 <script src="js/solar-api.js"></script>
 <script src="js/sun-position.js"></script>
-<script src="js/3d-scene.js"></script>
-<script src="js/3d-shadow-model.js"></script>
 <script>
 // ============================================================
 // CALCULATOR 4 — Click-to-Select Balcony + Sun Animation Reveal
@@ -995,7 +1100,9 @@ const CUSTOMIZE_DEFAULTS = {
   systemWatts: 800,
   costTier: 'mid',
   shading: 'some',
-  monthlyBill: 200,
+  // ~350 kWh/mo (the NYC apartment average quoted in the breakdown) at the
+  // $0.34 marginal rate plus the ~$20 fixed customer charge.
+  monthlyBill: 140,
   escalationPreset: 'mid',
 };
 
@@ -1049,6 +1156,28 @@ document.addEventListener('DOMContentLoaded', function() {
     setCustomizeInputs(CUSTOMIZE_DEFAULTS);
     recalculateFromCustomize();
   });
+
+  const manualSubmit = document.getElementById('manualSubmit');
+  if (manualSubmit) manualSubmit.addEventListener('click', runManualEstimate);
+  // Dismissing the manual panel before there is a result would leave the
+  // visitor in a collapsed hero with no address field, so send them back to
+  // a clean start instead.
+  function dismissManualPanel() {
+    document.getElementById('manualPanel').classList.remove('visible');
+    document.body.classList.remove('scene-modal-open');
+    if (!lastFormInputs) resetCalculator();
+  }
+
+  const manualClose = document.getElementById('manualClose');
+  if (manualClose) manualClose.addEventListener('click', dismissManualPanel);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    if (document.getElementById('manualPanel').classList.contains('visible')) {
+      dismissManualPanel();
+    }
+    document.getElementById('breakdownOverlay').classList.remove('active');
+  });
 });
 
 async function recalculateFromCustomize() {
@@ -1056,28 +1185,122 @@ async function recalculateFromCustomize() {
   const btn = document.getElementById('custRecalcBtn');
   if (btn) { btn.disabled = true; btn.textContent = 'Calculating...'; }
   const custom = readCustomizeInputs();
+
+  // Tilt changes the panel's angle of incidence and its sky view, so the 3D
+  // shade profile has to be recomputed rather than reused. The horizon profile
+  // itself is geometry-only and is cached inside ShadowModel.
+  let shadeProfile = lastShadeProfile;
+  if (shadeProfile && typeof ShadowModel !== 'undefined' && ShadowModel.initialized) {
+    shadeProfile = ShadowModel.computeAnnualShadeProfile(custom.tilt);
+    lastShadeProfile = shadeProfile;
+  }
+
   const formInputs = Object.assign({
     azimuth: selectedAzimuth,
     floor: selectedFloor,
     totalFloors: totalFloors,
-    shadeProfile: lastShadeProfile,
+    shadeProfile: shadeProfile,
   }, custom);
   try {
     const result = await SolarAPI.calculateEstimate(formInputs);
     lastFormInputs = formInputs;
     showResults(result, formInputs);
   } catch (err) {
-    console.warn('[Calc4] Recalculation failed:', err);
+    console.warn('[Calc] Recalculation failed:', err);
   } finally {
     if (btn) { btn.disabled = false; btn.textContent = 'Recalculate'; }
   }
 }
 
-// Supabase
+// --- DEFERRED SCRIPT LOADING ---
+// Three.js, OrbitControls and the scene modules total ~600KB and are useless
+// until an address resolves, so they are fetched on demand rather than
+// blocking first paint. Supabase rides along since logging is fire-and-forget.
+const SCENE_SCRIPTS = [
+  'https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js',
+  'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js',
+  'js/3d-scene.js',
+  'js/3d-shadow-model.js',
+];
+const ANALYTICS_SCRIPT = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+
+function loadScript(src) {
+  return new Promise(function(resolve, reject) {
+    if (document.querySelector('script[data-src="' + src + '"]')) return resolve();
+    var s = document.createElement('script');
+    s.src = src;
+    s.async = false; // preserve execution order across the batch
+    s.setAttribute('data-src', src);
+    s.onload = function() { resolve(); };
+    s.onerror = function() { reject(new Error('Failed to load ' + src)); };
+    document.head.appendChild(s);
+  });
+}
+
+let sceneStackPromise = null;
+function loadSceneStack() {
+  if (!sceneStackPromise) {
+    sceneStackPromise = SCENE_SCRIPTS.reduce(
+      function(chain, src) { return chain.then(function() { return loadScript(src); }); },
+      Promise.resolve()
+    );
+  }
+  return sceneStackPromise;
+}
+
+/** True when the browser can actually run the 3D scene. */
+function supportsWebGL() {
+  try {
+    var c = document.createElement('canvas');
+    return !!(window.WebGLRenderingContext &&
+      (c.getContext('webgl') || c.getContext('experimental-webgl')));
+  } catch (e) { return false; }
+}
+
+// Supabase — anonymous, insert-only estimate logging
 const SUPABASE_URL = 'https://lbjcfqxfztbaoxuwhrhd.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxiamNmcXhmenRiYW94dXdocmhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzMzU2NjcsImV4cCI6MjA4OTkxMTY2N30.wp27pbHIwDVLn2CRbPga6olEZOeJdDIO_qRhaDK2l5s';
 let supabaseClient = null;
-try { supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch (e) {}
+let supabaseReady = null;
+
+function initSupabase() {
+  if (!supabaseReady) {
+    supabaseReady = loadScript(ANALYTICS_SCRIPT).then(function() {
+      try {
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      } catch (e) {
+        console.warn('[Calc] Supabase unavailable:', e.message);
+      }
+    }).catch(function() { /* analytics is optional */ });
+  }
+  return supabaseReady;
+}
+
+/**
+ * Log a completed estimate. supabase-js v2 query builders are lazy: nothing is
+ * sent until the promise is subscribed to, so the .then() here is what makes
+ * this an actual HTTP request rather than a discarded object.
+ */
+function logEstimate(result, formInputs) {
+  initSupabase().then(function() {
+    if (!supabaseClient) return;
+    return supabaseClient.from('estimates').insert({
+      address: SolarState.address, lat: SolarState.lat, lon: SolarState.lon,
+      azimuth: formInputs.azimuth, tilt: formInputs.tilt,
+      system_watts: formInputs.systemWatts, floor_level: formInputs.floor,
+      total_floors: formInputs.totalFloors, shading: formInputs.shading,
+      annual_kwh: Math.round(result.annualKwh * 10) / 10,
+      annual_savings: Math.round(result.annualSavings * 100) / 100,
+      shade_factor: result.shadeFactor, used_pvwatts: result.usedPVWatts,
+      data_sources: result.dataSources,
+      calculator_version: '5',
+    }).then(function(res) {
+      if (res && res.error) console.warn('[Calc] Estimate logging failed:', res.error.message);
+    });
+  }).catch(function(err) {
+    console.warn('[Calc] Estimate logging failed:', err && err.message);
+  });
+}
 
 // Nav scroll
 window.addEventListener('scroll', function() {
@@ -1090,18 +1313,95 @@ function initGooglePlaces() {
 }
 window.initGooglePlaces = initGooglePlaces;
 
+// --- SUBMIT A TYPED ADDRESS ---
+// Picking an autocomplete suggestion fires onPlaceSelected directly. This
+// handles the visitor who types a full address and hits the button or Enter
+// without choosing a suggestion, which previously did nothing at all.
+let submitInFlight = false;
+
+async function submitTypedAddress() {
+  if (submitInFlight) return;
+  const input = document.getElementById('addressInput');
+  const query = (input.value || '').trim();
+  if (!query) { input.focus(); return; }
+
+  if (typeof google === 'undefined' || !google.maps || !google.maps.Geocoder) {
+    console.warn('[Calc] Geocoder unavailable');
+    input.focus();
+    return;
+  }
+
+  submitInFlight = true;
+  const spinner = document.getElementById('heroSpinner');
+  spinner.classList.add('active');
+
+  try {
+    const bounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(SolarConfig.NYC_BOUNDS.south, SolarConfig.NYC_BOUNDS.west),
+      new google.maps.LatLng(SolarConfig.NYC_BOUNDS.north, SolarConfig.NYC_BOUNDS.east)
+    );
+    const geocoder = new google.maps.Geocoder();
+    const result = await new Promise(function(resolve, reject) {
+      geocoder.geocode({ address: query, bounds: bounds, componentRestrictions: { country: 'us' } },
+        function(results, status) {
+          if (status === 'OK' && results && results.length) resolve(results[0]);
+          else reject(new Error('Geocode failed: ' + status));
+        });
+    });
+
+    const loc = result.geometry.location;
+    if (!bounds.contains(loc)) {
+      spinner.classList.remove('active');
+      submitInFlight = false;
+      input.setCustomValidity('');
+      input.value = query;
+      input.focus();
+      console.warn('[Calc] Address is outside NYC');
+      return;
+    }
+
+    SolarState.lat = loc.lat();
+    SolarState.lon = loc.lng();
+    SolarState.address = result.formatted_address;
+    SolarState.addressComponents = result.address_components;
+    SolarState.dataSources.googlePlaces = true;
+    input.value = result.formatted_address;
+
+    spinner.classList.remove('active');
+    submitInFlight = false;
+    await onPlaceSelected(result);
+  } catch (err) {
+    console.warn('[Calc] Address submit failed:', err.message);
+    spinner.classList.remove('active');
+    submitInFlight = false;
+    input.focus();
+  }
+}
+
 // --- ADDRESS SELECTED ---
 async function onPlaceSelected(place) {
   const spinner = document.getElementById('heroSpinner');
   spinner.classList.add('active');
 
+  // Start fetching the 3D stack while the building lookup is in flight.
+  const canRender3D = supportsWebGL();
+  const stackPromise = canRender3D ? loadSceneStack().catch(function(e) {
+    console.warn('[Calc] 3D stack failed to load:', e.message);
+    return null;
+  }) : Promise.resolve(null);
+
   await SolarAPI.runBuildingLookup();
-  spinner.classList.remove('active');
 
   // Ensure neighbors
   if (!SolarState.neighborBuildings) {
     await SolarAPI.fetchNeighborBuildings();
   }
+
+  let stackLoaded = true;
+  try { await stackPromise; } catch (e) { stackLoaded = false; }
+  if (!canRender3D) stackLoaded = false;
+
+  spinner.classList.remove('active');
 
   totalFloors = SolarState.numfloors || 20;
 
@@ -1113,12 +1413,8 @@ async function onPlaceSelected(place) {
   var infoEl = document.getElementById('heroBuildingInfo');
   if (infoHtml) { infoEl.innerHTML = infoHtml; infoEl.classList.add('visible'); }
 
-  // Slide hero left, show 3D viewport
-  document.getElementById('heroSection').classList.add('has-scene');
-  document.getElementById('sceneFrame').classList.add('visible');
-  document.body.classList.add('scene-modal-open');
-
   // Swap left panel: hide input, show CTAs immediately
+  document.getElementById('heroSection').classList.add('has-scene');
   document.querySelector('.hero-input-wrap').style.display = 'none';
   document.getElementById('heroBuildingInfo').style.display = 'none';
   document.querySelector('#heroContent > p').style.display = 'none';
@@ -1129,8 +1425,98 @@ async function onPlaceSelected(place) {
     (SolarState.heightroof ? ' &middot; ' + Math.round(SolarState.heightroof) + ' ft' : '');
   document.getElementById('heroPostResults').classList.add('visible');
 
+  // The 3D path needs a building footprint, a working WebGL context and the
+  // scene modules. Any of those missing and we fall back to the manual form
+  // rather than stranding the visitor in an empty viewport.
+  const can3D = stackLoaded && !!SolarState.footprintCoords && typeof THREE !== 'undefined';
+
+  if (!can3D) {
+    console.log('[Calc] Falling back to manual entry (footprint/WebGL unavailable)');
+    showManualPanel(canRender3D
+      ? 'We could not load 3D building data for this address. Enter your details and we will estimate from NYC floor and shading averages.'
+      : 'Your browser cannot display the 3D view. Enter your details and we will estimate from NYC floor and shading averages.');
+    return;
+  }
+
+  document.getElementById('sceneFrame').classList.add('visible');
+  document.body.classList.add('scene-modal-open');
+
   // Init Three.js scene
   setTimeout(function() { initScene(); }, 400);
+}
+
+// --- MANUAL ENTRY PATH ---
+// Keyboard-accessible, no WebGL, no footprint required. Also the only route
+// to a result for screen-reader users, since balcony selection is a click on
+// a 3D mesh.
+function showManualPanel(message) {
+  const panel = document.getElementById('manualPanel');
+  if (!panel) return;
+  const note = document.getElementById('manualNote');
+  if (note) note.textContent = message || '';
+
+  // Seed the floor selector from PLUTO when we have it.
+  const totalInput = document.getElementById('manualTotalFloors');
+  if (totalInput) totalInput.value = SolarState.numfloors || 20;
+  const floorInput = document.getElementById('manualFloor');
+  if (floorInput) floorInput.value = Math.max(1, Math.round((SolarState.numfloors || 20) / 2));
+
+  // Pre-select the detected facade when orientation succeeded.
+  const suggestion = SolarState.orientationSuggestion;
+  if (suggestion && typeof suggestion.bestDirection === 'number') {
+    const sel = document.getElementById('manualDirection');
+    if (sel) sel.value = String(suggestion.bestDirection);
+    const hint = document.getElementById('manualDirectionHint');
+    if (hint) {
+      hint.textContent = 'Suggested from your building outline (' + suggestion.confidence + ' confidence).';
+    }
+  }
+
+  panel.classList.add('visible');
+  document.body.classList.add('scene-modal-open');
+  const firstField = document.getElementById('manualFloor');
+  if (firstField) firstField.focus();
+}
+
+async function runManualEstimate() {
+  const btn = document.getElementById('manualSubmit');
+  if (btn) { btn.disabled = true; btn.textContent = 'Calculating...'; }
+
+  try {
+    const total = Math.max(1, parseInt(document.getElementById('manualTotalFloors').value, 10) || 20);
+    const floor = Math.min(total, Math.max(1, parseInt(document.getElementById('manualFloor').value, 10) || 1));
+    const azimuth = parseInt(document.getElementById('manualDirection').value, 10);
+    const shading = document.getElementById('manualShading').value;
+
+    totalFloors = total;
+    selectedFloor = floor;
+    selectedAzimuth = azimuth;
+    lastShadeProfile = null;   // static shade factor path
+
+    const custom = readCustomizeInputs();
+    custom.shading = shading;
+    setCustomizeInputs(custom);
+
+    const formInputs = Object.assign({
+      azimuth: azimuth, floor: floor, totalFloors: total, shadeProfile: null,
+    }, custom);
+
+    const result = await SolarAPI.calculateEstimate(formInputs);
+    lastFormInputs = formInputs;
+    animationDone = true;
+
+    document.getElementById('manualPanel').classList.remove('visible');
+    document.body.classList.remove('scene-modal-open');
+    showResults(result, formInputs);
+    openBreakdownModal();
+    logEstimate(result, formInputs);
+  } catch (err) {
+    console.warn('[Calc] Manual estimate failed:', err);
+    const note = document.getElementById('manualNote');
+    if (note) note.textContent = 'Something went wrong computing that estimate. Please try again.';
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = 'Calculate my estimate'; }
+  }
 }
 
 // --- 3D SCENE ---
@@ -1423,12 +1809,13 @@ async function runSunAnimation() {
   // Set to sunrise
   Scene3D.setTimeAndMonth(330, 5); // 5:30 AM, June
 
-  // Kick off shade computation + API call immediately (runs during animation)
-  var shadeProfile = ShadowModel.computeAnnualShadeProfile();
-  console.log('[Calc4] 3D shade factor:', shadeProfile.annualShadeFactor.toFixed(3));
-
   // Collect customizable assumptions from the breakdown modal (or defaults).
   var customInputs = readCustomizeInputs();
+
+  // Shade depends on the panel's tilt, so compute it for the selected mount.
+  var shadeProfile = ShadowModel.computeAnnualShadeProfile(customInputs.tilt);
+  console.log('[Calc] 3D shade factor:', shadeProfile.annualShadeFactor.toFixed(3));
+
   var formInputs = Object.assign({
     azimuth: selectedAzimuth,
     floor: selectedFloor,
@@ -1481,33 +1868,52 @@ async function runSunAnimation() {
   document.getElementById('timeSlider').value = 720;
   document.getElementById('timeLabel').textContent = SunPosition.formatTime(720);
 
+  // Hand the sun back to the visitor: the scrubber, play button and month
+  // switcher are only meaningful once the reveal animation has finished.
+  document.getElementById('sceneControls').style.display = '';
+
   // Show floating card + populate breakdown modal
   lastFormInputs = formInputs;
   showResults(result, formInputs);
-
-  // Log
-  if (supabaseClient) {
-    try {
-      supabaseClient.from('estimates').insert({
-        address: SolarState.address, lat: SolarState.lat, lon: SolarState.lon,
-        azimuth: formInputs.azimuth, tilt: formInputs.tilt,
-        system_watts: formInputs.systemWatts, floor_level: formInputs.floor,
-        total_floors: formInputs.totalFloors, shading: formInputs.shading,
-        annual_kwh: Math.round(result.annualKwh * 10) / 10,
-        annual_savings: Math.round(result.annualSavings * 100) / 100,
-        shade_factor: result.shadeFactor, used_pvwatts: result.usedPVWatts,
-        calculator_version: '4',
-      });
-    } catch (e) {}
-  }
+  logEstimate(result, formInputs);
 }
 
 // --- SHOW RESULTS ---
+/**
+ * Tell the visitor when an estimate did not use the full pipeline. The
+ * methodology promises this notice; without it a fallback-formula number is
+ * presented with the same confidence as a PVWatts-plus-3D one.
+ */
+function updateEstimateBanner(r) {
+  const banner = document.getElementById('estimateBanner');
+  if (!banner) return;
+  const notes = [];
+
+  if (!r.usedPVWatts) {
+    notes.push('NREL PVWatts was unreachable, so this uses our client-side fallback formula. Expect a wider error band (about 20%).');
+  }
+  if (!r.shadeFactorFrom3D) {
+    notes.push('No 3D building model was available, so shading comes from NYC floor and density averages rather than your actual block.');
+  }
+
+  if (notes.length === 0) {
+    banner.classList.remove('visible');
+    banner.innerHTML = '';
+    return;
+  }
+  banner.innerHTML = '<span aria-hidden="true">&#9888;</span><span><strong>About this estimate.</strong> ' +
+    notes.join(' ') + '</span>';
+  banner.classList.add('visible');
+}
+
 function showResults(r, inputs) {
+  r.shadeFactorFrom3D = !!(inputs && inputs.shadeProfile && inputs.shadeProfile.monthlyShadeFactors);
+  updateEstimateBanner(r);
+
   // Floating card — lead with savings
   document.getElementById('rcSavings').textContent = '$' + Math.round(r.annualSavings);
   document.getElementById('rcKwh').textContent = Math.round(r.annualKwh).toLocaleString() + ' kWh';
-  document.getElementById('rcPayback').textContent = r.npvPayback < 25 ? r.npvPayback.toFixed(1) + ' yrs' : '25+ yrs';
+  document.getElementById('rcPayback').textContent = r.escalatedPayback < 25 ? r.escalatedPayback.toFixed(1) + ' yrs' : '25+ yrs';
   document.getElementById('rcOffset').textContent = Math.round(r.billOffsetPct) + '%';
   document.getElementById('rcCo2').textContent = Math.round(r.co2Lbs) + ' lbs';
 
@@ -1525,7 +1931,7 @@ function showResults(r, inputs) {
   document.getElementById('monthlySavings').textContent = '$' + Math.round(r.monthlySavings) + '/mo';
   document.getElementById('billOffset').textContent = Math.round(r.billOffsetPct) + '%';
   document.getElementById('billOffsetText').textContent = Math.round(r.billOffsetPct) + '%';
-  var paybackYrs = r.npvPayback < 25 ? r.npvPayback.toFixed(1) + ' years' : '25+ years';
+  var paybackYrs = r.escalatedPayback < 25 ? r.escalatedPayback.toFixed(1) + ' years' : '25+ years';
   document.getElementById('paybackYears').textContent = paybackYrs;
   document.getElementById('lifetimeSavings').textContent = '$' + Math.round(r.lifetimeSavings).toLocaleString();
   document.getElementById('co2Offset').textContent = Math.round(r.co2Lbs).toLocaleString();
@@ -1534,12 +1940,12 @@ function showResults(r, inputs) {
   document.getElementById('phonesCharged').textContent = Math.round(r.phonesCharged).toLocaleString();
 
   // Payback bar
-  var paybackPct = Math.min(100, (r.npvPayback / 25) * 100);
+  var paybackPct = Math.min(100, (r.escalatedPayback / 25) * 100);
   var freePct = 100 - paybackPct;
   var pbFill = document.getElementById('paybackFill');
   pbFill.style.width = paybackPct + '%';
-  pbFill.textContent = r.npvPayback < 25 ? Math.round(r.npvPayback) + ' yrs' : '25+';
-  pbFill.nextElementSibling.textContent = freePct > 5 ? Math.round(25 - r.npvPayback) + '+ yrs free' : '';
+  pbFill.textContent = r.escalatedPayback < 25 ? Math.round(r.escalatedPayback) + ' yrs' : '25+';
+  pbFill.nextElementSibling.textContent = freePct > 5 ? Math.round(25 - r.escalatedPayback) + '+ yrs free' : '';
 
   // Bill offset ring
   var offsetPct = Math.round(r.billOffsetPct);
@@ -1603,23 +2009,37 @@ function resetCalculator() {
   // Hide results
   document.getElementById('floatingCard').classList.remove('visible');
   document.getElementById('breakdownOverlay').classList.remove('active');
+  document.getElementById('manualPanel').classList.remove('visible');
+  document.getElementById('sceneControls').style.display = 'none';
+  document.body.classList.remove('scene-modal-open');
+  var banner = document.getElementById('estimateBanner');
+  if (banner) { banner.classList.remove('visible'); banner.innerHTML = ''; }
 
-  // Clean up 3D scene
-  if (Scene3D.scene) {
+  // Clean up 3D scene. Guarded because the scene modules are loaded on demand
+  // and may never have been fetched (manual path, no WebGL).
+  if (typeof Scene3D !== 'undefined' && Scene3D.scene) {
     while (Scene3D.scene.children.length > 0) {
       Scene3D.scene.remove(Scene3D.scene.children[0]);
     }
+    Scene3D.buildingMeshes = [];
+    Scene3D.targetBuilding = null;
   }
-  Scene3D.buildingMeshes = [];
-  Scene3D.targetBuilding = null;
+  // Drop the cached skyline so the next address does not inherit it.
+  if (typeof ShadowModel !== 'undefined' && ShadowModel.reset) ShadowModel.reset();
 }
 document.getElementById('breakdownOverlay').addEventListener('click', function(e) {
   if (e.target === this) this.classList.remove('active');
 });
 
 // --- 3D CONTROLS ---
+// Guarded on Scene3D: the scene modules load on demand, so on the manual and
+// no-WebGL paths these controls exist in the DOM but have nothing to drive.
+function sceneReady() {
+  return animationDone && typeof Scene3D !== 'undefined' && Scene3D.scene;
+}
+
 document.getElementById('timeSlider').addEventListener('input', function() {
-  if (!animationDone) return;
+  if (!sceneReady()) return;
   Scene3D.setTimeAndMonth(parseInt(this.value), undefined);
   document.getElementById('timeLabel').textContent = SunPosition.formatTime(parseInt(this.value));
 });
@@ -1630,19 +2050,28 @@ document.getElementById('sceneModalClose').addEventListener('click', function() 
 });
 
 document.getElementById('playBtn').addEventListener('click', function() {
-  if (!animationDone) return;
+  if (!sceneReady()) return;
   if (Scene3D.isPlaying) { Scene3D.stopAnimation(); this.innerHTML = '&#9654;'; }
   else { Scene3D.startAnimation(); this.innerHTML = '&#9646;&#9646;'; }
 });
 
 document.querySelectorAll('.scene3d-month-btn').forEach(function(btn) {
   btn.addEventListener('click', function() {
-    if (!animationDone) return;
+    if (!sceneReady()) return;
     document.querySelectorAll('.scene3d-month-btn').forEach(function(b) { b.classList.remove('selected'); });
     this.classList.add('selected');
     Scene3D.setTimeAndMonth(undefined, parseInt(this.dataset.month));
     Scene3D.updateSunArc();
   });
+});
+
+// Submit a typed address via the button or the Enter key.
+document.getElementById('heroSubmit').addEventListener('click', submitTypedAddress);
+document.getElementById('addressInput').addEventListener('keydown', function(e) {
+  if (e.key !== 'Enter') return;
+  // Give the autocomplete dropdown a beat to claim the keypress; if it does,
+  // onPlaceSelected fires and submitTypedAddress becomes a no-op.
+  setTimeout(function() { if (!SolarState.lat) submitTypedAddress(); }, 300);
 });
 
 if (typeof google !== 'undefined' && google.maps) initGooglePlaces();

@@ -179,26 +179,34 @@ function getShadeFactor(floor, totalFloors, shading) {
 // --- API HELPERS ---
 
 async function fetchWithTimeout(url, options = {}, timeoutMs = 10000) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-  try {
-    const response = await fetch(url, { ...options, signal: controller.signal });
-    clearTimeout(timer);
-    if (!response.ok) {
-      // One retry on 429 (rate limit)
-      if (response.status === 429) {
-        await new Promise(r => setTimeout(r, 1000));
-        const retry = await fetch(url, options);
-        if (!retry.ok) throw new Error(`HTTP ${retry.status}`);
-        return retry;
-      }
-      throw new Error(`HTTP ${response.status}`);
+  const attempt = async () => {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      return await fetch(url, { ...options, signal: controller.signal });
+    } finally {
+      clearTimeout(timer);
     }
-    return response;
-  } catch (err) {
-    clearTimeout(timer);
-    throw err;
+  };
+
+  let response = await attempt();
+  if (!response.ok) {
+    // One retry on 429 (rate limit), under its own timeout
+    if (response.status === 429) {
+      await new Promise(r => setTimeout(r, 1000));
+      response = await attempt();
+    }
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
   }
+  return response;
+}
+
+/**
+ * Escape a value for interpolation into a Socrata SoQL string literal.
+ * Without this an apostrophe in an address ("O'Neill St") breaks the query.
+ */
+function soqlEscape(value) {
+  return String(value).replace(/'/g, "''");
 }
 
 
@@ -302,14 +310,14 @@ const SolarAPI = {
 
       if (SolarState.bbl) {
         const params = new URLSearchParams({
-          '$where': `bbl='${SolarState.bbl}'`,
+          '$where': `bbl='${soqlEscape(SolarState.bbl)}'`,
           '$select': 'address,bldgclass,numfloors,unitsres,yearbuilt,bldgarea,zonedist1,bbl',
           '$limit': '5',
         });
         url = `${SolarConfig.PLUTO_URL}?${params}`;
       } else if (SolarState.address) {
         // Fallback: search by address string
-        const street = SolarState.address.split(',')[0].toUpperCase();
+        const street = soqlEscape(SolarState.address.split(',')[0].toUpperCase());
         const params = new URLSearchParams({
           '$where': `upper(address) LIKE '%${street}%'`,
           '$select': 'address,bldgclass,numfloors,unitsres,yearbuilt,bldgarea,zonedist1,bbl',
@@ -358,7 +366,7 @@ const SolarAPI = {
 
       if (SolarState.bin) {
         const params = new URLSearchParams({
-          '$where': `bin='${SolarState.bin}'`,
+          '$where': `bin='${soqlEscape(SolarState.bin)}'`,
           '$select': 'bin,height_roof,ground_elevation,the_geom',
           '$limit': '1',
         });
@@ -425,14 +433,23 @@ const SolarAPI = {
   detectOrientation(coords) {
     if (!coords || coords.length < 3) return null;
 
+    // Longitude degrees are shorter than latitude degrees away from the
+    // equator. At NYC's ~40.7N a degree of longitude is only ~76% of a degree
+    // of latitude, so raw degree deltas stretch east-west edges by ~1.3x and
+    // skew every bearing by up to ~7 degrees — enough to snap a Manhattan-grid
+    // facade to the wrong compass point. Project to local metres first.
+    const meanLat = coords.reduce((s, c) => s + c[1], 0) / coords.length;
+    const lonScale = Math.cos(meanLat * Math.PI / 180);
+
     // Compute edge lengths and perpendicular facade directions
     const edges = [];
     for (let i = 0; i < coords.length - 1; i++) {
       const p1 = coords[i];
       const p2 = coords[i + 1];
-      const dx = p2[0] - p1[0]; // longitude (east-west)
-      const dy = p2[1] - p1[1]; // latitude (north-south)
+      const dx = (p2[0] - p1[0]) * lonScale; // longitude (east-west), scaled
+      const dy = p2[1] - p1[1];              // latitude (north-south)
       const length = Math.sqrt(dx * dx + dy * dy);
+      if (length === 0) continue;
 
       // Edge direction (compass bearing)
       // atan2(dx, dy) gives angle from north, clockwise
@@ -442,21 +459,31 @@ const SolarAPI = {
       const facade1 = (edgeAngle + 90) % 360;
       const facade2 = (edgeAngle + 270) % 360;
 
-      edges.push({ length, facadeAngles: [facade1, facade2] });
+      edges.push({ length, edgeAngle, facadeAngles: [facade1, facade2] });
     }
+
+    if (edges.length === 0) return null;
 
     // Sort by edge length descending
     edges.sort((a, b) => b.length - a.length);
 
-    if (edges.length === 0) return null;
-
     // Primary facades from the longest edge
     const primaryFacades = edges[0].facadeAngles;
-    const secondaryFacades = edges.length > 1 ? edges[1].facadeAngles : null;
+
+    // The runner-up for confidence must be a genuinely different wall. In any
+    // rectangle the two longest edges are the parallel long walls and are
+    // near-identical in length, so comparing against edges[1] made "high"
+    // confidence effectively unreachable. Compare against the longest edge
+    // that runs at least 30 degrees off the primary instead.
+    const crossEdge = edges.find(e => {
+      let diff = Math.abs(e.edgeAngle - edges[0].edgeAngle) % 180;
+      if (diff > 90) diff = 180 - diff;
+      return diff >= 30;
+    });
 
     // Map each facade angle to nearest 45° compass direction
     const allFacades = [...primaryFacades];
-    if (secondaryFacades) allFacades.push(...secondaryFacades);
+    if (crossEdge) allFacades.push(...crossEdge.facadeAngles);
 
     const compassOptions = [0, 45, 90, 135, 180, 225, 270, 315];
 
@@ -478,10 +505,23 @@ const SolarAPI = {
     const solarRank = { 180: 1, 135: 2, 225: 2, 90: 3, 270: 3, 45: 4, 315: 4, 0: 5 };
     mapped.sort((a, b) => (solarRank[a] || 5) - (solarRank[b] || 5));
 
+    const snap = angle => {
+      let bestDir = 180, bestDiff = 360;
+      for (const dir of compassOptions) {
+        let diff = Math.abs(angle - dir);
+        if (diff > 180) diff = 360 - diff;
+        if (diff < bestDiff) { bestDiff = diff; bestDir = dir; }
+      }
+      return bestDir;
+    };
+
     return {
+      // Best solar-facing wall anywhere on the building.
       bestDirection: mapped[0],
       allDirections: [...new Set(mapped)],
-      confidence: edges[0].length > 1.3 * (edges[1]?.length || 0) ? 'high' : 'medium',
+      // The two walls of the longest edge — where most units actually face.
+      primaryDirections: [...new Set(primaryFacades.map(snap))],
+      confidence: (!crossEdge || edges[0].length > 1.3 * crossEdge.length) ? 'high' : 'medium',
     };
   },
 
@@ -538,6 +578,45 @@ const SolarAPI = {
   },
 
   // ---- NREL PVWatts V8 ----
+
+  // NYC urban soiling profile, calibrated to urban-PV literature (3-7% monthly).
+  // Kept out of `losses` so it isn't double-counted there.
+  SOILING_MONTHLY: [3, 3, 4, 5, 6, 7, 7, 7, 6, 5, 4, 3],
+
+  // Combined loss when the soiling array cannot be sent: 14% base compounded
+  // with the array's ~5% annual mean => 1 - (1 - 0.14)(1 - 0.05) = 18.3%.
+  LOSSES_WITH_SOILING: '18.3',
+
+  _pvwattsBaseParams(params) {
+    return {
+      api_key: SolarConfig.NREL_API_KEY,
+      system_capacity: params.systemCapacity.toString(),
+      module_type: '1',       // Premium (19% efficiency, better temp coeff)
+      array_type: '0',        // Fixed open rack (only option for balcony)
+      tilt: params.tilt.toString(),
+      azimuth: params.azimuth.toString(),
+      lat: SolarState.lat.toString(),
+      lon: SolarState.lon.toString(),
+      dc_ac_ratio: '1.1',     // Micro-inverter matched to 1-2 modules; 1.2 over-clips
+      inv_eff: '96.5',        // Micro-inverter efficiency (Enphase IQ8 ~97%, budget ~96%)
+      dataset: 'nsrdb',
+      timeframe: 'monthly',
+      // Concrete balcony ground reflectance (light-colored: ~0.30)
+      albedo: '0.20',
+      // Monofacial panels (set to 0.75 if selling bifacial panels)
+      bifaciality: '0',
+    };
+  },
+
+  /**
+   * Call PVWatts, trying progressively simpler soiling encodings.
+   *
+   * NREL documents array parameters as pipe-delimited, but has accepted a
+   * bracketed JSON list historically. If the parameter is rejected the whole
+   * request fails, which would silently drop every estimate onto the
+   * client-side fallback while the UI still claimed an hourly simulation.
+   * So we degrade explicitly: pipe -> bracket -> fold soiling into `losses`.
+   */
   async fetchPVWatts(params) {
     if (!SolarState.lat || !SolarState.lon) return null;
     if (!SolarConfig.NREL_API_KEY) {
@@ -545,52 +624,48 @@ const SolarAPI = {
       return null;
     }
 
-    try {
-      const startTime = performance.now();
-      const queryParams = new URLSearchParams({
-        api_key: SolarConfig.NREL_API_KEY,
-        system_capacity: params.systemCapacity.toString(),
-        module_type: '1',       // Premium (19% efficiency, better temp coeff)
-        array_type: '0',        // Fixed open rack (only option for balcony)
-        tilt: params.tilt.toString(),
-        azimuth: params.azimuth.toString(),
-        lat: SolarState.lat.toString(),
-        lon: SolarState.lon.toString(),
-        losses: '14',           // PVWatts default; soiling moved into soiling[] array
-        dc_ac_ratio: '1.2',
-        inv_eff: '96.5',        // Micro-inverter efficiency (Enphase IQ8 ~97%, budget ~96%)
-        dataset: 'nsrdb',
-        timeframe: 'monthly',
-        // NYC urban soiling profile — calibrated to urban-PV literature (3-7% monthly)
-        soiling: '[3,3,4,5,6,7,7,7,6,5,4,3]',
-        // Concrete balcony ground reflectance (light-colored: ~0.30)
-        albedo: '0.20',
-        // Monofacial panels (set to 0.75 if selling bifacial panels)
-        bifaciality: '0',
-      });
+    const soiling = this.SOILING_MONTHLY;
+    const variants = [
+      { label: 'pipe-delimited soiling', extra: { losses: '14', soiling: soiling.join('|') } },
+      { label: 'bracketed soiling', extra: { losses: '14', soiling: `[${soiling.join(',')}]` } },
+      { label: 'soiling folded into losses', extra: { losses: this.LOSSES_WITH_SOILING } },
+    ];
 
-      const url = `${SolarConfig.PVWATTS_URL}?${queryParams}`;
-      console.log('[SolarAPI] Calling PVWatts V8...');
+    for (const variant of variants) {
+      try {
+        const startTime = performance.now();
+        const queryParams = new URLSearchParams(
+          Object.assign(this._pvwattsBaseParams(params), variant.extra)
+        );
+        const url = `${SolarConfig.PVWATTS_URL}?${queryParams}`;
 
-      const response = await fetchWithTimeout(url);
-      const data = await response.json();
+        const response = await fetchWithTimeout(url);
+        const data = await response.json();
 
-      console.log(`[SolarAPI] PVWatts responded in ${(performance.now() - startTime).toFixed(0)}ms`);
+        if (data.errors && data.errors.length > 0) {
+          console.warn(`[SolarAPI] PVWatts rejected ${variant.label}:`, data.errors);
+          continue;
+        }
+        if (!data.outputs || typeof data.outputs.ac_annual !== 'number') {
+          console.warn(`[SolarAPI] PVWatts returned no outputs for ${variant.label}`);
+          continue;
+        }
 
-      if (data.errors && data.errors.length > 0) {
-        console.warn('[SolarAPI] PVWatts errors:', data.errors);
-        return null;
+        console.log(`[SolarAPI] PVWatts OK (${variant.label}) in ${(performance.now() - startTime).toFixed(0)}ms`);
+        SolarState.pvwattsResult = data;
+        SolarState.pvwattsVariant = variant.label;
+        SolarState.dataSources.pvwatts = true;
+        console.log(`[SolarAPI] PVWatts: ac_annual=${data.outputs.ac_annual} kWh`);
+        return data;
+      } catch (err) {
+        console.warn(`[SolarAPI] PVWatts request failed (${variant.label}):`, err.message);
+        // A transport failure will hit every variant; don't hammer the API.
+        if (err.name === 'AbortError') break;
       }
-
-      SolarState.pvwattsResult = data;
-      SolarState.dataSources.pvwatts = true;
-
-      console.log(`[SolarAPI] PVWatts: ac_annual=${data.outputs?.ac_annual} kWh, capacity_factor=${data.outputs?.capacity_factor}%`);
-      return data;
-    } catch (err) {
-      console.warn('[SolarAPI] PVWatts failed:', err.message);
-      return null;
     }
+
+    console.warn('[SolarAPI] PVWatts unavailable; using client-side fallback');
+    return null;
   },
 
   // ---- Neighboring Buildings (Phase 3 prep) ----
@@ -711,6 +786,10 @@ const SolarAPI = {
       });
     }
 
+    // Railing / mounting-hardware obstruction. Not visible to building
+    // footprints and not modelled by PVWatts, so it is applied to both paths.
+    const railingFactor = (SolarConfig.RAILING_OBSTRUCTION_BY_TILT || {})[tilt] ?? 0.97;
+
     if (pvwattsData && pvwattsData.outputs) {
       // Use real PVWatts data
       const outputs = pvwattsData.outputs;
@@ -719,18 +798,18 @@ const SolarAPI = {
       if (monthlyShadeFactors) {
         // Apply per-month 3D shade factors to PVWatts monthly output
         monthlyKwh = outputs.ac_monthly.map((v, i) =>
-          v * monthlyShadeFactors[i] * SolarConfig.THERMAL_BONUS
+          v * monthlyShadeFactors[i] * SolarConfig.THERMAL_BONUS * railingFactor
         );
         annualKwh = monthlyKwh.reduce((s, v) => s + v, 0);
       } else {
         // Uniform shade factor across all months
-        annualKwh = rawAnnual * shadeFactor * SolarConfig.THERMAL_BONUS;
-        const scale = shadeFactor * SolarConfig.THERMAL_BONUS;
+        const scale = shadeFactor * SolarConfig.THERMAL_BONUS * railingFactor;
+        annualKwh = rawAnnual * scale;
         monthlyKwh = outputs.ac_monthly.map(v => v * scale);
       }
       usedPVWatts = true;
 
-      console.log(`[SolarAPI] PVWatts: raw=${rawAnnual.toFixed(0)} kWh, after 3D shade=${annualKwh.toFixed(0)} kWh`);
+      console.log(`[SolarAPI] PVWatts: raw=${rawAnnual.toFixed(0)} kWh, after shade+railing=${annualKwh.toFixed(0)} kWh`);
     } else {
       // Fallback: client-side formula (used when PVWatts API unavailable)
       const tiltFactor = TILT_FACTORS[tilt] || 0.60;
@@ -744,7 +823,8 @@ const SolarAPI = {
         * tiltFactor
         * azimuthFactor
         * URBAN_SOILING_FACTOR
-        * SolarConfig.THERMAL_BONUS;
+        * SolarConfig.THERMAL_BONUS
+        * railingFactor;
 
       const distribution = SolarState.monthlyDistribution || DEFAULT_MONTHLY_DISTRIBUTION;
 
@@ -764,16 +844,23 @@ const SolarAPI = {
     const annualSavings = annualKwh * SolarConfig.ELECTRICITY_RATE;
     const monthlySavings = annualSavings / 12;
 
-    const monthlyConsumption = monthlyBill / SolarConfig.ELECTRICITY_RATE;
+    // Infer consumption from the bill at the MARGINAL rate, after removing the
+    // fixed Customer Charge. The charge is part of what the user pays but is
+    // not part of what a kWh costs, so leaving it in would inflate their
+    // implied usage and understate the offset percentage.
+    const billableAmount = Math.max(0, monthlyBill - SolarConfig.MONTHLY_CUSTOMER_CHARGE);
+    const monthlyConsumption = billableAmount / SolarConfig.ELECTRICITY_RATE;
     const annualConsumption = Math.max(1, monthlyConsumption * 12);
     const billOffsetPct = Math.min(100, (annualKwh / annualConsumption) * 100);
 
     const simplePayback = adjustedCost / annualSavings;
 
-    // NPV payback + 25-year lifetime savings (single loop)
+    // Payback and 25-year total, in nominal dollars (single loop).
+    // Both compound the rate escalation and the panel's degradation. Neither
+    // is discounted to present value, so these are nominal figures, not NPV.
     let cumSavings = 0;
     let lifetimeSavings = 0;
-    let npvPayback = 25;
+    let escalatedPayback = 25;
     for (let i = 0; i < 25; i++) {
       const yearSavings = annualKwh
         * Math.pow(1 - panelDegradation, i)
@@ -781,9 +868,9 @@ const SolarAPI = {
         * Math.pow(1 + rateEscalation, i);
       lifetimeSavings += yearSavings;
       cumSavings += yearSavings;
-      if (cumSavings >= adjustedCost && npvPayback === 25) {
+      if (cumSavings >= adjustedCost && escalatedPayback === 25) {
         const prevCum = cumSavings - yearSavings;
-        npvPayback = i + (adjustedCost - prevCum) / yearSavings;
+        escalatedPayback = i + (adjustedCost - prevCum) / yearSavings;
       }
     }
 
@@ -808,7 +895,9 @@ const SolarAPI = {
       monthlySavings,
       billOffsetPct,
       simplePayback,
-      npvPayback,
+      escalatedPayback,
+      // Back-compat alias for older call sites. Nominal, not discounted.
+      npvPayback: escalatedPayback,
       lifetimeSavings,
       adjustedCost,
 
@@ -824,6 +913,7 @@ const SolarAPI = {
       azimuth,
       tilt,
       shadeFactor,
+      railingFactor,
       costTier: tier,
       escalationPreset: escalationPreset || 'mid',
       panelDegradation,

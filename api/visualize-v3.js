@@ -4,13 +4,57 @@
 // Env vars: GEMINI_API_KEY, GOOGLE_API_KEY (or GOOGLE_SV_KEY)
 // Usage: POST /api/visualize-v3 { lat, lon, floor, totalFloors, address }
 
+// Every call to this endpoint spends money: paid Street View fetches plus
+// multiple Gemini image generations. It was previously wide open (CORS *,
+// no auth, no throttle), which is an invitation to run up the bill. Requests
+// now have to come from our own pages, and each client IP gets a small quota.
+const ALLOWED_ORIGINS = [
+  'https://balco.nyc',
+  'https://www.balco.nyc',
+  'http://localhost:3000',
+];
+const RATE_LIMIT_MAX = 5;              // requests per IP
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;  // per hour
+
+// Best-effort in-memory limiter. Serverless instances are recycled, so this
+// blunts casual abuse rather than guaranteeing a hard ceiling; a durable
+// counter (KV/Redis) would be needed for that.
+const requestLog = new Map();
+
+function rateLimited(ip) {
+  const now = Date.now();
+  const hits = (requestLog.get(ip) || []).filter(t => now - t < RATE_LIMIT_WINDOW_MS);
+  if (hits.length >= RATE_LIMIT_MAX) return true;
+  hits.push(now);
+  requestLog.set(ip, hits);
+  if (requestLog.size > 5000) requestLog.clear(); // bound memory growth
+  return false;
+}
+
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  const origin = req.headers.origin;
+  const allowed = origin && ALLOWED_ORIGINS.includes(origin);
+  if (allowed) res.setHeader('Access-Control-Allow-Origin', origin);
+  res.setHeader('Vary', 'Origin');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+
+  // A same-origin browser request sends no Origin header on POST from our own
+  // page in some cases, so fall back to checking Referer before rejecting.
+  const referer = req.headers.referer || '';
+  const fromOurSite = allowed || ALLOWED_ORIGINS.some(o => referer.startsWith(o));
+  if (!fromOurSite) {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+
+  const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
+  if (rateLimited(ip)) {
+    res.setHeader('Retry-After', '3600');
+    return res.status(429).json({ error: 'Rate limit exceeded. Try again later.' });
+  }
 
   const geminiKey = process.env.GEMINI_API_KEY;
   if (!geminiKey) return res.status(500).json({ error: 'Gemini API key not configured' });

@@ -85,8 +85,9 @@ const SunPosition = {
       ? 0
       : Math.max(-1, Math.min(1, (Math.sin(dec) - sinLat * sinAlt) / (cosLat * cosAlt)));
     const sinAz = cosAlt === 0 ? 0 : -cosDec * Math.sin(hourAngle) / cosAlt;
-    // atan2 returns azimuth measured from south; convert to from-north clockwise:
-    let azimuth = (Math.atan2(sinAz, cosAz) + Math.PI) % (2 * Math.PI);
+    // With these sin/cos definitions atan2 already returns azimuth measured from
+    // north, clockwise. Only wrap it into [0, 2PI) — do not rotate it.
+    let azimuth = (Math.atan2(sinAz, cosAz) + 2 * Math.PI) % (2 * Math.PI);
 
     return {
       altitude,

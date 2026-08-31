@@ -142,6 +142,24 @@ The $200/month Google free credit means you pay **$0 until ~25,000 estimates/mon
 
 ---
 
+## Gemini (AI visualization, optional)
+
+`/api/visualize-v3` fetches Street View imagery and calls Gemini to render panels onto the facade. Both cost money per call, so the endpoint is restricted to our own origins and rate-limited to 5 requests per IP per hour (`api/visualize-v3.js`). Set `GEMINI_API_KEY` and `GOOGLE_SV_KEY` as Vercel environment variables; never in `js/config.js`.
+
+If you re-enable this feature, set a budget cap on the Gemini key in Google Cloud first.
+
+---
+
+## Running the tests
+
+```bash
+npm test        # node tests/run.js — no dependencies
+```
+
+The suite loads the shipped files in `js/` directly, so it tests exactly what the browser runs. Add a failing test before changing any model constant.
+
+---
+
 ## Quick Start (Local Development)
 
 ```bash
@@ -165,6 +183,8 @@ vercel env add NYC_GEOCLIENT_KEY
 
 # 2. Ensure js/config.js has production keys
 # 3. Restrict Google API key to balco.nyc domain in Google Cloud Console
-# 4. Deploy
-vercel --prod
+#    (this is the ONLY thing protecting it — the file is served publicly)
+# 4. Add GEMINI_API_KEY + GOOGLE_SV_KEY if using /api/visualize-v3
+# 5. Run the tests, then deploy
+npm test && vercel --prod
 ```

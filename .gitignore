@@ -3,4 +3,9 @@
 .env.local
 .env*.local
 supabase/.temp/
-js/config.js
+
+# NOTE: js/config.js is intentionally tracked. Its Google and NREL keys are
+# client-side by design and restricted by HTTP referrer / free tier. It was
+# previously listed here, which had no effect (the file was already tracked)
+# and implied a protection that did not exist.
+node_modules/

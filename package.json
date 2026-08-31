@@ -1,0 +1,10 @@
+{
+  "name": "balco-nyc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "balco.nyc — NYC balcony solar calculator",
+  "scripts": {
+    "test": "node tests/run.js"
+  },
+  "license": "MIT"
+}

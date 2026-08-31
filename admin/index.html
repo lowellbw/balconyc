@@ -456,9 +456,10 @@
   <!-- LOGIN GATE -->
   <div class="login-gate" id="loginGate">
     <h2>balco.nyc / admin</h2>
-    <input type="password" id="pwInput" placeholder="Password" autofocus>
+    <input type="email" id="emailInput" placeholder="Email" autocomplete="username" autofocus>
+    <input type="password" id="pwInput" placeholder="Password" autocomplete="current-password">
     <p class="error" id="pwError"></p>
-    <button onclick="tryLogin()">Enter</button>
+    <button id="loginBtn" type="button">Sign in</button>
   </div>
 
   <!-- ADMIN BAR -->
@@ -468,7 +469,7 @@
       <span class="status" id="status">Click any text to edit</span>
     </div>
     <div class="admin-bar-right">
-      <a href="/design-system.html" class="btn btn-view" target="_blank">Design System</a>
+      <a href="/methodology" class="btn btn-view" target="_blank">Methodology</a>
       <a href="/" class="btn btn-view" target="_blank">View Site</a>
       <button class="btn btn-save" id="saveBtn" onclick="saveAll()">Save Changes</button>
     </div>
@@ -666,36 +667,67 @@
   </div>
 
   <script>
-    // ─── AUTH ───
-    const PW_HASH = '8b1a9953c4611296a827abf8c47804d7'; // md5 of 'm8s'
-    function md5(s){/* simple md5 - we use SHA-256 via subtle crypto instead */}
-
-    function tryLogin() {
-      const pw = document.getElementById('pwInput').value;
-      if (pw === 'm8s') {
-        document.body.classList.remove('locked');
-        sessionStorage.setItem('balco_admin', '1');
-        loadContent();
-      } else {
-        document.getElementById('pwError').textContent = 'Wrong password';
-        document.getElementById('pwInput').value = '';
-      }
-    }
-
-    // Enter key to submit
-    document.getElementById('pwInput').addEventListener('keydown', e => {
-      if (e.key === 'Enter') tryLogin();
-    });
-
-    // Check if already authed this session
-    if (sessionStorage.getItem('balco_admin') === '1') {
-      document.body.classList.remove('locked');
-    }
-
     // ─── CONFIG ───
     const SUPABASE_URL = 'https://lbjcfqxfztbaoxuwhrhd.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxiamNmcXhmenRiYW94dXdocmhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzMzU2NjcsImV4cCI6MjA4OTkxMTY2N30.wp27pbHIwDVLn2CRbPga6olEZOeJdDIO_qRhaDK2l5s';
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // ─── AUTH ───
+    // Real authentication via Supabase Auth. The previous gate compared a
+    // plaintext password in client JS and toggled a CSS class, which anyone
+    // could bypass from devtools; the database is what actually enforces
+    // access now (see supabase/migrations/*_lock_down_site_content.sql —
+    // writes require an authenticated role).
+    async function tryLogin() {
+      const email = document.getElementById('emailInput').value.trim();
+      const password = document.getElementById('pwInput').value;
+      const errEl = document.getElementById('pwError');
+      const btn = document.getElementById('loginBtn');
+
+      if (!email || !password) {
+        errEl.textContent = 'Enter your email and password';
+        return;
+      }
+
+      btn.disabled = true;
+      errEl.textContent = '';
+      try {
+        const { error } = await sb.auth.signInWithPassword({ email, password });
+        if (error) {
+          errEl.textContent = error.message || 'Sign-in failed';
+          document.getElementById('pwInput').value = '';
+          return;
+        }
+        unlock();
+      } catch (e) {
+        errEl.textContent = 'Could not reach the auth service';
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function unlock() {
+      document.body.classList.remove('locked');
+      loadContent();
+    }
+
+    async function signOut() {
+      await sb.auth.signOut();
+      document.body.classList.add('locked');
+    }
+
+    document.getElementById('loginBtn').addEventListener('click', tryLogin);
+    document.getElementById('pwInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') tryLogin();
+    });
+    document.getElementById('emailInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('pwInput').focus();
+    });
+
+    // Restore an existing session (Supabase persists it in localStorage).
+    sb.auth.getSession().then(({ data }) => {
+      if (data && data.session) unlock();
+    });
 
     const statusEl = document.getElementById('status');
 
@@ -791,8 +823,8 @@
       }
     });
 
-    // Load on init (only if already authed)
-    if (sessionStorage.getItem('balco_admin') === '1') loadContent();
+    // Content loads from unlock(), which only runs after Supabase Auth
+    // confirms a session. There is no client-side shortcut into it.
   </script>
 </body>
 </html>

@@ -1,3 +1,13 @@
+> **Status note (31 August 2026).** This backlog was written on 26 March 2026
+> against the `calculator-3a` / `calculator-3b` prototypes. Those pages, and
+> the A/B split they describe, no longer exist: the lineage continued through
+> calculator-3c, -4 and -6 into the current `index.html`, and the prototypes
+> were deleted on 31 August 2026. Ticket T9 (tab toggle between versions) is
+> therefore superseded rather than outstanding, and the `HybridView` module it
+> depends on has been removed. T10's "precise shadow algorithm" has since been
+> implemented differently: see METHODOLOGY.md section 2.1 for the horizon-profile
+> model that shipped. Read what follows as history.
+
 # 3D Visualization — Ticket Plan
 
 Reference doc for the two new 3D calculator pages (Version A: Shadow Model, Version B: Hybrid Street View).

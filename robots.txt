@@ -1,17 +1,12 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /admin
 Disallow: /api/
-Disallow: /calculator.html
-Disallow: /calculator-2.html
-Disallow: /calculator-3a.html
-Disallow: /calculator-3b.html
-Disallow: /calculator-3c.html
-Disallow: /calculator-4.html
-Disallow: /calculator-6.html
-Disallow: /design-system.html
-Disallow: /3d-visualization-specs.html
-Disallow: /nyc-balcony-solar-technical-spec.html
+
+# /js/ is deliberately crawlable: search engines must fetch it to render the
+# calculator. The keys it contains are client-side by design and restricted
+# by HTTP referrer, so hiding the file would cost rendering and buy nothing.
 
 # AI crawlers — explicitly allowed
 User-agent: GPTBot
@@ -48,6 +43,12 @@ User-agent: Meta-ExternalAgent
 Allow: /
 
 User-agent: CCBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Amazonbot
 Allow: /
 
 Sitemap: https://balco.nyc/sitemap.xml

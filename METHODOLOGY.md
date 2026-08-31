@@ -2,6 +2,8 @@
 
 Technical documentation of the energy modeling, financial analysis, and data pipeline behind the balco.nyc balcony solar calculator. Reflects the implementation in `js/config.js`, `js/solar-api.js`, `js/3d-shadow-model.js`, and `js/sun-position.js`.
 
+**Last reviewed against the code: 31 August 2026.** Every constant and formula below was verified against the working tree on that date, and the behaviours described are covered by the regression suite in `tests/`.
+
 ---
 
 ## 1. Energy Production Model
@@ -22,13 +24,15 @@ The core engine is the US Department of Energy's **PVWatts V8 API**, maintained 
 | `tilt` | 35°, 60°, 70°, or 90° | 90° = vertical railing, 70°/60° = angled mounts, 35° ≈ optimal for NYC |
 | `azimuth` | 0–315° | User's balcony direction (8 compass points) |
 | `losses` | 14% | PVWatts default. Soiling has been moved out of this parameter into the monthly soiling array below to avoid double-counting |
-| `dc_ac_ratio` | 1.2 | Standard for small systems with micro-inverters |
+| `dc_ac_ratio` | 1.1 | A micro-inverter matched to one or two modules; the previous 1.2 modelled more clipping than actually occurs |
 | `inv_eff` | 96.5% | Micro-inverter efficiency (Enphase IQ8 ~97%, budget ~96%) |
 | `dataset` | nsrdb | Satellite-derived TMY data, best for US locations |
-| `soiling` | `[3,3,4,5,6,7,7,7,6,5,4,3]` | Monthly soiling % — NYC urban profile calibrated to NREL/Sandia/Fraunhofer urban-PV studies (3–7% range, summer-heavy from pollen) |
+| `soiling` | `3\|3\|4\|5\|6\|7\|7\|7\|6\|5\|4\|3` | Monthly soiling % — NYC urban profile calibrated to NREL/Sandia/Fraunhofer urban-PV studies (3–7% range, summer-heavy from pollen). Sent pipe-delimited, with a bracketed-JSON retry and a final fallback that folds soiling into `losses: 18.3` (see below) |
 | `albedo` | 0.20 | Concrete balcony floor reflectance (light-painted walls would be ~0.30) |
 | `bifaciality` | 0 | Monofacial panels (would be 0.75 for bifacial) |
 | `timeframe` | monthly | Returns 12-month production array |
+
+**Soiling parameter robustness.** NREL documents array parameters as pipe-delimited. If the parameter is rejected the entire request fails, which would silently drop every estimate onto the client-side fallback while the interface still claimed an hourly simulation. The client therefore degrades explicitly: pipe-delimited, then bracketed JSON, then no soiling array at all with `losses` raised to 18.3% (14% compounded with the array's ~5% annual mean). Whichever variant succeeded is recorded on the result.
 
 **PVWatts output used:**
 - `ac_monthly` — 12 values of monthly AC energy (kWh), used for the production chart and for applying per-month 3D shade factors
@@ -71,24 +75,41 @@ PVWatts assumes an unobstructed installation. NYC balconies face building-level 
 
 ### 2.1 3D Shadow Model (when 3D scene is loaded)
 
-For addresses with NYC Building Footprints data, we build a local 3D scene of all buildings within 200m and run a per-month, per-half-hour irradiance-weighted shadow simulation against the user's balcony point.
+For addresses with NYC Building Footprints data, we build a local 3D scene of all buildings within 200m and compute how much of the balcony's plane-of-array irradiance those buildings block.
 
-**Per-sample loop (`computeAnnualShadeProfile`, sampling every 30 min from sunrise to sunset for each of 12 representative days):**
+**What this factor must and must not measure.** PVWatts is given the panel's real tilt and azimuth, so it already prices orientation: it knows a north-facing vertical panel yields a fraction of a south-facing one. The shade factor is a *second* multiplier on that output, so it must answer only "how much of what PVWatts assumed actually reaches this balcony". Anything else is counted twice. An earlier version charged every hour when the sun sat behind the facade as shading, crediting those hours only a fixed 30% diffuse share. That penalised orientation a second time: an entirely unobstructed east-facing balcony scored 0.54, and a north-facing one 0.32, with no neighbouring building present at all. **The current model returns 1.00 for an unobstructed balcony at every orientation**, and this is asserted directly in the test suite.
 
-1. **Sun position** — compute altitude and azimuth from `SunPosition.calculate(month, minute)` (Section 5).
-2. **Irradiance weight** — `sin(altitude)^0.6`. A clear-sky direct-irradiance proxy that gives a noon sample roughly 5× the weight of a dawn sample but doesn't over-spike at solar noon.
-3. **Self-shading test** — if the sun is behind the facade (|sun_azimuth − balcony_azimuth| > 90°), the panel only sees diffuse sky. We add a `DIFFUSE_FRACTION = 0.30` contribution weighted by the irradiance weight. This corrects a v1 omission where self-shaded periods contributed zero — a vertical NYC facade still receives ~30% of its energy from diffuse sky.
-4. **Direct-sun samples** — when the sun is on the panel's side, weight the sample by `irradiance_weight × cos(altitude) × cos(facade_diff)` (panel-incidence cosine). This shifts shade math toward "what fraction of high-irradiance hours are blocked" rather than "what fraction of daylight."
-5. **Neighbor blocking** — for each non-target building, compute its angular span as seen from the balcony point (`_polygonAngularSpan` projects every polygon vertex onto the balcony's view azimuth). If the sun's azimuth falls inside that span and its altitude is below the angle subtended by the building top, the building is blocking. Severity = `min(1, vertical_block × width_factor)`. We take the maximum across all neighbors.
-6. **Aggregate** — `unshaded_sum += (1 − max_shadow) × sample_weight`, `total_weight += sample_weight`.
+**Step 1 — horizon profile.** Every neighbouring footprint is projected onto a 360-bin azimuth skyline as seen from the balcony point. Each polygon edge is subdivided finely enough that no bin is skipped (every ~2m, and at least every 0.5° of angular extent), and each bin keeps the highest obstruction altitude found in that direction. Because the nearest sampled point in a direction wins, concave and L-shaped footprints resolve correctly, buildings that straddle due north wrap without seams, and buildings shorter than the balcony drop out entirely. This replaces the earlier per-sample loop over polygon spans, which paired a polygon's full angular span with its single nearest vertex and so could block sunlight through an L-shaped building's notch.
 
-**Per-month shade factor** = `unshaded_sum / total_weight`, clamped to `[0.15, 0.98]`.
+**Step 2 — sky openness.** The fraction of the panel's sky view that survives the horizon, computed by integrating `cos(theta) x cos(altitude)` over the visible hemisphere — the standard view-factor integral for an isotropic sky. `theta` is the angle of incidence on the panel, so this is tilt-aware: a 35° panel sees more sky than a vertical one, and loses a different share of it.
+
+**Step 3 — daylight sweep.** Sampling every 10 minutes from sunrise to sunset for each of 12 representative days:
+
+1. **Sun position** — altitude and azimuth from `SunPosition.calculate(month, minute)` (Section 5).
+2. **Clear-sky proxy** — `ghi = sin(altitude)^0.75`, which keeps solar noon worth several times dawn without over-spiking.
+3. **Beam component** — `BEAM_SHARE x ghi x max(0, cos(theta))`, where `cos(theta)` uses the full tilted-surface incidence formula and the panel's actual tilt. This reduces to `cos(altitude) x cos(azimuth difference)` for a vertical panel.
+4. **Diffuse component** — `DIFFUSE_SHARE x ghi x (1 + cos(tilt)) / 2`, the isotropic sky view factor of the panel itself.
+5. **Blocking** — the beam is lost when the sun's altitude falls below the horizon profile in its azimuth bin. The diffuse component is scaled by sky openness.
+
+**Aggregation.**
+
+```
+received = beam x (sun visible) + diffuse x sky_openness
+assumed  = beam + diffuse
+shade_factor = sum(received) / sum(assumed)
+```
+
+Hours when the sun is behind the facade contribute near-zero beam to *both* sums, so they neither reward nor penalise — which is exactly right, because PVWatts has already accounted for them.
+
+**Constants.** `BEAM_SHARE = 0.60` / `DIFFUSE_SHARE = 0.40`, matching the NSRDB annual diffuse fraction of GHI for the Northeast (~0.35–0.42). Only their ratio matters.
+
+**Per-month shade factor** = `received / assumed`, clamped to `[0.10, 1.00]`.
 
 **Annual shade factor** = monthly factors weighted by the NYC GHI distribution (the same array used in §1.2).
 
-**Physics-vs-display separation.** The colored shadow heatmap in the 3D scene uses `display_score = min(1, physics_score × 1.8)` for UI contrast only. Only `physics_score` ever feeds back into the energy calculation. This prevents the display amplification from leaking into kWh numbers.
+**Physics-vs-display separation.** The colored shadow heatmap in the 3D scene uses `display_score = min(1, physics_score x 1.8)` for UI contrast only, and `_scoreShadowImpact` now serves the heatmap alone. The energy path reads the horizon profile, never the display score.
 
-**Polygon-edge angular projection.** Earlier versions of the model approximated each neighbor as "centroid + 10 m." Now the actual polygon footprint is projected to angular extents from the viewer, including correct wrap-around handling when a building straddles the ±π azimuth seam.
+**Direct sun hours.** The "hours of direct sun" figure in the info panel is derived from the same horizon profile as the energy model, so the number shown and the number used can no longer disagree.
 
 ### 2.2 Static Shade Factor (fallback)
 
@@ -118,11 +139,13 @@ When address data is available, we query NYC Building Footprints within a 200-me
 ### 2.4 Final Energy Formula
 
 ```
-final_kwh = pvwatts_ac_annual × shade_factor       (uniform shade case)
-final_kwh = Σ(pvwatts_ac_monthly[i] × monthly_shade_factor[i])   (3D case)
+final_kwh = pvwatts_ac_annual × shade_factor × railing_factor            (uniform shade case)
+final_kwh = Σ(pvwatts_ac_monthly[i] × monthly_shade_factor[i]) × railing_factor   (3D case)
 ```
 
-THERMAL_BONUS is set to 1.0, so it doesn't appear above. The shade factor is the only post-PVWatts multiplier.
+THERMAL_BONUS is set to 1.0, so it doesn't appear above.
+
+**Railing obstruction.** The railing itself, the mounting hardware and the balcony floor above clip the bottom edge of a rail-mounted panel. Building footprints cannot see any of it and PVWatts assumes an unobstructed module, so it is applied as a separate tilt-dependent factor: 0.95 at 90°, 0.97 at 70°, 0.98 at 60°, 0.99 at 35°. Field reports for vertical balcony mounts put the loss at 5–8%; we take the conservative end. It applies to the fallback model too.
 
 ---
 
@@ -160,10 +183,11 @@ The marginal rate is the right number for solar offset: every kWh produced repla
 ```
 annual_savings  = annual_kwh × 0.34
 monthly_savings = annual_savings / 12
-bill_offset_%   = annual_kwh / (monthly_bill / 0.34 × 12) × 100
+billable        = max(0, monthly_bill − 20)          # strip the fixed Customer Charge
+bill_offset_%   = annual_kwh / (billable / 0.34 × 12) × 100
 ```
 
-Bill offset is clamped to a max of 100% and guarded against a $0 monthly bill (the consumption denominator is clamped to ≥1 kWh).
+The Customer Charge (~$20/month) is removed before inferring consumption. It is part of what the household pays but not part of what a kWh costs, so leaving it in inflated implied usage and understated the offset. Bill offset is clamped to a max of 100% and guarded against a $0 monthly bill (the consumption denominator is clamped to ≥1 kWh).
 
 ### 4.3 Payback Period
 
@@ -172,13 +196,15 @@ Bill offset is clamped to a max of 100% and guarded against a $0 monthly bill (t
 simple_payback = adjusted_cost / annual_savings
 ```
 
-**NPV payback** runs inside the same 25-year loop as lifetime savings (below), interpolating within the crossover year for a fractional result.
+**Escalated payback** runs inside the same 25-year loop as lifetime savings (below), interpolating within the crossover year for a fractional result. It compounds the rate escalation and panel degradation but applies **no discount rate**, so it is a nominal figure, not a net present value. It was previously labelled "NPV payback", which overstated its rigour.
 
 ### 4.4 25-Year Lifetime Value
 
 ```
 lifetime_savings = Σ(annual_kwh × (1 − degradation)^i × 0.34 × (1 + escalation)^i,  i=0..24)
 ```
+
+Reported in **nominal dollars**. No discount rate is applied, so a dollar in year 25 is counted the same as a dollar today.
 
 Where:
 - **degradation** is tier-aware (default mid-tier 0.5%/yr):
@@ -195,19 +221,23 @@ The user selects a cost tier (budget / mid / premium) calibrated to an 800W kit.
 adjusted_cost = tier_cost × (system_watts / 800)
 ```
 
-**Reference costs (800W complete kit, 2026 US retail):**
+**Reference costs (800W complete kit, August 2026 US retail):**
 
 | Tier | Cost | Notes |
 |---|---|---|
-| Budget | $1,200 | No-name panel + cheap micro-inverter |
-| Mid | $1,500 | EcoFlow PowerStream, Anker SOLIX entry |
-| Premium | $1,800 | Anker SOLIX RS40P, Bright Saver complete kit |
+| Budget | $850 | Nonprofit/wholesale kits (Bright Saver member pricing, ~$1.15/W) |
+| Mid | $1,200 | EcoFlow PowerStream, Anker SOLIX entry, Bright Saver retail |
+| Premium | $1,600 | Anker SOLIX RS40P, Craftstrom complete kit |
+
+These were revised down on 2026-08-31. Bright Saver, a California nonprofit, began selling complete kits nationwide at published zero markup on 13 July 2026 — $414 for a 360W kit to members ($29/yr), $699 otherwise. The previous $1,200/$1,500/$1,800 tiers pre-dated that move and made payback look roughly 40% longer than the cheapest real path.
 
 Federal Residential Clean Energy Credit (§25D) expired for expenditures after Dec 31, 2025 under P.L. 119-21. Cost figures are gross — no federal credit is netted out.
 
 ### 4.6 Offset Assumption
 
-Production is assumed to offset household consumption 1:1 at the marginal retail rate. For typical balcony users, production is well below consumption so there is no excess export to model. (NY's SUNNY Act, which would formalize this for small plug-in solar, has not yet been enacted as of this writing.)
+Production is assumed to offset household consumption 1:1 at the marginal retail rate. For typical balcony users, production is well below consumption so there is no excess export to model.
+
+**Regulatory status (as of 31 August 2026).** NY's SUNNY Act (S8512/A9111) exempts compliant plug-in devices up to 1,200W AC from interconnection and net-metering requirements. It passed the Senate unanimously in April 2026 and the Assembly on 28 May 2026, and awaits the Governor's signature; it takes effect 90 days after signing, so the realistic opening is early 2027. Two consequences for this model: the 1:1 offset assumption is forward-looking rather than current, and the Act grants **no right to install** — it removes the utility barrier only, so a landlord or co-op board can still refuse. The payback figures are conditional on a permission the model does not represent.
 
 ---
 
@@ -218,7 +248,7 @@ Production is assumed to offset household consumption 1:1 at the marginal retail
 - **Day of year** uses the 15th of each month (`DOY_TABLE`) as the representative day.
 - **Year** is read dynamically from `new Date().getFullYear()` so the Julian-day base advances with time instead of drifting.
 - **DST switch** is keyed off day-of-year, not month: EDT (UTC−4) for DOY 67–304 (Mar 8 – Nov 1 in 2026), EST (UTC−5) otherwise. This avoids the off-by-week errors that month-based switching produced in early March and late October.
-- **Azimuth** is computed via `atan2(sin_az, cos_az)` — robust at all altitudes, with no separate `acos` branch.
+- **Azimuth** is computed via `atan2(sin_az, cos_az)` — robust at all altitudes, with no separate `acos` branch. With the sine/cosine terms as defined, this returns azimuth measured clockwise from north directly; no further rotation is applied. An earlier version added a further 180°, which flipped every azimuth (June solar noon read as due north) and fed the 3D scene, the sun arc and the shade model alike. Regression tests now pin June and December solar noon to the south and assert the azimuth sweeps monotonically eastward through the day.
 
 `getDayBounds(month)` searches for sunrise / sunset by scanning altitude crossings, used by the 3D shade simulation to bound its sampling loop.
 
@@ -281,9 +311,9 @@ The breakdown modal exposes the previously-hardcoded modeling assumptions:
 |---|---|---|
 | Mount tilt | 35° / 60° / 70° / 90° | 90° |
 | System size | 400W / 800W / 1200W / 1600W | 800W |
-| Equipment tier | Budget / Mid / Premium | Mid |
+| Equipment tier | Budget ($850) / Mid ($1,200) / Premium ($1,600) | Mid |
 | Surrounding shading | Open / Some / Dense / Wide avenue | Some |
-| Monthly electric bill | $20–$800 | $200 |
+| Monthly electric bill | $20–$800 | $140 |
 | Rate escalation | Low (2%) / Mid (3%) / High (4%) | Mid |
 
 ### 7.5 Energy Calculation
@@ -296,17 +326,21 @@ The breakdown modal exposes the previously-hardcoded modeling assumptions:
 
 ### 7.6 Graceful Degradation
 
-Every API has a fallback. The calculator works in full manual mode with zero API calls.
+Every API has a fallback, and every degraded path tells the visitor. When the estimate did not use the full pipeline, a notice above the breakdown names what was missing and what was substituted.
+
+The manual entry panel is also the keyboard- and screen-reader-accessible route to a result: selecting a balcony in the 3D scene requires clicking a WebGL mesh, which is not operable without a pointer.
 
 | API Failure | Fallback Behavior |
 |---|---|
-| Google Places unavailable | "Skip" link → manual entry |
+| Google Places unavailable | Typed address is geocoded on submit; manual entry panel if that also fails |
 | Geoclient fails | Query PLUTO by address string |
 | PLUTO fails | Sliders keep defaults |
-| Footprints fail | User picks direction manually; no 3D shade |
-| PVWatts fails | Client-side fallback formula (Section 1.2), yellow banner shown |
+| Footprints fail | Manual entry panel (floor, direction, shading); static shade factor |
+| PVWatts soiling param rejected | Retry bracketed, then fold soiling into `losses: 18.3` |
+| PVWatts fails entirely | Client-side fallback formula (Section 1.2), notice shown above the breakdown |
 | Solar Resource fails | Hardcoded NYC monthly distribution |
-| Neighbor query fails | No 3D shade; static shade factor used |
+| Neighbor query fails | No 3D shade; static shade factor used, notice shown |
+| No WebGL support | Manual entry panel; static shade factor |
 
 ---
 
@@ -326,6 +360,7 @@ Every API has a fallback. The calculator works in full manual mode with zero API
 | EPA eGRID2023 | epa.gov/egrid/summary-data | CO₂ factor (NYCW subregion) |
 | HTW Berlin Stecker-Solar-Simulator | solar.htw-berlin.de | Vertical-mount yield calibration |
 | NY SUNNY Act (S8512/A9111) | nysenate.gov/legislation/bills/2025/S8512 | Plug-in solar regulatory status |
+| Bright Saver (nonprofit at-cost kits) | brightsaver.org/balcony-solar-kits | August 2026 kit cost calibration |
 | NREL 2024 PV Degradation Review | nrel.gov/docs/fy24osti/87524.pdf | Degradation rates by tier |
 
 ---
@@ -333,25 +368,34 @@ Every API has a fallback. The calculator works in full manual mode with zero API
 ## 9. Accuracy & Limitations
 
 **Expected accuracy:**
-- **±12%** on annual production with PVWatts V8 and the 3D shadow model active
-- **±18%** with the client-side fallback (no PVWatts, no 3D)
+- **About ±15%** on annual production with PVWatts V8 and the 3D shadow model active
+- **About ±20%** with the client-side fallback (no PVWatts, no 3D)
+
+**This band is modeled, not measured.** It is derived from the uncertainty of the inputs, not from comparing predictions against metered NYC installations. No such comparison has been run. Treat it as a considered estimate of our own uncertainty rather than a validated tolerance, and read the calibration anchors below as consistency checks against other models rather than against reality.
 
 **What the model captures:**
 - Latitude-specific solar resource and seasonal variation (PVWatts NSRDB)
 - Vertical / near-vertical tilt production loss, calibrated against PVWatts and HTW Berlin
 - Azimuth-dependent production across all 8 compass directions
 - NYC urban soiling, in the right ballpark (3–7% monthly) rather than the older 11–17% over-derate
-- Floor-level shadow estimation with a smooth tanh response, plus full polygon-edge 3D shadowing when neighbor footprints are available
-- Diffuse-sky contribution to self-shaded periods (~30% of clear-sky)
-- Irradiance-weighted shadow sampling (a noon shadow costs more than a dawn shadow)
+- Floor-level shadow estimation with a smooth tanh response, plus a full horizon-profile 3D model when neighbor footprints are available
+- Tilt-aware angle of incidence in both the energy and shade models
+- Isotropic diffuse sky, reduced by the actual sky openness of the balcony rather than a fixed constant
+- Concave and L-shaped neighbouring footprints, and buildings straddling due north
+- Railing and mounting-hardware obstruction of the panel's lower edge
 - Tier-aware degradation and rate-escalation bands in the 25-year financial projection
 
 **What the model still does NOT capture:**
 - Micro-shading from things not in the building footprint dataset — trees, awnings, AC units, signage
+- The overhang of the balcony directly above, which can sweep across a panel within an hour
 - Snow coverage in winter months (vertical sheds quickly but not instantly)
+- Time-of-use rate structure — a vertical panel shifts output toward winter and the shoulders of the day
 - Future electricity-rate trajectory — the single largest swing factor in lifetime savings (2% vs 4% escalation = roughly ±15% on lifetime $)
 - Bifacial panels and light-painted walls (`albedo` and `bifaciality` are currently fixed)
+- Ground-reflected irradiance is derated at the same rate as beam and sky, rather than modelled separately
 
 **Validation anchors:**
-- HTW Berlin Stecker-Solar-Simulator: 800W vertical south at 52.5°N → ~500 kWh/yr; scaled to NYC's 40.7°N latitude (~+25% irradiance) → ~625 kWh/yr unshaded vertical south, which the fallback model now reproduces within ±5%.
+- HTW Berlin Stecker-Solar-Simulator: 800W vertical south at 52.5°N → ~500 kWh/yr; scaled to NYC's 40.7°N latitude (~+25% irradiance) → ~625 kWh/yr unshaded vertical south, which the fallback model reproduces within ±5%.
 - NYSERDA NY Solar Map baseline: 1,238 kWh/kW/yr at optimal tilt; PVWatts with the calculator's parameters produces ~1,300 kWh/kW/yr for premium fixed-tilt NYC — within bounds.
+
+**Regression suite.** `tests/` exercises the shipped model files directly under Node (`npm test`, no dependencies). It pins solar position against NOAA reference values, asserts the invariant that an unobstructed balcony scores 1.00 at every orientation, checks horizon-profile geometry against concave and seam-straddling footprints, and locks the financial and environmental arithmetic. Both defects fixed on 2026-08-31 — the azimuth flip and the self-shading double-count — were invisible to inspection and are now covered by failing-first tests.

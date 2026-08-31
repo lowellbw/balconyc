@@ -1,3 +1,11 @@
+> **Progress note (31 August 2026).** Items 1-6 and 8 shipped. Item 5 was
+> completed the stronger way on 31 August: the ten prototype pages were
+> **deleted** rather than left noindexed, which also removed seven public pages
+> still quoting a superseded $0.22/kWh rate. Item 7 (defer Three.js) shipped on
+> 31 August via an on-demand loader in index.html. Still outstanding: the
+> /sunny-act, /what-is-balcony-solar and /about pages (items 10-12), Search
+> Console and Bing verification (13), and analytics (14).
+
 # SEO + GEO Optimization Plan — balco.nyc
 
 Date: 2026-05-17

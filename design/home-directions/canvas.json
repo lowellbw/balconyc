@@ -15,6 +15,10 @@
     {
       "id": "page-4",
       "name": "Gov · white"
+    },
+    {
+      "id": "page-5",
+      "name": "Sun · white"
     }
   ],
   "artboards": [
@@ -127,6 +131,56 @@
       "w": 1280,
       "h": 1060,
       "is_interactive": true
+    },
+    {
+      "file": "SunYellow.dc.html",
+      "title": "Solar yellow",
+      "page": "page-5",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 1060,
+      "is_interactive": true
+    },
+    {
+      "file": "SunDuo.dc.html",
+      "title": "Sun and shade",
+      "page": "page-5",
+      "x": 1400,
+      "y": 0,
+      "w": 1280,
+      "h": 1060,
+      "is_interactive": true
+    },
+    {
+      "file": "SunRed.dc.html",
+      "title": "Brand red",
+      "page": "page-5",
+      "x": 2800,
+      "y": 0,
+      "w": 1280,
+      "h": 1060,
+      "is_interactive": true
+    },
+    {
+      "file": "SunNavy.dc.html",
+      "title": "Civic navy",
+      "page": "page-5",
+      "x": 4200,
+      "y": 0,
+      "w": 1280,
+      "h": 1060,
+      "is_interactive": true
+    },
+    {
+      "file": "SunViolet.dc.html",
+      "title": "Dusk violet",
+      "page": "page-5",
+      "x": 5600,
+      "y": 0,
+      "w": 1280,
+      "h": 1060,
+      "is_interactive": true
     }
   ],
   "annotations": [
@@ -233,10 +287,58 @@
       "y": -250,
       "w": 1280,
       "text": "SUN CITY — the shaded blocks, lit by a sun that follows you\nMove your cursor and the sun walks the sky; the city relights under it and the clock keeps up. Right is east and morning, left is west and evening, because the map is north-up. Left alone it drifts on its own until you touch it.\nThis also settles the honesty problem the static version had. The tint is no longer pretending to be per-block output — it is plainly light, and it moves, so nobody can read it as data. The blocks stay real; the number still comes from your address.\nCheap to run: all 5,141 blocks are one SVG path filled from a single radial gradient, so relighting the whole city is two attribute writes a frame, not five thousand."
+    },
+    {
+      "id": "note-sunyellow",
+      "page": "page-5",
+      "x": 0,
+      "y": -220,
+      "w": 1280,
+      "text": "SOLAR YELLOW\nThe yellow pushed all the way up. Warmest and most obviously about sun; the lit blocks sing.\nTradeoff: yellow cannot carry white text, so the button runs dark ink. Everything downstream (links, errors, focus rings) needs a second colour."
+    },
+    {
+      "id": "note-sunduo",
+      "page": "page-5",
+      "x": 1400,
+      "y": -220,
+      "w": 1280,
+      "text": "SUN AND SHADE\nGold where the light lands, cool blue-grey where it does not. The only one where the shadow side is a different temperature, so the unlit city holds its shape best of the five.\nTradeoff: two hues to govern rather than one."
+    },
+    {
+      "id": "note-sunred",
+      "page": "page-5",
+      "x": 2800,
+      "y": -220,
+      "w": 1280,
+      "text": "BRAND RED\nKeeps #7F1D1D. The only variant that needs no brand decision, and the deep red at the sun reads as heat rather than as an alert.\nTradeoff: least sun-like of the five. Red light on a city can read as warning."
+    },
+    {
+      "id": "note-sunnavy",
+      "page": "page-5",
+      "x": 4200,
+      "y": -220,
+      "w": 1280,
+      "text": "CIVIC NAVY\nCarries over from the municipal page. Reads as a city data map, and the pale end sits comfortably on white.\nTradeoff: blue sunlight is a hard sell on a solar tool."
+    },
+    {
+      "id": "note-sunviolet",
+      "page": "page-5",
+      "x": 5600,
+      "y": -220,
+      "w": 1280,
+      "text": "DUSK VIOLET\nThe real departure. Distinctive, memorable, and nothing else in NYC civic design looks like it.\nTradeoff: furthest from both the brand and from anything the subject suggests."
+    },
+    {
+      "id": "note-sunwhite",
+      "page": "page-5",
+      "x": 0,
+      "y": 1130,
+      "w": 4080,
+      "text": "WHAT CHANGED FROM THE DARK ONE\nThe light no longer washes evenly. Each block is assigned one of six catch tiers, and a tier only differs by how far its light reaches — so near the sun everything blazes, and further out only the high tiers keep their glow. That is what gives the speckle. Which tier a block sits in is texture, not output, and the line under the search box says so.\nThe sun is now a drawn sun, discs and rays, turning very slowly. Its clock rides underneath it. The city fills most of the frame and runs behind the copy and under the search field, held back by a soft gradient on the left so the words stay on clean ground.\nStill true across all five: the geometry is the city's own borough boundaries, the sun rises east (right) and sets west (left), and it drifts on its own until you take hold of it."
     }
   ],
   "launch": {
     "view": "canvas",
-    "page": "page-3"
+    "page": "page-5"
   }
 }

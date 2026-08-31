@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&display=swap">
+  <style>
+    body { margin: 0; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: #171717; line-height: 1.55; -webkit-font-smoothing: antialiased; background: #FFFFFF; }
+    a { color: #171717; } a:hover { color: #7F1D1D; }
+  </style>
+</helmet>
+
+<div style="width: 1680px; background: #FFFFFF; padding: 40px 48px 44px">
+
+  <div style="margin-bottom: 34px">
+    <span style="display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #7F1D1D; margin-bottom: 12px">The core flow</span>
+    <h1 style="font-size: 2.5rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 10px">Address to answer, before and after</h1>
+    <p style="margin: 0; font-size: 1.02rem; color: #596580; max-width: 96ch">The single change: <strong style="color: #171717">the number arrives before the 3D, not after it</strong>. Everything downstream follows from that &mdash; the 3D stops being a gate, the fallback form stops being a failure state, and the levers that move the answer come out of the modal.</p>
+  </div>
+
+  <!-- TODAY -->
+  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px">
+    <span style="font-size: 0.74rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8896AB">Today</span>
+    <span style="flex: 1; height: 1px; background: #EEF0F3"></span>
+    <span style="font-size: 0.8rem; color: #8896AB">7 steps &middot; first number after ~6s of animation, on top of a 600KB download</span>
+  </div>
+
+  <div style="display: flex; align-items: stretch; gap: 0; margin-bottom: 14px">
+
+    <div style="flex: 1; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px 15px">
+      <div style="font-size: 0.66rem; font-weight: 700; color: #8896AB; margin-bottom: 6px">01</div>
+      <div style="font-size: 0.94rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 5px">Land</div>
+      <div style="font-size: 0.8rem; color: #596580">Photo hero. One thing to do: type an address.</div>
+    </div>
+    <div style="display: flex; align-items: center; padding: 0 9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C6CEDA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="M12 5l7 7-7 7"></path></svg></div>
+
+    <div style="flex: 1; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px 15px">
+      <div style="font-size: 0.66rem; font-weight: 700; color: #8896AB; margin-bottom: 6px">02</div>
+      <div style="font-size: 0.94rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 5px">Type an address</div>
+      <div style="font-size: 0.8rem; color: #596580">Places autocomplete, then PLUTO and neighbour footprints.</div>
+    </div>
+    <div style="display: flex; align-items: center; padding: 0 9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C6CEDA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="M12 5l7 7-7 7"></path></svg></div>
+
+    <div style="flex: 1; border: 1px solid #F0D5D5; background: #FDF7F7; border-radius: 12px; padding: 14px 15px">
+      <div style="font-size: 0.66rem; font-weight: 700; color: #A85454; margin-bottom: 6px">03</div>
+      <div style="font-size: 0.94rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 5px">Load the 3D stack</div>
+      <div style="font-size: 0.8rem; color: #596580">Three.js injected on demand, ~600KB.</div>
+    </div>
+    <div style="display: flex; align-items: center; padding: 0 9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C6CEDA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="M12 5l7 7-7 7"></path></svg></div>
+
+    <div style="flex: 1; border: 1px solid #F0D5D5; background: #FDF7F7; border-radius: 12px; padding: 14px 15px">
+      <div style="font-size: 0.66rem; font-weight: 700; color: #A85454; margin-bottom: 6px">04</div>
+      <div style="font-size: 0.94rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 5px">Orbit, find, click a wall</div>
+      <div style="font-size: 0.8rem; color: #596580">One click carries both floor and facing.</div>
+    </div>
+    <div style="display: flex; align-items: center; padding: 0 9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C6CEDA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="M12 5l7 7-7 7"></path></svg></div>
+
+    <div style="flex: 1; border: 1px solid #F0D5D5; background: #FDF7F7; border-radius: 12px; padding: 14px 15px">
+      <div style="font-size: 0.66rem; font-weight: 700; color: #A85454; margin-bottom: 6px">05</div>
+      <div style="font-size: 0.94rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 5px">Watch the sun cross</div>
+      <div style="font-size: 0.8rem; color: #596580">~6 seconds of animation. Still no number.</div>
+    </div>
+    <div style="display: flex; align-items: center; padding: 0 9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C6CEDA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="M12 5l7 7-7 7"></path></svg></div>
+
+    <div style="flex: 1; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px 15px">
+      <div style="font-size: 0.66rem; font-weight: 700; color: #8896AB; margin-bottom: 6px">06</div>
+      <div style="font-size: 0.94rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 5px">A card over the scene</div>
+      <div style="font-size: 0.8rem; color: #596580">The first number, finally.</div>
+    </div>
+    <div style="display: flex; align-items: center; padding: 0 9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C6CEDA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="M12 5l7 7-7 7"></path></svg></div>
+
+    <div style="flex: 1; border: 1px solid #F0D5D5; background: #FDF7F7; border-radius: 12px; padding: 14px 15px">
+      <div style="font-size: 0.66rem; font-weight: 700; color: #A85454; margin-bottom: 6px">07</div>
+      <div style="font-size: 0.94rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 5px">Modal, then a details block</div>
+      <div style="font-size: 0.8rem; color: #596580">Customize sits inside a modal, inside an accordion.</div>
+    </div>
+
+  </div>
+
+  <!-- friction band -->
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 40px">
+    <div style="display: flex; gap: 9px; align-items: flex-start">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7F1D1D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5"></path><path d="M12 16.2v.1"></path></svg>
+      <div style="font-size: 0.83rem; color: #596580"><strong style="color: #171717">Nothing to see before you commit.</strong> The only proof the tool works is on the far side of the whole flow.</div>
+    </div>
+    <div style="display: flex; gap: 9px; align-items: flex-start">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7F1D1D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5"></path><path d="M12 16.2v.1"></path></svg>
+      <div style="font-size: 0.83rem; color: #596580"><strong style="color: #171717">Steps 3 and 4 are a gate.</strong> No WebGL, no footprint, or a keyboard instead of a mouse, and the only route left is a form the copy calls a failure.</div>
+    </div>
+    <div style="display: flex; gap: 9px; align-items: flex-start">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7F1D1D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5"></path><path d="M12 16.2v.1"></path></svg>
+      <div style="font-size: 0.83rem; color: #596580"><strong style="color: #171717">One click, snapped to 45&deg;.</strong> The click looks more precise than the model is, and it has to carry floor and facing at once.</div>
+    </div>
+    <div style="display: flex; gap: 9px; align-items: flex-start">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7F1D1D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5"></path><path d="M12 16.2v.1"></path></svg>
+      <div style="font-size: 0.83rem; color: #596580"><strong style="color: #171717">No URL, so nothing to share.</strong> A result cannot be linked, revisited or compared &mdash; on a tool whose job is partly persuasion.</div>
+    </div>
+  </div>
+
+  <!-- PROPOSED -->
+  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px">
+    <span style="font-size: 0.74rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #171717">Proposed</span>
+    <span style="flex: 1; height: 1px; background: #EEF0F3"></span>
+    <span style="font-size: 0.8rem; color: #8896AB">4 steps &middot; a number in about a second, refined by choice</span>
+  </div>
+
+  <div style="display: flex; align-items: stretch; gap: 0; margin-bottom: 16px">
+
+    <div style="flex: 1; border: 1px solid #171717; border-radius: 12px; padding: 15px 17px">
+      <div style="font-size: 0.66rem; font-weight: 700; color: #7F1D1D; margin-bottom: 6px">01</div>
+      <div style="font-size: 1rem; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 6px">Land on an answer</div>
+      <div style="font-size: 0.84rem; color: #596580">A worked sample estimate is already on screen &mdash; a real building, a real number, marked as a sample. You see what you are about to get.</div>
+    </div>
+    <div style="display: flex; align-items: center; padding: 0 11px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#171717" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="M12 5l7 7-7 7"></path></svg></div>
+
+    <div style="flex: 1; border: 1px solid #171717; border-radius: 12px; padding: 15px 17px">
+      <div style="font-size: 0.66rem; font-weight: 700; color: #7F1D1D; margin-bottom: 6px">02</div>
+      <div style="font-size: 1rem; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 6px">Your number, in about a second</div>
+      <div style="font-size: 0.84rem; color: #596580">PLUTO gives floors, height and footprint. That alone is enough for a first estimate at your building&rsquo;s median facing, labelled <em>rough</em>. No 3D yet.</div>
+    </div>
+    <div style="display: flex; align-items: center; padding: 0 11px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#171717" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="M12 5l7 7-7 7"></path></svg></div>
+
+    <div style="flex: 1; border: 1px solid #171717; border-radius: 12px; padding: 15px 17px">
+      <div style="font-size: 0.66rem; font-weight: 700; color: #7F1D1D; margin-bottom: 6px">03</div>
+      <div style="font-size: 1rem; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 6px">Refine, two taps</div>
+      <div style="font-size: 0.84rem; color: #596580">Which way it faces, how high up. Eight sectors, because the model snaps to 45&deg; anyway. The number moves as you touch it &mdash; no waiting to find out.</div>
+    </div>
+    <div style="display: flex; align-items: center; padding: 0 11px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#171717" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="M12 5l7 7-7 7"></path></svg></div>
+
+    <div style="flex: 1; border: 1px solid #171717; border-radius: 12px; padding: 15px 17px">
+      <div style="font-size: 0.66rem; font-weight: 700; color: #7F1D1D; margin-bottom: 6px">04</div>
+      <div style="font-size: 1rem; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 6px">A result with a URL</div>
+      <div style="font-size: 0.84rem; color: #596580">The band, the assumptions in the open, the legal position stated once, and a link that survives being sent to a landlord or a board.</div>
+    </div>
+
+  </div>
+
+  <!-- the 3D, demoted to evidence -->
+  <div style="display: flex; gap: 16px; align-items: stretch; margin-bottom: 30px">
+    <div style="width: 34px; display: flex; align-items: center; justify-content: flex-end">
+      <svg width="22" height="30" viewBox="0 0 24 32" fill="none" stroke="#C6CEDA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2v18a6 6 0 0 0 6 6h9"></path><path d="M15 21l5 5-5 5"></path></svg>
+    </div>
+    <div style="flex: 1; border: 1px dashed #C6CEDA; border-radius: 12px; padding: 15px 18px; background: #FAFBFC">
+      <div style="font-size: 1rem; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 5px">The 3D view becomes evidence, offered at step 3 and 4</div>
+      <div style="font-size: 0.84rem; color: #596580; max-width: 120ch">Same scene, same shadow model, same 600KB &mdash; but pulled only when someone asks to see why their number is what it is, and clicking a wall is now one of two equal ways to set facing rather than the only one. Nobody is stranded when WebGL is missing, and the manual controls stop reading as a downgrade because everyone starts there.</div>
+    </div>
+  </div>
+
+  <!-- what carries over -->
+  <div style="border-top: 1px solid #EEF0F3; padding-top: 22px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px">
+    <div>
+      <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: #8896AB; margin-bottom: 8px">Unchanged</div>
+      <div style="font-size: 0.87rem; color: #596580">The model itself. PVWatts, the 200m shadow trace, SC-1 pricing, the soiling array &mdash; every number comes from the same code.</div>
+    </div>
+    <div>
+      <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: #8896AB; margin-bottom: 8px">Needs building</div>
+      <div style="font-size: 0.87rem; color: #596580">A block-median facing so step 2 can answer without a click, URL state for the result, and the customise controls lifted out of the modal.</div>
+    </div>
+    <div>
+      <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: #8896AB; margin-bottom: 8px">Worth deciding first</div>
+      <div style="font-size: 0.87rem; color: #596580">Whether the honest framing (legal from ~2027) sits at the top of the page or stays a footnote. That choice is what separates directions A, B and C.</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1680,"height":1060}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

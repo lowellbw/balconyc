@@ -9,3 +9,6 @@ supabase/.temp/
 # previously listed here, which had no effect (the file was already tracked)
 # and implied a protection that did not exist.
 node_modules/
+
+# Seeded design-canvas output (~2MB build artifact; re-seeded from the .dc.html sources)
+design/**/balco-home-page-directions.html

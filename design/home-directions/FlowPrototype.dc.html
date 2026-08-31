@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&display=swap">
+  <style>
+    body { margin: 0; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: #171717; line-height: 1.55; -webkit-font-smoothing: antialiased; background: #FFFFFF; }
+    a { color: #171717; } a:hover { color: #7F1D1D; }
+    button { font-family: inherit; cursor: pointer; }
+  </style>
+</helmet>
+
+<div style="width: 1280px; min-height: 900px; background: #FFFFFF; display: flex; flex-direction: column">
+
+  <!-- header + step rail -->
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 36px; border-bottom: 1px solid #EEF0F3">
+    <img src="balco-logo.png" alt="balco.nyc" style="height: 52px; width: auto">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <span style="font-size: 0.8rem; font-weight: 700; color: {{rail.c1}}">1 &middot; Address</span>
+      <span style="width: 22px; height: 1px; background: #E2E8F0"></span>
+      <span style="font-size: 0.8rem; font-weight: 700; color: {{rail.c2}}">2 &middot; Rough number</span>
+      <span style="width: 22px; height: 1px; background: #E2E8F0"></span>
+      <span style="font-size: 0.8rem; font-weight: 700; color: {{rail.c3}}">3 &middot; Make it yours</span>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 452px; gap: 40px; padding: 34px 36px 30px; flex-grow: 1; align-items: start">
+
+    <!-- LEFT: whatever this step asks of you -->
+    <div>
+
+      <sc-if value="{{isLand}}" hint-placeholder-val="{{ true }}">
+        <div>
+          <span style="display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #7F1D1D; margin-bottom: 16px">Step 1</span>
+          <h1 style="font-size: 2.7rem; font-weight: 700; line-height: 1.06; letter-spacing: -0.03em; margin: 0 0 14px; max-width: 17ch">How much could solar on your balcony save you?</h1>
+          <p style="font-size: 1.04rem; color: #596580; margin: 0 0 26px; max-width: 48ch">The card on the right is a worked example, on screen before you type a thing. Put in your address and it becomes yours.</p>
+
+          <div style="display: flex; align-items: center; gap: 6px; padding: 5px 5px 5px 4px; border: 1px solid #E2E8F0; border-radius: 14px; max-width: 520px; box-shadow: 0 2px 10px rgba(23,23,23,0.05)">
+            <div style="flex: 1; min-width: 0; padding: 14px 16px; font-size: 1rem; color: #8896AB">247 Vernon Blvd, Queens</div>
+            <button onClick="{{calculate}}" style="padding: 14px 22px; min-height: 46px; background: #171717; color: #fff; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 700; white-space: nowrap">Calculate &rarr;</button>
+          </div>
+          <p style="margin: 14px 0 0; font-size: 0.84rem; color: #8896AB">Sample address, pre-filled for this walkthrough. Press Calculate.</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isActive}}" hint-placeholder-val="{{ true }}">
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px">
+            <div>
+              <span style="display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #7F1D1D; margin-bottom: 8px">{{stepLabel}}</span>
+              <div style="font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em">247 Vernon Blvd, Queens</div>
+              <div style="font-size: 0.88rem; color: #596580; margin-top: 2px">28 floors &middot; 289 ft &middot; from NYC PLUTO, no 3D needed</div>
+            </div>
+            <button onClick="{{reset}}" style="background: none; border: none; color: #8896AB; font-size: 0.85rem; text-decoration: underline; text-underline-offset: 3px; padding: 8px 0">Start over</button>
+          </div>
+
+          <p style="margin: 0 0 24px; font-size: 0.98rem; color: #596580; max-width: 54ch">{{helperCopy}}</p>
+
+          <!-- facing: eight sectors, because the model snaps to 45 degrees -->
+          <div style="margin-bottom: 26px">
+            <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: #8896AB; margin-bottom: 11px">Which way does your balcony face?</div>
+            <div style="display: flex; gap: 7px">
+              <sc-for list="{{facings}}" as="f" hint-placeholder-count="8">
+                <button onClick="{{f.pick}}" style="flex: 1; min-height: 46px; border-radius: 10px; font-size: 0.92rem; font-weight: 700; background: {{f.bg}}; color: {{f.fg}}; border: 1px solid {{f.bd}}">{{f.key}}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- floor -->
+          <div style="margin-bottom: 26px">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 11px">
+              <span style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: #8896AB">How high up are you?</span>
+              <span style="font-size: 0.95rem; font-weight: 700">Floor {{floor}} of 28</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px">
+              <button onClick="{{floorDown}}" style="width: 46px; height: 46px; border-radius: 10px; border: 1px solid #E2E8F0; background: #fff; font-size: 1.2rem; font-weight: 700; color: #171717">&minus;</button>
+              <div style="flex: 1; height: 8px; background: #EEF0F3; border-radius: 4px; position: relative">
+                <div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{floorPct}}; background: #7F1D1D; border-radius: 4px"></div>
+              </div>
+              <button onClick="{{floorUp}}" style="width: 46px; height: 46px; border-radius: 10px; border: 1px solid #E2E8F0; background: #fff; font-size: 1.2rem; font-weight: 700; color: #171717">+</button>
+            </div>
+          </div>
+
+          <!-- the 3D, offered rather than imposed -->
+          <div style="border-top: 1px solid #EEF0F3; padding-top: 20px">
+            <button onClick="{{toggleScene}}" style="display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 11px 18px; border-radius: 24px; border: 1px solid #E2E8F0; background: #fff; font-size: 0.92rem; font-weight: 700; color: #171717">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7F1D1D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"></path><path d="M12 12l8-4.5"></path><path d="M12 12v9"></path><path d="M12 12L4 7.5"></path></svg>
+              {{sceneLabel}}
+            </button>
+            <span style="font-size: 0.83rem; color: #8896AB; margin-left: 14px">Optional. Everything above works without it.</span>
+
+            <sc-if value="{{sceneOpen}}" hint-placeholder-val="{{ true }}">
+              <div style="margin-top: 16px; height: 186px; border-radius: 14px; background: #1c1816; position: relative; overflow: hidden; border: 1px solid #E2E8F0">
+                <div style="position: absolute; inset: 0; background: linear-gradient(160deg, rgba(245,158,11,0.22) 0%, rgba(28,24,22,0) 55%)"></div>
+                <div style="position: absolute; left: 22px; bottom: 22px; display: flex; align-items: flex-end; gap: 7px">
+                  <div style="width: 34px; height: 66px; background: #2C2724; border-radius: 2px"></div>
+                  <div style="width: 44px; height: 118px; background: #7F1D1D; border-radius: 2px"></div>
+                  <div style="width: 30px; height: 48px; background: #2C2724; border-radius: 2px"></div>
+                  <div style="width: 38px; height: 88px; background: #35302C; border-radius: 2px"></div>
+                  <div style="width: 28px; height: 60px; background: #2C2724; border-radius: 2px"></div>
+                </div>
+                <div style="position: absolute; right: 20px; top: 20px; background: rgba(255,255,255,0.95); border-radius: 9px; padding: 9px 13px">
+                  <div style="font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #8896AB">Shade factor</div>
+                  <div style="font-size: 1.1rem; font-weight: 700; color: #171717">0.86</div>
+                  <div style="font-size: 0.7rem; color: #596580">31 buildings within 200m</div>
+                </div>
+                <div style="position: absolute; left: 22px; top: 20px; font-size: 0.78rem; color: rgba(255,255,255,0.72)">Your building, and what shades it</div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
+
+    </div>
+
+    <!-- RIGHT: the number is on screen the whole way through -->
+    <div style="border: 1px solid #E2E8F0; border-radius: 16px; padding: 24px 26px 22px; box-shadow: 0 4px 24px rgba(23,23,23,0.06)">
+
+      <div style="display: inline-block; background: {{badge.bg}}; color: {{badge.fg}}; padding: 5px 12px; border-radius: 20px; font-size: 0.63rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px">{{badge.text}}</div>
+
+      <div style="font-size: 0.8rem; color: #8896AB; margin-bottom: 14px">{{contextLine}}</div>
+
+      <div style="display: flex; align-items: baseline; gap: 9px">
+        <div style="font-size: 3rem; font-weight: 900; letter-spacing: -0.035em; line-height: 1">{{dollars}}</div>
+        <div style="font-size: 0.98rem; font-weight: 600; color: #596580">a year</div>
+      </div>
+      <div style="font-size: 0.85rem; color: #596580; margin-top: 6px">{{bandLine}}</div>
+
+      <div style="margin-top: 20px; padding-top: 18px; border-top: 1px solid #EEF0F3">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 11px">
+          <span style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: #8896AB">Monthly production</span>
+          <span style="font-size: 0.7rem; color: #596580">{{peakLine}}</span>
+        </div>
+        <div style="display: flex; align-items: flex-end; gap: 5px; height: 70px">
+          <sc-for list="{{bars}}" as="bar" hint-placeholder-count="12">
+            <div style="flex: 1; height: {{bar.h}}; background: #7F1D1D; border-radius: 4px 4px 0 0"></div>
+          </sc-for>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: #8896AB; margin-top: 6px">
+          <span>Jan</span><span>Jun</span><span>Dec</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 18px; padding-top: 16px; border-top: 1px solid #EEF0F3">
+        <div>
+          <div style="font-size: 1.12rem; font-weight: 700; letter-spacing: -0.02em">{{kwh}}</div>
+          <div style="font-size: 0.7rem; color: #8896AB">kWh a year</div>
+        </div>
+        <div>
+          <div style="font-size: 1.12rem; font-weight: 700; letter-spacing: -0.02em">{{payback}}</div>
+          <div style="font-size: 0.7rem; color: #8896AB">Payback</div>
+        </div>
+        <div>
+          <div style="font-size: 1.12rem; font-weight: 700; letter-spacing: -0.02em">{{offset}}</div>
+          <div style="font-size: 0.7rem; color: #8896AB">Bill offset</div>
+        </div>
+      </div>
+
+      <sc-if value="{{isActive}}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top: 20px; padding-top: 18px; border-top: 1px solid #EEF0F3; display: flex; gap: 9px">
+          <div style="flex: 1; text-align: center; padding: 13px 14px; min-height: 46px; background: #171717; color: #fff; border-radius: 10px; font-size: 0.88rem; font-weight: 700">balco.nyc/e/vernon-14s</div>
+          <div style="display: flex; align-items: center; justify-content: center; width: 46px; border: 1px solid #E2E8F0; border-radius: 10px">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#596580" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a1 1 0 0 1 1-1h9"></path></svg>
+          </div>
+        </div>
+      </sc-if>
+
+    </div>
+  </div>
+
+  <!-- the legal position, stated once, in the same place every time -->
+  <div style="margin-top: auto; background: #171717; padding: 18px 36px; display: flex; align-items: center; gap: 20px">
+    <span style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #F59E0B; white-space: nowrap">Not legal yet</span>
+    <p style="margin: 0; font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.5">The SUNNY Act has passed both chambers and awaits the Governor&rsquo;s signature, taking effect 90 days later. This estimate describes what would be true from early 2027, and it removes the utility barrier only &mdash; a landlord or board may still need to agree.</p>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1280,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { step: 'land', facing: 'S', floor: 14, sceneOpen: false, touched: false };
+  }
+
+  metrics(kwh) {
+    var RATE = 0.34, ESC = 0.03, DEG = 0.005, COST = 1200;
+    var annualConsumption = ((140 - 20) / RATE) * 12;
+    var cum = 0, pb = 25;
+    for (var i = 0; i < 25; i++) {
+      var y = kwh * Math.pow(1 - DEG, i) * RATE * Math.pow(1 + ESC, i);
+      var prev = cum;
+      cum += y;
+      if (cum >= COST && pb === 25) pb = i + (COST - prev) / y;
+    }
+    return {
+      dollars: Math.round(kwh * RATE),
+      payback: pb < 25 ? pb.toFixed(1) + ' yrs' : '25+ yrs',
+      offset: Math.round((kwh / annualConsumption) * 100) + '%'
+    };
+  }
+
+  renderVals() {
+    var self = this;
+    var FACING = { N: 0.40, NE: 0.50, E: 0.66, SE: 0.88, S: 1.00, SW: 0.88, W: 0.66, NW: 0.50 };
+    var ORDER = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+    var DIST = [0.045, 0.055, 0.079, 0.094, 0.110, 0.116, 0.113, 0.104, 0.086, 0.069, 0.070, 0.059];
+
+    var st = this.state;
+    var isLand = st.step === 'land';
+    // Before an address, the card shows a worked sample: south, high floor.
+    var facing = isLand ? 'S' : st.facing;
+    var floor = isLand ? 14 : st.floor;
+
+    var kwh = Math.round(892 * FACING[facing] * (0.70 + 0.35 * (floor / 28)));
+    var m = this.metrics(kwh);
+
+    var monthly = DIST.map(function (p) { return kwh * p; });
+    var peak = Math.max.apply(null, monthly);
+    var bars = monthly.map(function (v) { return { h: Math.round((v / peak) * 100) + '%' }; });
+
+    var facings = ORDER.map(function (k) {
+      var on = k === facing;
+      return {
+        key: k,
+        bg: on ? '#7F1D1D' : '#FFFFFF',
+        fg: on ? '#FFFFFF' : '#596580',
+        bd: on ? '#7F1D1D' : '#E2E8F0',
+        pick: function () { self.setState({ facing: k, step: 'refined', touched: true }); }
+      };
+    });
+
+    var badge;
+    if (isLand) {
+      badge = { text: 'Sample estimate', bg: '#7F1D1D', fg: '#FFFFFF' };
+    } else if (st.touched) {
+      badge = { text: 'Your estimate', bg: '#171717', fg: '#FFFFFF' };
+    } else {
+      badge = { text: 'Rough · block median facing', bg: '#FBEFD6', fg: '#8A5A08' };
+    }
+
+    return {
+      isLand: isLand,
+      isActive: !isLand,
+      stepLabel: st.touched ? 'Step 3' : 'Step 2',
+      helperCopy: st.touched
+        ? 'That is your number. Keep adjusting and it keeps up, or open the shadow model below to see what your block does to it.'
+        : 'Your number is already on the right, worked out from city records at the median facing for your building. Two taps make it exact.',
+      contextLine: isLand
+        ? '14th floor, south-facing, Long Island City'
+        : 'Floor ' + floor + ' of 28, facing ' + facing + ', 800W railing mount',
+      facings: facings,
+      floor: floor,
+      floorPct: Math.round((floor / 28) * 100) + '%',
+      floorUp: function () { self.setState({ floor: Math.min(28, st.floor + 1), step: 'refined', touched: true }); },
+      floorDown: function () { self.setState({ floor: Math.max(1, st.floor - 1), step: 'refined', touched: true }); },
+      calculate: function () { self.setState({ step: 'quick' }); },
+      reset: function () { self.setState({ step: 'land', facing: 'S', floor: 14, sceneOpen: false, touched: false }); },
+      toggleScene: function () { self.setState({ sceneOpen: !st.sceneOpen }); },
+      sceneOpen: st.sceneOpen,
+      sceneLabel: st.sceneOpen ? 'Hide the shadow model' : 'Show me the shadows',
+      badge: badge,
+      rail: {
+        c1: '#171717',
+        c2: isLand ? '#C6CEDA' : '#171717',
+        c3: st.touched ? '#171717' : '#C6CEDA'
+      },
+      kwh: kwh.toLocaleString(),
+      dollars: "$" + m.dollars,
+      payback: m.payback,
+      offset: m.offset,
+      bandLine: 'Modelled range $' + Math.round(m.dollars * 0.85) + ' to $' + Math.round(m.dollars * 1.15) + ', about ' + kwh.toLocaleString() + ' kWh',
+      peakLine: 'peaks at ' + Math.round(peak) + ' kWh in June'
+    };
+  }
+}
+</script>
+</body>
+</html>

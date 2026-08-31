@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,900;1,9..40,400&display=swap">
+  <style>
+    body { margin: 0; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: #171717; line-height: 1.6; -webkit-font-smoothing: antialiased; background: #FFFFFF; }
+    a { color: #171717; } a:hover { color: #7F1D1D; }
+  </style>
+</helmet>
+
+<div style="width: 1280px; background: #FFFFFF">
+
+  <!-- utility bar: the address stays reachable at every scroll depth -->
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 40px; border-bottom: 1px solid #EEF0F3">
+    <img src="balco-logo.png" alt="balco.nyc" style="height: 52px; width: auto">
+    <div style="display: flex; align-items: center; gap: 24px">
+      <a href="#" style="text-decoration: none; font-weight: 700; font-size: 0.9rem; color: #596580">Methodology</a>
+      <a href="#" style="text-decoration: none; font-weight: 700; font-size: 0.9rem; color: #596580">FAQ</a>
+      <div style="display: flex; align-items: center; gap: 8px; border: 1px solid #E2E8F0; border-radius: 24px; padding: 8px 8px 8px 16px">
+        <span style="font-size: 0.88rem; color: #8896AB">Change address</span>
+        <div style="width: 28px; height: 28px; border-radius: 50%; background: #171717; display: flex; align-items: center; justify-content: center">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="M12 5l7 7-7 7"></path></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- the form is the sentence -->
+  <div style="padding: 60px 40px 44px; max-width: 1180px">
+    <span style="display: block; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #7F1D1D; margin-bottom: 22px">NYC balcony solar &middot; open estimate</span>
+    <div style="font-size: 3.15rem; font-weight: 600; letter-spacing: -0.035em; line-height: 1.16; max-width: 24ch; text-wrap: pretty">An 800W panel on a balcony at
+      <span style="display: inline-flex; align-items: baseline; gap: 10px; border-bottom: 3px solid #7F1D1D; padding: 0 6px 2px; color: #8896AB; font-weight: 500">your address
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7F1D1D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="align-self: center" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"></path><circle cx="12" cy="10" r="2.6"></circle></svg>
+      </span>
+      would earn back <span style="color: #7F1D1D; font-weight: 700">$265 a year</span>.
+    </div>
+  </div>
+
+  <!-- the ledger -->
+  <div style="padding: 0 40px; max-width: 1180px">
+    <div style="display: grid; grid-template-columns: 1.35fr 1fr; gap: 64px; align-items: start">
+
+      <!-- left: every assumption on the page, editable in place -->
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 12px; border-bottom: 2px solid #171717">
+          <span style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: #171717">What we assumed</span>
+          <span style="font-size: 0.72rem; color: #8896AB">every line is editable</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #EEF0F3">
+          <span style="font-size: 0.98rem; color: #596580">Building</span>
+          <span style="font-size: 0.98rem; font-weight: 600">28 floors &middot; 289 ft &middot; from NYC PLUTO</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #EEF0F3">
+          <span style="font-size: 0.98rem; color: #596580">Your balcony</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.98rem; font-weight: 600; border-bottom: 1px dashed #8896AB">14th floor, facing south
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7F1D1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4l10-10-4-4L4 16z"></path></svg>
+          </span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #EEF0F3">
+          <span style="font-size: 0.98rem; color: #596580">Neighbouring shade</span>
+          <span style="font-size: 0.98rem; font-weight: 600">0.86 &middot; modelled from 31 buildings within 200m</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #EEF0F3">
+          <span style="font-size: 0.98rem; color: #596580">System</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.98rem; font-weight: 600; border-bottom: 1px dashed #8896AB">800W, railing-mounted at 90&deg;
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7F1D1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4l10-10-4-4L4 16z"></path></svg>
+          </span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #EEF0F3">
+          <span style="font-size: 0.98rem; color: #596580">Kit cost</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.98rem; font-weight: 600; border-bottom: 1px dashed #8896AB">$1,200 mid-tier
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7F1D1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4l10-10-4-4L4 16z"></path></svg>
+          </span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #EEF0F3">
+          <span style="font-size: 0.98rem; color: #596580">Electricity rate</span>
+          <span style="font-size: 0.98rem; font-weight: 600">$0.34/kWh &middot; Con Edison SC-1, rising 3%/yr</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0">
+          <span style="font-size: 0.98rem; color: #596580">Modelled by</span>
+          <span style="font-size: 0.98rem; font-weight: 600">NREL PVWatts V8 &middot; 8,760 hours</span>
+        </div>
+      </div>
+
+      <!-- right: the answer -->
+      <div style="background: #FBF7EF; border-radius: 16px; padding: 30px 30px 26px">
+        <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: #8896AB; margin-bottom: 16px">The answer</div>
+
+        <div style="font-size: 2.8rem; font-weight: 900; letter-spacing: -0.035em; line-height: 1">780 kWh</div>
+        <div style="font-size: 0.88rem; color: #596580; margin-top: 4px">a year, give or take 15%</div>
+
+        <div style="display: flex; align-items: center; gap: 5px; margin: 20px 0 24px">
+          <div style="flex: 1; height: 7px; border-radius: 4px; background: #E2E8F0"></div>
+          <div style="flex: 1.6; height: 7px; border-radius: 4px; background: #7F1D1D"></div>
+          <div style="flex: 1; height: 7px; border-radius: 4px; background: #E2E8F0"></div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-top: 1px solid rgba(23,23,23,0.1)">
+          <span style="font-size: 0.92rem; color: #596580">Off your bill</span><strong style="font-size: 0.92rem">$265/yr</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-top: 1px solid rgba(23,23,23,0.1)">
+          <span style="font-size: 0.92rem; color: #596580">Pays for itself in</span><strong style="font-size: 0.92rem">4.3 years</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-top: 1px solid rgba(23,23,23,0.1)">
+          <span style="font-size: 0.92rem; color: #596580">Over 25 years</span><strong style="font-size: 0.92rem">$9,000</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-top: 1px solid rgba(23,23,23,0.1)">
+          <span style="font-size: 0.92rem; color: #596580">CO<sub style="font-size: 0.75em">2</sub> avoided</span><strong style="font-size: 0.92rem">694 lbs/yr</strong>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 22px">
+          <div style="flex: 1; text-align: center; padding: 13px 18px; background: #171717; color: #fff; border-radius: 12px; font-size: 0.92rem; font-weight: 700">Copy link to this estimate</div>
+          <div style="display: flex; align-items: center; justify-content: center; width: 46px; border: 1px solid #E2E8F0; border-radius: 12px">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#596580" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V4h12v5"></path><rect x="6" y="14" width="12" height="6"></rect><path d="M6 14H4v-4h16v4h-2"></path></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- footnote: legality as a document footnote, not a buried FAQ -->
+  <div style="margin: 40px 40px 0; max-width: 1180px; padding: 18px 22px; background: #F7F8FA; border-left: 3px solid #7F1D1D; border-radius: 0 8px 8px 0">
+    <p style="margin: 0; font-size: 0.9rem; color: #596580; line-height: 1.55"><strong style="color: #171717">&dagger; You cannot install this yet.</strong> New York requires utility approval for any device that pushes power into a household circuit. The SUNNY Act (S8512/A9111) removes that requirement and awaits the Governor&rsquo;s signature; it takes effect 90 days after signing. This estimate describes what would be true from <strong style="color: #171717">early 2027</strong>.</p>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1280,"height":1060}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

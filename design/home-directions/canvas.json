@@ -1,0 +1,61 @@
+{
+  "pages": [
+    { "id": "page-1", "name": "Home page directions" },
+    { "id": "page-2", "name": "Core flow" }
+  ],
+  "artboards": [
+    { "file": "Main.dc.html",       "title": "A · Answer First",   "page": "page-1", "x": 0,    "y": 0,    "w": 1280, "h": 1060 },
+    { "file": "DirectionB.dc.html", "title": "B · The Ledger",     "page": "page-1", "x": 1400, "y": 0,    "w": 1280, "h": 1060 },
+    { "file": "DirectionC.dc.html", "title": "C · Civic Bulletin", "page": "page-1", "x": 2800, "y": 0,    "w": 1280, "h": 1060 },
+    { "file": "DirectionD.dc.html", "title": "D · Sun Dial",       "page": "page-1", "x": 0,    "y": 1360, "w": 1280, "h": 1060 },
+    { "file": "DirectionE.dc.html", "title": "E · Block Map",      "page": "page-1", "x": 1400, "y": 1360, "w": 1280, "h": 1060 },
+
+    { "file": "FlowMap.dc.html",       "title": "Flow · before and after", "page": "page-2", "x": 0, "y": 0,    "w": 1680, "h": 1060 },
+    { "file": "FlowPrototype.dc.html", "title": "Flow · clickable",        "page": "page-2", "x": 0, "y": 1250, "w": 1280, "h": 900, "is_interactive": true }
+  ],
+  "annotations": [
+    {
+      "id": "note-a",
+      "page": "page-1",
+      "x": 0, "y": -190, "w": 1280,
+      "text": "A · ANSWER FIRST — anchored\nProof before commitment: a worked sample is on screen before you type anything, and the 3D stops being the price of entry. Closest of the five to shipping from the current code.\nTradeoff: a photo hero is still doing the persuading, and a sample invites \"but that isn't my building\"."
+    },
+    {
+      "id": "note-b",
+      "page": "page-1",
+      "x": 1400, "y": -190, "w": 1280,
+      "text": "B · THE LEDGER — anchored\nThe result is a page, not a modal, and every assumption sits on it, editable in place. The strongest answer to \"why should I believe this number\", and naturally linkable.\nTradeoff: cold. No image, no hook — the weakest of the five for a first-time visitor arriving from a social link."
+    },
+    {
+      "id": "note-c",
+      "page": "page-1",
+      "x": 2800, "y": -190, "w": 1280,
+      "text": "C · CIVIC BULLETIN — stretch\nSays the true thing first: you cannot buy this yet, and here is the bill that changes it. Turns a dead end into a reason to come back, and the calculator becomes the personalisation underneath.\nTradeoff: buries the calculator the search traffic came for, and it dates the day the Governor signs."
+    },
+    {
+      "id": "note-d",
+      "page": "page-1",
+      "x": 0, "y": 1170, "w": 1280,
+      "text": "D · SUN DIAL — stretch\nThe model becomes the interface. No address, no 600KB download, no six-second wait — the number moves as you turn the dial, and the eight sectors are honest about the 45° snap the code already does.\nTradeoff: a toy until someone enters an address, and the furthest of the five from the current brand."
+    },
+    {
+      "id": "note-e",
+      "page": "page-1",
+      "x": 1400, "y": 1170, "w": 1280,
+      "text": "E · BLOCK MAP — stretch\nAnswers the question the other four leave open: is my number any good? Leads with the city, and comparison is the thing people actually share.\nTradeoff: much the largest build — it needs precomputed figures for every block before the page can render at all."
+    },
+    {
+      "id": "note-flowmap",
+      "page": "page-2",
+      "x": 0, "y": -150, "w": 1680,
+      "text": "The one change everything else follows from: the number arrives BEFORE the 3D, not after it. PLUTO alone (floors, height, footprint) is enough to answer in about a second."
+    },
+    {
+      "id": "note-flowproto",
+      "page": "page-2",
+      "x": 0, "y": 1100, "w": 1280,
+      "text": "Clickable. Press Calculate, then change the facing and floor — the number, the band, the chart and the payback all move live. \"Show me the shadows\" is a button, not a gate.\nFigures come from the real model in js/solar-api.js: $0.34/kWh SC-1, 3% escalation, 0.5% degradation, $1,200 mid-tier kit."
+    }
+  ],
+  "launch": { "view": "canvas", "page": "page-1" }
+}

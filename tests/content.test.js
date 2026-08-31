@@ -162,6 +162,12 @@ describe('Retired prototype pages are gone', () => {
     }
   });
 
+  it('no longer ships the orphaned admin CMS', () => {
+    // It edited a site_content table that no page has ever read, using keys
+    // from the deleted calculator-4/-6 landing page.
+    assert(!fs.existsSync(path.join(ROOT, 'admin')), 'admin/ is still present');
+  });
+
   it('keeps /admin/ and /api/ disallowed', () => {
     assert(/Disallow: \/admin\//.test(robots), '/admin/ must stay disallowed');
     assert(/Disallow: \/api\//.test(robots), '/api/ must stay disallowed');

@@ -12,7 +12,7 @@ Which tier a block sits in is texture, not data.
 import math
 from citymap import grid, PITCH, BLOCK
 
-COLS = 120
+COLS = 96
 CELLS, C, R = grid(COLS)
 VW, VH = C * PITCH, R * PITCH
 
@@ -69,6 +69,18 @@ VARIANTS = [
            (0.40,"#A99AC0"),(0.62,"#C3BCD2"),(1.00,"#BEB6CE")])),
 ]
 
+# One pattern cell carries the sheen for every block: a curved highlight across
+# the top and a faint shade at the foot. Drawing it once and tiling it costs a
+# single extra path instead of three more shapes per block.
+GLOSS = (f'<pattern id="gloss" x="0" y="0" width="{PITCH}" height="{PITCH}" '
+         f'patternUnits="userSpaceOnUse">'
+         f'<path d="M0 0H{BLOCK}V2.5C{BLOCK*0.72} 4.5 {BLOCK*0.36} 5.3 0 5.5Z" fill="#FFFFFF" opacity="0.42"/>'
+         f'<path d="M0 0H{BLOCK}V0.9H0Z" fill="#FFFFFF" opacity="0.34"/>'
+         f'<path d="M{BLOCK} {BLOCK}H0V6.6C{BLOCK*0.4} 6.4 {BLOCK*0.75} 5.6 {BLOCK} 3.9Z" fill="#0B0B0B" opacity="0.07"/>'
+         f'</pattern>')
+
+ALL_BLOCKS = "".join(f"M{i*PITCH} {j*PITCH}h{BLOCK}v{BLOCK}h-{BLOCK}z" for (i, j) in CELLS)
+
 def city_svg(v):
     defs = "".join(
         f'<radialGradient id="sun{k}" data-sun-grad gradientUnits="userSpaceOnUse" '
@@ -81,7 +93,8 @@ def city_svg(v):
                   for (i, j), t in tier.items() if t == k)
         + '"/>' for k in range(len(RADII)))
     return (f'<svg viewBox="0 0 {VW} {VH}" width="100%" height="100%" '
-            f'aria-hidden="true"><defs>{defs}</defs>{paths}</svg>')
+            f'aria-hidden="true"><defs>{defs}{GLOSS}</defs>{paths}'
+            f'<path fill="url(#gloss)" d="{ALL_BLOCKS}"/></svg>')
 
 def sun_svg(v):
     rays = "".join(

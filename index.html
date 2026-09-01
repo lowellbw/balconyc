@@ -26,7 +26,6 @@
   <meta name="twitter:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="Gemini_Generated_Image_d2ucutd2ucutd2uc.webp" type="image/webp" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
   <script>
     window.addEventListener('DOMContentLoaded', function() {
@@ -59,59 +58,91 @@
     nav.scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
     nav .container { display: flex; justify-content: space-between; align-items: center; }
     .logo { display: inline-block; text-decoration: none; line-height: 0; }
-    .logo img { height: 72px; width: auto; filter: brightness(0) invert(1); transition: filter 0.3s; }
-    nav.scrolled .logo img { filter: none; }
+    .logo img { height: 72px; width: auto; transition: filter 0.3s; }
     .nav-links { display: flex; align-items: center; gap: 24px; }
-    .nav-links a { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: opacity 0.2s, color 0.3s; }
+    .nav-links a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: opacity 0.2s, color 0.3s; }
     .nav-links a:hover { opacity: 0.7; }
-    nav.scrolled .nav-links a { color: var(--text); }
-    .btn-pill { display: inline-flex; align-items: center; padding: 12px 24px; background: #fff; color: var(--text) !important; border: none; border-radius: 24px; font-family: inherit; font-weight: 700; font-size: 0.95rem; text-decoration: none; cursor: pointer; transition: transform 0.2s; gap: 8px; }
+    .btn-pill { display: inline-flex; align-items: center; padding: 12px 24px; background: var(--text); color: #fff !important; border: none; border-radius: 24px; font-family: inherit; font-weight: 700; font-size: 0.95rem; text-decoration: none; cursor: pointer; transition: transform 0.2s; gap: 8px; }
     .btn-pill:hover { transform: translateY(-1px); }
-    nav.scrolled .btn-pill { background: var(--text); color: #fff !important; }
 
     /* HERO */
     .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: left; transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
     .hero.has-scene { min-height: 100vh; text-align: left; justify-content: flex-start; padding: 120px 0 60px; }
-    .hero-bg { position: absolute; inset: 0; overflow: hidden; background: #1c1816; }
-    .hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 35%, rgba(0,0,0,0.35) 70%, rgba(0,0,0,0.08) 100%); }
-    .hero-top-gradient { position: absolute; top: 0; left: 0; right: 0; height: 150px; background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 100%); z-index: 1; }
+    /* The city of blocks. Sized to bleed off the right, so the copy sits on
+       clean ground and the map runs under the input. */
+    .hero-city { position: absolute; right: 2%; top: 13%; height: 82%; aspect-ratio: 1 / 1; pointer-events: none; }
+    .hero-city svg { display: block; width: 100%; height: 100%; }
+    .hero-halo { position: absolute; width: 62vw; height: 62vw; max-width: 900px; max-height: 900px; margin: -31vw 0 0 -31vw; pointer-events: none;
+      background: radial-gradient(circle closest-side, rgba(191,60,32,0.18) 0%, rgba(255,255,255,0) 62%); }
+    .hero-scrim { position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(90deg, var(--bg) 0%, var(--bg) 16%, rgba(255,255,255,0) 54%), linear-gradient(0deg, var(--bg) 0%, rgba(255,255,255,0) 12%); }
+    .hero-sun { position: absolute; width: 76px; margin: -38px 0 0 -38px; pointer-events: none; text-align: center; z-index: 2; }
+    .hero-sun-rays { transform-origin: 50% 50%; animation: sunTurn 120s linear infinite; }
+    @keyframes sunTurn { to { transform: rotate(360deg); } }
+    .hero-clock { display: inline-block; margin-top: 2px; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.92); border: 1px solid var(--border); font-size: 0.72rem; font-weight: 700; color: var(--accent); white-space: nowrap; }
+    @media (prefers-reduced-motion: reduce) { .hero-sun-rays { animation: none; } }
+    /* Once an address resolves the 3D scene takes the stage. */
+    .hero.has-scene .hero-city, .hero.has-scene .hero-halo,
+    .hero.has-scene .hero-sun, .hero.has-scene .hero-scrim { display: none; }
+
+    /* Narrow screens have no room beside the copy, so the city drops below it
+       and the scrim fades top-down instead of left-right. The hero reserves
+       that room as bottom padding, and the map is sized from the viewport —
+       a percentage of the hero would collapse, since the hero is
+       content-sized once the 768px rules take min-height away. */
+    @media (max-width: 1024px) {
+      .hero:not(.has-scene) {
+        align-items: flex-start;
+        min-height: auto;
+        padding-top: 120px;
+        padding-bottom: calc(min(58vw, 520px) + 14px);
+      }
+      .hero-city {
+        right: -8%; left: auto; top: auto; bottom: 0;
+        width: min(58vw, 520px); height: min(58vw, 520px);
+        aspect-ratio: auto;
+      }
+      .hero-scrim { background:
+        linear-gradient(180deg, var(--bg) 0%, var(--bg) 26%, rgba(255,255,255,0) 56%),
+        linear-gradient(0deg, var(--bg) 0%, rgba(255,255,255,0) 8%); }
+      .hero-halo { display: none; }
+    }
 
     .hero-layout { position: relative; z-index: 3; width: 100%; max-width: 1360px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: flex-start; gap: 40px; transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
     .hero.has-scene .hero-layout { align-items: stretch; }
 
     .hero-content { max-width: 680px; padding: 0; transition: all 0.7s cubic-bezier(0.16,1,0.3,1); flex-shrink: 0; }
     .hero.has-scene .hero-content { max-width: 340px; }
-    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); max-width: 18ch; margin: 0 0 16px; font-weight: 700; color: #fff; line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; transition: font-size 0.5s; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); max-width: 18ch; margin: 0 0 16px; font-weight: 700; color: var(--text); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; transition: font-size 0.5s; }
     .hero.has-scene h1 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); max-width: 100%; text-wrap: balance; }
-    .hero p { font-size: 1.15rem; font-weight: 500; color: rgba(255,255,255,0.85); margin-bottom: 28px; transition: font-size 0.5s; }
+    .hero p { font-size: 1.15rem; font-weight: 500; color: var(--text-sub); margin-bottom: 28px; transition: font-size 0.5s; }
     .hero.has-scene p { font-size: 0.95rem; margin-bottom: 20px; }
-    .hero-input-wrap { max-width: 580px; margin: 0; display: flex; align-items: center; gap: 6px; padding: 6px 6px 6px 4px; background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; backdrop-filter: blur(10px); transition: border-color 0.2s, background 0.2s; }
-    .hero-input-wrap:focus-within { border-color: rgba(255,255,255,0.35); background: rgba(0,0,0,0.55); }
+    .hero-input-wrap { max-width: 580px; margin: 0; display: flex; align-items: center; gap: 6px; padding: 6px 6px 6px 4px; background: #fff; border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 2px 10px rgba(23,23,23,0.06); transition: border-color 0.2s, box-shadow 0.2s; }
+    .hero-input-wrap:focus-within { border-color: var(--accent); box-shadow: 0 2px 16px rgba(127,29,29,0.12); }
     .hero.has-scene .hero-input-wrap { max-width: 100%; margin: 0; }
     .hero-input-field { flex: 1; position: relative; min-width: 0; }
-    .hero-input { width: 100%; padding: 16px 18px; background: transparent; border: none; font-family: inherit; font-size: 1.05rem; color: #fff; outline: none; }
-    .hero-input::placeholder { color: rgba(255,255,255,0.55); }
-    .hero-input-spinner { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,0.2); border-top-color: #fff; border-radius: 50%; display: none; animation: spin 0.7s linear infinite; }
+    .hero-input { width: 100%; padding: 16px 18px; background: transparent; border: none; font-family: inherit; font-size: 1.05rem; color: var(--text); outline: none; }
+    .hero-input::placeholder { color: var(--text-muted); }
+    .hero-input-spinner { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; border: 2.5px solid rgba(127,29,29,0.2); border-top-color: var(--accent); border-radius: 50%; display: none; animation: spin 0.7s linear infinite; }
     .hero-input-spinner.active { display: block; }
-    .hero-input-submit { padding: 14px 22px; background: #fff; color: var(--text); border: none; border-radius: 12px; font-family: inherit; font-size: 0.98rem; font-weight: 700; cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s, transform 0.15s; }
-    .hero-input-submit:hover { background: #F1F1F1; }
+    .hero-input-submit { padding: 14px 22px; background: var(--accent); color: #fff; border: none; border-radius: 12px; font-family: inherit; font-size: 0.98rem; font-weight: 700; cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s, transform 0.15s; }
+    .hero-input-submit:hover { background: var(--accent-hover); }
     .hero-input-submit:active { transform: translateY(1px); }
     @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
 
     /* Building info below input (shown after address) */
-    .hero-building-info { margin-top: 16px; font-size: 0.82rem; color: rgba(255,255,255,0.6); display: none; }
+    .hero-building-info { margin-top: 16px; font-size: 0.82rem; color: var(--text-sub); display: none; }
     .hero-building-info.visible { display: block; animation: fadeUp 0.3s ease; }
-    .hero-building-info strong { color: rgba(255,255,255,0.85); }
+    .hero-building-info strong { color: var(--text); }
 
     /* Post-results CTA block (replaces input after results) */
     .hero-post-results { display: none; flex-direction: column; gap: 14px; }
     .hero-post-results.visible { display: flex; animation: fadeUp 0.4s ease; }
-    .hero-post-results .hpr-summary { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
-    .hero-post-results .hpr-summary strong { color: #fff; }
+    .hero-post-results .hpr-summary { font-size: 0.85rem; color: var(--text-sub); line-height: 1.5; }
+    .hero-post-results .hpr-summary strong { color: var(--text); }
     .hero-post-results .btn-pill { font-size: 0.95rem; }
-    .hero-post-results .hpr-reset { background: none; border: none; color: rgba(255,255,255,0.5); font-family: inherit; font-size: 0.82rem; cursor: pointer; padding: 4px 0; text-decoration: underline; text-underline-offset: 2px; transition: color 0.2s; }
-    .hero-post-results .hpr-reset:hover { color: rgba(255,255,255,0.8); }
+    .hero-post-results .hpr-reset { background: none; border: none; color: var(--text-muted); font-family: inherit; font-size: 0.82rem; cursor: pointer; padding: 4px 0; text-decoration: underline; text-underline-offset: 2px; transition: color 0.2s; }
+    .hero-post-results .hpr-reset:hover { color: var(--text); }
 
     /* 3D viewport inside hero */
     .scene-frame { display: none; flex: 1; min-width: 0; }
@@ -434,6 +465,12 @@
     .explainer-header .section-lede { font-size: 1.15rem; font-weight: 400; color: var(--text-sub); line-height: 1.55; }
     .explainer-header .section-lede a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
 
+    /* STREET BAND */
+    .street-band { margin: 0; }
+    .street-band picture { display: block; }
+    .street-band img { display: block; width: 100%; height: clamp(320px, 42vw, 560px); object-fit: cover; object-position: center; }
+    .street-caption { max-width: 1360px; margin: 14px auto 0; padding: 0 40px; font-size: 0.9rem; color: var(--text-sub); }
+
     .explainer { padding: 96px 0; background: #fff; }
     .explainer .explainer-header { max-width: 920px; margin: 0 0 56px; text-align: left; }
     .explainer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; max-width: 1180px; margin: 0 auto; }
@@ -486,6 +523,7 @@
     }
     @media (max-width: 768px) {
       .container { padding: 0 20px; }
+      .street-caption { padding: 0 20px; }
 
       /* NAV — compact for mobile */
       nav { padding: 4px 0; }
@@ -702,13 +740,31 @@
 
 <!-- HERO -->
 <section class="hero" id="heroSection">
-  <div class="hero-bg">
-    <picture>
-      <source srcset="Gemini_Generated_Image_d2ucutd2ucutd2uc.webp" type="image/webp">
-      <img src="Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg" alt="" width="1920" height="1047" fetchpriority="high" decoding="async">
-    </picture>
+  <!-- Every block of the five boroughs, lit by a sun that follows the cursor.
+       The shading is the sun's position, not any block's modelled output. -->
+  <div class="hero-city" id="heroCity" aria-hidden="true"></div>
+  <div class="hero-halo" id="heroHalo" aria-hidden="true"></div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-sun" id="heroSun" aria-hidden="true">
+    <svg viewBox="0 0 100 100" width="76" height="76">
+      <g class="hero-sun-rays">
+        <rect x="48.3" y="16" width="3.4" height="13" rx="1.7" fill="#E0603A"></rect>
+        <rect x="48.3" y="20" width="3.4" height="9" rx="1.7" fill="#E0603A" transform="rotate(30 50 50)"></rect>
+        <rect x="48.3" y="16" width="3.4" height="13" rx="1.7" fill="#E0603A" transform="rotate(60 50 50)"></rect>
+        <rect x="48.3" y="20" width="3.4" height="9" rx="1.7" fill="#E0603A" transform="rotate(90 50 50)"></rect>
+        <rect x="48.3" y="16" width="3.4" height="13" rx="1.7" fill="#E0603A" transform="rotate(120 50 50)"></rect>
+        <rect x="48.3" y="20" width="3.4" height="9" rx="1.7" fill="#E0603A" transform="rotate(150 50 50)"></rect>
+        <rect x="48.3" y="16" width="3.4" height="13" rx="1.7" fill="#E0603A" transform="rotate(180 50 50)"></rect>
+        <rect x="48.3" y="20" width="3.4" height="9" rx="1.7" fill="#E0603A" transform="rotate(210 50 50)"></rect>
+        <rect x="48.3" y="16" width="3.4" height="13" rx="1.7" fill="#E0603A" transform="rotate(240 50 50)"></rect>
+        <rect x="48.3" y="20" width="3.4" height="9" rx="1.7" fill="#E0603A" transform="rotate(270 50 50)"></rect>
+        <rect x="48.3" y="16" width="3.4" height="13" rx="1.7" fill="#E0603A" transform="rotate(300 50 50)"></rect>
+        <rect x="48.3" y="20" width="3.4" height="9" rx="1.7" fill="#E0603A" transform="rotate(330 50 50)"></rect>
+      </g>
+      <circle cx="50" cy="50" r="15.5" fill="#E0603A"></circle>
+    </svg>
+    <span class="hero-clock" id="heroClock">11:02 AM</span>
   </div>
-  <div class="hero-top-gradient"></div>
   <div class="hero-layout">
     <div class="hero-content" id="heroContent">
       <h1 id="heroH1" data-default="How much could solar on your balcony save you?">How much could solar on your balcony save you?</h1>
@@ -1002,6 +1058,16 @@
   </div>
 </div>
 
+<!-- The street. Was the hero; now it sits between the calculator and the
+     explanation, where it illustrates rather than obscures. -->
+<section class="street-band">
+  <picture>
+    <source srcset="Gemini_Generated_Image_d2ucutd2ucutd2uc.webp" type="image/webp">
+    <img src="Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg" alt="Solar panels clamped to the fire-escape balconies of a Brooklyn walk-up" width="1920" height="1047" loading="lazy" decoding="async">
+  </picture>
+  <p class="street-caption">Panels on a walk-up. No roof, no rights, no electrician &mdash; just a railing facing the right way.</p>
+</section>
+
 <!-- ABOUT / WHAT IS BALCONY SOLAR -->
 <section class="explainer" id="about">
   <div class="container">
@@ -1081,6 +1147,7 @@
 <script src="js/config.js"></script>
 <script src="js/solar-api.js"></script>
 <script src="js/sun-position.js"></script>
+<script src="js/city-hero.js" defer></script>
 <script>
 // ============================================================
 // CALCULATOR 4 — Click-to-Select Balcony + Sun Animation Reveal
@@ -1415,6 +1482,7 @@ async function onPlaceSelected(place) {
 
   // Swap left panel: hide input, show CTAs immediately
   document.getElementById('heroSection').classList.add('has-scene');
+  window.dispatchEvent(new Event('balco:sceneopen'));
   document.querySelector('.hero-input-wrap').style.display = 'none';
   document.getElementById('heroBuildingInfo').style.display = 'none';
   document.querySelector('#heroContent > p').style.display = 'none';
@@ -1993,6 +2061,7 @@ function resetCalculator() {
 
   // Reset UI — hero
   document.getElementById('heroSection').classList.remove('has-scene');
+  window.dispatchEvent(new Event('balco:scenereset'));
   document.getElementById('sceneFrame').classList.remove('visible');
   document.getElementById('heroPostResults').classList.remove('visible');
   document.querySelector('.hero-input-wrap').style.display = '';

@@ -12,9 +12,9 @@ Which tier a block sits in is texture, not data.
 import math
 from citymap import grid
 
-PITCH, BLOCK, RADIUS = 10, 8.4, 2.9   # rounded tiles, tight gaps
+PITCH, BLOCK = 10, 8.6                 # flat square tiles
 
-COLS = 72
+COLS = 36
 CELLS, C, R = grid(COLS)
 VW, VH = C * PITCH, R * PITCH
 
@@ -30,7 +30,9 @@ def rough(i, j):
             + 0.22 * math.sin(i * 3.71 - j * 0.91))
 
 SHARE = [0.13, 0.19, 0.24, 0.22, 0.15, 0.07]
-RADII = [620, 900, 1220, 1580, 2050, 2600]
+# as fractions of the city's own width, so the light behaves the same
+# whatever block size the grid is drawn at
+RADIUS_RATIOS = [0.52, 0.75, 1.02, 1.32, 1.71, 2.17]
 
 order = sorted(CELLS, key=lambda k: rough(*k))
 tier, at, k = {}, 0.0, 0
@@ -39,95 +41,65 @@ for idx, key in enumerate(order):
         at += SHARE[k] * len(order); k += 1
     tier[key] = k
 
+RADII = [round(VW * r) for r in RADIUS_RATIOS]
+
 sx = X0 + T0 * (X1 - X0)
 sy = YBASE - RISE * math.sqrt(max(0.0, 1 - (2 * T0 - 1) ** 2))
 gx, gy = (sx - CX) * VW / CW, (sy - CY) * VH / CH
 
+# Five discrete shades per colour, brightest first. The light is BANDED, not
+# blended: the gradient uses paired stops at the same offset so each step ends
+# hard. Six catch tiers each band at a different radius, so the steps break up
+# into blocks catching different amounts of light rather than concentric rings.
 VARIANTS = [
   ("Solar yellow", dict(
     ink="#1A1710", sub="#6B6552", ground="#FFFEFA", hair="#E8E3D2",
-    accent="#F2C200", btnink="#1A1710", disc="#FFD400", halo="rgba(255,206,0,0.30)",
-    stops=[(0.00,"#FFF48C"),(0.07,"#FFD400"),(0.20,"#EDBE00"),
-           (0.40,"#D9D08C"),(0.62,"#D4D0B4"),(1.00,"#CFCBB2")])),
+    accent="#F2C200", btnink="#1A1710", disc="#FFD400", halo="rgba(255,206,0,0.28)",
+    shades=["#FFD400", "#F0BE05", "#DCC14C", "#D9D3A2", "#CFCBB4"])),
   ("Sun and shade", dict(
     ink="#16171A", sub="#697079", ground="#FDFDFC", hair="#E1E4E7",
     accent="#C87F12", btnink="#FFFFFF", disc="#FFC53D", halo="rgba(232,160,20,0.24)",
-    stops=[(0.00,"#FFD062"),(0.07,"#EDA015"),(0.20,"#C88E2A"),
-           (0.38,"#A8A79E"),(0.58,"#B4BFCB"),(1.00,"#AEB9C6")])),
+    shades=["#FFC62B", "#EDA518", "#C9A85A", "#AEBAC6", "#C6CED7"])),
   ("Brand red", dict(
     ink="#171717", sub="#6B6360", ground="#FFFCFC", hair="#EADFDD",
     accent="#7F1D1D", btnink="#FFFFFF", disc="#E0603A", halo="rgba(191,60,32,0.22)",
-    stops=[(0.00,"#F49472"),(0.07,"#C2452A"),(0.20,"#9E2C1E"),
-           (0.40,"#BE9A92"),(0.62,"#CDBDB9"),(1.00,"#C9B9B5")])),
+    shades=["#E46740", "#C2452A", "#A85643", "#C8A9A1", "#D2C3BF"])),
   ("Civic navy", dict(
     ink="#14171A", sub="#66707C", ground="#FCFDFF", hair="#DCE3EA",
     accent="#10406C", btnink="#FFFFFF", disc="#5AA0E0", halo="rgba(29,96,160,0.22)",
-    stops=[(0.00,"#93CAF7"),(0.07,"#2E7ABF"),(0.20,"#1A5490"),
-           (0.40,"#93A6B8"),(0.62,"#B4C0CC"),(1.00,"#B0BDC9")])),
+    shades=["#5AA0E0", "#2E7ABF", "#5D87AF", "#A9B9C9", "#C0CAD4"])),
   ("Dusk violet", dict(
     ink="#17141C", sub="#6C6579", ground="#FDFCFE", hair="#E3DEEA",
     accent="#6D3A9C", btnink="#FFFFFF", disc="#C77DE8", halo="rgba(140,74,190,0.22)",
-    stops=[(0.00,"#E7B4F2"),(0.07,"#A855C9"),(0.20,"#7E3AA6"),
-           (0.40,"#A99AC0"),(0.62,"#C3BCD2"),(1.00,"#BEB6CE")])),
+    shades=["#C77DE8", "#A855C9", "#9873B6", "#BCB1CC", "#CAC3D6"])),
 ]
 
-# ── the material ───────────────────────────────────────────────────────────
-# Three layers make the glass, and only one of them is fixed to the tile:
-#   body     — the tier gradients, the colour of the block
-#   bevel    — a tiled pattern giving every tile the same thickness and edge
-#   specular — a tight white hotspot that TRACKS THE SUN, so the sheen slides
-#              across the city as the light moves. This is what makes it read
-#              as liquid rather than as a printed gloss.
-BEVEL = (f'<pattern id="bevel" x="0" y="0" width="{PITCH}" height="{PITCH}" '
-         f'patternUnits="userSpaceOnUse">'
-         f'<path d="M0 0H{BLOCK}V3.1C{BLOCK*0.7} 4.9 {BLOCK*0.3} 5.5 0 5.7Z" fill="#FFFFFF" opacity="0.30"/>'
-         f'<path d="M0 {BLOCK}H{BLOCK}V5.3C{BLOCK*0.72} 6.3 {BLOCK*0.34} 6.9 0 7.1Z" fill="#0A0A0A" opacity="0.085"/>'
-         f'</pattern>')
+BOUNDS = [0.24, 0.43, 0.64, 0.90]        # four thresholds, five shades, evenly filled
 
-# the tiles, written once and reused by every layer
-def tier_defs():
-    out = []
-    for k in range(len(RADII)):
-        rects = "".join(
-            f'<rect x="{i*PITCH}" y="{j*PITCH}" width="{BLOCK}" height="{BLOCK}" rx="{RADIUS}"/>'
-            for (i, j), t in tier.items() if t == k)
-        out.append(f'<g id="t{k}">{rects}</g>')
-    return "".join(out)
+def band_of(d):
+    for i, b in enumerate(BOUNDS):
+        if d < b:
+            return i
+    return len(BOUNDS)
 
-TIERS = tier_defs()
-USE_ALL = "".join(f'<use href="#t{k}" xlink:href="#t{k}"/>' for k in range(len(RADII)))
-
-SPEC = ('<radialGradient id="spec" data-sun-spec gradientUnits="userSpaceOnUse" '
-        f'cx="{gx:.0f}" cy="{gy + 120:.0f}" r="250">'
-        '<stop offset="0" stop-color="#FFFDF4" stop-opacity="0.66"/>'
-        '<stop offset="0.26" stop-color="#FFFDF4" stop-opacity="0.26"/>'
-        '<stop offset="0.60" stop-color="#FFFDF4" stop-opacity="0.05"/>'
-        '<stop offset="1" stop-color="#FFFDF4" stop-opacity="0"/>'
-        '</radialGradient>')
-
-BLOOM = ('<radialGradient id="bloom" data-sun-bloom gradientUnits="userSpaceOnUse" '
-         f'cx="{gx:.0f}" cy="{gy + 40:.0f}" r="900">'
-         '<stop offset="0" stop-color="#FFFDF4" stop-opacity="0.16"/>'
-         '<stop offset="0.45" stop-color="#FFFDF4" stop-opacity="0.04"/>'
-         '<stop offset="1" stop-color="#FFFDF4" stop-opacity="0"/>'
-         '</radialGradient>')
+# Each block is coloured AS A WHOLE. A gradient would band in pixel space and
+# cut a hard edge diagonally through the big tiles; here every block takes one
+# of the five shades outright, from its own distance to the sun over its tier's
+# reach. Only blocks that actually change shade are written each frame.
+CENTRES = {k: (i * PITCH + BLOCK / 2, j * PITCH + BLOCK / 2) for k, (i, j) in
+           enumerate(CELLS)}
 
 def city_svg(v):
-    grads = "".join(
-        f'<radialGradient id="sun{k}" data-sun-grad gradientUnits="userSpaceOnUse" '
-        f'cx="{gx:.0f}" cy="{gy:.0f}" r="{RADII[k]}">'
-        + "".join(f'<stop offset="{o}" stop-color="{c}"/>' for o, c in v["stops"])
-        + "</radialGradient>" for k in range(len(RADII)))
-    body = "".join(f'<use href="#t{k}" xlink:href="#t{k}" fill="url(#sun{k})"/>'
-                   for k in range(len(RADII)))
+    rects = []
+    for (i, j), t in tier.items():
+        cxb, cyb = i * PITCH + BLOCK / 2, j * PITCH + BLOCK / 2
+        d = ((cxb - gx) ** 2 + (cyb - gy) ** 2) ** 0.5 / RADII[t]
+        rects.append(
+            f'<rect x="{i*PITCH}" y="{j*PITCH}" width="{BLOCK}" height="{BLOCK}" '
+            f'data-t="{t}" fill="{v["shades"][band_of(d)]}"/>')
     return (f'<svg viewBox="0 0 {VW} {VH}" width="100%" height="100%" '
-            f'xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">'
-            f'<defs>{grads}{SPEC}{BLOOM}{BEVEL}{TIERS}</defs>'
-            f'{body}'
-            f'<g fill="url(#bevel)">{USE_ALL}</g>'
-            f'<g fill="url(#bloom)">{USE_ALL}</g>'
-            f'<g fill="url(#spec)">{USE_ALL}</g>'
-            f'</svg>')
+            f'shape-rendering="crispEdges" data-city aria-hidden="true">'
+            + "".join(rects) + '</svg>')
 
 def sun_svg(v):
     rays = "".join(
@@ -138,7 +110,11 @@ def sun_svg(v):
             f'<g class="rays">{rays}</g>'
             f'<circle cx="50" cy="50" r="15.5" fill="{v["disc"]}"/></svg>')
 
-SCRIPT = f"""
+def script_for(v):
+    return f"""
+var RADII = {RADII};
+var BOUNDS = {BOUNDS};
+var SHADES = {v["shades"]};
 class Component extends DCLogic {{
   constructor(props) {{
     super(props);
@@ -152,13 +128,21 @@ class Component extends DCLogic {{
     var self = this;
     var root = this.root || document.querySelector('[data-sun-root]');
     if (!root) return;
-    this.grads = root.querySelectorAll('[data-sun-grad]');
-    this.spec  = root.querySelector('[data-sun-spec]');
-    this.bloom = root.querySelector('[data-sun-bloom]');
+    var rects = root.querySelectorAll('[data-city] rect');
+    this.blocks = [];
+    for (var i = 0; i < rects.length; i++) {{
+      var el = rects[i];
+      this.blocks.push({{
+        el: el, band: -1,
+        x: parseFloat(el.getAttribute('x')) + {BLOCK} / 2,
+        y: parseFloat(el.getAttribute('y')) + {BLOCK} / 2,
+        r: RADII[parseInt(el.getAttribute('data-t'), 10)]
+      }});
+    }}
     this.sun   = root.querySelector('[data-sun]');
     this.halo  = root.querySelector('[data-sun-halo]');
     this.clock = root.querySelector('[data-sun-clock]');
-    if (!this.grads.length) return;
+    if (!this.blocks.length) return;
     this.move = function (e) {{
       var r = root.getBoundingClientRect();
       if (!r.width) return;
@@ -187,12 +171,15 @@ class Component extends DCLogic {{
     var y = {YBASE} - {RISE} * Math.sqrt(Math.max(0, 1 - Math.pow(2 * t - 1, 2)));
     var cx = (((x - {CX}) * {VW}) / {CW}).toFixed(1);
     var cy = (((y - {CY}) * {VH}) / {CH}).toFixed(1);
-    for (var i = 0; i < this.grads.length; i++) {{
-      this.grads[i].setAttribute('cx', cx);
-      this.grads[i].setAttribute('cy', cy);
+    var sxv = parseFloat(cx), syv = parseFloat(cy);
+    for (var i = 0; i < this.blocks.length; i++) {{
+      var b = this.blocks[i];
+      var dx = b.x - sxv, dy = b.y - syv;
+      var d = Math.sqrt(dx * dx + dy * dy) / b.r;
+      var band = 0;
+      while (band < BOUNDS.length && d >= BOUNDS[band]) band++;
+      if (band !== b.band) {{ b.band = band; b.el.setAttribute('fill', SHADES[band]); }}
     }}
-    if (this.spec)  {{ this.spec.setAttribute('cx', cx);  this.spec.setAttribute('cy', (parseFloat(cy) + 120).toFixed(1)); }}
-    if (this.bloom) {{ this.bloom.setAttribute('cx', cx); this.bloom.setAttribute('cy', (parseFloat(cy) + 40).toFixed(1)); }}
     if (this.sun)  {{ this.sun.style.left  = x + 'px'; this.sun.style.top  = y + 'px'; }}
     if (this.halo) {{ this.halo.style.left = x + 'px'; this.halo.style.top = y + 'px'; }}
     if (this.clock) {{
@@ -285,7 +272,7 @@ def page(v):
 </div>
 </x-dc>
 <script data-dc-script data-props='{{"$preview":{{"width":1280,"height":1060}}}}'>
-{SCRIPT}
+{script_for(v)}
 </script>
 </body>
 </html>

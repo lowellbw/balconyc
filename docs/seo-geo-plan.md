@@ -5,6 +5,11 @@
 > 31 August via an on-demand loader in index.html. Still outstanding: the
 > /sunny-act, /what-is-balcony-solar and /about pages (items 10-12), Search
 > Console and Bing verification (13), and analytics (14).
+>
+> Item 9 went further than planned on 31 August 2026: `METHODOLOGY.md` was not
+> just converted to `/methodology` but retired entirely, so the HTML page is now
+> the single canonical methodology document. References to the markdown file
+> below describe the state at the time of writing.
 
 # SEO + GEO Optimization Plan — balco.nyc
 

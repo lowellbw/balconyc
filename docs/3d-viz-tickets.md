@@ -5,7 +5,7 @@
 > were deleted on 31 August 2026. Ticket T9 (tab toggle between versions) is
 > therefore superseded rather than outstanding, and the `HybridView` module it
 > depends on has been removed. T10's "precise shadow algorithm" has since been
-> implemented differently: see METHODOLOGY.md section 2.1 for the horizon-profile
+> implemented differently: see the /methodology page, section 2.1, for the horizon-profile
 > model that shipped. Read what follows as history.
 
 # 3D Visualization — Ticket Plan

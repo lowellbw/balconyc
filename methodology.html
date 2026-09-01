@@ -199,9 +199,9 @@
     <header class="doc-header">
       <div class="doc-eyebrow"><span class="dot"></span> Methodology</div>
       <h1>How balco.nyc calculates balcony solar production in NYC</h1>
-      <p class="lede">balco.nyc estimates how much electricity, money, and CO₂ a plug-in solar panel could produce on any NYC balcony. The model combines NREL's PVWatts hourly simulation, a custom 3D shadow model of the surrounding block, NYC building data, and Con Edison residential rates. Expected accuracy is about ±15% of real-world annual output (±20% on the fallback path), a modeled band rather than a field-validated one. This page documents every assumption, source, and formula.</p>
+      <p class="lede">balco.nyc estimates how much electricity, money, and CO₂ a plug-in solar panel could produce on any NYC balcony. The model combines NREL's PVWatts hourly simulation, a custom 3D shadow model of the surrounding block, NYC building data, and Con Edison residential rates. Expected accuracy is about ±15% of real-world annual output (±20% on the fallback path), a modeled band rather than a field-validated one. This page documents every assumption, source, and formula, and is the single canonical description of the model &mdash; there is no separate internal version.</p>
       <div class="doc-meta-row">
-        <div><strong>Last updated:</strong> <time datetime="2026-08-31">August 31, 2026</time></div>
+        <div><strong>Last reviewed against the code:</strong> <time datetime="2026-08-31">August 31, 2026</time></div>
         <div><strong>Reading time:</strong> ~15 minutes</div>
         <div class="doc-tags">
           <span class="doc-tag">PVWatts V8</span>
@@ -255,6 +255,10 @@
                 <tr><td><code>timeframe</code></td><td>monthly</td><td>Returns 12-month production array</td></tr>
               </tbody>
             </table>
+          </div>
+
+          <div class="callout">
+            <p><strong>Soiling parameter robustness.</strong> NREL documents array parameters as pipe-delimited. If the parameter is rejected the entire request fails, which would silently drop every estimate onto the client-side fallback while the interface still claimed an hourly simulation. The client therefore degrades explicitly: pipe-delimited, then bracketed JSON, then no soiling array at all with <code>losses</code> raised to 18.3% (14% compounded with the array's ~5% annual mean). Whichever variant succeeded is recorded on the result.</p>
           </div>
 
           <p><strong>PVWatts outputs used:</strong></p>
@@ -372,15 +376,20 @@ final_kwh = Σ(pvwatts_ac_monthly[i] × monthly_shade_factor[i])   (3D case)</co
           <p><strong>Algorithm:</strong></p>
           <ol>
             <li>Extract exterior ring coordinates from the building footprint polygon.</li>
-            <li>Compute edge vectors (dx, dy) between consecutive vertices.</li>
+            <li><strong>Project to local metres</strong>: multiply every longitude delta by <code>cos(latitude)</code>. A degree of longitude at NYC's 40.7&deg;N covers only ~76% of the ground distance a degree of latitude does, so raw degree deltas stretch east-west edges by roughly 1.3&times; and skew every bearing by up to 7&deg;.</li>
+            <li>Compute edge vectors (dx, dy) between consecutive vertices, in metres.</li>
             <li>Calculate each edge's compass bearing: <code>atan2(dx, dy)</code> converted to degrees.</li>
-            <li>Compute perpendicular facade directions: <code>edge_bearing ± 90°</code>.</li>
+            <li>Compute perpendicular facade directions: <code>edge_bearing &plusmn; 90&deg;</code>.</li>
             <li>Sort edges by length (longest edge = primary facade).</li>
-            <li>Map facade directions to the nearest 45° compass increment.</li>
+            <li>Map facade directions to the nearest 45&deg; compass increment.</li>
             <li>Rank by solar potential: S &gt; SE/SW &gt; E/W &gt; NE/NW &gt; N.</li>
             <li>Return the best solar-facing direction as the suggestion.</li>
           </ol>
-          <p><strong>Confidence:</strong> "high" if the longest edge is more than 1.3× the second-longest; "medium" otherwise.</p>
+
+          <p><strong>What is returned.</strong> <code>bestDirection</code> is the best solar-facing wall anywhere on the building. <code>primaryDirections</code> is the pair of walls belonging to the longest edge, which is where most units in the building actually face; they differ on, say, a north-south tower whose only south-facing wall is its short end.</p>
+
+          <p><strong>Confidence</strong> is "high" when the longest edge exceeds 1.3&times; the longest roughly-perpendicular edge (at least 30&deg; off the primary), and "medium" otherwise. Comparing against the simple second-longest edge made "high" almost unreachable, because in any rectangle the two longest edges are the parallel long walls and are near-identical in length.</p>
+
           <div class="callout">
             <p><strong>Manhattan grid note.</strong> Manhattan's street grid runs ~29° east of true north. A building that "faces the avenue" actually faces ~209° (SSW) or ~29° (NE). The algorithm reads this from the actual polygon, not from grid assumptions.</p>
           </div>
@@ -450,9 +459,14 @@ bill_offset_%   = annual_kwh / (billable / 0.34 × 12) × 100</code></pre>
             <li><strong>Day of year</strong> uses the 15th of each month (<code>DOY_TABLE</code>) as the representative day.</li>
             <li><strong>Year</strong> is read dynamically from <code>new Date().getFullYear()</code> so the Julian-day base advances with time instead of drifting.</li>
             <li><strong>DST switch</strong> is keyed off day-of-year, not month: EDT (UTC−4) for DOY 67 to 304 (Mar 8 to Nov 1 in 2026), EST (UTC−5) otherwise. This avoids the off-by-week errors that month-based switching produced in early March and late October.</li>
-            <li><strong>Azimuth</strong> is computed via <code>atan2(sin_az, cos_az)</code>, robust at all altitudes, with no separate <code>acos</code> branch.</li>
+            <li><strong>Azimuth</strong> is computed via <code>atan2(sin_az, cos_az)</code>, robust at all altitudes, with no separate <code>acos</code> branch. With the sine and cosine terms as defined, this already returns azimuth measured clockwise from north, and no further rotation is applied.</li>
           </ul>
           <p><code>getDayBounds(month)</code> searches for sunrise and sunset by scanning altitude crossings, used by the 3D shade simulation to bound its sampling loop.</p>
+
+          <div class="callout">
+            <p><strong>A fixed sign error, and why it is tested now.</strong> Until 31 August 2026 this function added a further 180&deg; after the <code>atan2</code>, which inverted every azimuth: June solar noon reported the sun as due north, and the morning sun as due west. The error fed the 3D scene lighting, the sun arc and the shadow model alike, and was invisible to inspection because altitude &mdash; and therefore sunrise, sunset and day length &mdash; stayed correct throughout.</p>
+            <p>The regression suite now pins June and December solar noon to the south, checks peak altitudes against NOAA reference values, and asserts that azimuth sweeps monotonically eastward through the day.</p>
+          </div>
         </section>
 
         <section id="environmental">
@@ -516,9 +530,9 @@ bill_offset_%   = annual_kwh / (billable / 0.34 × 12) × 100</code></pre>
               <tbody>
                 <tr><td>Mount tilt</td><td>35° / 60° / 70° / 90°</td><td>90°</td></tr>
                 <tr><td>System size</td><td>400W / 800W / 1200W / 1600W</td><td>800W</td></tr>
-                <tr><td>Equipment tier</td><td>Budget / Mid / Premium</td><td>Mid</td></tr>
+                <tr><td>Equipment tier</td><td>Budget ($850) / Mid ($1,200) / Premium ($1,600)</td><td>Mid</td></tr>
                 <tr><td>Surrounding shading</td><td>Open / Some / Dense / Wide avenue</td><td>Some</td></tr>
-                <tr><td>Monthly electric bill</td><td>$20 to $800</td><td>$200</td></tr>
+                <tr><td>Monthly electric bill</td><td>$20 to $800</td><td>$140</td></tr>
                 <tr><td>Rate escalation</td><td>Low (2%) / Mid (3%) / High (4%)</td><td>Mid</td></tr>
               </tbody>
             </table>
@@ -534,18 +548,21 @@ bill_offset_%   = annual_kwh / (billable / 0.34 × 12) × 100</code></pre>
           </ol>
 
           <h3>7.6 Graceful degradation</h3>
-          <p>Every API has a fallback. The calculator works in full manual mode with zero API calls.</p>
+          <p>Every API has a fallback, and every degraded path tells the visitor: when an estimate did not use the full pipeline, a notice above the breakdown names what was missing and what was substituted in its place.</p>
+          <p>The manual entry panel is also the keyboard- and screen-reader-accessible route to a result. Selecting a balcony in the 3D scene means clicking a WebGL mesh, which is not operable without a pointer, so the same form serves both purposes.</p>
           <div class="table-wrap">
             <table>
               <thead><tr><th>API failure</th><th>Fallback behavior</th></tr></thead>
               <tbody>
-                <tr><td>Google Places unavailable</td><td>"Skip" link, manual entry</td></tr>
+                <tr><td>Google Places unavailable</td><td>Typed address is geocoded on submit; manual entry panel if that also fails</td></tr>
                 <tr><td>Geoclient fails</td><td>Query PLUTO by address string</td></tr>
                 <tr><td>PLUTO fails</td><td>Sliders keep defaults</td></tr>
-                <tr><td>Footprints fail</td><td>User picks direction manually; no 3D shade</td></tr>
-                <tr><td>PVWatts fails</td><td>Client-side fallback formula (<a href="#energy-production">Section 1.2</a>), yellow banner shown</td></tr>
+                <tr><td>Footprints fail</td><td>Manual entry panel (floor, direction, shading); static shade factor</td></tr>
+                <tr><td>PVWatts soiling param rejected</td><td>Retry bracketed, then fold soiling into <code>losses: 18.3</code></td></tr>
+                <tr><td>PVWatts fails entirely</td><td>Client-side fallback formula (<a href="#energy-production">Section 1.2</a>), notice shown above the breakdown</td></tr>
                 <tr><td>Solar Resource fails</td><td>Hardcoded NYC monthly distribution</td></tr>
-                <tr><td>Neighbor query fails</td><td>No 3D shade; static shade factor used</td></tr>
+                <tr><td>Neighbor query fails</td><td>No 3D shade; static shade factor used, notice shown</td></tr>
+                <tr><td>No WebGL support</td><td>Manual entry panel; static shade factor</td></tr>
               </tbody>
             </table>
           </div>
@@ -570,6 +587,7 @@ bill_offset_%   = annual_kwh / (billable / 0.34 × 12) × 100</code></pre>
                 <tr><td><a href="https://www.epa.gov/egrid/summary-data" target="_blank" rel="noopener">EPA eGRID2023</a><br><span class="src-host">epa.gov</span></td><td>CO₂ factor (NYCW subregion)</td></tr>
                 <tr><td><a href="https://solar.htw-berlin.de/rechner/stecker-solar-simulator/" target="_blank" rel="noopener">HTW Berlin Stecker-Solar Simulator</a><br><span class="src-host">solar.htw-berlin.de</span></td><td>Vertical-mount yield calibration</td></tr>
                 <tr><td><a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">NY SUNNY Act (S8512/A9111)</a><br><span class="src-host">nysenate.gov</span></td><td>Plug-in solar regulatory status</td></tr>
+                <tr><td><a href="https://www.brightsaver.org/balcony-solar-kits" target="_blank" rel="noopener">Bright Saver (nonprofit at-cost kits)</a><br><span class="src-host">brightsaver.org</span></td><td>August 2026 kit cost calibration</td></tr>
                 <tr><td><a href="https://www.nrel.gov/docs/fy24osti/87524.pdf" target="_blank" rel="noopener">NREL 2024 PV Degradation Review</a><br><span class="src-host">nrel.gov</span></td><td>Degradation rates by tier</td></tr>
               </tbody>
             </table>

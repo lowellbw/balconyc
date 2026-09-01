@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&display=swap">
+  <style>
+    body { margin: 0; font-family: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #171717; line-height: 1.55; -webkit-font-smoothing: antialiased; background: #FFFCFC; }
+    a { color: #171717; } a:hover { color: #7F1D1D; }
+    button { font-family: inherit; cursor: pointer; }
+    .rays { transform-origin: 50% 50%; animation: sunturn 120s linear infinite; }
+    @keyframes sunturn { to { transform: rotate(360deg); } }
+  </style>
+</helmet>
+
+<div style="position: relative; width: 1280px; height: 1060px; background: #FFFCFC; overflow: hidden; display: flex; flex-direction: column">
+
+  <!-- header -->
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 44px; border-bottom: 1px solid #EADFDD; flex-shrink: 0">
+    <img src="balco-logo.png" alt="balco.nyc" style="height: 50px; width: auto">
+    <div style="display: flex; align-items: center; gap: 9px; font-size: 0.79rem; font-weight: 700">
+      <span style="color: {{r1}}">1 &middot; Address</span>
+      <span style="width: 20px; height: 1px; background: #EADFDD"></span>
+      <span style="color: {{r2}}">2 &middot; Rough number</span>
+      <span style="width: 20px; height: 1px; background: #EADFDD"></span>
+      <span style="color: {{r3}}">3 &middot; Make it yours</span>
+      <span style="width: 20px; height: 1px; background: #EADFDD"></span>
+      <span style="color: {{r4}}">4 &middot; Result</span>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1; min-height: 0; position: relative">
+
+    <!-- STEP 1 · LAND -->
+    <sc-if value="{{isLand}}" hint-placeholder-val="{{ true }}">
+      <div style="position: absolute; inset: 0; overflow: hidden">
+        <div style="position: absolute; left: 500px; top: 40px; width: 700px; height: 700px; pointer-events: none"><svg viewBox="0 0 360 360" width="100%" height="100%" shape-rendering="crispEdges" data-city aria-hidden="true"><rect x="270" y="20" width="8.6" height="8.6" data-t="0" fill="#C2452A"/><rect x="40" y="310" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="210" y="170" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="310" y="120" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="250" y="10" width="8.6" height="8.6" data-t="0" fill="#E46740"/><rect x="50" y="290" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="230" y="180" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="260" y="40" width="8.6" height="8.6" data-t="0" fill="#C2452A"/><rect x="270" y="280" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="290" y="110" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="220" y="300" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="290" y="30" width="8.6" height="8.6" data-t="0" fill="#A85643"/><rect x="30" y="280" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="170" y="220" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="240" y="30" width="8.6" height="8.6" data-t="0" fill="#E46740"/><rect x="330" y="130" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="190" y="160" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="190" y="80" width="8.6" height="8.6" data-t="0" fill="#C2452A"/><rect x="60" y="320" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="180" y="210" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="80" y="260" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="100" y="270" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="210" y="60" width="8.6" height="8.6" data-t="0" fill="#C2452A"/><rect x="320" y="220" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="180" y="280" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="250" y="160" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="180" y="100" width="8.6" height="8.6" data-t="0" fill="#A85643"/><rect x="70" y="300" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="180" y="200" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="230" y="0" width="8.6" height="8.6" data-t="0" fill="#E46740"/><rect x="220" y="150" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="160" y="190" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="240" y="160" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="330" y="210" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="200" y="220" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="150" y="240" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="350" y="140" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="300" y="60" width="8.6" height="8.6" data-t="0" fill="#A85643"/><rect x="200" y="190" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="280" y="120" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="100" y="240" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="220" y="50" width="8.6" height="8.6" data-t="0" fill="#E46740"/><rect x="300" y="140" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="20" y="330" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="240" y="60" width="8.6" height="8.6" data-t="0" fill="#C2452A"/><rect x="280" y="130" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="180" y="130" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="70" y="270" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="160" y="200" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="200" y="70" width="8.6" height="8.6" data-t="0" fill="#C2452A"/><rect x="260" y="140" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="160" y="270" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="250" y="190" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="230" y="150" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="230" y="70" width="8.6" height="8.6" data-t="0" fill="#C2452A"/><rect x="310" y="230" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="330" y="200" width="8.6" height="8.6" data-t="0" fill="#D2C3BF"/><rect x="270" y="130" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="170" y="150" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="300" y="130" width="8.6" height="8.6" data-t="0" fill="#C8A9A1"/><rect x="110" y="250" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="220" y="200" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="190" y="190" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="220" y="230" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="190" y="230" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="200" y="140" width="8.6" height="8.6" data-t="1" fill="#A85643"/><rect x="290" y="260" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="270" y="170" width="8.6" height="8.6" data-t="1" fill="#A85643"/><rect x="320" y="150" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="240" y="170" width="8.6" height="8.6" data-t="1" fill="#A85643"/><rect x="90" y="240" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="110" y="260" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="300" y="210" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="10" y="340" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="240" y="130" width="8.6" height="8.6" data-t="1" fill="#A85643"/><rect x="270" y="250" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="10" y="320" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="60" y="250" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="260" y="220" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="300" y="270" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="290" y="140" width="8.6" height="8.6" data-t="1" fill="#A85643"/><rect x="200" y="80" width="8.6" height="8.6" data-t="1" fill="#C2452A"/><rect x="220" y="20" width="8.6" height="8.6" data-t="1" fill="#E46740"/><rect x="90" y="250" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="220" y="160" width="8.6" height="8.6" data-t="1" fill="#A85643"/><rect x="90" y="280" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="230" y="30" width="8.6" height="8.6" data-t="1" fill="#E46740"/><rect x="50" y="300" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="50" y="260" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="210" y="90" width="8.6" height="8.6" data-t="1" fill="#C2452A"/><rect x="180" y="180" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="260" y="110" width="8.6" height="8.6" data-t="1" fill="#C2452A"/><rect x="250" y="40" width="8.6" height="8.6" data-t="1" fill="#E46740"/><rect x="310" y="190" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="140" y="230" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="210" y="250" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="290" y="220" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="30" y="330" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="310" y="220" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="220" y="270" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="260" y="70" width="8.6" height="8.6" data-t="1" fill="#C2452A"/><rect x="210" y="200" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="260" y="150" width="8.6" height="8.6" data-t="1" fill="#A85643"/><rect x="240" y="20" width="8.6" height="8.6" data-t="1" fill="#E46740"/><rect x="240" y="210" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="200" y="60" width="8.6" height="8.6" data-t="1" fill="#E46740"/><rect x="220" y="80" width="8.6" height="8.6" data-t="1" fill="#C2452A"/><rect x="250" y="120" width="8.6" height="8.6" data-t="1" fill="#A85643"/><rect x="280" y="150" width="8.6" height="8.6" data-t="1" fill="#A85643"/><rect x="190" y="90" width="8.6" height="8.6" data-t="1" fill="#C2452A"/><rect x="170" y="180" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="310" y="270" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="60" y="290" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="260" y="30" width="8.6" height="8.6" data-t="1" fill="#E46740"/><rect x="290" y="210" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="280" y="80" width="8.6" height="8.6" data-t="1" fill="#C2452A"/><rect x="220" y="120" width="8.6" height="8.6" data-t="1" fill="#C2452A"/><rect x="320" y="210" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="60" y="280" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="200" y="210" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="70" y="230" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="320" y="180" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="260" y="170" width="8.6" height="8.6" data-t="1" fill="#A85643"/><rect x="290" y="180" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="70" y="310" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="60" y="270" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="270" y="200" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="110" y="270" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="230" y="50" width="8.6" height="8.6" data-t="1" fill="#E46740"/><rect x="170" y="230" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="70" y="280" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="230" y="280" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="220" y="40" width="8.6" height="8.6" data-t="1" fill="#E46740"/><rect x="280" y="160" width="8.6" height="8.6" data-t="1" fill="#A85643"/><rect x="170" y="250" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="90" y="260" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="220" y="90" width="8.6" height="8.6" data-t="1" fill="#C2452A"/><rect x="40" y="230" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="80" y="280" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="160" y="240" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="260" y="260" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="260" y="180" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="10" y="310" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="90" y="290" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="310" y="200" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="100" y="230" width="8.6" height="8.6" data-t="1" fill="#D2C3BF"/><rect x="260" y="120" width="8.6" height="8.6" data-t="1" fill="#A85643"/><rect x="150" y="220" width="8.6" height="8.6" data-t="1" fill="#C8A9A1"/><rect x="200" y="180" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="320" y="230" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="210" y="240" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="250" y="80" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="190" y="240" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="290" y="100" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="250" y="140" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="230" y="40" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="270" y="150" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="80" y="300" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="210" y="270" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="30" y="290" width="8.6" height="8.6" data-t="2" fill="#D2C3BF"/><rect x="270" y="140" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="210" y="70" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="270" y="240" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="240" y="100" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="210" y="140" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="220" y="170" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="220" y="10" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="160" y="230" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="240" y="180" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="80" y="250" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="80" y="290" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="250" y="50" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="40" y="240" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="210" y="100" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="300" y="200" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="230" y="80" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="30" y="320" width="8.6" height="8.6" data-t="2" fill="#D2C3BF"/><rect x="300" y="170" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="170" y="110" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="320" y="140" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="250" y="60" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="250" y="150" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="240" y="50" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="330" y="180" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="40" y="280" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="280" y="200" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="220" y="70" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="210" y="40" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="160" y="220" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="40" y="260" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="290" y="80" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="60" y="240" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="230" y="110" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="200" y="260" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="240" y="140" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="310" y="240" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="40" y="270" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="190" y="200" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="190" y="110" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="190" y="260" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="310" y="250" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="100" y="260" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="150" y="170" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="70" y="240" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="310" y="150" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="290" y="150" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="30" y="310" width="8.6" height="8.6" data-t="2" fill="#D2C3BF"/><rect x="280" y="190" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="250" y="290" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="280" y="110" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="140" y="250" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="180" y="250" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="190" y="180" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="300" y="120" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="200" y="150" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="230" y="140" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="270" y="50" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="260" y="190" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="270" y="30" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="290" y="230" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="230" y="210" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="220" y="190" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="270" y="210" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="300" y="250" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="210" y="50" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="210" y="180" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="170" y="120" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="310" y="50" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="300" y="220" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="0" y="350" width="8.6" height="8.6" data-t="2" fill="#D2C3BF"/><rect x="210" y="190" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="230" y="190" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="50" y="270" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="160" y="170" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="240" y="90" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="140" y="240" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="210" y="300" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="290" y="40" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="250" y="130" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="270" y="70" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="280" y="20" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="230" y="130" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="20" y="320" width="8.6" height="8.6" data-t="2" fill="#D2C3BF"/><rect x="290" y="160" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="100" y="290" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="190" y="270" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="270" y="120" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="320" y="200" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="280" y="40" width="8.6" height="8.6" data-t="2" fill="#E46740"/><rect x="40" y="300" width="8.6" height="8.6" data-t="2" fill="#D2C3BF"/><rect x="210" y="210" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="170" y="200" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="70" y="250" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="190" y="130" width="8.6" height="8.6" data-t="2" fill="#C2452A"/><rect x="160" y="160" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="0" y="340" width="8.6" height="8.6" data-t="2" fill="#D2C3BF"/><rect x="190" y="210" width="8.6" height="8.6" data-t="2" fill="#A85643"/><rect x="230" y="300" width="8.6" height="8.6" data-t="2" fill="#C8A9A1"/><rect x="250" y="220" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="170" y="190" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="260" y="100" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="330" y="170" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="200" y="270" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="210" y="30" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="80" y="270" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="230" y="60" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="270" y="160" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="280" y="240" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="300" y="160" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="300" y="110" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="320" y="260" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="260" y="20" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="240" y="250" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="280" y="180" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="190" y="120" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="270" y="60" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="310" y="260" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="170" y="170" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="150" y="200" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="250" y="200" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="310" y="170" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="290" y="130" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="200" y="160" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="150" y="250" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="210" y="120" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="180" y="90" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="310" y="160" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="170" y="210" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="330" y="160" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="320" y="120" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="340" y="150" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="330" y="120" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="220" y="220" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="170" y="140" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="100" y="280" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="40" y="320" width="8.6" height="8.6" data-t="3" fill="#C8A9A1"/><rect x="210" y="130" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="260" y="10" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="200" y="90" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="110" y="240" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="180" y="240" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="20" y="310" width="8.6" height="8.6" data-t="3" fill="#C8A9A1"/><rect x="240" y="110" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="50" y="230" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="250" y="20" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="50" y="330" width="8.6" height="8.6" data-t="3" fill="#C8A9A1"/><rect x="180" y="230" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="230" y="220" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="300" y="190" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="290" y="190" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="30" y="300" width="8.6" height="8.6" data-t="3" fill="#C8A9A1"/><rect x="240" y="10" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="170" y="260" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="220" y="180" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="50" y="320" width="8.6" height="8.6" data-t="3" fill="#C8A9A1"/><rect x="190" y="100" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="160" y="130" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="160" y="250" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="230" y="230" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="280" y="30" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="180" y="140" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="50" y="310" width="8.6" height="8.6" data-t="3" fill="#C8A9A1"/><rect x="200" y="170" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="210" y="160" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="170" y="280" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="260" y="60" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="210" y="220" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="250" y="170" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="320" y="130" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="240" y="80" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="150" y="190" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="190" y="170" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="230" y="200" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="40" y="290" width="8.6" height="8.6" data-t="3" fill="#C8A9A1"/><rect x="60" y="300" width="8.6" height="8.6" data-t="3" fill="#C8A9A1"/><rect x="20" y="340" width="8.6" height="8.6" data-t="3" fill="#C8A9A1"/><rect x="10" y="330" width="8.6" height="8.6" data-t="3" fill="#C8A9A1"/><rect x="90" y="230" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="320" y="170" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="190" y="150" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="110" y="230" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="280" y="100" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="220" y="0" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="250" y="30" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="230" y="160" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="220" y="130" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="240" y="230" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="120" y="270" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="60" y="260" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="180" y="260" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="350" y="150" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="270" y="180" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="330" y="190" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="160" y="260" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="340" y="130" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="230" y="170" width="8.6" height="8.6" data-t="3" fill="#C2452A"/><rect x="230" y="120" width="8.6" height="8.6" data-t="3" fill="#E46740"/><rect x="40" y="330" width="8.6" height="8.6" data-t="3" fill="#C8A9A1"/><rect x="200" y="250" width="8.6" height="8.6" data-t="3" fill="#A85643"/><rect x="50" y="240" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="240" y="200" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="240" y="40" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="280" y="210" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="230" y="270" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="30" y="260" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="70" y="320" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="230" y="20" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="190" y="280" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="50" y="280" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="250" y="70" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="180" y="120" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="90" y="270" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="60" y="310" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="70" y="260" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="310" y="130" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="150" y="230" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="300" y="230" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="160" y="140" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="260" y="50" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="290" y="170" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="240" y="190" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="180" y="110" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="300" y="50" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="240" y="150" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="250" y="210" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="310" y="140" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="180" y="190" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="80" y="310" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="160" y="150" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="220" y="60" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="190" y="220" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="200" y="240" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="180" y="220" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="270" y="40" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="290" y="120" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="200" y="200" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="220" y="240" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="330" y="140" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="200" y="100" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="180" y="270" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="70" y="290" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="280" y="220" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="260" y="160" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="320" y="190" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="200" y="310" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="310" y="180" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="280" y="60" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="280" y="140" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="280" y="70" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="150" y="260" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="260" y="130" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="340" y="140" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="260" y="200" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="50" y="250" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="240" y="70" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="200" y="230" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="200" y="50" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="270" y="80" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="260" y="210" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="220" y="30" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="220" y="140" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="290" y="270" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="190" y="70" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="120" y="260" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="40" y="250" width="8.6" height="8.6" data-t="4" fill="#A85643"/><rect x="210" y="150" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="230" y="10" width="8.6" height="8.6" data-t="4" fill="#E46740"/><rect x="170" y="270" width="8.6" height="8.6" data-t="4" fill="#C2452A"/><rect x="100" y="250" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="170" y="160" width="8.6" height="8.6" data-t="5" fill="#E46740"/><rect x="110" y="280" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="330" y="220" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="260" y="80" width="8.6" height="8.6" data-t="5" fill="#E46740"/><rect x="200" y="130" width="8.6" height="8.6" data-t="5" fill="#E46740"/><rect x="220" y="210" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="170" y="240" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="250" y="180" width="8.6" height="8.6" data-t="5" fill="#E46740"/><rect x="290" y="50" width="8.6" height="8.6" data-t="5" fill="#E46740"/><rect x="330" y="150" width="8.6" height="8.6" data-t="5" fill="#E46740"/><rect x="210" y="260" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="300" y="150" width="8.6" height="8.6" data-t="5" fill="#E46740"/><rect x="240" y="220" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="280" y="170" width="8.6" height="8.6" data-t="5" fill="#E46740"/><rect x="240" y="120" width="8.6" height="8.6" data-t="5" fill="#E46740"/><rect x="320" y="270" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="220" y="110" width="8.6" height="8.6" data-t="5" fill="#E46740"/><rect x="210" y="80" width="8.6" height="8.6" data-t="5" fill="#E46740"/><rect x="270" y="110" width="8.6" height="8.6" data-t="5" fill="#E46740"/><rect x="300" y="180" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="310" y="210" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="90" y="300" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="210" y="230" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="170" y="130" width="8.6" height="8.6" data-t="5" fill="#E46740"/><rect x="320" y="160" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="230" y="240" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="190" y="250" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="190" y="140" width="8.6" height="8.6" data-t="5" fill="#E46740"/><rect x="80" y="240" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="270" y="190" width="8.6" height="8.6" data-t="5" fill="#C2452A"/><rect x="290" y="200" width="8.6" height="8.6" data-t="5" fill="#C2452A"/></svg></div>
+        <div style="position: absolute; inset: 0; background: linear-gradient(90deg, #FFFCFC 0%, #FFFCFC 24%, rgba(255,255,255,0) 58%)"></div>
+        <div style="position: relative; padding: 76px 44px 0; max-width: 540px">
+          <span style="display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #7F1D1D; margin-bottom: 16px">Every block in New York</span>
+          <h1 style="font-size: 2.9rem; font-weight: 700; line-height: 1.04; letter-spacing: -0.033em; margin: 0 0 15px; text-wrap: balance">Find the sun on your block.</h1>
+          <p style="font-size: 1.02rem; color: #6B6360; line-height: 1.55; margin: 0 0 28px; max-width: 44ch">Enter your address and see what an 800W panel on your balcony would make, in kWh, dollars and CO<sub style="font-size: 0.7em">2</sub>.</p>
+          <div style="display: flex; align-items: center; gap: 10px">
+            <div style="flex: 1; min-width: 0; border: 1.5px solid #EADFDD; border-radius: 999px; padding: 15px 22px; font-size: 0.98rem; color: #6B6360; background: #fff">247 Vernon Blvd, Queens</div>
+            <button onClick="{{calculate}}" style="display: inline-flex; align-items: center; gap: 9px; min-height: 50px; padding: 15px 24px; background: #7F1D1D; color: #fff; border: none; border-radius: 999px; font-size: 0.95rem; font-weight: 700; white-space: nowrap">Calculate
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="M12 5l7 7-7 7"></path></svg>
+            </button>
+          </div>
+          <p style="margin: 16px 0 0; font-size: 0.8rem; color: #6B6360">Sample address, pre-filled for this walkthrough. Press Calculate.</p>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- STEPS 2 & 3 · ROUGH, THEN REFINE -->
+    <sc-if value="{{isWorking}}" hint-placeholder-val="{{ true }}">
+      <div style="display: grid; grid-template-columns: 1fr 430px; gap: 40px; padding: 30px 44px; height: 100%; box-sizing: border-box; align-items: start">
+        <div style="min-width: 0">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px">
+            <div>
+              <div style="font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em">247 Vernon Blvd, Queens</div>
+              <div style="font-size: 0.86rem; color: #6B6360; margin-top: 2px">28 floors &middot; 289 ft &middot; from NYC PLUTO, in about a second. No 3D needed.</div>
+            </div>
+            <button onClick="{{reset}}" style="background: none; border: none; color: #6B6360; font-size: 0.83rem; text-decoration: underline; text-underline-offset: 3px; padding: 6px 0">Start over</button>
+          </div>
+          <p style="margin: 0 0 22px; font-size: 0.96rem; color: #6B6360; max-width: 54ch">{{helper}}</p>
+
+          <div style="margin-bottom: 22px">
+            <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: #6B6360; margin-bottom: 10px">Which way does your balcony face?</div>
+            <div style="display: flex; gap: 7px">
+              <sc-for list="{{facings}}" as="f" hint-placeholder-count="8">
+                <button onClick="{{f.pick}}" style="flex: 1; min-height: 46px; border-radius: 10px; font-size: 0.9rem; font-weight: 700; background: {{f.bg}}; color: {{f.fg}}; border: 1px solid {{f.bd}}">{{f.key}}</button>
+              </sc-for>
+            </div>
+            <div style="font-size: 0.77rem; color: #6B6360; margin-top: 8px">Eight positions, because the model resolves facing to 45&deg;.</div>
+          </div>
+
+          <div style="margin-bottom: 22px">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px">
+              <span style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: #6B6360">How high up are you?</span>
+              <span style="font-size: 0.93rem; font-weight: 700">Floor {{floor}} of 28</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px">
+              <button onClick="{{floorDown}}" style="width: 46px; height: 46px; border-radius: 10px; border: 1px solid #EADFDD; background: #fff; font-size: 1.2rem; font-weight: 700">&minus;</button>
+              <div style="flex: 1; height: 8px; background: #EADFDD; border-radius: 4px; position: relative">
+                <div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{floorPct}}; background: #7F1D1D; border-radius: 4px"></div>
+              </div>
+              <button onClick="{{floorUp}}" style="width: 46px; height: 46px; border-radius: 10px; border: 1px solid #EADFDD; background: #fff; font-size: 1.2rem; font-weight: 700">+</button>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid #EADFDD; padding-top: 18px">
+            <button onClick="{{toggleScene}}" style="display: inline-flex; align-items: center; gap: 9px; min-height: 46px; padding: 11px 18px; border-radius: 999px; border: 1px solid #EADFDD; background: #fff; font-size: 0.9rem; font-weight: 700">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7F1D1D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"></path><path d="M12 12l8-4.5"></path><path d="M12 12v9"></path><path d="M12 12L4 7.5"></path></svg>
+              {{sceneLabel}}
+            </button>
+            <span style="font-size: 0.8rem; color: #6B6360; margin-left: 12px">Optional. Everything above works without it.</span>
+            <sc-if value="{{scene}}" hint-placeholder-val="{{ true }}">
+              <div style="margin-top: 14px; height: 168px; border-radius: 14px; background: #1c1816; position: relative; overflow: hidden">
+                <div style="position: absolute; inset: 0; background: linear-gradient(160deg, rgba(228,103,64,0.24) 0%, rgba(28,24,22,0) 55%)"></div>
+                <div style="position: absolute; left: 20px; bottom: 20px; display: flex; align-items: flex-end; gap: 7px">
+                  <div style="width: 32px; height: 58px; background: #2C2724; border-radius: 2px"></div>
+                  <div style="width: 42px; height: 104px; background: #7F1D1D; border-radius: 2px"></div>
+                  <div style="width: 28px; height: 44px; background: #2C2724; border-radius: 2px"></div>
+                  <div style="width: 36px; height: 78px; background: #35302C; border-radius: 2px"></div>
+                </div>
+                <div style="position: absolute; right: 18px; top: 18px; background: #fff; border-radius: 9px; padding: 8px 12px">
+                  <div style="font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #6B6360">Shade factor</div>
+                  <div style="font-size: 1.05rem; font-weight: 700">0.86</div>
+                  <div style="font-size: 0.68rem; color: #6B6360">31 buildings within 200m</div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+
+        <!-- the number, present the whole way -->
+        <div style="border: 1px solid #EADFDD; border-radius: 16px; padding: 24px 26px; background: #fff; box-shadow: 0 4px 20px rgba(23,23,23,0.05)">
+          <div style="display: inline-block; background: {{badgeBg}}; color: {{badgeFg}}; padding: 5px 12px; border-radius: 20px; font-size: 0.63rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 14px">{{badge}}</div>
+          <div style="font-size: 0.79rem; color: #6B6360; margin-bottom: 12px">{{context}}</div>
+          <div style="display: flex; align-items: baseline; gap: 9px">
+            <div style="font-size: 2.9rem; font-weight: 900; letter-spacing: -0.035em; line-height: 1">{{dollars}}</div>
+            <div style="font-size: 0.96rem; font-weight: 600; color: #6B6360">a year</div>
+          </div>
+          <div style="font-size: 0.83rem; color: #6B6360; margin-top: 5px">{{kwh}} kWh &middot; {{band}}</div>
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; padding-top: 16px; border-top: 1px solid #EADFDD">
+            <div><div style="font-size: 1.08rem; font-weight: 700">{{payback}}</div><div style="font-size: 0.7rem; color: #6B6360">Payback</div></div>
+            <div><div style="font-size: 1.08rem; font-weight: 700">{{offset}}</div><div style="font-size: 0.7rem; color: #6B6360">Bill offset</div></div>
+            <div><div style="font-size: 1.08rem; font-weight: 700">{{co2}}</div><div style="font-size: 0.7rem; color: #6B6360">CO<sub style="font-size: 0.75em">2</sub>/yr</div></div>
+          </div>
+          <button onClick="{{toResult}}" style="width: 100%; margin-top: 20px; min-height: 48px; padding: 14px; background: #7F1D1D; color: #fff; border: none; border-radius: 999px; font-size: 0.93rem; font-weight: 700">See the full breakdown &rarr;</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- STEP 4 · RESULT -->
+    <sc-if value="{{isResult}}" hint-placeholder-val="{{ true }}">
+      <div style="padding: 26px 44px; height: 100%; box-sizing: border-box; overflow: hidden">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px">
+          <button onClick="{{backToRefine}}" style="background: none; border: none; color: #6B6360; font-size: 0.85rem; padding: 6px 0">&larr; Change the details</button>
+          <div style="display: flex; align-items: center; gap: 9px">
+            <span style="font-size: 0.82rem; color: #6B6360">balco.nyc/e/vernon-14{{floor}}s</span>
+            <span style="padding: 9px 16px; background: #171717; color: #fff; border-radius: 999px; font-size: 0.82rem; font-weight: 700">Copy link</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 34px; align-items: start">
+          <div>
+            <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #7F1D1D; margin-bottom: 10px">Your estimate</div>
+            <div style="font-size: 1.15rem; font-weight: 700; margin-bottom: 3px">247 Vernon Blvd, Queens</div>
+            <div style="font-size: 0.87rem; color: #6B6360; margin-bottom: 20px">{{context}}</div>
+            <div style="display: flex; align-items: baseline; gap: 12px">
+              <div style="font-size: 3.9rem; font-weight: 900; letter-spacing: -0.04em; line-height: 1">{{dollars}}</div>
+              <div style="font-size: 1.05rem; font-weight: 600; color: #6B6360">a year off your Con Ed bill</div>
+            </div>
+            <div style="font-size: 0.9rem; color: #6B6360; margin-top: 7px">{{kwh}} kWh a year &middot; {{band}}</div>
+
+            <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 26px; padding-top: 20px; border-top: 1px solid #EADFDD">
+              <div><div style="font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em">{{monthlyDollars}}</div><div style="font-size: 0.73rem; color: #6B6360; margin-top: 2px">A month</div></div>
+              <div><div style="font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em">{{payback}}</div><div style="font-size: 0.73rem; color: #6B6360; margin-top: 2px">Pays for itself</div></div>
+              <div><div style="font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em">{{life}}</div><div style="font-size: 0.73rem; color: #6B6360; margin-top: 2px">Over 25 years</div></div>
+              <div><div style="font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em">{{offset}}</div><div style="font-size: 0.73rem; color: #6B6360; margin-top: 2px">Of a typical bill</div></div>
+            </div>
+
+            <div style="margin-top: 24px">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px">
+                <span style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: #6B6360">Across the year</span>
+                <span style="font-size: 0.78rem; color: #6B6360">{{peakLine}}</span>
+              </div>
+              <div style="display: flex; align-items: flex-end; gap: 5px; height: 84px">
+                <sc-for list="{{bars}}" as="bar" hint-placeholder-count="12">
+                  <div style="flex: 1; height: {{bar.h}}; background: #7F1D1D; border-radius: 4px 4px 0 0"></div>
+                </sc-for>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.68rem; color: #6B6360; margin-top: 6px"><span>Jan</span><span>Jul</span><span>Dec</span></div>
+            </div>
+          </div>
+
+          <div>
+            <div style="border: 1px solid #EADFDD; border-radius: 16px; padding: 20px 22px; background: #fff; box-shadow: 0 4px 20px rgba(23,23,23,0.05)">
+              <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: #6B6360; margin-bottom: 14px">What we assumed</div>
+              <div style="display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid #EADFDD; font-size: 0.88rem"><span style="color: #6B6360">Building</span><strong>28 floors &middot; 289 ft</strong></div>
+              <div style="display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid #EADFDD; font-size: 0.88rem"><span style="color: #6B6360">Neighbouring shade</span><strong>0.86 &middot; 31 buildings</strong></div>
+              <div style="display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid #EADFDD; font-size: 0.88rem"><span style="color: #6B6360">System</span><strong>800W at 90&deg;</strong></div>
+              <div style="display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid #EADFDD; font-size: 0.88rem"><span style="color: #6B6360">Kit cost</span><strong>$1,200 mid-tier</strong></div>
+              <div style="display: flex; justify-content: space-between; padding: 9px 0; font-size: 0.88rem"><span style="color: #6B6360">Rate</span><strong>$0.34/kWh, +3%/yr</strong></div>
+              <div style="margin-top: 14px; font-size: 0.8rem; color: #6B6360; line-height: 1.5">Every line is editable, and the estimate recomputes. Modelled with NREL PVWatts V8 over 8,760 hours.</div>
+            </div>
+
+            <div style="margin-top: 16px; background: #FCF5F3; border: 1px solid #EADFDD; border-radius: 16px; padding: 18px 22px">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px">
+                <span style="width: 10px; height: 10px; background: #7F1D1D"></span>
+                <span style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7F1D1D">You cannot install this yet</span>
+              </div>
+              <p style="margin: 0; font-size: 0.85rem; color: #6B6360; line-height: 1.55">The SUNNY Act awaits the Governor&rsquo;s signature and takes effect 90 days after. This describes what would be true from early 2027 &mdash; and it lifts the utility barrier only, so a landlord or board may still need to agree.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <!-- footer -->
+  <div style="flex-shrink: 0; border-top: 1px solid #EADFDD; padding: 13px 44px; display: flex; justify-content: space-between; font-size: 0.76rem; color: #6B6360">
+    <span>Independent and open source. Not affiliated with the City of New York, Con Edison, NYSERDA or NREL.</span>
+    <span>Modelled, not metered &middot; about &plusmn;15%</span>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1280,"height":1060}}'>
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { step: 0, facing: 'S', floor: 14, scene: false, touched: false };
+  }
+
+  metrics(kwh) {
+    var RATE = 0.34, ESC = 0.03, DEG = 0.005, COST = 1200;
+    var annual = ((140 - 20) / RATE) * 12, cum = 0, pb = 25, life = 0;
+    for (var i = 0; i < 25; i++) {
+      var y = kwh * Math.pow(1 - DEG, i) * RATE * Math.pow(1 + ESC, i);
+      var prev = cum; cum += y; life += y;
+      if (cum >= COST && pb === 25) pb = i + (COST - prev) / y;
+    }
+    return {
+      dollars: Math.round(kwh * RATE),
+      monthly: Math.round(kwh * RATE / 12),
+      payback: pb < 25 ? pb.toFixed(1) + ' yrs' : '25+ yrs',
+      offset: Math.round((kwh / annual) * 100) + '%',
+      life: '$' + Math.round(life).toLocaleString(),
+      co2: Math.round(kwh * 0.89).toLocaleString()
+    };
+  }
+
+  renderVals() {
+    var self = this, st = this.state;
+    var FACING = { N: 0.40, NE: 0.50, E: 0.66, SE: 0.88, S: 1.00, SW: 0.88, W: 0.66, NW: 0.50 };
+    var ORDER = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+    var DIST = [0.056, 0.068, 0.082, 0.092, 0.105, 0.112, 0.114, 0.103, 0.088, 0.073, 0.056, 0.051];
+    var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+    var kwh = Math.round(892 * FACING[st.facing] * (0.70 + 0.35 * (st.floor / 28)));
+    var m = this.metrics(kwh);
+    var monthly = DIST.map(function (p) { return kwh * p; });
+    var peak = Math.max.apply(null, monthly);
+    var bars = monthly.map(function (v) { return { h: Math.round((v / peak) * 100) + '%' }; });
+
+    var facings = ORDER.map(function (k) {
+      var on = k === st.facing;
+      return { key: k, bg: on ? '#7F1D1D' : '#FFFFFF', fg: on ? '#FFFFFF' : '#6B6360',
+               bd: on ? '#7F1D1D' : '#EADFDD',
+               pick: function () { self.setState({ facing: k, touched: true, step: Math.max(2, st.step) }); } };
+    });
+
+    var rail = ['#C9BEBB', '#C9BEBB', '#C9BEBB', '#C9BEBB'];
+    for (var i = 0; i <= st.step; i++) rail[i] = '#171717';
+
+    return {
+      isLand: st.step === 0, isRough: st.step === 1, isRefine: st.step === 2,
+      isResult: st.step === 3, isWorking: st.step === 1 || st.step === 2,
+      r1: rail[0], r2: rail[1], r3: rail[2], r4: rail[3],
+      facings: facings, floor: st.floor,
+      floorPct: Math.round((st.floor / 28) * 100) + '%',
+      badge: st.touched ? 'Your estimate' : 'Rough · block median facing',
+      badgeBg: st.touched ? '#171717' : '#F6E9E6',
+      badgeFg: st.touched ? '#FFFFFF' : '#7F1D1D',
+      context: 'Floor ' + st.floor + ' of 28, facing ' + st.facing + ', 800W on the railing',
+      helper: st.touched
+        ? 'That is your number. Keep adjusting and it keeps up, or open the shadow model to see what your block does to it.'
+        : 'Your number is already worked out from city records at the median facing for your building. Two taps make it exact.',
+      kwh: kwh.toLocaleString(), dollars: '$' + m.dollars, monthlyDollars: '$' + m.monthly,
+      payback: m.payback, offset: m.offset, life: m.life, co2: m.co2 + ' lb',
+      band: 'Modelled range ' + Math.round(kwh * 0.85).toLocaleString() + ' to ' + Math.round(kwh * 1.15).toLocaleString() + ' kWh, about ±15%',
+      peakLine: 'peaks at ' + Math.round(peak) + ' kWh in ' + MONTHS[monthly.indexOf(peak)],
+      bars: bars,
+      calculate: function () { self.setState({ step: 1 }); },
+      toRefine: function () { self.setState({ step: 2 }); },
+      toResult: function () { self.setState({ step: 3 }); },
+      backToRefine: function () { self.setState({ step: 2 }); },
+      reset: function () { self.setState({ step: 0, facing: 'S', floor: 14, scene: false, touched: false }); },
+      floorUp: function () { self.setState({ floor: Math.min(28, st.floor + 1), touched: true, step: Math.max(2, st.step) }); },
+      floorDown: function () { self.setState({ floor: Math.max(1, st.floor - 1), touched: true, step: Math.max(2, st.step) }); },
+      toggleScene: function () { self.setState({ scene: !st.scene }); },
+      scene: st.scene, sceneLabel: st.scene ? 'Hide the shadow model' : 'Show me the shadows'
+    };
+  }
+}
+
+</script>
+</body>
+</html>

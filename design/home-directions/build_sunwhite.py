@@ -280,8 +280,9 @@ def page(v):
 
 FILES = {"Solar yellow": "SunYellow", "Sun and shade": "SunDuo", "Brand red": "SunRed",
          "Civic navy": "SunNavy", "Dusk violet": "SunViolet"}
-for name, v in VARIANTS:
-    fn = FILES[name] + ".dc.html"
-    out = page(v)
-    open(fn, "w").write(out)
-    print(f"{fn:20} {len(out)/1024:.0f}KB   {name}")
+if __name__ == "__main__":
+  for name, v in VARIANTS:
+      fn = FILES[name] + ".dc.html"
+      out = page(v)
+      open(fn, "w").write(out)
+      print(f"{fn:20} {len(out)/1024:.0f}KB   {name}")

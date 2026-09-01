@@ -19,6 +19,10 @@
     {
       "id": "page-5",
       "name": "Sun · white"
+    },
+    {
+      "id": "page-6",
+      "name": "Red · full site"
     }
   ],
   "artboards": [
@@ -181,6 +185,26 @@
       "w": 1280,
       "h": 1060,
       "is_interactive": true
+    },
+    {
+      "file": "RedHome.dc.html",
+      "title": "Home page · full",
+      "page": "page-6",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 4340,
+      "is_interactive": true
+    },
+    {
+      "file": "RedFlow.dc.html",
+      "title": "The whole flow · clickable",
+      "page": "page-6",
+      "x": 1400,
+      "y": 0,
+      "w": 1280,
+      "h": 1060,
+      "is_interactive": true
     }
   ],
   "annotations": [
@@ -335,10 +359,26 @@
       "y": 1130,
       "w": 4080,
       "text": "FLAT, FIVE SHADES, BLOCKS DOUBLED\nTo answer the question: no, that was not what it was doing. Until now the light was a CONTINUOUS gradient — hundreds of shades blending smoothly, so no two blocks quite matched. Now each block takes one of FIVE discrete shades of the colour outright, picked from its own distance to the sun. Flat squares, no bevel, no gloss, no rounding.\n36 blocks across the city, about 26px each — double the last set again.\nThe shade is chosen per block in script rather than by a gradient. A gradient bands in pixel space and cuts a hard edge diagonally through a big tile, which looked like a rendering fault; this way every block is one solid colour. Only blocks that actually change shade are rewritten on a frame, so a few dozen writes rather than 460.\nSix catch tiers still set how far each block's reach is, so the five shades scatter into blocks taking different amounts of light instead of forming clean rings around the sun.\nThe tiers are texture, not output. Geometry is the city's own borough boundaries; sun rises east (right), sets west (left), and drifts on its own until you take hold of it."
+    },
+    {
+      "id": "note-redhome",
+      "page": "page-6",
+      "x": 0,
+      "y": -250,
+      "w": 1280,
+      "text": "HOME PAGE — the whole thing, in the red\nHero with the live sun map, then a worked example, what balcony solar actually is, where the number comes from, the SUNNY Act on black, the FAQ, and a footer that says plainly what this is not.\nEvery figure is either published or computed by the model in js/solar-api.js. The worked example is 780 kWh, which the real financial model turns into $265 a year, 4.3 years to payback, 18% of a typical bill and 694 lb of CO2. The sun still follows your cursor in the hero."
+    },
+    {
+      "id": "note-redflow",
+      "page": "page-6",
+      "x": 1400,
+      "y": -250,
+      "w": 1280,
+      "text": "THE WHOLE FLOW — click it\nFour steps. Press Calculate; the number arrives from PLUTO alone, marked rough. Change the facing or the floor and it becomes yours and moves live. See the full breakdown for the result page, with the assumptions listed, the year charted and a link worth sending to a board.\nThe 3D shadow model is a button on step 3, not a gate — nobody is ever stranded by it.\nNumbers come from the real model: south at floor 14 gives 781 kWh and 4.3 years; north at the same floor gives 312 kWh and 10.1 years. That spread is the whole argument for asking which way you face."
     }
   ],
   "launch": {
     "view": "canvas",
-    "page": "page-5"
+    "page": "page-6"
   }
 }

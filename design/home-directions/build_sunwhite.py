@@ -10,9 +10,11 @@ frame and the light lands speckled rather than as a smooth wash.
 Which tier a block sits in is texture, not data.
 """
 import math
-from citymap import grid, PITCH, BLOCK
+from citymap import grid
 
-COLS = 96
+PITCH, BLOCK, RADIUS = 10, 8.4, 2.9   # rounded tiles, tight gaps
+
+COLS = 72
 CELLS, C, R = grid(COLS)
 VW, VH = C * PITCH, R * PITCH
 
@@ -69,32 +71,63 @@ VARIANTS = [
            (0.40,"#A99AC0"),(0.62,"#C3BCD2"),(1.00,"#BEB6CE")])),
 ]
 
-# One pattern cell carries the sheen for every block: a curved highlight across
-# the top and a faint shade at the foot. Drawing it once and tiling it costs a
-# single extra path instead of three more shapes per block.
-GLOSS = (f'<pattern id="gloss" x="0" y="0" width="{PITCH}" height="{PITCH}" '
+# ── the material ───────────────────────────────────────────────────────────
+# Three layers make the glass, and only one of them is fixed to the tile:
+#   body     — the tier gradients, the colour of the block
+#   bevel    — a tiled pattern giving every tile the same thickness and edge
+#   specular — a tight white hotspot that TRACKS THE SUN, so the sheen slides
+#              across the city as the light moves. This is what makes it read
+#              as liquid rather than as a printed gloss.
+BEVEL = (f'<pattern id="bevel" x="0" y="0" width="{PITCH}" height="{PITCH}" '
          f'patternUnits="userSpaceOnUse">'
-         f'<path d="M0 0H{BLOCK}V2.5C{BLOCK*0.72} 4.5 {BLOCK*0.36} 5.3 0 5.5Z" fill="#FFFFFF" opacity="0.42"/>'
-         f'<path d="M0 0H{BLOCK}V0.9H0Z" fill="#FFFFFF" opacity="0.34"/>'
-         f'<path d="M{BLOCK} {BLOCK}H0V6.6C{BLOCK*0.4} 6.4 {BLOCK*0.75} 5.6 {BLOCK} 3.9Z" fill="#0B0B0B" opacity="0.07"/>'
+         f'<path d="M0 0H{BLOCK}V3.1C{BLOCK*0.7} 4.9 {BLOCK*0.3} 5.5 0 5.7Z" fill="#FFFFFF" opacity="0.30"/>'
+         f'<path d="M0 {BLOCK}H{BLOCK}V5.3C{BLOCK*0.72} 6.3 {BLOCK*0.34} 6.9 0 7.1Z" fill="#0A0A0A" opacity="0.085"/>'
          f'</pattern>')
 
-ALL_BLOCKS = "".join(f"M{i*PITCH} {j*PITCH}h{BLOCK}v{BLOCK}h-{BLOCK}z" for (i, j) in CELLS)
+# the tiles, written once and reused by every layer
+def tier_defs():
+    out = []
+    for k in range(len(RADII)):
+        rects = "".join(
+            f'<rect x="{i*PITCH}" y="{j*PITCH}" width="{BLOCK}" height="{BLOCK}" rx="{RADIUS}"/>'
+            for (i, j), t in tier.items() if t == k)
+        out.append(f'<g id="t{k}">{rects}</g>')
+    return "".join(out)
+
+TIERS = tier_defs()
+USE_ALL = "".join(f'<use href="#t{k}" xlink:href="#t{k}"/>' for k in range(len(RADII)))
+
+SPEC = ('<radialGradient id="spec" data-sun-spec gradientUnits="userSpaceOnUse" '
+        f'cx="{gx:.0f}" cy="{gy + 120:.0f}" r="250">'
+        '<stop offset="0" stop-color="#FFFDF4" stop-opacity="0.66"/>'
+        '<stop offset="0.26" stop-color="#FFFDF4" stop-opacity="0.26"/>'
+        '<stop offset="0.60" stop-color="#FFFDF4" stop-opacity="0.05"/>'
+        '<stop offset="1" stop-color="#FFFDF4" stop-opacity="0"/>'
+        '</radialGradient>')
+
+BLOOM = ('<radialGradient id="bloom" data-sun-bloom gradientUnits="userSpaceOnUse" '
+         f'cx="{gx:.0f}" cy="{gy + 40:.0f}" r="900">'
+         '<stop offset="0" stop-color="#FFFDF4" stop-opacity="0.16"/>'
+         '<stop offset="0.45" stop-color="#FFFDF4" stop-opacity="0.04"/>'
+         '<stop offset="1" stop-color="#FFFDF4" stop-opacity="0"/>'
+         '</radialGradient>')
 
 def city_svg(v):
-    defs = "".join(
+    grads = "".join(
         f'<radialGradient id="sun{k}" data-sun-grad gradientUnits="userSpaceOnUse" '
         f'cx="{gx:.0f}" cy="{gy:.0f}" r="{RADII[k]}">'
         + "".join(f'<stop offset="{o}" stop-color="{c}"/>' for o, c in v["stops"])
         + "</radialGradient>" for k in range(len(RADII)))
-    paths = "".join(
-        f'<path fill="url(#sun{k})" d="'
-        + "".join(f"M{i*PITCH} {j*PITCH}h{BLOCK}v{BLOCK}h-{BLOCK}z"
-                  for (i, j), t in tier.items() if t == k)
-        + '"/>' for k in range(len(RADII)))
+    body = "".join(f'<use href="#t{k}" xlink:href="#t{k}" fill="url(#sun{k})"/>'
+                   for k in range(len(RADII)))
     return (f'<svg viewBox="0 0 {VW} {VH}" width="100%" height="100%" '
-            f'aria-hidden="true"><defs>{defs}{GLOSS}</defs>{paths}'
-            f'<path fill="url(#gloss)" d="{ALL_BLOCKS}"/></svg>')
+            f'xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">'
+            f'<defs>{grads}{SPEC}{BLOOM}{BEVEL}{TIERS}</defs>'
+            f'{body}'
+            f'<g fill="url(#bevel)">{USE_ALL}</g>'
+            f'<g fill="url(#bloom)">{USE_ALL}</g>'
+            f'<g fill="url(#spec)">{USE_ALL}</g>'
+            f'</svg>')
 
 def sun_svg(v):
     rays = "".join(
@@ -120,6 +153,8 @@ class Component extends DCLogic {{
     var root = this.root || document.querySelector('[data-sun-root]');
     if (!root) return;
     this.grads = root.querySelectorAll('[data-sun-grad]');
+    this.spec  = root.querySelector('[data-sun-spec]');
+    this.bloom = root.querySelector('[data-sun-bloom]');
     this.sun   = root.querySelector('[data-sun]');
     this.halo  = root.querySelector('[data-sun-halo]');
     this.clock = root.querySelector('[data-sun-clock]');
@@ -156,6 +191,8 @@ class Component extends DCLogic {{
       this.grads[i].setAttribute('cx', cx);
       this.grads[i].setAttribute('cy', cy);
     }}
+    if (this.spec)  {{ this.spec.setAttribute('cx', cx);  this.spec.setAttribute('cy', (parseFloat(cy) + 120).toFixed(1)); }}
+    if (this.bloom) {{ this.bloom.setAttribute('cx', cx); this.bloom.setAttribute('cy', (parseFloat(cy) + 40).toFixed(1)); }}
     if (this.sun)  {{ this.sun.style.left  = x + 'px'; this.sun.style.top  = y + 'px'; }}
     if (this.halo) {{ this.halo.style.left = x + 'px'; this.halo.style.top = y + 'px'; }}
     if (this.clock) {{

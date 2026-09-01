@@ -7,6 +7,10 @@ same one the Sun variants use.
 """
 import build_sunwhite as B
 
+def __WRITE__(path, data):
+    if __name__ == "__main__":
+        open(path, "w").write(data)
+
 V = dict(B.VARIANTS[2][1])          # Brand red
 SHADES = V["shades"]
 INK, SUB, GROUND, HAIR = V["ink"], V["sub"], V["ground"], V["hair"]
@@ -286,8 +290,8 @@ home = f"""<!doctype html>
 </html>
 """
 
-open("RedHome.dc.html", "w").write(home)
-print(f"RedHome.dc.html  {len(home)/1024:.0f}KB")
+__WRITE__("RedHome.dc.html", home)
+print(f"RedHome.dc.html  {len(home)/1024:.0f}KB") if __name__ == "__main__" else None
 
 
 # ── the flow, clickable end to end ─────────────────────────────────────────
@@ -585,5 +589,5 @@ flow = f"""<!doctype html>
 </html>
 """
 
-open("RedFlow.dc.html", "w").write(flow)
-print(f"RedFlow.dc.html  {len(flow)/1024:.0f}KB")
+__WRITE__("RedFlow.dc.html", flow)
+print(f"RedFlow.dc.html  {len(flow)/1024:.0f}KB") if __name__ == "__main__" else None

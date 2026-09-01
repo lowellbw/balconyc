@@ -17,3 +17,8 @@ design/**/preview-*.png
 design/**/city.svg.frag
 design/**/__pycache__/
 design/**/shot-*.png
+design/red-fork/fork-*.png
+
+# Fork build outputs (~950KB each, mostly inlined three.js; rebuild with build_fork.py)
+design/red-fork/balco-red-fork.html
+design/red-fork/find-the-sun-on-your-block.html

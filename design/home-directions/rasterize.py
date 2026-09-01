@@ -1,4 +1,6 @@
-import json, math
+import json, math, pathlib
+
+GEOJSON = pathlib.Path(__file__).with_name("nyc.geojson")
 
 COLS = 168
 
@@ -6,7 +8,7 @@ def build(cols=COLS):
     """Rasterise NYC into a square block grid, tagging each block with its borough.
     Square ground cells: a rectangular cell would imply a street orientation that
     is only correct in part of Manhattan."""
-    d = json.load(open("nyc.geojson"))
+    d = json.load(open(GEOJSON))
     feats = []
     for f in d["features"]:
         rings = [[(p[0], p[1]) for p in ring]

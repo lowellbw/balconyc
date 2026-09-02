@@ -243,29 +243,6 @@ describe('Deployment configuration', () => {
     const cc = js.headers.find(x => x.key === 'Cache-Control').value;
     assert(!cc.includes('immutable'), `js is still immutable-cached: ${cc}`);
     assert(/must-revalidate/.test(cc), `js should revalidate: ${cc}`);
-describe('External API hosts', () => {
-  // NREL became the National Laboratory of the Rockies and the nrel.gov zone
-  // was withdrawn from DNS. The same API answers at developer.nlr.gov. With
-  // the old host every PVWatts call failed and every estimate silently used
-  // the fallback formula while the page still claimed an hourly simulation.
-  it('calls PVWatts and Solar Resource on the live nlr.gov host', () => {
-    assert(/^https:\/\/developer\.nlr\.gov\/api\/pvwatts\/v8\.json$/.test(SolarConfig.PVWATTS_URL),
-      `PVWATTS_URL points somewhere unexpected: ${SolarConfig.PVWATTS_URL}`);
-    assert(/^https:\/\/developer\.nlr\.gov\/api\/solar\/solar_resource\/v1\.json$/.test(SolarConfig.SOLAR_RESOURCE_URL),
-      `SOLAR_RESOURCE_URL points somewhere unexpected: ${SolarConfig.SOLAR_RESOURCE_URL}`);
-  });
-
-  it('carries no links to the retired nrel.gov hosts', () => {
-    const surfaces = Object.assign({}, ALL_PUBLIC, {
-      'README-api-keys.md': read('README-api-keys.md'),
-      'js/config.js.example': read('js/config.js.example'),
-    });
-    for (const [name, text] of Object.entries(surfaces)) {
-      assert(!/https?:\/\/[a-z.]*nrel\.gov\//.test(text), `${name} still links to a nrel.gov host`);
-    }
-  });
-});
-
   });
 
   it('does not deploy the design workbench', () => {

@@ -74,11 +74,9 @@
        window grow the map sideways under the copy; min() with 86vh keeps
        that in check while 64vw makes it read as New York on a normal
        screen. top: 13% keeps the sun clear of the nav. */
-    .hero-city { position: absolute; right: 0; top: 13%;
-      width: min(64vw, 86vh); height: auto; aspect-ratio: 1 / 1; pointer-events: none; }
+    .hero-city { position: absolute; right: 0; top: 10%;
+      width: min(70vw, 90vh); height: auto; aspect-ratio: 1 / 1; pointer-events: none; }
     .hero-city svg { display: block; width: 100%; height: 100%; }
-    .hero-halo { position: absolute; width: 62vw; height: 62vw; max-width: 900px; max-height: 900px; margin: -31vw 0 0 -31vw; pointer-events: none;
-      background: radial-gradient(circle closest-side, rgba(191,60,32,0.18) 0%, rgba(255,255,255,0) 62%); }
     /* A veil over the copy column, not a wall. The city stays visible
        underneath at 12% and fades to full past the copy's right edge, so
        the whole shape reads instead of being cut off mid-borough.
@@ -96,8 +94,8 @@
     .hero-clock { display: inline-block; margin-top: 2px; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.92); border: 1px solid var(--border); font-size: 0.72rem; font-weight: 700; color: var(--accent); white-space: nowrap; }
     @media (prefers-reduced-motion: reduce) { .hero-sun-rays { animation: none; } }
     /* Once an address resolves the 3D scene takes the stage. */
-    .hero.has-scene .hero-city, .hero.has-scene .hero-halo,
-    .hero.has-scene .hero-sun, .hero.has-scene .hero-scrim { display: none; }
+    .hero.has-scene .hero-city, .hero.has-scene .hero-sun,
+    .hero.has-scene .hero-scrim { display: none; }
 
     /* Narrow screens have no room beside the copy, so the whole city goes
        BEHIND it as a pale wash and the copy sits straight on top. This also
@@ -115,7 +113,6 @@
       .hero-sun { opacity: 0.5; }
       .hero-clock { display: none; }
       .hero-scrim { background: none; }
-      .hero-halo { display: none; }
     }
 
     .hero-layout { position: relative; z-index: 3; width: 100%; max-width: 1360px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: flex-start; gap: 40px; transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
@@ -753,7 +750,6 @@
   <!-- Every block of the five boroughs, lit by a sun that follows the cursor.
        The shading is the sun's position, not any block's modelled output. -->
   <div class="hero-city" id="heroCity" aria-hidden="true"></div>
-  <div class="hero-halo" id="heroHalo" aria-hidden="true"></div>
   <div class="hero-scrim" aria-hidden="true"></div>
   <div class="hero-sun" id="heroSun" aria-hidden="true">
     <svg viewBox="0 0 100 100" width="76" height="76">

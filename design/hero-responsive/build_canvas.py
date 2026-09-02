@@ -18,6 +18,22 @@ BUILDS = [
   ("C",     "CFade",  "Option C","#7F1D1D"),
 ]
 
+# Narrow-screen directions. "B" here is the map-below-the-copy layout that
+# ships today plus the sun fix — the one that looked heavy on a phone.
+NARROW_SIZES = [(390, 844, "Phone"), (768, 1024, "Tablet")]
+NARROW_BUILDS = [
+  ("B",  "NowBelow", "Map below"),
+  ("N1", "WashN1",   "N1 wash"),
+  ("N2", "MotifN2",  "N2 motif"),
+  ("N3", "BandN3",   "N3 band"),
+]
+NARROW_NOTE = {
+  "B":  "readable, but heavy",
+  "N1": "readable — only at 9% opacity",
+  "N2": "readable",
+  "N3": "readable",
+}
+
 FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
          'family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,900&display=swap">')
 
@@ -29,12 +45,23 @@ def artboard(build_key, w, h, label, verdict, verdict_note):
     H = g["hero"]["h"]
     parts = []
 
-    # the city of blocks
+    # the city of blocks — honouring opacity, a mask, and any crop
     c = g["city"]
-    mask = f' -webkit-mask-image: {c["mask"]}; mask-image: {c["mask"]};' if c["mask"] else ""
+    mask = f' -webkit-mask-image: {c["mask"]}; mask-image: {c["mask"]};' if c.get("mask") else ""
+    op = c.get("opacity", "1")
+    fade = f" opacity: {op};" if op not in (None, "1") else ""
+    inner, svg = c.get("inner"), c["svg"]
+    if inner and (abs(inner["l"]) > 1 or abs(inner["t"]) > 1
+                  or abs(inner["w"] - c["w"]) > 1 or abs(inner["h"] - c["h"]) > 1):
+        # the SVG is cropped by its box (N3), so place it where it really lands
+        svg = svg.replace('width="100%" height="100%"',
+                          f'width="{inner["w"]}" height="{inner["h"]}"', 1)
+        svg = (f'<div style="position: absolute; left: {inner["l"]}px; top: {inner["t"]}px; '
+               f'width: {inner["w"]}px; height: {inner["h"]}px;">{svg}</div>')
     parts.append(
       f'<div style="position: absolute; left: {c["l"]}px; top: {c["t"]}px; '
-      f'width: {c["w"]}px; height: {c["h"]}px; pointer-events: none;{mask}">{c["svg"]}</div>')
+      f'width: {c["w"]}px; height: {c["h"]}px; overflow: {c.get("overflow","visible")}; '
+      f'pointer-events: none;{fade}{mask}">{svg}</div>')
 
     # the warm halo around the sun
     ha = g["halo"]
@@ -50,16 +77,22 @@ def artboard(build_key, w, h, label, verdict, verdict_note):
       f'<div style="position: absolute; left: 0px; top: 0px; width: {sc["w"]}px; '
       f'height: {sc["h"]}px; pointer-events: none; background: {sc["bg"]};"></div>')
 
-    # the sun and its clock
+    # the sun, at whatever size it actually rendered, and its clock if shown
     s = g["sun"]
-    sun_svg = s["svg"].replace('class="hero-sun-rays"', "")
+    gl = s.get("glyph") or {"w": 76, "h": 76}
+    sun_svg = (s["svg"].replace('class="hero-sun-rays"', "")
+               .replace('width="76" height="76"', f'width="{gl["w"]}" height="{gl["h"]}"', 1))
+    clock = ""
+    if s.get("clockShown", True):
+        clock = ('<span style="display: inline-block; margin-top: 2px; padding: 3px 10px; '
+                 'border-radius: 999px; background: rgba(255,255,255,0.92); border: 1px solid #E2E8F0; '
+                 'font-size: 0.72rem; font-weight: 700; color: #7F1D1D; white-space: nowrap;">'
+                 f'{esc(s["clock"])}</span>')
+    sop = s.get("opacity", "1")
+    sfade = f" opacity: {sop};" if sop not in (None, "1") else ""
     parts.append(
       f'<div style="position: absolute; left: {s["l"]}px; top: {s["t"]}px; '
-      f'width: {s["w"]}px; text-align: center; pointer-events: none;">{sun_svg}'
-      f'<span style="display: inline-block; margin-top: 2px; padding: 3px 10px; '
-      f'border-radius: 999px; background: rgba(255,255,255,0.92); border: 1px solid #E2E8F0; '
-      f'font-size: 0.72rem; font-weight: 700; color: #7F1D1D; white-space: nowrap;">'
-      f'{esc(s["clock"])}</span></div>')
+      f'width: {s["w"]}px; text-align: center; pointer-events: none;{sfade}">{sun_svg}{clock}</div>')
 
     # nav
     parts.append(
@@ -174,6 +207,22 @@ def main():
             boards.append({"file": f"{name}.dc.html", "x": x, "y": 0, "w": w, "h": H,
                            "title": f"{sname} · {w}×{h}", "page": PAGES[pi][0]})
             x += w + GAP_X
+    # page 5 — the narrow-screen directions
+    x = 0
+    for bkey, prefix, label in NARROW_BUILDS:
+        col_x = x
+        y = 0
+        for (w, h, sname) in NARROW_SIZES:
+            name = f"{prefix}{sname}"
+            src = artboard(bkey, w, h, sname, "ok", NARROW_NOTE[bkey])
+            files[f"{name}.dc.html"] = src
+            H = int(GEO[f"{bkey}-{w}x{h}"]["hero"]["h"])
+            boards.append({"file": f"{name}.dc.html", "x": col_x, "y": y, "w": w, "h": H,
+                           "title": f"{label} · {sname} {w}×{h}", "page": "page-5"})
+            y += H + 140
+        x += max(w for w, _, _ in NARROW_SIZES) + GAP_X
+    PAGES = PAGES + [("page-5", "Phone & tablet")]
+
     for name, src in files.items():
         (HERE / name).write_text(src, encoding="utf-8")
     return files, boards, PAGES

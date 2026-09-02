@@ -44,6 +44,23 @@ Result on the page as it ships: **10 of 17 sizes fail.**
 The sun fix is orthogonal and belongs in whichever option wins:
 `padding-bottom: calc(min(58vw, 520px) + 62px)`.
 
+## Phone and tablet
+
+The map-below-the-copy layout reads, but it is a heavy slab under the form.
+Three replacements, all measured over seven sizes from 360 to 1024:
+
+| | holds at | trade |
+|---|---|---|
+| **N1 · wash** | 7/7 | the whole city behind the copy — but only at 9% opacity; at 18% the subhead fails |
+| **N2 · motif** | 7/7 | a mark above the copy, `clamp(120px, 26vw, 240px)`; loses the scale, gains ~90px of height back |
+| **N3 · band** | 7/7 | a horizon strip along the bottom; cropped, so it reads as texture |
+
+Independent of the desktop choice — any pairs with A or B.
+
+Two values here were set by measurement, not by eye: N1's opacity (0.18
+failed at every size) and N2's `padding-top` (the motif clipped the copy by
+8px at 768).
+
 ## Rebuilding the canvas
 
 ```

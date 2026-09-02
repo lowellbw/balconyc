@@ -38,6 +38,70 @@ VARIANTS = {
 }
 
 
+# The narrow-screen block as it ships (after the sun fix), and three
+# replacements for it. These are independent of the desktop choice above:
+# each is applied on top of B.
+NARROW = """    @media (max-width: 1024px) {
+      .hero:not(.has-scene) {
+        align-items: flex-start;
+        min-height: auto;
+        padding-top: 120px;
+        padding-bottom: calc(min(58vw, 520px) + 62px);
+      }
+      .hero-city {
+        right: -8%; left: auto; top: auto; bottom: 0;
+        width: min(58vw, 520px); height: min(58vw, 520px);
+        aspect-ratio: auto;
+      }"""
+NARROW_SCRIM = """      .hero-scrim { background:
+        linear-gradient(180deg, var(--bg) 0%, var(--bg) 26%, rgba(255,255,255,0) 56%),
+        linear-gradient(0deg, var(--bg) 0%, rgba(255,255,255,0) 8%); }"""
+NO_SCRIM = """      .hero-scrim { background: none; }"""
+
+NARROW_VARIANTS = {
+    # N1 — the whole city fully behind the copy, contained and pale. 0.09 is
+    #      not a taste call: at 0.18 the grey subhead drops under 4.5:1.
+    "N1": """    @media (max-width: 1024px) {
+      .hero:not(.has-scene) { align-items: center; min-height: 86vh; padding: 130px 0 56px; }
+      .hero-city {
+        left: 0; right: 0; top: 104px; bottom: 24px;
+        width: 100%; height: auto; aspect-ratio: auto; opacity: 0.09;
+      }
+      .hero-sun { opacity: 0.5; }
+      .hero-clock { display: none; }""",
+    # N2 — the city shrinks to a mark above the copy. padding-top has to clear
+    #      the whole motif; at 0.86 of it the frame clipped the copy at 768.
+    "N2": """    @media (max-width: 1024px) {
+      .hero:not(.has-scene) {
+        align-items: flex-start; min-height: auto;
+        --motif: clamp(120px, 26vw, 240px);
+        padding-top: calc(100px + var(--motif) + 36px);
+        padding-bottom: 64px;
+      }
+      .hero-city {
+        right: clamp(20px, 5vw, 48px); left: auto; top: 100px; bottom: auto;
+        width: var(--motif, 160px); height: var(--motif, 160px);
+        aspect-ratio: auto;
+      }
+      .hero-sun { transform: scale(0.5); transform-origin: 50% 24%; }
+      .hero-clock { display: none; }""",
+    # N3 — the city crops to a horizon band along the bottom.
+    "N3": """    @media (max-width: 1024px) {
+      .hero:not(.has-scene) {
+        align-items: flex-start; min-height: auto;
+        padding-top: 120px; padding-bottom: calc(clamp(150px, 30vw, 260px) + 40px);
+      }
+      .hero-city {
+        left: 0; right: 0; top: auto; bottom: 0;
+        width: 100%; height: clamp(150px, 30vw, 260px);
+        aspect-ratio: auto; overflow: hidden;
+      }
+      .hero-city svg { position: absolute; left: 50%; bottom: -4%;
+        width: 116%; height: auto; transform: translateX(-50%); }
+      .hero-clock { display: none; }""",
+}
+
+
 def build():
     src = io.open(ROOT / "index.html", encoding="utf-8").read()
     for rule in (CITY, SCRIM, GAP_OLD):
@@ -46,10 +110,20 @@ def build():
     # a <base> so the variants under build/ still resolve the site's own assets
     base = f'<meta charset="UTF-8">\n  <base href="file://{ROOT}/">'
     (OUT / "CUR.html").write_text(src.replace('<meta charset="UTF-8">', base, 1), encoding="utf-8")
+    built = {}
     for key, (city, scrim) in VARIANTS.items():
         s = src.replace(CITY, city, 1).replace(SCRIM, scrim, 1).replace(GAP_OLD, GAP_NEW, 1)
+        built[key] = s
         (OUT / f"{key}.html").write_text(s.replace('<meta charset="UTF-8">', base, 1), encoding="utf-8")
-    print(f"built CUR, {', '.join(VARIANTS)} in {OUT}")
+
+    # the narrow directions ride on top of B, whose desktop rules they leave alone
+    for rule in (NARROW, NARROW_SCRIM):
+        assert rule in built["B"], f"B no longer contains:\n{rule}"
+    for key, block in NARROW_VARIANTS.items():
+        s = built["B"].replace(NARROW, block, 1).replace(NARROW_SCRIM, NO_SCRIM, 1)
+        (OUT / f"{key}.html").write_text(s.replace('<meta charset="UTF-8">', base, 1), encoding="utf-8")
+
+    print(f"built CUR, {', '.join(VARIANTS)}, {', '.join(NARROW_VARIANTS)} in {OUT}")
 
 
 if __name__ == "__main__":

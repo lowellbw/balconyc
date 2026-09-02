@@ -1,0 +1,248 @@
+{
+  "artboards": [
+    {
+      "file": "TodayPhone.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 617,
+      "title": "Phone \u00b7 390\u00d7844",
+      "page": "page-1"
+    },
+    {
+      "file": "TodayTablet.dc.html",
+      "x": 510,
+      "y": 0,
+      "w": 768,
+      "h": 810,
+      "title": "Tablet \u00b7 768\u00d71024",
+      "page": "page-1"
+    },
+    {
+      "file": "TodayLaptop.dc.html",
+      "x": 1398,
+      "y": 0,
+      "w": 1280,
+      "h": 800,
+      "title": "Laptop \u00b7 1280\u00d7800",
+      "page": "page-1"
+    },
+    {
+      "file": "TodayTalldesktop.dc.html",
+      "x": 2798,
+      "y": 0,
+      "w": 1440,
+      "h": 1440,
+      "title": "Tall desktop \u00b7 1440\u00d71440",
+      "page": "page-1"
+    },
+    {
+      "file": "TodayWidedesktop.dc.html",
+      "x": 4358,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "title": "Wide desktop \u00b7 1920\u00d71080",
+      "page": "page-1"
+    },
+    {
+      "file": "AColumnPhone.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 665,
+      "title": "Phone \u00b7 390\u00d7844",
+      "page": "page-2"
+    },
+    {
+      "file": "AColumnTablet.dc.html",
+      "x": 510,
+      "y": 0,
+      "w": 768,
+      "h": 858,
+      "title": "Tablet \u00b7 768\u00d71024",
+      "page": "page-2"
+    },
+    {
+      "file": "AColumnLaptop.dc.html",
+      "x": 1398,
+      "y": 0,
+      "w": 1280,
+      "h": 800,
+      "title": "Laptop \u00b7 1280\u00d7800",
+      "page": "page-2"
+    },
+    {
+      "file": "AColumnTalldesktop.dc.html",
+      "x": 2798,
+      "y": 0,
+      "w": 1440,
+      "h": 1440,
+      "title": "Tall desktop \u00b7 1440\u00d71440",
+      "page": "page-2"
+    },
+    {
+      "file": "AColumnWidedesktop.dc.html",
+      "x": 4358,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "title": "Wide desktop \u00b7 1920\u00d71080",
+      "page": "page-2"
+    },
+    {
+      "file": "BScrimPhone.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 665,
+      "title": "Phone \u00b7 390\u00d7844",
+      "page": "page-3"
+    },
+    {
+      "file": "BScrimTablet.dc.html",
+      "x": 510,
+      "y": 0,
+      "w": 768,
+      "h": 858,
+      "title": "Tablet \u00b7 768\u00d71024",
+      "page": "page-3"
+    },
+    {
+      "file": "BScrimLaptop.dc.html",
+      "x": 1398,
+      "y": 0,
+      "w": 1280,
+      "h": 800,
+      "title": "Laptop \u00b7 1280\u00d7800",
+      "page": "page-3"
+    },
+    {
+      "file": "Main.dc.html",
+      "x": 2798,
+      "y": 0,
+      "w": 1440,
+      "h": 1440,
+      "title": "Tall desktop \u00b7 1440\u00d71440",
+      "page": "page-3"
+    },
+    {
+      "file": "BScrimWidedesktop.dc.html",
+      "x": 4358,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "title": "Wide desktop \u00b7 1920\u00d71080",
+      "page": "page-3"
+    },
+    {
+      "file": "CFadePhone.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 665,
+      "title": "Phone \u00b7 390\u00d7844",
+      "page": "page-4"
+    },
+    {
+      "file": "CFadeTablet.dc.html",
+      "x": 510,
+      "y": 0,
+      "w": 768,
+      "h": 858,
+      "title": "Tablet \u00b7 768\u00d71024",
+      "page": "page-4"
+    },
+    {
+      "file": "CFadeLaptop.dc.html",
+      "x": 1398,
+      "y": 0,
+      "w": 1280,
+      "h": 800,
+      "title": "Laptop \u00b7 1280\u00d7800",
+      "page": "page-4"
+    },
+    {
+      "file": "CFadeTalldesktop.dc.html",
+      "x": 2798,
+      "y": 0,
+      "w": 1440,
+      "h": 1440,
+      "title": "Tall desktop \u00b7 1440\u00d71440",
+      "page": "page-4"
+    },
+    {
+      "file": "CFadeWidedesktop.dc.html",
+      "x": 4358,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "title": "Wide desktop \u00b7 1920\u00d71080",
+      "page": "page-4"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "page-1-brief",
+      "x": 0,
+      "y": -360,
+      "w": 560,
+      "text": "What breaks, and where\n\nThe map is sized from the hero's HEIGHT (height: 82% + aspect-ratio 1/1),\nso a tall window grows it sideways into the copy column. That is the\n\"sometimes\" \u2014 it tracks window height, not width.\n\nTwo separate faults:\n1. Tall/short desktop \u2014 blocks sit under the headline, subhead and input.\n2. Narrow screens \u2014 the sun clips the bottom-right of the address field.\n\nMeasured across 17 window sizes: 10 fail WCAG AA (4.5:1) for the grey\nsubhead against what is actually painted behind it.",
+      "page": "page-1"
+    },
+    {
+      "id": "page-2-brief",
+      "x": 0,
+      "y": -360,
+      "w": 560,
+      "text": "Option A \u2014 the map gets its own column\n\nleft is pinned past the copy's right edge, so overlap is impossible by\nconstruction, at any window size.\n\nHolds at 17 of 17 sizes.\n\nTrade: loses the bleed. The map no longer runs under the input, which was\nthe point of the original composition. On a short wide window the map gets\nnoticeably smaller than it is today.",
+      "page": "page-2"
+    },
+    {
+      "id": "page-3-brief",
+      "x": 0,
+      "y": -360,
+      "w": 560,
+      "text": "Option B \u2014 the scrim knows where the copy ends\n\nThe map is untouched. The white scrim is redefined to stay opaque out to\nthe copy column's real right edge, then fade over 220px:\n\n  --copy-edge: calc(max((100% - 1360px)/2, 0px) + 40px + 680px)\n\nHolds at 17 of 17 sizes.\n\nTrade: the map is still full-size behind the copy, just covered. On very\ntall windows a lot of it is hidden \u2014 you are paying for blocks nobody sees.\n\nThis is my recommendation: it fixes the fault without giving up the\ncomposition you picked.",
+      "page": "page-3"
+    },
+    {
+      "id": "page-4-brief",
+      "x": 0,
+      "y": -360,
+      "w": 560,
+      "text": "Option C \u2014 fade the map out under the copy\n\nA mask on the map itself, so blocks dissolve rather than being covered:\n  mask-image: linear-gradient(90deg, transparent 4%, #000 42%)\n\nHolds at only 12 of 17 sizes \u2014 it FAILS.\n\nA mask thins the blocks, it does not remove them. Partly-faded red under\ngrey text still lands between 1.8:1 and 4.4:1, under the 4.5 floor. Shown\nhere because it is the prettiest idea of the three and it is worth seeing\nwhy it does not survive measurement.",
+      "page": "page-4"
+    },
+    {
+      "id": "sun-fix",
+      "x": 640,
+      "y": -360,
+      "w": 480,
+      "text": "Both faults, both fixed\n\nThe narrow-screen sun clash is orthogonal to the desktop one and is\nfixed the same way in every option: give the map 62px of headroom\nbelow the copy instead of 14px, so the sun \u2014 which rides ~38px above\nthe map's top edge \u2014 clears the address field.\n\n  padding-bottom: calc(min(58vw, 520px) + 62px)",
+      "page": "page-1"
+    }
+  ],
+  "pages": [
+    {
+      "id": "page-1",
+      "name": "Today"
+    },
+    {
+      "id": "page-2",
+      "name": "A \u00b7 Its own column"
+    },
+    {
+      "id": "page-3",
+      "name": "B \u00b7 Scrim to the copy edge"
+    },
+    {
+      "id": "page-4",
+      "name": "C \u00b7 Fade the map"
+    }
+  ],
+  "launch": {
+    "view": "canvas",
+    "page": "page-1"
+  }
+}

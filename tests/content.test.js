@@ -229,6 +229,20 @@ describe('Deployment configuration', () => {
     for (const r of rules) assert(r.destination === '/', `/design must land on /, got ${r.destination}`);
   });
 
+  it('busts the hero map cache when the map changes', () => {
+    // js/ is cached for 10 minutes and city-hero.js never changes name, while
+    // the HTML is max-age=0. Without a fingerprint, for ten minutes after a
+    // deploy a browser pairs the new page with the previous map — which looks
+    // exactly like the deploy not having happened. Stamped by
+    // design/home-directions/build_city_hero.py; re-run it if this fails.
+    const crypto = require('crypto');
+    const m = read('index.html').match(/src="js\/city-hero\.js\?v=([0-9a-f]+)"/);
+    assert(m, 'index.html does not load city-hero.js with a ?v= fingerprint');
+    const want = crypto.createHash('sha256')
+      .update(read('js/city-hero.js'), 'utf8').digest('hex').slice(0, m[1].length);
+    assert(m[1] === want, `city-hero.js fingerprint is stale: ${m[1]} but file hashes to ${want}`);
+  });
+
   it('only declares functions that still exist', () => {
     for (const fnPath of Object.keys(vercel.functions || {})) {
       assert(fs.existsSync(path.join(ROOT, fnPath)), `vercel.json references missing function ${fnPath}`);

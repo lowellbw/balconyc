@@ -13,7 +13,7 @@ resolution coarse enough to keep the squares chunky.
 
     python3 build_city_hero.py        # rewrites ../../js/city-hero.js
 """
-import math, pathlib
+import hashlib, math, pathlib, re
 from citymap import grid
 
 COLS = 44
@@ -25,7 +25,9 @@ SHARE  = [0.13, 0.19, 0.24, 0.22, 0.15, 0.07]
 # block size
 RADIUS_RATIOS = [0.52, 0.75, 1.02, 1.32, 1.71, 2.17]
 
-OUT = pathlib.Path(__file__).resolve().parents[2] / "js" / "city-hero.js"
+ROOT = pathlib.Path(__file__).resolve().parents[2]
+OUT = ROOT / "js" / "city-hero.js"
+PAGE = ROOT / "index.html"
 
 
 def island(cells, boro="Manhattan"):
@@ -82,8 +84,27 @@ def build():
         shades=str(SHADES).replace("'", '"'), radii=radii, bounds=BOUNDS,
         cells=packed, n=len(cells))
     OUT.write_text(src, encoding="utf-8")
+    stamp = fingerprint(src)
     print(f"wrote {OUT.relative_to(OUT.parents[1])}: "
-          f"{len(cells)} blocks, grid {C}x{R}, {len(src)/1024:.0f}KB")
+          f"{len(cells)} blocks, grid {C}x{R}, {len(src)/1024:.0f}KB, ?v={stamp}")
+
+
+def fingerprint(src):
+    """Stamp the script's content hash into the page's <script src>.
+
+    js/ is cached for 10 minutes and the file name never changes, while the
+    HTML is max-age=0. So for ten minutes after a deploy the browser pairs a
+    fresh page with the previous map — which looks exactly like the deploy
+    not having happened. The hash in the query makes each build its own URL.
+    """
+    stamp = hashlib.sha256(src.encode("utf-8")).hexdigest()[:8]
+    page = PAGE.read_text(encoding="utf-8")
+    new, n = re.subn(r'src="js/city-hero\.js(?:\?v=[0-9a-f]+)?"',
+                     f'src="js/city-hero.js?v={stamp}"', page)
+    assert n == 1, f"expected one city-hero.js script tag, found {n}"
+    if new != page:
+        PAGE.write_text(new, encoding="utf-8")
+    return stamp
 
 
 TEMPLATE = '''// ============================================================

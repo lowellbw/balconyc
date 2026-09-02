@@ -9,3 +9,16 @@ supabase/.temp/
 # previously listed here, which had no effect (the file was already tracked)
 # and implied a protection that did not exist.
 node_modules/
+
+# Seeded design-canvas output (~2MB build artifact; re-seeded from the .dc.html sources)
+design/**/balco-home-page-directions.html
+design/**/nyc.geojson
+design/**/preview-*.png
+design/**/city.svg.frag
+design/**/__pycache__/
+design/**/shot-*.png
+design/red-fork/fork-*.png
+
+# Fork build outputs (~950KB each, mostly inlined three.js; rebuild with build_fork.py)
+design/red-fork/balco-red-fork.html
+design/red-fork/find-the-sun-on-your-block.html

@@ -1,0 +1,384 @@
+{
+  "pages": [
+    {
+      "id": "page-1",
+      "name": "Home page directions"
+    },
+    {
+      "id": "page-2",
+      "name": "Core flow"
+    },
+    {
+      "id": "page-3",
+      "name": "Sun City"
+    },
+    {
+      "id": "page-4",
+      "name": "Gov · white"
+    },
+    {
+      "id": "page-5",
+      "name": "Sun · white"
+    },
+    {
+      "id": "page-6",
+      "name": "Red · full site"
+    }
+  ],
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "A · Answer First",
+      "page": "page-1",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 1060
+    },
+    {
+      "file": "DirectionB.dc.html",
+      "title": "B · The Ledger",
+      "page": "page-1",
+      "x": 1400,
+      "y": 0,
+      "w": 1280,
+      "h": 1060
+    },
+    {
+      "file": "DirectionC.dc.html",
+      "title": "C · Civic Bulletin",
+      "page": "page-1",
+      "x": 2800,
+      "y": 0,
+      "w": 1280,
+      "h": 1060
+    },
+    {
+      "file": "DirectionD.dc.html",
+      "title": "D · Sun Dial",
+      "page": "page-1",
+      "x": 0,
+      "y": 1360,
+      "w": 1280,
+      "h": 1060
+    },
+    {
+      "file": "DirectionE.dc.html",
+      "title": "E · Block Map",
+      "page": "page-1",
+      "x": 1400,
+      "y": 1360,
+      "w": 1280,
+      "h": 1060
+    },
+    {
+      "file": "FlowMap.dc.html",
+      "title": "Flow · before and after",
+      "page": "page-2",
+      "x": 0,
+      "y": 0,
+      "w": 1680,
+      "h": 1060
+    },
+    {
+      "file": "FlowPrototype.dc.html",
+      "title": "Flow · clickable",
+      "page": "page-2",
+      "x": 0,
+      "y": 1250,
+      "w": 1280,
+      "h": 900,
+      "is_interactive": true
+    },
+    {
+      "file": "BlockCity.dc.html",
+      "title": "Block City · static (superseded)",
+      "page": "page-3",
+      "x": 1400,
+      "y": 0,
+      "w": 1280,
+      "h": 1060
+    },
+    {
+      "file": "GovPublicRecord.dc.html",
+      "title": "Public Record",
+      "page": "page-4",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 1060
+    },
+    {
+      "file": "GovStandardsManual.dc.html",
+      "title": "Standards Manual",
+      "page": "page-4",
+      "x": 1400,
+      "y": 0,
+      "w": 1280,
+      "h": 1060
+    },
+    {
+      "file": "GovOpenData.dc.html",
+      "title": "Open Data",
+      "page": "page-4",
+      "x": 2800,
+      "y": 0,
+      "w": 1280,
+      "h": 1060
+    },
+    {
+      "file": "SunCity.dc.html",
+      "title": "Sun City · move your cursor",
+      "page": "page-3",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 1060,
+      "is_interactive": true
+    },
+    {
+      "file": "SunYellow.dc.html",
+      "title": "Solar yellow",
+      "page": "page-5",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 1060,
+      "is_interactive": true
+    },
+    {
+      "file": "SunDuo.dc.html",
+      "title": "Sun and shade",
+      "page": "page-5",
+      "x": 1400,
+      "y": 0,
+      "w": 1280,
+      "h": 1060,
+      "is_interactive": true
+    },
+    {
+      "file": "SunRed.dc.html",
+      "title": "Brand red",
+      "page": "page-5",
+      "x": 2800,
+      "y": 0,
+      "w": 1280,
+      "h": 1060,
+      "is_interactive": true
+    },
+    {
+      "file": "SunNavy.dc.html",
+      "title": "Civic navy",
+      "page": "page-5",
+      "x": 4200,
+      "y": 0,
+      "w": 1280,
+      "h": 1060,
+      "is_interactive": true
+    },
+    {
+      "file": "SunViolet.dc.html",
+      "title": "Dusk violet",
+      "page": "page-5",
+      "x": 5600,
+      "y": 0,
+      "w": 1280,
+      "h": 1060,
+      "is_interactive": true
+    },
+    {
+      "file": "RedHome.dc.html",
+      "title": "Home page · full",
+      "page": "page-6",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 4340,
+      "is_interactive": true
+    },
+    {
+      "file": "RedFlow.dc.html",
+      "title": "The whole flow · clickable",
+      "page": "page-6",
+      "x": 1400,
+      "y": 0,
+      "w": 1280,
+      "h": 1060,
+      "is_interactive": true
+    }
+  ],
+  "annotations": [
+    {
+      "id": "note-a",
+      "page": "page-1",
+      "x": 0,
+      "y": -190,
+      "w": 1280,
+      "text": "A · ANSWER FIRST — anchored\nProof before commitment: a worked sample is on screen before you type anything, and the 3D stops being the price of entry. Closest of the five to shipping from the current code.\nTradeoff: a photo hero is still doing the persuading, and a sample invites \"but that isn't my building\"."
+    },
+    {
+      "id": "note-b",
+      "page": "page-1",
+      "x": 1400,
+      "y": -190,
+      "w": 1280,
+      "text": "B · THE LEDGER — anchored\nThe result is a page, not a modal, and every assumption sits on it, editable in place. The strongest answer to \"why should I believe this number\", and naturally linkable.\nTradeoff: cold. No image, no hook — the weakest of the five for a first-time visitor arriving from a social link."
+    },
+    {
+      "id": "note-c",
+      "page": "page-1",
+      "x": 2800,
+      "y": -190,
+      "w": 1280,
+      "text": "C · CIVIC BULLETIN — stretch\nSays the true thing first: you cannot buy this yet, and here is the bill that changes it. Turns a dead end into a reason to come back, and the calculator becomes the personalisation underneath.\nTradeoff: buries the calculator the search traffic came for, and it dates the day the Governor signs."
+    },
+    {
+      "id": "note-d",
+      "page": "page-1",
+      "x": 0,
+      "y": 1170,
+      "w": 1280,
+      "text": "D · SUN DIAL — stretch\nThe model becomes the interface. No address, no 600KB download, no six-second wait — the number moves as you turn the dial, and the eight sectors are honest about the 45° snap the code already does.\nTradeoff: a toy until someone enters an address, and the furthest of the five from the current brand."
+    },
+    {
+      "id": "note-e",
+      "page": "page-1",
+      "x": 1400,
+      "y": 1170,
+      "w": 1280,
+      "text": "E · BLOCK MAP — stretch\nAnswers the question the other four leave open: is my number any good? Leads with the city, and comparison is the thing people actually share.\nTradeoff: much the largest build — it needs precomputed figures for every block before the page can render at all."
+    },
+    {
+      "id": "note-flowmap",
+      "page": "page-2",
+      "x": 0,
+      "y": -150,
+      "w": 1680,
+      "text": "The one change everything else follows from: the number arrives BEFORE the 3D, not after it. PLUTO alone (floors, height, footprint) is enough to answer in about a second."
+    },
+    {
+      "id": "note-flowproto",
+      "page": "page-2",
+      "x": 0,
+      "y": 1100,
+      "w": 1280,
+      "text": "Clickable. Press Calculate, then change the facing and floor — the number, the band, the chart and the payback all move live. \"Show me the shadows\" is a button, not a gate.\nFigures come from the real model in js/solar-api.js: $0.34/kWh SC-1, 3% escalation, 0.5% degradation, $1,200 mid-tier kit."
+    },
+    {
+      "id": "note-blockcity",
+      "page": "page-3",
+      "x": 1400,
+      "y": -210,
+      "w": 1280,
+      "text": "BLOCK CITY — the earlier static version, kept for comparison\nSame look, but each block's tint is fixed: it comes from how open that block's sky is. That is a real consequence of the coastline, yet it reads as though each block's brightness were its solar output, which nobody has computed. Superseded by Sun City on its left."
+    },
+    {
+      "id": "note-gov-a",
+      "page": "page-4",
+      "x": 0,
+      "y": -250,
+      "w": 1280,
+      "text": "PUBLIC RECORD — the closest to nyc.gov\nNavy bar, Helvetica furniture, a statutory notice box, sources printed on the page. The affiliation disclaimer becomes designed furniture at the very top, which is both honest and exactly the register.\nTradeoff: municipal enough that some readers will assume it IS the city. That top strip is doing a lot of work."
+    },
+    {
+      "id": "note-gov-b",
+      "page": "page-4",
+      "x": 1400,
+      "y": -250,
+      "w": 1280,
+      "text": "STANDARDS MANUAL — Vignelli, not nyc.gov\nBlack, white, Helvetica, thick rules, the facts as a ruled table. The city in solid black is the strongest image of the three, and one red square carries the whole legal warning.\nTradeoff: no colour system left over. Results, charts and states all have to be invented later."
+    },
+    {
+      "id": "note-gov-c",
+      "page": "page-4",
+      "x": 2800,
+      "y": -250,
+      "w": 1280,
+      "text": "OPEN DATA — the portal register\nSplit screen: the city on the left, a worked estimate on the right. The only one showing a number before you type, and the only one whose map colour carries real data (borough).\nTradeoff: reads as a dashboard rather than a home page. Weakest hero of the three."
+    },
+    {
+      "id": "note-gov-data",
+      "page": "page-4",
+      "x": 0,
+      "y": 1130,
+      "w": 2680,
+      "text": "ON THE BLOCKS BEING REPRESENTATIVE\nThe geometry is real and unchanged: every square is rasterised from the city's published borough boundary files, at square ground cells. A rectangular cell was tried and dropped — it implies a street orientation that is only correct in part of Manhattan.\nThe per-block SHADING is gone. The dark Block City version tinted blocks by how open each block's sky is; that is a real consequence of the coastline but it is not model output, and it read as though it were. Doing it properly needs building heights for every lot, and NYC Open Data is blocked from this environment. So these three show the city plain, and every number on them is either published or computed by the site's own model. Open Data states the gap in a [NOT BUILT] box rather than filling it."
+    },
+    {
+      "id": "note-suncity",
+      "page": "page-3",
+      "x": 0,
+      "y": -250,
+      "w": 1280,
+      "text": "SUN CITY — the shaded blocks, lit by a sun that follows you\nMove your cursor and the sun walks the sky; the city relights under it and the clock keeps up. Right is east and morning, left is west and evening, because the map is north-up. Left alone it drifts on its own until you touch it.\nThis also settles the honesty problem the static version had. The tint is no longer pretending to be per-block output — it is plainly light, and it moves, so nobody can read it as data. The blocks stay real; the number still comes from your address.\nCheap to run: all 5,141 blocks are one SVG path filled from a single radial gradient, so relighting the whole city is two attribute writes a frame, not five thousand."
+    },
+    {
+      "id": "note-sunyellow",
+      "page": "page-5",
+      "x": 0,
+      "y": -220,
+      "w": 1280,
+      "text": "SOLAR YELLOW\nThe yellow pushed all the way up. Warmest and most obviously about sun; the lit blocks sing.\nTradeoff: yellow cannot carry white text, so the button runs dark ink. Everything downstream (links, errors, focus rings) needs a second colour."
+    },
+    {
+      "id": "note-sunduo",
+      "page": "page-5",
+      "x": 1400,
+      "y": -220,
+      "w": 1280,
+      "text": "SUN AND SHADE\nGold where the light lands, cool blue-grey where it does not. The only one where the shadow side is a different temperature, so the unlit city holds its shape best of the five.\nTradeoff: two hues to govern rather than one."
+    },
+    {
+      "id": "note-sunred",
+      "page": "page-5",
+      "x": 2800,
+      "y": -220,
+      "w": 1280,
+      "text": "BRAND RED\nKeeps #7F1D1D. The only variant that needs no brand decision, and the deep red at the sun reads as heat rather than as an alert.\nTradeoff: least sun-like of the five. Red light on a city can read as warning."
+    },
+    {
+      "id": "note-sunnavy",
+      "page": "page-5",
+      "x": 4200,
+      "y": -220,
+      "w": 1280,
+      "text": "CIVIC NAVY\nCarries over from the municipal page. Reads as a city data map, and the pale end sits comfortably on white.\nTradeoff: blue sunlight is a hard sell on a solar tool."
+    },
+    {
+      "id": "note-sunviolet",
+      "page": "page-5",
+      "x": 5600,
+      "y": -220,
+      "w": 1280,
+      "text": "DUSK VIOLET\nThe real departure. Distinctive, memorable, and nothing else in NYC civic design looks like it.\nTradeoff: furthest from both the brand and from anything the subject suggests."
+    },
+    {
+      "id": "note-sunwhite",
+      "page": "page-5",
+      "x": 0,
+      "y": 1130,
+      "w": 4080,
+      "text": "FLAT, FIVE SHADES, BLOCKS DOUBLED\nTo answer the question: no, that was not what it was doing. Until now the light was a CONTINUOUS gradient — hundreds of shades blending smoothly, so no two blocks quite matched. Now each block takes one of FIVE discrete shades of the colour outright, picked from its own distance to the sun. Flat squares, no bevel, no gloss, no rounding.\n36 blocks across the city, about 26px each — double the last set again.\nThe shade is chosen per block in script rather than by a gradient. A gradient bands in pixel space and cuts a hard edge diagonally through a big tile, which looked like a rendering fault; this way every block is one solid colour. Only blocks that actually change shade are rewritten on a frame, so a few dozen writes rather than 460.\nSix catch tiers still set how far each block's reach is, so the five shades scatter into blocks taking different amounts of light instead of forming clean rings around the sun.\nThe tiers are texture, not output. Geometry is the city's own borough boundaries; sun rises east (right), sets west (left), and drifts on its own until you take hold of it."
+    },
+    {
+      "id": "note-redhome",
+      "page": "page-6",
+      "x": 0,
+      "y": -250,
+      "w": 1280,
+      "text": "HOME PAGE — the whole thing, in the red\nHero with the live sun map, then a worked example, what balcony solar actually is, where the number comes from, the SUNNY Act on black, the FAQ, and a footer that says plainly what this is not.\nEvery figure is either published or computed by the model in js/solar-api.js. The worked example is 780 kWh, which the real financial model turns into $265 a year, 4.3 years to payback, 18% of a typical bill and 694 lb of CO2. The sun still follows your cursor in the hero."
+    },
+    {
+      "id": "note-redflow",
+      "page": "page-6",
+      "x": 1400,
+      "y": -250,
+      "w": 1280,
+      "text": "THE WHOLE FLOW — click it\nFour steps. Press Calculate; the number arrives from PLUTO alone, marked rough. Change the facing or the floor and it becomes yours and moves live. See the full breakdown for the result page, with the assumptions listed, the year charted and a link worth sending to a board.\nThe 3D shadow model is a button on step 3, not a gate — nobody is ever stranded by it.\nNumbers come from the real model: south at floor 14 gives 781 kWh and 4.3 years; north at the same floor gives 312 kWh and 10.1 years. That spread is the whole argument for asking which way you face."
+    }
+  ],
+  "launch": {
+    "view": "canvas",
+    "page": "page-6"
+  }
+}

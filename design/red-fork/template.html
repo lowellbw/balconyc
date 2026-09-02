@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>balco.nyc — red fork, with the real 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --red:#7F1D1D; --deep:#5C1212; --ink:#171717; --sub:#6B6360;
+    --ground:#FFFCFC; --hair:#EADFDD; --tint:#FCF5F3;
+    --s0:#E46740; --s1:#C2452A; --s2:#A85643; --s3:#C8A9A1; --s4:#D2C3BF;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans','Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--ink);
+       background:var(--ground);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 56px}
+  a{color:var(--ink)} a:hover{color:var(--red)}
+  button{font-family:inherit;cursor:pointer}
+  .eyebrow{display:block;font-size:.78rem;font-weight:700;letter-spacing:.15em;
+           text-transform:uppercase;color:var(--red);margin-bottom:16px}
+  h2{font-size:2.7rem;font-weight:700;letter-spacing:-.032em;line-height:1.06}
+
+  /* NAV */
+  nav{position:relative;z-index:5}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px}
+  nav img{height:56px;width:auto}
+  nav .links{display:flex;gap:26px}
+  nav a{text-decoration:none;font-weight:700;font-size:.92rem;color:var(--sub)}
+
+  /* HERO */
+  .hero{position:relative;min-height:1020px;overflow:hidden}
+  #cityWrap{position:absolute;left:306px;top:50px;width:946px;height:946px;pointer-events:none}
+  #cityWrap svg{width:100%;height:100%}
+  .scrimL{position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(90deg,var(--ground) 0%,var(--ground) 17%,rgba(255,255,255,0) 52%)}
+  .scrimB{position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(0deg,var(--ground) 0%,rgba(255,255,255,0) 13%)}
+  #sun{position:absolute;width:100px;margin:-50px 0 0 -50px;pointer-events:none;text-align:center;z-index:2}
+  #sun .rays{transform-origin:50% 50%;animation:sunturn 120s linear infinite}
+  @keyframes sunturn{to{transform:rotate(360deg)}}
+  #sunClock{display:inline-block;background:rgba(255,255,255,.92);border:1px solid var(--hair);
+    border-radius:999px;padding:3px 10px;font-size:.72rem;font-weight:700;color:var(--red);margin-top:3px}
+  #halo{position:absolute;width:1180px;height:1180px;margin:-590px 0 0 -590px;pointer-events:none;
+    background:radial-gradient(circle closest-side,rgba(191,60,32,.22) 0%,rgba(255,255,255,0) 60%)}
+  .hero-copy{position:relative;z-index:3;padding-top:104px;max-width:546px}
+  .hero-copy h1{font-size:3.25rem;font-weight:700;line-height:1.03;letter-spacing:-.034em;
+    margin-bottom:16px;text-wrap:balance}
+  .hero-copy p.lede{font-size:1.04rem;color:var(--sub);margin-bottom:28px;max-width:44ch}
+  .pickers{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:14px}
+  .pick{padding:13px 20px;border:1.5px solid var(--hair);border-radius:999px;background:#fff;
+        font-size:.93rem;font-weight:600;color:var(--ink);min-height:46px}
+  .pick:hover{border-color:var(--red);color:var(--red)}
+  .pick.on{background:var(--red);border-color:var(--red);color:#fff}
+  .note{font-size:.79rem;color:var(--sub);max-width:46ch}
+
+  /* STAGE */
+  .stage{display:none;padding:34px 0 0}
+  .stage.on{display:block}
+  .stage-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px}
+  .stage-head .addr{font-size:1.35rem;font-weight:700;letter-spacing:-.02em}
+  .stage-head .meta{font-size:.87rem;color:var(--sub);margin-top:2px}
+  .linkish{background:none;border:none;color:var(--sub);font-size:.85rem;
+           text-decoration:underline;text-underline-offset:3px;padding:6px 0}
+  .scene-grid{display:grid;grid-template-columns:1fr 400px;gap:28px;align-items:start}
+  #sceneBox{position:relative;height:600px;border-radius:16px;overflow:hidden;background:#1c1816;
+            border:1px solid var(--hair)}
+  #sceneCanvas{display:block;width:100%;height:100%;cursor:grab}
+  #sceneCanvas.pointing{cursor:crosshair}
+  .overlay{position:absolute;border-radius:10px;background:rgba(255,255,255,.95);
+           padding:10px 15px;font-size:.8rem;pointer-events:none;z-index:4}
+  #prompt{top:14px;left:50%;transform:translateX(-50%);font-weight:600;text-align:center}
+  #prompt small{display:block;font-size:.72rem;color:var(--sub);font-weight:400;margin-top:2px}
+  #sunInfo{top:14px;left:14px;display:none;line-height:1.5}
+  #modelling{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;
+             justify-content:center;z-index:5;pointer-events:none;background:rgba(28,24,22,.35)}
+  #modelling.on{display:flex}
+  .spinner{width:44px;height:44px;border-radius:50%;border:3px solid rgba(228,103,64,.25);
+           border-top-color:#E46740;animation:spin 1.1s linear infinite;margin-bottom:14px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  #modelling .lbl{color:#fff;font-size:.9rem;font-weight:600;text-align:center}
+  #modelling .lbl small{display:block;font-weight:400;font-size:.75rem;color:rgba(255,255,255,.7);margin-top:3px}
+  .controls{position:absolute;left:12px;right:12px;bottom:12px;z-index:4;display:none;
+            align-items:center;gap:10px;background:rgba(255,255,255,.95);border-radius:12px;padding:10px 14px}
+  .controls.on{display:flex}
+  .controls button.play{width:34px;height:34px;border:none;border-radius:9px;background:var(--ink);
+    color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .controls input[type=range]{flex:1;accent-color:var(--red)}
+  .controls .t{font-size:.82rem;font-weight:700;min-width:74px;text-align:right;font-variant-numeric:tabular-nums}
+  .months{display:flex;gap:5px}
+  .months button{border:1px solid var(--hair);background:#fff;border-radius:8px;padding:6px 10px;
+    font-size:.76rem;font-weight:700;color:var(--sub)}
+  .months button.on{background:var(--red);border-color:var(--red);color:#fff}
+  .card{border:1px solid var(--hair);border-radius:16px;background:#fff;padding:24px 26px;
+        box-shadow:0 4px 20px rgba(23,23,23,.05)}
+  .badge{display:inline-block;padding:5px 12px;border-radius:20px;font-size:.63rem;font-weight:700;
+         letter-spacing:.07em;text-transform:uppercase;margin-bottom:14px;background:#F6E9E6;color:var(--red)}
+  .big{font-size:2.9rem;font-weight:900;letter-spacing:-.035em;line-height:1}
+  .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--hair);font-size:.89rem}
+  .row:last-child{border-bottom:none}
+  .row span{color:var(--sub)}
+  .cta{width:100%;margin-top:18px;min-height:48px;padding:14px;background:var(--red);color:#fff;
+       border:none;border-radius:999px;font-size:.93rem;font-weight:700}
+  .cta:disabled{background:var(--hair);color:var(--sub)}
+  .ctrlgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:8px}
+  .ctrlgrid button{min-height:42px;border-radius:9px;border:1px solid var(--hair);background:#fff;
+    font-size:.86rem;font-weight:700;color:var(--sub)}
+  .ctrlgrid button.on{background:var(--red);border-color:var(--red);color:#fff}
+  .lab{font-size:.7rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--sub)}
+
+  /* RESULT */
+  .result{display:none;padding:38px 0 0}
+  .result.on{display:block}
+  .bars{display:flex;align-items:flex-end;gap:5px;height:84px}
+  .bars div{flex:1;background:var(--red);border-radius:4px 4px 0 0}
+  .statgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:24px;
+            padding-top:20px;border-top:1px solid var(--hair)}
+  .statgrid .v{font-size:1.35rem;font-weight:700;letter-spacing:-.02em}
+  .statgrid .k{font-size:.73rem;color:var(--sub);margin-top:2px}
+
+  /* PAGE SECTIONS */
+  .band{background:var(--tint);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+        padding:44px 0;margin-top:76px}
+  .five{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:34px}
+  .five .v{font-size:2.1rem;font-weight:700;letter-spacing:-.03em;line-height:1.05;color:var(--red)}
+  .five .k{font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin:7px 0 6px}
+  .five .n{font-size:.85rem;color:var(--sub)}
+  .sec{padding-top:76px}
+  .two{display:grid;grid-template-columns:470px 1fr;gap:60px;align-items:start}
+  .step{display:grid;grid-template-columns:42px 1fr;column-gap:22px;padding:24px 0;
+        border-top:1px solid var(--hair);align-items:start}
+  .num{width:36px;height:36px;border-radius:50%;background:var(--red);color:#fff;display:flex;
+       align-items:center;justify-content:center;font-weight:700;font-size:.95rem}
+  .step h3{font-size:1.18rem;font-weight:700;letter-spacing:-.018em;margin-bottom:7px}
+  .step p{font-size:.98rem;color:var(--sub)}
+  .four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+  .four .m{border-top:3px solid var(--red);padding-top:16px}
+  .four .m .n{font-size:.74rem;font-weight:700;letter-spacing:.1em;color:var(--red);margin-bottom:9px}
+  .four .m h3{font-size:1.06rem;font-weight:700;letter-spacing:-.015em;margin-bottom:8px;line-height:1.3}
+  .four .m p{font-size:.88rem;color:var(--sub)}
+  .bill{background:#171717;padding:56px 0;margin-top:76px;color:#F6F1EF}
+  .bill .grid{display:grid;grid-template-columns:1fr 520px;gap:64px;align-items:start}
+  .bill h2{color:#F6F1EF;max-width:17ch;margin-bottom:16px}
+  .bill p{color:rgba(246,241,239,.7);max-width:52ch}
+  .stagerow{display:flex;justify-content:space-between;align-items:center;padding:17px 0;
+            border-bottom:1px solid rgba(246,241,239,.16)}
+  .pill{font-size:.7rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+        border-radius:20px;padding:5px 12px;white-space:nowrap}
+  details.faq{border-top:1px solid var(--hair);padding:22px 0}
+  details.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;
+    gap:18px;font-size:1.08rem;font-weight:600;letter-spacing:-.012em;cursor:pointer}
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq .tog{font-size:1.3rem;font-weight:300;color:var(--sub)}
+  details.faq[open] .tog{transform:rotate(45deg)}
+  details.faq p{margin-top:12px;font-size:.96rem;color:var(--sub);line-height:1.6;max-width:76ch}
+  footer{border-top:1px solid var(--hair);margin-top:76px;padding:44px 0 52px}
+  footer .grid{display:grid;grid-template-columns:1fr 380px;gap:60px;align-items:start}
+  footer p{font-size:.9rem;color:var(--sub);margin-bottom:12px;max-width:74ch}
+  .forknote{background:#171717;color:rgba(246,241,239,.82);font-size:.82rem;padding:10px 0}
+  .forknote strong{color:#fff}
+  .legal{border-top:1px solid var(--hair);background:rgba(255,255,255,.94);padding:20px 0}
+  .legal .wrap{display:flex;align-items:center;gap:22px}
+  .legal .sq{width:11px;height:11px;background:var(--red);flex-shrink:0}
+  .legal .tag{font-size:.71rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+              color:var(--red);white-space:nowrap}
+  .legal p{margin:0;font-size:.89rem;color:var(--sub)}
+</style>
+</head>
+<body>
+
+<div class="forknote"><div class="wrap"><strong>Fork.</strong> The 3D scene, the shadow trace and the energy model are balco.nyc&rsquo;s own code, running for real. The building footprints are sample geometry &mdash; NYC Open Data is unreachable from here &mdash; and there is no live address search or PVWatts key, so the estimate takes the site&rsquo;s built-in fallback path.</div></div>
+
+<nav><div class="wrap">
+  <img src="__LOGO__" alt="balco.nyc">
+  <div class="links"><a href="#about">About</a><a href="#method">Methodology</a><a href="#faq">FAQ</a></div>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div id="cityWrap">__CITY_SVG__</div>
+  <div id="halo"></div>
+  <div class="scrimL"></div><div class="scrimB"></div>
+  <div id="sun">__SUN_SVG__<div><span id="sunClock">11:02 AM</span></div></div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Every block in New York</span>
+      <h1>Find the sun on your block.</h1>
+      <p class="lede">We traced a year of shadows across all five boroughs. Pick a building, put your balcony on it, and see what an 800W panel would make, in kWh, dollars and CO<sub>2</sub>.</p>
+      <div class="pickers" id="pickers"></div>
+      <p class="note">Three sample buildings stand in for live address search. Everything after this point is the real model.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3D STAGE -->
+<section class="stage" id="stage"><div class="wrap">
+  <div class="stage-head">
+    <div>
+      <div class="addr" id="stAddr">&mdash;</div>
+      <div class="meta" id="stMeta">&mdash;</div>
+    </div>
+    <button class="linkish" id="startOver">Start over</button>
+  </div>
+  <div class="scene-grid">
+    <div id="sceneBox">
+      <canvas id="sceneCanvas"></canvas>
+      <div class="overlay" id="prompt">Put your balcony on the building<small>Click the wall where you live &mdash; height sets your floor, the side sets which way you face. Drag to orbit.</small></div>
+      <div class="overlay" id="sunInfo"></div>
+      <div id="modelling"><div class="spinner"></div><div class="lbl">Tracing a year of shadows<small>8,760 hours against every building within 200m</small></div></div>
+      <div class="controls" id="controls">
+        <button class="play" id="playBtn">&#9654;</button>
+        <input type="range" id="timeSlider" min="330" max="1170" value="750" step="6">
+        <span class="t" id="timeLabel">12:30 PM</span>
+        <div class="months" id="months"></div>
+      </div>
+    </div>
+    <div>
+      <div class="card" id="liveCard">
+        <div class="badge" id="badge">Rough &middot; block median facing</div>
+        <div style="font-size:.79rem;color:var(--sub);margin-bottom:12px" id="ctx">&mdash;</div>
+        <div style="display:flex;align-items:baseline;gap:9px">
+          <div class="big" id="dollars">&mdash;</div>
+          <div style="font-size:.96rem;font-weight:600;color:var(--sub)">a year</div>
+        </div>
+        <div style="font-size:.83rem;color:var(--sub);margin:5px 0 16px" id="band">&mdash;</div>
+        <div style="border-top:1px solid var(--hair);padding-top:14px">
+          <div class="row"><span>Annual output</span><strong id="kwh">&mdash;</strong></div>
+          <div class="row"><span>Pays for itself in</span><strong id="payback">&mdash;</strong></div>
+          <div class="row"><span>Bill offset</span><strong id="offset">&mdash;</strong></div>
+          <div class="row"><span>Shade factor from the trace</span><strong id="shade">&mdash;</strong></div>
+        </div>
+        <button class="cta" id="seeFull" disabled>Place your balcony to continue</button>
+        <button class="cta" id="moveBalcony" style="display:none;background:#fff;color:var(--ink);border:1px solid var(--hair);margin-top:8px">Move the balcony</button>
+      </div>
+      <div class="card" style="margin-top:14px;padding:18px 22px">
+        <div class="lab" style="margin-bottom:10px">Adjust and re-run</div>
+        <div class="lab" style="font-size:.66rem;letter-spacing:.09em;color:var(--sub)">Mount tilt</div>
+        <div class="ctrlgrid" id="tiltGrid"></div>
+        <div class="lab" style="font-size:.66rem;letter-spacing:.09em;color:var(--sub);margin-top:14px">System size</div>
+        <div class="ctrlgrid" id="wattGrid"></div>
+        <button class="cta" id="recalc" style="background:#171717;margin-top:16px">Re-run the trace</button>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- RESULT -->
+<section class="result" id="result"><div class="wrap">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+    <button class="linkish" id="backToScene">&larr; Change the details</button>
+    <div style="display:flex;align-items:center;gap:9px">
+      <span style="font-size:.82rem;color:var(--sub)" id="shareUrl">balco.nyc/e/&mdash;</span>
+      <span style="padding:9px 16px;background:#171717;color:#fff;border-radius:999px;font-size:.82rem;font-weight:700">Copy link</span>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:34px;align-items:start">
+    <div>
+      <span class="eyebrow">Your estimate</span>
+      <div style="font-size:1.15rem;font-weight:700;margin-bottom:3px" id="rAddr">&mdash;</div>
+      <div style="font-size:.87rem;color:var(--sub);margin-bottom:20px" id="rCtx">&mdash;</div>
+      <div style="display:flex;align-items:baseline;gap:12px">
+        <div style="font-size:3.9rem;font-weight:900;letter-spacing:-.04em;line-height:1" id="rDollars">&mdash;</div>
+        <div style="font-size:1.05rem;font-weight:600;color:var(--sub)">a year off your Con Ed bill</div>
+      </div>
+      <div style="font-size:.9rem;color:var(--sub);margin-top:7px" id="rBand">&mdash;</div>
+      <div class="statgrid">
+        <div><div class="v" id="rMonthly">&mdash;</div><div class="k">A month</div></div>
+        <div><div class="v" id="rPayback">&mdash;</div><div class="k">Pays for itself</div></div>
+        <div><div class="v" id="rLife">&mdash;</div><div class="k">Over 25 years</div></div>
+        <div><div class="v" id="rCo2">&mdash;</div><div class="k">CO<sub>2</sub> a year</div></div>
+      </div>
+      <div style="margin-top:24px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+          <span class="lab">Across the year</span>
+          <span style="font-size:.78rem;color:var(--sub)" id="rPeak">&mdash;</span>
+        </div>
+        <div class="bars" id="rBars"></div>
+        <div style="display:flex;justify-content:space-between;font-size:.68rem;color:var(--sub);margin-top:6px">
+          <span>Jan</span><span>Jul</span><span>Dec</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="padding:20px 22px">
+        <div class="lab" style="margin-bottom:14px">What the model used</div>
+        <div class="row"><span>Building</span><strong id="aBuilding">&mdash;</strong></div>
+        <div class="row"><span>Balcony</span><strong id="aBalcony">&mdash;</strong></div>
+        <div class="row"><span>Shade, traced in 3D</span><strong id="aShade">&mdash;</strong></div>
+        <div class="row"><span>System</span><strong id="aSystem">&mdash;</strong></div>
+        <div class="row"><span>Kit cost</span><strong>$1,200 mid-tier</strong></div>
+        <div class="row"><span>Rate</span><strong>$0.34/kWh, +3%/yr</strong></div>
+        <div style="margin-top:14px;font-size:.8rem;color:var(--sub)" id="aPath">&mdash;</div>
+      </div>
+      <div style="margin-top:16px;background:var(--tint);border:1px solid var(--hair);border-radius:16px;padding:18px 22px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span style="width:10px;height:10px;background:var(--red)"></span>
+          <span style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red)">You cannot install this yet</span>
+        </div>
+        <p style="margin:0;font-size:.85rem;color:var(--sub)">The SUNNY Act awaits the Governor&rsquo;s signature and takes effect 90 days after. This describes what would be true from early 2027 &mdash; and it lifts the utility barrier only, so a landlord or board may still need to agree.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+__SECTIONS__
+
+__THREE__
+__APP_SCRIPTS__
+</body>
+</html>

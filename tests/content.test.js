@@ -192,6 +192,12 @@ describe('Retired prototype pages are gone', () => {
   it('leaves /js/ crawlable so search engines can render the calculator', () => {
     assert(!/Disallow: \/js\//.test(robots), '/js/ must stay crawlable for rendering');
   });
+
+  it('keeps the design workbench out of the index', () => {
+    // Vercel serves whatever sits in the tree, so design/ mockups and forks
+    // are reachable by URL. They are not the site and must not be indexed.
+    assert(/Disallow: \/design\//.test(robots), '/design/ must stay disallowed');
+  });
 });
 
 describe('Deployment configuration', () => {
@@ -204,6 +210,13 @@ describe('Deployment configuration', () => {
     const cc = js.headers.find(x => x.key === 'Cache-Control').value;
     assert(!cc.includes('immutable'), `js is still immutable-cached: ${cc}`);
     assert(/must-revalidate/.test(cc), `js should revalidate: ${cc}`);
+  });
+
+  it('noindexes the design workbench for crawlers that ignore robots.txt', () => {
+    const d = vercel.headers.find(h => h.source.startsWith('/design/'));
+    assert(d, 'vercel.json has no /design/ header rule');
+    const tag = d.headers.find(x => x.key === 'X-Robots-Tag');
+    assert(tag && /noindex/.test(tag.value), `/design/ must send noindex, got ${tag && tag.value}`);
   });
 
   it('only declares functions that still exist', () => {

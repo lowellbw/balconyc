@@ -3,6 +3,13 @@ Allow: /
 Disallow: /admin/
 Disallow: /admin
 Disallow: /api/
+Disallow: /design/
+
+# /design/ is the design workbench: mockups, forks and build scripts kept in
+# the repo for reference. Vercel serves whatever sits in the tree, so these
+# are reachable by URL, but they are not the site and must not be indexed.
+# A matching X-Robots-Tag in vercel.json enforces this for crawlers that
+# ignore robots.txt.
 
 # /js/ is deliberately crawlable: search engines must fetch it to render the
 # calculator. The keys it contains are client-side by design and restricted

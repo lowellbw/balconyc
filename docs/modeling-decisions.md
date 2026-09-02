@@ -314,7 +314,11 @@
 
 **Alternatives.** (a) A static self-consumption fraction. (b) A curve of self-consumption against the ratio of annual production to annual consumption, with tilt (vertical panels have flatter daily output) and a "someone is usually home in the day" toggle. (c) An hourly overlap of PVWatts hourly output with a standard residential load profile scaled to the bill. (d) A battery option (1 to 2 kWh, about $300 to $800, 85 to 90% round trip).
 
-**Recommendation and numbers.** [To be filled from the self-consumption audit: simulated fractions by size, tilt, azimuth, consumption and battery; the literature range from HTW Berlin and German field data; the effect on the default estimate.]
+**Numbers (hourly simulation, DOE Central Park residential profile reduced to an apartment archetype, against PVWatts hourly output; details in the audit, section 4.4).** On-site use of an 800 W vertical south panel: 92% at the default $140 bill (4,235 kWh/yr), 85% at Con Ed's typical 280 kWh/month, 73% at 200 kWh/month; 63 to 69% when nobody is home on weekdays; 96% when someone is. A 1,600 W array: 49 to 69%. East and west vertical panels: 97 to 99% at the default bill. As a function of the production-to-consumption ratio r (vertical south, base occupancy): 0.2 → 85%, 0.3 → 71%, 0.5 → 53%, 1.0 → 33%. Corrected default savings $211 instead of $229 (payback 5.7 instead of 5.2 years); typical apartment empty on weekdays $154 (payback 7.8 years). A 1 kWh battery recovers only 44 to 116 kWh/yr at 800 W (15 to 40 year payback on its cost); it pays only with oversized arrays.
+
+**Recommendation.** Option (b) now: a self-consumption fraction interpolated from the ratio table by orientation class, with an occupancy toggle (base / someone home / nobody home weekdays), applied to savings and payback; show exported kWh as uncompensated; present the battery as information with its own payback. Option (c) once PVWatts hourly output is cached server-side, since monthly-average PV profiles overstate on-site use by 10 to 15 points and only the hourly series gets it right. Remove the "1:1 offset" sentence from the methodology.
+
+**Revisit when.** Con Ed offers any compensation for plug-in exports (a voluntary net-metering path exists in the Act but re-imports the interconnection process), or when measured NYC apartment load profiles become available.
 
 ### D25. Escalation, degradation, horizon, discounting
 **Status:** Provisional.
@@ -334,7 +338,7 @@
 
 **Decision.** $850 / $1,200 / $1,600 for 800 W, scaled by `watts / 800`.
 
-**Known error.** The named anchors do not hold for New York: Bright Saver cannot ship to NY until a kit is listed as a complete plug-in system (none is); Craftstrom's 800 W kit lists at $2,031 to $2,229; EcoFlow PowerStream and Anker SOLIX RS40P are EU products. Cost is not linear in watts (a 400 W kit is not half the price of 800 W). Kit prices are quoted pre-tax; NYC sales tax is 8.875%.
+**Known error.** The named anchors do not hold for New York: Bright Saver cannot ship to NY until a kit is listed as a complete plug-in system (none is); Craftstrom's 800 W kit lists at $2,031 to $2,229; EcoFlow PowerStream and Anker SOLIX RS40P are EU products. Cost is not linear in watts (a 400 W kit is not half the price of 800 W). Sales tax: New York exempts residential solar energy systems equipment from state sales tax (Tax Law §1115(ee)) and New York City has adopted the local exemption too (Publication 718-S), and the statutory definition includes apartments and co-ops, so a plug-in kit plausibly qualifies; whether an online vendor applies the exemption is the buyer's problem, so quoting prices as tax-inclusive is the safe convention.
 
 **Recommendation.** Keep tiers as forward estimates but re-anchor on US 120 V kits (APsystems EZ1 plus panels, EcoFlow STREAM plus panels, Bright Saver once shippable) and say that no NY-legal kit exists yet.
 

@@ -212,11 +212,21 @@ describe('Deployment configuration', () => {
     assert(/must-revalidate/.test(cc), `js should revalidate: ${cc}`);
   });
 
-  it('noindexes the design workbench for crawlers that ignore robots.txt', () => {
-    const d = vercel.headers.find(h => h.source.startsWith('/design/'));
-    assert(d, 'vercel.json has no /design/ header rule');
-    const tag = d.headers.find(x => x.key === 'X-Robots-Tag');
-    assert(tag && /noindex/.test(tag.value), `/design/ must send noindex, got ${tag && tag.value}`);
+  it('does not deploy the design workbench', () => {
+    // It is a workbench: mockups, a half-finished fork of the calculator,
+    // build scripts. Vercel serves whatever it uploads, and the fork renders
+    // broken because its images live in a sibling directory. noindex was not
+    // enough — it stopped indexing, not serving. Keep it out of the upload.
+    const ignore = read('.vercelignore');
+    assert(/^design\/$/m.test(ignore), '.vercelignore must exclude design/');
+  });
+
+  it('redirects any /design/ URL that is still reachable', () => {
+    // Belt and braces: redirects are evaluated before the filesystem, so this
+    // holds even if the upload ever carries design/ again.
+    const rules = vercel.redirects.filter(r => r.source.startsWith('/design'));
+    assert(rules.length >= 2, `expected /design and /design/(.*) redirects, got ${rules.length}`);
+    for (const r of rules) assert(r.destination === '/', `/design must land on /, got ${r.destination}`);
   });
 
   it('only declares functions that still exist', () => {

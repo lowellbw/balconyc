@@ -2,7 +2,9 @@
   "cleanUrls": true,
   "redirects": [
     { "source": "/METHODOLOGY.md", "destination": "/methodology", "permanent": true },
-    { "source": "/methodology.md", "destination": "/methodology", "permanent": true }
+    { "source": "/methodology.md", "destination": "/methodology", "permanent": true },
+    { "source": "/design", "destination": "/", "permanent": false },
+    { "source": "/design/(.*)", "destination": "/", "permanent": false }
   ],
   "functions": {
     "api/visualize-v3.js": {
@@ -10,12 +12,6 @@
     }
   },
   "headers": [
-    {
-      "source": "/design/(.*)",
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
-      ]
-    },
     {
       "source": "/(.*)\\.(webp|avif|jpg|jpeg|png|gif|svg|ico)",
       "headers": [

@@ -70,18 +70,26 @@
     .hero.has-scene { min-height: 100vh; text-align: left; justify-content: flex-start; padding: 120px 0 60px; }
     /* The city of blocks. Sized to bleed off the right, so the copy sits on
        clean ground and the map runs under the input. */
-    .hero-city { position: absolute; right: 2%; top: 13%; height: 82%; aspect-ratio: 1 / 1; pointer-events: none; }
+    /* Capped on both axes. Sizing from height alone is what let a tall
+       window grow the map sideways under the copy; min() with 86vh keeps
+       that in check while 64vw makes it read as New York on a normal
+       screen. top: 13% keeps the sun clear of the nav. */
+    .hero-city { position: absolute; right: 0; top: 13%;
+      width: min(64vw, 86vh); height: auto; aspect-ratio: 1 / 1; pointer-events: none; }
     .hero-city svg { display: block; width: 100%; height: 100%; }
     .hero-halo { position: absolute; width: 62vw; height: 62vw; max-width: 900px; max-height: 900px; margin: -31vw 0 0 -31vw; pointer-events: none;
       background: radial-gradient(circle closest-side, rgba(191,60,32,0.18) 0%, rgba(255,255,255,0) 62%); }
-    /* The scrim has to know where the copy column actually ends. Fixed
-       percentage stops did not: the map is sized from the hero's HEIGHT
-       (82% + aspect-ratio 1/1), so a tall window grew it sideways under the
-       headline while the stops stayed put — 10 of 17 window sizes failed
-       WCAG AA. --copy-edge is the container's real right edge. */
+    /* A veil over the copy column, not a wall. The city stays visible
+       underneath at 12% and fades to full past the copy's right edge, so
+       the whole shape reads instead of being cut off mid-borough.
+       0.88 is measured: 0.85 leaves only 0.21 over the 4.5:1 floor, and
+       the worst case is set by the palette's darkest shade, so it does not
+       move as the sun crosses. The edge has to be the container's real one
+       — fixed percentage stops are what let a tall window push blocks under
+       the headline. See design/hero-responsive/. */
     .hero-scrim { position: absolute; inset: 0; pointer-events: none;
       --copy-edge: calc(max((100% - 1360px) / 2, 0px) + 40px + 680px);
-      background: linear-gradient(90deg, var(--bg) 0%, var(--bg) var(--copy-edge), rgba(255,255,255,0) calc(var(--copy-edge) + 220px)), linear-gradient(0deg, var(--bg) 0%, rgba(255,255,255,0) 12%); }
+      background: linear-gradient(90deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.88) var(--copy-edge), rgba(255,255,255,0) calc(var(--copy-edge) + 260px)), linear-gradient(0deg, var(--bg) 0%, rgba(255,255,255,0) 12%); }
     .hero-sun { position: absolute; width: 76px; margin: -38px 0 0 -38px; pointer-events: none; text-align: center; z-index: 2; }
     .hero-sun-rays { transform-origin: 50% 50%; animation: sunTurn 120s linear infinite; }
     @keyframes sunTurn { to { transform: rotate(360deg); } }
@@ -750,16 +758,16 @@
   <div class="hero-sun" id="heroSun" aria-hidden="true">
     <svg viewBox="0 0 100 100" width="76" height="76">
       <g class="hero-sun-rays">
-        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A"></rect>
-        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A" transform="rotate(45 50 50)"></rect>
-        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A" transform="rotate(90 50 50)"></rect>
-        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A" transform="rotate(135 50 50)"></rect>
-        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A" transform="rotate(180 50 50)"></rect>
-        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A" transform="rotate(225 50 50)"></rect>
-        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A" transform="rotate(270 50 50)"></rect>
-        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A" transform="rotate(315 50 50)"></rect>
+        <rect x="49.10" y="19" width="1.8" height="10" rx="0.9" fill="#E0603A"></rect>
+        <rect x="49.10" y="19" width="1.8" height="10" rx="0.9" fill="#E0603A" transform="rotate(45 50 50)"></rect>
+        <rect x="49.10" y="19" width="1.8" height="10" rx="0.9" fill="#E0603A" transform="rotate(90 50 50)"></rect>
+        <rect x="49.10" y="19" width="1.8" height="10" rx="0.9" fill="#E0603A" transform="rotate(135 50 50)"></rect>
+        <rect x="49.10" y="19" width="1.8" height="10" rx="0.9" fill="#E0603A" transform="rotate(180 50 50)"></rect>
+        <rect x="49.10" y="19" width="1.8" height="10" rx="0.9" fill="#E0603A" transform="rotate(225 50 50)"></rect>
+        <rect x="49.10" y="19" width="1.8" height="10" rx="0.9" fill="#E0603A" transform="rotate(270 50 50)"></rect>
+        <rect x="49.10" y="19" width="1.8" height="10" rx="0.9" fill="#E0603A" transform="rotate(315 50 50)"></rect>
       </g>
-      <circle cx="50" cy="50" r="13.5" fill="#E0603A"></circle>
+      <circle cx="50" cy="50" r="11.5" fill="none" stroke="#E0603A" stroke-width="1.8"></circle>
     </svg>
     <span class="hero-clock" id="heroClock">11:02 AM</span>
   </div>

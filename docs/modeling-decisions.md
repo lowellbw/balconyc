@@ -182,7 +182,7 @@
 
 **Why.** Speed and simplicity; the sweep runs in the browser on every tilt change.
 
-**Known error.** Annual factor within 0.005 of a 365-day sweep; monthly factors err by up to 0.115 when the opposite roofline crosses the 15th's noon altitude mid-month. The GHI weights over-weight summer for a vertical panel (June 0.112 vs 0.045 to 0.072 of vertical-south POA), shifting the annual by +0.01 to +0.02. The 0.10 floor hides real winter values of 0.02 to 0.03 in deep canyons (their annual reads 0.06 to 0.08 too high). 10-minute steps are fine (≤0.017 vs 1-minute).
+**Known error.** Annual factor within 0.005 of a 365-day sweep on every skyline tested; monthly factors err by up to 0.03 to 0.04 on simple bands and up to 0.115 on a side-street floor whose opposite roofline crosses the 15th's noon altitude mid-month. Two sample days per month roughly halve the monthly error. The GHI weights over-weight summer for a vertical panel (June 0.112 vs 0.045 to 0.072 of vertical-south POA), shifting the annual by +0.01 to +0.02. The 0.10 floor hides real winter values of 0.02 to 0.03 in deep canyons (their annual reads 0.06 to 0.08 too high). 10-minute steps are fine (≤0.017 monthly, ≤0.0012 annual vs 1-minute), and the sun-position algorithm itself contributes under 0.002 annually (D20). A 365-day sweep costs about 90 ms in Node, so cost is not a reason to keep 12 days.
 
 **Recommendation.** Energy-weighted annual, two days per month, clamp floor 0.02 once D12 is in.
 
@@ -256,7 +256,7 @@
 ## Part 3. Sun position and site data
 
 ### D20. Solar position algorithm
-**Status:** Settled pending the sun-position audit's numbers.
+**Status:** Settled.
 
 **Decision.** A simplified NOAA algorithm (`js/sun-position.js`): mean anomaly and equation of centre from the Julian century, fixed obliquity 23.4393°, a Spencer-type equation of time, hour angle from local clock time with a DST rule keyed on day of year, `atan2` azimuth with no post-rotation; the 15th of each month as the representative day; the year read from the clock.
 
@@ -264,9 +264,11 @@
 
 **Why.** Small, dependency-free, and accurate to well under a degree for energy purposes; the 31 August 2026 fix removed a 180° azimuth rotation that had inverted every azimuth while leaving altitude (and therefore sunrise, sunset and day length) correct, and the regression suite now pins the convention.
 
-**Known error.** [To be filled from the sun-position audit: maximum and RMS altitude and azimuth errors against a full NOAA reference, and the timing error of solar noon.] The Julian-day construction is approximate (immaterial for declination). Refraction is ignored (relevant only within a degree of the horizon).
+**Known error.** Against a full NOAA reference on the 12 representative days of 2026: altitude within 0.146° (RMS 0.066°), azimuth within 0.327° (RMS 0.146°), solar noon within 0.83 minutes, sunrise and sunset within 0.85 minutes. The largest term is the simplified equation of time; the approximate Julian day (0.29 days late in 2026, drifting 0.25 days a year until a leap year resets it) and the omitted perihelion precession (0.456° in 2026) happen to cancel this year and will slowly diverge; the fixed obliquity is immaterial; refraction is ignored (up to 0.55° at the horizon, 0.28° above 5°). Through the shade sweep the algorithm moves an annual factor by at most 0.02 points and a monthly factor by at most 1.1 points, which is below the error of the representative-day sampling (D14). The DST rule is right for every representative 15th from 2025 to 2030; in leap years the day-of-year table is one day early from March onward (under 0.4° of declination).
 
-**Revisit when.** The shade sweep moves to all days or to hourly TMY weights (D13b, D14), which needs a day-of-year interface.
+**Also found here.** The rendering path mirrors every building mesh north-south (`_createBuildingMesh` builds the shape with `moveTo(x, z)` and the `rotateX(−π/2)` extrusion maps it to world −z; verified against three.js r128). The model reads local coordinates and is unaffected; the picture, its shadows and the heatmap placement are wrong until `moveTo(x, -z)` / `lineTo(x, -z)` is applied. Recorded here because the audit of axis conventions is where it surfaced.
+
+**Revisit when.** The shade sweep moves to all days or to hourly TMY weights (D13b, D14), which needs a day-of-year interface; at that point Michalsky 1988 (0.01°, and faster than the shipped code because it needs no `new Date()` per call) is the natural replacement.
 
 ### D21. Facade orientation from the footprint
 **Status:** Settled.

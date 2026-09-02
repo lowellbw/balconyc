@@ -168,7 +168,27 @@ Canonical results (vertical panel, corrected model) for calibration: avenue cany
 
 ### 3.3 Sun position and temporal sampling
 
-[Pending: to be completed from the sun-position audit. The shipped algorithm passes the regression suite (June and December noon in the south, peak altitudes within 1.5°, day lengths within tolerance). The shading review found that the twelve representative days give an annual error under 0.005 and monthly errors up to 0.115, and that 10-minute steps are adequate (≤0.017 vs 1-minute).]
+Method: an independent implementation of the full NOAA solar-position algorithm (validated against NOAA's own calculator code to 10⁻¹⁰ degrees, against Michalsky 1988 to 0.01°, and against the 2026 almanac equinox and solstice instants to within 8 minutes) was compared with the shipped `SunPosition.calculate` for every 10 minutes of the 12 representative days in 2026, and both were run through the shipped shade sweep on synthetic skylines.
+
+**The algorithm is accurate enough; the sampling is what limits the monthly figures.**
+
+| Quantity (12 representative days, sun above the horizon) | Shipped vs NOAA |
+|---|---|
+| Altitude error | max 0.146°, RMS 0.066° (max 0.28° above 5° if compared with the refracted sun) |
+| Azimuth error | max 0.327°, RMS 0.146° |
+| Angular separation | max 0.274° |
+| Solar noon | within 0.83 min (RMS 0.48) |
+| Sunrise and sunset (geometric) | within 0.85 min; official NOAA times are 4.8 min earlier on average because they use the upper limb and refraction |
+
+Where the error comes from: the simplified equation of time (up to 0.83 minutes, the main azimuth term); the Julian-day construction, which is 0.29 days late in 2026 and drifts 0.25 days a year until the leap year resets it (−0.17 in 2028); and the omitted perihelion precession (0.456° of ecliptic longitude in 2026). The last two cancel by coincidence in 2026 and will diverge slowly. The fixed obliquity is immaterial; refraction is ignored. Replacing all four gives 0.002°. The DST rule (EDT for day-of-year 67 to 304) is right for every representative 15th from 2025 to 2030; in leap years the day-of-year table is one day early from March onward (under 0.4° of declination).
+
+Energy effect through the shade sweep (vertical panel, 10-minute steps): the algorithm itself moves the annual factor by at most 0.02 points (0.19 for an east panel behind an east wall) and a monthly factor by at most 1.1 points, and most of that is one 10-minute sample flipping across a roofline (0.36 points at 1-minute steps). The representative-day sampling is larger: the annual factor moves by up to 0.4 points against an all-days sweep, monthly factors by up to 3.4 points (October and February in a canyon whose roofline sits near the mid-month noon altitude; December in a 25° south band). Two sample days per month cut the worst monthly error to 1.8 points, three days to 1.6. The 10-minute step costs at most 0.12 points annually and 1.4 monthly; the sweep's phase (which 10-minute grid the 3-minute sunrise search lands on) is worth 0.1 to 0.3 points annually. Refraction is worth up to 0.18 points annually. Timing in Node: the 12-day sweep takes 1.3 ms; all 365 days take 83 to 95 ms; the full NOAA algorithm costs 877 ns per position against the shipped 381 ns (of which 112 ns is `new Date()` on every call), and Michalsky 1988 costs 370 ns for 0.01° accuracy.
+
+Conventions: `toWorldPosition`, the scene projection and the horizon bearing all agree (north −Z, east +X, azimuth clockwise from north), and the methodology's "no further rotation is applied" is correct. The shade model is timezone-independent (identical to 10⁻¹⁶ for any whole- or half-hour offset; only the clock labels depend on it), and `getDayBounds`' search windows have at least 29 minutes of margin for NYC. The time slider is fixed to 05:30 to 19:30, so in June it cannot reach the last hour of daylight (display only).
+
+**Rendering defect found on the way.** `_createBuildingMesh` builds each footprint with `shape.moveTo(x, z)` and then rotates the extrusion with `rotateX(−π/2)`, which maps shape (x, y) to world (x, −y). Verified with the exact three.js r128 build the page loads: a footprint 100 to 120 m north of the balcony renders 100 to 120 m south of it. Every building mesh is therefore mirrored north-south relative to the sun light, the sun arc, the balcony marker, the horizon profile and the heatmap colours, all of which use the local coordinates. The energy model reads local coordinates, never the meshes, so no number is affected, but the picture is wrong: a southern neighbour that the model correctly paints red is drawn north of the target with its rendered shadow falling away from the balcony. One-character fix: `shape.moveTo(x, -z)` and `shape.lineTo(x, -z)`.
+
+Recommendation: keep a compact algorithm (the shipped one is adequate; Michalsky 1988 would be both faster and 0.01°-accurate) but give it a day-of-year interface, and move the sweep to two or three days per month or to all days, which is where the monthly error actually lives.
 
 ### 3.4 Financial model
 
@@ -212,6 +232,7 @@ Effort: S under a day, M a few days, L a week or more.
 |---|---|---|---|---|
 | 1 | API host → `developer.nlr.gov` (both endpoints); fix `nrel.gov` document links | `js/config.js`, `js/config.js.example`, `README-api-keys.md`, `methodology.html` | S | restores the primary model. **Done on this branch.** |
 | 2 | `intersects(...)` for the neighbour and target queries; detect `features.length === $limit` | `js/solar-api.js` | S | recovers the tall buildings that shade |
+| 2b | Un-mirror the building meshes: `shape.moveTo(x, -z)` / `shape.lineTo(x, -z)` in `_createBuildingMesh` | `js/3d-scene.js` | S | the 3D view, its shadows and the heatmap line up with the sun and the model (display only; no number changes) |
 | 3 | Treat a failed neighbour query as degraded: static factor plus notice, per the methodology (and `null` vs `[]`) | `index.html` | S | removes silent 1.00 factors |
 | 4 | Await the background neighbour promise instead of re-issuing the request | `js/solar-api.js`, `index.html` | S | halves Socrata load |
 | 5 | Public-copy corrections listed in 2.5 (formulas, anchor, attributions, eGRID vintage, customer charge, kit anchors, "56%", dates, links, logging disclosure) | `methodology.html`, `index.html`, `llms.txt`, `README-api-keys.md`, `js/config.js.example` | S | page is true of the code |

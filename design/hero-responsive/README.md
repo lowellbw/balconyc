@@ -21,17 +21,17 @@ clearance below the copy. The worst pixel behind the copy at 390×844 is
 
 ## Measuring it
 
-Geometry cannot answer this: a scrim or a mask changes what is *painted*
-without moving anything. `measure.py` hides the copy, photographs what is
-behind it, and reports the worst contrast ratio that background makes against
-the grey subhead (`--text-sub`, `#596580`). WCAG AA for body text is 4.5:1.
+Geometry cannot answer this: a scrim changes what is *painted* without moving
+anything. `measure.py` hides the copy, photographs what is behind it, and
+reports the worst contrast ratio that background makes against the grey
+subhead (`--text-sub`, `#596580`). WCAG AA for body text is 4.5:1.
 
 ```
-python3 variants.py build     # the real index.html, one CSS rule swapped per variant
-python3 measure.py build      # 17 window sizes x 4 builds
+python3 measure.py            # index.html as it stands, 19 window sizes
 ```
 
-Result on the page as it ships: **10 of 17 sizes fail.**
+It exits non-zero if any size drops below AA. **Run it after touching the
+hero.** Before the fix, 10 of 17 sizes failed.
 
 ## The options
 
@@ -61,12 +61,20 @@ Two values here were set by measurement, not by eye: N1's opacity (0.18
 failed at every size) and N2's `padding-top` (the motif clipped the copy by
 8px at 768).
 
-## Rebuilding the canvas
+## What shipped
 
-```
-python3 extract.py            # read rendered geometry out of Chromium -> hero-geometry.json
-python3 build_canvas.py       # geometry -> 20 .dc.html artboards
-```
+Desktop **B**, narrow **N1 wash**, plus a lighter sun: eight hairline rays on
+a smaller disc instead of twelve alternating ones.
 
-The artboards are measurements, not drawings: every position came from the
-browser rendering the real page at that size.
+## The canvas
+
+The 28 `.dc.html` artboards here are the record of that decision, and are
+measurements rather than drawings — every position came from Chromium
+rendering the real page at that size. Re-seed with
+`seed-canvas.mjs --artboard <each> --canvas canvas.json`.
+
+The generator that produced them (`variants.py`, `extract.py`,
+`build_canvas.py`) built the alternatives by patching the pre-fix
+`index.html`. Those anchors no longer exist in the page, so rather than leave
+scripts that crash, they are retired — they are in git history at `137f02b`
+if the comparison ever needs redoing.

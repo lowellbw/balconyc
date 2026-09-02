@@ -168,12 +168,12 @@
     ],
     "keywords": "balcony solar, plug-in solar, NYC, PVWatts, NREL, NYC PLUTO, Con Edison, solar calculator methodology",
     "citation": [
-      { "@type": "CreativeWork", "name": "NREL PVWatts V8", "url": "https://developer.nrel.gov/docs/solar/pvwatts/v8/" },
+      { "@type": "CreativeWork", "name": "NREL PVWatts V8", "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/" },
       { "@type": "CreativeWork", "name": "NYC PLUTO", "url": "https://www.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" },
       { "@type": "CreativeWork", "name": "NYC Building Footprints", "url": "https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" },
       { "@type": "CreativeWork", "name": "EPA eGRID2023", "url": "https://www.epa.gov/egrid" },
       { "@type": "CreativeWork", "name": "NYSERDA NY Solar Map", "url": "https://www.nysolarmap.com/about/map-assumptions/" },
-      { "@type": "CreativeWork", "name": "NREL 2024 PV Degradation Review", "url": "https://www.nrel.gov/docs/fy24osti/87524.pdf" },
+      { "@type": "CreativeWork", "name": "NREL 2024 PV Degradation Review", "url": "https://docs.nlr.gov/docs/fy24osti/87524.pdf" },
       { "@type": "CreativeWork", "name": "HTW Berlin Stecker-Solar-Simulator", "url": "https://solar.htw-berlin.de/rechner/stecker-solar-simulator/" }
     ],
     "isAccessibleForFree": true,
@@ -232,7 +232,7 @@
 
         <section id="energy-production">
           <h2><span class="sec-num">1</span>Energy production model</h2>
-          <p>Annual production is computed by <a href="https://developer.nrel.gov/docs/solar/pvwatts/v8/" target="_blank" rel="noopener">NREL's PVWatts V8 API</a>, which simulates 8,760 hourly performance values across a typical meteorological year using the <a href="https://nsrdb.nrel.gov/" target="_blank" rel="noopener">NSRDB satellite weather dataset</a>. A client-side fallback formula is used if PVWatts is unavailable.</p>
+          <p>Annual production is computed by <a href="https://developer.nlr.gov/docs/solar/pvwatts/v8/" target="_blank" rel="noopener">NREL's PVWatts V8 API</a>, which simulates 8,760 hourly performance values across a typical meteorological year using the <a href="https://nsrdb.nlr.gov/" target="_blank" rel="noopener">NSRDB satellite weather dataset</a>. A client-side fallback formula is used if PVWatts is unavailable.</p>
 
           <h3>1.1 Primary model: NREL PVWatts V8</h3>
           <p>PVWatts is the US Department of Energy's reference solar production model. balco.nyc calls it with parameters tuned for vertical, railing-mounted panels in an urban setting:</p>
@@ -249,7 +249,7 @@
                 <tr><td><code>dc_ac_ratio</code></td><td>1.1</td><td>A micro-inverter matched to one or two modules; the previous 1.2 modelled more clipping than actually occurs</td></tr>
                 <tr><td><code>inv_eff</code></td><td>96.5%</td><td>Micro-inverter efficiency (Enphase IQ8 ~97%, budget ~96%)</td></tr>
                 <tr><td><code>dataset</code></td><td>nsrdb</td><td>Satellite-derived TMY data, best for US locations</td></tr>
-                <tr><td><code>soiling</code></td><td><code>[3,3,4,5,6,7,7,7,6,5,4,3]</code></td><td>Monthly soiling %, NYC urban profile calibrated to <a href="https://www.nrel.gov/docs/fy18osti/72589.pdf" target="_blank" rel="noopener">NREL</a>, Sandia, and Fraunhofer urban-PV studies (3 to 7% range, summer-heavy from pollen)</td></tr>
+                <tr><td><code>soiling</code></td><td><code>[3,3,4,5,6,7,7,7,6,5,4,3]</code></td><td>Monthly soiling %, NYC urban profile calibrated to <a href="https://docs.nlr.gov/docs/fy18osti/72589.pdf" target="_blank" rel="noopener">NREL</a>, Sandia, and Fraunhofer urban-PV studies (3 to 7% range, summer-heavy from pollen)</td></tr>
                 <tr><td><code>albedo</code></td><td>0.20</td><td>Concrete balcony floor reflectance (light-painted walls would be ~0.30)</td></tr>
                 <tr><td><code>bifaciality</code></td><td>0</td><td>Monofacial panels (would be 0.75 for bifacial)</td></tr>
                 <tr><td><code>timeframe</code></td><td>monthly</td><td>Returns 12-month production array</td></tr>
@@ -418,7 +418,7 @@ bill_offset_%   = annual_kwh / (billable / 0.34 × 12) × 100</code></pre>
           <pre><code>lifetime_savings = Σ(annual_kwh × (1 − degradation)^i × 0.34 × (1 + escalation)^i,  i=0..24)</code></pre>
           <p>Where:</p>
           <ul>
-            <li><strong>degradation</strong> is tier-aware (default mid-tier 0.5%/yr), per the <a href="https://www.nrel.gov/docs/fy24osti/87524.pdf" target="_blank" rel="noopener">NREL 2024 PV degradation review</a>:
+            <li><strong>degradation</strong> is tier-aware (default mid-tier 0.5%/yr), per the <a href="https://docs.nlr.gov/docs/fy24osti/87524.pdf" target="_blank" rel="noopener">NREL 2024 PV degradation review</a>:
               <ul>
                 <li>Premium: 0.4%/yr → 90.5% of original output at year 25</li>
                 <li>Mid: 0.5%/yr → 88.7%</li>
@@ -575,8 +575,8 @@ bill_offset_%   = annual_kwh / (billable / 0.34 × 12) × 100</code></pre>
             <table>
               <thead><tr><th>Source</th><th>Used for</th></tr></thead>
               <tbody>
-                <tr><td><a href="https://developer.nrel.gov/docs/solar/pvwatts/v8/" target="_blank" rel="noopener">NREL PVWatts V8</a><br><span class="src-host">developer.nrel.gov</span></td><td>Hourly-simulated production</td></tr>
-                <tr><td><a href="https://developer.nrel.gov/docs/solar/solar-resource-v1/" target="_blank" rel="noopener">NREL Solar Resource</a><br><span class="src-host">developer.nrel.gov</span></td><td>Monthly GHI irradiance</td></tr>
+                <tr><td><a href="https://developer.nlr.gov/docs/solar/pvwatts/v8/" target="_blank" rel="noopener">NREL PVWatts V8</a><br><span class="src-host">developer.nlr.gov</span></td><td>Hourly-simulated production</td></tr>
+                <tr><td><a href="https://developer.nlr.gov/docs/solar/solar-resource-v1/" target="_blank" rel="noopener">NREL Solar Resource</a><br><span class="src-host">developer.nlr.gov</span></td><td>Monthly GHI irradiance</td></tr>
                 <tr><td><a href="https://www.nysolarmap.com/about/map-assumptions/" target="_blank" rel="noopener">NYSERDA NY Solar Map</a><br><span class="src-host">nysolarmap.com</span></td><td>Yield baseline cross-check (1,238 kWh/kW/yr)</td></tr>
                 <tr><td><a href="https://www.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" target="_blank" rel="noopener">NYC PLUTO</a><br><span class="src-host">data.cityofnewyork.us</span></td><td>Building floors, class, year, units</td></tr>
                 <tr><td><a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank" rel="noopener">NYC Building Footprints</a><br><span class="src-host">data.cityofnewyork.us</span></td><td>Polygon, height, elevation, neighbor query</td></tr>
@@ -588,7 +588,7 @@ bill_offset_%   = annual_kwh / (billable / 0.34 × 12) × 100</code></pre>
                 <tr><td><a href="https://solar.htw-berlin.de/rechner/stecker-solar-simulator/" target="_blank" rel="noopener">HTW Berlin Stecker-Solar Simulator</a><br><span class="src-host">solar.htw-berlin.de</span></td><td>Vertical-mount yield calibration</td></tr>
                 <tr><td><a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">NY SUNNY Act (S8512/A9111)</a><br><span class="src-host">nysenate.gov</span></td><td>Plug-in solar regulatory status</td></tr>
                 <tr><td><a href="https://www.brightsaver.org/balcony-solar-kits" target="_blank" rel="noopener">Bright Saver (nonprofit at-cost kits)</a><br><span class="src-host">brightsaver.org</span></td><td>August 2026 kit cost calibration</td></tr>
-                <tr><td><a href="https://www.nrel.gov/docs/fy24osti/87524.pdf" target="_blank" rel="noopener">NREL 2024 PV Degradation Review</a><br><span class="src-host">nrel.gov</span></td><td>Degradation rates by tier</td></tr>
+                <tr><td><a href="https://docs.nlr.gov/docs/fy24osti/87524.pdf" target="_blank" rel="noopener">NREL 2024 PV Degradation Review</a><br><span class="src-host">docs.nlr.gov</span></td><td>Degradation rates by tier</td></tr>
               </tbody>
             </table>
           </div>

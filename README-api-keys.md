@@ -10,14 +10,14 @@ Powers the core energy model (PVWatts) and solar resource data.
 
 | | |
 |---|---|
-| **Signup** | https://developer.nrel.gov/signup/ |
+| **Signup** | https://developer.nlr.gov/signup/ |
 | **Cost** | Free |
 | **Rate limit** | 1,000 requests/hour per key |
 | **What you get** | API key emailed instantly |
 | **Client-safe?** | Yes — free key, rate-limited, no billing risk |
 
 **Setup:**
-1. Go to https://developer.nrel.gov/signup/
+1. Go to https://developer.nlr.gov/signup/
 2. Fill in name, email, reason ("Solar energy modeling")
 3. You'll receive your API key by email within minutes
 4. Paste into `js/config.js`:
@@ -26,10 +26,10 @@ Powers the core energy model (PVWatts) and solar resource data.
    ```
 
 **Used by:**
-- `NREL PVWatts V8` — https://developer.nrel.gov/api/pvwatts/v8.json (energy production model)
-- `NREL Solar Resource` — https://developer.nrel.gov/api/solar/solar_resource/v1.json (irradiance data)
+- `NREL PVWatts V8` — https://developer.nlr.gov/api/pvwatts/v8.json (energy production model)
+- `NREL Solar Resource` — https://developer.nlr.gov/api/solar/solar_resource/v1.json (irradiance data)
 
-**Docs:** https://developer.nrel.gov/docs/solar/pvwatts/v8/
+**Docs:** https://developer.nlr.gov/docs/solar/pvwatts/v8/
 
 ---
 

@@ -146,6 +146,16 @@ describe('Methodology documents match the implementation', () => {
       'a duplicate METHODOLOGY.md is back; the two copies drifted last time');
   });
 
+  it('points at the decision record, which explains choices without restating the model', () => {
+    // docs/modeling-decisions.md records why each modelling choice was made
+    // and what was rejected. It is not a second description of the model, so
+    // it may coexist with the page; the page must link to it so it is found.
+    assert(fs.existsSync(path.join(ROOT, 'docs', 'modeling-decisions.md')),
+      'docs/modeling-decisions.md is missing');
+    assert(/docs\/modeling-decisions\.md/.test(methodologyHtml),
+      'methodology.html should point readers at docs/modeling-decisions.md');
+  });
+
   it('calls the payback nominal rather than NPV', () => {
     for (const [name, text] of [['methodology.html', methodologyHtml]]) {
       assert(/no discount rate/i.test(text), `${name} should say no discount rate is applied`);
@@ -197,6 +207,29 @@ describe('Retired prototype pages are gone', () => {
     // Vercel serves whatever sits in the tree, so design/ mockups and forks
     // are reachable by URL. They are not the site and must not be indexed.
     assert(/Disallow: \/design\//.test(robots), '/design/ must stay disallowed');
+  });
+});
+
+describe('External API hosts', () => {
+  // NREL became the National Laboratory of the Rockies and the nrel.gov zone
+  // was withdrawn from DNS. The same API answers at developer.nlr.gov. With
+  // the old host every PVWatts call failed and every estimate silently used
+  // the fallback formula while the page still claimed an hourly simulation.
+  it('calls PVWatts and Solar Resource on the live nlr.gov host', () => {
+    assert(/^https:\/\/developer\.nlr\.gov\/api\/pvwatts\/v8\.json$/.test(SolarConfig.PVWATTS_URL),
+      `PVWATTS_URL points somewhere unexpected: ${SolarConfig.PVWATTS_URL}`);
+    assert(/^https:\/\/developer\.nlr\.gov\/api\/solar\/solar_resource\/v1\.json$/.test(SolarConfig.SOLAR_RESOURCE_URL),
+      `SOLAR_RESOURCE_URL points somewhere unexpected: ${SolarConfig.SOLAR_RESOURCE_URL}`);
+  });
+
+  it('carries no links to the retired nrel.gov hosts', () => {
+    const surfaces = Object.assign({}, ALL_PUBLIC, {
+      'README-api-keys.md': read('README-api-keys.md'),
+      'js/config.js.example': read('js/config.js.example'),
+    });
+    for (const [name, text] of Object.entries(surfaces)) {
+      assert(!/https?:\/\/[a-z.]*nrel\.gov\//.test(text), `${name} still links to a nrel.gov host`);
+    }
   });
 });
 

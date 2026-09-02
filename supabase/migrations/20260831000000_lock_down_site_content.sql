@@ -1,36 +1,91 @@
--- Lock down site_content, and retire the admin CMS it served.
+-- Bring the live database in line with the code, and close public write access.
 --
--- The original policies granted INSERT, UPDATE and DELETE to everyone with
--- `USING (true)`. Because the anon key ships in every page, any visitor could
--- rewrite or wipe this table. The /admin page's password check was client-side
--- only and never protected the database.
+-- Written to be STANDALONE and IDEMPOTENT. Verified against the live project on
+-- 2026-08-31, where the earlier migrations had evidently not all been applied:
 --
--- That page has now been deleted outright rather than given real auth, because
--- nothing consumed what it wrote: index.html has never queried site_content and
--- carries no data-key attributes. Its keys (hero_title, stat1_number,
--- modal_success_title) belong to the calculator-4/-6 era landing page, which
--- was also removed. It was a CMS for a page that no longer exists.
+--   estimates     -> did not exist at all (PGRST205 from the REST API), so the
+--                    20260325 create-table migration never ran. Estimate logging
+--                    has therefore never been possible, independently of the
+--                    lazy-query-builder bug fixed in the client.
+--   site_content  -> exists, 46 rows, readable AND writable by anon. A null-key
+--                    probe returned a NOT NULL violation (23502) rather than a
+--                    permission error, which means the write itself was allowed.
+--   waitlist      -> exists, 0 rows, writable by anon on the same evidence.
 --
--- The table and any rows in it are left in place (non-destructive) in case the
--- copy is worth migrating later. Only the write grants go. If a CMS is ever
--- rebuilt, it should authenticate through Supabase Auth and these policies
--- should be re-added scoped to the `authenticated` role.
+-- Because the anon key ships in js/config.js and is served to every visitor,
+-- "writable by anon" means writable by anyone who views source. Nothing reads
+-- site_content and nothing writes to waitlist any more (the pages that did were
+-- removed), so both are closed here.
+--
+-- Safe to run more than once. Nothing is dropped and no rows are deleted.
 
+-- ---------------------------------------------------------------------------
+-- estimates: create if missing, then make it insert-only for anon
+-- ---------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS estimates (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  address TEXT,
+  lat DECIMAL,
+  lon DECIMAL,
+  azimuth INT,
+  tilt INT,
+  system_watts INT,
+  floor_level INT,
+  total_floors INT,
+  shading TEXT,
+  annual_kwh DECIMAL,
+  annual_savings DECIMAL,
+  shade_factor DECIMAL,
+  used_pvwatts BOOLEAN DEFAULT FALSE,
+  data_sources JSONB,
+  calculator_version TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Present separately so an older table picks them up too.
+ALTER TABLE estimates ADD COLUMN IF NOT EXISTS data_sources JSONB;
+ALTER TABLE estimates ADD COLUMN IF NOT EXISTS calculator_version TEXT;
+
+ALTER TABLE estimates ENABLE ROW LEVEL SECURITY;
+
+-- Anonymous INSERT is intentional: the client logs each completed estimate
+-- fire-and-forget. Reads stay closed, so the log is not a public dataset.
+DROP POLICY IF EXISTS "anon_insert_estimates" ON estimates;
+CREATE POLICY "anon_insert_estimates" ON estimates
+  FOR INSERT TO anon WITH CHECK (true);
+
+REVOKE ALL ON estimates FROM anon;
+GRANT INSERT ON estimates TO anon;
+
+-- ---------------------------------------------------------------------------
+-- site_content: stop accepting writes from the public
+-- ---------------------------------------------------------------------------
+-- The /admin CMS that wrote here has been deleted: nothing ever read this table
+-- (index.html has no data-key attributes and has never queried it), and its keys
+-- belong to the calculator-4/-6 landing page, which was also removed.
+--
+-- The table and all 46 rows are left in place in case that copy is worth
+-- recovering. Only the write grants go. If a CMS is rebuilt later, re-add these
+-- policies scoped to the `authenticated` role and sign in through Supabase Auth.
 DROP POLICY IF EXISTS "allow_public_insert" ON site_content;
 DROP POLICY IF EXISTS "allow_public_update" ON site_content;
 DROP POLICY IF EXISTS "allow_public_delete" ON site_content;
 
--- Public read stays: harmless, and keeps any future consumer working.
--- (allow_public_read is left untouched.)
+REVOKE INSERT, UPDATE, DELETE ON site_content FROM anon;
 
--- estimates: anonymous INSERT is intentional (fire-and-forget logging from the
--- client), but the log should not be readable or editable by the public.
-REVOKE ALL ON estimates FROM anon;
-GRANT INSERT ON estimates TO anon;
+-- Public read is left as-is: harmless, and keeps any future consumer working.
 
--- Columns the client writes but the table never had. `calculator_version` was
--- passed by the old code too, so every insert would have been rejected even if
--- the query had been subscribed to — a second, independent reason this table
--- has stayed empty.
-ALTER TABLE estimates ADD COLUMN IF NOT EXISTS calculator_version TEXT;
-ALTER TABLE estimates ADD COLUMN IF NOT EXISTS data_sources JSONB;
+-- ---------------------------------------------------------------------------
+-- waitlist: close writes on an orphaned table
+-- ---------------------------------------------------------------------------
+-- Only calculator-4 and calculator-6 ever inserted here, and both were removed.
+-- The table is currently empty. Left in place, but no longer an open write
+-- endpoint that anyone can fill. Re-grant if a signup form is rebuilt.
+DO $$
+BEGIN
+  IF EXISTS (SELECT 1 FROM information_schema.tables
+             WHERE table_schema = 'public' AND table_name = 'waitlist') THEN
+    EXECUTE 'ALTER TABLE waitlist ENABLE ROW LEVEL SECURITY';
+    EXECUTE 'REVOKE INSERT, UPDATE, DELETE ON waitlist FROM anon';
+  END IF;
+END $$;

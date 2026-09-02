@@ -16,7 +16,9 @@ const ROOT = path.join(__dirname, '..');
 const read = f => fs.readFileSync(path.join(ROOT, f), 'utf8');
 
 const index = read('index.html');
-const methodologyMd = read('METHODOLOGY.md');
+// methodology.html is the single canonical methodology document. A duplicate
+// METHODOLOGY.md used to sit alongside it and the two drifted; the page is now
+// the only copy, reached at /methodology (and via a redirect from the old path).
 const methodologyHtml = read('methodology.html');
 const llms = read('llms.txt');
 const robots = read('robots.txt');
@@ -45,7 +47,7 @@ describe('CO2 factor is stated consistently', () => {
     for (const [name, text] of Object.entries(ALL_PUBLIC)) {
       assert(!text.includes('0.65 lbs'), `${name} still quotes the retired 0.65 lbs/kWh factor`);
     }
-    assert(methodologyMd.includes('0.89'), 'METHODOLOGY.md should state the eGRID2023 factor');
+    assert(methodologyHtml.includes('0.89'), 'methodology.html should state the eGRID2023 factor');
   });
 });
 
@@ -76,8 +78,6 @@ describe('Accuracy claim agrees across surfaces', () => {
   });
 
   it('says plainly that the band is modeled rather than measured', () => {
-    assert(/modeled, not measured|modeled band|modeled uncertainty|not a field-validated/i.test(methodologyMd),
-      'METHODOLOGY.md should flag that the accuracy band is unvalidated');
     assert(/modeled, not measured/i.test(methodologyHtml),
       'methodology.html should flag that the accuracy band is unvalidated');
   });
@@ -110,13 +110,13 @@ describe('SUNNY Act status is current', () => {
 
   it('notes that the Act grants no right to install', () => {
     assert(/no right to install/i.test(index), 'index.html should note the Act grants no right to install');
-    assert(/no right to install/i.test(methodologyMd), 'METHODOLOGY.md should note the same');
+    assert(/no right to install/i.test(methodologyHtml), 'methodology.html should note the same');
   });
 });
 
 describe('Methodology documents match the implementation', () => {
   it('describes the horizon-profile shade model, not the retired self-shading penalty', () => {
-    for (const [name, text] of [['METHODOLOGY.md', methodologyMd], ['methodology.html', methodologyHtml]]) {
+    for (const [name, text] of [['methodology.html', methodologyHtml]]) {
       assert(/horizon profile/i.test(text), `${name} should describe the horizon profile`);
       assert(/1\.00 for an unobstructed balcony/i.test(text),
         `${name} should state the unobstructed-balcony invariant`);
@@ -126,19 +126,35 @@ describe('Methodology documents match the implementation', () => {
   });
 
   it('documents the railing obstruction factor', () => {
-    assert(/[Rr]ailing/.test(methodologyMd), 'METHODOLOGY.md should document railing obstruction');
     assert(/[Rr]ailing obstruction/.test(methodologyHtml), 'methodology.html should document railing obstruction');
   });
 
+  it('documents the cos(lat) projection in orientation detection', () => {
+    assert(/cos\(latitude\)|cos\(lat\)/.test(methodologyHtml),
+      'methodology.html should document the longitude projection');
+    assert(/primaryDirections/.test(methodologyHtml),
+      'methodology.html should document what orientation detection returns');
+  });
+
+  it('records the azimuth convention that the sign error broke', () => {
+    assert(/no further rotation is applied/i.test(methodologyHtml),
+      'methodology.html should state that no extra rotation is applied to the azimuth');
+  });
+
+  it('is the only methodology document in the repo', () => {
+    assert(!fs.existsSync(path.join(ROOT, 'METHODOLOGY.md')),
+      'a duplicate METHODOLOGY.md is back; the two copies drifted last time');
+  });
+
   it('calls the payback nominal rather than NPV', () => {
-    for (const [name, text] of [['METHODOLOGY.md', methodologyMd], ['methodology.html', methodologyHtml]]) {
+    for (const [name, text] of [['methodology.html', methodologyHtml]]) {
       assert(/no discount rate/i.test(text), `${name} should say no discount rate is applied`);
     }
     assert(!/NPV payback<\/strong> runs/.test(methodologyHtml), 'methodology.html still labels it NPV payback');
   });
 
   it('documents the dc_ac_ratio actually sent to PVWatts', () => {
-    for (const [name, text] of [['METHODOLOGY.md', methodologyMd], ['methodology.html', methodologyHtml]]) {
+    for (const [name, text] of [['methodology.html', methodologyHtml]]) {
       assert(/1\.1/.test(text), `${name} should document dc_ac_ratio 1.1`);
     }
   });

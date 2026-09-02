@@ -1,0 +1,9 @@
+# The design workbench — mockups, the red fork, build scripts, sample data.
+# It lives in the repo for reference, but Vercel serves whatever it uploads,
+# and a half-finished fork of the calculator is not the site. Keep it out of
+# the deployment. vercel.json also redirects /design/* as a guarantee.
+design/
+
+# Python leftovers from the design build scripts.
+__pycache__/
+*.pyc

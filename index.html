@@ -74,8 +74,14 @@
     .hero-city svg { display: block; width: 100%; height: 100%; }
     .hero-halo { position: absolute; width: 62vw; height: 62vw; max-width: 900px; max-height: 900px; margin: -31vw 0 0 -31vw; pointer-events: none;
       background: radial-gradient(circle closest-side, rgba(191,60,32,0.18) 0%, rgba(255,255,255,0) 62%); }
+    /* The scrim has to know where the copy column actually ends. Fixed
+       percentage stops did not: the map is sized from the hero's HEIGHT
+       (82% + aspect-ratio 1/1), so a tall window grew it sideways under the
+       headline while the stops stayed put — 10 of 17 window sizes failed
+       WCAG AA. --copy-edge is the container's real right edge. */
     .hero-scrim { position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(90deg, var(--bg) 0%, var(--bg) 16%, rgba(255,255,255,0) 54%), linear-gradient(0deg, var(--bg) 0%, rgba(255,255,255,0) 12%); }
+      --copy-edge: calc(max((100% - 1360px) / 2, 0px) + 40px + 680px);
+      background: linear-gradient(90deg, var(--bg) 0%, var(--bg) var(--copy-edge), rgba(255,255,255,0) calc(var(--copy-edge) + 220px)), linear-gradient(0deg, var(--bg) 0%, rgba(255,255,255,0) 12%); }
     .hero-sun { position: absolute; width: 76px; margin: -38px 0 0 -38px; pointer-events: none; text-align: center; z-index: 2; }
     .hero-sun-rays { transform-origin: 50% 50%; animation: sunTurn 120s linear infinite; }
     @keyframes sunTurn { to { transform: rotate(360deg); } }
@@ -85,26 +91,22 @@
     .hero.has-scene .hero-city, .hero.has-scene .hero-halo,
     .hero.has-scene .hero-sun, .hero.has-scene .hero-scrim { display: none; }
 
-    /* Narrow screens have no room beside the copy, so the city drops below it
-       and the scrim fades top-down instead of left-right. The hero reserves
-       that room as bottom padding, and the map is sized from the viewport —
-       a percentage of the hero would collapse, since the hero is
-       content-sized once the 768px rules take min-height away. */
+    /* Narrow screens have no room beside the copy, so the whole city goes
+       BEHIND it as a pale wash and the copy sits straight on top. This also
+       retires the old slab-below-the-copy layout, where the sun clipped the
+       address field. 0.09 is not a taste call: measured against the grey
+       subhead, 0.18 drops contrast under 4.5:1 at every width from 360 to
+       1024. The map starts below the nav so the sun clears the logo.
+       See design/hero-responsive/. */
     @media (max-width: 1024px) {
-      .hero:not(.has-scene) {
-        align-items: flex-start;
-        min-height: auto;
-        padding-top: 120px;
-        padding-bottom: calc(min(58vw, 520px) + 14px);
-      }
+      .hero:not(.has-scene) { align-items: center; min-height: 86vh; padding: 130px 0 56px; }
       .hero-city {
-        right: -8%; left: auto; top: auto; bottom: 0;
-        width: min(58vw, 520px); height: min(58vw, 520px);
-        aspect-ratio: auto;
+        left: 0; right: 0; top: 104px; bottom: 24px;
+        width: 100%; height: auto; aspect-ratio: auto; opacity: 0.09;
       }
-      .hero-scrim { background:
-        linear-gradient(180deg, var(--bg) 0%, var(--bg) 26%, rgba(255,255,255,0) 56%),
-        linear-gradient(0deg, var(--bg) 0%, rgba(255,255,255,0) 8%); }
+      .hero-sun { opacity: 0.5; }
+      .hero-clock { display: none; }
+      .hero-scrim { background: none; }
       .hero-halo { display: none; }
     }
 
@@ -748,20 +750,16 @@
   <div class="hero-sun" id="heroSun" aria-hidden="true">
     <svg viewBox="0 0 100 100" width="76" height="76">
       <g class="hero-sun-rays">
-        <rect x="48.3" y="16" width="3.4" height="13" rx="1.7" fill="#E0603A"></rect>
-        <rect x="48.3" y="20" width="3.4" height="9" rx="1.7" fill="#E0603A" transform="rotate(30 50 50)"></rect>
-        <rect x="48.3" y="16" width="3.4" height="13" rx="1.7" fill="#E0603A" transform="rotate(60 50 50)"></rect>
-        <rect x="48.3" y="20" width="3.4" height="9" rx="1.7" fill="#E0603A" transform="rotate(90 50 50)"></rect>
-        <rect x="48.3" y="16" width="3.4" height="13" rx="1.7" fill="#E0603A" transform="rotate(120 50 50)"></rect>
-        <rect x="48.3" y="20" width="3.4" height="9" rx="1.7" fill="#E0603A" transform="rotate(150 50 50)"></rect>
-        <rect x="48.3" y="16" width="3.4" height="13" rx="1.7" fill="#E0603A" transform="rotate(180 50 50)"></rect>
-        <rect x="48.3" y="20" width="3.4" height="9" rx="1.7" fill="#E0603A" transform="rotate(210 50 50)"></rect>
-        <rect x="48.3" y="16" width="3.4" height="13" rx="1.7" fill="#E0603A" transform="rotate(240 50 50)"></rect>
-        <rect x="48.3" y="20" width="3.4" height="9" rx="1.7" fill="#E0603A" transform="rotate(270 50 50)"></rect>
-        <rect x="48.3" y="16" width="3.4" height="13" rx="1.7" fill="#E0603A" transform="rotate(300 50 50)"></rect>
-        <rect x="48.3" y="20" width="3.4" height="9" rx="1.7" fill="#E0603A" transform="rotate(330 50 50)"></rect>
+        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A"></rect>
+        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A" transform="rotate(45 50 50)"></rect>
+        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A" transform="rotate(90 50 50)"></rect>
+        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A" transform="rotate(135 50 50)"></rect>
+        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A" transform="rotate(180 50 50)"></rect>
+        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A" transform="rotate(225 50 50)"></rect>
+        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A" transform="rotate(270 50 50)"></rect>
+        <rect x="48.9" y="20" width="2.2" height="8" rx="1.1" fill="#E0603A" transform="rotate(315 50 50)"></rect>
       </g>
-      <circle cx="50" cy="50" r="15.5" fill="#E0603A"></circle>
+      <circle cx="50" cy="50" r="13.5" fill="#E0603A"></circle>
     </svg>
     <span class="hero-clock" id="heroClock">11:02 AM</span>
   </div>

@@ -68,10 +68,16 @@ a smaller disc instead of twelve alternating ones.
 
 ## The canvas
 
-The 28 `.dc.html` artboards here are the record of that decision, and are
+The 28 `.dc.html` artboards here are the record of that decision, and were
 measurements rather than drawings — every position came from Chromium
 rendering the real page at that size. Re-seed with
 `seed-canvas.mjs --artboard <each> --canvas canvas.json`.
+
+They show the map as it was at 36 columns. It has since been rebuilt at 72
+(`design/home-directions/build_city_hero.py`) so Manhattan reads as itself
+instead of merging into the Bronx and Queens, and the halo behind the sun is
+gone — so treat the artboards as the record of the layout decision, not as
+the current look.
 
 The generator that produced them (`variants.py`, `extract.py`,
 `build_canvas.py`) built the alternatives by patching the pre-fix

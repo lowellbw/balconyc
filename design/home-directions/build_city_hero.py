@@ -12,6 +12,13 @@ shoreline is carved (see `island` below) so Manhattan separates at a
 resolution coarse enough to keep the squares chunky.
 
     python3 build_city_hero.py        # rewrites ../../js/city-hero.js
+
+Input is nyc.geojson beside this file: the five borough boundaries as
+MultiPolygons in CRS84, from NYC Open Data's Borough Boundaries dataset
+(Department of City Planning — BoroCode / BoroName / Shape_Leng /
+Shape_Area). It is committed rather than fetched, so the map stays
+rebuildable from a clean checkout; it was previously gitignored, which
+left the generator runnable only on the machine that had downloaded it.
 """
 import hashlib, math, pathlib, re
 from citymap import grid

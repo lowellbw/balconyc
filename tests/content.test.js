@@ -229,6 +229,18 @@ describe('Deployment configuration', () => {
     for (const r of rules) assert(r.destination === '/', `/design must land on /, got ${r.destination}`);
   });
 
+  it('keeps the map source in the repo so the hero can be rebuilt', () => {
+    // build_city_hero.py reads these borough boundaries. The file was once
+    // gitignored, which meant the generator only ran on the machine that had
+    // downloaded it — a clean checkout could not rebuild the map at all.
+    const src = path.join(ROOT, 'design/home-directions/nyc.geojson');
+    assert(fs.existsSync(src), 'nyc.geojson is missing; the hero map cannot be regenerated');
+    const boroughs = JSON.parse(fs.readFileSync(src, 'utf8'))
+      .features.map(f => f.properties.BoroName).sort().join(', ');
+    assert(boroughs === 'Bronx, Brooklyn, Manhattan, Queens, Staten Island',
+      `expected the five boroughs, got ${boroughs}`);
+  });
+
   it('busts the hero map cache when the map changes', () => {
     // js/ is cached for 10 minutes and city-hero.js never changes name, while
     // the HTML is max-age=0. Without a fingerprint, for ten minutes after a

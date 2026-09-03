@@ -4,10 +4,12 @@
 const harness = require('./harness');
 
 require('./sun-position.test.js');
+require('./geometry.test.js');
 require('./shadow-model.test.js');
+require('./self-consumption.test.js');
 require('./model.test.js');
+require('./pvwatts-path.test.js');
 require('./content.test.js');
 
-// Async assertions inside model.test.js resolve on the microtask/immediate
-// queue, so report after the queue drains.
-setImmediate(() => setImmediate(() => harness.report()));
+// Async assertions resolve on the microtask queue; report after they settle.
+setImmediate(() => { harness.report(); });

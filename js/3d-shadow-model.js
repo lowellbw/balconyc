@@ -1,218 +1,538 @@
 // ============================================================
-// balco.nyc — 3D Shadow Model
+// balco.nyc: Shade Model
 // ============================================================
-// Builds a horizon profile of the surrounding buildings as seen
-// from the user's balcony, then derates PVWatts output by the
-// fraction of plane-of-array irradiance those buildings block.
+// Builds a horizon profile of the surrounding buildings (and street trees)
+// as seen from the user's balcony, then derates PVWatts output by the
+// fraction of plane-of-array irradiance that those obstructions remove.
 //
-// Depends on: 3d-scene.js (Scene3D), sun-position.js (SunPosition)
+// The factor multiplies PVWatts output, so it must answer only "how much of
+// what PVWatts assumed reaches this balcony". PVWatts already prices the
+// panel's own tilt and azimuth, so hours when the sun is behind the facade
+// are worth little in BOTH the numerator and the denominator: they are not
+// a penalty. An unobstructed balcony returns 1.0 at every orientation.
+//
+// Three components are derated separately:
+//   beam         lost when the sun is below the skyline, above the balcony
+//                slab, or behind a tree crown (partly);
+//   sky diffuse  scaled by the panel's sky-view fraction through the same
+//                skyline, slab and crowns;
+//   ground light scaled by how open the street in front of the panel is,
+//                since buildings shade the street but do not hide it.
+// Each is weighted by the NSRDB typical-year irradiance for NYC at that
+// month and hour (js/irradiance-nyc.js) rather than a clear-sky proxy.
+//
+// Pure arithmetic: needs SunPosition, IrradianceNYC, SolarConfig and the
+// entries produced by ShadeGeometry. Three.js is touched only to draw the
+// balcony marker when a scene exists, so the same code runs headless for
+// the manual-entry and screen-reader path.
 // ============================================================
 
 const ShadowModel = {
-  // State
-  targetBalconyPoint: null,  // THREE.Vector3
+  // --- State ---
+  buildings: [],             // entries {isTarget, localCoords, heightMeters, elevOffset, ...}
+  target: null,
+  trees: [],                 // {x, z, crownBase, crownTop, radius}
+  balconyPoint: null,        // {x, y, z} in the local frame (north = -z)
   balconyAzimuth: 0,         // radians, clockwise from north
   floor: 1,
   totalFloors: 1,
+  storeyM: 3.0,
+  mountType: 'rail',
+  facadeEdge: null,
   initialized: false,
 
-  // Horizon profile: max obstruction altitude (radians) per azimuth bin,
-  // as seen from the balcony point. Independent of panel tilt, so it is
-  // built once per scene and reused across recalculations.
-  horizonProfile: null,
+  // Derived, cached per init()
+  horizonProfile: null,      // Float64Array(360): max obstruction altitude (rad) per azimuth bin
+  ceilingProfile: null,      // Float64Array(360) or null: slab-above limit (rad) per bin
+  groundOpenFraction: null,  // horizontal sky view of the street in front
+  treeMaskLeaf: null,        // Float32Array(360*90) transmittance or null
+  treeMaskBare: null,
+
+  // --- Model constants ---
   HORIZON_BINS: 360,
-
-  // --- Irradiance model constants ---
-  // Annual split of global horizontal irradiance for NYC (NSRDB/NREL:
-  // the Northeast runs ~0.35-0.42 diffuse). Only the ratio matters here.
-  BEAM_SHARE: 0.60,
-  DIFFUSE_SHARE: 0.40,
-  // Sampling step for the daylight sweep, in minutes.
-  SAMPLE_STEP_MIN: 10,
-  // Edge subdivision when projecting footprints onto the horizon.
-  EDGE_SAMPLE_M: 2.0,
+  ALT_BINS: 90,
+  SAMPLE_STEP_MIN: 10,       // daylight sweep step
+  SAMPLE_DAYS: [8, 23],      // two representative days per month
+  EDGE_SAMPLE_M: 2.0,        // footprint edge subdivision
   EDGE_SAMPLE_RAD: 0.5 * Math.PI / 180,
+  BALCONY_DEPTH_M: 1.5,      // panel plane sits this far outside the facade line
+  GROUND_VIEW_OFFSET_M: 6,   // where the panel's downward view lands on the street
+  MIN_FACTOR: 0.02,
+  MONTH_DAYS: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+  MONTH_START_DOY: [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334],
 
-  // Color thresholds
+  // Heatmap colours (display only)
   COLORS: {
-    target:  0x3399FF,  // blue
-    high:    0xCC3322,  // deep red
-    medium:  0xD06830,  // burnt orange
-    low:     0xCCA050,  // warm amber
-    none:    0x544840,  // warm grey
-    night:   0x2a2420,  // dark warm
+    target:  0x3399FF,
+    high:    0xCC3322,
+    medium:  0xD06830,
+    low:     0xCCA050,
+    none:    0x544840,
+    night:   0x2a2420,
+  },
+
+  // ------------------------------------------------------------
+  // Inputs
+  // ------------------------------------------------------------
+
+  /** Provide the projected footprints (target included). Invalidates caches. */
+  setBuildings(entries) {
+    this.buildings = (entries || []).filter(e => e && e.localCoords && e.localCoords.length >= 3);
+    this.target = this.buildings.find(e => e.isTarget) || null;
+    this._invalidate();
+  },
+
+  /** Provide projected street trees. Invalidates caches. */
+  setTrees(trees) {
+    this.trees = trees || [];
+    this._invalidate();
+  },
+
+  _invalidate() {
+    this.horizonProfile = null;
+    this.ceilingProfile = null;
+    this.groundOpenFraction = null;
+    this.treeMaskLeaf = null;
+    this.treeMaskBare = null;
+  },
+
+  /** Storey height from the building's own geometry, kept plausible. */
+  storeyHeight(heightMeters, totalFloors) {
+    const S = SolarConfig.STOREY_M;
+    if (!heightMeters || !totalFloors) return S.default;
+    return Math.max(S.min, Math.min(S.max, heightMeters / totalFloors));
+  },
+
+  /** Floor number implied by a height above the building's ground level. */
+  floorFromHeight(yAboveGround, heightMeters, totalFloors) {
+    const storey = this.storeyHeight(heightMeters, totalFloors);
+    return Math.max(1, Math.min(totalFloors, Math.floor(yAboveGround / storey) + 1));
   },
 
   /**
-   * Initialize the shadow model with the target building's balcony position.
-   * @param {object} targetEntry - from Scene3D.targetBuilding
-   * @param {number} floor - user's floor number
-   * @param {number} totalFloors - total building floors
-   * @param {number} heightroof - building height in feet
-   * @param {number} azimuthDeg - balcony direction in degrees (0=N, 90=E, 180=S, 270=W)
+   * Place the panel and prepare the geometry.
+   * @param {object} opts
+   *   floor, totalFloors, azimuthDeg   required
+   *   clickPoint {x, z}                optional: where on the facade the visitor clicked
+   *   mountType                        'rail' | 'floor' | 'wall' (SolarConfig.MOUNT_TYPES)
    */
-  init(targetEntry, floor, totalFloors, heightroof, azimuthDeg) {
-    this.floor = floor;
-    this.totalFloors = totalFloors;
-    this.balconyAzimuth = azimuthDeg * Math.PI / 180;
+  init(opts) {
+    const target = this.target;
+    this.floor = Math.max(1, Math.round(opts.floor || 1));
+    this.totalFloors = Math.max(this.floor, Math.round(opts.totalFloors || 1));
+    this.balconyAzimuth = ((opts.azimuthDeg % 360) + 360) % 360 * Math.PI / 180;
+    this.mountType = SolarConfig.MOUNT_TYPES[opts.mountType] ? opts.mountType : SolarConfig.MOUNT_TYPE_DEFAULT;
 
-    const heightMeters = (heightroof || 40) * 0.3048;
-    const balconyHeight = (floor / totalFloors) * heightMeters;
+    const heightM = target ? target.heightMeters : this.totalFloors * SolarConfig.STOREY_M.default;
+    const elev = target ? (target.elevOffset || 0) : 0;
+    this.storeyM = this.storeyHeight(heightM, this.totalFloors);
+    const y = elev + (this.floor - 1) * this.storeyM + SolarConfig.PANEL_CENTRE_ABOVE_SLAB_M;
 
-    // Find facade edge matching balcony direction
-    const coords = targetEntry.localCoords;
-    const edge = this._findFacadeEdge(coords, azimuthDeg);
-
+    // Horizontal position: on the facade whose outward normal best matches the
+    // chosen direction, at the click if we have one, else at the facade midpoint,
+    // pushed out to the panel plane.
+    const coords = target ? target.localCoords : null;
+    const edge = coords ? this._findFacadeEdge(coords, opts.azimuthDeg) : null;
+    this.facadeEdge = edge;
+    let x = 0, z = 0;
     if (edge) {
-      const midX = (edge.p1.x + edge.p2.x) / 2;
-      const midZ = (edge.p1.z + edge.p2.z) / 2;
-      // Offset slightly outward from facade
-      const normalX = edge.normal.x * 2;
-      const normalZ = edge.normal.z * 2;
-      this.targetBalconyPoint = new THREE.Vector3(
-        midX + normalX,
-        balconyHeight + (targetEntry.elevOffset || 0),
-        midZ + normalZ
-      );
-    } else {
-      // Fallback: use building centroid at balcony height
-      this.targetBalconyPoint = new THREE.Vector3(
-        targetEntry.centroid.x,
-        balconyHeight + (targetEntry.elevOffset || 0),
-        targetEntry.centroid.z
-      );
+      let px = (edge.p1.x + edge.p2.x) / 2, pz = (edge.p1.z + edge.p2.z) / 2;
+      if (opts.clickPoint) {
+        const proj = this._projectOntoSegment(opts.clickPoint, edge.p1, edge.p2);
+        px = proj.x; pz = proj.z;
+      }
+      x = px + edge.normal.x * this.BALCONY_DEPTH_M;
+      z = pz + edge.normal.z * this.BALCONY_DEPTH_M;
+    } else if (target) {
+      x = target.centroid.x; z = target.centroid.z;
     }
+    this.balconyPoint = { x, y, z };
 
-    // Add balcony marker
-    this._addBalconyMarker(targetEntry, balconyHeight, edge);
-
-    // Horizon profile is tilt-independent — build it once here.
-    this.horizonProfile = null;
-
+    this._invalidate();
+    this._addBalconyMarker(edge);
     this.initialized = true;
   },
 
-  /**
-   * Find the polygon edge whose outward normal best matches the given azimuth.
-   */
+  _projectOntoSegment(p, a, b) {
+    const dx = b.x - a.x, dz = b.z - a.z;
+    const len2 = dx * dx + dz * dz;
+    if (len2 === 0) return { x: a.x, z: a.z };
+    let t = ((p.x - a.x) * dx + (p.z - a.z) * dz) / len2;
+    t = Math.max(0.05, Math.min(0.95, t));   // stay off the corners
+    return { x: a.x + dx * t, z: a.z + dz * t };
+  },
+
+  /** The polygon edge whose outward normal best matches the given azimuth. */
   _findFacadeEdge(localCoords, azimuthDeg) {
     if (!localCoords || localCoords.length < 3) return null;
-
     const targetAngle = azimuthDeg * Math.PI / 180;
-    let bestEdge = null;
-    let bestScore = -Infinity;
+    let bestEdge = null, bestScore = -Infinity;
 
-    // Compute centroid for determining outward normals
     let cx = 0, cz = 0;
     for (const p of localCoords) { cx += p.x; cz += p.z; }
-    cx /= localCoords.length;
-    cz /= localCoords.length;
+    cx /= localCoords.length; cz /= localCoords.length;
 
-    for (let i = 0; i < localCoords.length - 1; i++) {
-      const p1 = localCoords[i];
-      const p2 = localCoords[(i + 1) % localCoords.length];
-
-      const edgeDx = p2.x - p1.x;
-      const edgeDz = p2.z - p1.z;
+    const n = localCoords.length;
+    for (let i = 0; i < n; i++) {
+      const p1 = localCoords[i], p2 = localCoords[(i + 1) % n];
+      const edgeDx = p2.x - p1.x, edgeDz = p2.z - p1.z;
       const edgeLen = Math.sqrt(edgeDx * edgeDx + edgeDz * edgeDz);
       if (edgeLen < 0.5) continue;
 
-      // Two possible perpendicular normals
       const n1 = { x: -edgeDz / edgeLen, z: edgeDx / edgeLen };
       const n2 = { x: edgeDz / edgeLen, z: -edgeDx / edgeLen };
+      const midX = (p1.x + p2.x) / 2, midZ = (p1.z + p2.z) / 2;
+      const dot1 = n1.x * (cx - midX) + n1.z * (cz - midZ);
+      const normal = dot1 < 0 ? n1 : n2;                 // outward = away from centroid
+      const normalAngle = Math.atan2(normal.x, -normal.z); // 0 = north (-z), 90 = east
 
-      // Pick the outward-facing one (pointing away from centroid)
-      const midX = (p1.x + p2.x) / 2;
-      const midZ = (p1.z + p2.z) / 2;
-      const toCenterX = cx - midX;
-      const toCenterZ = cz - midZ;
-      const dot1 = n1.x * toCenterX + n1.z * toCenterZ;
-      const normal = dot1 < 0 ? n1 : n2;
-
-      // Normal angle: Three.js convention — azimuth from north (0=north=-Z, 90=east=+X)
-      const normalAngle = Math.atan2(normal.x, -normal.z);
-
-      // Score: alignment with target azimuth, weighted by edge length
       let angleDiff = normalAngle - targetAngle;
-      // Normalize to [-PI, PI]
       while (angleDiff > Math.PI) angleDiff -= 2 * Math.PI;
       while (angleDiff < -Math.PI) angleDiff += 2 * Math.PI;
-
-      const alignment = Math.cos(angleDiff);
-      const score = alignment * edgeLen;
-
+      const score = Math.cos(angleDiff) * edgeLen;
       if (score > bestScore) {
         bestScore = score;
         bestEdge = { p1, p2, edgeLen, normal, normalAngle, index: i };
       }
     }
-
     return bestEdge;
   },
 
-  /**
-   * Add a visual marker at the balcony position.
-   */
-  _addBalconyMarker(targetEntry, balconyHeight, facadeEdge) {
-    // Glowing sphere at balcony point
+  _addBalconyMarker(facadeEdge) {
+    if (typeof THREE === 'undefined' || typeof Scene3D === 'undefined' || !Scene3D.scene) return;
+    if (this._marker) { Scene3D.scene.remove(this._marker); this._marker = null; }
+    if (this._ring) { Scene3D.scene.remove(this._ring); this._ring = null; }
     const markerGeo = new THREE.SphereGeometry(1.5, 16, 16);
-    const markerMat = new THREE.MeshBasicMaterial({
-      color: 0x00ffaa,
-      transparent: true,
-      opacity: 0.8,
-    });
+    const markerMat = new THREE.MeshBasicMaterial({ color: 0x00ffaa, transparent: true, opacity: 0.8 });
     const marker = new THREE.Mesh(markerGeo, markerMat);
-    marker.position.copy(this.targetBalconyPoint);
+    marker.position.set(this.balconyPoint.x, this.balconyPoint.y, this.balconyPoint.z);
     Scene3D.scene.add(marker);
-
-    // Horizontal ring at balcony floor level
+    this._marker = marker;
     if (facadeEdge) {
-      const ringGeo = new THREE.RingGeometry(0.3, facadeEdge.edgeLen * 0.6, 4);
-      const ringMat = new THREE.MeshBasicMaterial({
-        color: 0x00ffaa,
-        transparent: true,
-        opacity: 0.3,
-        side: THREE.DoubleSide,
-      });
+      const ringGeo = new THREE.RingGeometry(0.3, Math.min(6, facadeEdge.edgeLen * 0.6), 4);
+      const ringMat = new THREE.MeshBasicMaterial({ color: 0x00ffaa, transparent: true, opacity: 0.3, side: THREE.DoubleSide });
       const ring = new THREE.Mesh(ringGeo, ringMat);
       ring.rotation.x = -Math.PI / 2;
-      ring.position.set(
-        this.targetBalconyPoint.x,
-        this.targetBalconyPoint.y,
-        this.targetBalconyPoint.z
-      );
+      ring.position.set(this.balconyPoint.x, this.balconyPoint.y, this.balconyPoint.z);
       Scene3D.scene.add(ring);
+      this._ring = ring;
     }
   },
 
+  // ------------------------------------------------------------
+  // Geometry: horizon, slab ceiling, trees, street openness
+  // ------------------------------------------------------------
+
+  _binOf(azimuthRad) {
+    const n = this.HORIZON_BINS;
+    let b = Math.floor((((azimuthRad % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI)) / (2 * Math.PI) * n);
+    if (b >= n) b = n - 1;
+    return b;
+  },
+
   /**
-   * Update building colors based on current sun position.
-   * Called by the scene on every sun position change.
+   * Project every footprint (the visitor's own building included, so wings
+   * and courtyards count) onto an azimuth-binned skyline of maximum
+   * obstruction altitude as seen from `viewer`.
    */
-  updateColors(sunPos, month, minuteOfDay) {
-    if (!this.initialized || !this.targetBalconyPoint) return;
+  buildHorizonProfile(viewer) {
+    const n = this.HORIZON_BINS;
+    const profile = new Float64Array(n).fill(-Math.PI / 2);
+    if (!viewer) return profile;
 
+    for (const entry of this.buildings) {
+      const topY = entry.heightMeters + (entry.elevOffset || 0);
+      const height = topY - viewer.y;
+      if (height <= 0) continue;                       // not above the viewer: cannot block
+      const coords = entry.localCoords;
+      const m = coords.length;
+      for (let i = 0; i < m; i++) {
+        const a = coords[i], b = coords[(i + 1) % m];
+        const segLen = Math.hypot(b.x - a.x, b.z - a.z);
+        if (segLen < 0.01) continue;
+        const azA = Math.atan2(a.x - viewer.x, -(a.z - viewer.z));
+        const azB = Math.atan2(b.x - viewer.x, -(b.z - viewer.z));
+        let dAz = Math.abs(azB - azA);
+        if (dAz > Math.PI) dAz = 2 * Math.PI - dAz;
+        const steps = Math.max(2, Math.ceil(segLen / this.EDGE_SAMPLE_M), Math.ceil(dAz / this.EDGE_SAMPLE_RAD));
+        for (let s = 0; s <= steps; s++) {
+          const t = s / steps;
+          const dx = a.x + (b.x - a.x) * t - viewer.x;
+          const dz = a.z + (b.z - a.z) * t - viewer.z;
+          const dist = Math.hypot(dx, dz);
+          if (dist < 1) continue;                      // the wall the panel hangs on
+          const beta = Math.atan2(height, dist);
+          const bin = this._binOf(Math.atan2(dx, -dz));
+          if (beta > profile[bin]) profile[bin] = beta;
+        }
+      }
+    }
+    return profile;
+  },
+
+  /**
+   * The balcony slab above the panel as an upper altitude limit per azimuth
+   * bin. A slab whose edge projects d beyond the panel plane, with its
+   * underside h above the panel centre, hides everything above
+   * atan(h * cos(dAz) / d) in front of the panel. Null when there is no slab
+   * (top floor) or no overhang (panel hangs outside the railing).
+   */
+  buildCeilingProfile() {
+    const d = (SolarConfig.MOUNT_TYPES[this.mountType] || {}).overhangM || 0;
+    if (d < 0.05 || this.floor >= this.totalFloors) return null;
+    const h = Math.max(0.5, this.storeyM - SolarConfig.PANEL_CENTRE_ABOVE_SLAB_M);
+    const n = this.HORIZON_BINS;
+    const ceiling = new Float64Array(n).fill(Math.PI / 2);
+    for (let b = 0; b < n; b++) {
+      const az = (b + 0.5) / n * 2 * Math.PI;
+      let dAz = az - this.balconyAzimuth;
+      while (dAz > Math.PI) dAz -= 2 * Math.PI;
+      while (dAz < -Math.PI) dAz += 2 * Math.PI;
+      const c = Math.cos(dAz);
+      ceiling[b] = c <= 0 ? 0 : Math.atan2(h * c, d);
+    }
+    return ceiling;
+  },
+
+  /**
+   * Street trees as transmittance masks over (azimuth bin, altitude degree):
+   * one for the leaf season, one for bare branches. 1 = clear.
+   */
+  buildTreeMasks(viewer) {
+    if (!this.trees.length) return { leaf: null, bare: null };
+    const M = SolarConfig.TREE_MODEL;
+    const n = this.HORIZON_BINS, na = this.ALT_BINS;
+    const leaf = new Float32Array(n * na).fill(1);
+    const bare = new Float32Array(n * na).fill(1);
+    const groundY = this.target ? (this.target.elevOffset || 0) : 0;
+    for (const t of this.trees) {
+      const dx = t.x - viewer.x, dz = t.z - viewer.z;
+      const dist = Math.hypot(dx, dz);
+      if (dist < 1.5) continue;
+      const centerAz = Math.atan2(dx, -dz);
+      const halfSpan = Math.asin(Math.min(1, t.radius / dist));
+      const altLo = Math.atan2(groundY + t.crownBase - viewer.y, dist);
+      const altHi = Math.atan2(groundY + t.crownTop - viewer.y, dist);
+      if (altHi <= 0) continue;                        // whole crown below the panel's horizon
+      const loDeg = Math.max(0, Math.floor(altLo * 180 / Math.PI));
+      const hiDeg = Math.min(na - 1, Math.ceil(altHi * 180 / Math.PI));
+      const binSpan = Math.ceil(halfSpan / (2 * Math.PI) * n);
+      const centerBin = this._binOf(centerAz);
+      for (let db = -binSpan; db <= binSpan; db++) {
+        const b = (centerBin + db + n) % n;
+        for (let a = loDeg; a <= hiDeg; a++) {
+          leaf[b * na + a] *= M.transmittanceLeaf;
+          bare[b * na + a] *= M.transmittanceBare;
+        }
+      }
+    }
+    return { leaf, bare };
+  },
+
+  _isLeafMonth(month) {
+    return SolarConfig.TREE_MODEL.leafMonths.includes(month);
+  },
+
+  /** Transmittance of a sky direction for the beam: 0 blocked, 1 clear, in between behind a crown. */
+  _beamTransmittance(azimuth, altitude, month) {
+    const bin = this._binOf(azimuth);
+    if (altitude < this.horizonProfile[bin]) return 0;
+    if (this.ceilingProfile && altitude > this.ceilingProfile[bin]) return 0;
+    const mask = this._isLeafMonth(month) ? this.treeMaskLeaf : this.treeMaskBare;
+    if (!mask) return 1;
+    const a = Math.min(this.ALT_BINS - 1, Math.max(0, Math.floor(altitude * 180 / Math.PI)));
+    return mask[bin * this.ALT_BINS + a];
+  },
+
+  /** Angle-of-incidence cosine of a sky direction on the panel. */
+  _incidenceCosine(altitude, azimuth, tiltRad, panelAzimuth) {
+    return Math.cos(altitude) * Math.sin(tiltRad) * Math.cos(azimuth - panelAzimuth)
+         + Math.sin(altitude) * Math.cos(tiltRad);
+  },
+
+  /**
+   * Fraction of the panel's isotropic sky view that survives the skyline, the
+   * slab and (optionally) the tree crowns. Integrates cos(theta) cos(alt)
+   * dalt daz over the visible hemisphere, sampled at 1 degree.
+   */
+  computeSkyOpenFraction(profile, tiltDeg, options = {}) {
+    const tiltRad = (tiltDeg || 90) * Math.PI / 180;
+    const DEG = Math.PI / 180;
+    const panelAz = options.panelAzimuth !== undefined ? options.panelAzimuth : this.balconyAzimuth;
+    const ceiling = options.ceiling || null;
+    const mask = options.mask || null;
+    const na = this.ALT_BINS;
+    let total = 0, visible = 0;
+    for (let azDeg = 0; azDeg < 360; azDeg += 1) {
+      const az = (azDeg + 0.5) * DEG;
+      const bin = this._binOf(az);
+      const obstruction = profile[bin];
+      const ceil = ceiling ? ceiling[bin] : Math.PI / 2;
+      for (let altDeg = 0; altDeg < 90; altDeg += 1) {
+        const alt = (altDeg + 0.5) * DEG;
+        const cosTheta = this._incidenceCosine(alt, az, tiltRad, panelAz);
+        if (cosTheta <= 0) continue;
+        const w = cosTheta * Math.cos(alt);
+        total += w;
+        if (alt <= obstruction || alt > ceil) continue;
+        visible += w * (mask ? mask[bin * na + altDeg] : 1);
+      }
+    }
+    return total > 0 ? visible / total : 1;
+  },
+
+  /**
+   * How open the street in front of the panel is: the sky-view fraction of a
+   * horizontal surface at street level a few metres out from the facade,
+   * through the same footprints. Scales the ground-reflected component.
+   */
+  computeGroundOpenFraction() {
+    if (!this.balconyPoint) return 1;
+    const groundY = (this.target ? (this.target.elevOffset || 0) : 0) + 1.0;
+    const viewer = {
+      x: this.balconyPoint.x + Math.sin(this.balconyAzimuth) * this.GROUND_VIEW_OFFSET_M,
+      y: groundY,
+      z: this.balconyPoint.z - Math.cos(this.balconyAzimuth) * this.GROUND_VIEW_OFFSET_M,
+    };
+    const profile = this.buildHorizonProfile(viewer);
+    return this.computeSkyOpenFraction(profile, 0, { panelAzimuth: this.balconyAzimuth });
+  },
+
+  _prepare() {
+    if (!this.horizonProfile) this.horizonProfile = this.buildHorizonProfile(this.balconyPoint);
+    if (this.ceilingProfile === null) this.ceilingProfile = this.buildCeilingProfile();
+    if (this.groundOpenFraction === null) this.groundOpenFraction = this.computeGroundOpenFraction();
+    if (this.treeMaskLeaf === null && this.trees.length) {
+      const m = this.buildTreeMasks(this.balconyPoint);
+      this.treeMaskLeaf = m.leaf; this.treeMaskBare = m.bare;
+    }
+  },
+
+  // ------------------------------------------------------------
+  // Energy
+  // ------------------------------------------------------------
+
+  /**
+   * Fraction of plane-of-array irradiance that obstructions remove, per month.
+   *
+   *   received = beam * T_beam + sky * skyOpen + ground * groundOpen
+   *   assumed  = beam + sky + ground
+   *   factor   = sum(received) / sum(assumed)
+   *
+   * summed over two representative days per month, every 10 minutes from
+   * sunrise to sunset, with beam = DNI cos(theta), sky = DHI (1 + cos b)/2 and
+   * ground = albedo GHI (1 - cos b)/2 from the NSRDB typical year. Annual =
+   * the same ratio over the whole year (days-in-month weighted).
+   *
+   * @param {number} [tiltDeg=90]
+   * @returns {{ monthlyShadeFactors, annualShadeFactor, skyOpenFraction, groundOpenFraction, treeCount }}
+   */
+  computeAnnualShadeProfile(tiltDeg) {
+    const tilt = tiltDeg || 90;
+    const tiltRad = tilt * Math.PI / 180;
+
+    if (!this.initialized || !this.balconyPoint) {
+      return { monthlyShadeFactors: new Array(12).fill(0.80), annualShadeFactor: 0.80, skyOpenFraction: 0.80, groundOpenFraction: 0.80, treeCount: 0 };
+    }
+    this._prepare();
+    const I = IrradianceNYC;
+    const cosTilt = Math.cos(tiltRad);
+    const skyViewPanel = (1 + cosTilt) / 2;
+    const groundViewPanel = (1 - cosTilt) / 2;
+
+    const skyOpenClear = this.computeSkyOpenFraction(this.horizonProfile, tilt, { ceiling: this.ceilingProfile });
+    const skyOpenLeaf = this.treeMaskLeaf
+      ? this.computeSkyOpenFraction(this.horizonProfile, tilt, { ceiling: this.ceilingProfile, mask: this.treeMaskLeaf })
+      : skyOpenClear;
+    const skyOpenBare = this.treeMaskBare
+      ? this.computeSkyOpenFraction(this.horizonProfile, tilt, { ceiling: this.ceilingProfile, mask: this.treeMaskBare })
+      : skyOpenClear;
+    const groundOpen = this.groundOpenFraction;
+
+    const monthly = [];
+    let yearReceived = 0, yearAssumed = 0;
+    for (let month = 0; month < 12; month++) {
+      const skyOpen = this._isLeafMonth(month) ? skyOpenLeaf : skyOpenBare;
+      const alb = I.albedo[month] || 0.15;
+      let received = 0, assumed = 0;
+      for (const day of this.SAMPLE_DAYS) {
+        const doy = this.MONTH_START_DOY[month] + day;
+        const bounds = SunPosition.getDayBoundsDoy(doy);
+        const tzShift = SunPosition.tzOffsetForDoy(doy) === -4 ? -60 : 0;  // clock -> standard time
+        for (let minute = bounds.sunrise; minute <= bounds.sunset; minute += this.SAMPLE_STEP_MIN) {
+          const sun = SunPosition.calculateDoy(doy, minute);
+          if (sun.altitude <= 0) continue;
+          const hour = Math.max(0, Math.min(23, Math.floor((minute + tzShift) / 60)));
+          const dni = I.dni[month][hour], dhi = I.dhi[month][hour];
+          if (dni <= 0 && dhi <= 0) continue;
+          const ghi = dni * Math.sin(sun.altitude) + dhi;
+          const cosTheta = this._incidenceCosine(sun.altitude, sun.azimuth, tiltRad, this.balconyAzimuth);
+          const beam = dni * Math.max(0, cosTheta);
+          const sky = dhi * skyViewPanel;
+          const ground = alb * ghi * groundViewPanel;
+          received += beam * this._beamTransmittance(sun.azimuth, sun.altitude, month) + sky * skyOpen + ground * groundOpen;
+          assumed += beam + sky + ground;
+        }
+      }
+      const w = this.MONTH_DAYS[month] / this.SAMPLE_DAYS.length;
+      yearReceived += received * w;
+      yearAssumed += assumed * w;
+      const f = assumed > 0 ? received / assumed : 1;
+      monthly.push(Math.max(this.MIN_FACTOR, Math.min(1, f)));
+    }
+    const annual = yearAssumed > 0 ? Math.max(this.MIN_FACTOR, Math.min(1, yearReceived / yearAssumed)) : 1;
+
+    return {
+      monthlyShadeFactors: monthly,
+      annualShadeFactor: annual,
+      skyOpenFraction: skyOpenClear,
+      groundOpenFraction: groundOpen,
+      treeCount: this.trees.length,
+    };
+  },
+
+  /**
+   * Hours of direct sun on the panel for the 15th of a month: the beam reaches
+   * the panel face (at least half of it through any tree crown).
+   */
+  directSunHours(month, tiltDeg) {
+    if (!this.initialized || !this.balconyPoint) return null;
+    this._prepare();
+    const tiltRad = (tiltDeg || 90) * Math.PI / 180;
+    const bounds = SunPosition.getDayBounds(month);
+    let minutes = 0;
+    for (let m = bounds.sunrise; m <= bounds.sunset; m += this.SAMPLE_STEP_MIN) {
+      const sun = SunPosition.calculate(month, m);
+      if (sun.altitude <= 0) continue;
+      if (this._incidenceCosine(sun.altitude, sun.azimuth, tiltRad, this.balconyAzimuth) <= 0) continue;
+      if (this._beamTransmittance(sun.azimuth, sun.altitude, month) < 0.5) continue;
+      minutes += this.SAMPLE_STEP_MIN;
+    }
+    return minutes / 60;
+  },
+
+  /** Neighbours modelled at a roof height far above the local norm (setback towers over-block). */
+  tallOutliers() {
+    const hs = this.buildings.filter(e => !e.isTarget).map(e => e.heightMeters).sort((a, b) => a - b);
+    if (hs.length < 5) return 0;
+    const median = hs[Math.floor(hs.length / 2)];
+    return hs.filter(h => h > 3 * median && h > 60).length;
+  },
+
+  // ------------------------------------------------------------
+  // Display (heatmap and info panel). Never read by the energy path.
+  // ------------------------------------------------------------
+
+  updateColors(sunPos) {
+    if (!this.initialized || !this.balconyPoint || typeof Scene3D === 'undefined') return;
     const isNight = sunPos.altitude <= 0;
-
     for (const entry of Scene3D.buildingMeshes) {
-      if (entry.isTarget) {
-        entry.mesh.material.color.setHex(this.COLORS.target);
-        entry.shadowScore = 0;
-        continue;
-      }
-
-      if (isNight) {
-        entry.mesh.material.color.setHex(this.COLORS.night);
-        entry.shadowScore = 0;
-        continue;
-      }
-
+      if (!entry.mesh) continue;
+      if (entry.isTarget) { entry.mesh.material.color.setHex(this.COLORS.target); entry.shadowScore = 0; continue; }
+      if (isNight) { entry.mesh.material.color.setHex(this.COLORS.night); entry.shadowScore = 0; continue; }
       const score = this._scoreShadowImpact(entry, sunPos);
-      // Color thresholds use the display score (physics × 1.8 cap-1)
       entry.shadowScore = score.display;
-      // Keep physics score around for any downstream debug/inspection
       entry.shadowPhysics = score.physics;
-
       const d = score.display;
       if (d > 0.5)       entry.mesh.material.color.setHex(this.COLORS.high);
       else if (d > 0.2)  entry.mesh.material.color.setHex(this.COLORS.medium);
@@ -221,28 +541,18 @@ const ShadowModel = {
     }
   },
 
-  /**
-   * Compute the angular span of a building polygon as seen from the balcony.
-   * Returns { minAz, maxAz, span, nearestDist }; null if degenerate.
-   * Used for the 3D heatmap colouring only — the energy path uses the
-   * horizon profile below, which resolves concave footprints correctly.
-   */
   _polygonAngularSpan(polygon, viewerPoint) {
     if (!polygon || polygon.length < 2) return null;
     const azimuths = [];
     let nearestDist = Infinity;
     for (const p of polygon) {
-      const dx = p.x - viewerPoint.x;
-      const dz = p.z - viewerPoint.z;
+      const dx = p.x - viewerPoint.x, dz = p.z - viewerPoint.z;
       const dist = Math.sqrt(dx * dx + dz * dz);
       if (dist < nearestDist) nearestDist = dist;
       azimuths.push(Math.atan2(dx, -dz));
     }
     azimuths.sort((a, b) => a - b);
-    let minAz = azimuths[0];
-    let maxAz = azimuths[azimuths.length - 1];
-    // Wrap-around handling: if the apparent span is > PI the polygon straddles the
-    // -PI/+PI branch cut; the true outside-angle is the largest gap, so re-anchor.
+    let minAz = azimuths[0], maxAz = azimuths[azimuths.length - 1];
     if (maxAz - minAz > Math.PI) {
       let bestGap = 0, bestIdx = 0;
       for (let i = 0; i < azimuths.length - 1; i++) {
@@ -255,268 +565,26 @@ const ShadowModel = {
     return { minAz, maxAz, span: maxAz - minAz, nearestDist };
   },
 
-  /**
-   * Per-building shadow severity at one sun position.
-   * DISPLAY ONLY — drives the 3D heatmap and the "N buildings casting
-   * shadow" panel. The energy model never reads this.
-   */
+  /** Per-building shadow severity at one sun position. DISPLAY ONLY. */
   _scoreShadowImpact(entry, sunPos) {
     const ZERO = { physics: 0, display: 0 };
-
-    const span = this._polygonAngularSpan(entry.localCoords, this.targetBalconyPoint);
+    const span = this._polygonAngularSpan(entry.localCoords, this.balconyPoint);
     if (!span || span.nearestDist < 1) return ZERO;
-
-    // Normalize sun azimuth into the same wrap window as the polygon span
     let sunAz = sunPos.azimuth;
     if (sunAz < span.minAz) sunAz += 2 * Math.PI;
     if (sunAz < span.minAz || sunAz > span.maxAz) return ZERO;
-
-    const horizontalDist = span.nearestDist;
-    const bldgTopY = entry.heightMeters + (entry.elevOffset || 0);
-    const heightAboveBalcony = bldgTopY - this.targetBalconyPoint.y;
+    const heightAboveBalcony = entry.heightMeters + (entry.elevOffset || 0) - this.balconyPoint.y;
     if (heightAboveBalcony <= 0) return ZERO;
-
-    const blockAngle = Math.atan2(heightAboveBalcony, horizontalDist);
+    const blockAngle = Math.atan2(heightAboveBalcony, span.nearestDist);
     if (sunPos.altitude > blockAngle) return ZERO;
-
     const verticalBlock = Math.min(1, (blockAngle - sunPos.altitude) / (blockAngle + 0.01));
     const widthFactor = Math.min(1, span.span / 0.1);
-
     const physics = Math.min(1, verticalBlock * widthFactor);
-    const display = Math.min(1, physics * 1.8); // UI contrast only — never fed back to physics
-    return { physics, display };
+    return { physics, display: Math.min(1, physics * 1.8) };
   },
 
-  // ============================================================
-  // Horizon profile — the geometric basis of the energy model
-  // ============================================================
-
-  _binOf(azimuthRad) {
-    const n = this.HORIZON_BINS;
-    let b = Math.floor(((azimuthRad % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI) / (2 * Math.PI) * n);
-    if (b >= n) b = n - 1;
-    return b;
-  },
-
-  /**
-   * Project every neighbouring footprint onto an azimuth-binned skyline as
-   * seen from the balcony point. Each bin holds the highest obstruction
-   * altitude in that direction, so concave and L-shaped footprints — and
-   * buildings that wrap past due north — are all handled correctly.
-   *
-   * @returns {Float64Array} obstruction altitude (radians) per azimuth bin
-   */
-  buildHorizonProfile() {
-    const n = this.HORIZON_BINS;
-    const profile = new Float64Array(n).fill(-Math.PI / 2);
-    if (!this.targetBalconyPoint) return profile;
-
-    const viewer = this.targetBalconyPoint;
-    const neighbors = Scene3D.buildingMeshes.filter(e => !e.isTarget);
-
-    for (const entry of neighbors) {
-      const topY = entry.heightMeters + (entry.elevOffset || 0);
-      const height = topY - viewer.y;
-      if (height <= 0) continue;             // shorter than the balcony: cannot block
-
-      const coords = entry.localCoords;
-      if (!coords || coords.length < 2) continue;
-
-      for (let i = 0; i < coords.length; i++) {
-        const a = coords[i];
-        const b = coords[(i + 1) % coords.length];
-
-        const segLen = Math.hypot(b.x - a.x, b.z - a.z);
-        if (segLen < 0.01) continue;
-
-        // Subdivide finely enough that no azimuth bin is skipped, even for a
-        // wide facade a few metres away.
-        const azA = Math.atan2(a.x - viewer.x, -(a.z - viewer.z));
-        const azB = Math.atan2(b.x - viewer.x, -(b.z - viewer.z));
-        let dAz = Math.abs(azB - azA);
-        if (dAz > Math.PI) dAz = 2 * Math.PI - dAz;
-        const steps = Math.max(
-          2,
-          Math.ceil(segLen / this.EDGE_SAMPLE_M),
-          Math.ceil(dAz / this.EDGE_SAMPLE_RAD)
-        );
-
-        for (let s = 0; s <= steps; s++) {
-          const t = s / steps;
-          const px = a.x + (b.x - a.x) * t;
-          const pz = a.z + (b.z - a.z) * t;
-          const dx = px - viewer.x;
-          const dz = pz - viewer.z;
-          const dist = Math.hypot(dx, dz);
-          if (dist < 1) continue;
-
-          const beta = Math.atan2(height, dist);
-          const bin = this._binOf(Math.atan2(dx, -dz));
-          if (beta > profile[bin]) profile[bin] = beta;
-        }
-      }
-    }
-
-    return profile;
-  },
-
-  /**
-   * Angle-of-incidence cosine of a sky direction on the panel.
-   * Standard tilted-surface formula; reduces to cos(alt)·cos(Δazimuth)
-   * for a vertical panel (tilt 90°).
-   */
-  _incidenceCosine(altitude, azimuth, tiltRad, panelAzimuth) {
-    return Math.cos(altitude) * Math.sin(tiltRad) * Math.cos(azimuth - panelAzimuth)
-         + Math.sin(altitude) * Math.cos(tiltRad);
-  },
-
-  /**
-   * Fraction of the panel's isotropic sky view that survives the horizon
-   * profile. Integrates cos(theta)·cos(altitude) over the visible hemisphere,
-   * which is the standard view-factor integral for an isotropic sky.
-   *
-   * @param {Float64Array} profile
-   * @param {number} tiltDeg - panel tilt from horizontal
-   * @returns {number} 0-1, where 1 = completely open sky
-   */
-  computeSkyOpenFraction(profile, tiltDeg) {
-    const tiltRad = (tiltDeg || 90) * Math.PI / 180;
-    const DEG = Math.PI / 180;
-    let total = 0;
-    let visible = 0;
-
-    for (let azDeg = 0; azDeg < 360; azDeg += 2) {
-      const az = azDeg * DEG;
-      const obstruction = profile[this._binOf(az)];
-      for (let altDeg = 1; altDeg < 90; altDeg += 2) {
-        const alt = altDeg * DEG;
-        const cosTheta = this._incidenceCosine(alt, az, tiltRad, this.balconyAzimuth);
-        if (cosTheta <= 0) continue;         // behind the panel — not part of its sky view
-        const w = cosTheta * Math.cos(alt);  // dOmega = cos(alt) dalt daz
-        total += w;
-        if (alt > obstruction) visible += w;
-      }
-    }
-
-    return total > 0 ? visible / total : 1;
-  },
-
-  /**
-   * Simulate the fraction of plane-of-array irradiance that neighbouring
-   * buildings block, per month.
-   *
-   * The returned factor multiplies PVWatts output, so it must answer only
-   * "how much of what PVWatts assumed reaches this balcony". PVWatts already
-   * prices the panel's own tilt and azimuth, so hours when the sun is behind
-   * the facade are worth little in BOTH the numerator and the denominator —
-   * they are not a penalty. Earlier versions charged those hours as shading,
-   * which double-counted orientation and could halve an unobstructed
-   * east-facing estimate.
-   *
-   *   received = beam·(sun visible) + diffuse·(sky open)
-   *   assumed  = beam + diffuse
-   *   factor   = sum(received) / sum(assumed)
-   *
-   * An unobstructed balcony therefore returns 1.0 at every orientation.
-   *
-   * @param {number} [tiltDeg=90] - panel tilt from horizontal
-   * @returns {{ monthlyShadeFactors: number[], annualShadeFactor: number, skyOpenFraction: number }}
-   */
-  computeAnnualShadeProfile(tiltDeg) {
-    const tilt = tiltDeg || 90;
-    const tiltRad = tilt * Math.PI / 180;
-
-    if (!this.initialized || !this.targetBalconyPoint) {
-      return { monthlyShadeFactors: new Array(12).fill(0.80), annualShadeFactor: 0.80, skyOpenFraction: 0.80 };
-    }
-
-    if (!this.horizonProfile) {
-      this.horizonProfile = this.buildHorizonProfile();
-    }
-    const profile = this.horizonProfile;
-    const skyOpen = this.computeSkyOpenFraction(profile, tilt);
-
-    // Isotropic sky view factor of the panel itself. Present in both the
-    // numerator and denominator; it sets how much diffuse counts relative
-    // to beam for this tilt.
-    const panelSkyView = (1 + Math.cos(tiltRad)) / 2;
-
-    const monthlyFactors = [];
-
-    for (let month = 0; month < 12; month++) {
-      const bounds = SunPosition.getDayBounds(month);
-      let received = 0;
-      let assumed = 0;
-
-      for (let minute = bounds.sunrise; minute <= bounds.sunset; minute += this.SAMPLE_STEP_MIN) {
-        const sunPos = SunPosition.calculate(month, minute);
-        if (sunPos.altitude <= 0) continue;
-
-        // Clear-sky GHI proxy. The exponent flattens the solar-noon spike
-        // relative to a raw sine while keeping noon worth several times dawn.
-        const ghi = Math.pow(Math.sin(sunPos.altitude), 0.75);
-
-        const cosTheta = this._incidenceCosine(sunPos.altitude, sunPos.azimuth, tiltRad, this.balconyAzimuth);
-        const beam = this.BEAM_SHARE * ghi * Math.max(0, cosTheta);
-        const diffuse = this.DIFFUSE_SHARE * ghi * panelSkyView;
-
-        const blocked = sunPos.altitude < profile[this._binOf(sunPos.azimuth)];
-
-        received += (blocked ? 0 : beam) + diffuse * skyOpen;
-        assumed += beam + diffuse;
-      }
-
-      const factor = assumed > 0 ? received / assumed : 0.80;
-      monthlyFactors.push(Math.max(0.10, Math.min(1, factor)));
-    }
-
-    // Annual = weighted average using the NYC monthly GHI distribution
-    const ghiWeights = [0.056, 0.068, 0.082, 0.092, 0.105, 0.112,
-                        0.114, 0.103, 0.088, 0.073, 0.056, 0.051];
-    let annualFactor = 0;
-    for (let i = 0; i < 12; i++) {
-      annualFactor += monthlyFactors[i] * ghiWeights[i];
-    }
-
-    if (typeof console !== 'undefined' && console.log) {
-      console.log('[ShadowModel] Sky openness:', skyOpen.toFixed(3), 'at tilt', tilt);
-      console.log('[ShadowModel] Monthly shade:', monthlyFactors.map(f => f.toFixed(2)).join(', '));
-      console.log('[ShadowModel] Annual shade factor:', annualFactor.toFixed(3));
-    }
-
-    return {
-      monthlyShadeFactors: monthlyFactors,
-      annualShadeFactor: annualFactor,
-      skyOpenFraction: skyOpen,
-    };
-  },
-
-  /**
-   * Hours of direct sun on the balcony for a given month, from the horizon
-   * profile. Used by the info panel; shares its geometry with the energy
-   * model so the displayed figure and the computed figure always agree.
-   */
-  directSunHours(month, tiltDeg) {
-    if (!this.initialized || !this.targetBalconyPoint) return null;
-    if (!this.horizonProfile) this.horizonProfile = this.buildHorizonProfile();
-    const tiltRad = (tiltDeg || 90) * Math.PI / 180;
-    const bounds = SunPosition.getDayBounds(month);
-    let minutes = 0;
-    for (let m = bounds.sunrise; m <= bounds.sunset; m += this.SAMPLE_STEP_MIN) {
-      const sun = SunPosition.calculate(month, m);
-      if (sun.altitude <= 0) continue;
-      if (this._incidenceCosine(sun.altitude, sun.azimuth, tiltRad, this.balconyAzimuth) <= 0) continue;
-      if (sun.altitude < this.horizonProfile[this._binOf(sun.azimuth)]) continue;
-      minutes += this.SAMPLE_STEP_MIN;
-    }
-    return minutes / 60;
-  },
-
-  /**
-   * Update info panel DOM elements with current state.
-   */
   updateInfoPanels(sunPos, month, minuteOfDay) {
-    // Sun info panel
+    if (typeof document === 'undefined') return;
     const sunPanel = document.getElementById('sunInfoPanel');
     if (sunPanel) {
       const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -528,32 +596,6 @@ const ShadowModel = {
         <div class="info-detail">Azimuth: ${sunPos.azimuthDeg.toFixed(1)}&deg;</div>
       `;
     }
-
-    // Building info panel
-    const bldgPanel = document.getElementById('bldgInfoPanel');
-    if (bldgPanel && this.targetBalconyPoint) {
-      // Count shadow casters
-      let blockerCount = 0;
-      let maxScore = 0;
-      for (const e of Scene3D.buildingMeshes) {
-        if (!e.isTarget && e.shadowScore > 0.05) blockerCount++;
-        if (!e.isTarget && e.shadowScore > maxScore) maxScore = e.shadowScore;
-      }
-
-      const shadowLabel = maxScore > 0.5 ? 'Heavy' : maxScore > 0.2 ? 'Moderate' : maxScore > 0.05 ? 'Light' : 'Minimal';
-      const shadowColor = maxScore > 0.5 ? '#D03030' : maxScore > 0.2 ? '#E07020' : maxScore > 0.05 ? '#E8B030' : '#10B981';
-
-      bldgPanel.innerHTML = `
-        <div class="info-title">YOUR BUILDING</div>
-        <div class="info-detail">${SolarState.address ? SolarState.address.split(',')[0] : 'Selected Building'}</div>
-        <div class="info-detail">${this.totalFloors} floors &bull; ${Scene3D.targetBuilding ? Scene3D.targetBuilding.heightFt.toFixed(0) : '?'}ft</div>
-        <div class="info-detail">Floor ${this.floor}, ${this._azimuthToLabel(this.balconyAzimuth)}-facing</div>
-        <div class="info-shadow" style="border-color: ${shadowColor}">
-          <span style="color: ${shadowColor}">SHADOW: ${shadowLabel}</span><br>
-          <span class="info-detail">${blockerCount} building${blockerCount !== 1 ? 's' : ''} casting shadow</span>
-        </div>
-      `;
-    }
   },
 
   _azimuthToLabel(azRad) {
@@ -562,29 +604,29 @@ const ShadowModel = {
     return dirs[Math.round(deg / 45) % 8];
   },
 
-  /**
-   * Update hover tooltip for a building.
-   */
-  updateTooltip(entry, clientX, clientY) {
-    // Tooltip disabled — keep canvas clean
+  updateTooltip() {
+    if (typeof document === 'undefined') return;
     const tooltip = document.getElementById('hoverTooltip');
     if (tooltip) tooltip.style.display = 'none';
   },
 
-  /**
-   * Reset per-address state so a new lookup does not inherit the old skyline.
-   */
+  /** Reset per-address state so a new lookup does not inherit the old skyline. */
   reset() {
     this.initialized = false;
-    this.targetBalconyPoint = null;
-    this.horizonProfile = null;
+    this.buildings = [];
+    this.target = null;
+    this.trees = [];
+    this.balconyPoint = null;
     this.balconyAzimuth = 0;
     this.floor = 1;
     this.totalFloors = 1;
+    this.facadeEdge = null;
+    this._marker = null;
+    this._ring = null;
+    this._invalidate();
   },
 };
 
-// Node/test harness support — harmless in the browser.
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { ShadowModel };
 }

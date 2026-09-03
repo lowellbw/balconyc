@@ -2,7 +2,7 @@
 //
 // The site states the same handful of facts in five places: the visible FAQ,
 // the JSON-LD FAQPage schema, the footer, llms.txt, and the methodology
-// documents. They drifted apart before — the FAQ said one accuracy figure
+// page. They drifted apart before: the FAQ said one accuracy figure
 // while the schema and footer said another, and every retired prototype page
 // quoted a superseded electricity rate. Structured data that contradicts the
 // visible page also violates Google's own guidelines. These tests fail when
@@ -29,8 +29,10 @@ const ALL_PUBLIC = { 'index.html': index, 'methodology.html': methodologyHtml, '
 describe('Electricity rate is stated consistently', () => {
   it('quotes the config rate everywhere it appears', () => {
     const cents = Math.round(SolarConfig.ELECTRICITY_RATE * 100);
+    const dollars = SolarConfig.ELECTRICITY_RATE.toFixed(2);
+    const rate = new RegExp(`\\$${dollars.replace('.', '\\.')}|\\b${cents}\\s*(¢|&cent;|c\\b|cents)`);
     for (const [name, text] of Object.entries(ALL_PUBLIC)) {
-      assert(text.includes(`${cents}`), `${name} should mention the ${cents}c rate`);
+      assert(rate.test(text), `${name} should quote the ${cents}c rate as a price`);
     }
   });
 
@@ -38,6 +40,8 @@ describe('Electricity rate is stated consistently', () => {
     for (const [name, text] of Object.entries(ALL_PUBLIC)) {
       assert(!text.includes('$0.22'), `${name} still quotes the retired $0.22/kWh rate`);
       assert(!/\b31\s*(&cent;|¢|cents)/i.test(text), `${name} still quotes the retired 31c rate`);
+      assert(!/\$0\.34\b|\b34\s*(&cent;|¢|cents)/i.test(text), `${name} still quotes the retired 34c rate`);
+      assert(!/56% above/.test(text), `${name} still compares Con Ed to the US average with the state-level 56% figure`);
     }
   });
 });
@@ -47,27 +51,51 @@ describe('CO2 factor is stated consistently', () => {
     for (const [name, text] of Object.entries(ALL_PUBLIC)) {
       assert(!text.includes('0.65 lbs'), `${name} still quotes the retired 0.65 lbs/kWh factor`);
     }
-    assert(methodologyHtml.includes('0.89'), 'methodology.html should state the eGRID2023 factor');
+    for (const [name, text] of Object.entries(ALL_PUBLIC)) {
+      assert(!/0\.89 ?lb/.test(text), `${name} still quotes the eGRID2022 factor 0.89 as current`);
+    }
+    assert(methodologyHtml.includes(`× ${SolarConfig.CO2_FACTOR}`),
+      'methodology.html should state the configured eGRID2023 factor in the CO2 formula');
+    assert(/864\.5/.test(methodologyHtml), 'methodology.html should cite the eGRID2023 NYCW rate in lb/MWh');
+  });
+
+  it('uses the EPA equivalency factors from config', () => {
+    assert(methodologyHtml.includes(`/ ${SolarConfig.CO2_PER_TREE_LB}`), 'tree factor drifted from config');
+    assert(methodologyHtml.includes(`/ ${SolarConfig.CAR_LB_PER_MILE}`), 'vehicle factor drifted from config');
+    assert(methodologyHtml.includes(`/ ${SolarConfig.PHONE_CHARGE_KWH}`), 'phone factor drifted from config');
+    assert(!/co2_lbs \/ 48\b/.test(methodologyHtml), 'the Arbor Day 48 lb tree figure is back');
   });
 });
 
 describe('Accuracy claim agrees across surfaces', () => {
   // The visible FAQ answer and its JSON-LD twin must say the same thing.
-  it('states about 15% in the visible FAQ', () => {
-    assert(/Within about 15%/.test(index), 'visible FAQ should state about 15%');
+  it('states 15 to 25% in the visible FAQ', () => {
+    assert(/within 15 to 25% of real-world production/.test(index), 'visible FAQ should state 15 to 25%');
   });
 
   it('states the same figure in the FAQPage schema', () => {
     const ld = JSON.parse(index.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
     const faq = ld['@graph'].find(n => n['@type'] === 'FAQPage');
     const accuracy = faq.mainEntity.find(q => /accurate/i.test(q.name));
-    assert(/within 15%/i.test(accuracy.acceptedAnswer.text),
+    assert(/within 15 to 25%/i.test(accuracy.acceptedAnswer.text),
       `schema accuracy answer drifted from the visible FAQ: ${accuracy.acceptedAnswer.text.slice(0, 80)}`);
   });
 
-  it('states the same figure in the footer and llms.txt', () => {
-    assert(/about 15% from real-world/.test(index), 'footer should state about 15%');
-    assert(/about 15%/.test(llms), 'llms.txt should state about 15%');
+  it('states the same figure in the footer, llms.txt and the methodology page', () => {
+    assert(/by about 15 to 25%/.test(index), 'footer should state about 15 to 25%');
+    assert(/about 15 to 25%/.test(llms), 'llms.txt should state about 15 to 25%');
+    assert(/within about 15 to 25%/.test(methodologyHtml), 'methodology.html should state about 15 to 25%');
+    for (const [name, text] of Object.entries(ALL_PUBLIC)) {
+      assert(!/about (±)?15% (of|from) real-world/.test(text) && !/Within about 15%/.test(text),
+        `${name} still quotes the retired single 15% band`);
+    }
+  });
+
+  it('says savings depend on self-consumption everywhere production accuracy is claimed', () => {
+    for (const [name, text] of Object.entries(ALL_PUBLIC)) {
+      assert(/self-consumption|used at home|use[sd]? as it is produced/i.test(text),
+        `${name} should say savings depend on how much is used at home`);
+    }
   });
 
   it('has dropped the old two-tier band from user-facing copy', () => {
@@ -164,9 +192,83 @@ describe('Methodology documents match the implementation', () => {
   });
 
   it('documents the dc_ac_ratio actually sent to PVWatts', () => {
-    for (const [name, text] of [['methodology.html', methodologyHtml]]) {
-      assert(/1\.1/.test(text), `${name} should document dc_ac_ratio 1.1`);
+    assert(/array watts ÷ inverter watts/.test(methodologyHtml),
+      'methodology.html should document dc_ac_ratio as array watts over inverter watts');
+    assert(!/<code>dc_ac_ratio<\/code><\/td><td>1\.1<\/td>/.test(methodologyHtml),
+      'methodology.html still documents the fixed dc_ac_ratio 1.1');
+  });
+
+  it('documents the PVWatts parameters that config sends', () => {
+    const P = SolarConfig.PVWATTS_PARAMS;
+    assert(new RegExp(`<code>losses</code></td><td>${P.losses}%`).test(methodologyHtml), 'losses drifted from config');
+    assert(new RegExp(`<code>gcr</code></td><td>${P.gcr}`).test(methodologyHtml), 'gcr drifted from config');
+    assert(methodologyHtml.includes(P.soiling_vertical.join('|')), 'vertical soiling array drifted from config');
+    assert(methodologyHtml.includes(P.soiling_tilted.join('|')), 'tilted soiling array drifted from config');
+    assert(!/\[3,3,4,5,6,7,7,7,6,5,4,3\]/.test(methodologyHtml), 'the retired rooftop soiling profile is still documented as current');
+  });
+
+  it('describes the offline PVWatts table rather than the retired fallback formula', () => {
+    assert(/Offline PVWatts table/.test(methodologyHtml), 'methodology.html should describe the offline table');
+    assert(!/BASELINE<\/strong> = 1,300/.test(methodologyHtml), 'the retired 1,300 kWh/kW baseline is still documented as current');
+    assert(!/Solar Resource/.test(methodologyHtml), 'the retired Solar Resource API is still documented');
+    assert(!/Solar Resource/.test(llms), 'llms.txt still mentions the retired Solar Resource API');
+    // The table quoted on the page must be the generated one.
+    const { PVWattsTableNYC } = loadModules();
+    const s = Math.round(PVWattsTableNYC.kwhPerKw[90][180]).toLocaleString('en-US');
+    const t = Math.round(PVWattsTableNYC.kwhPerKw[35][180]).toLocaleString('en-US');
+    assert(methodologyHtml.includes(`<td>90°</td>`) && methodologyHtml.includes(`<td>${s}</td>`),
+      `methodology.html should quote the generated vertical-south yield ${s}`);
+    assert(methodologyHtml.includes(`<td>${t}</td>`), `methodology.html should quote the generated 35° south yield ${t}`);
+  });
+
+  it('describes the shade model that ships: trees, slab, canonical canyons, weather weights', () => {
+    assert(/Forestry Tree Points/.test(methodologyHtml), 'methodology.html should name the tree dataset');
+    assert(/canonical/i.test(methodologyHtml), 'methodology.html should describe the canonical canyons');
+    assert(!/base_exposure = 0\.5 \+ 0\.5/.test(methodologyHtml), 'the retired tanh band formula is still documented as current');
+    assert(/irradiance-nyc\.js/.test(methodologyHtml), 'methodology.html should describe the NSRDB weight table');
+    assert(!/sin\(altitude\)\^0\.75<\/code>, which keeps/.test(methodologyHtml), 'the retired clear-sky proxy is still documented as current');
+    assert(/mount type/i.test(methodologyHtml), 'methodology.html should describe the slab-above mount types');
+    assert(/intersects/.test(methodologyHtml), 'methodology.html should describe the intersects neighbour query');
+    for (const tier of SolarConfig.NEIGHBOR_QUERIES) {
+      assert(methodologyHtml.includes(`${tier.radiusM.toLocaleString('en-US')} m`), `neighbour tier ${tier.radiusM} m is not documented`);
     }
+    for (const [kind, c] of Object.entries(SolarConfig.CANONICAL_CANYONS)) {
+      if (c) assert(methodologyHtml.includes(`${c.streetM} m</td><td>${c.oppositeM} m`), `canonical canyon ${kind} drifted from config`);
+    }
+  });
+
+  it('describes the self-consumption model and the financial constants that ship', () => {
+    assert(/id="self-consumption"/.test(methodologyHtml), 'methodology.html needs the self-consumption section');
+    assert(!/offset household consumption 1:1/.test(methodologyHtml), 'the retired 1:1 offset assumption is still documented');
+    assert(methodologyHtml.includes(`monthly_bill − ${SolarConfig.MONTHLY_CUSTOMER_CHARGE}`), 'customer charge drifted from config');
+    const R = SolarConfig.INVERTER_REPLACEMENT;
+    assert(methodologyHtml.includes(`${Math.round(R.fraction * 100)}% of the kit cost`) && methodologyHtml.includes(`year ${R.year}`),
+      'inverter replacement drifted from config');
+    const D = SolarConfig.PANEL_DEGRADATION_BY_TIER;
+    for (const [tier, rate] of Object.entries(D)) {
+      assert(methodologyHtml.includes(`${tier} ${(rate * 100).toFixed(1)}%/yr`), `${tier} degradation drifted from config`);
+    }
+    assert(/88769/.test(methodologyHtml) && /81314/.test(methodologyHtml), 'degradation citations missing');
+    assert(!/87524/.test(methodologyHtml), 'the mis-cited community-solar report is still referenced');
+  });
+
+  it('links the live open-data resources', () => {
+    assert(/5zhs-2jue/.test(methodologyHtml), 'methodology.html should link the Building Footprints dataset 5zhs-2jue');
+    assert(/hn5i-inap/.test(methodologyHtml), 'methodology.html should link the Forestry Tree Points dataset');
+    assert(!/nqwf-w8eh/.test(methodologyHtml), 'methodology.html still links the retired footprint dataset id');
+  });
+
+  it('carries one modification date across the meta tag, the schema and the visible text', () => {
+    const meta = methodologyHtml.match(/article:modified_time" content="([0-9-]+)"/)[1];
+    const ld = JSON.parse(methodologyHtml.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+    const visible = methodologyHtml.match(/Last reviewed against the code:<\/strong> <time datetime="([0-9-]+)"/)[1];
+    assert(meta === ld.dateModified && meta === visible,
+      `modification dates disagree: meta ${meta}, schema ${ld.dateModified}, visible ${visible}`);
+  });
+
+  it('describes the estimate logging and matches the privacy note on the page', () => {
+    assert(/Estimate logging/.test(methodologyHtml), 'methodology.html should have the estimate logging section');
+    assert(/street address is not stored/i.test(methodologyHtml), 'methodology.html should say the address is not stored');
   });
 });
 
@@ -215,11 +317,9 @@ describe('External API hosts', () => {
   // was withdrawn from DNS. The same API answers at developer.nlr.gov. With
   // the old host every PVWatts call failed and every estimate silently used
   // the fallback formula while the page still claimed an hourly simulation.
-  it('calls PVWatts and Solar Resource on the live nlr.gov host', () => {
+  it('calls PVWatts on the live nlr.gov host', () => {
     assert(/^https:\/\/developer\.nlr\.gov\/api\/pvwatts\/v8\.json$/.test(SolarConfig.PVWATTS_URL),
       `PVWATTS_URL points somewhere unexpected: ${SolarConfig.PVWATTS_URL}`);
-    assert(/^https:\/\/developer\.nlr\.gov\/api\/solar\/solar_resource\/v1\.json$/.test(SolarConfig.SOLAR_RESOURCE_URL),
-      `SOLAR_RESOURCE_URL points somewhere unexpected: ${SolarConfig.SOLAR_RESOURCE_URL}`);
   });
 
   it('carries no links to the retired nrel.gov hosts', () => {
@@ -311,6 +411,28 @@ describe('index.html wiring', () => {
   it('warns the visitor when the full pipeline was not used', () => {
     assert(/id="estimateBanner"/.test(index), 'fallback banner markup missing');
     assert(/updateEstimateBanner/.test(index), 'fallback banner is never populated');
+    assert(/What this estimate used/.test(index), 'the notice should always say what the estimate used');
+    assert(/neighborsFailed/.test(index), 'a failed neighbour query must be tracked so it is not scored as open sky');
+  });
+
+  it('feeds the shade model every fetched footprint and shows direct sun hours', () => {
+    assert(/ShadowModel\.setBuildings\(/.test(index), 'the shade model is never given the fetched footprints');
+    assert(/directSunHours/.test(index), 'direct sun hours are computed but never shown');
+    assert(/ShadowModel\.floorFromHeight/.test(index), 'the clicked floor should come from the storey height');
+  });
+
+  it('discloses the estimate logging next to the address box and logs no street address', () => {
+    assert(/class="hero-privacy"/.test(index), 'privacy note missing under the address box');
+    assert(/Your street address is not stored/.test(index), 'privacy note should say the address is not stored');
+    const insert = index.match(/\.insert\(\{([\s\S]*?)\}\)\.then\(/)[1];
+    assert(!/address:/.test(insert), 'the estimates insert still logs the formatted address');
+    assert(/bbl:/.test(insert) && /round3\(SolarState\.lat\)/.test(insert), 'the insert should log BBL and rounded coordinates instead');
+  });
+
+  it('queries footprints by intersection, not containment', () => {
+    const api = read('js/solar-api.js');
+    assert(/intersects\(the_geom/.test(api), 'solar-api.js should use intersects() for footprint queries');
+    assert(!/within_circle\(the_geom, \$\{lat\}, \$\{lon\}, 200\)/.test(api), 'the containment-only 200 m neighbour query is back');
   });
 
   it('defers the 3D stack until an address resolves', () => {

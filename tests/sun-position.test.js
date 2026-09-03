@@ -116,3 +116,29 @@ describe('SunPosition — DST handling', () => {
     return bestM;
   }
 });
+
+describe('SunPosition: day-of-year interface', () => {
+  it('matches the month interface on the 15th', () => {
+    const a = SunPosition.calculate(5, 780), b = SunPosition.calculateDoy(166, 780);
+    near(a.altitudeDeg, b.altitudeDeg, 1e-9, 'altitude');
+    near(a.azimuthDeg, b.azimuthDeg, 1e-9, 'azimuth');
+  });
+
+  it('computes the US daylight-saving range for the model year', () => {
+    const saved = SunPosition._year;
+    SunPosition.setYear(2026);
+    const r26 = SunPosition._dstRange();
+    assert(r26.start === 67 && r26.end === 305, `2026: 8 March to 1 November, got ${r26.start}..${r26.end}`);
+    assert(SunPosition.tzOffsetForDoy(66) === -5 && SunPosition.tzOffsetForDoy(67) === -4, 'switch on 8 March 2026');
+    assert(SunPosition.tzOffsetForDoy(304) === -4 && SunPosition.tzOffsetForDoy(305) === -5, 'switch back on 1 November 2026');
+    SunPosition.setYear(2027);
+    const r27 = SunPosition._dstRange();
+    assert(r27.start === 73 && r27.end === 311, `2027: 14 March to 7 November, got ${r27.start}..${r27.end}`);
+    SunPosition.setYear(saved);
+  });
+
+  it('gives longer days near the June solstice than the December one', () => {
+    const j = SunPosition.getDayBoundsDoy(172), d = SunPosition.getDayBoundsDoy(355);
+    assert(j.sunset - j.sunrise > d.sunset - d.sunrise + 300, 'June day is 5+ hours longer');
+  });
+});

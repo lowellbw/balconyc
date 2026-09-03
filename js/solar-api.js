@@ -1,7 +1,9 @@
 // ============================================================
 // balco.nyc Solar Calculator — API Integration & Energy Model
 // ============================================================
-// Depends on: js/config.js (loaded first)
+// Depends on: js/config.js, js/pvwatts-nyc-table.js, js/self-consumption-table.js,
+//             js/self-consumption.js, js/shade-geometry.js, js/3d-shadow-model.js,
+//             js/sun-position.js, js/irradiance-nyc.js (all loaded first)
 // ============================================================
 
 // --- GLOBAL STATE ---
@@ -29,17 +31,22 @@ const SolarState = {
   heightroof: null,
   groundelev: null,
   footprintCoords: null,
+  footprintFeature: null,
+  footprintSource: null,      // 'bin' | 'point' | 'nearby'
   orientationSuggestion: null,
-
-  // From NREL Solar Resource
-  solarResource: null,
-  monthlyDistribution: null, // normalized GHI distribution from API
 
   // From PVWatts
   pvwattsResult: null,
+  pvwattsVariant: null,
 
-  // From neighbor buildings query
-  neighborBuildings: null,
+  // From the neighbour and tree queries
+  neighborBuildings: null,    // array of GeoJSON features, or null when the query failed
+  neighborPromise: null,      // the in-flight request, so callers await instead of re-issuing
+  neighborQueryFailed: false,
+  neighborsTruncated: false,
+  neighborTiers: null,        // per-tier counts, for the notice
+  trees: null,                // array of tree points, or null when the query failed
+  treesPromise: null,
 
   // Tracking which APIs succeeded
   dataSources: {
@@ -47,9 +54,9 @@ const SolarState = {
     geoclient: false,
     pluto: false,
     footprints: false,
-    solarResource: false,
     pvwatts: false,
     neighbors: false,
+    trees: false,
   },
 
   // Reset state for a new address
@@ -69,44 +76,24 @@ const SolarState = {
     this.heightroof = null;
     this.groundelev = null;
     this.footprintCoords = null;
+    this.footprintFeature = null;
+    this.footprintSource = null;
     this.orientationSuggestion = null;
-    this.solarResource = null;
-    this.monthlyDistribution = null;
     this.pvwattsResult = null;
+    this.pvwattsVariant = null;
     this.neighborBuildings = null;
+    this.neighborPromise = null;
+    this.neighborQueryFailed = false;
+    this.neighborsTruncated = false;
+    this.neighborTiers = null;
+    this.trees = null;
+    this.treesPromise = null;
     Object.keys(this.dataSources).forEach(k => this.dataSources[k] = false);
   },
 };
 
 
 // --- CONSTANTS ---
-
-// Tilt factor: production relative to optimal ~40° tilt
-// Calibrated against PVWatts vertical NYC + HTW Berlin Stecker-Solar reference.
-const TILT_FACTORS = {
-  90: 0.60,  // Vertical railing mount
-  70: 0.78,  // Angled mount
-  60: 0.85,  // Angled (shallower)
-  35: 1.00,  // Top-mount, near optimal for NYC
-};
-
-// Azimuth production factors relative to south-facing (180°)
-const AZIMUTH_FACTORS = {
-  0:   0.32, // North
-  45:  0.45, // NE
-  90:  0.72, // East
-  135: 0.92, // SE
-  180: 1.00, // South
-  225: 0.92, // SW
-  270: 0.72, // West
-  315: 0.45, // NW
-};
-
-// Default monthly production distribution for NYC (from NREL solar resource data)
-const DEFAULT_MONTHLY_DISTRIBUTION = [
-  0.056, 0.068, 0.082, 0.092, 0.105, 0.112,
-  0.114, 0.103, 0.088, 0.073, 0.056, 0.051,
-];
 
 const MONTH_LABELS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
@@ -159,20 +146,10 @@ function getBoroughFromComponents(components) {
   return 'manhattan'; // default fallback
 }
 
-
-// --- SHADE FACTOR MODEL ---
-
-function getShadeFactor(floor, totalFloors, shading) {
-  const ratio = (totalFloors > 0) ? floor / totalFloors : 0.5;
-  // tanh sigmoid: smooth transition centred near mid-floor
-  const baseExposure = 0.5 + 0.5 * Math.tanh(3 * (ratio - 0.45));
-  const range = {
-    open:        { min: 0.85, max: 0.97 },
-    some:        { min: 0.65, max: 0.94 },
-    dense:       { min: 0.45, max: 0.87 },
-    wide_avenue: { min: 0.70, max: 0.96 },
-  }[shading] || { min: 0.65, max: 0.94 };
-  return range.min + baseExposure * (range.max - range.min);
+/** Compass label for any azimuth, snapped to 45 degrees for display only. */
+function directionLabel(azimuthDeg) {
+  const snapped = Math.round((((azimuthDeg % 360) + 360) % 360) / 45) * 45 % 360;
+  return DIRECTION_LABELS[snapped] || 'South';
 }
 
 
@@ -207,6 +184,28 @@ async function fetchWithTimeout(url, options = {}, timeoutMs = 10000) {
  */
 function soqlEscape(value) {
   return String(value).replace(/'/g, "''");
+}
+
+/**
+ * WKT polygon approximating a circle, for Socrata intersects(). within_circle()
+ * on polygon geometry is a containment test and drops every footprint that
+ * crosses the circle, which in practice means the large, tall buildings.
+ */
+function circleWkt(lat, lon, radiusM, segments = 32) {
+  const mPerDegLat = 111320;
+  const mPerDegLon = mPerDegLat * Math.cos(lat * Math.PI / 180);
+  const pts = [];
+  for (let i = 0; i <= segments; i++) {
+    const a = 2 * Math.PI * i / segments;
+    const plon = lon + radiusM * Math.sin(a) / mPerDegLon;
+    const plat = lat + radiusM * Math.cos(a) / mPerDegLat;
+    pts.push(`${plon.toFixed(6)} ${plat.toFixed(6)}`);
+  }
+  return `POLYGON((${pts.join(',')}))`;
+}
+
+function withAppToken(url) {
+  return SolarConfig.SOCRATA_APP_TOKEN ? `${url}&$$app_token=${SolarConfig.SOCRATA_APP_TOKEN}` : url;
 }
 
 
@@ -327,10 +326,7 @@ const SolarAPI = {
       } else {
         return null;
       }
-
-      if (SolarConfig.SOCRATA_APP_TOKEN) {
-        url += `&$$app_token=${SolarConfig.SOCRATA_APP_TOKEN}`;
-      }
+      url = withAppToken(url);
 
       console.log('[SolarAPI] Querying PLUTO...');
       const response = await fetchWithTimeout(url);
@@ -341,7 +337,9 @@ const SolarAPI = {
       if (data.length === 0) return null;
 
       const bldg = data[0];
-      SolarState.numfloors = bldg.numfloors ? parseInt(bldg.numfloors) : null;
+      // numfloors can be fractional (2.5 for a house with a half storey); round, never truncate.
+      const floors = parseFloat(bldg.numfloors);
+      SolarState.numfloors = Number.isFinite(floors) && floors > 0 ? Math.max(1, Math.round(floors)) : null;
       SolarState.yearbuilt = bldg.yearbuilt ? parseInt(bldg.yearbuilt) : null;
       SolarState.bldgclass = bldg.bldgclass || null;
       SolarState.unitsres = bldg.unitsres ? parseInt(bldg.unitsres) : null;
@@ -358,56 +356,64 @@ const SolarAPI = {
     }
   },
 
+  /**
+   * Total floors for the model, with provenance: PLUTO when it has a value,
+   * otherwise estimated from the roof height, otherwise the default.
+   */
+  resolveTotalFloors() {
+    if (SolarState.numfloors) return { totalFloors: SolarState.numfloors, source: 'pluto' };
+    if (SolarState.heightroof) {
+      return { totalFloors: Math.max(1, Math.round(SolarState.heightroof / SolarConfig.FT_PER_FLOOR_ESTIMATE)), source: 'height' };
+    }
+    return { totalFloors: SolarConfig.DEFAULT_TOTAL_FLOORS, source: 'default' };
+  },
+
   // ---- NYC Building Footprints + Orientation ----
+  _footprintQuery(where, limit) {
+    const params = new URLSearchParams({
+      '$where': where,
+      '$select': 'bin,height_roof,ground_elevation,the_geom',
+      '$limit': String(limit),
+    });
+    return withAppToken(`${SolarConfig.FOOTPRINTS_URL}?${params}`);
+  },
+
   async fetchFootprints() {
     try {
       const startTime = performance.now();
-      let url;
-
-      if (SolarState.bin) {
-        const params = new URLSearchParams({
-          '$where': `bin='${soqlEscape(SolarState.bin)}'`,
-          '$select': 'bin,height_roof,ground_elevation,the_geom',
-          '$limit': '1',
-        });
-        url = `${SolarConfig.FOOTPRINTS_URL}?${params}`;
-      } else if (SolarState.lat && SolarState.lon) {
-        // Fallback: nearest building by location
-        const params = new URLSearchParams({
-          '$where': `within_circle(the_geom, ${SolarState.lat}, ${SolarState.lon}, 50)`,
-          '$select': 'bin,height_roof,ground_elevation,the_geom',
-          '$limit': '1',
-        });
-        url = `${SolarConfig.FOOTPRINTS_URL}?${params}`;
-      } else {
-        return null;
+      // By BIN first; else the footprint that contains the geocoded point
+      // (intersects, not within_circle: containment fails for any building
+      // larger than the circle); else the nearest small building.
+      const attempts = [];
+      if (SolarState.bin) attempts.push(['bin', `bin='${soqlEscape(SolarState.bin)}'`]);
+      if (SolarState.lat && SolarState.lon) {
+        attempts.push(['point', `intersects(the_geom, 'POINT(${SolarState.lon} ${SolarState.lat})')`]);
+        attempts.push(['nearby', `within_circle(the_geom, ${SolarState.lat}, ${SolarState.lon}, 30)`]);
       }
+      if (!attempts.length) return null;
 
-      if (SolarConfig.SOCRATA_APP_TOKEN) {
-        url += `&$$app_token=${SolarConfig.SOCRATA_APP_TOKEN}`;
+      let feature = null, source = null;
+      for (const [label, where] of attempts) {
+        console.log(`[SolarAPI] Querying Building Footprints (${label})...`);
+        const response = await fetchWithTimeout(this._footprintQuery(where, 1));
+        const data = await response.json();
+        const features = data.features || data;
+        if (features && features.length) { feature = features[0]; source = label; break; }
       }
-
-      console.log('[SolarAPI] Querying Building Footprints...');
-      const response = await fetchWithTimeout(url);
-      const data = await response.json();
-
       console.log(`[SolarAPI] Footprints responded in ${(performance.now() - startTime).toFixed(0)}ms`);
+      if (!feature) return null;
 
-      // Handle both GeoJSON FeatureCollection and plain array responses
-      const features = data.features || data;
-      if (!features || features.length === 0) return null;
-
-      const feature = features[0];
       const props = feature.properties || feature;
       const geom = feature.geometry || (feature.the_geom ? JSON.parse(feature.the_geom) : null);
 
       SolarState.heightroof = (props.height_roof || props.heightroof) ? parseFloat(props.height_roof || props.heightroof) : null;
       SolarState.groundelev = (props.ground_elevation || props.groundelev) ? parseFloat(props.ground_elevation || props.groundelev) : null;
       if (!SolarState.bin && props.bin) SolarState.bin = props.bin;
+      SolarState.footprintFeature = feature;
+      SolarState.footprintSource = source;
 
       // Extract polygon coordinates for orientation detection
       if (geom && geom.coordinates) {
-        // MultiPolygon → take first polygon's exterior ring
         if (geom.type === 'MultiPolygon') {
           SolarState.footprintCoords = geom.coordinates[0][0];
         } else if (geom.type === 'Polygon') {
@@ -415,13 +421,12 @@ const SolarAPI = {
         }
       }
 
-      // Run orientation detection
       if (SolarState.footprintCoords) {
         SolarState.orientationSuggestion = this.detectOrientation(SolarState.footprintCoords);
       }
 
       SolarState.dataSources.footprints = true;
-      console.log(`[SolarAPI] Footprints: height=${SolarState.heightroof}ft, orientation=${JSON.stringify(SolarState.orientationSuggestion)}`);
+      console.log(`[SolarAPI] Footprints (${source}): height=${SolarState.heightroof}ft, orientation=${JSON.stringify(SolarState.orientationSuggestion)}`);
       return feature;
     } catch (err) {
       console.warn('[SolarAPI] Footprints failed:', err.message);
@@ -429,82 +434,50 @@ const SolarAPI = {
     }
   },
 
-  // ---- Orientation Algorithm (spec Section 2.4) ----
+  // ---- Orientation Algorithm ----
   detectOrientation(coords) {
     if (!coords || coords.length < 3) return null;
 
     // Longitude degrees are shorter than latitude degrees away from the
     // equator. At NYC's ~40.7N a degree of longitude is only ~76% of a degree
     // of latitude, so raw degree deltas stretch east-west edges by ~1.3x and
-    // skew every bearing by up to ~7 degrees — enough to snap a Manhattan-grid
-    // facade to the wrong compass point. Project to local metres first.
+    // skew every bearing by up to ~7 degrees. Project to local metres first.
     const meanLat = coords.reduce((s, c) => s + c[1], 0) / coords.length;
     const lonScale = Math.cos(meanLat * Math.PI / 180);
 
-    // Compute edge lengths and perpendicular facade directions
     const edges = [];
     for (let i = 0; i < coords.length - 1; i++) {
       const p1 = coords[i];
       const p2 = coords[i + 1];
-      const dx = (p2[0] - p1[0]) * lonScale; // longitude (east-west), scaled
-      const dy = p2[1] - p1[1];              // latitude (north-south)
+      const dx = (p2[0] - p1[0]) * lonScale;
+      const dy = p2[1] - p1[1];
       const length = Math.sqrt(dx * dx + dy * dy);
       if (length === 0) continue;
 
-      // Edge direction (compass bearing)
-      // atan2(dx, dy) gives angle from north, clockwise
       const edgeAngle = ((Math.atan2(dx, dy) * 180 / Math.PI) + 360) % 360;
-
-      // Facades face perpendicular to the edge
       const facade1 = (edgeAngle + 90) % 360;
       const facade2 = (edgeAngle + 270) % 360;
-
       edges.push({ length, edgeAngle, facadeAngles: [facade1, facade2] });
     }
 
     if (edges.length === 0) return null;
-
-    // Sort by edge length descending
     edges.sort((a, b) => b.length - a.length);
 
-    // Primary facades from the longest edge
     const primaryFacades = edges[0].facadeAngles;
 
-    // The runner-up for confidence must be a genuinely different wall. In any
-    // rectangle the two longest edges are the parallel long walls and are
-    // near-identical in length, so comparing against edges[1] made "high"
-    // confidence effectively unreachable. Compare against the longest edge
-    // that runs at least 30 degrees off the primary instead.
+    // The runner-up for confidence must be a genuinely different wall (at
+    // least 30 degrees off the primary): in any rectangle the two longest
+    // edges are the parallel long walls.
     const crossEdge = edges.find(e => {
       let diff = Math.abs(e.edgeAngle - edges[0].edgeAngle) % 180;
       if (diff > 90) diff = 180 - diff;
       return diff >= 30;
     });
 
-    // Map each facade angle to nearest 45° compass direction
     const allFacades = [...primaryFacades];
     if (crossEdge) allFacades.push(...crossEdge.facadeAngles);
 
     const compassOptions = [0, 45, 90, 135, 180, 225, 270, 315];
-
-    const mapped = allFacades.map(angle => {
-      let bestDir = 180;
-      let bestDiff = 360;
-      for (const dir of compassOptions) {
-        let diff = Math.abs(angle - dir);
-        if (diff > 180) diff = 360 - diff;
-        if (diff < bestDiff) {
-          bestDiff = diff;
-          bestDir = dir;
-        }
-      }
-      return bestDir;
-    });
-
-    // Prefer south-ish directions for solar (rank by solar potential)
-    const solarRank = { 180: 1, 135: 2, 225: 2, 90: 3, 270: 3, 45: 4, 315: 4, 0: 5 };
-    mapped.sort((a, b) => (solarRank[a] || 5) - (solarRank[b] || 5));
-
     const snap = angle => {
       let bestDir = 180, bestDiff = 360;
       for (const dir of compassOptions) {
@@ -515,107 +488,73 @@ const SolarAPI = {
       return bestDir;
     };
 
+    const mapped = allFacades.map(snap);
+    const solarRank = { 180: 1, 135: 2, 225: 2, 90: 3, 270: 3, 45: 4, 315: 4, 0: 5 };
+    mapped.sort((a, b) => (solarRank[a] || 5) - (solarRank[b] || 5));
+
+    // The exact (unsnapped) bearing of the best solar-facing wall, so the
+    // energy model can use the real facade direction.
+    const exactBest = allFacades.slice().sort((a, b) => (solarRank[snap(a)] || 5) - (solarRank[snap(b)] || 5))[0];
+
     return {
-      // Best solar-facing wall anywhere on the building.
       bestDirection: mapped[0],
+      bestDirectionExact: Math.round(exactBest * 10) / 10,
       allDirections: [...new Set(mapped)],
-      // The two walls of the longest edge — where most units actually face.
       primaryDirections: [...new Set(primaryFacades.map(snap))],
       confidence: (!crossEdge || edges[0].length > 1.3 * crossEdge.length) ? 'high' : 'medium',
     };
   },
 
-  // ---- NREL Solar Resource ----
-  async fetchSolarResource() {
-    if (!SolarState.lat || !SolarState.lon) return null;
-    if (!SolarConfig.NREL_API_KEY) {
-      console.warn('[SolarAPI] No NREL API key, skipping Solar Resource');
-      return null;
-    }
-
-    try {
-      const startTime = performance.now();
-      const params = new URLSearchParams({
-        api_key: SolarConfig.NREL_API_KEY,
-        lat: SolarState.lat.toString(),
-        lon: SolarState.lon.toString(),
-      });
-
-      const url = `${SolarConfig.SOLAR_RESOURCE_URL}?${params}`;
-      console.log('[SolarAPI] Fetching NREL Solar Resource...');
-
-      const response = await fetchWithTimeout(url);
-      const data = await response.json();
-
-      console.log(`[SolarAPI] Solar Resource responded in ${(performance.now() - startTime).toFixed(0)}ms`);
-
-      if (data.errors && data.errors.length > 0) {
-        console.warn('[SolarAPI] Solar Resource errors:', data.errors);
-        return null;
-      }
-
-      const outputs = data.outputs;
-      SolarState.solarResource = outputs;
-
-      // Normalize monthly GHI into a distribution array
-      if (outputs && outputs.avg_ghi && outputs.avg_ghi.monthly) {
-        const monthly = outputs.avg_ghi.monthly;
-        const monthKeys = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
-        const values = monthKeys.map(k => monthly[k] || 0);
-        const total = values.reduce((s, v) => s + v, 0);
-        if (total > 0) {
-          SolarState.monthlyDistribution = values.map(v => v / total);
-        }
-      }
-
-      SolarState.dataSources.solarResource = true;
-      console.log(`[SolarAPI] Solar Resource: annual GHI = ${outputs?.avg_ghi?.annual} kWh/m²/day`);
-      return outputs;
-    } catch (err) {
-      console.warn('[SolarAPI] Solar Resource failed:', err.message);
-      return null;
-    }
-  },
-
   // ---- NREL PVWatts V8 ----
 
-  // NYC urban soiling profile, calibrated to urban-PV literature (3-7% monthly).
-  // Kept out of `losses` so it isn't double-counted there.
-  SOILING_MONTHLY: [3, 3, 4, 5, 6, 7, 7, 7, 6, 5, 4, 3],
+  /** Monthly soiling array (%) for a mount tilt. */
+  soilingFor(tilt) {
+    const P = SolarConfig.PVWATTS_PARAMS;
+    return tilt >= 85 ? P.soiling_vertical : P.soiling_tilted;
+  },
 
-  // Combined loss when the soiling array cannot be sent: 14% base compounded
-  // with the array's ~5% annual mean => 1 - (1 - 0.14)(1 - 0.05) = 18.3%.
-  LOSSES_WITH_SOILING: '18.3',
+  /**
+   * Combined loss when the soiling array cannot be sent: the losses bundle
+   * compounded with the array's annual mean, as a percentage string.
+   */
+  lossesWithSoilingFor(tilt) {
+    const soil = this.soilingFor(tilt);
+    const mean = soil.reduce((s, v) => s + v, 0) / soil.length / 100;
+    return ((1 - (1 - SolarConfig.PVWATTS_PARAMS.losses / 100) * (1 - mean)) * 100).toFixed(1);
+  },
+
+  /** DC-to-AC ratio implied by the array and the kit's inverter. */
+  dcAcRatio(systemWatts, inverterWatts) {
+    const inv = inverterWatts || SolarConfig.INVERTER_AC_WATTS_DEFAULT;
+    return Math.max(1.0, Math.round((systemWatts / inv) * 1000) / 1000);
+  },
 
   _pvwattsBaseParams(params) {
+    const P = SolarConfig.PVWATTS_PARAMS;
     return {
       api_key: SolarConfig.NREL_API_KEY,
       system_capacity: params.systemCapacity.toString(),
-      module_type: '1',       // Premium (19% efficiency, better temp coeff)
-      array_type: '0',        // Fixed open rack (only option for balcony)
+      module_type: String(P.module_type),
+      array_type: String(P.array_type),
+      gcr: String(P.gcr),
       tilt: params.tilt.toString(),
-      azimuth: params.azimuth.toString(),
+      azimuth: (Math.round(params.azimuth * 10) / 10).toString(),
       lat: SolarState.lat.toString(),
       lon: SolarState.lon.toString(),
-      dc_ac_ratio: '1.1',     // Micro-inverter matched to 1-2 modules; 1.2 over-clips
-      inv_eff: '96.5',        // Micro-inverter efficiency (Enphase IQ8 ~97%, budget ~96%)
-      dataset: 'nsrdb',
+      dc_ac_ratio: this.dcAcRatio(params.systemCapacity * 1000, params.inverterWatts).toString(),
+      inv_eff: String(P.inv_eff),
+      dataset: P.dataset,
       timeframe: 'monthly',
-      // Concrete balcony ground reflectance (light-colored: ~0.30)
-      albedo: '0.20',
-      // Monofacial panels (set to 0.75 if selling bifacial panels)
-      bifaciality: '0',
+      use_wf_albedo: String(P.use_wf_albedo),
+      albedo: String(P.albedo),
+      bifaciality: String(P.bifaciality),
     };
   },
 
   /**
-   * Call PVWatts, trying progressively simpler soiling encodings.
-   *
-   * NREL documents array parameters as pipe-delimited, but has accepted a
-   * bracketed JSON list historically. If the parameter is rejected the whole
-   * request fails, which would silently drop every estimate onto the
-   * client-side fallback while the UI still claimed an hourly simulation.
-   * So we degrade explicitly: pipe -> bracket -> fold soiling into `losses`.
+   * Call PVWatts with the monthly soiling array; if the API rejects the
+   * array, fold its annual mean into `losses` and retry. (The bracketed JSON
+   * form that used to sit between the two is always rejected with HTTP 422.)
    */
   async fetchPVWatts(params) {
     if (!SolarState.lat || !SolarState.lon) return null;
@@ -624,11 +563,10 @@ const SolarAPI = {
       return null;
     }
 
-    const soiling = this.SOILING_MONTHLY;
+    const soiling = this.soilingFor(params.tilt);
     const variants = [
-      { label: 'pipe-delimited soiling', extra: { losses: '14', soiling: soiling.join('|') } },
-      { label: 'bracketed soiling', extra: { losses: '14', soiling: `[${soiling.join(',')}]` } },
-      { label: 'soiling folded into losses', extra: { losses: this.LOSSES_WITH_SOILING } },
+      { label: 'monthly soiling array', extra: { losses: String(SolarConfig.PVWATTS_PARAMS.losses), soiling: soiling.join('|') } },
+      { label: 'soiling folded into losses', extra: { losses: this.lossesWithSoilingFor(params.tilt) } },
     ];
 
     for (const variant of variants) {
@@ -639,11 +577,12 @@ const SolarAPI = {
         );
         const url = `${SolarConfig.PVWATTS_URL}?${queryParams}`;
 
-        const response = await fetchWithTimeout(url);
+        const response = await fetch(url);
         const data = await response.json();
 
-        if (data.errors && data.errors.length > 0) {
-          console.warn(`[SolarAPI] PVWatts rejected ${variant.label}:`, data.errors);
+        if (!response.ok || (data.errors && data.errors.length > 0)) {
+          console.warn(`[SolarAPI] PVWatts rejected ${variant.label}:`, data.errors || response.status);
+          if (response.status === 429 || response.status >= 500) break;   // not a parameter problem
           continue;
         }
         if (!data.outputs || typeof data.outputs.ac_annual !== 'number') {
@@ -659,49 +598,99 @@ const SolarAPI = {
         return data;
       } catch (err) {
         console.warn(`[SolarAPI] PVWatts request failed (${variant.label}):`, err.message);
-        // A transport failure will hit every variant; don't hammer the API.
-        if (err.name === 'AbortError') break;
+        break;   // a transport failure will hit every variant; don't hammer the API
       }
     }
 
-    console.warn('[SolarAPI] PVWatts unavailable; using client-side fallback');
+    console.warn('[SolarAPI] PVWatts unavailable; using the offline PVWatts table');
     return null;
   },
 
-  // ---- Neighboring Buildings (Phase 3 prep) ----
-  async fetchNeighborBuildings() {
-    if (!SolarState.lat || !SolarState.lon) return null;
+  // ---- Neighbouring buildings (tiered: everything near, only tall further out) ----
+  fetchNeighborBuildings() {
+    if (SolarState.neighborPromise) return SolarState.neighborPromise;
+    if (!SolarState.lat || !SolarState.lon) return Promise.resolve(null);
 
-    try {
-      const startTime = performance.now();
-      const params = new URLSearchParams({
-        '$where': `within_circle(the_geom, ${SolarState.lat}, ${SolarState.lon}, 200)`,
-        '$select': 'bin,height_roof,ground_elevation,the_geom',
-        '$limit': '500',
-      });
-      let url = `${SolarConfig.FOOTPRINTS_URL}?${params}`;
+    const { lat, lon } = SolarState;
+    const tiers = SolarConfig.NEIGHBOR_QUERIES;
+    const startTime = performance.now();
 
-      if (SolarConfig.SOCRATA_APP_TOKEN) {
-        url += `&$$app_token=${SolarConfig.SOCRATA_APP_TOKEN}`;
+    const run = async () => {
+      const results = await Promise.allSettled(tiers.map(tier => {
+        let where = `intersects(the_geom, '${circleWkt(lat, lon, tier.radiusM)}')`;
+        if (tier.minHeightFt > 0) where += ` AND height_roof > ${tier.minHeightFt}`;
+        return fetchWithTimeout(this._footprintQuery(where, tier.limit), {}, 15000).then(r => r.json());
+      }));
+
+      // The near tier is the one that matters; the tall tiers are a bonus.
+      if (results[0].status !== 'fulfilled') {
+        SolarState.neighborQueryFailed = true;
+        SolarState.neighborBuildings = null;
+        console.warn('[SolarAPI] Neighbor buildings failed:', results[0].reason && results[0].reason.message);
+        return null;
       }
 
-      console.log('[SolarAPI] Querying neighbor buildings (200m radius)...');
-      const response = await fetchWithTimeout(url);
-      const data = await response.json();
+      const seen = new Set();
+      const merged = [];
+      const counts = [];
+      let truncated = false;
+      results.forEach((r, i) => {
+        if (r.status !== 'fulfilled') { counts.push(null); return; }
+        const features = r.value.features || r.value || [];
+        counts.push(features.length);
+        if (features.length >= tiers[i].limit) truncated = true;
+        for (const f of features) {
+          const bin = ((f.properties || f).bin || '').toString();
+          if (bin && seen.has(bin)) continue;
+          if (bin) seen.add(bin);
+          merged.push(f);
+        }
+      });
 
-      const features = data.features || data;
-      SolarState.neighborBuildings = features;
+      SolarState.neighborBuildings = merged;
+      SolarState.neighborTiers = counts;
+      SolarState.neighborsTruncated = truncated;
+      SolarState.neighborQueryFailed = false;
       SolarState.dataSources.neighbors = true;
+      console.log(`[SolarAPI] Neighbors: ${merged.length} buildings (${counts.join('/')}) in ${(performance.now() - startTime).toFixed(0)}ms${truncated ? ' (a tier hit its limit)' : ''}`);
+      return merged;
+    };
 
-      console.log(`[SolarAPI] Neighbors: ${features.length} buildings in ${(performance.now() - startTime).toFixed(0)}ms`);
-      return features;
-    } catch (err) {
+    SolarState.neighborPromise = run().catch(err => {
+      SolarState.neighborQueryFailed = true;
+      SolarState.neighborBuildings = null;
       console.warn('[SolarAPI] Neighbor buildings failed:', err.message);
       return null;
-    }
+    });
+    return SolarState.neighborPromise;
   },
 
-  // ---- Parallel Building Data Pipeline (Ticket 5) ----
+  // ---- Street trees (NYC Parks Forestry Tree Points) ----
+  fetchTrees() {
+    if (SolarState.treesPromise) return SolarState.treesPromise;
+    if (!SolarState.lat || !SolarState.lon) return Promise.resolve(null);
+    const { lat, lon } = SolarState;
+    const Q = SolarConfig.TREE_QUERY;
+    const params = new URLSearchParams({
+      '$where': `within_circle(location, ${lat}, ${lon}, ${Q.radiusM}) AND tpstructure='Full'`,
+      '$select': 'location,dbh,genusspecies',
+      '$limit': String(Q.limit),
+    });
+    const url = withAppToken(`${SolarConfig.TREES_URL}?${params}`);
+    SolarState.treesPromise = fetchWithTimeout(url).then(r => r.json()).then(rows => {
+      SolarState.trees = Array.isArray(rows) ? rows : [];
+      SolarState.dataSources.trees = true;
+      console.log(`[SolarAPI] Trees: ${SolarState.trees.length} within ${Q.radiusM} m`);
+      return SolarState.trees;
+    }).catch(err => {
+      SolarState.trees = null;
+      console.warn('[SolarAPI] Tree query failed:', err.message);
+      return null;
+    });
+    return SolarState.treesPromise;
+  },
+
+  // ---- Building Data Pipeline ----
   async runBuildingLookup(onProgress) {
     // Step 1: Geoclient (needs to run first for BBL/BIN)
     if (SolarState.addressComponents) {
@@ -710,33 +699,76 @@ const SolarAPI = {
       if (onProgress) onProgress('geoclient', SolarState.dataSources.geoclient ? 'done' : 'failed');
     }
 
-    // Step 2: Parallel queries (PLUTO + Footprints + Solar Resource)
+    // Step 2: Parallel queries (PLUTO + Footprints)
     if (onProgress) {
       onProgress('pluto', 'loading');
       onProgress('footprints', 'loading');
-      onProgress('solarResource', 'loading');
     }
 
     const results = await Promise.allSettled([
       this.fetchPLUTO(),
       this.fetchFootprints(),
-      this.fetchSolarResource(),
     ]);
 
     if (onProgress) {
       onProgress('pluto', results[0].status === 'fulfilled' && results[0].value ? 'done' : 'failed');
       onProgress('footprints', results[1].status === 'fulfilled' && results[1].value ? 'done' : 'failed');
-      onProgress('solarResource', results[2].status === 'fulfilled' && results[2].value ? 'done' : 'failed');
     }
 
-    // Step 3: Fire neighbor query in background (non-blocking)
+    // Step 3: neighbours and trees start now; callers await the stored promises.
     this.fetchNeighborBuildings();
+    this.fetchTrees();
 
     return {
       pluto: results[0].status === 'fulfilled' ? results[0].value : null,
       footprints: results[1].status === 'fulfilled' ? results[1].value : null,
-      solarResource: results[2].status === 'fulfilled' ? results[2].value : null,
     };
+  },
+
+  // ---- Offline PVWatts table (fallback) ----
+
+  /**
+   * Annual kWh per kW and monthly shares for a tilt/azimuth from the
+   * PVWatts table for NYC, interpolating between the 45-degree azimuths.
+   */
+  tableYield(tilt, azimuth) {
+    const T = PVWattsTableNYC;
+    const tiltKey = T.tilts.includes(tilt) ? tilt : T.tilts.reduce((a, b) => Math.abs(b - tilt) < Math.abs(a - tilt) ? b : a);
+    const az = ((azimuth % 360) + 360) % 360;
+    const a0 = Math.floor(az / 45) * 45;
+    const a1 = (a0 + 45) % 360;
+    const t = (az - a0) / 45;
+    const y0 = T.kwhPerKw[tiltKey][a0], y1 = T.kwhPerKw[tiltKey][a1];
+    const s0 = T.monthlyShare[tiltKey][a0], s1 = T.monthlyShare[tiltKey][a1];
+    const kwhPerKw = y0 * (1 - t) + y1 * t;
+    // Blend monthly energy (not shares) so the seasonal shape follows the yield.
+    const monthly = s0.map((v, i) => v * y0 * (1 - t) + s1[i] * y1 * t);
+    const sum = monthly.reduce((s, v) => s + v, 0);
+    return { kwhPerKw, monthlyShare: monthly.map(v => v / sum), tiltKey };
+  },
+
+  /**
+   * Shade profile for an address without footprint data: the visitor's
+   * description of the block becomes a canonical street canyon and the real
+   * horizon model runs on it (headless). Uses a private model instance so a
+   * live 3D scene is never disturbed.
+   */
+  canonicalShadeProfile(inputs) {
+    if (typeof ShadowModel === 'undefined' || typeof ShadeGeometry === 'undefined') return null;
+    const canyon = SolarConfig.CANONICAL_CANYONS[inputs.shading];
+    if (canyon === undefined) return null;
+    const model = Object.create(ShadowModel);
+    model.reset();
+    const geom = ShadeGeometry.canonicalCanyon(inputs.shading, canyon, {
+      azimuthDeg: inputs.azimuth, totalFloors: inputs.totalFloors, storeyM: SolarConfig.STOREY_M.default,
+    });
+    model.setBuildings([geom.target, ...geom.neighbors]);
+    model._addBalconyMarker = () => {};
+    model.init({ floor: inputs.floor, totalFloors: inputs.totalFloors, azimuthDeg: inputs.azimuth, mountType: inputs.mountType });
+    const profile = model.computeAnnualShadeProfile(inputs.tilt);
+    profile.source = 'canonical';
+    profile.directSunHours = { jun: model.directSunHours(5, inputs.tilt), dec: model.directSunHours(11, inputs.tilt) };
+    return profile;
   },
 
   // ---- Full Calculation (with API or fallback) ----
@@ -744,151 +776,139 @@ const SolarAPI = {
     const {
       azimuth, tilt, systemWatts, floor, totalFloors,
       shading, monthlyBill, systemCost, shadeProfile,
-      costTier, escalationPreset,
+      costTier, escalationPreset, occupancy, mountType,
     } = formInputs;
+    const inverterWatts = formInputs.inverterWatts || SolarConfig.INVERTER_AC_WATTS_DEFAULT;
 
     const systemKw = systemWatts / 1000;
-    // Resolve tier-aware system cost when no explicit override provided
     const tier = costTier || 'mid';
     const baseCost = (systemCost != null)
       ? systemCost
       : (SolarConfig.SYSTEM_COST_BY_TIER[tier] || SolarConfig.SYSTEM_COST_BY_TIER.mid);
     const adjustedCost = baseCost * (systemWatts / 800);
 
-    // Resolve tier-aware degradation + escalation
     const panelDegradation = (SolarConfig.PANEL_DEGRADATION_BY_TIER || {})[tier]
       || SolarConfig.PANEL_DEGRADATION;
     const rateEscalation = (SolarConfig.RATE_ESCALATION_PRESETS || {})[escalationPreset]
       || SolarConfig.RATE_ESCALATION;
 
-    // Use 3D-derived shade profile if available, otherwise fall back to static lookup
-    const has3DShade = shadeProfile && shadeProfile.monthlyShadeFactors;
-    const shadeFactor = has3DShade ? shadeProfile.annualShadeFactor : getShadeFactor(floor, totalFloors, shading);
-    const monthlyShadeFactors = has3DShade ? shadeProfile.monthlyShadeFactors : null;
-
-    if (has3DShade) {
-      console.log(`[SolarAPI] Using 3D shade profile (annual: ${shadeFactor.toFixed(3)})`);
-    } else {
-      console.log(`[SolarAPI] Using static shade factor: ${shadeFactor.toFixed(3)}`);
+    // --- Shade: the 3D profile when there is one, else the canonical canyon
+    // for the visitor's description of the block, else no derate (disclosed).
+    let profile = (shadeProfile && shadeProfile.monthlyShadeFactors) ? shadeProfile : null;
+    let shadeSource = profile ? (profile.source || '3d') : null;
+    if (!profile) {
+      profile = this.canonicalShadeProfile({ azimuth, tilt, floor, totalFloors, shading, mountType });
+      shadeSource = profile ? 'canonical' : 'none';
     }
+    const monthlyShadeFactors = profile ? profile.monthlyShadeFactors : new Array(12).fill(1);
+    const shadeFactor = profile ? profile.annualShadeFactor : 1;
+    console.log(`[SolarAPI] Shade (${shadeSource}): annual ${shadeFactor.toFixed(3)}`);
 
-    let annualKwh;
-    let monthlyKwh;
-    let usedPVWatts = false;
+    // --- Production
     let pvwattsData = null;
-
-    // Try PVWatts API if we have coordinates
     if (SolarState.lat && SolarState.lon && SolarConfig.NREL_API_KEY) {
-      pvwattsData = await this.fetchPVWatts({
-        systemCapacity: systemKw,
-        tilt: tilt,
-        azimuth: azimuth,
-      });
+      pvwattsData = await this.fetchPVWatts({ systemCapacity: systemKw, tilt, azimuth, inverterWatts });
     }
 
     // Railing / mounting-hardware obstruction. Not visible to building
     // footprints and not modelled by PVWatts, so it is applied to both paths.
     const railingFactor = (SolarConfig.RAILING_OBSTRUCTION_BY_TILT || {})[tilt] ?? 0.97;
 
+    let monthlyKwh, usedPVWatts = false, unshadedKwh;
     if (pvwattsData && pvwattsData.outputs) {
-      // Use real PVWatts data
-      const outputs = pvwattsData.outputs;
-      const rawAnnual = outputs.ac_annual;
-
-      if (monthlyShadeFactors) {
-        // Apply per-month 3D shade factors to PVWatts monthly output
-        monthlyKwh = outputs.ac_monthly.map((v, i) =>
-          v * monthlyShadeFactors[i] * SolarConfig.THERMAL_BONUS * railingFactor
-        );
-        annualKwh = monthlyKwh.reduce((s, v) => s + v, 0);
-      } else {
-        // Uniform shade factor across all months
-        const scale = shadeFactor * SolarConfig.THERMAL_BONUS * railingFactor;
-        annualKwh = rawAnnual * scale;
-        monthlyKwh = outputs.ac_monthly.map(v => v * scale);
-      }
+      const out = pvwattsData.outputs;
+      unshadedKwh = out.ac_annual;
+      monthlyKwh = out.ac_monthly.map((v, i) => v * monthlyShadeFactors[i] * SolarConfig.THERMAL_BONUS * railingFactor);
       usedPVWatts = true;
-
-      console.log(`[SolarAPI] PVWatts: raw=${rawAnnual.toFixed(0)} kWh, after shade+railing=${annualKwh.toFixed(0)} kWh`);
     } else {
-      // Fallback: client-side formula (used when PVWatts API unavailable)
-      const tiltFactor = TILT_FACTORS[tilt] || 0.60;
-      const azimuthFactor = AZIMUTH_FACTORS[azimuth] || 0.72;
-
-      // Urban soiling derating, ~5% avg (matches PVWatts soiling[] array average).
-      const URBAN_SOILING_FACTOR = 0.95;
-
-      const baseKwh = SolarConfig.PVWATTS_NYC_KWH_PER_KW_OPTIMAL
-        * systemKw
-        * tiltFactor
-        * azimuthFactor
-        * URBAN_SOILING_FACTOR
-        * SolarConfig.THERMAL_BONUS
-        * railingFactor;
-
-      const distribution = SolarState.monthlyDistribution || DEFAULT_MONTHLY_DISTRIBUTION;
-
-      if (monthlyShadeFactors) {
-        // Apply per-month 3D shade factors
-        monthlyKwh = distribution.map((pct, i) => baseKwh * pct * monthlyShadeFactors[i]);
-        annualKwh = monthlyKwh.reduce((s, v) => s + v, 0);
-      } else {
-        annualKwh = baseKwh * shadeFactor;
-        monthlyKwh = distribution.map(pct => annualKwh * pct);
-      }
-
-      console.log(`[SolarAPI] Fallback model: ${annualKwh.toFixed(0)} kWh`);
+      // Offline PVWatts table for NYC (same engine, same parameters, no network).
+      const y = this.tableYield(tilt, azimuth);
+      const dcAc = this.dcAcRatio(systemWatts, inverterWatts);
+      // The table assumes a matched inverter; an array larger than its
+      // inverter clips. Vertical panels almost never reach the cap, tilted
+      // ones do; these are the measured clipping losses for NYC.
+      const clip = this.clippingLoss(dcAc, tilt);
+      unshadedKwh = y.kwhPerKw * systemKw * (1 - clip);
+      monthlyKwh = y.monthlyShare.map((share, i) => unshadedKwh * share * monthlyShadeFactors[i] * SolarConfig.THERMAL_BONUS * railingFactor);
     }
+    const annualKwh = monthlyKwh.reduce((s, v) => s + v, 0);
 
-    // Financial model
-    const annualSavings = annualKwh * SolarConfig.ELECTRICITY_RATE;
-    const monthlySavings = annualSavings / 12;
-
+    // --- Consumption and self-consumption
     // Infer consumption from the bill at the MARGINAL rate, after removing the
-    // fixed Customer Charge. The charge is part of what the user pays but is
-    // not part of what a kWh costs, so leaving it in would inflate their
-    // implied usage and understate the offset percentage.
+    // fixed Customer Charge: it is part of what the user pays but not of what
+    // a kWh costs.
     const billableAmount = Math.max(0, monthlyBill - SolarConfig.MONTHLY_CUSTOMER_CHARGE);
-    const monthlyConsumption = billableAmount / SolarConfig.ELECTRICITY_RATE;
-    const annualConsumption = Math.max(1, monthlyConsumption * 12);
-    const billOffsetPct = Math.min(100, (annualKwh / annualConsumption) * 100);
+    const annualConsumption = Math.max(1, (billableAmount / SolarConfig.ELECTRICITY_RATE) * 12);
 
-    const simplePayback = adjustedCost / annualSavings;
+    const sc = SelfConsumption.fraction({
+      tiltDeg: tilt, azimuthDeg: azimuth, annualKwh, annualConsumptionKwh: annualConsumption, occupancy,
+    });
+    const selfConsumedKwh = annualKwh * sc.fraction;
+    const exportedKwh = annualKwh - selfConsumedKwh;
+    const battery1 = SelfConsumption.batteryGain({ tiltDeg: tilt, azimuthDeg: azimuth, annualKwh, annualConsumptionKwh: annualConsumption }, 1);
 
-    // Payback and 25-year total, in nominal dollars (single loop).
-    // Both compound the rate escalation and the panel's degradation. Neither
-    // is discounted to present value, so these are nominal figures, not NPV.
-    let cumSavings = 0;
-    let lifetimeSavings = 0;
-    let escalatedPayback = 25;
-    for (let i = 0; i < 25; i++) {
-      const yearSavings = annualKwh
-        * Math.pow(1 - panelDegradation, i)
-        * SolarConfig.ELECTRICITY_RATE
-        * Math.pow(1 + rateEscalation, i);
+    // --- Financial model (savings only on what is used at home)
+    const annualSavings = selfConsumedKwh * SolarConfig.ELECTRICITY_RATE;
+    const monthlySavings = annualSavings / 12;
+    const billOffsetPct = Math.min(100, (selfConsumedKwh / annualConsumption) * 100);
+    const simplePayback = annualSavings > 0 ? adjustedCost / annualSavings : Infinity;
+
+    // Payback and 25-year totals in nominal dollars, compounding the rate
+    // escalation and the panel's degradation, with one inverter replacement.
+    // Also restated in today's dollars at a general inflation rate.
+    const years = SolarConfig.ANALYSIS_YEARS;
+    const repl = SolarConfig.INVERTER_REPLACEMENT;
+    const replacementCost = adjustedCost * repl.fraction;
+    const infl = SolarConfig.INFLATION_FOR_REAL_TERMS;
+    let cum = -adjustedCost, lifetimeSavings = 0, lifetimeSavingsReal = 0, escalatedPayback = Infinity;
+    for (let i = 0; i < years; i++) {
+      const yearSavings = annualSavings * Math.pow(1 - panelDegradation, i) * Math.pow(1 + rateEscalation, i);
+      const yearCost = (i === repl.year) ? replacementCost : 0;
       lifetimeSavings += yearSavings;
-      cumSavings += yearSavings;
-      if (cumSavings >= adjustedCost && escalatedPayback === 25) {
-        const prevCum = cumSavings - yearSavings;
-        escalatedPayback = i + (adjustedCost - prevCum) / yearSavings;
+      lifetimeSavingsReal += yearSavings / Math.pow(1 + infl, i);
+      const before = cum;
+      cum += yearSavings - yearCost;
+      if (!Number.isFinite(escalatedPayback) && cum >= 0 && yearSavings > 0) {
+        escalatedPayback = i + Math.min(1, Math.max(0, (-before + yearCost) / yearSavings));
       }
     }
+    const lifetimeNet = lifetimeSavings - replacementCost;
+    const lifetimeNetReal = lifetimeSavingsReal - replacementCost / Math.pow(1 + infl, repl.year);
+    if (!Number.isFinite(escalatedPayback)) escalatedPayback = years;
 
-    // Environmental impact
+    // --- Environmental impact (all production displaces grid generation,
+    // exported or not; year-one grid factor)
     const co2Lbs = annualKwh * SolarConfig.CO2_FACTOR;
-    const treesEquiv = co2Lbs / 48; // EPA average lb CO2/yr per mature tree
-    const milesOffset = co2Lbs / 0.89;
-    const phonesCharged = annualKwh * 1000 / 12;
-
-    const capacityFactor = (annualKwh / (systemKw * 8760)) * 100;
+    const treesEquiv = co2Lbs / SolarConfig.CO2_PER_TREE_LB;
+    const milesOffset = co2Lbs / SolarConfig.CAR_LB_PER_MILE;
+    const phonesCharged = annualKwh / SolarConfig.PHONE_CHARGE_KWH;
 
     return {
       // Energy
       annualKwh,
+      unshadedKwh: unshadedKwh * railingFactor,
       monthlyKwh,
-      capacityFactor,
       usedPVWatts,
+      pvwattsVariant: usedPVWatts ? SolarState.pvwattsVariant : null,
       pvwattsData,
+
+      // Shade
+      shadeFactor,
+      shadeSource,
+      monthlyShadeFactors,
+      skyOpenFraction: profile ? profile.skyOpenFraction : 1,
+      treeCount: profile ? (profile.treeCount || 0) : 0,
+      directSunHours: profile ? profile.directSunHours || null : null,
+      railingFactor,
+
+      // Self-consumption
+      selfConsumption: sc.fraction,
+      selfConsumptionClass: sc.orientationClass,
+      occupancy: sc.occupancy,
+      selfConsumedKwh,
+      exportedKwh,
+      battery1kWhExtraKwh: battery1.extraKwh,
+      annualConsumption,
 
       // Financial
       annualSavings,
@@ -896,9 +916,10 @@ const SolarAPI = {
       billOffsetPct,
       simplePayback,
       escalatedPayback,
-      // Back-compat alias for older call sites. Nominal, not discounted.
-      npvPayback: escalatedPayback,
       lifetimeSavings,
+      lifetimeNet,
+      lifetimeNetReal,
+      replacementCost,
       adjustedCost,
 
       // Environmental
@@ -910,10 +931,11 @@ const SolarAPI = {
       // System config
       systemWatts,
       systemKw,
+      inverterWatts,
+      dcAcRatio: this.dcAcRatio(systemWatts, inverterWatts),
       azimuth,
       tilt,
-      shadeFactor,
-      railingFactor,
+      mountType: mountType || SolarConfig.MOUNT_TYPE_DEFAULT,
       costTier: tier,
       escalationPreset: escalationPreset || 'mid',
       panelDegradation,
@@ -921,6 +943,31 @@ const SolarAPI = {
 
       // Data quality
       dataSources: { ...SolarState.dataSources },
+      neighborCount: SolarState.neighborBuildings ? SolarState.neighborBuildings.length : null,
+      neighborsTruncated: SolarState.neighborsTruncated,
     };
   },
+
+  /**
+   * Inverter clipping loss for an oversized array, from the PVWatts hourly
+   * study in the September 2026 audit (NYC, per tilt). Interpolated on the
+   * DC:AC ratio; zero at or below 1.1.
+   */
+  clippingLoss(dcAc, tilt) {
+    const table = tilt >= 85
+      ? [[1.1, 0.0007], [1.2, 0.0029], [1.375, 0.0092], [1.5, 0.0177], [2.0, 0.0786]]
+      : [[1.1, 0.0], [1.2, 0.0010], [1.375, 0.0092], [1.5, 0.0241], [2.0, 0.1279]];
+    if (dcAc <= table[0][0]) return 0;
+    for (let i = 1; i < table.length; i++) {
+      if (dcAc <= table[i][0]) {
+        const [r0, l0] = table[i - 1], [r1, l1] = table[i];
+        return l0 + (l1 - l0) * (dcAc - r0) / (r1 - r0);
+      }
+    }
+    return table[table.length - 1][1];
+  },
 };
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { SolarState, SolarAPI, getBoroughFromZip, soqlEscape, circleWkt, directionLabel };
+}

@@ -11,12 +11,13 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 
 // --- Minimal THREE stub -------------------------------------------------
-// The model files touch only Vector3 plus a handful of constructors used for
-// scene decoration, which the tests never inspect.
+// The shade model touches Three.js only to draw the balcony marker, and only
+// when a Scene3D.scene exists. Tests never inspect the marker.
 class Vector3 {
   constructor(x = 0, y = 0, z = 0) { this.x = x; this.y = y; this.z = z; }
   copy(v) { this.x = v.x; this.y = v.y; this.z = v.z; return this; }
   clone() { return new Vector3(this.x, this.y, this.z); }
+  set(x, y, z) { this.x = x; this.y = y; this.z = z; return this; }
 }
 const noop = class { constructor() { this.position = new Vector3(); this.rotation = { x: 0, y: 0, z: 0 }; } };
 const THREE = {
@@ -28,26 +29,35 @@ const THREE = {
   DoubleSide: 2,
 };
 
+// The model files, in dependency order. This list is the contract for
+// index.html's script tags too: keep them in step.
+const MODEL_FILES = [
+  'js/config.js',
+  'js/pvwatts-nyc-table.js',
+  'js/irradiance-nyc.js',
+  'js/self-consumption-table.js',
+  'js/sun-position.js',
+  'js/shade-geometry.js',
+  'js/self-consumption.js',
+  'js/3d-shadow-model.js',
+  'js/solar-api.js',
+];
+
 /**
  * Load the calculator's browser modules into one shared sandbox.
  * @param {object} [opts]
- * @param {object[]} [opts.buildingMeshes] - Scene3D.buildingMeshes contents
+ * @param {object[]} [opts.buildingMeshes] - Scene3D.buildingMeshes contents (display code only)
+ * @param {function} [opts.fetch] - a fetch stub, e.g. to replay a recorded PVWatts response
  * @returns {object} the loaded globals
  */
 function loadModules(opts = {}) {
   const Scene3D = {
-    scene: { add() {} },
+    scene: null,
     buildingMeshes: opts.buildingMeshes || [],
     targetBuilding: null,
   };
 
-  const files = [
-    'js/config.js',
-    'js/sun-position.js',
-    'js/3d-shadow-model.js',
-    'js/solar-api.js',
-  ];
-  const src = files.map(f => fs.readFileSync(path.join(ROOT, f), 'utf8')).join('\n;\n');
+  const src = MODEL_FILES.map(f => fs.readFileSync(path.join(ROOT, f), 'utf8')).join('\n;\n');
 
   const ctx = {
     THREE,
@@ -55,27 +65,25 @@ function loadModules(opts = {}) {
     console: { log() {}, warn() {}, error() {} },
     document: { getElementById: () => null },
     performance: { now: () => 0 },
-    fetch: async () => { throw new Error('network disabled in tests'); },
+    fetch: opts.fetch || (async () => { throw new Error('network disabled in tests'); }),
     AbortController,
     setTimeout,
     clearTimeout,
     module: undefined,
   };
 
-  // solar-api.js declares its own `SolarState`, so export that one rather than
-  // the placeholder above — tests must see the object the module actually uses.
   const exported = `
     return {
-      SolarConfig, SunPosition, ShadowModel, SolarAPI,
-      TILT_FACTORS, AZIMUTH_FACTORS, DEFAULT_MONTHLY_DISTRIBUTION,
-      getShadeFactor, getBoroughFromZip, soqlEscape,
-      SolarState,
+      SolarConfig, PVWattsTableNYC, IrradianceNYC, SelfConsumptionTable,
+      SunPosition, ShadeGeometry, SelfConsumption, ShadowModel, SolarAPI,
+      SolarState, getBoroughFromZip, soqlEscape, circleWkt, directionLabel,
     };`;
 
   const fn = new Function(...Object.keys(ctx), src + exported);
   const globals = fn(...Object.values(ctx));
   globals.Scene3D = Scene3D;
   globals.THREE = THREE;
+  globals.MODEL_FILES = MODEL_FILES;
   return globals;
 }
 
@@ -92,12 +100,27 @@ function it(name, fn) {
   try {
     fn();
     state.passed++;
-    console.log(`  [32mPASS[0m ${name}`);
+    console.log(`  \x1b[32mPASS\x1b[0m ${name}`);
   } catch (err) {
     state.failed++;
-    console.log(`  [31mFAIL[0m ${name}`);
+    console.log(`  \x1b[31mFAIL\x1b[0m ${name}`);
     console.log(`       ${err.message}`);
   }
+}
+
+/** Async variant: the runner awaits the promise before reporting. */
+const pending = [];
+function itAsync(name, fn) {
+  const suite = state.current;
+  const p = Promise.resolve().then(fn).then(() => {
+    state.passed++;
+    console.log(`  \x1b[32mPASS\x1b[0m ${name}`);
+  }, err => {
+    state.failed++;
+    console.log(`  \x1b[31mFAIL\x1b[0m ${name}  (${suite})`);
+    console.log(`       ${err.message}`);
+  });
+  pending.push(p);
 }
 
 function assert(cond, msg) {
@@ -123,14 +146,18 @@ function angleDiffDeg(a, b) {
   return d > 180 ? 360 - d : d;
 }
 
-function report() {
+async function report() {
+  await Promise.all(pending);
   console.log(`\n${'-'.repeat(52)}`);
   console.log(`${state.passed} passed, ${state.failed} failed`);
   if (state.failed > 0) process.exitCode = 1;
   return state.failed === 0;
 }
 
-/** Build a rectangular building footprint centred on (cx, cz). */
+/**
+ * Build a rectangular building entry centred on (cx, cz) in the local frame
+ * (x east, z south, north = -z). Width runs along x, depth along z.
+ */
 function box(cx, cz, width, depth, heightMeters, elevOffset = 0) {
   const w = width / 2, d = depth / 2;
   return {
@@ -143,7 +170,9 @@ function box(cx, cz, width, depth, heightMeters, elevOffset = 0) {
       { x: cx + w, z: cz + d },
       { x: cx - w, z: cz + d },
     ],
+    centroid: { x: cx, y: heightMeters / 2 + elevOffset, z: cz },
+    bin: '',
   };
 }
 
-module.exports = { loadModules, describe, it, assert, near, between, angleDiffDeg, report, box, THREE };
+module.exports = { loadModules, describe, it, itAsync, assert, near, between, angleDiffDeg, report, box, THREE, MODEL_FILES };

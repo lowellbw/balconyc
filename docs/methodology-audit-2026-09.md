@@ -357,11 +357,11 @@ Sensitivities at 90° south (1 kW, 841.3 kWh reference): albedo 0.30 with weathe
 
 Plane-of-array composition from hourly output: 90° south 62.7% beam / 29.9% sky diffuse / 7.6% ground-reflected, 12.8% of AC energy below 200 W/m²; 35° south 66.6 / 32.6 / 0.9, 7.2% below 200 W/m². NSRDB NYC GHI: 1,489 kWh/m²/yr, 61.5% beam.
 
-## Appendix C. Self-consumption simulation grid
+## Appendix B. Self-consumption simulation grid
 
 Source: `docs/data/self-consumption-sim-2026-09-02.csv`, 864 runs (3 occupancy variants × 4 consumption levels × 6 orientations × 4 sizes × 3 battery cases). Columns: occupancy, consumption_kwh, orientation, size_wdc, battery_kwh, pv_kwh, pv_over_cons, direct_kwh, exported_kwh, charged_kwh, discharged_kwh, self_consumption_fraction (share of production not exported), effective_savings_fraction (share of production that displaces purchases after battery losses), savings_usd at $0.34/kWh, savings_usd_if_100pct. PV profiles: PVWatts V8 hourly AC for 1 kW DC at 40.7128 N, 73.9960 W with the calculator's parameters, scaled by size. Annual yields used: vertical south 841, 35° south 1,295, 60° south 1,166, vertical south-west 782, vertical east 602, vertical west 574 kWh/kW.
 
-## Appendix B. Reproduction
+## Appendix C. Reproduction
 
 - `npm test` runs the shipped modules in Node. The numbers in section 2 come from `tests/harness.js` (`loadModules()`), for example `SolarAPI.calculateEstimate({azimuth:180, tilt:90, systemWatts:800, floor:8, totalFloors:15, shading:'some', monthlyBill:140})`.
 - PVWatts grid: one GET per cell to `https://developer.nlr.gov/api/pvwatts/v8.json` with the parameters in appendix A; `timeframe=hourly` for the composition analysis.

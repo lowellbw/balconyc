@@ -2,7 +2,8 @@
 // balco.nyc — 3D Scene Core (Shared by Version A & B)
 // ============================================================
 // Depends on: Three.js (global), OrbitControls (global),
-//             js/sun-position.js (SunPosition)
+//             js/sun-position.js (SunPosition), js/shade-geometry.js (ShadeGeometry),
+//             js/config.js (SolarConfig)
 // ============================================================
 
 const Scene3D = {
@@ -18,7 +19,8 @@ const Scene3D = {
   groundPlane: null,
 
   // Building data
-  buildingMeshes: [],    // [{ mesh, feature, isTarget, heightMeters, centroid, bin }]
+  buildingMeshes: [],    // rendered entries: { mesh, isTarget, heightMeters, elevOffset, localCoords, centroid, bin, heightFt }
+  shadeEntries: [],      // every neighbour entry, rendered or not (feeds the shade model)
   targetBuilding: null,  // reference to the target entry in buildingMeshes
   raycaster: null,
   mouse: null,
@@ -210,55 +212,49 @@ const Scene3D = {
   addBuildings(targetFeature, neighborFeatures, options = {}) {
     // Clear existing
     this.buildingMeshes.forEach(entry => {
+      if (!entry.mesh) return;
       this.scene.remove(entry.mesh);
       entry.mesh.geometry.dispose();
       if (entry.mesh.material.dispose) entry.mesh.material.dispose();
     });
     this.buildingMeshes = [];
+    this.shadeEntries = [];
     this.targetBuilding = null;
 
-    // Set origin from target building centroid
-    const targetCoords = this._extractCoords(targetFeature);
-    if (!targetCoords || targetCoords.length < 3) {
+    // Project everything into the shared local frame (x east, z south, y up).
+    const built = ShadeGeometry.buildEntries(targetFeature, neighborFeatures, {
+      defaultHeightFt: SolarConfig.DEFAULT_BUILDING_HEIGHT_FT,
+    });
+    if (!built) {
       console.warn('[Scene3D] Target building has no valid coordinates');
       return;
     }
-    const centroid = this._computeCentroid(targetCoords);
-    this.originLat = centroid.lat;
-    this.originLon = centroid.lon;
-    this.M_PER_DEG_LON = 111320 * Math.cos(this.originLat * Math.PI / 180);
+    this.originLat = built.origin.lat;
+    this.originLon = built.origin.lon;
+    this.M_PER_DEG_LON = built.origin.mPerDegLon;
+    this.targetGroundElev = built.origin.groundElevFt;
 
-    const targetProps = targetFeature.properties || targetFeature;
-    this.targetGroundElev = parseFloat(targetProps.ground_elevation || targetProps.groundelev || 0);
+    // Target building mesh
+    this._attachMesh(built.target, options.targetMaterial);
+    this.scene.add(built.target.mesh);
+    this.buildingMeshes.push(built.target);
+    this.targetBuilding = built.target;
 
-    // Create target building mesh
-    const targetMesh = this._createBuildingMesh(targetFeature, true, options.targetMaterial);
-    if (targetMesh) {
-      this.scene.add(targetMesh.mesh);
-      this.buildingMeshes.push(targetMesh);
-      this.targetBuilding = targetMesh;
-    }
-
-    // Create neighbor meshes
-    const targetBin = (targetProps.bin || '').toString();
-    let count = 0;
-    if (neighborFeatures && neighborFeatures.length) {
-      for (const feature of neighborFeatures) {
-        const props = feature.properties || feature;
-        const bin = (props.bin || '').toString();
-        // Skip the target building itself
-        if (targetBin && bin === targetBin) continue;
-
-        const entry = this._createBuildingMesh(feature, false, options.neighborMaterial);
-        if (entry) {
-          this.scene.add(entry.mesh);
-          this.buildingMeshes.push(entry);
-          count++;
-        }
+    // Neighbours: drawn when close, shade-only when far (the tall towers a
+    // kilometre away matter to the skyline but not to the picture).
+    let drawn = 0;
+    const sceneRadius = options.sceneRadiusM || SolarConfig.SCENE_RADIUS_M;
+    for (const entry of built.neighbors) {
+      if (ShadeGeometry.nearestDistance(entry) <= sceneRadius) {
+        this._attachMesh(entry, options.neighborMaterial);
+        this.scene.add(entry.mesh);
+        this.buildingMeshes.push(entry);
+        drawn++;
       }
+      this.shadeEntries.push(entry);
     }
 
-    console.log(`[Scene3D] Added ${count} neighbor buildings + target`);
+    console.log(`[Scene3D] Added ${drawn} neighbor meshes (+${this.shadeEntries.length - drawn} shade-only) + target`);
 
     // Center camera on target
     if (this.targetBuilding) {
@@ -272,45 +268,34 @@ const Scene3D = {
     this.sunNeedsUpdate = true;
   },
 
+  /** Every projected footprint, target first: what the shade model consumes. */
+  allEntries() {
+    return this.targetBuilding ? [this.targetBuilding, ...this.shadeEntries] : [];
+  },
+
   /**
-   * Create a Three.js mesh from a GeoJSON building feature.
-   * @returns {{ mesh, feature, isTarget, heightMeters, centroid, bin }} or null
+   * Extrude a projected footprint into a Three.js mesh and attach it to the
+   * entry. The shape is built with -z: ExtrudeGeometry followed by
+   * rotateX(-PI/2) maps shape (x, y) to world (x, -y), so feeding z directly
+   * mirrored every building north-south relative to the sun and the model.
    */
-  _createBuildingMesh(feature, isTarget, customMaterial) {
-    const coords = this._extractCoords(feature);
-    if (!coords || coords.length < 3) return null;
-
-    const props = feature.properties || feature;
-    const heightFt = parseFloat(props.height_roof || props.heightroof || 40);
-    const groundElevFt = parseFloat(props.ground_elevation || props.groundelev || 0);
-    const heightMeters = heightFt * 0.3048;
-    const elevOffset = (groundElevFt - this.targetGroundElev) * 0.3048;
-
-    // Create Shape from coordinates
+  _attachMesh(entry, customMaterial) {
     const shape = new THREE.Shape();
-    const localCoords = [];
-    for (let i = 0; i < coords.length; i++) {
-      const [lon, lat] = coords[i];
-      const x = (lon - this.originLon) * this.M_PER_DEG_LON;
-      const z = -(lat - this.originLat) * this.M_PER_DEG_LAT;
-      localCoords.push({ x, z });
-      if (i === 0) shape.moveTo(x, z);
-      else shape.lineTo(x, z);
-    }
+    entry.localCoords.forEach((p, i) => {
+      if (i === 0) shape.moveTo(p.x, -p.z);
+      else shape.lineTo(p.x, -p.z);
+    });
 
-    // Extrude
     const geometry = new THREE.ExtrudeGeometry(shape, {
-      depth: heightMeters,
+      depth: entry.heightMeters,
       bevelEnabled: false,
     });
-    // Rotate so extrusion goes up (Y) instead of forward (Z)
     geometry.rotateX(-Math.PI / 2);
 
-    // Material
     let material;
     if (customMaterial) {
       material = customMaterial.clone();
-    } else if (isTarget) {
+    } else if (entry.isTarget) {
       material = new THREE.MeshStandardMaterial({
         color: 0x3399ff,
         roughness: 0.6,
@@ -327,51 +312,22 @@ const Scene3D = {
     }
 
     const mesh = new THREE.Mesh(geometry, material);
-    mesh.position.y = elevOffset;
+    mesh.position.y = entry.elevOffset;
     mesh.castShadow = true;
     mesh.receiveShadow = true;
-
-    // Compute centroid in world space
-    const cent = this._computeCentroid(coords);
-    const cx = (cent.lon - this.originLon) * this.M_PER_DEG_LON;
-    const cz = -(cent.lat - this.originLat) * this.M_PER_DEG_LAT;
-    const centroid3D = new THREE.Vector3(cx, heightMeters / 2 + elevOffset, cz);
-
-    return {
-      mesh,
-      feature,
-      isTarget,
-      heightMeters,
-      elevOffset,
-      centroid: centroid3D,
-      localCoords,
-      bin: (props.bin || '').toString(),
-      heightFt,
-    };
+    entry.mesh = mesh;
+    entry.feature = entry.feature || null;
+    return entry;
   },
 
-  // --- Coordinate helpers ---
+  // --- Coordinate helpers (kept for callers; the projection lives in ShadeGeometry) ---
 
   _extractCoords(feature) {
-    let geom = feature.geometry;
-    if (!geom && feature.the_geom) {
-      try {
-        geom = typeof feature.the_geom === 'string' ? JSON.parse(feature.the_geom) : feature.the_geom;
-      } catch (e) { return null; }
-    }
-    if (!geom || !geom.coordinates) return null;
-    if (geom.type === 'MultiPolygon') return geom.coordinates[0][0];
-    if (geom.type === 'Polygon') return geom.coordinates[0];
-    return null;
+    return ShadeGeometry.extractCoords(feature);
   },
 
   _computeCentroid(coords) {
-    let latSum = 0, lonSum = 0;
-    for (const [lon, lat] of coords) {
-      latSum += lat;
-      lonSum += lon;
-    }
-    return { lat: latSum / coords.length, lon: lonSum / coords.length };
+    return ShadeGeometry.centroid(coords);
   },
 
   // --- Sun position ---
@@ -484,7 +440,7 @@ const Scene3D = {
     this.mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
 
     this.raycaster.setFromCamera(this.mouse, this.camera);
-    const meshes = this.buildingMeshes.map(e => e.mesh);
+    const meshes = this.buildingMeshes.filter(e => e.mesh).map(e => e.mesh);
     const intersects = this.raycaster.intersectObjects(meshes);
 
     let hoveredEntry = null;
@@ -633,10 +589,12 @@ const Scene3D = {
     if (this.canvas) this.canvas.removeEventListener('mousemove', this._boundOnMouseMove);
 
     this.buildingMeshes.forEach(entry => {
+      if (!entry.mesh) return;
       entry.mesh.geometry.dispose();
       if (entry.mesh.material.dispose) entry.mesh.material.dispose();
     });
     this.buildingMeshes = [];
+    this.shadeEntries = [];
 
     if (this.renderer) {
       this.renderer.dispose();

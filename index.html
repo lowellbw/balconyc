@@ -632,6 +632,20 @@
       /* Footer */
       footer { padding: 32px 0; }
     }
+    /* September 2026 additions: provenance banner, context lines, controls */
+    .estimate-banner { background: #F3F5F9; border-color: #D5DCE6; }
+    .estimate-banner.degraded { background: var(--warn-bg, #FAF3E3); border-color: #E8CE8E; }
+    .rc-context { font-size: 0.78rem; color: var(--text-sub); line-height: 1.45; margin: 6px 0 10px; }
+    .rh-context { font-size: 0.9rem; color: var(--text-sub); margin-top: 6px; }
+    .bd-cust-note { display: block; font-size: 0.74rem; color: var(--text-muted); margin-top: 4px; line-height: 1.4; }
+    .bd-cust-field.inert .bd-cust-segments { opacity: 0.45; pointer-events: none; }
+    .hero-message { display: none; margin: 8px 4px 0; font-size: 0.9rem; color: var(--accent); }
+    .hero-message.visible { display: block; }
+    .hero-privacy { margin: 8px 4px 0; font-size: 0.74rem; color: var(--text-muted); max-width: 580px; line-height: 1.45; }
+    .prompt-manual { display: inline-block; margin-top: 8px; padding: 6px 12px; border: 1px solid var(--border); border-radius: 999px; background: #fff; font: inherit; font-size: 0.78rem; font-weight: 600; color: var(--text); cursor: pointer; pointer-events: auto; }
+    .prompt-manual:hover, .prompt-manual:focus-visible { border-color: var(--accent); color: var(--accent); }
+    .scene3d-legend .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+    .scene3d-legend span { margin-right: 6px; }
   </style>
   <script type="application/ld+json">
   {
@@ -645,15 +659,16 @@
         "applicationCategory": "UtilityApplication",
         "applicationSubCategory": "Solar Energy Calculator",
         "operatingSystem": "Any (web)",
-        "browserRequirements": "Requires JavaScript and WebGL",
+        "browserRequirements": "Requires JavaScript; WebGL for the optional 3D view",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "description": "Estimates the annual electricity production, dollar savings, and CO₂ avoided by an 800W plug-in solar panel on any NYC balcony, using NREL PVWatts, NYC PLUTO building data, and a 3D shadow model of the building and its neighbors within 200m.",
+        "description": "Estimates the annual electricity production, the share used at home, dollar savings, and CO₂ avoided by an 800W plug-in solar panel on any NYC balcony, using NREL PVWatts, NYC building and street-tree data, and a 3D shadow model of the building and its neighbors.",
         "featureList": [
           "Address-level solar production estimate for any NYC building",
-          "3D shadow model accounting for neighboring buildings within 200m",
-          "Hourly simulation across 8,760 hours per year via NREL PVWatts V8",
+          "3D shadow model accounting for neighboring buildings (all within 200m, tall ones to 1.5 km) and street trees",
+          "NREL PVWatts V8 simulation (8,760-hour typical year) when the service is reachable, with an offline PVWatts table for NYC otherwise",
+          "Hourly self-consumption model: savings only on electricity used at home",
           "Con Edison SC-1 rate-based savings",
-          "Payback period and 25-year lifetime value"
+          "Payback period and 25-year value, nominal and in today's dollars"
         ],
         "publisher": { "@id": "https://balco.nyc/#org" },
         "areaServed": { "@type": "City", "name": "New York City" }
@@ -683,7 +698,7 @@
             "name": "Does it work for any apartment?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Any NYC address with sun on at least one side. A high-floor south-facing balcony can produce 3× what a low-floor north-facing one does. The 3D simulation accounts for neighbor buildings within 200m, so wide-avenue and midblock exposures come out differently."
+              "text": "Any NYC address with sun on at least one side. A high-floor south-facing balcony can produce three to six times what a low-floor north-facing one does. The 3D simulation accounts for neighbor buildings within 200m (and taller ones much further out) and for street trees, so wide-avenue and midblock exposures come out differently."
             }
           },
           {
@@ -699,7 +714,7 @@
             "name": "How accurate is this estimate?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Roughly within 15% of real-world production for a typical NYC apartment. We model the major shadows on your block but can't see micro-shading (a neighbor's AC unit, a corner tree) or know your exact panel orientation. That figure is a modeled uncertainty band, not a field-validated one; no measured NYC installations have been compared against it yet."
+              "text": "Probably within 15 to 25% of real-world production for a typical NYC apartment. We model the buildings and street trees around you from city data, but can't see micro-shading (a neighbor's AC unit, an awning) or know your exact panel placement, and the weather varies by a few percent from year to year. Savings depend even more on how much of the electricity you use as it is produced. That figure is a modeled uncertainty band, not a field-validated one; no measured NYC installations have been compared against it yet."
             }
           },
           {
@@ -707,7 +722,15 @@
             "name": "How is the estimate calculated?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "PVWatts hourly simulation, NYC building data, and a 3D shadow model of your block. Built on NREL, NYC PLUTO, Con Edison SC-1 rates, and EPA eGRID."
+              "text": "NREL's PVWatts hourly simulation for your location, NYC building and street-tree data, a 3D shadow model of your block, and an hourly model of how much of the output a NYC apartment uses as it is produced. Built on NREL, NYC PLUTO and Building Footprints, NYC Parks, Con Edison SC-1 rates, and EPA eGRID."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I get paid for electricity I don't use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Under the SUNNY Act a plug-in device is exempt from net metering, so anything the panel produces while your apartment is drawing less than it makes flows to the grid uncompensated (Con Edison's meters record it separately, so it is not billed to you either). For a typical apartment that is 8 to 15% of an 800W system's output; if nobody is home on weekdays it can be a third. The calculator counts savings only on the electricity used at home."
             }
           },
           {
@@ -723,7 +746,7 @@
             "name": "What electricity rate is used to compute savings?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Con Edison's residential rate, roughly 34¢/kWh in 2026, about 56% above the U.S. average. The Customize panel lets you adjust your monthly bill and the long-term rate escalation assumption."
+              "text": "Con Edison's residential SC-1 rate, roughly 35¢/kWh all-in in 2026 (excluding the fixed $21 customer charge, which solar cannot offset), about double the U.S. average of 17.3¢ in 2025. The Customize panel lets you adjust your monthly bill and the long-term rate escalation assumption."
             }
           }
         ]
@@ -778,6 +801,8 @@
         </div>
         <button type="button" class="hero-input-submit" id="heroSubmit" aria-label="Calculate">Calculate &rarr;</button>
       </div>
+      <p class="hero-message" id="heroMessage" role="status"></p>
+      <p class="hero-privacy">Privacy: each estimate is logged anonymously for analytics with your building's public lot and building IDs, coordinates rounded to about 100 m, and your inputs and results. Your street address is not stored.</p>
       <div class="hero-building-info" id="heroBuildingInfo"></div>
 
       <!-- Replaces input area after results are shown -->
@@ -790,13 +815,14 @@
     <!-- 3D viewport appears here after address -->
     <div class="scene-frame" id="sceneFrame">
       <div class="scene3d-wrap" id="scene3dContainer">
-        <canvas id="scene3dCanvas"></canvas>
+        <canvas id="scene3dCanvas" role="img" aria-label="3D model of your building and its neighbours. Click your balcony to select it, or use the button to enter details instead."></canvas>
         <button class="scene-modal-close" id="sceneModalClose" aria-label="Close">&#8592;</button>
 
     <!-- Click prompt -->
     <div class="click-prompt" id="clickPrompt">
       Click on your balcony to begin
       <div class="prompt-sub">Orbit the view to find your building (highlighted in blue)</div>
+      <button type="button" class="prompt-manual" id="promptManual">Enter details instead</button>
     </div>
 
     <!-- Modelling overlay with sun spinner -->
@@ -808,7 +834,7 @@
       </div>
       <div class="modelling-label">
         Modelling sunlight across your balcony
-        <span class="mod-sub">Simulating 8,760 hours of sun exposure...</span>
+        <span class="mod-sub">Checking every daylight hour of the year against your block...</span>
       </div>
     </div>
 
@@ -822,7 +848,7 @@
     <!-- Controls (hidden until after animation) -->
     <div class="scene3d-controls" id="sceneControls" style="display:none">
       <button class="scene3d-play-btn" id="playBtn">&#9654;</button>
-      <input type="range" class="scene3d-time-slider" id="timeSlider" min="330" max="1170" value="750" step="6">
+      <input type="range" class="scene3d-time-slider" id="timeSlider" min="300" max="1260" value="750" step="6">
       <span class="scene3d-time-label" id="timeLabel">12:30 PM</span>
       <div class="scene3d-month-btns">
         <button class="scene3d-month-btn" data-month="0">Jan</button>
@@ -833,6 +859,9 @@
       </div>
     </div>
 
+    <!-- Heatmap legend (filled by addSceneLegend) -->
+    <div class="scene3d-legend" id="sceneLegend" style="display:none" aria-hidden="true"></div>
+
     <!-- Floating results card -->
     <div class="results-card" id="floatingCard">
       <div class="rc-badge">YOUR ESTIMATE</div>
@@ -840,7 +869,7 @@
         <div>
           <div class="rc-label">You could save</div>
           <div class="rc-value" id="rcSavings">&mdash;</div>
-          <div class="rc-sub-label">per year</div>
+          <div class="rc-sub-label">per year, on electricity used at home</div>
         </div>
         <div>
           <div class="rc-label">Producing</div>
@@ -850,7 +879,8 @@
       </div>
       <div class="rc-detail-row"><span>CO2 avoided annually</span><strong id="rcCo2">&mdash;</strong></div>
       <div class="rc-detail-row"><span>Bill offset</span><strong id="rcOffset">&mdash;</strong></div>
-      <div class="rc-detail-row" style="border:none"><span>Payback period</span><strong id="rcPayback">&mdash;</strong></div>
+      <div class="rc-detail-row" style="border:none"><span>Payback (with rate rises)</span><strong id="rcPayback">&mdash;</strong></div>
+      <div class="rc-context" id="rcContext"></div>
       <a href="javascript:void(0)" class="rc-cta" onclick="openBreakdownModal()">See Full Breakdown</a>
     </div>
   </div>
@@ -873,6 +903,7 @@
       <div class="manual-field">
         <label for="manualTotalFloors">Floors in the building</label>
         <input type="number" id="manualTotalFloors" min="1" max="120" step="1" value="20">
+        <span class="manual-hint" id="manualFloorsHint"></span>
       </div>
       <div class="manual-field">
         <label for="manualDirection">Balcony faces</label>
@@ -900,14 +931,14 @@
     </div>
 
     <button type="button" class="manual-submit" id="manualSubmit">Calculate my estimate</button>
-    <p class="manual-hint">Without building geometry we use NYC floor and density averages, so this estimate is less precise than the 3D one.</p>
+    <p class="manual-hint">If we have your building's footprint, the same shade model runs here without the 3D view. Otherwise your description of the block is modelled as a typical street of that kind, which is less precise.</p>
   </div>
 </div>
 
 <!-- BREAKDOWN MODAL -->
-<div class="breakdown-overlay" id="breakdownOverlay">
+<div class="breakdown-overlay" id="breakdownOverlay" role="dialog" aria-modal="true" aria-label="Estimate breakdown">
   <div class="breakdown-modal">
-    <button class="bd-close" onclick="document.getElementById('breakdownOverlay').classList.remove('active')">&times;</button>
+    <button class="bd-close" aria-label="Close breakdown" onclick="document.getElementById('breakdownOverlay').classList.remove('active')">&times;</button>
 
     <!-- Section 1: Hero -->
     <div class="bd-hero">
@@ -916,6 +947,7 @@
         <div class="rh-unit">kWh/year</div>
       </div>
       <div class="rh-sub" id="annualKwhSub">from an 800W balcony system</div>
+      <div class="rh-context" id="bdContext"></div>
       <div class="bd-env-row">
         <div class="bd-env-item"><span class="bd-env-val" id="co2Offset">&mdash;</span><span class="bd-env-label">lbs CO2 avoided</span></div>
         <div class="bd-env-item"><span class="bd-env-val" id="treesEquiv">&mdash;</span><span class="bd-env-label">trees equivalent</span></div>
@@ -946,11 +978,16 @@
             <div class="bd-tl-item">
               <div class="tl-label">System pays for itself in</div>
               <div class="tl-value" id="paybackYears">&mdash;</div>
-              <div class="tl-note">Assumes electricity keeps rising at the rate set in Customize. Not discounted to present value.</div>
+              <div class="tl-note">Assumes electricity keeps rising at the rate set in Customize, and one inverter replacement in year 12. Not discounted to present value.</div>
             </div>
             <div class="bd-tl-item highlight">
-              <div class="tl-label">25-year total savings (nominal)</div>
+              <div class="tl-label">25-year net savings (nominal, after the inverter replacement)</div>
               <div class="tl-value" id="lifetimeSavings">&mdash;</div>
+              <div class="tl-note">In today's dollars: <strong id="lifetimeSavingsReal">&mdash;</strong></div>
+            </div>
+            <div class="bd-tl-item">
+              <div class="tl-label">Used at home</div>
+              <div class="tl-note" id="selfConsumptionLine">&mdash;</div>
             </div>
           </div>
 
@@ -968,7 +1005,7 @@
           <div class="bd-chart-title">Monthly Production</div>
           <div class="bd-chart-wrap">
             <div class="chart-container" id="monthlyChart"></div>
-            <div class="bd-chart-note">Avg NYC apartment uses ~350 kWh/mo</div>
+            <div class="bd-chart-note">Con Edison's typical NYC apartment uses about 280 kWh/mo</div>
           </div>
 
           <div class="bd-offset-row">
@@ -980,7 +1017,7 @@
               <div class="ring-pct" id="billOffset">&mdash;</div>
             </div>
             <div class="bd-offset-text">
-              Covers <strong id="billOffsetText">7%</strong> of typical apartment electricity usage
+              Covers <strong id="billOffsetText">7%</strong> of the electricity behind your bill
             </div>
           </div>
         </div>
@@ -1026,7 +1063,7 @@
           </div>
         </div>
 
-        <div class="bd-cust-field">
+        <div class="bd-cust-field" id="custShadingField">
           <label class="bd-cust-label">Surrounding shading</label>
           <div class="bd-cust-segments" data-cust="shading">
             <button type="button" data-val="open">Open</button>
@@ -1034,11 +1071,60 @@
             <button type="button" data-val="dense">Dense</button>
             <button type="button" data-val="wide_avenue">Wide avenue</button>
           </div>
+          <span class="bd-cust-note" id="custShadingNote"></span>
+        </div>
+
+        <div class="bd-cust-field">
+          <label class="bd-cust-label">Panel mount</label>
+          <div class="bd-cust-segments" data-cust="mountType">
+            <button type="button" data-val="rail" class="active">Hangs outside railing</button>
+            <button type="button" data-val="floor">Stands on floor</button>
+            <button type="button" data-val="wall">On back wall</button>
+          </div>
+          <span class="bd-cust-note">The balcony slab above shades a panel that sits back from the railing.</span>
+        </div>
+
+        <div class="bd-cust-field">
+          <label class="bd-cust-label">Inverter limit</label>
+          <div class="bd-cust-segments" data-cust="inverterWatts">
+            <button type="button" data-val="800" class="active">800W AC</button>
+            <button type="button" data-val="1200">1200W AC</button>
+          </div>
+        </div>
+
+        <div class="bd-cust-field">
+          <label class="bd-cust-label">Who is home in the day</label>
+          <div class="bd-cust-segments" data-cust="occupancy">
+            <button type="button" data-val="base" class="active">Out most weekdays</button>
+            <button type="button" data-val="wfh">Someone home</button>
+            <button type="button" data-val="away">Nobody weekdays</button>
+          </div>
+          <span class="bd-cust-note">Only electricity used as it is produced saves money; exports earn nothing.</span>
+        </div>
+
+        <div class="bd-cust-field">
+          <label class="bd-cust-label" for="custFloor">Your floor</label>
+          <input class="bd-cust-input" type="number" id="custFloor" min="1" max="120" step="1">
+        </div>
+
+        <div class="bd-cust-field">
+          <label class="bd-cust-label" for="custDirection">Balcony faces</label>
+          <select class="bd-cust-input" id="custDirection">
+            <option value="detected" selected>As selected</option>
+            <option value="180">South</option>
+            <option value="135">Southeast</option>
+            <option value="225">Southwest</option>
+            <option value="90">East</option>
+            <option value="270">West</option>
+            <option value="45">Northeast</option>
+            <option value="315">Northwest</option>
+            <option value="0">North</option>
+          </select>
         </div>
 
         <div class="bd-cust-field">
           <label class="bd-cust-label">Monthly electric bill</label>
-          <input class="bd-cust-input" type="number" id="custMonthlyBill" min="20" max="800" step="10" value="140">
+          <input class="bd-cust-input" type="number" id="custMonthlyBill" min="20" max="800" step="10" value="120">
         </div>
 
         <div class="bd-cust-field">
@@ -1122,12 +1208,13 @@
       </div>
       <div class="faq-list">
       <details class="faq-item"><summary>Is plug-in solar legal in NYC?<span class="faq-toggle">+</span></summary><p>Not yet, but it is close. New York requires utility approval for any device that pushes power back into a household circuit, which plug-in kits do. The <a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">SUNNY Act (S8512/A9111)</a> changes that. It passed the State Senate unanimously in April 2026 and the Assembly on 28 May 2026, and now awaits the Governor&rsquo;s signature. It takes effect 90 days after signing, so the realistic opening is early 2027. One thing to know: the Act removes the <em>utility</em> barrier only. It grants no right to install, so renters and co-op residents may still need landlord or board sign-off.</p></details>
-      <details class="faq-item"><summary>Does it work for any apartment?<span class="faq-toggle">+</span></summary><p>Any NYC address with sun on at least one side. A high-floor south-facing balcony can produce 3&times; what a low-floor north-facing one does. The 3D simulation accounts for neighbor buildings within 200m, so wide-avenue and midblock exposures come out differently.</p></details>
+      <details class="faq-item"><summary>Does it work for any apartment?<span class="faq-toggle">+</span></summary><p>Any NYC address with sun on at least one side. A high-floor south-facing balcony can produce three to six times what a low-floor north-facing one does. The 3D simulation accounts for neighbor buildings within 200m (and taller ones much further out) and for street trees, so wide-avenue and midblock exposures come out differently.</p></details>
       <details class="faq-item"><summary>How does it actually plug in?<span class="faq-toggle">+</span></summary><p>The panel connects to a small micro-inverter with a cord ending in a standard 120V plug, the same as anything else you plug into a household outlet. NYC balconies almost never have an outdoor outlet, so in practice the cord runs from the panel through a window or sliding door to an indoor outlet, often the same circuit you&rsquo;d use for a window AC. Secure the cord to the railing so it doesn&rsquo;t catch on anyone, and don&rsquo;t daisy-chain it through an extension cord. Kit manufacturers sell longer panel cables for runs over ~10 feet.</p></details>
-      <details class="faq-item"><summary>How accurate is this estimate?<span class="faq-toggle">+</span></summary><p>Within about 15% of real-world production for a typical NYC apartment. We model the major shadows on your block but can&rsquo;t see micro-shading (a neighbor&rsquo;s AC unit, a corner tree) or know your exact panel orientation. That band is modeled, not measured: no NYC installations have been metered against it yet, so treat it as a considered estimate rather than a validated tolerance.</p></details>
-      <details class="faq-item"><summary>How is this calculated?<span class="faq-toggle">+</span></summary><p>PVWatts hourly simulation, NYC building data, and a 3D shadow model of your block. Built on NREL, NYC PLUTO, Con Edison SC-1 rates, and EPA eGRID. <a href="/methodology">Read the full methodology &rarr;</a></p></details>
+      <details class="faq-item"><summary>How accurate is this estimate?<span class="faq-toggle">+</span></summary><p>Probably within 15 to 25% of real-world production for a typical NYC apartment. We model the buildings and street trees around you from city data, but can&rsquo;t see micro-shading (a neighbor&rsquo;s AC unit, an awning) or know your exact panel placement, and the weather varies by a few percent from year to year. Savings depend even more on how much of the electricity you use as it is produced, which is why the Customize panel asks who is home in the day. That band is modeled, not measured: no NYC installations have been metered against it yet, so treat it as a considered estimate rather than a validated tolerance.</p></details>
+      <details class="faq-item"><summary>How is this calculated?<span class="faq-toggle">+</span></summary><p>NREL&rsquo;s PVWatts hourly simulation for your location, NYC building and street-tree data, a 3D shadow model of your block, and an hourly model of how much of the output a NYC apartment uses as it is produced. Built on NREL, NYC PLUTO and Building Footprints, NYC Parks, Con Edison SC-1 rates, and EPA eGRID. <a href="/methodology">Read the full methodology &rarr;</a></p></details>
+      <details class="faq-item"><summary>Do I get paid for electricity I don&rsquo;t use?<span class="faq-toggle">+</span></summary><p>No. Under the SUNNY Act a plug-in device is exempt from net metering, so anything the panel produces while your apartment is drawing less than it makes flows to the grid uncompensated (Con Edison&rsquo;s meters record it separately, so it is not billed to you either). For a typical apartment that is 8 to 15% of an 800W system&rsquo;s output; if nobody is home on weekdays it can be a third. The calculator counts savings only on the electricity used at home.</p></details>
       <details class="faq-item"><summary>What does a kit cost?<span class="faq-toggle">+</span></summary><p>Less than it used to. Since <a href="https://www.brightsaver.org/balcony-solar-kits" target="_blank" rel="noopener">Bright Saver</a>, a nonprofit, began selling complete kits nationwide at cost in July 2026, a 360W kit runs about $414 for members and $699 otherwise. For a typical 800W NYC setup, budget roughly $850 at the wholesale end, $1,200 mid-range, and $1,600 for premium hardware. The Customize panel lets you switch tiers.</p></details>
-      <details class="faq-item"><summary>What rate is used to compute savings?<span class="faq-toggle">+</span></summary><p>Con Edison&rsquo;s residential rate, roughly 34&cent;/kWh in 2026, about 56% above the U.S. average. The Customize panel lets you adjust your monthly bill and the long-term rate escalation assumption.</p></details>
+      <details class="faq-item"><summary>What rate is used to compute savings?<span class="faq-toggle">+</span></summary><p>Con Edison&rsquo;s residential SC-1 rate, roughly 35&cent;/kWh all-in in 2026 (excluding the fixed $21 customer charge, which solar cannot offset), about double the U.S. average of 17.3&cent; in 2025. The Customize panel lets you adjust your monthly bill and the long-term rate escalation assumption.</p></details>
       </div>
     </div>
   </div>
@@ -1137,7 +1224,7 @@
 <footer>
   <div class="container">
     <a href="#" class="footer-logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
-    <p class="footer-disclaimer">balco.nyc is an independent open tool for estimating balcony solar potential in NYC. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL. Estimates are educational and may vary by about 15% from real-world production. Plug-in solar is not yet legal for residential use in New York: the SUNNY Act has passed both chambers and awaits the Governor&rsquo;s signature. <a href="/methodology">Full methodology &rarr;</a></p>
+    <p class="footer-disclaimer">balco.nyc is an independent open tool for estimating balcony solar potential in NYC. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL. Estimates are educational and may differ from real-world production by about 15 to 25%; savings depend above all on how much of the electricity is used at home. Plug-in solar is not yet legal for residential use in New York: the SUNNY Act has passed both chambers and awaits the Governor&rsquo;s signature. Estimates are logged anonymously (no street address). <a href="/methodology">Full methodology &rarr;</a></p>
     <p class="footer-meta">&copy; 2026</p>
   </div>
 </footer>
@@ -1147,8 +1234,14 @@
      (Three.js + OrbitControls + scene code) is ~600KB and is only needed once
      an address resolves, so it is injected on demand by loadSceneStack(). -->
 <script src="js/config.js"></script>
-<script src="js/solar-api.js"></script>
+<script src="js/pvwatts-nyc-table.js"></script>
+<script src="js/irradiance-nyc.js"></script>
+<script src="js/self-consumption-table.js"></script>
 <script src="js/sun-position.js"></script>
+<script src="js/shade-geometry.js"></script>
+<script src="js/self-consumption.js"></script>
+<script src="js/3d-shadow-model.js"></script>
+<script src="js/solar-api.js"></script>
 <script src="js/city-hero.js?v=0441c4cf" defer></script>
 <script>
 // ============================================================
@@ -1162,16 +1255,23 @@ let animationDone = false;
 let totalFloors = 20;
 let lastShadeProfile = null;
 let lastFormInputs = null;
+let lastClickPoint = null;       // where on the facade the visitor clicked (local frame)
+let neighborsFailed = false;     // the footprint query for the block failed: no 3D shade
+let headlessShade = false;       // shade model ran without WebGL (manual path with footprints)
+let floorsSource = 'default';    // 'pluto' | 'height' | 'default' | 'manual'
 
 // Default customizable assumptions (mirrors the modal's initial .active states)
 const CUSTOMIZE_DEFAULTS = {
   tilt: 90,
   systemWatts: 800,
+  inverterWatts: 800,
   costTier: 'mid',
   shading: 'some',
-  // ~350 kWh/mo (the NYC apartment average quoted in the breakdown) at the
-  // $0.34 marginal rate plus the ~$20 fixed customer charge.
-  monthlyBill: 140,
+  occupancy: 'base',
+  mountType: 'rail',
+  // Con Edison's typical NYC apartment uses about 280 kWh/month, which at the
+  // $0.35 marginal rate plus the $21 fixed customer charge is about $120.
+  monthlyBill: 120,
   escalationPreset: 'mid',
 };
 
@@ -1184,14 +1284,23 @@ function readCustomizeInputs() {
     const active = seg.querySelector('button.active');
     if (key && active) {
       const raw = active.getAttribute('data-val');
-      out[key] = (key === 'tilt' || key === 'systemWatts') ? Number(raw) : raw;
+      out[key] = (key === 'tilt' || key === 'systemWatts' || key === 'inverterWatts') ? Number(raw) : raw;
     }
   });
   const billEl = document.getElementById('custMonthlyBill');
   if (billEl && billEl.value) {
     const v = Number(billEl.value);
-    if (Number.isFinite(v) && v > 0) out.monthlyBill = v;
+    // The documented range is $20 to $800; typed values outside it are clamped.
+    if (Number.isFinite(v) && v > 0) out.monthlyBill = Math.min(800, Math.max(20, v));
   }
+  // Floor and direction corrections (the 3D click can land a floor off).
+  const floorEl = document.getElementById('custFloor');
+  if (floorEl && floorEl.value) {
+    const f = parseInt(floorEl.value, 10);
+    if (Number.isFinite(f) && f >= 1) out.floorOverride = f;
+  }
+  const dirEl = document.getElementById('custDirection');
+  if (dirEl && dirEl.value && dirEl.value !== 'detected') out.azimuthOverride = Number(dirEl.value);
   return out;
 }
 
@@ -1255,12 +1364,19 @@ async function recalculateFromCustomize() {
   if (btn) { btn.disabled = true; btn.textContent = 'Calculating...'; }
   const custom = readCustomizeInputs();
 
-  // Tilt changes the panel's angle of incidence and its sky view, so the 3D
-  // shade profile has to be recomputed rather than reused. The horizon profile
-  // itself is geometry-only and is cached inside ShadowModel.
-  let shadeProfile = lastShadeProfile;
-  if (shadeProfile && typeof ShadowModel !== 'undefined' && ShadowModel.initialized) {
+  // Corrections to what the click (or the form) produced.
+  if (custom.floorOverride) selectedFloor = Math.min(totalFloors, custom.floorOverride);
+  if (custom.azimuthOverride !== undefined) selectedAzimuth = custom.azimuthOverride;
+  delete custom.floorOverride; delete custom.azimuthOverride;
+
+  // Floor, direction, tilt and mount all change what the panel sees, so the
+  // shade profile is recomputed from the cached footprints rather than reused.
+  let shadeProfile = null;
+  if (lastShadeProfile && ShadowModel.initialized && ShadowModel.target) {
+    ShadowModel.init({ floor: selectedFloor, totalFloors: totalFloors, azimuthDeg: selectedAzimuth,
+                       clickPoint: lastClickPoint, mountType: custom.mountType });
     shadeProfile = ShadowModel.computeAnnualShadeProfile(custom.tilt);
+    shadeProfile.source = headlessShade ? '3d-headless' : '3d';
     lastShadeProfile = shadeProfile;
   }
 
@@ -1282,14 +1398,15 @@ async function recalculateFromCustomize() {
 }
 
 // --- DEFERRED SCRIPT LOADING ---
-// Three.js, OrbitControls and the scene modules total ~600KB and are useless
+// Three.js, OrbitControls and the scene module total ~600KB and are useless
 // until an address resolves, so they are fetched on demand rather than
-// blocking first paint. Supabase rides along since logging is fire-and-forget.
+// blocking first paint. The shade model itself is plain arithmetic and loads
+// with the page, so it also runs without WebGL. Supabase rides along since
+// logging is fire-and-forget.
 const SCENE_SCRIPTS = [
   'https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js',
   'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js',
   'js/3d-scene.js',
-  'js/3d-shadow-model.js',
 ];
 const ANALYTICS_SCRIPT = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
 
@@ -1353,16 +1470,26 @@ function initSupabase() {
 function logEstimate(result, formInputs) {
   initSupabase().then(function() {
     if (!supabaseClient) return;
+    // No street address: the building is identified by its public BBL/BIN
+    // and coordinates rounded to about 100 m. Disclosed under the address box.
+    const round3 = v => (v == null ? null : Math.round(v * 1000) / 1000);
     return supabaseClient.from('estimates').insert({
-      address: SolarState.address, lat: SolarState.lat, lon: SolarState.lon,
-      azimuth: formInputs.azimuth, tilt: formInputs.tilt,
-      system_watts: formInputs.systemWatts, floor_level: formInputs.floor,
-      total_floors: formInputs.totalFloors, shading: formInputs.shading,
+      bbl: SolarState.bbl, bin: SolarState.bin,
+      lat: round3(SolarState.lat), lon: round3(SolarState.lon),
+      azimuth: Math.round(formInputs.azimuth), tilt: formInputs.tilt,
+      system_watts: formInputs.systemWatts, inverter_watts: formInputs.inverterWatts,
+      floor_level: formInputs.floor, total_floors: formInputs.totalFloors,
+      shading: result.shadeSource === 'canonical' ? formInputs.shading : null,
+      shade_source: result.shadeSource, neighbor_count: result.neighborCount, tree_count: result.treeCount,
+      mount_type: formInputs.mountType, occupancy: result.occupancy,
       annual_kwh: Math.round(result.annualKwh * 10) / 10,
       annual_savings: Math.round(result.annualSavings * 100) / 100,
+      self_consumption: Math.round(result.selfConsumption * 1000) / 1000,
+      exported_kwh: Math.round(result.exportedKwh * 10) / 10,
       shade_factor: result.shadeFactor, used_pvwatts: result.usedPVWatts,
+      pvwatts_variant: result.pvwattsVariant,
       data_sources: result.dataSources,
-      calculator_version: '5',
+      calculator_version: '6',
     }).then(function(res) {
       if (res && res.error) console.warn('[Calc] Estimate logging failed:', res.error.message);
     });
@@ -1396,9 +1523,11 @@ async function submitTypedAddress() {
 
   if (typeof google === 'undefined' || !google.maps || !google.maps.Geocoder) {
     console.warn('[Calc] Geocoder unavailable');
-    input.focus();
+    showHeroMessage('Address lookup is unavailable right now. You can still get an estimate by describing your balcony.');
+    showManualPanel('Address lookup is unavailable, so this estimate uses a typical street of the kind you pick rather than your building.');
     return;
   }
+  showHeroMessage('');
 
   submitInFlight = true;
   const spinner = document.getElementById('heroSpinner');
@@ -1426,6 +1555,7 @@ async function submitTypedAddress() {
       input.value = query;
       input.focus();
       console.warn('[Calc] Address is outside NYC');
+      showHeroMessage('That address is outside New York City. The model only covers the five boroughs.');
       return;
     }
 
@@ -1443,8 +1573,17 @@ async function submitTypedAddress() {
     console.warn('[Calc] Address submit failed:', err.message);
     spinner.classList.remove('active');
     submitInFlight = false;
-    input.focus();
+    showHeroMessage('We could not find that address. Check the spelling, or describe your balcony instead.');
+    showManualPanel('We could not find that address, so this estimate uses a typical street of the kind you pick rather than your building.');
   }
+}
+
+/** Inline status under the address box (the console is not a user interface). */
+function showHeroMessage(text) {
+  const el = document.getElementById('heroMessage');
+  if (!el) return;
+  el.textContent = text || '';
+  el.classList.toggle('visible', !!text);
 }
 
 // --- ADDRESS SELECTED ---
@@ -1461,10 +1600,10 @@ async function onPlaceSelected(place) {
 
   await SolarAPI.runBuildingLookup();
 
-  // Ensure neighbors
-  if (!SolarState.neighborBuildings) {
-    await SolarAPI.fetchNeighborBuildings();
-  }
+  // The neighbour and tree queries were started by the lookup; wait for the
+  // same requests rather than issuing new ones.
+  await Promise.all([SolarAPI.fetchNeighborBuildings(), SolarAPI.fetchTrees()]);
+  neighborsFailed = SolarState.neighborBuildings == null;
 
   let stackLoaded = true;
   try { await stackPromise; } catch (e) { stackLoaded = false; }
@@ -1472,7 +1611,9 @@ async function onPlaceSelected(place) {
 
   spinner.classList.remove('active');
 
-  totalFloors = SolarState.numfloors || 20;
+  const floors = SolarAPI.resolveTotalFloors();
+  totalFloors = floors.totalFloors;
+  floorsSource = floors.source;
 
   // Show building info
   var infoHtml = '';
@@ -1527,9 +1668,16 @@ function showManualPanel(message) {
 
   // Seed the floor selector from PLUTO when we have it.
   const totalInput = document.getElementById('manualTotalFloors');
-  if (totalInput) totalInput.value = SolarState.numfloors || 20;
+  const floors = SolarAPI.resolveTotalFloors();
+  if (totalInput) totalInput.value = floors.totalFloors;
   const floorInput = document.getElementById('manualFloor');
-  if (floorInput) floorInput.value = Math.max(1, Math.round((SolarState.numfloors || 20) / 2));
+  if (floorInput) floorInput.value = Math.max(1, Math.round(floors.totalFloors / 2));
+  const floorsHint = document.getElementById('manualFloorsHint');
+  if (floorsHint) {
+    floorsHint.textContent = floors.source === 'pluto' ? 'From city records for this building.'
+      : floors.source === 'height' ? 'Estimated from the roof height; correct it if you know better.'
+      : 'We could not look this up; please enter it.';
+  }
 
   // Pre-select the detected facade when orientation succeeded.
   const suggestion = SolarState.orientationSuggestion;
@@ -1559,16 +1707,38 @@ async function runManualEstimate() {
     const shading = document.getElementById('manualShading').value;
 
     totalFloors = total;
+    floorsSource = 'manual';
     selectedFloor = floor;
     selectedAzimuth = azimuth;
-    lastShadeProfile = null;   // static shade factor path
 
     const custom = readCustomizeInputs();
     custom.shading = shading;
+    delete custom.floorOverride; delete custom.azimuthOverride;
     setCustomizeInputs(custom);
 
+    // With the building's footprint and its neighbours in hand, the real
+    // horizon model runs here without WebGL. Otherwise the description of the
+    // block is mapped to a canonical street and modelled the same way.
+    let shadeProfile = null;
+    headlessShade = false;
+    if (SolarState.footprintFeature && SolarState.neighborBuildings) {
+      const built = ShadeGeometry.buildEntries(SolarState.footprintFeature, SolarState.neighborBuildings,
+        { defaultHeightFt: SolarConfig.DEFAULT_BUILDING_HEIGHT_FT });
+      if (built) {
+        ShadowModel.reset();
+        ShadowModel.setBuildings([built.target, ...built.neighbors]);
+        ShadowModel.setTrees(ShadeGeometry.projectTrees(SolarState.trees || [], built.origin, SolarConfig.TREE_MODEL));
+        ShadowModel.init({ floor: floor, totalFloors: total, azimuthDeg: azimuth, mountType: custom.mountType });
+        shadeProfile = ShadowModel.computeAnnualShadeProfile(custom.tilt);
+        shadeProfile.source = '3d-headless';
+        headlessShade = true;
+      }
+    }
+    lastShadeProfile = shadeProfile;
+    lastClickPoint = null;
+
     const formInputs = Object.assign({
-      azimuth: azimuth, floor: floor, totalFloors: total, shadeProfile: null,
+      azimuth: azimuth, floor: floor, totalFloors: total, shadeProfile: shadeProfile,
     }, custom);
 
     const result = await SolarAPI.calculateEstimate(formInputs);
@@ -1597,7 +1767,7 @@ function initScene() {
     geometry: { type: 'Polygon', coordinates: [SolarState.footprintCoords] },
     properties: {
       bin: SolarState.bin,
-      height_roof: SolarState.heightroof || 60,
+      height_roof: SolarState.heightroof || SolarConfig.DEFAULT_BUILDING_HEIGHT_FT,
       ground_elevation: SolarState.groundelev || 0,
     },
   };
@@ -1633,6 +1803,15 @@ function initScene() {
     neighborMaterial: ghostMat,
   });
   Scene3D.updateSunArc();
+
+  // Hand the projected footprints (rendered or not) and the street trees to
+  // the shade model; it reads geometry, never meshes.
+  ShadowModel.reset();
+  ShadowModel.setBuildings(Scene3D.allEntries());
+  const origin = ShadeGeometry.makeOrigin(Scene3D.originLat, Scene3D.originLon, Scene3D.targetGroundElev);
+  ShadowModel.setTrees(ShadeGeometry.projectTrees(SolarState.trees || [], origin, SolarConfig.TREE_MODEL));
+  addTreeMeshes();
+  addSceneLegend();
 
   // Force resize to match container (immediate + delayed for CSS transitions)
   Scene3D._onResize();
@@ -1676,6 +1855,41 @@ function initScene() {
     onCanvasClick(e);
   });
 }
+
+// --- STREET TREES ---
+// Translucent crown cylinders so the visitor can see which trees the model
+// used. Positions come from the same projection the shade model uses.
+function addTreeMeshes() {
+  if (!Scene3D.scene || !ShadowModel.trees.length) return;
+  var mat = new THREE.MeshStandardMaterial({ color: 0x3f7a4a, transparent: true, opacity: 0.35, roughness: 0.9 });
+  ShadowModel.trees.forEach(function(t) {
+    if (Math.hypot(t.x, t.z) > SolarConfig.SCENE_RADIUS_M) return;
+    var h = Math.max(1, t.crownTop - t.crownBase);
+    var geo = new THREE.CylinderGeometry(t.radius, t.radius * 0.7, h, 10);
+    var mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(t.x, t.crownBase + h / 2, t.z);
+    Scene3D.scene.add(mesh);
+  });
+}
+
+function addSceneLegend() {
+  var el = document.getElementById('sceneLegend');
+  if (!el) return;
+  var c = ShadowModel.COLORS;
+  var hex = function(n) { return '#' + n.toString(16).padStart(6, '0'); };
+  el.innerHTML = '<span><i class="swatch" style="background:' + hex(c.target) + '"></i>your building</span>' +
+    '<span><i class="swatch" style="background:' + hex(c.high) + '"></i>shading you now</span>' +
+    '<span><i class="swatch" style="background:' + hex(c.low) + '"></i>a little</span>' +
+    '<span><i class="swatch" style="background:#3f7a4a"></i>street trees</span>';
+  el.style.display = '';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('promptManual');
+  if (btn) btn.addEventListener('click', function() {
+    showManualPanel('Enter your balcony details; we will model your block from its footprints without the 3D view.');
+  });
+});
 
 // --- STREET LABELS ---
 function addStreetLabels() {
@@ -1806,22 +2020,22 @@ function onCanvasClick(event) {
   // Ignore roof clicks (normal pointing up) and bottom clicks
   if (worldNormal.y > 0.5 || worldNormal.y < -0.5) return;
 
-  // Derive azimuth from the wall face normal (XZ plane)
-  // Normal points outward from the face. Azimuth = direction it faces.
-  // atan2(x, -z) gives clockwise-from-north angle
+  // Derive azimuth from the wall face normal (XZ plane). The normal points
+  // outward from the face; atan2(x, -z) gives the clockwise-from-north angle.
+  // It is NOT snapped to 45 degrees: PVWatts and the shade model both take
+  // the real facade direction (Manhattan's grid runs about 29 degrees off).
   var azimuthRad = Math.atan2(worldNormal.x, -worldNormal.z);
-  selectedAzimuth = ((azimuthRad * 180 / Math.PI) + 360) % 360;
-  // Snap to nearest 45 degrees
-  selectedAzimuth = Math.round(selectedAzimuth / 45) * 45;
-  if (selectedAzimuth === 360) selectedAzimuth = 0;
+  selectedAzimuth = Math.round((((azimuthRad * 180 / Math.PI) + 360) % 360) * 10) / 10;
 
-  // Derive floor from click height
+  // Derive the floor from the click height using the building's storey
+  // height (the slab below the click), and remember where along the facade
+  // the click landed.
   var entry = Scene3D.targetBuilding;
   var clickY = hit.point.y - (entry.elevOffset || 0);
-  var ratio = Math.max(0, Math.min(1, clickY / entry.heightMeters));
-  selectedFloor = Math.max(1, Math.min(totalFloors, Math.round(ratio * totalFloors)));
+  selectedFloor = ShadowModel.floorFromHeight(clickY, entry.heightMeters, totalFloors);
+  lastClickPoint = { x: hit.point.x, z: hit.point.z };
 
-  console.log('[Calc4] Balcony selected: floor ' + selectedFloor + ', azimuth ' + selectedAzimuth + '°');
+  console.log('[Calc] Balcony selected: floor ' + selectedFloor + ', azimuth ' + selectedAzimuth + ' deg');
 
   // Mark balcony as selected
   balconySelected = true;
@@ -1860,8 +2074,10 @@ function onCanvasClick(event) {
   panelGroup.lookAt(panelGroup.position.clone().add(worldNormal));
   Scene3D.scene.add(panelGroup);
 
-  // Initialize shadow model
-  ShadowModel.init(entry, selectedFloor, totalFloors, SolarState.heightroof || 60, selectedAzimuth);
+  // Place the panel in the shade model
+  headlessShade = false;
+  ShadowModel.init({ floor: selectedFloor, totalFloors: totalFloors, azimuthDeg: selectedAzimuth,
+                     clickPoint: lastClickPoint, mountType: readCustomizeInputs().mountType });
 
   // Update UI
   document.getElementById('clickPrompt').style.display = 'none';
@@ -1881,10 +2097,18 @@ async function runSunAnimation() {
 
   // Collect customizable assumptions from the breakdown modal (or defaults).
   var customInputs = readCustomizeInputs();
+  delete customInputs.floorOverride; delete customInputs.azimuthOverride;
 
   // Shade depends on the panel's tilt, so compute it for the selected mount.
-  var shadeProfile = ShadowModel.computeAnnualShadeProfile(customInputs.tilt);
-  console.log('[Calc] 3D shade factor:', shadeProfile.annualShadeFactor.toFixed(3));
+  // If the block's footprints never arrived there is no skyline to sweep, so
+  // the estimate falls back to the canonical street for the chosen shading
+  // (and says so) rather than treating an empty scene as open sky.
+  var shadeProfile = null;
+  if (!neighborsFailed) {
+    shadeProfile = ShadowModel.computeAnnualShadeProfile(customInputs.tilt);
+    shadeProfile.source = '3d';
+    console.log('[Calc] 3D shade factor:', shadeProfile.annualShadeFactor.toFixed(3));
+  }
 
   var formInputs = Object.assign({
     azimuth: selectedAzimuth,
@@ -1950,42 +2174,77 @@ async function runSunAnimation() {
 
 // --- SHOW RESULTS ---
 /**
- * Tell the visitor when an estimate did not use the full pipeline. The
- * methodology promises this notice; without it a fallback-formula number is
- * presented with the same confidence as a PVWatts-plus-3D one.
+ * Say what this estimate actually used. The methodology promises that every
+ * substitution is disclosed, so this is shown for every run, not only the
+ * degraded ones: which production engine, which shading geometry, where the
+ * floor count came from, and how much of the output counts as savings.
  */
-function updateEstimateBanner(r) {
+function updateEstimateBanner(r, inputs) {
   const banner = document.getElementById('estimateBanner');
   if (!banner) return;
   const notes = [];
+  let degraded = false;
 
-  if (!r.usedPVWatts) {
-    notes.push('NREL PVWatts was unreachable, so this uses our client-side fallback formula. Expect a wider error band (about 20%).');
-  }
-  if (!r.shadeFactorFrom3D) {
-    notes.push('No 3D building model was available, so shading comes from NYC floor and density averages rather than your actual block.');
+  if (r.usedPVWatts) {
+    notes.push('Production from NREL PVWatts V8 (8,760-hour typical year for this location' +
+      (r.pvwattsVariant === 'soiling folded into losses' ? ', soiling folded into the loss factor' : '') + ').');
+  } else {
+    degraded = true;
+    notes.push('NREL PVWatts was unreachable, so production comes from our offline PVWatts table for NYC (same engine and parameters, computed at the city centre). Expect a wider error band.');
   }
 
-  if (notes.length === 0) {
-    banner.classList.remove('visible');
-    banner.innerHTML = '';
-    return;
+  if (r.shadeSource === '3d' || r.shadeSource === '3d-headless') {
+    let s = 'Shading from the 3D model of your block: ' + (r.neighborCount || 0) + ' buildings' +
+      (r.treeCount ? ' and ' + r.treeCount + ' street trees' : '') + ' within range.';
+    if (r.neighborsTruncated) { degraded = true; s += ' The footprint query hit its size limit, so a few distant buildings may be missing.'; }
+    const outliers = (typeof ShadowModel !== 'undefined' && ShadowModel.initialized) ? ShadowModel.tallOutliers() : 0;
+    if (outliers) s += ' ' + outliers + ' neighbour' + (outliers > 1 ? 's are' : ' is') + ' modelled at full roof height (setback towers over-shade a little).';
+    if (r.shadeSource === '3d-headless') s += ' (Computed without the 3D view.)';
+    notes.push(s);
+  } else if (r.shadeSource === 'canonical') {
+    degraded = true;
+    const names = { open: 'an open site', some: 'a typical side street with buildings opposite', dense: 'a dense block with tall neighbours', wide_avenue: 'a wide avenue' };
+    notes.push((neighborsFailed ? 'The footprints of your block could not be loaded, so shading' : 'Without your building\'s footprint, shading') +
+      ' is modelled on ' + (names[inputs.shading] || 'a typical street') + ' rather than your actual block.');
+  } else {
+    degraded = true;
+    notes.push('No shading model was available; this estimate assumes an unobstructed balcony.');
   }
-  banner.innerHTML = '<span aria-hidden="true">&#9888;</span><span><strong>About this estimate.</strong> ' +
+
+  if (floorsSource === 'height') { degraded = true; notes.push('The building\'s floor count was estimated from its roof height.'); }
+  if (floorsSource === 'default') { degraded = true; notes.push('The floor count could not be looked up; a 20-storey building is assumed.'); }
+  if (SolarState.footprintSource === 'nearby') { degraded = true; notes.push('The footprint was chosen by proximity to the geocoded point, so it may be a neighbouring building.'); }
+
+  notes.push('Savings count only the ' + Math.round(r.selfConsumption * 100) + '% of production used at home (' +
+    Math.round(r.exportedKwh) + ' kWh/yr would be exported, uncompensated under the SUNNY Act). Change who is home in Customize.');
+
+  banner.innerHTML = '<span aria-hidden="true">' + (degraded ? '&#9888;' : '&#9432;') + '</span><span><strong>What this estimate used.</strong> ' +
     notes.join(' ') + '</span>';
+  banner.classList.toggle('degraded', degraded);
   banner.classList.add('visible');
 }
 
 function showResults(r, inputs) {
-  r.shadeFactorFrom3D = !!(inputs && inputs.shadeProfile && inputs.shadeProfile.monthlyShadeFactors);
-  updateEstimateBanner(r);
+  r.shadeFactorFrom3D = r.shadeSource === '3d' || r.shadeSource === '3d-headless';
+  updateEstimateBanner(r, inputs);
 
   // Floating card — lead with savings
   document.getElementById('rcSavings').textContent = '$' + Math.round(r.annualSavings);
-  document.getElementById('rcKwh').textContent = Math.round(r.annualKwh).toLocaleString() + ' kWh';
+  document.getElementById('rcKwh').textContent = Math.round(r.annualKwh).toLocaleString('en-US') + ' kWh';
   document.getElementById('rcPayback').textContent = r.escalatedPayback < 25 ? r.escalatedPayback.toFixed(1) + ' yrs' : '25+ yrs';
   document.getElementById('rcOffset').textContent = Math.round(r.billOffsetPct) + '%';
   document.getElementById('rcCo2').textContent = Math.round(r.co2Lbs) + ' lbs';
+
+  // What was modelled: floor, facing, direct sun. Shown so a mis-click can be seen and corrected.
+  const sun = r.directSunHours || ((typeof ShadowModel !== 'undefined' && ShadowModel.initialized && r.shadeFactorFrom3D)
+    ? { jun: ShadowModel.directSunHours(5, r.tilt), dec: ShadowModel.directSunHours(11, r.tilt) } : null);
+  const facing = directionLabel(r.azimuth).toLowerCase() + (Math.abs(r.azimuth - Math.round(r.azimuth / 45) * 45) > 2 ? ' (' + Math.round(r.azimuth) + '\u00B0)' : '');
+  let context = 'Floor ' + inputs.floor + ' of ' + inputs.totalFloors + ', facing ' + facing;
+  if (sun) context += ' \u00B7 direct sun about ' + sun.jun.toFixed(1) + ' h/day in June, ' + sun.dec.toFixed(1) + ' h in December';
+  const ctxEl = document.getElementById('rcContext');
+  if (ctxEl) ctxEl.textContent = context;
+  const bdCtx = document.getElementById('bdContext');
+  if (bdCtx) bdCtx.textContent = context + '. ' + Math.round(r.selfConsumption * 100) + '% of production used at home.';
 
   document.getElementById('floatingCard').classList.add('visible');
   document.getElementById('bldgInfoPanel').style.display = 'none';
@@ -1995,26 +2254,34 @@ function showResults(r, inputs) {
   if (h1El) h1El.textContent = 'Solar on your balcony could save you ~$' + Math.round(r.annualSavings) + '/year';
 
   // Breakdown modal content
-  document.getElementById('annualKwh').textContent = Math.round(r.annualKwh).toLocaleString();
-  document.getElementById('annualKwhSub').textContent = 'from an ' + r.systemWatts + 'W balcony system';
+  document.getElementById('annualKwh').textContent = Math.round(r.annualKwh).toLocaleString('en-US');
+  document.getElementById('annualKwhSub').textContent = 'from ' + (String(r.systemWatts)[0] === '8' ? 'an ' : 'a ') + r.systemWatts + 'W balcony system';
   document.getElementById('annualSavings').textContent = '$' + Math.round(r.annualSavings) + '/year';
   document.getElementById('monthlySavings').textContent = '$' + Math.round(r.monthlySavings) + '/mo';
   document.getElementById('billOffset').textContent = Math.round(r.billOffsetPct) + '%';
   document.getElementById('billOffsetText').textContent = Math.round(r.billOffsetPct) + '%';
   var paybackYrs = r.escalatedPayback < 25 ? r.escalatedPayback.toFixed(1) + ' years' : '25+ years';
   document.getElementById('paybackYears').textContent = paybackYrs;
-  document.getElementById('lifetimeSavings').textContent = '$' + Math.round(r.lifetimeSavings).toLocaleString();
-  document.getElementById('co2Offset').textContent = Math.round(r.co2Lbs).toLocaleString();
+  document.getElementById('lifetimeSavings').textContent = '$' + Math.round(r.lifetimeNet).toLocaleString('en-US');
+  const realEl = document.getElementById('lifetimeSavingsReal');
+  if (realEl) realEl.textContent = '$' + Math.round(r.lifetimeNetReal).toLocaleString('en-US');
+  const selfEl = document.getElementById('selfConsumptionLine');
+  if (selfEl) {
+    selfEl.textContent = Math.round(r.selfConsumedKwh) + ' of ' + Math.round(r.annualKwh) + ' kWh used at home (' +
+      Math.round(r.selfConsumption * 100) + '%). A 1 kWh battery would add about ' + Math.round(r.battery1kWhExtraKwh) +
+      ' kWh/yr ($' + Math.round(r.battery1kWhExtraKwh * SolarConfig.ELECTRICITY_RATE) + '), so it rarely pays for itself.';
+  }
+  document.getElementById('co2Offset').textContent = Math.round(r.co2Lbs).toLocaleString('en-US');
   document.getElementById('treesEquiv').textContent = r.treesEquiv.toFixed(1);
-  document.getElementById('milesOffset').textContent = Math.round(r.milesOffset).toLocaleString();
-  document.getElementById('phonesCharged').textContent = Math.round(r.phonesCharged).toLocaleString();
+  document.getElementById('milesOffset').textContent = Math.round(r.milesOffset).toLocaleString('en-US');
+  document.getElementById('phonesCharged').textContent = Math.round(r.phonesCharged).toLocaleString('en-US');
 
   // Payback bar
   var paybackPct = Math.min(100, (r.escalatedPayback / 25) * 100);
   var freePct = 100 - paybackPct;
   var pbFill = document.getElementById('paybackFill');
   pbFill.style.width = paybackPct + '%';
-  pbFill.textContent = r.escalatedPayback < 25 ? Math.round(r.escalatedPayback) + ' yrs' : '25+';
+  pbFill.textContent = r.escalatedPayback < 25 ? r.escalatedPayback.toFixed(1) + ' yrs' : '25+';
   pbFill.nextElementSibling.textContent = freePct > 5 ? Math.round(25 - r.escalatedPayback) + '+ yrs free' : '';
 
   // Bill offset ring
@@ -2022,6 +2289,15 @@ function showResults(r, inputs) {
   var circumference = 2 * Math.PI * 22; // r=22
   var dashoffset = circumference - (circumference * Math.min(offsetPct, 100) / 100);
   document.getElementById('offsetCircle').setAttribute('stroke-dashoffset', dashoffset);
+
+  // The shading picker only matters when the block itself is not modelled.
+  const shadingField = document.getElementById('custShadingField');
+  const shadingNote = document.getElementById('custShadingNote');
+  if (shadingField) shadingField.classList.toggle('inert', !!r.shadeFactorFrom3D);
+  if (shadingNote) shadingNote.textContent = r.shadeFactorFrom3D
+    ? 'Not used: shading comes from the model of your block.' : '';
+  const floorEl = document.getElementById('custFloor');
+  if (floorEl) { floorEl.value = inputs.floor; floorEl.max = inputs.totalFloors; }
 
   renderChart(r.monthlyKwh);
 }
@@ -2056,7 +2332,14 @@ function resetCalculator() {
   totalFloors = 20;
   lastShadeProfile = null;
   lastFormInputs = null;
+  lastClickPoint = null;
+  neighborsFailed = false;
+  headlessShade = false;
+  floorsSource = 'default';
   setCustomizeInputs(CUSTOMIZE_DEFAULTS);
+  const dirSel = document.getElementById('custDirection');
+  if (dirSel) dirSel.value = 'detected';
+  showHeroMessage('');
   var custDetails = document.getElementById('bdCustomize');
   if (custDetails) custDetails.removeAttribute('open');
   SolarState.reset();

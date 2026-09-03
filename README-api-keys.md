@@ -6,7 +6,7 @@ Complete guide to setting up every API the calculator uses. Most are free. Googl
 
 ## 1. NREL API Key (FREE)
 
-Powers the core energy model (PVWatts) and solar resource data.
+Powers the core energy model (PVWatts V8). NREL became the National Laboratory of the Rockies in 2025; the API lives on `developer.nlr.gov` (the old nrel.gov host no longer resolves).
 
 | | |
 |---|---|
@@ -27,7 +27,8 @@ Powers the core energy model (PVWatts) and solar resource data.
 
 **Used by:**
 - `NREL PVWatts V8` — https://developer.nlr.gov/api/pvwatts/v8.json (energy production model)
-- `NREL Solar Resource` — https://developer.nlr.gov/api/solar/solar_resource/v1.json (irradiance data)
+- `scripts/build-pvwatts-table.mjs` and `scripts/build-irradiance-table.mjs` (regenerate the offline tables in `js/` after any PVWatts parameter change; 32 + 1 requests)
+- `scripts/build-self-consumption-table.mjs` (regenerates `js/self-consumption-table.js` from the newest `docs/data/self-consumption-sim-*.csv`; no network)
 
 **Docs:** https://developer.nlr.gov/docs/solar/pvwatts/v8/
 
@@ -40,8 +41,8 @@ Powers address autocomplete and geocoding.
 | | |
 |---|---|
 | **Console** | https://console.cloud.google.com/ |
-| **Cost** | ~$2.83 per 1,000 autocomplete sessions + ~$5 per 1,000 geocode requests |
-| **Free tier** | $200/month free credit (covers ~25,000 autocomplete sessions) |
+| **Cost** | Per-SKU pricing with per-SKU monthly free tiers (since March 2025). Check the current sheet before budgeting: https://developers.google.com/maps/billing-and-pricing/pricing |
+| **Free tier** | Per SKU (Autocomplete and Geocoding each have their own monthly allowance) |
 | **Rate limit** | Generous (thousands/sec) |
 | **Client-safe?** | Yes — restrict to your domain |
 
@@ -62,7 +63,7 @@ Powers address autocomplete and geocoding.
    GOOGLE_API_KEY: 'AIzaSy...',
    ```
 
-**Monthly cost at 1,000 estimates:** ~$8 (well within $200 free credit)
+**Monthly cost at 1,000 estimates:** a few dollars at most; the per-SKU free tiers cover low volumes.
 
 **Docs:** https://developers.google.com/maps/documentation/javascript/places-autocomplete
 
@@ -123,7 +124,8 @@ Higher rate limits for PLUTO and Building Footprints queries. Works without a to
 
 **Datasets accessed:**
 - **PLUTO** — https://data.cityofnewyork.us/City-Government/Primary-Land-Use-Tax-Lot-Output-PLUTO-/64uk-42ks
-- **Building Footprints** — https://data.cityofnewyork.us/City-Government/Building-Footprints/5zhs-2jue
+- **Building Footprints**: https://data.cityofnewyork.us/City-Government/Building-Footprints/5zhs-2jue (queried with `intersects()`, in three tiers: everything within 200 m, buildings over 150 ft within 500 m, over 350 ft within 1.5 km)
+- **Forestry Tree Points**: https://data.cityofnewyork.us/Environment/Forestry-Tree-Points/hn5i-inap (street trees within 80 m, for the shade model)
 
 ---
 
@@ -131,14 +133,12 @@ Higher rate limits for PLUTO and Building Footprints queries. Works without a to
 
 | API | Cost | Required? |
 |---|---|---|
-| NREL PVWatts + Solar Resource | **Free** | Yes — core energy model |
-| Google Maps + Places | **~$8/mo** at 1K estimates (has $200/mo free credit) | Yes — address autocomplete |
+| NREL/NLR PVWatts | **Free** | Yes, core energy model (an offline PVWatts table for NYC covers outages) |
+| Google Maps + Places | **Free at low volume** (per-SKU free tiers), a few $/1,000 estimates above that | Yes, address autocomplete |
 | NYC Geoclient | **Free** | Recommended — enables building data lookup |
-| NYC Socrata (PLUTO + Footprints) | **Free** | Recommended — building info + orientation |
-| **Total at 1,000 estimates/month** | **~$8/month** | |
-| **Total at 10,000 estimates/month** | **~$80/month** | |
-
-The $200/month Google free credit means you pay **$0 until ~25,000 estimates/month**.
+| NYC Socrata (PLUTO + Footprints + Tree Points) | **Free** | Recommended, building info, orientation, 3D shade |
+| **Total at 1,000 estimates/month** | **about $0** | |
+| **Total at 10,000 estimates/month** | **tens of dollars, Google only** | |
 
 ---
 
@@ -156,7 +156,7 @@ If you re-enable this feature, set a budget cap on the Gemini key in Google Clou
 npm test        # node tests/run.js — no dependencies
 ```
 
-The suite loads the shipped files in `js/` directly, so it tests exactly what the browser runs. Add a failing test before changing any model constant.
+The suite loads the shipped files in `js/` directly, so it tests exactly what the browser runs, including the PVWatts path against a recorded response in `tests/fixtures/`. Add a failing test before changing any model constant, and re-run `node scripts/build-pvwatts-table.mjs` after changing a PVWatts parameter.
 
 ---
 
@@ -167,7 +167,8 @@ The suite loads the shipped files in `js/` directly, so it tests exactly what th
 edit js/config.js
 # → Add NREL_API_KEY, GOOGLE_API_KEY, SOCRATA_APP_TOKEN
 
-# 2. Set Geoclient key for the serverless proxy
+# 2. Set Geoclient key for the serverless proxy (the proxy only answers
+#    requests from balco.nyc or localhost:3000, 60 per IP per hour)
 echo "NYC_GEOCLIENT_KEY=your_key" > .env.local
 
 # 3. Run with Vercel dev server (needed for /api/geoclient proxy)

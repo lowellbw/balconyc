@@ -67,12 +67,14 @@
       api_host: API_HOST,
       person_profiles: 'identified_only',
       respect_dnt: true,
-      autocapture: {
-        // Autocapture reports which element was interacted with. It must not
-        // report what was typed into it.
-        mask_all_element_attributes: true,
-        mask_all_text: false
-      },
+
+      // These two belong at the top level. They are PostHogConfig keys, while
+      // AutocaptureConfig holds only allowlists and ignorelists — so nesting
+      // them under `autocapture` drops them silently and both fall back to
+      // false. Autocapture itself stays on; true is its default.
+      mask_all_element_attributes: true,   // which element was used, not its attributes
+      mask_all_text: false,                // button labels stay readable; they carry nothing
+
       session_recording: {
         maskAllInputs: true,                  // never record a typed value
         maskTextSelector: '[data-private]'    // and mask anything marked private

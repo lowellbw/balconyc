@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Enter any NYC address. See how much electricity, money, and CO₂ an 800W plug-in solar panel could produce on your balcony, modeled from real building geometry and a year of sun.">
-  <title>balco.nyc · NYC's Balcony Solar Calculator</title>
+  <meta name="description" content="See what balcony solar would save at your NYC address: 400–900 kWh a year, $136–$306 at Con Edison's real 34¢ rate, modelled from your own building's shadows.">
+  <title>NYC Balcony Solar Savings Calculator · balco.nyc</title>
   <link rel="icon" type="image/webp" href="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp">
   <link rel="icon" type="image/png" href="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png">
   <link rel="apple-touch-icon" href="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png">
@@ -13,16 +13,16 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="balco.nyc">
   <meta property="og:url" content="https://balco.nyc/">
-  <meta property="og:title" content="balco.nyc · NYC's Balcony Solar Calculator">
-  <meta property="og:description" content="Enter any NYC address. See how much electricity, money, and CO₂ an 800W plug-in solar panel could produce on your balcony, modeled from real building geometry and a year of sun.">
+  <meta property="og:title" content="NYC Balcony Solar Savings Calculator">
+  <meta property="og:description" content="See what balcony solar would save at your NYC address: 400–900 kWh a year, $136–$306 at Con Edison's real 34¢ rate, modelled from your own building's shadows.">
   <!-- JPEG rather than WebP: several link scrapers still refuse WebP previews. -->
   <meta property="og:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1920">
   <meta property="og:image:height" content="1047">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="balco.nyc · NYC's Balcony Solar Calculator">
-  <meta name="twitter:description" content="Enter any NYC address. See how much electricity, money, and CO₂ an 800W plug-in solar panel could produce on your balcony, modeled from real building geometry and a year of sun.">
+  <meta name="twitter:title" content="NYC Balcony Solar Savings Calculator">
+  <meta name="twitter:description" content="See what balcony solar would save at your NYC address: 400–900 kWh a year, $136–$306 at Con Edison's real 34¢ rate, modelled from your own building's shadows.">
   <meta name="twitter:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,7 +49,10 @@
       --green: #10B981; --green-light: #D1FAE5; --border: #E2E8F0;
       --card: #FFFFFF; --radius: 12px; --radius-lg: 16px;
     }
-    html { scroll-behavior: smooth; }
+    /* The nav is fixed, so an anchor jump lands under it unless the scroll
+       stops short. 84px on desktop, 64px on mobile, plus a little air. */
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    @media (max-width: 768px) { html { scroll-padding-top: 80px; } }
     body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
     .container { max-width: 1360px; margin: 0 auto; padding: 0 40px; }
 
@@ -521,6 +524,23 @@
     footer a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
 
     /* GUIDES */
+    /* SAVINGS */
+    .savings { padding: 96px 0; background: var(--teal-light); border-top: 1px solid var(--border); }
+    .savings h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 14px; max-width: 22ch; }
+    .savings .section-lede { font-size: 1.08rem; color: var(--text-sub); max-width: 62ch; margin: 0 0 36px; }
+    .savings-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); }
+    .savings-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; min-width: 540px; }
+    .savings-table th { text-align: left; font-weight: 600; font-size: 0.76rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); padding: 14px 18px; border-bottom: 1px solid var(--border); }
+    .savings-table td { padding: 14px 18px; border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; }
+    .savings-table tbody tr:last-child td { border-bottom: none; }
+    .savings-table td small { color: var(--text-muted); font-size: 0.82rem; display: block; font-variant-numeric: normal; }
+    .savings-note { font-size: 0.9rem; color: var(--text-sub); max-width: 78ch; margin: 16px 0 0; }
+    .savings-points { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin-top: 52px; }
+    .savings-points h3 { font-size: 1.05rem; font-weight: 600; margin: 0 0 8px; }
+    .savings-points p { font-size: 0.97rem; color: var(--text-sub); margin: 0; }
+    .savings a { color: var(--accent); }
+    @media (max-width: 768px) { .savings { padding: 64px 0; } }
+
     .guides { padding: 96px 0; background: var(--bg); border-top: 1px solid var(--border); }
     .guides h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 14px; max-width: 20ch; }
     .guides-lede { font-size: 1.08rem; color: var(--text-sub); max-width: 56ch; margin: 0 0 40px; }
@@ -700,6 +720,14 @@
         "dateModified": "2026-09-04",
         "inLanguage": "en-US",
         "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does balcony solar save in NYC?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "An 800 W balcony system in New York City produces roughly 400 to 900 kWh a year, worth $136 to $306 at Con Edison's all-in marginal rate of about 34 cents per kWh. On a $1,200 mid-range kit that is a payback of between 3.8 and 8.1 years. The spread is about 3 times, and it is set mostly by your building rather than your equipment: how much sky the balcony can see past the building opposite, and how high up it is. Note that most comparisons use a statewide average near 22 cents or a supply-only figure near 15 cents, neither of which is what a Con Edison customer actually avoids paying."
+            }
+          },
           {
             "@type": "Question",
             "name": "Is plug-in solar legal in NYC?",
@@ -1142,6 +1170,43 @@
   </div>
 </section>
 
+<!-- SAVINGS -->
+<section class="savings" id="savings">
+  <div class="container">
+    <span class="section-eyebrow">Savings</span>
+    <h2>How much does balcony solar save in NYC?</h2>
+    <p class="section-lede">An 800&nbsp;W balcony system in New York City produces roughly <strong>400 to 900 kilowatt-hours a year</strong>, worth <strong>$136 to $306</strong> at Con&nbsp;Edison&rsquo;s all-in marginal rate of about 34&cent; per kilowatt-hour. Where you land in that range depends far more on your building than on your equipment.</p>
+
+    <div class="savings-table-wrap">
+      <table class="savings-table">
+        <thead><tr><th>Annual output</th><th>Year-one saving</th><th>Payback, $1,200 kit</th><th>25-year net</th></tr></thead>
+        <tbody>
+          <tr><td>400 kWh <small>poorly sited</small></td><td>$136</td><td>8.1 years</td><td>+$3,435</td></tr>
+          <tr><td>550 kWh</td><td>$187</td><td>6.0 years</td><td>+$5,175</td></tr>
+          <tr><td>700 kWh</td><td>$238</td><td>4.8 years</td><td>+$6,915</td></tr>
+          <tr><td>900 kWh <small>well sited</small></td><td>$306</td><td>3.8 years</td><td>+$9,235</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="savings-note">Payback assumes 3% annual rate escalation and 0.5% panel degradation. The year-one saving is a <em>ceiling</em>: it credits every kilowatt-hour generated, and the SUNNY Act grants no export credit, so anything your apartment is not drawing at that moment is worth nothing. <a href="/balcony-solar-cost">Full derivation, including budget and premium kits</a>.</p>
+
+    <div class="savings-points">
+      <div>
+        <h3>The rate does the work, not the sun</h3>
+        <p>New York gets mediocre sun. What makes balcony solar pencil out here is the price of the electricity it replaces. Most comparisons use a statewide average near 22&cent;/kWh, or a supply-only figure around 15&cent;. Neither is what a Con&nbsp;Edison customer avoids paying. Counting delivery and surcharges, the marginal rate is about <strong>34&cent;</strong> &mdash; roughly 1.8&times; the US average, and the reason the arithmetic works at all. <a href="/electricity-rate">Why 34&cent; is the right number</a>.</p>
+      </div>
+      <div>
+        <h3>Expect 6&ndash;13% of your bill, not 15&ndash;25%</h3>
+        <p>Nearly every balcony-solar page repeats that an 800&nbsp;W kit covers 15&ndash;25% of an apartment&rsquo;s electricity. That is a nameplate-ideal figure with no shading applied. Against the EIA&rsquo;s New York average household consumption of about 6,850&nbsp;kWh a year, a realistic 400&ndash;900&nbsp;kWh works out at <strong>6% to 13%</strong>.</p>
+      </div>
+      <div>
+        <h3>Your building decides the rest</h3>
+        <p>The spread between the top and bottom of that table is about <strong>3&times;</strong>, and almost all of it is location: how much sky your balcony can see past the building opposite, and how far up you are. Orientation matters less than the rules of thumb suggest. <a href="/balcony-sunlight">What decides whether your balcony gets enough sun</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="faq" id="faq">
   <div class="container">
@@ -1151,6 +1216,7 @@
         <h2>Common questions</h2>
       </div>
       <div class="faq-list">
+      <details class="faq-item"><summary>How much does balcony solar save in NYC?<span class="faq-toggle">+</span></summary><p>An 800&nbsp;W system produces roughly <strong>400 to 900 kWh a year</strong> in New York City, worth <strong>$136 to $306</strong> at Con&nbsp;Edison&rsquo;s all-in marginal rate of about 34&cent;/kWh. On a $1,200 mid-range kit that is a payback of 3.8 to 8.1 years. The spread is about 3&times;, and it is set mostly by your building rather than your equipment. Most comparisons use a statewide average near 22&cent; or a supply-only figure near 15&cent;, neither of which is what a Con&nbsp;Edison customer avoids paying. <a href="#savings">See the full range &rarr;</a></p></details>
       <details class="faq-item"><summary>Is plug-in solar legal in NYC?<span class="faq-toggle">+</span></summary><p>Not yet, but it is close. New York requires utility approval for any device that pushes power back into a household circuit, which plug-in kits do. The <a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">SUNNY Act (S8512C/A9111C)</a> changes that. It passed the State Senate unanimously in April 2026 and the Assembly on 28 May 2026, and now awaits the Governor&rsquo;s signature. It takes effect 90 days after signing, so the realistic opening is early 2027. One thing to know: the Act removes the <em>utility</em> barrier only. It grants no right to install, so renters and co-op residents may still need landlord or board sign-off. <a href="/sunny-act">Full status, and what the Act does not cover &rarr;</a></p></details>
       <details class="faq-item"><summary>Does it work for any apartment?<span class="faq-toggle">+</span></summary><p>Any NYC address with sun on at least one side. A high-floor south-facing balcony can produce 3&times; what a low-floor north-facing one does. The 3D simulation accounts for neighbor buildings within 200m, so wide-avenue and midblock exposures come out differently.</p></details>
       <details class="faq-item"><summary>How does it actually plug in?<span class="faq-toggle">+</span></summary><p>The panel connects to a small micro-inverter with a cord ending in a standard 120V plug, the same as anything else you plug into a household outlet. NYC balconies almost never have an outdoor outlet, so in practice the cord runs from the panel through a window or sliding door to an indoor outlet, often the same circuit you&rsquo;d use for a window AC. Secure the cord to the railing so it doesn&rsquo;t catch on anyone, and don&rsquo;t daisy-chain it through an extension cord. Kit manufacturers sell longer panel cables for runs over ~10 feet.</p></details>

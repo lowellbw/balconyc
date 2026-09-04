@@ -266,12 +266,14 @@ describe('Content pages and crawl surface', () => {
     }
   });
 
-  it('sends www to the apex so ranking signals do not split', () => {
+  it('leaves host canonicalisation to the Vercel domain settings', () => {
+    // The www -> apex hop is configured on the project's domains in Vercel
+    // (balco.nyc primary, www.balco.nyc redirecting to it). A host-matched
+    // redirect here fights that config: on 2026-09-04 the two disagreed and
+    // every request bounced between the hosts until nothing was reachable.
     const vercel = JSON.parse(read('vercel.json'));
-    const r = vercel.redirects.find(x => JSON.stringify(x.has || '').includes('www.balco.nyc'));
-    assert(r, 'vercel.json has no www -> apex redirect');
-    assert(r.permanent === true, 'the www redirect must be permanent (301), not temporary');
-    assert(r.destination.startsWith('https://balco.nyc/'), `www must land on the apex, got ${r.destination}`);
+    const hostRules = vercel.redirects.filter(x => JSON.stringify(x.has || '').includes('"host"'));
+    assert(hostRules.length === 0, `vercel.json must not redirect by host; found ${JSON.stringify(hostRules)}`);
   });
 
   it('keeps every content page reachable from the homepage', () => {

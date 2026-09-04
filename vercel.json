@@ -1,7 +1,6 @@
 {
   "cleanUrls": true,
   "redirects": [
-    { "source": "/(.*)", "has": [{ "type": "host", "value": "www.balco.nyc" }], "destination": "https://balco.nyc/$1", "permanent": true },
     { "source": "/METHODOLOGY.md", "destination": "/methodology", "permanent": true },
     { "source": "/methodology.md", "destination": "/methodology", "permanent": true },
     { "source": "/design", "destination": "/", "permanent": false },

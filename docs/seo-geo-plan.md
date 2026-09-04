@@ -342,7 +342,7 @@ Ordered by impact ÷ effort. Each item is sized in rough hours.
 
 ## 9. Open questions for the operator
 
-- Domain: is `balco.nyc` the only canonical, or do we need to handle `www.balco.nyc` redirects?
+- Domain: resolved. `balco.nyc` is the canonical host. The www → apex redirect lives in the Vercel project's domain settings (`balco.nyc` primary, `www.balco.nyc` redirecting to it with a 308), not in `vercel.json`. A host rule in `vercel.json` collided with those settings on 2026-09-04 and produced a redirect loop that took the site down.
 - Is there an org behind this beyond a single operator? Decides what we put in `Organization` schema and the `/about` page.
 - Are we willing to publish the operator's name? GEO engines treat anonymous content as lower trust.
 - Any plans to ship newsletter / waitlist as a real product? Affects whether we should add `NewsArticle` / `EmailMessage` schema later.

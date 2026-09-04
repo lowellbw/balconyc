@@ -294,6 +294,111 @@ describe('SoQL escaping', () => {
   });
 });
 
+describe('NYC building lookup disambiguation', () => {
+  it('normalizes the reported 222 N 7th St address to PLUTO spelling', () => {
+    assert(SolarAPI.normalizePLUTOAddress('222 N 7th St, Brooklyn, NY 11211') === '222 NORTH 7 STREET',
+      'Google abbreviations and ordinal suffixes should match PLUTO');
+    assert(SolarAPI.normalizePLUTOAddress('123 St Marks Pl') === '123 ST MARKS PLACE',
+      'a saint name must not be rewritten as a street type');
+    assert(SolarAPI.normalizePLUTOAddress('1307 Ave N') === '1307 AVENUE N',
+      'a lettered avenue must not be rewritten as a compass direction');
+    assert(SolarAPI.normalizePLUTOAddress('100 W 42nd St') === '100 WEST 42 STREET',
+      'a direction immediately after the house number should still expand');
+  });
+
+  it('chooses the closest tax lot when an address has multiple records', () => {
+    const records = [
+      {
+        address: '222 NORTH 7 STREET', bbl: '3023230011.00000000', numfloors: '11.0000000',
+        latitude: '40.71820', longitude: '-73.95100',
+      },
+      {
+        address: '222 NORTH 7 STREET', bbl: '3023290012.00000000', numfloors: '3.0000000',
+        latitude: '40.7166514', longitude: '-73.9561887',
+      },
+    ];
+    const selected = SolarAPI.selectPLUTORecord(
+      records, 40.71665, -73.95619, '222 NORTH 7 STREET'
+    );
+    assert(selected.bbl.startsWith('3023290012'),
+      `expected the three-floor tax lot, got ${selected.bbl}`);
+    assert(SolarAPI.normalizeBBL(selected.bbl) === '3023290012',
+      'PLUTO decimal BBLs should match ten-digit footprint BBLs');
+  });
+
+  it('selects the footprint containing the geocoded point, not the first radius result', () => {
+    const far = {
+      properties: { bin: 'wrong' },
+      geometry: { type: 'Polygon', coordinates: [[
+        [-73.9570, 40.7170], [-73.9569, 40.7170],
+        [-73.9569, 40.7171], [-73.9570, 40.7171], [-73.9570, 40.7170],
+      ]] },
+    };
+    const target = {
+      properties: { bin: '3062111', mappluto_bbl: '3023290012' },
+      geometry: { type: 'MultiPolygon', coordinates: [
+        [[
+          [-73.9580, 40.7180], [-73.9579, 40.7180],
+          [-73.9579, 40.7181], [-73.9580, 40.7181], [-73.9580, 40.7180],
+        ]],
+        [[
+          [-73.95625, 40.71660], [-73.95610, 40.71660],
+          [-73.95610, 40.71672], [-73.95625, 40.71672], [-73.95625, 40.71660],
+        ]],
+      ] },
+    };
+    const selected = SolarAPI.selectFootprint([far, target], 40.7166514, -73.9561887);
+    assert(selected.properties.bin === '3062111', 'the containing footprint should win');
+    assert(SolarAPI.footprintContainsPoint(selected, 40.7166514, -73.9561887),
+      'the selected footprint should be recognized as an authoritative containment match');
+    const selectedRing = SolarAPI.selectFootprintRing(selected, 40.7166514, -73.9561887);
+    assert(selectedRing[0][0] === -73.95625,
+      'a later matching MultiPolygon part should be rendered instead of part one');
+  });
+
+  it('treats courtyard holes and polygon boundaries consistently', () => {
+    const enclosing = {
+      properties: { bin: 'courtyard-shell' },
+      geometry: { type: 'Polygon', coordinates: [
+        [[-0.001, -0.001], [0.001, -0.001], [0.001, 0.001], [-0.001, 0.001], [-0.001, -0.001]],
+        [[-0.0002, -0.0002], [0.0002, -0.0002], [0.0002, 0.0002], [-0.0002, 0.0002], [-0.0002, -0.0002]],
+      ] },
+    };
+    const courtyardBuilding = {
+      properties: { bin: 'inside-courtyard' },
+      geometry: { type: 'Polygon', coordinates: [[
+        [-0.0001, -0.0001], [0.0001, -0.0001],
+        [0.0001, 0.0001], [-0.0001, 0.0001], [-0.0001, -0.0001],
+      ]] },
+    };
+    assert(!SolarAPI.footprintContainsPoint(enclosing, 0, 0),
+      'a point inside an interior hole is not inside the enclosing footprint');
+    const selected = SolarAPI.selectFootprint([enclosing, courtyardBuilding], 0, 0);
+    assert(selected.properties.bin === 'inside-courtyard',
+      'a building inside the courtyard should win over the surrounding shell');
+    assert(SolarAPI.footprintContainsPoint(enclosing, 0, 0.001),
+      'a point exactly on the exterior boundary should count consistently');
+    assert(SolarAPI.footprintContainsPoint(enclosing, 0, 0.0002),
+      'a point exactly on a hole boundary should count consistently');
+  });
+
+  it('keeps a balcony floor within a coherent building count', () => {
+    assert(SolarAPI.resolveFloorCount(3, 37.59) === 3, 'preserve the coherent PLUTO count');
+    assert(SolarAPI.resolveFloorCount(11, 37.59) === 3,
+      'reject eleven floors inside a 37.59-foot footprint');
+    assert(SolarAPI.resolveFloorCount(null, 37.59) === 3,
+      'roof height provides a safe fallback when PLUTO is unavailable');
+    assert(SolarAPI.resolveMatchedFloorCount(10, 24, '3000000001', '3000000002', false) === 10,
+      'an untrusted neighboring footprint must not override a valid PLUTO count');
+    assert(SolarAPI.resolveMatchedFloorCount(11, 37.59, '3023290012', '3023290012', false) === 3,
+      'a matching footprint may reject a physically impossible PLUTO count');
+    assert(SolarAPI.floorFromHeightRatio(1 / 6, 3) === 1, 'lower third maps to floor one');
+    assert(SolarAPI.floorFromHeightRatio(1 / 2, 3) === 2, 'middle third maps to floor two');
+    assert(SolarAPI.floorFromHeightRatio(5 / 6, 3) === 3, 'upper third maps to floor three');
+    assert(SolarAPI.floorFromHeightRatio(1, 3) === 3, 'roof line clamps to the top floor');
+  });
+});
+
 describe('PVWatts request construction', () => {
   it('offers a soiling-format fallback chain so one bad param cannot kill the call', () => {
     assert(Array.isArray(SolarAPI.SOILING_MONTHLY) && SolarAPI.SOILING_MONTHLY.length === 12,

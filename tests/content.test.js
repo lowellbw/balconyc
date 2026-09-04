@@ -16,6 +16,8 @@ const ROOT = path.join(__dirname, '..');
 const read = f => fs.readFileSync(path.join(ROOT, f), 'utf8');
 
 const index = read('index.html');
+const scene3D = read('js/3d-scene.js');
+const shadowModel = read('js/3d-shadow-model.js');
 // methodology.html is the single canonical methodology document. A duplicate
 // METHODOLOGY.md used to sit alongside it and the two drifted; the page is now
 // the only copy, reached at /methodology (and via a redirect from the old path).
@@ -471,5 +473,184 @@ describe('index.html wiring', () => {
     assert(!/<script src="https:\/\/cdn\.jsdelivr\.net\/npm\/three@/.test(index),
       'Three.js should not be a blocking script tag');
     assert(/loadSceneStack/.test(index), 'no on-demand scene loader');
+  });
+
+  it('explains the spin-then-pin interaction and keeps the target building red', () => {
+    assert(index.includes('Spin the block, then pin your balcony'),
+      'the balcony selection prompt should explain the interaction sequence');
+    assert(index.includes('Select the red building at your floor'),
+      'the prompt should identify the selectable building and height cue');
+    assert(/color:\s*0x7F1D1D/.test(scene3D),
+      'the initial target-building material should use the brand red');
+    assert(/target:\s*0x7F1D1D/.test(shadowModel),
+      'the target building should stay brand red during the shadow trace');
+  });
+
+  it('keeps the WebGL canvas sized to the responsive scene frame', () => {
+    assert(/height:\s*clamp\(580px, calc\(100vh - 180px\), 800px\)/.test(index),
+      'the wide-screen scene should grow with the viewport and remain capped');
+    assert(/new ResizeObserver/.test(scene3D),
+      'the renderer should follow its animated container rather than only window resize events');
+  });
+
+  it('keeps the pin flow recoverable and keyboard accessible', () => {
+    assert(index.includes('id="manualPinBtn"'),
+      'the pointer-based 3D picker should offer a manual keyboard path');
+    assert(index.includes('sceneRunToken += 1') && index.includes('estimateRunToken += 1'),
+      'reset and dialog dismissal should invalidate in-flight calculations');
+    assert(index.includes('runToken !== sceneRunToken') && index.includes('runToken !== estimateRunToken'),
+      'stale animation and API continuations should stop before updating the UI');
+    assert(index.includes("sceneCanvas.onmouseleave = null"),
+      'reset should remove the per-scene pointer exit handler');
+  });
+
+  it('does not turn missing building metadata into a fictional floor count', () => {
+    assert(!index.includes('SolarState.numfloors || 20'),
+      'unknown PLUTO data must not silently become a 20-floor building');
+    assert(index.includes('SolarAPI.floorFromHeightRatio(ratio, totalFloors)'),
+      'the canvas picker should use the tested floor-band mapping');
+    assert(index.includes("We could not confirm this building\\'s floor count"),
+      'an unresolved count should ask the visitor rather than guess');
+  });
+
+  it('keeps address lookups single-flight while shared building state is loading', () => {
+    assert(index.includes('if (addressLookupInFlight && !lookupReserved) return'),
+      'a second autocomplete selection should not overlap the active lookup');
+    assert(index.includes('setAddressLookupLocked(true)') && index.includes('setAddressLookupLocked(false)'),
+      'the address controls should lock during lookup and recover on failure or reset');
+    assert(index.includes('SolarState.reset();') && index.includes('SolarState.address = place.formatted_address'),
+      'each accepted place should start with a clean building-data envelope');
+  });
+});
+
+describe('Result summary and full breakdown', () => {
+  it('keeps the pre-result card out of the accessibility tree and tab order', () => {
+    const card = (index.match(/<section[^>]*id="floatingCard"[^>]*>/) || [''])[0];
+    assert(/\bhidden\b/.test(card), 'the empty result card should start hidden');
+    assert(/\binert\b/.test(card), 'the empty result CTA should start inert');
+    assert(/aria-hidden="true"/.test(card), 'the empty result card should start aria-hidden');
+    assert(index.includes("card.removeAttribute('inert')") && index.includes("card.setAttribute('inert', '')"),
+      'showing and resetting results should update the card keyboard state');
+  });
+
+  it('shows the exact pin and model quality on both result surfaces', () => {
+    for (const id of ['rcContext', 'breakdownAddress', 'breakdownContext', 'rcQuality']) {
+      assert(index.includes(`id="${id}"`), `${id} markup missing`);
+    }
+    assert(/function resultContext\(inputs, r\)/.test(index), 'shared result context formatter missing');
+    assert(index.includes("'Floor ' + inputs.floor + ' of ' + inputs.totalFloors"),
+      'result context should state the selected and total floor counts');
+    assert(index.includes('resultDirectionLabel(inputs.azimuth)'),
+      'result context should state the pinned wall direction');
+    assert(index.includes("r.systemWatts + 'W system'"),
+      'result context should state the modeled system size');
+    assert(index.includes("quality.textContent = detailed ? '3D + PVWatts' : 'Approximate estimate'"),
+      'the compact result should disclose estimate quality');
+  });
+
+  it('uses a scene-synchronised sun study instead of a generic loading spinner', () => {
+    const loader = (index.match(/<div class="modelling-card"[\s\S]*?<\/div>\s*<\/div>\s*<!-- Info panels -->/) || [''])[0];
+    const pinStatus = (index.match(/<div class="prompt-title" id="pinPromptTitle"[^>]*>/) || [''])[0];
+    assert(/role="status"/.test(pinStatus) && /aria-live="polite"/.test(pinStatus) &&
+      index.includes("'-facing \\u00b7 Studying daylight'"),
+      'one existing live status should announce both the pin and the daylight study');
+    assert(loader.includes('id="modellingContext"') && loader.includes('id="sunStudyTime"'),
+      'the study strip should identify the pinned floor and follow the displayed sun time');
+    assert(!index.includes('sun-spinner') && !loader.includes('8,760 hours'),
+      'the retired spinner and inaccurate every-hour claim should stay removed');
+    assert(index.includes("modellingOverlay.style.setProperty('--study-progress', (progress * 100).toFixed(1) + '%')") &&
+      index.includes('studyTime.textContent = formattedTime'),
+      'the study ruler and clock should follow the real scene animation');
+    assert(index.includes("scene3dCanvas').setAttribute('aria-busy', 'true')") &&
+      index.includes("scene3dCanvas').removeAttribute('aria-busy')"),
+      'the canvas should expose and clear its busy state without suppressing the sibling live status');
+    assert(index.includes("matchMedia('(prefers-reduced-motion: reduce)').matches") &&
+      index.includes('var animPromise = reduceMotion ? Promise.resolve()') &&
+      index.includes("setProperty('--study-progress', '46.4%')"),
+      'reduced-motion visitors should not be made to sit through the six-second sweep');
+    assert(index.includes('runSunAnimation(runToken).catch(function(error)') &&
+      index.includes('failedRunToken !== sceneRunToken') &&
+      index.includes('We could not finish the sun study. Try Calculate again.'),
+      'an unexpected model failure should clear the study and offer a recoverable retry');
+  });
+
+  it('gives the post-study sun controls names, values, and selected states', () => {
+    assert(/id="playBtn"[^>]*aria-label="Play sun path"[^>]*aria-pressed="false"/.test(index),
+      'the icon-only play control needs an accessible action and state');
+    assert(/id="timeSlider"[^>]*aria-label="Time of day"[^>]*aria-valuetext="12:30 PM"/.test(index) &&
+      index.includes("this.setAttribute('aria-valuetext', formattedTime)"),
+      'the time scrubber should expose its formatted time');
+    assert(/class="scene3d-month-btns"[^>]*role="group"[^>]*aria-label="Sun-study month"/.test(index) &&
+      /data-month="5"[^>]*aria-pressed="true"/.test(index),
+      'the month choices should expose their group and selected state');
+  });
+
+  it('keeps the estimate visually structured as a report rather than nested dashboard cards', () => {
+    const heroRule = (index.match(/\.bd-hero\s*\{[^}]*\}/) || [''])[0];
+    const financialRule = (index.match(/\.bd-financial-card\s*\{[^}]*\}/) || [''])[0];
+    assert(heroRule.includes('background: #FCFBF7') && !heroRule.includes('linear-gradient'),
+      'the report header should remain plain paper rather than a gradient hero');
+    assert(financialRule.includes('border-top: 1px') && !financialRule.includes('border-radius'),
+      'financial values should remain ledger rows rather than rounded tiles');
+    assert(/\.results-card\s*\{[^}]*border-left:\s*4px solid var\(--accent\)/.test(index),
+      'the compact result should retain the report-slip treatment');
+    assert(!index.includes('id="offsetCircle"') && !index.includes('class="bd-done"'),
+      'the percentage ring and redundant Done button should stay removed');
+  });
+
+  it('gives the long modal a visible title and isolates it from the page', () => {
+    const dialog = (index.match(/<div[^>]*class="breakdown-modal"[^>]*>/) || [''])[0];
+    assert(/role="dialog"/.test(dialog) && /aria-modal="true"/.test(dialog),
+      'breakdown dialog semantics missing');
+    assert(/aria-labelledby="breakdownTitle"/.test(dialog),
+      'the dialog should reference its visible title');
+    assert(/<h2[^>]*id="breakdownTitle"[^>]*>/.test(index),
+      'the breakdown needs a visible h2');
+    assert(index.includes("document.body.classList.add('breakdown-open')"),
+      'opening the breakdown should lock background scrolling');
+    assert(index.includes('setBreakdownBackgroundInert(true)') && index.includes('setBreakdownBackgroundInert(false)'),
+      'the page behind the modal should become inert and be restored');
+  });
+
+  it('makes every adjustable segmented control programmatically understandable', () => {
+    const groups = [...index.matchAll(/<div class="bd-cust-segments"[^>]*>/g)].map(match => match[0]);
+    assert(groups.length === 5, `expected five segmented groups, found ${groups.length}`);
+    assert(groups.every(tag => /role="group"/.test(tag) && /aria-labelledby=/.test(tag)),
+      'each segmented control needs an accessible group name');
+    const choices = [...index.matchAll(/<button[^>]*data-val="[^"]+"[^>]*>/g)].map(match => match[0]);
+    assert(choices.length > 0 && choices.every(tag => /aria-pressed="(?:true|false)"/.test(tag)),
+      'each segmented choice should expose its selected state');
+    assert(index.includes("setAttribute('aria-pressed', String(selected))"),
+      'button selection changes should update aria-pressed');
+    assert(/<label[^>]*for="custMonthlyBill"/.test(index),
+      'the electric-bill label should be associated with its input');
+  });
+
+  it('does not offer a shading control that a 3D result ignores', () => {
+    assert(index.includes("getElementById('custShadingField').hidden = r.shadeFactorFrom3D"),
+      '3D results should hide the generic shading selector');
+    assert(index.includes('Modeled from your pinned block'),
+      '3D results should explain where their shading comes from');
+    assert(index.includes('bill >= 20 && bill <= 800'),
+      'custom bill validation should enforce the visible bounds');
+    assert(index.includes('We could not update the estimate.'),
+      'recalculation failures should be visible rather than console-only');
+  });
+
+  it('labels chart values and respects responsive accessibility preferences', () => {
+    const chart = (index.match(/<div[^>]*id="monthlyChart"[^>]*>/) || [''])[0];
+    assert(/role="list"/.test(chart) && /aria-label=/.test(chart),
+      'the monthly chart needs initial accessible semantics');
+    assert(index.includes("w.setAttribute('role', 'listitem')") &&
+      index.includes("w.setAttribute('aria-label', monthNames[i]"),
+      'each rendered month should expose its value and unit');
+    assert(/\.breakdown-modal \.bd-close\s*\{[^}]*width:\s*44px;\s*height:\s*44px/.test(index),
+      'the close button should meet the 44px touch-target minimum');
+    assert(index.includes('.rc-cta:focus-visible') && index.includes('.bd-close:focus-visible') &&
+      index.includes('.bd-cust-segments button:focus-visible'),
+      'result actions need visible keyboard focus');
+    assert(index.includes('100dvh'), 'mobile result surfaces should use the dynamic viewport height');
+    assert(/@media \(prefers-reduced-motion: reduce\)[\s\S]*\.results-card[\s\S]*\.breakdown-modal[\s\S]*\.chart-bar/.test(index),
+      'result and chart motion should respect reduced-motion preferences');
   });
 });

@@ -43,18 +43,25 @@ const Scene3D = {
 
   // Callbacks (set by version-specific modules)
   onSunUpdate: null,     // called when sun position changes
-  onBuildingHover: null,  // called when building is hovered
+  onBuildingHover: null,  // called with (entry, clientX, clientY, intersection)
 
   // Container element
   container: null,
   canvas: null,
+  resizeObserver: null,
+  renderWidth: 0,
+  renderHeight: 0,
 
   /**
    * Initialize the 3D scene.
    * @param {string} canvasId - ID of the canvas element
-   * @param {object} options - { containerHeight, onSunUpdate, onBuildingHover }
-   */
+  * @param {object} options - { containerHeight, onSunUpdate, onBuildingHover }
+  */
   init(canvasId, options = {}) {
+    // Defensive cleanup for callers that reinitialize without an explicit
+    // reset. This also removes OrbitControls and ResizeObserver listeners.
+    if (this.renderer || this.scene) this.dispose();
+
     this.canvas = document.getElementById(canvasId);
     this.container = this.canvas.parentElement;
 
@@ -72,17 +79,19 @@ const Scene3D = {
       alpha: false,
     });
     this.renderer.setSize(width, height);
+    this.renderWidth = Math.round(width);
+    this.renderHeight = Math.round(height);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.shadowMap.autoUpdate = false;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.0;
-    this.renderer.setClearColor(0x1c1816);
+    this.renderer.toneMappingExposure = 1.05;
+    this.renderer.setClearColor(0x9CCDEB);
 
     // Scene
     this.scene = new THREE.Scene();
-    this.scene.fog = new THREE.FogExp2(0x1c1816, 0.0012);
+    this.scene.fog = new THREE.FogExp2(0xC4DDEA, 0.0012);
 
     // Camera
     this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 2000);
@@ -100,15 +109,15 @@ const Scene3D = {
     this.controls.update();
 
     // Ambient light
-    this.ambientLight = new THREE.AmbientLight(0xaa9988, 0.5);
+    this.ambientLight = new THREE.AmbientLight(0xE8F3FA, 0.72);
     this.scene.add(this.ambientLight);
 
     // Hemisphere light for subtle sky/ground color
-    const hemiLight = new THREE.HemisphereLight(0xccb090, 0x332820, 0.3);
+    const hemiLight = new THREE.HemisphereLight(0x8FC9EF, 0xD8C8B7, 0.62);
     this.scene.add(hemiLight);
 
     // Sun directional light with shadows
-    this.sunLight = new THREE.DirectionalLight(0xfff5e6, 1.5);
+    this.sunLight = new THREE.DirectionalLight(0xFFF5DE, 1.65);
     this.sunLight.castShadow = true;
     this.sunLight.shadow.mapSize.set(2048, 2048);
     this.sunLight.shadow.camera.near = 1;
@@ -138,8 +147,8 @@ const Scene3D = {
     const groundGeo = new THREE.PlaneGeometry(800, 800);
     const groundMat = new THREE.ShaderMaterial({
       uniforms: {
-        centerColor: { value: new THREE.Color(0x2a2520) },
-        edgeColor: { value: new THREE.Color(0x151210) },
+        centerColor: { value: new THREE.Color(0xE9E1D8) },
+        edgeColor: { value: new THREE.Color(0xCFC1B3) },
         radius: { value: 350.0 },
       },
       vertexShader: [
@@ -172,7 +181,7 @@ const Scene3D = {
     const shadowMat = new THREE.MeshStandardMaterial({
       color: 0xffffff,
       transparent: true,
-      opacity: 0.08,
+      opacity: 0.12,
       roughness: 1.0,
     });
     const shadowPlane = new THREE.Mesh(shadowGeo, shadowMat);
@@ -193,6 +202,13 @@ const Scene3D = {
     this._boundOnMouseMove = this._onMouseMove.bind(this);
     window.addEventListener('resize', this._boundOnResize);
     this.canvas.addEventListener('mousemove', this._boundOnMouseMove);
+    // The hero columns animate to new widths, so a window resize alone can
+    // fire before the canvas reaches its final size. Follow the element itself
+    // to prevent an unrendered strip on wide displays.
+    if (typeof ResizeObserver !== 'undefined') {
+      this.resizeObserver = new ResizeObserver(() => this._onResize());
+      this.resizeObserver.observe(this.container);
+    }
 
     // Initial sun update
     this._updateSunPosition();
@@ -264,8 +280,10 @@ const Scene3D = {
     if (this.targetBuilding) {
       const h = this.targetBuilding.heightMeters;
       const d = this.cameraDistance;
-      this.controls.target.set(0, h * 0.4, 0);
-      this.camera.position.set(100 * d, h + 140 * d, 150 * d);
+      // Keep the camera near facade height. The old bird's-eye view showed
+      // mostly ground, hid the sky, and made a wall-level pin harder to place.
+      this.controls.target.set(0, h * 0.42, 0);
+      this.camera.position.set(105 * d, h * 0.55 + 75 * d, 155 * d);
       this.controls.update();
     }
 
@@ -312,15 +330,15 @@ const Scene3D = {
       material = customMaterial.clone();
     } else if (isTarget) {
       material = new THREE.MeshStandardMaterial({
-        color: 0x3399ff,
-        roughness: 0.6,
-        metalness: 0.1,
-        emissive: 0x112244,
-        emissiveIntensity: 0.15,
+        color: 0x7F1D1D,
+        roughness: 0.72,
+        metalness: 0.02,
+        emissive: 0x330707,
+        emissiveIntensity: 0.16,
       });
     } else {
       material = new THREE.MeshStandardMaterial({
-        color: 0x544840,
+        color: 0xB8AA9C,
         roughness: 0.9,
         metalness: 0.02,
       });
@@ -390,13 +408,13 @@ const Scene3D = {
       this.sunLight.intensity = 0;
       this.sunSphere.visible = false;
       if (this.sunGlow) this.sunGlow.visible = false;
-      this.ambientLight.intensity = 0.15;
+      this.ambientLight.intensity = 0.18;
       this._updateSkyDome(0, 0);
     } else {
       const factor = Math.min(1, sun.altitude / (15 * Math.PI / 180)); // ramp up over first 15°
-      this.sunLight.intensity = 1.5 * factor;
+      this.sunLight.intensity = 1.65 * factor;
       this.sunSphere.visible = true;
-      this.ambientLight.intensity = 0.3 + 0.2 * factor;
+      this.ambientLight.intensity = 0.48 + 0.24 * factor;
 
       // Sun glow tracks sun position
       if (this.sunGlow) {
@@ -454,9 +472,13 @@ const Scene3D = {
 
       // Update slider if it exists
       const slider = document.getElementById('timeSlider');
-      if (slider) slider.value = Math.round(this.currentTimeMinutes);
+      const formattedTime = SunPosition.formatTime(this.currentTimeMinutes);
+      if (slider) {
+        slider.value = Math.round(this.currentTimeMinutes);
+        slider.setAttribute('aria-valuetext', formattedTime);
+      }
       const label = document.getElementById('timeLabel');
-      if (label) label.textContent = SunPosition.formatTime(this.currentTimeMinutes);
+      if (label) label.textContent = formattedTime;
     }
 
     if (this.sunNeedsUpdate) {
@@ -488,13 +510,15 @@ const Scene3D = {
     const intersects = this.raycaster.intersectObjects(meshes);
 
     let hoveredEntry = null;
+    let hoveredIntersection = null;
     if (intersects.length > 0) {
+      hoveredIntersection = intersects[0];
       const hitMesh = intersects[0].object;
       hoveredEntry = this.buildingMeshes.find(e => e.mesh === hitMesh);
     }
 
     if (this.onBuildingHover) {
-      this.onBuildingHover(hoveredEntry, event.clientX, event.clientY);
+      this.onBuildingHover(hoveredEntry, event.clientX, event.clientY, hoveredIntersection);
     }
   },
 
@@ -502,8 +526,11 @@ const Scene3D = {
 
   _onResize() {
     if (!this.container || !this.renderer) return;
-    const width = this.container.clientWidth;
-    const height = this.container.clientHeight || 560;
+    const width = Math.round(this.container.clientWidth);
+    const height = Math.round(this.container.clientHeight || 560);
+    if (!width || !height || (width === this.renderWidth && height === this.renderHeight)) return;
+    this.renderWidth = width;
+    this.renderHeight = height;
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height);
@@ -515,9 +542,9 @@ const Scene3D = {
     const skyGeo = new THREE.SphereGeometry(900, 32, 15);
     const skyMat = new THREE.ShaderMaterial({
       uniforms: {
-        topColor: { value: new THREE.Color(0x0d1b2a) },
-        horizonColor: { value: new THREE.Color(0x1a2a4a) },
-        bottomColor: { value: new THREE.Color(0x0a0a15) },
+        topColor: { value: new THREE.Color(0x3B82C4) },
+        horizonColor: { value: new THREE.Color(0xB9DCF1) },
+        bottomColor: { value: new THREE.Color(0xDED7CF) },
       },
       vertexShader: [
         'varying vec3 vWorldPosition;',
@@ -556,20 +583,20 @@ const Scene3D = {
     const u = this.skyDome.material.uniforms;
 
     if (factor === 0) {
-      // Night — warm dark
-      u.topColor.value.setRGB(0.04, 0.03, 0.03);
-      u.horizonColor.value.setRGB(0.08, 0.06, 0.05);
-      u.bottomColor.value.setRGB(0.03, 0.02, 0.02);
+      // Night — deep blue, preserving the daytime sky's visual language.
+      u.topColor.value.setRGB(0.025, 0.055, 0.10);
+      u.horizonColor.value.setRGB(0.06, 0.10, 0.17);
+      u.bottomColor.value.setRGB(0.035, 0.035, 0.055);
     } else if (warmth > 0.4) {
-      // Sunrise/sunset — warm horizon
-      u.topColor.value.setRGB(0.12 + factor * 0.1, 0.08 + factor * 0.12, 0.06 + factor * 0.1);
-      u.horizonColor.value.setRGB(0.55 * warmth, 0.28 * warmth, 0.10 * warmth);
-      u.bottomColor.value.setRGB(0.06, 0.04, 0.03);
+      // Sunrise/sunset — a blue upper sky over a warm horizon.
+      u.topColor.value.setRGB(0.10 + factor * 0.12, 0.22 + factor * 0.18, 0.38 + factor * 0.20);
+      u.horizonColor.value.setRGB(0.72 + factor * 0.10, 0.38 + factor * 0.35, 0.22 + factor * 0.45);
+      u.bottomColor.value.setRGB(0.32, 0.24, 0.21);
     } else {
-      // Daytime — warm muted sky
-      u.topColor.value.setRGB(0.20 + factor * 0.15, 0.22 + factor * 0.18, 0.28 + factor * 0.12);
-      u.horizonColor.value.setRGB(0.50 + factor * 0.15, 0.45 + factor * 0.12, 0.38 + factor * 0.08);
-      u.bottomColor.value.setRGB(0.06, 0.05, 0.04);
+      // Daytime — clear blue overhead, soft and airy at the horizon.
+      u.topColor.value.setRGB(0.18 + factor * 0.05, 0.43 + factor * 0.10, 0.68 + factor * 0.12);
+      u.horizonColor.value.setRGB(0.62 + factor * 0.12, 0.78 + factor * 0.10, 0.90 + factor * 0.06);
+      u.bottomColor.value.setRGB(0.80, 0.82, 0.80);
     }
 
     // Also update fog color to match horizon
@@ -607,9 +634,9 @@ const Scene3D = {
 
   _addStreetGrid() {
     const gridMaterial = new THREE.LineBasicMaterial({
-      color: 0x3a3025,
+      color: 0x8F7866,
       transparent: true,
-      opacity: 0.3,
+      opacity: 0.24,
     });
 
     const points = [];
@@ -629,14 +656,22 @@ const Scene3D = {
 
   dispose() {
     if (this.animationId) cancelAnimationFrame(this.animationId);
-    window.removeEventListener('resize', this._boundOnResize);
-    if (this.canvas) this.canvas.removeEventListener('mousemove', this._boundOnMouseMove);
+    this.animationId = null;
+    this.isPlaying = false;
+    if (this._boundOnResize) window.removeEventListener('resize', this._boundOnResize);
+    if (this.canvas && this._boundOnMouseMove) this.canvas.removeEventListener('mousemove', this._boundOnMouseMove);
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+      this.resizeObserver = null;
+    }
+    if (this.controls && this.controls.dispose) this.controls.dispose();
 
     this.buildingMeshes.forEach(entry => {
       entry.mesh.geometry.dispose();
       if (entry.mesh.material.dispose) entry.mesh.material.dispose();
     });
     this.buildingMeshes = [];
+    this.targetBuilding = null;
 
     if (this.renderer) {
       this.renderer.dispose();
@@ -645,6 +680,8 @@ const Scene3D = {
     this.scene = null;
     this.camera = null;
     this.controls = null;
+    this.raycaster = null;
+    this.mouse = null;
   },
 
   /**

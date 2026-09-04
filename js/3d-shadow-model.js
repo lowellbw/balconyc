@@ -35,12 +35,12 @@ const ShadowModel = {
 
   // Color thresholds
   COLORS: {
-    target:  0x3399FF,  // blue
-    high:    0xCC3322,  // deep red
+    target:  0x7F1D1D,  // balco red
+    high:    0xB94635,  // deep terracotta
     medium:  0xD06830,  // burnt orange
     low:     0xCCA050,  // warm amber
-    none:    0x544840,  // warm grey
-    night:   0x2a2420,  // dark warm
+    none:    0xA99B8D,  // warm grey
+    night:   0x463E43,  // dark neutral
   },
 
   /**
@@ -154,10 +154,10 @@ const ShadowModel = {
    * Add a visual marker at the balcony position.
    */
   _addBalconyMarker(targetEntry, balconyHeight, facadeEdge) {
-    // Glowing sphere at balcony point
+    // Sun-gold marker at the selected balcony point
     const markerGeo = new THREE.SphereGeometry(1.5, 16, 16);
     const markerMat = new THREE.MeshBasicMaterial({
-      color: 0x00ffaa,
+      color: 0xF59E0B,
       transparent: true,
       opacity: 0.8,
     });
@@ -169,7 +169,7 @@ const ShadowModel = {
     if (facadeEdge) {
       const ringGeo = new THREE.RingGeometry(0.3, facadeEdge.edgeLen * 0.6, 4);
       const ringMat = new THREE.MeshBasicMaterial({
-        color: 0x00ffaa,
+        color: 0xF59E0B,
         transparent: true,
         opacity: 0.3,
         side: THREE.DoubleSide,

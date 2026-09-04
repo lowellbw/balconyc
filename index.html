@@ -520,6 +520,17 @@
     footer .footer-meta { font-size: 0.8rem; color: var(--text-muted); }
     footer a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
 
+    /* GUIDES */
+    .guides { padding: 96px 0; background: var(--bg); border-top: 1px solid var(--border); }
+    .guides h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 14px; max-width: 20ch; }
+    .guides-lede { font-size: 1.08rem; color: var(--text-sub); max-width: 56ch; margin: 0 0 40px; }
+    .guides-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .guide-card { display: block; padding: 24px 22px 26px; background: #fff; text-decoration: none;
+      border: 1px solid var(--border); border-radius: var(--radius); transition: border-color 0.2s, transform 0.2s; }
+    .guide-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .guide-card h3 { font-size: 1.02rem; font-weight: 700; color: var(--text); margin: 0 0 8px; line-height: 1.3; text-wrap: balance; }
+    .guide-card p { font-size: 0.9rem; color: var(--text-sub); margin: 0; line-height: 1.5; }
+
     @media (max-width: 1024px) {
       .hero-layout { flex-direction: column; }
       .hero.has-scene .hero-content { max-width: 100%; text-align: center; }
@@ -656,7 +667,18 @@
           "Payback period and 25-year lifetime value"
         ],
         "publisher": { "@id": "https://balco.nyc/#org" },
-        "areaServed": { "@type": "City", "name": "New York City" }
+        "areaServed": { "@type": "City", "name": "New York City" },
+        "inLanguage": "en-US",
+        "isAccessibleForFree": true,
+        "datePublished": "2026-05-17",
+        "dateModified": "2026-09-04",
+        "license": "https://github.com/lowellbw/balconyc",
+        "citation": [
+          { "@type": "CreativeWork", "name": "NREL PVWatts V8", "url": "https://pvwatts.nrel.gov/" },
+          { "@type": "CreativeWork", "name": "NYC PLUTO / MapPLUTO", "url": "https://www.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" },
+          { "@type": "CreativeWork", "name": "Con Edison Schedule for Electricity Service (SC-1)", "url": "https://www.coned.com/en/accounts-billing/your-bill/about-con-edisons-rates" },
+          { "@type": "CreativeWork", "name": "EPA eGRID2023", "url": "https://www.epa.gov/egrid" }
+        ]
       },
       {
         "@type": "Organization",
@@ -664,18 +686,26 @@
         "name": "balco.nyc",
         "url": "https://balco.nyc/",
         "logo": "https://balco.nyc/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp",
-        "description": "An independent open tool for estimating NYC balcony solar potential. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL."
+        "description": "An independent open tool for estimating NYC balcony solar potential. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL.",
+        "sameAs": ["https://github.com/lowellbw/balconyc"],
+        "foundingDate": "2026",
+        "knowsAbout": [
+          "Balcony solar", "Plug-in solar", "SUNNY Act", "New York City solar potential",
+          "Con Edison SC-1 tariff", "Photovoltaic shading analysis"
+        ]
       },
       {
         "@type": "FAQPage",
         "@id": "https://balco.nyc/#faq",
+        "dateModified": "2026-09-04",
+        "inLanguage": "en-US",
         "mainEntity": [
           {
             "@type": "Question",
             "name": "Is plug-in solar legal in NYC?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Not yet, but it is close. New York requires utility approval for any device that pushes power back into a household circuit, which plug-in kits do. The SUNNY Act (S8512/A9111) changes that. It passed the State Senate unanimously in April 2026 and the Assembly on May 28, 2026, and is now awaiting the Governor's signature. It takes effect 90 days after being signed, so the realistic opening is early 2027. Note that the Act removes the utility barrier only. It grants no right to install, so renters and co-op residents may still need landlord or board sign-off."
+              "text": "Not yet, but it is close. New York requires utility approval for any device that pushes power back into a household circuit, which plug-in kits do. The SUNNY Act (S8512C/A9111C) changes that. It passed the State Senate unanimously in April 2026 and the Assembly on May 28, 2026, and is now awaiting the Governor's signature. It takes effect 90 days after being signed, so the realistic opening is early 2027. Note that the Act removes the utility barrier only. It grants no right to install, so renters and co-op residents may still need landlord or board sign-off."
             }
           },
           {
@@ -1121,7 +1151,7 @@
         <h2>Common questions</h2>
       </div>
       <div class="faq-list">
-      <details class="faq-item"><summary>Is plug-in solar legal in NYC?<span class="faq-toggle">+</span></summary><p>Not yet, but it is close. New York requires utility approval for any device that pushes power back into a household circuit, which plug-in kits do. The <a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">SUNNY Act (S8512/A9111)</a> changes that. It passed the State Senate unanimously in April 2026 and the Assembly on 28 May 2026, and now awaits the Governor&rsquo;s signature. It takes effect 90 days after signing, so the realistic opening is early 2027. One thing to know: the Act removes the <em>utility</em> barrier only. It grants no right to install, so renters and co-op residents may still need landlord or board sign-off.</p></details>
+      <details class="faq-item"><summary>Is plug-in solar legal in NYC?<span class="faq-toggle">+</span></summary><p>Not yet, but it is close. New York requires utility approval for any device that pushes power back into a household circuit, which plug-in kits do. The <a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">SUNNY Act (S8512C/A9111C)</a> changes that. It passed the State Senate unanimously in April 2026 and the Assembly on 28 May 2026, and now awaits the Governor&rsquo;s signature. It takes effect 90 days after signing, so the realistic opening is early 2027. One thing to know: the Act removes the <em>utility</em> barrier only. It grants no right to install, so renters and co-op residents may still need landlord or board sign-off. <a href="/sunny-act">Full status, and what the Act does not cover &rarr;</a></p></details>
       <details class="faq-item"><summary>Does it work for any apartment?<span class="faq-toggle">+</span></summary><p>Any NYC address with sun on at least one side. A high-floor south-facing balcony can produce 3&times; what a low-floor north-facing one does. The 3D simulation accounts for neighbor buildings within 200m, so wide-avenue and midblock exposures come out differently.</p></details>
       <details class="faq-item"><summary>How does it actually plug in?<span class="faq-toggle">+</span></summary><p>The panel connects to a small micro-inverter with a cord ending in a standard 120V plug, the same as anything else you plug into a household outlet. NYC balconies almost never have an outdoor outlet, so in practice the cord runs from the panel through a window or sliding door to an indoor outlet, often the same circuit you&rsquo;d use for a window AC. Secure the cord to the railing so it doesn&rsquo;t catch on anyone, and don&rsquo;t daisy-chain it through an extension cord. Kit manufacturers sell longer panel cables for runs over ~10 feet.</p></details>
       <details class="faq-item"><summary>How accurate is this estimate?<span class="faq-toggle">+</span></summary><p>Within about 15% of real-world production for a typical NYC apartment. We model the major shadows on your block but can&rsquo;t see micro-shading (a neighbor&rsquo;s AC unit, a corner tree) or know your exact panel orientation. That band is modeled, not measured: no NYC installations have been metered against it yet, so treat it as a considered estimate rather than a validated tolerance.</p></details>
@@ -1133,11 +1163,42 @@
   </div>
 </section>
 
+<!-- GUIDES — the informational pages. Also how search engines find them. -->
+<section class="guides" id="guides">
+  <div class="container">
+    <span class="section-eyebrow">Guides</span>
+    <h2>The questions behind the number</h2>
+    <p class="guides-lede">The calculator answers one question well. These answer the ones that come before and after it, with the sources they rest on.</p>
+    <div class="guides-grid">
+      <a class="guide-card" href="/sunny-act">
+        <h3>Is plug-in solar legal in New York?</h3>
+        <p>Where the bill stands, and the part it deliberately does not cover.</p>
+      </a>
+      <a class="guide-card" href="/what-is-balcony-solar">
+        <h3>What is balcony solar?</h3>
+        <p>How a panel that plugs into a wall socket actually works.</p>
+      </a>
+      <a class="guide-card" href="/install-balcony-solar">
+        <h3>How do I put a solar panel on my balcony?</h3>
+        <p>Permission, outlets, mounting and wind &mdash; and why the install waits.</p>
+      </a>
+      <a class="guide-card" href="/balcony-solar-cost">
+        <h3>What does a balcony solar kit cost in NYC?</h3>
+        <p>Kit prices and the payback arithmetic, worked at four production levels.</p>
+      </a>
+      <a class="guide-card" href="/electricity-rate">
+        <h3>What does a kilowatt-hour actually cost in NYC?</h3>
+        <p>Why we value a kWh at 34&cent; when other calculators use half that.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="container">
     <a href="#" class="footer-logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
-    <p class="footer-disclaimer">balco.nyc is an independent open tool for estimating balcony solar potential in NYC. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL. Estimates are educational and may vary by about 15% from real-world production. Plug-in solar is not yet legal for residential use in New York: the SUNNY Act has passed both chambers and awaits the Governor&rsquo;s signature. <a href="/methodology">Full methodology &rarr;</a></p>
+    <p class="footer-disclaimer">balco.nyc is an independent open tool for estimating balcony solar potential in NYC. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL. Estimates are educational and may vary by about 15% from real-world production. Plug-in solar is not yet legal for residential use in New York: the <a href="/sunny-act">SUNNY Act</a> has passed both chambers and awaits the Governor&rsquo;s signature. <a href="/methodology">Full methodology &rarr;</a></p>
     <p class="footer-meta">&copy; 2026</p>
   </div>
 </footer>

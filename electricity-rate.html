@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Con Edison publishes several different rates and they answer different questions. Why balco.nyc values self-consumed solar at 34 cents per kWh rather than a supply-only figure, and which number applies to you.">
+  <title>What does a kWh actually cost in NYC? &middot; balco.nyc</title>
+  <link rel="icon" type="image/webp" href="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp">
+  <link rel="canonical" href="https://balco.nyc/electricity-rate">
+  <meta name="theme-color" content="#7F1D1D">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="balco.nyc">
+  <meta property="og:url" content="https://balco.nyc/electricity-rate">
+  <meta property="og:title" content="What does a kilowatt-hour actually cost in New York City?">
+  <meta property="og:description" content="Con Edison publishes several different rates and they answer different questions. Why balco.nyc values self-consumed solar at 34 cents per kWh rather than a supply-only figure, and which number applies to you.">
+  <meta property="og:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
+  <meta property="article:modified_time" content="2026-09-04">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What does a kilowatt-hour actually cost in New York City?">
+  <meta name="twitter:description" content="Con Edison publishes several different rates and they answer different questions. Why balco.nyc values self-consumed solar at 34 cents per kWh rather than a supply-only figure, and which number applies to you.">
+  <meta name="twitter:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://balco.nyc/electricity-rate#article",
+        "headline": "What does a kilowatt-hour actually cost in New York City?",
+        "description": "Con Edison publishes several different rates and they answer different questions. Why balco.nyc values self-consumed solar at 34 cents per kWh rather than a supply-only figure, and which number applies to you.",
+        "url": "https://balco.nyc/electricity-rate",
+        "inLanguage": "en-US",
+        "datePublished": "2026-09-04",
+        "dateModified": "2026-09-04",
+        "publisher": { "@id": "https://balco.nyc/#org" },
+        "isPartOf": { "@id": "https://balco.nyc/#app" },
+        "citation": [
+          { "@type": "CreativeWork", "name": "Con Edison &amp;mdash; historical average full-service electric rates", "url": "https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf" },
+          { "@type": "CreativeWork", "name": "Con Edison electric rate case summary, January 2026", "url": "https://dps.ny.gov/system/files/documents/2026/01/con-edison-electric-rate-case-summary.pdf" },
+          { "@type": "CreativeWork", "name": "Con Ed bills are going up as regulators approve a rate hike", "url": "https://gothamist.com/news/con-ed-bills-are-going-up-as-regulators-approve-a-rate-hike" },
+          { "@type": "CreativeWork", "name": "About Con Edison&#x27;s rates", "url": "https://www.coned.com/en/accounts-billing/your-bill/about-con-edisons-rates" },
+          { "@type": "CreativeWork", "name": "EIA &amp;mdash; electricity sales, revenue and average price", "url": "https://www.eia.gov/electricity/sales_revenue_price/" },
+          { "@type": "CreativeWork", "name": "New York utility tax exemptions", "url": "https://www.salesandusetax.com/new-york-sales-tax-exemption-utilities" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://balco.nyc/electricity-rate#faq",
+        "dateModified": "2026-09-04",
+        "inLanguage": "en-US",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why do different solar calculators show different Con Edison rates?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Because they are answering different questions, usually without saying which. A figure near 13 to 18 cents is the supply-only Price to Compare, which is the right basis for comparing energy suppliers; a figure near 34 cents is the all-in marginal rate including delivery, surcharges and tax, which is the right basis for valuing electricity you generate and consume yourself. Figures in the low-to-mid 20s are generally consistent with an older data vintage — Con Edison&#x27;s own SC-1 average was 29.52 cents as recently as 2023." }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the actual all-in cost of a kWh in New York City?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Con Edison&#x27;s published average full-service rate for a New York City SC-1 residential customer was 33.83 cents per kWh in 2025, covering delivery, commodity and riders and grossed up for state and local tax. The 3.5% delivery increase approved on 22 January 2026 puts 2026 somewhere around 34 to 35 cents. balco.nyc models $0.34 per kWh, deliberately at the lower end of that band." }
+          },
+          {
+            "@type": "Question",
+            "name": "Why doesn&#x27;t the 34 cent figure include the monthly customer charge?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Because the basic service charge does not change when you use less electricity. Solar reduces your metered kWh, not your fixed charges, so including it would credit a panel with savings you would never actually receive. Excluding it makes balco.nyc&#x27;s estimates smaller, not larger." }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I use 34 cents if I buy my electricity from an ESCO?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Not exactly. Your delivery charges, surcharges and sales tax are identical, but your supply component is set by your contract rather than by Con Edison&#x27;s Market Supply Charge. Take a recent bill, subtract the fixed basic service charge from the total, divide by kWh billed, and use that figure instead." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does a balcony solar panel earn credit for power I don&#x27;t use?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. Under New York&#x27;s SUNNY Act, plug-in solar is exempt from interconnection and net-metering requirements, which also means there is no export compensation — surplus generation is simply given to the grid for nothing. This is why the self-consumption fraction matters so much, and why the value of the kWh you do consume is the full marginal retail rate rather than any wholesale or credit rate." }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does the rate vary across New York City households?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Reported Con Edison residential rates span roughly 22 to 38 cents per kWh depending on rate plan, and delivery charges are tiered and materially higher from June through September. A single annual number is a simplification worth several cents in either direction — though the summer skew works in solar&#x27;s favour, since peak production coincides with peak rates." }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "balco.nyc", "item": "https://balco.nyc/" },
+          { "@type": "ListItem", "position": 2, "name": "What a kWh costs", "item": "https://balco.nyc/electricity-rate" }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #FFFFFF; --text: #171717; --text-sub: #596580; --text-muted: #8896AB;
+      --accent: #7F1D1D; --accent-hover: #5C1212;
+      --border: #E2E8F0; --border-soft: #EEF0F3;
+      --code-bg: #F7F7F8; --callout-bg: #FAF7F4;
+      --radius: 12px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1360px; margin: 0 auto; padding: 0 40px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    /* NAV (matches index.html scrolled style, but always solid on doc pages) */
+    nav.doc-nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-soft); }
+    nav.doc-nav .container { display: flex; justify-content: space-between; align-items: center; padding-top: 6px; padding-bottom: 6px; }
+    .logo { display: inline-block; text-decoration: none; line-height: 0; }
+    .logo img { height: 64px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
+    .nav-links a:hover { opacity: 0.7; text-decoration: none; }
+
+    /* DOC LAYOUT */
+    main { padding: 56px 0 96px; }
+    .doc-header { max-width: 760px; margin: 0 0 48px; }
+    .doc-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .doc-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .doc-header h1 { font-size: clamp(2rem, 3.6vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; text-wrap: balance; }
+    .doc-header .lede { font-size: 1.15rem; color: var(--text-sub); max-width: 65ch; }
+    .doc-meta-row { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; margin-top: 20px; font-size: 0.88rem; color: var(--text-muted); }
+    .doc-meta-row strong { color: var(--text-sub); font-weight: 600; }
+    .doc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .doc-tag { font-size: 0.78rem; padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--text-sub); }
+
+    /* TWO-COLUMN LAYOUT */
+    .doc-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 64px; align-items: start; }
+    .doc-toc { position: sticky; top: 88px; max-height: calc(100vh - 120px); overflow-y: auto; padding-right: 16px; }
+    .doc-toc h2 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .doc-toc ol { list-style: none; padding: 0; counter-reset: tocsec; }
+    .doc-toc li { counter-increment: tocsec; margin: 0; }
+    .doc-toc a { display: block; padding: 6px 0 6px 28px; position: relative; font-size: 0.92rem; color: var(--text-sub); border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; text-decoration: none; }
+    .doc-toc a::before { content: counter(tocsec) "."; position: absolute; left: 8px; top: 6px; font-variant-numeric: tabular-nums; color: var(--text-muted); font-size: 0.85rem; }
+    .doc-toc a:hover, .doc-toc a.active { color: var(--text); border-left-color: var(--accent); }
+
+    /* DOC CONTENT */
+    .doc-content { max-width: 760px; min-width: 0; }
+    .doc-content section { padding-top: 24px; margin-bottom: 48px; scroll-margin-top: 80px; }
+    .doc-content section + section { border-top: 1px solid var(--border-soft); }
+    .doc-content h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; margin: 0 0 20px; }
+    .doc-content h2 .sec-num { color: var(--text-muted); font-weight: 500; margin-right: 12px; font-variant-numeric: tabular-nums; }
+    .doc-content h3 { font-size: 1.18rem; font-weight: 700; letter-spacing: -0.01em; margin: 36px 0 14px; }
+    .doc-content h4 { font-size: 1rem; font-weight: 700; margin: 24px 0 10px; }
+    .doc-content p { margin-bottom: 16px; color: var(--text); }
+    .doc-content p + p { margin-top: -4px; }
+    .doc-content ul, .doc-content ol { padding-left: 24px; margin-bottom: 18px; }
+    .doc-content li { margin-bottom: 6px; }
+    .doc-content li > ul, .doc-content li > ol { margin: 8px 0; }
+    .doc-content strong { font-weight: 700; }
+    .doc-content em { font-style: italic; color: var(--text-sub); }
+
+    /* CODE */
+    code, pre { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em; }
+    p code, li code, td code { background: var(--code-bg); padding: 1px 6px; border-radius: 4px; color: var(--text); font-size: 0.86em; }
+    pre { background: var(--code-bg); border: 1px solid var(--border-soft); border-radius: 8px; padding: 16px 20px; overflow-x: auto; margin: 12px 0 20px; line-height: 1.55; }
+    pre code { background: none; padding: 0; font-size: 0.86em; }
+
+    /* TABLES */
+    .table-wrap { margin: 8px 0 24px; overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    table th, table td { padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+    table th { background: #FAFAFB; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.02em; text-transform: uppercase; color: var(--text-sub); }
+    table tr:last-child td { border-bottom: none; }
+    table td code { font-size: 0.84em; }
+
+    /* CALLOUT */
+    .callout { background: var(--callout-bg); border-left: 3px solid var(--accent); padding: 14px 18px; border-radius: 4px; margin: 12px 0 22px; font-size: 0.95rem; }
+    .callout p:last-child { margin-bottom: 0; }
+    .callout strong { color: var(--accent); }
+
+    /* SOURCES LIST */
+    .sources-list a { font-weight: 500; }
+    .sources-list .src-host { color: var(--text-muted); font-size: 0.85em; font-family: 'JetBrains Mono', monospace; }
+
+    /* BACK TO TOP / DOC FOOTER */
+    .doc-foot { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-soft); display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.9rem; }
+    .btn-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--accent); color: #fff; border-radius: 999px; font-weight: 700; font-size: 0.92rem; text-decoration: none; }
+    .btn-cta:hover { background: var(--accent-hover); text-decoration: none; }
+
+    /* FOOTER */
+    footer { padding: 48px 0 32px; border-top: 1px solid var(--border-soft); margin-top: 48px; }
+    footer .container { display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; }
+    .footer-logo img { height: 56px; width: auto; opacity: 0.85; }
+    .footer-disclaimer { font-size: 0.84rem; color: var(--text-muted); max-width: 64ch; line-height: 1.6; }
+    .footer-meta { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* MOBILE */
+    @media (max-width: 960px) {
+      .container { padding: 0 24px; }
+      .doc-layout { grid-template-columns: 1fr; gap: 24px; }
+      .doc-toc { position: static; max-height: none; padding: 16px; border: 1px solid var(--border-soft); border-radius: 8px; }
+      .doc-toc a { padding-left: 24px; }
+      main { padding: 32px 0 64px; }
+      .doc-header { margin-bottom: 28px; }
+      .doc-content section { margin-bottom: 36px; }
+      .doc-content h2 { font-size: 1.4rem; }
+      .doc-content h3 { font-size: 1.08rem; }
+      .logo img { height: 52px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="doc-nav">
+  <div class="container">
+    <a href="/" class="logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco.nyc" width="400" height="218" decoding="async"></a>
+    <div class="nav-links">
+      <a href="/#about">About</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/">Calculator</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <header class="doc-header">
+      <div class="doc-eyebrow"><span class="dot"></span> Rates</div>
+      <h1>What does a kilowatt-hour actually cost in NYC?</h1>
+      <p class="lede">In New York City, a kWh you don&rsquo;t buy from Con Edison is worth about 34 cents. That is the all-in marginal rate &mdash; supply, delivery, surcharges and the 4.5% city sales tax &mdash; from Con Edison&rsquo;s published SC-1 residential bill history (33.83&cent;/kWh in 2025) plus the 3.5% delivery increase approved on 22 January 2026. Lower figures near 13&ndash;18&cent; are supply only: correct for comparing suppliers, too low for valuing solar you consume yourself.</p>
+      <div class="doc-meta-row">
+        <div><strong>Last reviewed:</strong> <time datetime="2026-09-04">September 4, 2026</time></div>
+        <div><strong>Reading time:</strong> ~8 minutes</div>
+        <div class="doc-tags">
+          <span class="doc-tag">SC-1 all-in</span>
+          <span class="doc-tag">33.83&cent; (2025)</span>
+          <span class="doc-tag">Marginal, not average</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="doc-layout">
+      <aside class="doc-toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#three-numbers">There is no single &ldquo;Con Edison rate&rdquo;</a></li>
+          <li><a href="#whats-in-the-34">What is actually in 34 cents</a></li>
+          <li><a href="#fixed-charge">Why the fixed monthly charge is deliberately left out</a></li>
+          <li><a href="#supply-only">Supply-only rates are correct &mdash; for a different question</a></li>
+          <li><a href="#derivation">Where $0.34 comes from, and how it is kept current</a></li>
+          <li><a href="#what-one-number-costs">What a single number costs you in accuracy</a></li>
+          <li><a href="#why-nyc">Why this matters more in New York than almost anywhere else</a></li>
+          <li><a href="#questions">Common questions</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ol>
+      </aside>
+
+      <article class="doc-content">
+
+        <section id="three-numbers">
+  <h2><span class="sec-num">1</span>There is no single &ldquo;Con Edison rate&rdquo;</h2>
+  <p>People asking &ldquo;what does electricity cost in New York City?&rdquo; are usually asking one of three different questions, and each has a different correct answer.</p>
+  <ul>
+    <li><strong>What does the energy itself cost?</strong> Con Edison&rsquo;s Market Supply Charge, also published as the Price to Compare. Reported figures for 2026 run roughly <strong>13.4&cent; to 17.8&cent;/kWh</strong> &mdash; it resets monthly with wholesale prices.</li>
+    <li><strong>What does the average customer pay per kWh?</strong> Total bill divided by kWh, including the fixed monthly charge. Higher than the supply rate, and it moves with how much you use.</li>
+    <li><strong>What does one more &mdash; or one fewer &mdash; kWh cost me?</strong> The all-in <em>marginal</em> rate: supply plus delivery plus surcharges, grossed up for tax, excluding anything fixed. Con Edison&rsquo;s own bill history puts this at <strong>33.83&cent;/kWh</strong> for a New York City SC-1 residential customer in 2025.</li>
+  </ul>
+  <p>balco.nyc uses <strong>$0.34/kWh</strong>. Not because the other figures are wrong, but because the third question is the one a balcony solar panel answers. Every kWh a panel produces and you consume is a kWh you do not buy, at the margin, at whatever the margin costs.</p>
+</section>
+
+        <section id="whats-in-the-34">
+  <h2><span class="sec-num">2</span>What is actually in 34 cents</h2>
+  <p>Con Edison&rsquo;s residential bill separates into a supply half and a delivery half, plus surcharges and tax on top. The table uses a New York City residential customer at <strong>350&nbsp;kWh a month</strong>.</p>
+  <div class="table-wrap"><table><thead>
+    <tr><th>Component</th><th>Approximate value</th><th>Scales with usage?</th><th>In the 34&cent;?</th></tr>
+  </thead><tbody>
+    <tr><td>Supply &mdash; Market Supply Charge, merchant function charge, Clean Energy Standard surcharge</td><td>13.4&ndash;17.8&cent;/kWh, resets monthly</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Delivery &mdash; energy delivery charge plus riders and adjustment clauses</td><td>Remainder, roughly 14&ndash;19&cent;/kWh</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Basic service charge (fixed)</td><td>A fixed monthly amount, reported around $16&ndash;20</td><td><strong>No</strong></td><td><strong>No</strong></td></tr>
+    <tr><td>NYC sales tax at 4.5% &mdash; residential energy is exempt from the 4% state tax</td><td>Applied to the charges above</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td><strong>All-in variable rate (SC-1, NYC, 2025)</strong></td><td><strong>33.83&cent;/kWh</strong></td><td>&mdash;</td><td>&rarr; modelled as $0.34</td></tr>
+  </tbody></table></div>
+  <p>The delivery row is derived by subtraction, not quoted from a tariff sheet: it is what remains once the reported supply rate is taken out of the reported all-in rate. It is shown as a range because the supply side moves every month. The point of the table is the shape, not the third decimal place &mdash; <em>delivery and surcharges are roughly as large as the energy itself</em>, which is why supply-only figures understate the value of a self-consumed kWh by more than half.</p>
+</section>
+
+        <section id="fixed-charge">
+  <h2><span class="sec-num">3</span>Why the fixed monthly charge is deliberately left out</h2>
+  <p>Con Edison charges a basic service charge that you pay whether you use 50&nbsp;kWh or 500. A balcony solar panel does not reduce it. Nothing reduces it except closing the account.</p>
+  <p>So it does not belong in a rate used to value generation. At 350&nbsp;kWh a month a fixed charge in the region of $16&ndash;20 works out to roughly 5&cent;/kWh, and including it would inflate the apparent savings from every kWh a panel produces by about that much &mdash; a number the customer would never actually see.</p>
+  <div class="callout"><p><strong>The rule: value avoided consumption at the marginal rate, not the average rate.</strong> An average rate that spreads a fixed charge across kWh answers &ldquo;what did I pay per unit last month?&rdquo; A marginal rate answers &ldquo;what changes if I use one unit less?&rdquo; Only the second question is the one solar answers.</p></div>
+  <p>This cuts the other way too, and it is worth being explicit about it: excluding the fixed charge makes balco.nyc&rsquo;s savings figures <em>smaller</em> than an average-rate calculation would produce. It is the conservative choice, not the flattering one.</p>
+</section>
+
+        <section id="supply-only">
+  <h2><span class="sec-num">4</span>Supply-only rates are correct &mdash; for a different question</h2>
+  <p>Con Edison publishes a Price to Compare precisely so customers can evaluate offers from independent energy suppliers (ESCOs). An ESCO can only sell you the supply component; delivery stays with Con Edison regardless. Comparing an ESCO&rsquo;s 15&cent; offer against a 34&cent; all-in rate would be a category error, and the Price to Compare exists to prevent exactly that.</p>
+  <p>A calculator quoting 17.8&cent;, or 13.4&cent;, is not making a mistake about arithmetic. It is answering the ESCO-shopping question. If you are choosing a supplier, that is the number you want, and this page is not an argument against it.</p>
+  <p>But a panel on your balcony does not compete with a supplier. It sits behind your meter and reduces the metered kWh flowing into your apartment. Every layer of the bill charged per metered kWh &mdash; delivery, riders, surcharges, sales tax &mdash; falls away with it. That is why self-consumption is valued at the full stack.</p>
+  <p>New York&rsquo;s <a href="/sunny-act">SUNNY Act</a> makes this structural rather than incidental: it exempts plug-in solar from interconnection and net-metering requirements, which means there is no export credit at all. Production you don&rsquo;t consume is worth nothing; production you do consume is worth the full marginal retail rate. There is no middle tier.</p>
+</section>
+
+        <section id="derivation">
+  <h2><span class="sec-num">5</span>Where $0.34 comes from, and how it is kept current</h2>
+  <p>The starting point is Con Edison&rsquo;s published average full-service rate for New York City SC-1 residential customers, which covers delivery, commodity and riders and is grossed up for state and local tax, with the fixed customer charge billed separately. That series reads <strong>29.52&cent; (2023) &rarr; 33.45&cent; (2024) &rarr; 33.83&cent; (2025)</strong>, and 33.83&cent; has continued to be reported as the effective rate through mid-2026.</p>
+  <p>On <strong>22 January 2026</strong> the New York Public Service Commission adopted a three-year Joint Proposal in cases 25-E-0072 and 25-G-0073, raising electric <em>delivery</em> charges 3.5% in 2026, 3.2% in 2027 and 3.1% in 2028 &mdash; about 2.8% on a total residential bill in year one. Applying that to 33.83&cent; gives roughly 34.8&cent;.</p>
+  <p>So the defensible band for 2026 runs from about 33.8&cent; to about 34.8&cent;. <strong>balco.nyc uses $0.34</strong>, near the bottom of that band. Rounding down by most of a cent is intentional: on a question where the modeller has an incentive to be generous, the tie should go against the model.</p>
+  <p>Last reviewed <strong>31 August 2026</strong>. The figure is re-checked each January against Con Edison&rsquo;s published bill history and the standing rate-case settlement, since the settlement fixes the delivery escalation path through the end of 2028 and removes most of the guesswork from the intervening years.</p>
+</section>
+
+        <section id="what-one-number-costs">
+  <h2><span class="sec-num">6</span>What a single number costs you in accuracy</h2>
+  <p>$0.34/kWh is a modelling simplification, and it is worth saying plainly what it papers over.</p>
+  <ul>
+    <li><strong>Season.</strong> Con Edison&rsquo;s residential delivery charges are tiered and materially higher from June through September, above 250&nbsp;kWh a month. This is the largest single distortion &mdash; and it runs in solar&rsquo;s favour, because peak summer rates coincide with peak summer production. An annual average <em>understates</em> the value of a summer kWh.</li>
+    <li><strong>Rate plan.</strong> Time-of-use and standard SC-1 customers face different per-kWh structures. Across plans, reported Con Edison residential rates span roughly 22&cent; to 38&cent;/kWh.</li>
+    <li><strong>Supplier.</strong> If you buy supply from an ESCO, your supply component is whatever your contract says. Your delivery, surcharges and tax are unchanged.</li>
+    <li><strong>Service territory.</strong> Con Edison serves New York City and Westchester on different rate schedules. balco.nyc models the five boroughs.</li>
+    <li><strong>Month-to-month supply.</strong> The supply half resets monthly with wholesale prices. A single annual figure is a smoothing, not a forecast.</li>
+  </ul>
+  <p>Realistically, a household could sit anywhere from the high 20s to the high 30s. If you want the number that applies to you rather than to the median New Yorker, take a recent bill, subtract the basic service charge from the total, and divide by the kWh billed. That is your marginal rate.</p>
+</section>
+
+        <section id="why-nyc">
+  <h2><span class="sec-num">7</span>Why this matters more in New York than almost anywhere else</h2>
+  <p>The US average residential electricity price was reported at about <strong>18.3&cent;/kWh in September 2026</strong>, and New York State averaged <strong>29.5&cent;</strong>, among the highest in the nation. Con Edison&rsquo;s New York City residential rate sits above even that, at roughly <strong>1.8 times the national average</strong> &mdash; close to double, though not quite.</p>
+  <p>This is the whole reason balcony solar pencils out in New York City despite mediocre sun. A panel in Phoenix produces considerably more kWh per year than the same panel on a Brooklyn balcony. But each of those Arizona kWh displaces electricity worth well under 20&cent;, while each New York kWh displaces electricity worth about 34&cent;. Rate, not irradiance, is doing most of the work.</p>
+  <p>It also means the choice of rate is the single most consequential input in any NYC balcony solar model. The gap between a supply-only 17.8&cent; and an all-in 34&cent; is a factor of nearly two on every payback period, every lifetime-savings figure, every break-even date. Which is why it is worth stating exactly which question a given number answers. The <a href="/balcony-solar-cost">cost and payback page</a> shows what that does to the arithmetic.</p>
+  <p>On escalation, balco.nyc assumes <strong>3% a year</strong> by default, with 2% and 4% presets, and reports results in nominal dollars. That default is anchored to the settlement&rsquo;s own path &mdash; 3.5%, 3.2%, 3.1% on delivery through 2028 &mdash; rather than to recent history, which has run hotter: the SC-1 average rose from 29.52&cent; to 33.83&cent; between 2023 and 2025, about 7% a year compounded. If anything, 3% is the cautious assumption.</p>
+</section>
+
+        <section id="questions">
+          <h2><span class="sec-num">8</span>Common questions</h2>
+        <details>
+          <summary>Why do different solar calculators show different Con Edison rates?</summary>
+          <p>Because they are answering different questions, usually without saying which. A figure near 13 to 18 cents is the supply-only Price to Compare, which is the right basis for comparing energy suppliers; a figure near 34 cents is the all-in marginal rate including delivery, surcharges and tax, which is the right basis for valuing electricity you generate and consume yourself. Figures in the low-to-mid 20s are generally consistent with an older data vintage — Con Edison's own SC-1 average was 29.52 cents as recently as 2023.</p>
+        </details>
+        <details>
+          <summary>What is the actual all-in cost of a kWh in New York City?</summary>
+          <p>Con Edison's published average full-service rate for a New York City SC-1 residential customer was 33.83 cents per kWh in 2025, covering delivery, commodity and riders and grossed up for state and local tax. The 3.5% delivery increase approved on 22 January 2026 puts 2026 somewhere around 34 to 35 cents. balco.nyc models $0.34 per kWh, deliberately at the lower end of that band.</p>
+        </details>
+        <details>
+          <summary>Why doesn't the 34 cent figure include the monthly customer charge?</summary>
+          <p>Because the basic service charge does not change when you use less electricity. Solar reduces your metered kWh, not your fixed charges, so including it would credit a panel with savings you would never actually receive. Excluding it makes balco.nyc's estimates smaller, not larger.</p>
+        </details>
+        <details>
+          <summary>Should I use 34 cents if I buy my electricity from an ESCO?</summary>
+          <p>Not exactly. Your delivery charges, surcharges and sales tax are identical, but your supply component is set by your contract rather than by Con Edison's Market Supply Charge. Take a recent bill, subtract the fixed basic service charge from the total, divide by kWh billed, and use that figure instead.</p>
+        </details>
+        <details>
+          <summary>Does a balcony solar panel earn credit for power I don't use?</summary>
+          <p>No. Under New York's SUNNY Act, plug-in solar is exempt from interconnection and net-metering requirements, which also means there is no export compensation — surplus generation is simply given to the grid for nothing. This is why the self-consumption fraction matters so much, and why the value of the kWh you do consume is the full marginal retail rate rather than any wholesale or credit rate.</p>
+        </details>
+        <details>
+          <summary>How much does the rate vary across New York City households?</summary>
+          <p>Reported Con Edison residential rates span roughly 22 to 38 cents per kWh depending on rate plan, and delivery charges are tiered and materially higher from June through September. A single annual number is a simplification worth several cents in either direction — though the summer skew works in solar's favour, since peak production coincides with peak rates.</p>
+        </details>
+        </section>
+
+        <section id="sources">
+          <h2><span class="sec-num">9</span>Sources</h2>
+          <ul>
+            <li><a href="https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf" target="_blank" rel="noopener">Con Edison &mdash; historical average full-service electric rates</a> <span class="src-host">coned.com</span> &mdash; the published SC-1 series behind 33.83&cent; (2025), 33.45&cent; (2024) and 29.52&cent; (2023).</li>
+            <li><a href="https://dps.ny.gov/system/files/documents/2026/01/con-edison-electric-rate-case-summary.pdf" target="_blank" rel="noopener">Con Edison electric rate case summary, January 2026</a> <span class="src-host">dps.ny.gov</span> &mdash; the New York DPS summary of the approved 2026&ndash;2028 electric rate plan.</li>
+            <li><a href="https://gothamist.com/news/con-ed-bills-are-going-up-as-regulators-approve-a-rate-hike" target="_blank" rel="noopener">Con Ed bills are going up as regulators approve a rate hike</a> <span class="src-host">gothamist.com</span> &mdash; the Public Service Commission approving the increase in January 2026.</li>
+            <li><a href="https://www.coned.com/en/accounts-billing/your-bill/about-con-edisons-rates" target="_blank" rel="noopener">About Con Edison's rates</a> <span class="src-host">coned.com</span> &mdash; the supply, delivery and surcharge structure, and the Price to Compare.</li>
+            <li><a href="https://www.eia.gov/electricity/sales_revenue_price/" target="_blank" rel="noopener">EIA &mdash; electricity sales, revenue and average price</a> <span class="src-host">eia.gov</span> &mdash; the primary source for US and state average residential prices.</li>
+            <li><a href="https://www.salesandusetax.com/new-york-sales-tax-exemption-utilities" target="_blank" rel="noopener">New York utility tax exemptions</a> <span class="src-host">salesandusetax.com</span> &mdash; residential energy is exempt from the 4% state sales tax, leaving the 4.5% city tax.</li>
+          </ul>
+          <p>This page is maintained by <a href="/">balco.nyc</a>, an independent balcony-solar calculator. It is not financial advice. Rates change; the review date above is when these figures were last checked against their sources.</p>
+        </section>
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <a href="/" class="footer-logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
+    <p class="footer-disclaimer">balco.nyc is an independent open tool for estimating balcony solar potential in NYC. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL. Estimates are educational and may vary by about 15% from real-world production. Plug-in solar is not yet legal for residential use in New York: the SUNNY Act has passed both chambers and awaits the Governor's signature.</p>
+    <p class="footer-meta">&copy; 2026</p>
+  </div>
+</footer>
+
+
+<script>
+  // Highlight the TOC entry corresponding to the visible section.
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.doc-toc a'));
+    var sections = links.map(function (a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    }).filter(Boolean);
+
+    if (!('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          links.forEach(function (a) {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(function (s) { observer.observe(s); });
+  }());
+</script>
+
+</body>
+</html>

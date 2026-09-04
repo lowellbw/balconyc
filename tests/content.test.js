@@ -200,6 +200,89 @@ describe('Retired prototype pages are gone', () => {
   });
 });
 
+describe('Content pages and crawl surface', () => {
+  const specs = fs.readdirSync(path.join(ROOT, 'content'))
+    .filter(f => f.endsWith('.json'))
+    .map(f => JSON.parse(read(path.join('content', f))));
+  const sitemap = read('sitemap.xml');
+  const DAY = 24 * 60 * 60 * 1000;
+  // How long a page's claims may go unchecked. The legal page tracks a live
+  // bill, so it gets a short leash; the rest describe a model that moves slowly.
+  const REVIEW_WINDOW_DAYS = { 'sunny-act': 90 };
+  const DEFAULT_WINDOW_DAYS = 180;
+
+  it('builds every content page from its spec', () => {
+    for (const spec of specs) {
+      assert(fs.existsSync(path.join(ROOT, `${spec.slug}.html`)),
+        `content/${spec.slug}.json has no built page; run tools/build_content_page.py`);
+    }
+  });
+
+  it('lists every page in the sitemap', () => {
+    for (const spec of specs) {
+      assert(sitemap.includes(`<loc>https://balco.nyc/${spec.slug}</loc>`),
+        `${spec.slug} is missing from sitemap.xml; run tools/build_sitemap.py`);
+    }
+    assert(sitemap.includes('<loc>https://balco.nyc/</loc>'), 'homepage missing from sitemap');
+    assert(sitemap.includes('<loc>https://balco.nyc/methodology</loc>'), 'methodology missing from sitemap');
+  });
+
+  it('states one review date per page, not three that can drift', () => {
+    // The date appears on the page, in the JSON-LD, and in the sitemap. If a
+    // page can claim to be fresher in one surface than another, it will.
+    for (const spec of specs) {
+      const page = read(`${spec.slug}.html`);
+      assert(page.includes(`"dateModified": "${spec.reviewed}"`),
+        `${spec.slug}.html JSON-LD dateModified does not match spec.reviewed (${spec.reviewed})`);
+      assert(page.includes(`datetime="${spec.reviewed}"`),
+        `${spec.slug}.html visible review date does not match spec.reviewed`);
+      const row = sitemap.split('<url>').find(u => u.includes(`/${spec.slug}<`));
+      assert(row && row.includes(`<lastmod>${spec.reviewed}</lastmod>`),
+        `sitemap lastmod for ${spec.slug} does not match spec.reviewed`);
+    }
+  });
+
+  it('has not let a page go stale past its review window', () => {
+    // This test is a calendar, not a bug. When it fails, re-check the page's
+    // claims against its sources and bump `reviewed` in content/<slug>.json.
+    const now = Date.now();
+    for (const spec of specs) {
+      const window = REVIEW_WINDOW_DAYS[spec.slug] ?? DEFAULT_WINDOW_DAYS;
+      const age = Math.floor((now - Date.parse(spec.reviewed)) / DAY);
+      assert(age <= window,
+        `${spec.slug} was last reviewed ${age} days ago (limit ${window}). ` +
+        `Re-check its claims, then update "reviewed" in content/${spec.slug}.json.`);
+    }
+  });
+
+  it('serves valid JSON-LD on every page', () => {
+    for (const f of ['index.html', 'methodology.html', ...specs.map(s => `${s.slug}.html`)]) {
+      const blocks = read(f).match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g) || [];
+      assert(blocks.length > 0, `${f} carries no JSON-LD`);
+      for (const b of blocks) {
+        const json = b.replace(/^<script[^>]*>/, '').replace(/<\/script>$/, '');
+        try { JSON.parse(json); } catch (e) { assert(false, `${f} has unparsable JSON-LD: ${e.message}`); }
+      }
+    }
+  });
+
+  it('sends www to the apex so ranking signals do not split', () => {
+    const vercel = JSON.parse(read('vercel.json'));
+    const r = vercel.redirects.find(x => JSON.stringify(x.has || '').includes('www.balco.nyc'));
+    assert(r, 'vercel.json has no www -> apex redirect');
+    assert(r.permanent === true, 'the www redirect must be permanent (301), not temporary');
+    assert(r.destination.startsWith('https://balco.nyc/'), `www must land on the apex, got ${r.destination}`);
+  });
+
+  it('keeps every content page reachable from the homepage', () => {
+    // An orphan page is a page search engines discover late and users never do.
+    for (const spec of specs) {
+      assert(index.includes(`/${spec.slug}"`) || index.includes(`/${spec.slug}#`),
+        `nothing on the homepage links to /${spec.slug}`);
+    }
+  });
+});
+
 describe('Deployment configuration', () => {
   const vercel = JSON.parse(read('vercel.json'));
 

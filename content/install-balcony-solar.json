@@ -1,0 +1,127 @@
+{
+  "slug": "install-balcony-solar",
+  "title": "How do I put a solar panel on my balcony? &middot; balco.nyc",
+  "og_title": "How do I put a solar panel on my balcony?",
+  "breadcrumb": "Installing balcony solar",
+  "description": "What a balcony solar installation actually involves in a New York City apartment: permission, the outlet and circuit, mounting and wind, the electrical risks, and why the install itself should wait for the SUNNY Act.",
+  "eyebrow": "Practical guide",
+  "h1": "How do I put a solar panel on my balcony?",
+  "lede": "A balcony solar setup is two or three panels clamped or ballasted on your railing, wired to a small microinverter whose cord plugs into an ordinary 120-volt outlet. The physical work is an afternoon. In New York, hold off: plug-in solar stays outside the rules until the SUNNY Act is signed and takes effect ninety days later. Spend the wait getting written building permission, checking your outlet, circuit and railing, and choosing a certified kit.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-04",
+  "reviewed_human": "September 4, 2026",
+  "published": "2026-09-04",
+  "reading_time": "~9 minutes",
+  "tags": [
+    "Anti-islanding",
+    "UL&nbsp;3700",
+    "Egress rules"
+  ],
+  "about_legislation": true,
+  "sections": [
+    {
+      "id": "what-it-is",
+      "toc": "What the installation actually is",
+      "html": "        <section id=\"what-it-is\">\n  <h2><span class=\"sec-num\">1</span>What the installation actually is</h2>\n  <p>A balcony solar system is short and simple compared to a rooftop array. One to three rigid panels are fixed to your railing or stood on the balcony floor. Their DC leads run a metre or so into a microinverter, usually a sealed brick that mounts behind or beneath the panels. The microinverter has a single AC cord ending in a standard plug. That plug goes into an outdoor outlet.</p>\n  <p>Nothing is drilled into the building. Nothing goes on the roof. Nobody opens your service panel. The whole thing can be taken down and carried out in a lift.</p>\n  <p>The microinverter is the part that matters. It converts panel DC into AC matched to the grid&rsquo;s voltage, frequency and phase, so the power it makes flows into your apartment&rsquo;s wiring and is consumed by whatever is running at that moment &mdash; the fridge, the router, the standby loads. It is not stored.</p>\n  <p>It also does the safety-critical job: <strong>anti-islanding</strong>. When grid power disappears, the inverter detects the loss and stops producing within a fraction of a second. This is why a plug-in system cannot energise wiring that a utility worker or a firefighter believes is dead &mdash; and also why, having no battery, it gives you nothing at all during a blackout. People are regularly surprised by that. It is a direct consequence of the safety design, not a defect.</p>\n  <p>UL&nbsp;1741 is the long-standing US standard covering grid-interactive inverter behaviour, including anti-islanding. UL&nbsp;3700, published in December 2025 with certification launched in January 2026, is newer and narrower: it covers the complete plug-in photovoltaic system as a product, not just the inverter inside it.</p>\n</section>"
+    },
+    {
+      "id": "sequencing",
+      "toc": "Why the installation itself waits",
+      "html": "        <section id=\"sequencing\">\n  <h2><span class=\"sec-num\">2</span>Why the installation itself waits</h2>\n  <p>The SUNNY Act (S8512C / A9111C) passed the New York Senate in April 2026 and the Assembly in late May 2026. As of today it has not been signed. Governor Hochul has until the end of 2026 to act, and the bill takes effect on the ninetieth day after it becomes law &mdash; so the earliest realistic date on which a compliant device is squarely inside the rules is some months after a signature, not the day of one.</p>\n  <p>The Act defines a <em>portable solar generation device</em> as a photovoltaic system supplying a maximum aggregate continuous AC inverter nameplate output of no more than 1,200 watts to the grid. It must be listed or certified by an accredited nationally recognised testing laboratory as a complete plug-in photovoltaic system, must include a mechanism preventing it from energising the building&rsquo;s wiring or the grid during an outage, and must be installed in accordance with the New York State fire prevention and building code and the manufacturer&rsquo;s instructions. Compliant devices are exempted from interconnection and net-metering requirements. Full detail is on the <a href=\"/sunny-act\">SUNNY Act page</a>.</p>\n  <div class=\"callout\"><p><strong>The SUNNY Act removes the utility barrier. It does not grant you the right to install anything.</strong></p></div>\n  <p>There is a second, practical reason to wait. The Act directs the State Fire Prevention and Building Code Council to update the code for these devices. Those installation rules &mdash; the ones a New York City inspector or an insurer would eventually cite &mdash; do not exist yet. Installing now means guessing at requirements that are about to be written down, and possibly having to redo the mounting when they are.</p>\n  <p>None of this stops you preparing. Permission, site checks and product selection are the slow parts anyway, and none of them require a panel on your railing.</p>\n</section>"
+    },
+    {
+      "id": "permission",
+      "toc": "Permission is the long pole, not the wiring",
+      "html": "        <section id=\"permission\">\n  <h2><span class=\"sec-num\">3</span>Permission is the long pole, not the wiring</h2>\n  <p>In a New York City apartment building, the electrical work is trivial and the approvals are not. Start here, because a refusal ends the project before you have spent anything.</p>\n  <ul>\n    <li><strong>Renters.</strong> You need your landlord&rsquo;s permission, in writing. The SUNNY Act contains no tenant protections &mdash; nothing in it prevents a landlord from saying no. New Jersey&rsquo;s balcony solar bill, which passed its legislature in June 2026 and is also awaiting a governor&rsquo;s signature, does include protections for tenants and for co-op and condo residents. New York&rsquo;s does not.</li>\n    <li><strong>Co-op and condo residents.</strong> Expect the board, and expect an alteration agreement. Boards commonly ask for a certificate of insurance, a description of the mounting method, and an undertaking to restore the balcony. Some will want a licensed engineer&rsquo;s letter on the attachment.</li>\n    <li><strong>Landmarked buildings and historic districts.</strong> The Landmarks Preservation Commission reviews exterior work on designated buildings. LPC has broadened the range of solar installations eligible for staff-level review, but visibility from a public thoroughfare remains the deciding factor, and a panel hung on a street-facing railing is about as visible as it gets.</li>\n  </ul>\n  <p>When you ask, ask specifically. A vague request to &ldquo;put up solar&rdquo; invites a vague refusal. Name the product, the mounting method, whether anything is drilled, the total weight, how it is removed, and who carries the liability. Offer to place it where it is not visible from the street. Get the answer in writing and keep it.</p>\n</section>"
+    },
+    {
+      "id": "site-check",
+      "toc": "Check your balcony before you buy anything",
+      "html": "        <section id=\"site-check\">\n  <h2><span class=\"sec-num\">4</span>Check your balcony before you buy anything</h2>\n  <p>Five things decide whether a given balcony can host a system at all. Work through them before spending money, because two of them are common deal-breakers in New York City apartments.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Check</th><th>What you are looking for</th><th>Who can answer</th></tr></thead><tbody>\n    <tr><td>Outdoor outlet</td><td>An existing receptacle rated for a wet location, with a proper in-use cover. Many NYC balconies have none at all.</td><td>Look. If there is none, a licensed electrician plus building approval.</td></tr>\n    <tr><td>The circuit behind it</td><td>Which breaker feeds that outlet, its rating (usually 15 or 20 amps), and what else is on it.</td><td>Map it yourself by switching breakers; an electrician if the panel is unlabelled or old.</td></tr>\n    <tr><td>Railing structure</td><td>A guard solidly anchored to the structure, with a load path that can take an off-centre pull. Glass panels and slender balusters often cannot take a clamp.</td><td>Managing agent or super for the construction; an engineer for anything uncertain.</td></tr>\n    <tr><td>Egress</td><td>Panels, brackets and cable entirely clear of any fire escape, egress path, or window used for escape.</td><td>NYC Fire Code, Chapter 10. If in doubt, the answer is no.</td></tr>\n    <tr><td>Sun</td><td>Which way the balcony faces, how high you are, and what blocks the sky.</td><td>The <a href=\"/\">calculator</a>, and an hour of watching where the shade falls.</td></tr>\n  </tbody></table></div>\n  <div class=\"callout\"><p><strong>A solar panel must never obstruct a fire escape, a means of egress, or access to either. New York City&rsquo;s Fire Code requires these to be continuously maintained free of obstructions, and that applies to hardware and cables as much as to furniture and plants.</strong></p></div>\n</section>"
+    },
+    {
+      "id": "electrical",
+      "toc": "The electrical risks, specifically",
+      "html": "        <section id=\"electrical\">\n  <h2><span class=\"sec-num\">5</span>The electrical risks, specifically</h2>\n  <p>Plug-in solar is unusual because a cord-and-plug connection bypasses the safeguards that cover a conventional PV installation &mdash; no permit review, no inspection, no utility sign-off. The hazards are well understood and they are avoidable, but only if you know what they are.</p>\n  <ul>\n    <li><strong>Buy a certified complete system, not assembled parts.</strong> A UL&nbsp;1741 inverter bolted to panels you bought separately is not a certified plug-in system. The SUNNY Act asks for listing of the complete system, which is what UL&nbsp;3700 is for. When UL Solutions tested plug-in solar products already on the US market, it reported that none of them met the UL&nbsp;3700 requirements &mdash; so the certification mark is a real filter, not a formality.</li>\n    <li><strong>Anti-islanding is not optional.</strong> Any device you consider must shut down when the grid does. This protects utility crews and firefighters working on what they reasonably believe is a dead circuit.</li>\n    <li><strong>Live prongs.</strong> A panel in sunlight is generating whether or not it is plugged in. UL&nbsp;3700 requires the plug&rsquo;s prongs to de-energise in under a second when it is pulled. Without that feature you can unplug a working system and be holding energised metal.</li>\n    <li><strong>Backfeeding masks the breaker.</strong> A breaker measures only the net current flowing through it. If solar is feeding a circuit while appliances draw from it, the breaker sees the difference, not the total. The wiring between the solar and the loads can then carry more current than the breaker ever detects &mdash; heating conductors without tripping anything. Overcurrent protection is one of the three risk categories UL identified for these systems, alongside touch safety and ground faults.</li>\n    <li><strong>Never an extension cord, a power strip or a multi-outlet adapter.</strong> These are built to carry power one way to a load. They add cord length and connections on the source side, and their own fuse or breaker cannot see the real current on the circuit either. Use the manufacturer&rsquo;s cord, straight into a properly rated wall receptacle.</li>\n    <li><strong>One system per circuit, and know what shares it.</strong> A balcony outlet that also feeds a bedroom running a portable air conditioner is not a good host.</li>\n  </ul>\n  <p>Call a licensed electrician if there is no outdoor outlet, if you cannot identify the breaker, if the receptacle has no ground or trips repeatedly, or if your building&rsquo;s wiring is old enough that you are guessing. This is a small job for an electrician and an expensive one to get wrong yourself.</p>\n  <p>Note also that NEC Article 705 was written for permanently installed, hard-wired PV and does not cleanly address cord-and-plug systems. That gap is part of why New York&rsquo;s fire code update matters, and part of why the honest answer to some detailed questions right now is that the rules are not settled.</p>\n</section>"
+    },
+    {
+      "id": "mounting",
+      "toc": "Mounting, wind, and things falling off buildings",
+      "html": "        <section id=\"mounting\">\n  <h2><span class=\"sec-num\">6</span>Mounting, wind, and things falling off buildings</h2>\n  <p>A solar panel is a flat, rigid sail. On a high floor in New York, wind pressure and the gusting that comes off neighbouring towers are the governing load &mdash; not the panel&rsquo;s weight. This is the part of a balcony install that is genuinely worth being conservative about, because a failure does not hurt you, it hurts whoever is on the sidewalk.</p>\n  <ul>\n    <li><strong>Two mounting approaches.</strong> Clamped or hooked to the railing, or ballasted flat on the balcony floor at an angle. Ballasting avoids attaching anything to the guard, but adds concentrated weight &mdash; ask the managing agent about the balcony&rsquo;s live-load capacity rather than estimating it.</li>\n    <li><strong>Use a secondary tether.</strong> A separate cable or strap from the panel frame to a solid anchor, independent of the primary brackets, so a loosened clamp does not become a falling object. Stainless or otherwise corrosion-resistant hardware only.</li>\n    <li><strong>Prefer mounting inside the railing.</strong> Hanging a panel on the outside face puts a hard object over the sidewalk, and many buildings prohibit exterior-face mounting outright.</li>\n    <li><strong>Do not drill the building envelope.</strong> Anything that penetrates a wall, parapet or waterproofing membrane is a different category of work with different approvals, and a water-infiltration claim is the fastest way to lose a board&rsquo;s goodwill.</li>\n    <li><strong>Route the cable properly.</strong> Not pinched under a door, not through a window that closes on it, not draped where it can chafe. Use the manufacturer&rsquo;s routing and any supplied strain relief.</li>\n    <li><strong>Re-check it seasonally.</strong> Bracket torque, tether integrity, cable condition, and the state of the connectors. Twice a year is reasonable; after any severe wind event is sensible.</li>\n  </ul>\n  <p>If your railing is glass, if the guard is visibly aged, or if you cannot establish what the brackets would be bearing on, get an engineer to look at it. That cost may well exceed the value of the electricity, which is a legitimate reason to decide against the whole thing.</p>\n</section>"
+    },
+    {
+      "id": "worth-it",
+      "toc": "Whether it is worth it for your apartment",
+      "html": "        <section id=\"worth-it\">\n  <h2><span class=\"sec-num\">7</span>Whether it is worth it for your apartment</h2>\n  <p>Preparation is also the point at which to decide honestly whether to proceed. A typical 800&nbsp;W setup in New York City produces roughly <strong>400 to 900&nbsp;kWh a year</strong>. That is a wide band because location dominates: a high-floor, south-facing balcony produces about <strong>three times</strong> what a low-floor, north-facing one does. Con Edison&rsquo;s SC-1 all-in marginal rate is about <strong>$0.34/kWh</strong>, so the value of that output is what you avoid buying, not a credit &mdash; the SUNNY Act exempts these devices from net metering.</p>\n  <p>Kits for a typical 800&nbsp;W system run about <strong>$850</strong> budget, <strong>$1,200</strong> mid-range and <strong>$1,600</strong> premium. Add anything your building requires on top: an electrician for an outdoor receptacle, an engineer&rsquo;s letter for the board, a certificate of insurance. The <a href=\"/balcony-solar-cost\">cost and payback page</a> works the arithmetic through.</p>\n  <p>Run your own numbers on the <a href=\"/\">calculator</a>, and read <a href=\"/methodology\">how we get them</a>. Then consider the cases where the sensible answer is no. A north-facing balcony on a low floor, hemmed in by an adjacent building, with no outdoor outlet and a board that will require an alteration agreement, is a project where the costs are real and immediate and the savings are small and slow. There is no shame in concluding that this does not work for your apartment. It works very well for some, and poorly for others, and the difference is mostly the direction your balcony faces.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Can I install a balcony solar panel in New York City right now?",
+      "Not yet. New York's SUNNY Act, which would exempt plug-in solar devices up to 1,200 watts of AC inverter output from interconnection and net-metering requirements, passed both legislative chambers in 2026 but was still awaiting Governor Hochul's signature as of September 2026, and it takes effect on the ninetieth day after it becomes law. Until then, installation should wait. You can usefully spend that time getting written building permission, checking your outlet and railing, and choosing a certified kit."
+    ],
+    [
+      "Do I need an electrician to install balcony solar?",
+      "A certified plug-in kit is designed to connect to an existing outdoor outlet without an electrician. You do need a licensed electrician if your balcony has no weather-rated receptacle, if you cannot identify which breaker feeds it, or if the outlet trips repeatedly, lacks a ground, or looks damaged. In a New York City apartment building, adding an outdoor receptacle is also usually a building alteration requiring the landlord's or board's approval."
+    ],
+    [
+      "Will balcony solar power my apartment during a blackout?",
+      "No. Grid-tied microinverters must have anti-islanding protection, which shuts the inverter down within a fraction of a second when grid power disappears. This exists so the system cannot energise wiring that a utility worker or firefighter believes is dead. A standard plug-in solar kit has no battery, so it produces nothing at all during an outage."
+    ],
+    [
+      "Can I plug a balcony solar panel into an extension cord or power strip?",
+      "No. Cords, strips and adapters are built to carry power one way to a load, and they add connections and a fuse or breaker that cannot measure the true current on a circuit once solar is feeding into it. A certified system should plug directly into a properly rated, weather-protected wall receptacle using the manufacturer's own cord. Anything else risks overheating wiring without tripping any protective device."
+    ],
+    [
+      "Does the SUNNY Act mean my landlord or co-op board has to allow balcony solar?",
+      "No. The SUNNY Act removes the utility-side barrier by exempting compliant devices from interconnection and net-metering requirements; it does not create a right to install one. New York renters still need their landlord's permission, co-op and condo residents still need board approval, and buildings that are individual landmarks or sit in historic districts may need Landmarks Preservation Commission review."
+    ],
+    [
+      "Can I put a solar panel on my fire escape?",
+      "No. The New York City Fire Code requires fire escapes, and access to them, to be continuously maintained free of obstructions, and that applies to panels, brackets and cables just as it does to furniture and plants. The same rule covers any required means of egress, including a window used as an escape route. A balcony that doubles as a fire escape balcony is not a viable site for solar."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "NY State Senate Bill 2025-S8512C (SUNNY Act)",
+      "note": "the definition of a portable solar generation device, the 1,200&nbsp;W AC limit, certification and fire-code conditions, and the ninetieth-day effective date."
+    },
+    {
+      "url": "https://pv-magazine-usa.com/2026/06/01/new-york-legislature-passes-sunny-act-plug-in-solar-legislation/",
+      "title": "New York legislature passes SUNNY Act plug-in solar legislation",
+      "note": "the absence of renter and HOA protections in the New York bill, and the contrasting New Jersey bill."
+    },
+    {
+      "url": "https://www.ul.com/news/ul-solutions-debuts-testing-and-certification-framework-safer-plug-solar-across-united-states",
+      "title": "UL Solutions debuts a testing and certification framework for plug-in solar",
+      "note": "UL&nbsp;3700, published December 2025, covering the complete plug-in system rather than the inverter alone."
+    },
+    {
+      "url": "https://www.ul.com/insights/safety-considerations-plug-photovoltaic-pipv-systems",
+      "title": "Safety considerations for plug-in photovoltaic systems",
+      "note": "the three risk categories: overcurrent protection, touch safety and ground-fault protection."
+    },
+    {
+      "url": "https://www.pv-tech.org/us-plug-in-solar-questions-remain-over-safety-certifications-and-regulation/",
+      "title": "UL Solutions flags safety risks in US plug-in solar",
+      "note": "cord-and-plug connections bypassing code review, and UL's finding that tested products did not meet UL&nbsp;3700."
+    },
+    {
+      "url": "https://iaeimagazine.org/columns/certification-insights/balcony-pv-enters-the-code-conversation/",
+      "title": "Balcony PV enters the code conversation",
+      "note": "NEC Article&nbsp;705 was written for hard-wired PV and does not cleanly cover cord-and-plug systems."
+    },
+    {
+      "url": "https://up.codes/viewer/new_york_city/nyc-fire-code-2022/chapter/10/means-of-egress",
+      "title": "NYC Fire Code 2022, Chapter 10 &mdash; Means of Egress",
+      "note": "the requirement that means of egress be continuously maintained free of obstructions."
+    },
+    {
+      "url": "https://www.nyc.gov/site/lpc/applications/technical-resources.page",
+      "title": "NYC Landmarks Preservation Commission &mdash; technical resources",
+      "note": "LPC review of exterior work on designated buildings and in historic districts."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not legal, electrical or engineering advice. Where it says to consult a licensed electrician or an engineer, that is the advice."
+}

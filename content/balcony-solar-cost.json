@@ -1,0 +1,112 @@
+{
+  "slug": "balcony-solar-cost",
+  "title": "What does a balcony solar kit cost in NYC? &middot; balco.nyc",
+  "og_title": "What does a balcony solar kit cost in NYC, and does it pay for itself?",
+  "breadcrumb": "Cost and payback",
+  "description": "Kit prices, the costs that are not the kit, and the payback arithmetic worked through at four production levels \u2014 including why every savings figure is a ceiling rather than an expectation.",
+  "eyebrow": "Cost and payback",
+  "h1": "What does a balcony solar kit cost in NYC?",
+  "lede": "A balcony solar kit for a typical 800-watt New York City setup costs about $850 budget, $1,200 mid-range, or $1,600 premium; the nonprofit Bright Saver has sold a 360&nbsp;W kit at cost since July 2026 for $414 plus a $29 membership. At Con Edison&rsquo;s $0.34 per kilowatt-hour, a well-sited system saves roughly $300 a year and pays back in three to five years. A shaded, low-floor balcony takes six to ten.",
+  "date_label": "Prices checked",
+  "reviewed": "2026-09-04",
+  "reviewed_human": "September 4, 2026",
+  "published": "2026-09-04",
+  "reading_time": "~8 minutes",
+  "tags": [
+    "$850&ndash;$1,600",
+    "2.7&ndash;10.4&nbsp;yr payback",
+    "No export credit"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "what-kits-cost",
+      "toc": "What a kit costs right now",
+      "html": "        <section id=\"what-kits-cost\">\n  <h2><span class=\"sec-num\">1</span>What a kit costs right now</h2>\n  <p>balco.nyc models a typical 800&nbsp;W New York City setup at three price points: <strong>$850 budget</strong>, <strong>$1,200 mid</strong>, <strong>$1,600 premium</strong>. That is panels, microinverter, cabling and a railing mount &mdash; the hardware, not the electrician.</p>\n  <p>Per watt, those work out to <strong>$1.06</strong>, <strong>$1.50</strong> and <strong>$2.00</strong>. Per watt is the number to compare on, because a kit twice the size costs roughly twice as much and produces roughly twice as much, so kit size barely moves your payback period. Siting does.</p>\n  <p>For an external reference point on the low end: Bright Saver, a nonprofit, opened nationwide at-cost sales in July 2026 at <strong>$285.30 for 180&nbsp;W</strong> and <strong>$414.17 for 360&nbsp;W</strong> to members, against <strong>$499</strong> and <strong>$699</strong> without membership. Membership is $29 a year.</p>\n  <p>We cite this because it is the best-documented at-cost price in the US market and it tells you what the hardware genuinely costs before markup. It is not a recommendation. balco.nyc does not rank brands, take affiliate revenue, or tell you what to buy.</p>\n  <div class=\"callout\"><p><strong>Prices in this market moved sharply during 2026. Any figure you read without a date on it is worthless. Every price on this page carries the date we found it.</strong></p></div>\n</section>"
+    },
+    {
+      "id": "other-costs",
+      "toc": "The costs that are not the kit",
+      "html": "        <section id=\"other-costs\">\n  <h2><span class=\"sec-num\">2</span>The costs that are not the kit</h2>\n  <p>The kit price is the part that is easy to look up, which is why most coverage stops there. Budget for the rest before you decide:</p>\n  <ul>\n    <li><strong>An outlet.</strong> A plug-in system needs a weather-rated outlet on the balcony. Many NYC balconies do not have one. Adding one is a licensed-electrician job, often through an exterior wall, sometimes requiring building permission. We have no reliable price for this in NYC and will not guess &mdash; get two quotes before you buy a kit. On a balcony with no outlet this can be a large fraction of the kit price.</li>\n    <li><strong>Mounting.</strong> Included brackets suit common railing profiles. Glass balustrades, thick concrete parapets and unusual rail geometry may need something else.</li>\n    <li><strong>Permission.</strong> Co-op boards, condo boards and landlords may say no, or say yes with conditions on the mount, the colour, or the visibility from the street. That costs time, and occasionally a more expensive mount.</li>\n    <li><strong>Membership or shipping</strong>, where a seller charges them.</li>\n    <li><strong>Replacement.</strong> Panels and microinverters are usually warranted for different lengths of time. Check both before assuming a 25-year life.</li>\n  </ul>\n  <p>These are excluded from the payback table below. Add yours to the kit cost column and re-read it.</p>\n</section>"
+    },
+    {
+      "id": "what-a-kwh-is-worth",
+      "toc": "What a kilowatt-hour is actually worth to you",
+      "html": "        <section id=\"what-a-kwh-is-worth\">\n  <h2><span class=\"sec-num\">3</span>What a kilowatt-hour is actually worth to you</h2>\n  <p>balco.nyc values avoided consumption at <strong>$0.34/kWh</strong> &mdash; Con Edison SC-1 all-in marginal cost, supply plus delivery plus surcharges. It is the number that changes when you use one less kilowatt-hour, and <a href=\"/electricity-rate\">why we use it rather than a supply-only figure</a> is a page of its own.</p>\n  <p>Your bill also carries a fixed monthly customer charge. <strong>Solar does not touch it.</strong> It is excluded from the $0.34 marginal rate, and in the worst siting case it is larger than everything the panels save you. Your bill will not go to zero.</p>\n  <p>The bigger point, and the one most coverage of balcony solar gets wrong: <strong>there is no net metering for these devices.</strong> The SUNNY Act exempts them from interconnection and net-metering requirements, which cuts both ways &mdash; no utility approval, and no credit for export. A kilowatt-hour your panels make while your apartment is drawing less than they produce goes to the grid and earns you <strong>nothing</strong>.</p>\n  <p>So every saving figure below is a <em>ceiling</em>: it assumes every kilowatt-hour generated displaces one you would otherwise have bought. Multiply by whatever share you actually self-consume. As arithmetic rather than as a balco.nyc estimate: if a fifth of your generation were exported, a $187 year-one saving becomes about $150, and a 6.0-year payback becomes about 7.4 years.</p>\n</section>"
+    },
+    {
+      "id": "payback-table",
+      "toc": "The payback arithmetic, worked",
+      "html": "        <section id=\"payback-table\">\n  <h2><span class=\"sec-num\">4</span>The payback arithmetic, worked</h2>\n  <p>An 800&nbsp;W system in New York City produces roughly <strong>400&ndash;900&nbsp;kWh a year</strong>. The spread across balconies is about <strong>3&times;</strong> from worst to best &mdash; high floor facing south against low floor facing north, with the buildings across the street doing most of the damage.</p>\n  <p>The table runs four production levels across the band. Savings are year one at $0.34/kWh, at 100% self-consumption. Payback years account for 3%/year rate escalation and 0.5%/year panel degradation, and are the year cumulative savings first exceed the kit price.</p>\n  <div class=\"table-wrap\"><table><thead>\n    <tr><th>Annual output</th><th>Year-1 saving (ceiling)</th><th>Payback, $850 kit</th><th>Payback, $1,200 kit</th><th>Payback, $1,600 kit</th><th>25-yr net, $1,200 kit (nominal)</th></tr>\n  </thead><tbody>\n    <tr><td>400 kWh (poorly sited)</td><td>$136</td><td>5.9 yr</td><td>8.1 yr</td><td>10.4 yr</td><td>+$3,435</td></tr>\n    <tr><td>550 kWh</td><td>$187</td><td>4.4 yr</td><td>6.0 yr</td><td>7.9 yr</td><td>+$5,175</td></tr>\n    <tr><td>700 kWh</td><td>$238</td><td>3.5 yr</td><td>4.8 yr</td><td>6.3 yr</td><td>+$6,915</td></tr>\n    <tr><td>900 kWh (well sited)</td><td>$306</td><td>2.7 yr</td><td>3.8 yr</td><td>5.0 yr</td><td>+$9,235</td></tr>\n  </tbody></table></div>\n  <p>Read across a row rather than down a column. Moving from the premium kit to the budget kit at fixed siting saves you about four and a half years in the worst row. Moving from the worst siting to the best at a fixed kit saves you four to five. <strong>Where the panel points matters about as much as what you pay for it, and you can only change one of those after you have signed the lease.</strong></p>\n</section>"
+    },
+    {
+      "id": "reading-the-25-year-number",
+      "toc": "How to read the 25-year number",
+      "html": "        <section id=\"reading-the-25-year-number\">\n  <h2><span class=\"sec-num\">5</span>How to read the 25-year number</h2>\n  <p>The last column is in <strong>nominal dollars, not discounted to present value</strong>. This matters more than it sounds. Nominal totals are the standard way this gets reported and they systematically flatter the result.</p>\n  <p>Take the 550&nbsp;kWh row. Twenty-five years of escalating, degrading output totals about <strong>$6,375</strong> nominal. Discount that stream at 3% a year and it is worth about <strong>$4,277</strong> in today&rsquo;s money. Net of a $1,200 kit: <strong>+$5,175 nominal, +$3,077 in present value</strong>. Same panels, same sun, a third less money once you account for the fact that a dollar in 2051 is not a dollar now.</p>\n  <p>Two other assumptions sit inside that number. Rate escalation is set at <strong>3%/year</strong> by default, with 2% and 4% presets &mdash; at 2% the totals fall noticeably and paybacks stretch, and this is a forecast, not a measurement. Panel degradation is <strong>0.5%/year</strong> on the mid tier, so year-25 output is about 88% of year one.</p>\n  <p>And the model itself carries a stated accuracy of <strong>&plusmn;15%</strong>, widening to &plusmn;20% where it falls back to coarser irradiance data. That is a modelled band, <em>not field-validated</em> &mdash; nobody has yet put instrumented kits on a representative sample of New York balconies. A 6.0-year payback should be read as roughly 5.2 to 7.1 years. See <a href=\"/methodology\">methodology</a> for how the band is derived.</p>\n</section>"
+    },
+    {
+      "id": "when-it-is-not-worth-it",
+      "toc": "When the answer is no",
+      "html": "        <section id=\"when-it-is-not-worth-it\">\n  <h2><span class=\"sec-num\">6</span>When the answer is no</h2>\n  <p>If your balcony is on a low floor, faces north, or spends the middle of the day in the shadow of the building opposite, the arithmetic is bad and you should not spend the money on economic grounds.</p>\n  <p>Work it through. Roughly 400&nbsp;kWh a year is <strong>$136</strong> of avoided electricity at best. Put that against a $1,600 premium kit and payback is <strong>10.4 years</strong> before you add an electrician, before you subtract exported kilowatt-hours you are not paid for, and before the &plusmn;15% band, which could push it past 12. If you may move within five years, and you probably will if you rent, you will not get your money back.</p>\n  <p>Buy the cheapest kit that is properly certified, or do not buy one. A budget kit on a poor balcony pays back in 5.9 years; a premium kit on the same balcony takes 10.4. Paying more for a system that will never see full sun is the single most expensive mistake available here.</p>\n  <div class=\"callout\"><p><strong>None of this is legal in New York yet.</strong> The SUNNY Act passed both chambers in late May 2026 and awaits the Governor&rsquo;s signature; it takes effect 90 days after signing. Do not buy hardware on the assumption the timeline will hold &mdash; see <a href=\"/sunny-act\">the SUNNY Act status page</a>.</p></div>\n  <p>Run your own floor, orientation and consumption through <a href=\"/\">the calculator</a> rather than reading a row off this table. The table is four points on a wide band; your balcony is one point.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "How much does a balcony solar kit cost in NYC?",
+      "For a typical 800 W setup, balco.nyc models $850 at the budget end, $1,200 mid-range and $1,600 premium \u2014 hardware only. Smaller kits cost proportionally less: the nonprofit Bright Saver has sold a 360 W kit at cost since July 2026 for $414 to members, plus a $29 annual membership. None of these figures include an electrician, and many NYC balconies need one to add an outdoor outlet."
+    ],
+    [
+      "Is balcony solar worth it in New York?",
+      "It depends almost entirely on your balcony, not on the kit. A high-floor, south-facing, unshaded balcony producing 900 kWh a year saves about $306 and pays back a mid-range kit in 3.8 years. A low-floor, north-facing one producing 400 kWh saves $136 and takes 8.1 years on the same kit \u2014 or over 10 on a premium one, which is a bad deal."
+    ],
+    [
+      "Do I get paid for the electricity I don't use?",
+      "No. The SUNNY Act exempts these devices from net metering, so any kilowatt-hour you generate and do not consume at that moment goes to the grid uncompensated. This is the most important fact about the economics and most coverage gets it wrong. Every saving figure on this page assumes full self-consumption and is therefore a ceiling, not an expectation."
+    ],
+    [
+      "What is the payback period for balcony solar in NYC?",
+      "Between roughly 2.7 and 10.4 years, depending on siting and kit price, assuming full self-consumption. A mid-range $1,200 kit lands between 3.8 and 8.1 years across the typical 400\u2013900 kWh production band. Those figures include 3%/year rate escalation and 0.5%/year panel degradation, and carry a modelled plus or minus 15% accuracy band."
+    ],
+    [
+      "Will balcony solar zero out my Con Edison bill?",
+      "No. Con Edison charges a fixed monthly service charge that does not change with how much you generate. On a poorly sited balcony that fixed charge alone can exceed the entire annual saving. Solar only reduces the variable portion of the bill, which balco.nyc values at $0.34 per kilowatt-hour."
+    ],
+    [
+      "Should I buy the premium kit?",
+      "On a well-sited balcony the difference is about 1.2 years of payback and defensible. On a poorly sited one it is 4.5 years and hard to justify. Since output is set by your floor, orientation and shading rather than by kit quality, paying up for hardware that will never see full sun is the most expensive error available. balco.nyc does not recommend specific products or brands."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://www.brightsaver.org/balcony-solar-kits",
+      "title": "Bright Saver &mdash; balcony solar kits",
+      "note": "at-cost kit prices as listed from July 2026: 180&nbsp;W at $285.30 and 360&nbsp;W at $414.17 to members."
+    },
+    {
+      "url": "https://pv-magazine-usa.com/2026/07/13/bright-saver-begins-offering-plug-in-solar-kits-at-wholesale-costs-to-customers-nationwide/",
+      "title": "Bright Saver begins offering plug-in solar kits at wholesale costs nationwide (13 July 2026)",
+      "note": "confirms the nationwide at-cost launch and the member and non-member price pairs."
+    },
+    {
+      "url": "https://www.canarymedia.com/articles/solar/balcony-panel-bright-saver-deal",
+      "title": "A new deal on balcony solar just dropped in the US (July 2026)",
+      "note": "effective prices of $1.75/W and $1.23/W once the annual membership is included."
+    },
+    {
+      "url": "https://www.nysenate.gov/newsroom/press-releases/2026/liz-krueger/sunny-act-passes-nys-legislature-bringing-plug-solar-one",
+      "title": "SUNNY Act passes the NYS Legislature",
+      "note": "passage of S8512C / A9111C through both chambers."
+    },
+    {
+      "url": "https://www.newyorkalmanack.com/2026/07/balcony-solar-plug-in-power-hochul/",
+      "title": "Balcony solar plug-in power awaits Hochul's signature",
+      "note": "the bill unsigned as of July 2026, with a year-end deadline and a 90-day commencement."
+    },
+    {
+      "url": "https://www.canarymedia.com/articles/solar/new-york-gov-sign-balcony-solar-bill",
+      "title": "Will New York Gov. Kathy Hochul sign a balcony solar bill?",
+      "note": "the exemption from interconnection and net-metering requirements, and what it implies for export credit."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not financial advice, and it does not sell, rank or recommend any product. Prices move; check the dates."
+}

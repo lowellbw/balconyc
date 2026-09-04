@@ -283,6 +283,45 @@ describe('Content pages and crawl surface', () => {
   });
 });
 
+describe('Analytics', () => {
+  const analytics = read('js/analytics.js');
+  const idMatch = analytics.match(/var MEASUREMENT_ID = '([^']*)'/);
+
+  it('does nothing at all until a real measurement ID is set', () => {
+    // A placeholder ID looks installed and collects nothing. An empty one is
+    // honest: the file returns before fetching anything or setting a cookie.
+    assert(idMatch, 'js/analytics.js has no MEASUREMENT_ID declaration');
+    const id = idMatch[1];
+    assert(id === '' || /^G-[A-Z0-9]+$/.test(id),
+      `MEASUREMENT_ID must be empty or a real G-XXXXXXXXXX, got ${id}`);
+    assert(/if \(!\/\^G-\[A-Z0-9\]\+\$\/\.test\(MEASUREMENT_ID\)\) return;/.test(analytics),
+      'analytics.js must bail out before loading anything when unconfigured');
+  });
+
+  it('honours Do Not Track', () => {
+    assert(/doNotTrack/.test(analytics), 'analytics.js ignores the Do Not Track signal');
+  });
+
+  it('never sends an address or coordinates to analytics', () => {
+    // The calculator knows where people live. That must not reach GA.
+    const call = index.match(/balcoTrack\(([\s\S]*?)\}\s*\);/);
+    assert(call, 'no balcoTrack call found in index.html');
+    for (const banned of ['address', 'lat', 'lon', 'SolarState.address']) {
+      assert(!call[1].includes(banned),
+        `the analytics event payload includes "${banned}" — it must carry no location data`);
+    }
+  });
+
+  it('loads analytics on every page', () => {
+    const specs = fs.readdirSync(path.join(ROOT, 'content'))
+      .filter(f => f.endsWith('.json'))
+      .map(f => JSON.parse(read(path.join('content', f))).slug);
+    for (const f of ['index.html', 'methodology.html', ...specs.map(s => `${s}.html`)]) {
+      assert(read(f).includes('js/analytics.js'), `${f} does not load analytics`);
+    }
+  });
+});
+
 describe('Deployment configuration', () => {
   const vercel = JSON.parse(read('vercel.json'));
 

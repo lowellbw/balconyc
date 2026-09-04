@@ -1207,6 +1207,7 @@
 <!-- The model itself is small and needed on first interaction. The 3D stack
      (Three.js + OrbitControls + scene code) is ~600KB and is only needed once
      an address resolves, so it is injected on demand by loadSceneStack(). -->
+<script src="js/analytics.js"></script>
 <script src="js/config.js"></script>
 <script src="js/solar-api.js"></script>
 <script src="js/sun-position.js"></script>
@@ -1412,6 +1413,16 @@ function initSupabase() {
  * this an actual HTTP request rather than a discarded object.
  */
 function logEstimate(result, formInputs) {
+  // The one funnel question worth answering: of the people who land here,
+  // how many actually get an estimate? Deliberately carries no address and
+  // no coordinates — just the shape of the result, so the number is
+  // interpretable without identifying anybody.
+  if (window.balcoTrack) {
+    window.balcoTrack('estimate_complete', {
+      annual_kwh: Math.round(result.annualKwh),
+      used_pvwatts: !!result.usedPVWatts
+    });
+  }
   initSupabase().then(function() {
     if (!supabaseClient) return;
     return supabaseClient.from('estimates').insert({

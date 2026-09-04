@@ -334,6 +334,20 @@ describe('Analytics', () => {
     }
   });
 
+  it('reports its own state so a silent failure is findable', () => {
+    // Analytics fails quietly: no error, no broken layout, just no data three
+    // weeks later. Every exit path has to leave a word behind in
+    // window.__balcoAnalytics, or the only way to debug it is to guess.
+    for (const state of ['off', 'loading', 'blocked', 'ready']) {
+      assert(analytics.includes(`status('${state}')`),
+        `analytics.js never reports the '${state}' state`);
+    }
+    assert(/s\.onerror\s*=/.test(analytics),
+      'a blocked script must be detected, not ignored — most ad blockers stop PostHog');
+    assert(analytics.indexOf("status('off')") < analytics.indexOf('var PROJECT_KEY'),
+      "the default must be 'off', set before any early return can skip it");
+  });
+
   it('loads analytics on every page', () => {
     const specs = fs.readdirSync(path.join(ROOT, 'content'))
       .filter(f => f.endsWith('.json'))

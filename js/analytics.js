@@ -24,6 +24,19 @@
 // else. No address, no coordinates.
 // ============================================================
 (function () {
+  // Type __balcoAnalytics in the browser console and one word tells you where
+  // this got to. Analytics fails silently by nature — no error, no missing
+  // pixel, just no data three weeks later — so it reports on itself:
+  //
+  //   'off'       no key, or the browser asked not to be tracked
+  //   'loading'   the request went out; no answer yet
+  //   'blocked'   a content blocker stopped it. PostHog's domains are on most
+  //               lists and Brave blocks them by default
+  //   'ready'     running
+  //   undefined   you are looking at a cached copy of an older build
+  function status(v) { window.__balcoAnalytics = v; }
+  status('off');
+
   // Project 593517, US cloud. This token is public by design: it ships in
   // the JavaScript every visitor downloads. It identifies where events go,
   // it does not grant access to anything.
@@ -37,12 +50,18 @@
   // exists to queue calls made before the library arrives; nothing here
   // captures until a visitor acts, long after load, so the readable version
   // costs nothing and can actually be audited.
+  status('loading');
+
   var s = document.createElement('script');
   s.async = true;
   s.src = API_HOST.replace('.i.posthog.com', '-assets.i.posthog.com') + '/static/array.js';
 
+  s.onerror = function () {
+    status('blocked');
+  };
+
   s.onload = function () {
-    if (!window.posthog || !window.posthog.init) return;
+    if (!window.posthog || !window.posthog.init) { status('blocked'); return; }
 
     window.posthog.init(PROJECT_KEY, {
       api_host: API_HOST,
@@ -67,6 +86,8 @@
         window.posthog.capture(name, params || {});
       }
     };
+
+    status('ready');
   };
 
   document.head.appendChild(s);

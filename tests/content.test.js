@@ -285,25 +285,47 @@ describe('Content pages and crawl surface', () => {
 
 describe('Analytics', () => {
   const analytics = read('js/analytics.js');
-  const idMatch = analytics.match(/var MEASUREMENT_ID = '([^']*)'/);
+  const keyMatch = analytics.match(/var PROJECT_KEY = '([^']*)'/);
 
-  it('does nothing at all until a real measurement ID is set', () => {
-    // A placeholder ID looks installed and collects nothing. An empty one is
+  it('does nothing at all until a real project key is set', () => {
+    // A placeholder key looks installed and collects nothing. An empty one is
     // honest: the file returns before fetching anything or setting a cookie.
-    assert(idMatch, 'js/analytics.js has no MEASUREMENT_ID declaration');
-    const id = idMatch[1];
-    assert(id === '' || /^G-[A-Z0-9]+$/.test(id),
-      `MEASUREMENT_ID must be empty or a real G-XXXXXXXXXX, got ${id}`);
-    assert(/if \(!\/\^G-\[A-Z0-9\]\+\$\/\.test\(MEASUREMENT_ID\)\) return;/.test(analytics),
+    assert(keyMatch, 'js/analytics.js has no PROJECT_KEY declaration');
+    const key = keyMatch[1];
+    assert(key === '' || /^phc_[A-Za-z0-9]+$/.test(key),
+      `PROJECT_KEY must be empty or a real phc_ key, got ${key}`);
+    assert(/if \(!\/\^phc_/.test(analytics),
       'analytics.js must bail out before loading anything when unconfigured');
   });
 
   it('honours Do Not Track', () => {
     assert(/doNotTrack/.test(analytics), 'analytics.js ignores the Do Not Track signal');
+    assert(/respect_dnt:\s*true/.test(analytics), 'PostHog must also be told to respect DNT');
+  });
+
+  it('never records what people type', () => {
+    // Visitors type their home address into this site. Session replay would
+    // capture that keystroke by keystroke on PostHog's defaults.
+    assert(/maskAllInputs:\s*true/.test(analytics),
+      'session replay must mask all inputs — people type their address here');
+    assert(/mask_all_element_attributes:\s*true/.test(analytics),
+      'autocapture must not report element attribute values');
+    assert(/person_profiles:\s*'identified_only'/.test(analytics),
+      'person profiles should only be created for identified users');
+  });
+
+  it('excludes the address field from capture and replay', () => {
+    const input = index.match(/<input[^>]*id="addressInput"[^>]*>/);
+    assert(input, 'the address input was not found in index.html');
+    assert(input[0].includes('ph-no-capture'),
+      'the address input must carry ph-no-capture');
+    assert(input[0].includes('data-private'),
+      'the address input must carry data-private, which the replay mask selector targets');
+    assert(/maskTextSelector:\s*'\[data-private\]'/.test(analytics),
+      'the replay mask selector must target [data-private]');
   });
 
   it('never sends an address or coordinates to analytics', () => {
-    // The calculator knows where people live. That must not reach GA.
     const call = index.match(/balcoTrack\(([\s\S]*?)\}\s*\);/);
     assert(call, 'no balcoTrack call found in index.html');
     for (const banned of ['address', 'lat', 'lon', 'SolarState.address']) {

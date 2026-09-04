@@ -1,45 +1,73 @@
 // ============================================================
-// balco.nyc — analytics.
+// balco.nyc — analytics (PostHog).
 //
-// Set MEASUREMENT_ID to the property's G-XXXXXXXXXX and analytics starts
-// reporting. Leave it empty and this file does nothing at all: no script
-// is fetched, no cookie is set, no request leaves the browser. That is
-// deliberate — a half-configured tag that fires against the wrong property
-// is worse than no analytics, and a placeholder ID silently collects
-// nothing while looking installed.
+// Set PROJECT_KEY to the project's phc_... key and analytics starts.
+// Leave it empty and this file does nothing at all: no script is fetched,
+// no cookie is set, no request leaves the browser. That is deliberate —
+// a half-configured key looks installed and collects nothing, and you
+// find out weeks later.
 //
-// Nothing here identifies a visitor. No address anyone types into the
-// calculator is ever sent: the only events are page views and whether the
-// calculator was used, which is what the questions worth asking need
-// (how many people arrive, from where, and how many get to a result).
+// PRIVACY, and why the settings below are what they are. People type
+// their home address into this site. PostHog's session replay would
+// record that keystroke by keystroke, and its autocapture would send the
+// values of form fields. Both are turned down here rather than left on
+// their defaults:
+//
+//   - every input is masked in replay, and the address field is excluded
+//     from capture entirely;
+//   - Do Not Track is honoured, which PostHog will otherwise ignore;
+//   - person profiles are only created for identified users, and nothing
+//     here ever identifies anyone, so in practice none are created.
+//
+// The single custom event carries the rounded annual kWh and nothing
+// else. No address, no coordinates.
 // ============================================================
 (function () {
-  var MEASUREMENT_ID = '';   // <- paste the GA4 ID here
+  var PROJECT_KEY = '';                       // <- paste the phc_... key here
+  var API_HOST    = 'https://us.i.posthog.com';  // 'https://eu.i.posthog.com' for EU
 
-  if (!/^G-[A-Z0-9]+$/.test(MEASUREMENT_ID)) return;
-
-  // Respect an explicit Do Not Track signal. GA would otherwise ignore it.
+  if (!/^phc_[A-Za-z0-9]+$/.test(PROJECT_KEY)) return;
   if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
 
+  // Loaded plainly rather than via PostHog's minified stub snippet. The stub
+  // exists to queue calls made before the library arrives; nothing here
+  // captures until a visitor acts, long after load, so the readable version
+  // costs nothing and can actually be audited.
   var s = document.createElement('script');
   s.async = true;
-  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + MEASUREMENT_ID;
+  s.src = API_HOST.replace('.i.posthog.com', '-assets.i.posthog.com') + '/static/array.js';
+
+  s.onload = function () {
+    if (!window.posthog || !window.posthog.init) return;
+
+    window.posthog.init(PROJECT_KEY, {
+      api_host: API_HOST,
+      person_profiles: 'identified_only',
+      respect_dnt: true,
+      autocapture: {
+        // Autocapture reports which element was interacted with. It must not
+        // report what was typed into it.
+        mask_all_element_attributes: true,
+        mask_all_text: false
+      },
+      session_recording: {
+        maskAllInputs: true,                  // never record a typed value
+        maskTextSelector: '[data-private]'    // and mask anything marked private
+      }
+    });
+
+    // The one funnel question worth answering: of the people who land here,
+    // how many actually get an estimate?
+    window.balcoTrack = function (name, params) {
+      if (window.posthog && window.posthog.capture) {
+        window.posthog.capture(name, params || {});
+      }
+    };
+  };
+
   document.head.appendChild(s);
 
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { window.dataLayer.push(arguments); }
-  window.gtag = gtag;
-  gtag('js', new Date());
-  gtag('config', MEASUREMENT_ID, {
-    anonymize_ip: true,
-    allow_google_signals: false,      // no cross-device ad personalisation
-    allow_ad_personalization_signals: false
-  });
-
-  // One custom event, because the only interesting funnel on this site is
-  // "arrived" -> "actually got an estimate". Fired from index.html when a
-  // result renders. The address is never included.
-  window.balcoTrack = function (name, params) {
-    if (typeof gtag === 'function') gtag('event', name, params || {});
-  };
+  // Defined immediately so callers never have to test for it. Until the
+  // library loads this is a no-op rather than an error.
+  window.balcoTrack = window.balcoTrack || function () {};
 })();

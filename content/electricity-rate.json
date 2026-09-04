@@ -1,0 +1,117 @@
+{
+  "slug": "electricity-rate",
+  "title": "What does a kWh actually cost in NYC? &middot; balco.nyc",
+  "og_title": "What does a kilowatt-hour actually cost in New York City?",
+  "breadcrumb": "What a kWh costs",
+  "description": "Con Edison publishes several different rates and they answer different questions. Why balco.nyc values self-consumed solar at 34 cents per kWh rather than a supply-only figure, and which number applies to you.",
+  "eyebrow": "Rates",
+  "h1": "What does a kilowatt-hour actually cost in NYC?",
+  "lede": "In New York City, a kWh you don&rsquo;t buy from Con Edison is worth about 34 cents. That is the all-in marginal rate &mdash; supply, delivery, surcharges and the 4.5% city sales tax &mdash; from Con Edison&rsquo;s published SC-1 residential bill history (33.83&cent;/kWh in 2025) plus the 3.5% delivery increase approved on 22 January 2026. Lower figures near 13&ndash;18&cent; are supply only: correct for comparing suppliers, too low for valuing solar you consume yourself.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-04",
+  "reviewed_human": "September 4, 2026",
+  "published": "2026-09-04",
+  "reading_time": "~8 minutes",
+  "tags": [
+    "SC-1 all-in",
+    "33.83&cent; (2025)",
+    "Marginal, not average"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "three-numbers",
+      "toc": "There is no single &ldquo;Con Edison rate&rdquo;",
+      "html": "        <section id=\"three-numbers\">\n  <h2><span class=\"sec-num\">1</span>There is no single &ldquo;Con Edison rate&rdquo;</h2>\n  <p>People asking &ldquo;what does electricity cost in New York City?&rdquo; are usually asking one of three different questions, and each has a different correct answer.</p>\n  <ul>\n    <li><strong>What does the energy itself cost?</strong> Con Edison&rsquo;s Market Supply Charge, also published as the Price to Compare. Reported figures for 2026 run roughly <strong>13.4&cent; to 17.8&cent;/kWh</strong> &mdash; it resets monthly with wholesale prices.</li>\n    <li><strong>What does the average customer pay per kWh?</strong> Total bill divided by kWh, including the fixed monthly charge. Higher than the supply rate, and it moves with how much you use.</li>\n    <li><strong>What does one more &mdash; or one fewer &mdash; kWh cost me?</strong> The all-in <em>marginal</em> rate: supply plus delivery plus surcharges, grossed up for tax, excluding anything fixed. Con Edison&rsquo;s own bill history puts this at <strong>33.83&cent;/kWh</strong> for a New York City SC-1 residential customer in 2025.</li>\n  </ul>\n  <p>balco.nyc uses <strong>$0.34/kWh</strong>. Not because the other figures are wrong, but because the third question is the one a balcony solar panel answers. Every kWh a panel produces and you consume is a kWh you do not buy, at the margin, at whatever the margin costs.</p>\n</section>"
+    },
+    {
+      "id": "whats-in-the-34",
+      "toc": "What is actually in 34 cents",
+      "html": "        <section id=\"whats-in-the-34\">\n  <h2><span class=\"sec-num\">2</span>What is actually in 34 cents</h2>\n  <p>Con Edison&rsquo;s residential bill separates into a supply half and a delivery half, plus surcharges and tax on top. The table uses a New York City residential customer at <strong>350&nbsp;kWh a month</strong>.</p>\n  <div class=\"table-wrap\"><table><thead>\n    <tr><th>Component</th><th>Approximate value</th><th>Scales with usage?</th><th>In the 34&cent;?</th></tr>\n  </thead><tbody>\n    <tr><td>Supply &mdash; Market Supply Charge, merchant function charge, Clean Energy Standard surcharge</td><td>13.4&ndash;17.8&cent;/kWh, resets monthly</td><td>Yes</td><td>Yes</td></tr>\n    <tr><td>Delivery &mdash; energy delivery charge plus riders and adjustment clauses</td><td>Remainder, roughly 14&ndash;19&cent;/kWh</td><td>Yes</td><td>Yes</td></tr>\n    <tr><td>Basic service charge (fixed)</td><td>A fixed monthly amount, reported around $16&ndash;20</td><td><strong>No</strong></td><td><strong>No</strong></td></tr>\n    <tr><td>NYC sales tax at 4.5% &mdash; residential energy is exempt from the 4% state tax</td><td>Applied to the charges above</td><td>Yes</td><td>Yes</td></tr>\n    <tr><td><strong>All-in variable rate (SC-1, NYC, 2025)</strong></td><td><strong>33.83&cent;/kWh</strong></td><td>&mdash;</td><td>&rarr; modelled as $0.34</td></tr>\n  </tbody></table></div>\n  <p>The delivery row is derived by subtraction, not quoted from a tariff sheet: it is what remains once the reported supply rate is taken out of the reported all-in rate. It is shown as a range because the supply side moves every month. The point of the table is the shape, not the third decimal place &mdash; <em>delivery and surcharges are roughly as large as the energy itself</em>, which is why supply-only figures understate the value of a self-consumed kWh by more than half.</p>\n</section>"
+    },
+    {
+      "id": "fixed-charge",
+      "toc": "Why the fixed monthly charge is deliberately left out",
+      "html": "        <section id=\"fixed-charge\">\n  <h2><span class=\"sec-num\">3</span>Why the fixed monthly charge is deliberately left out</h2>\n  <p>Con Edison charges a basic service charge that you pay whether you use 50&nbsp;kWh or 500. A balcony solar panel does not reduce it. Nothing reduces it except closing the account.</p>\n  <p>So it does not belong in a rate used to value generation. At 350&nbsp;kWh a month a fixed charge in the region of $16&ndash;20 works out to roughly 5&cent;/kWh, and including it would inflate the apparent savings from every kWh a panel produces by about that much &mdash; a number the customer would never actually see.</p>\n  <div class=\"callout\"><p><strong>The rule: value avoided consumption at the marginal rate, not the average rate.</strong> An average rate that spreads a fixed charge across kWh answers &ldquo;what did I pay per unit last month?&rdquo; A marginal rate answers &ldquo;what changes if I use one unit less?&rdquo; Only the second question is the one solar answers.</p></div>\n  <p>This cuts the other way too, and it is worth being explicit about it: excluding the fixed charge makes balco.nyc&rsquo;s savings figures <em>smaller</em> than an average-rate calculation would produce. It is the conservative choice, not the flattering one.</p>\n</section>"
+    },
+    {
+      "id": "supply-only",
+      "toc": "Supply-only rates are correct &mdash; for a different question",
+      "html": "        <section id=\"supply-only\">\n  <h2><span class=\"sec-num\">4</span>Supply-only rates are correct &mdash; for a different question</h2>\n  <p>Con Edison publishes a Price to Compare precisely so customers can evaluate offers from independent energy suppliers (ESCOs). An ESCO can only sell you the supply component; delivery stays with Con Edison regardless. Comparing an ESCO&rsquo;s 15&cent; offer against a 34&cent; all-in rate would be a category error, and the Price to Compare exists to prevent exactly that.</p>\n  <p>A calculator quoting 17.8&cent;, or 13.4&cent;, is not making a mistake about arithmetic. It is answering the ESCO-shopping question. If you are choosing a supplier, that is the number you want, and this page is not an argument against it.</p>\n  <p>But a panel on your balcony does not compete with a supplier. It sits behind your meter and reduces the metered kWh flowing into your apartment. Every layer of the bill charged per metered kWh &mdash; delivery, riders, surcharges, sales tax &mdash; falls away with it. That is why self-consumption is valued at the full stack.</p>\n  <p>New York&rsquo;s <a href=\"/sunny-act\">SUNNY Act</a> makes this structural rather than incidental: it exempts plug-in solar from interconnection and net-metering requirements, which means there is no export credit at all. Production you don&rsquo;t consume is worth nothing; production you do consume is worth the full marginal retail rate. There is no middle tier.</p>\n</section>"
+    },
+    {
+      "id": "derivation",
+      "toc": "Where $0.34 comes from, and how it is kept current",
+      "html": "        <section id=\"derivation\">\n  <h2><span class=\"sec-num\">5</span>Where $0.34 comes from, and how it is kept current</h2>\n  <p>The starting point is Con Edison&rsquo;s published average full-service rate for New York City SC-1 residential customers, which covers delivery, commodity and riders and is grossed up for state and local tax, with the fixed customer charge billed separately. That series reads <strong>29.52&cent; (2023) &rarr; 33.45&cent; (2024) &rarr; 33.83&cent; (2025)</strong>, and 33.83&cent; has continued to be reported as the effective rate through mid-2026.</p>\n  <p>On <strong>22 January 2026</strong> the New York Public Service Commission adopted a three-year Joint Proposal in cases 25-E-0072 and 25-G-0073, raising electric <em>delivery</em> charges 3.5% in 2026, 3.2% in 2027 and 3.1% in 2028 &mdash; about 2.8% on a total residential bill in year one. Applying that to 33.83&cent; gives roughly 34.8&cent;.</p>\n  <p>So the defensible band for 2026 runs from about 33.8&cent; to about 34.8&cent;. <strong>balco.nyc uses $0.34</strong>, near the bottom of that band. Rounding down by most of a cent is intentional: on a question where the modeller has an incentive to be generous, the tie should go against the model.</p>\n  <p>Last reviewed <strong>31 August 2026</strong>. The figure is re-checked each January against Con Edison&rsquo;s published bill history and the standing rate-case settlement, since the settlement fixes the delivery escalation path through the end of 2028 and removes most of the guesswork from the intervening years.</p>\n</section>"
+    },
+    {
+      "id": "what-one-number-costs",
+      "toc": "What a single number costs you in accuracy",
+      "html": "        <section id=\"what-one-number-costs\">\n  <h2><span class=\"sec-num\">6</span>What a single number costs you in accuracy</h2>\n  <p>$0.34/kWh is a modelling simplification, and it is worth saying plainly what it papers over.</p>\n  <ul>\n    <li><strong>Season.</strong> Con Edison&rsquo;s residential delivery charges are tiered and materially higher from June through September, above 250&nbsp;kWh a month. This is the largest single distortion &mdash; and it runs in solar&rsquo;s favour, because peak summer rates coincide with peak summer production. An annual average <em>understates</em> the value of a summer kWh.</li>\n    <li><strong>Rate plan.</strong> Time-of-use and standard SC-1 customers face different per-kWh structures. Across plans, reported Con Edison residential rates span roughly 22&cent; to 38&cent;/kWh.</li>\n    <li><strong>Supplier.</strong> If you buy supply from an ESCO, your supply component is whatever your contract says. Your delivery, surcharges and tax are unchanged.</li>\n    <li><strong>Service territory.</strong> Con Edison serves New York City and Westchester on different rate schedules. balco.nyc models the five boroughs.</li>\n    <li><strong>Month-to-month supply.</strong> The supply half resets monthly with wholesale prices. A single annual figure is a smoothing, not a forecast.</li>\n  </ul>\n  <p>Realistically, a household could sit anywhere from the high 20s to the high 30s. If you want the number that applies to you rather than to the median New Yorker, take a recent bill, subtract the basic service charge from the total, and divide by the kWh billed. That is your marginal rate.</p>\n</section>"
+    },
+    {
+      "id": "why-nyc",
+      "toc": "Why this matters more in New York than almost anywhere else",
+      "html": "        <section id=\"why-nyc\">\n  <h2><span class=\"sec-num\">7</span>Why this matters more in New York than almost anywhere else</h2>\n  <p>The US average residential electricity price was reported at about <strong>18.3&cent;/kWh in September 2026</strong>, and New York State averaged <strong>29.5&cent;</strong>, among the highest in the nation. Con Edison&rsquo;s New York City residential rate sits above even that, at roughly <strong>1.8 times the national average</strong> &mdash; close to double, though not quite.</p>\n  <p>This is the whole reason balcony solar pencils out in New York City despite mediocre sun. A panel in Phoenix produces considerably more kWh per year than the same panel on a Brooklyn balcony. But each of those Arizona kWh displaces electricity worth well under 20&cent;, while each New York kWh displaces electricity worth about 34&cent;. Rate, not irradiance, is doing most of the work.</p>\n  <p>It also means the choice of rate is the single most consequential input in any NYC balcony solar model. The gap between a supply-only 17.8&cent; and an all-in 34&cent; is a factor of nearly two on every payback period, every lifetime-savings figure, every break-even date. Which is why it is worth stating exactly which question a given number answers. The <a href=\"/balcony-solar-cost\">cost and payback page</a> shows what that does to the arithmetic.</p>\n  <p>On escalation, balco.nyc assumes <strong>3% a year</strong> by default, with 2% and 4% presets, and reports results in nominal dollars. That default is anchored to the settlement&rsquo;s own path &mdash; 3.5%, 3.2%, 3.1% on delivery through 2028 &mdash; rather than to recent history, which has run hotter: the SC-1 average rose from 29.52&cent; to 33.83&cent; between 2023 and 2025, about 7% a year compounded. If anything, 3% is the cautious assumption.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Why do different solar calculators show different Con Edison rates?",
+      "Because they are answering different questions, usually without saying which. A figure near 13 to 18 cents is the supply-only Price to Compare, which is the right basis for comparing energy suppliers; a figure near 34 cents is the all-in marginal rate including delivery, surcharges and tax, which is the right basis for valuing electricity you generate and consume yourself. Figures in the low-to-mid 20s are generally consistent with an older data vintage \u2014 Con Edison's own SC-1 average was 29.52 cents as recently as 2023."
+    ],
+    [
+      "What is the actual all-in cost of a kWh in New York City?",
+      "Con Edison's published average full-service rate for a New York City SC-1 residential customer was 33.83 cents per kWh in 2025, covering delivery, commodity and riders and grossed up for state and local tax. The 3.5% delivery increase approved on 22 January 2026 puts 2026 somewhere around 34 to 35 cents. balco.nyc models $0.34 per kWh, deliberately at the lower end of that band."
+    ],
+    [
+      "Why doesn't the 34 cent figure include the monthly customer charge?",
+      "Because the basic service charge does not change when you use less electricity. Solar reduces your metered kWh, not your fixed charges, so including it would credit a panel with savings you would never actually receive. Excluding it makes balco.nyc's estimates smaller, not larger."
+    ],
+    [
+      "Should I use 34 cents if I buy my electricity from an ESCO?",
+      "Not exactly. Your delivery charges, surcharges and sales tax are identical, but your supply component is set by your contract rather than by Con Edison's Market Supply Charge. Take a recent bill, subtract the fixed basic service charge from the total, divide by kWh billed, and use that figure instead."
+    ],
+    [
+      "Does a balcony solar panel earn credit for power I don't use?",
+      "No. Under New York's SUNNY Act, plug-in solar is exempt from interconnection and net-metering requirements, which also means there is no export compensation \u2014 surplus generation is simply given to the grid for nothing. This is why the self-consumption fraction matters so much, and why the value of the kWh you do consume is the full marginal retail rate rather than any wholesale or credit rate."
+    ],
+    [
+      "How much does the rate vary across New York City households?",
+      "Reported Con Edison residential rates span roughly 22 to 38 cents per kWh depending on rate plan, and delivery charges are tiered and materially higher from June through September. A single annual number is a simplification worth several cents in either direction \u2014 though the summer skew works in solar's favour, since peak production coincides with peak rates."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf",
+      "title": "Con Edison &mdash; historical average full-service electric rates",
+      "note": "the published SC-1 series behind 33.83&cent; (2025), 33.45&cent; (2024) and 29.52&cent; (2023)."
+    },
+    {
+      "url": "https://dps.ny.gov/system/files/documents/2026/01/con-edison-electric-rate-case-summary.pdf",
+      "title": "Con Edison electric rate case summary, January 2026",
+      "note": "the New York DPS summary of the approved 2026&ndash;2028 electric rate plan."
+    },
+    {
+      "url": "https://gothamist.com/news/con-ed-bills-are-going-up-as-regulators-approve-a-rate-hike",
+      "title": "Con Ed bills are going up as regulators approve a rate hike",
+      "note": "the Public Service Commission approving the increase in January 2026."
+    },
+    {
+      "url": "https://www.coned.com/en/accounts-billing/your-bill/about-con-edisons-rates",
+      "title": "About Con Edison's rates",
+      "note": "the supply, delivery and surcharge structure, and the Price to Compare."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/sales_revenue_price/",
+      "title": "EIA &mdash; electricity sales, revenue and average price",
+      "note": "the primary source for US and state average residential prices."
+    },
+    {
+      "url": "https://www.salesandusetax.com/new-york-sales-tax-exemption-utilities",
+      "title": "New York utility tax exemptions",
+      "note": "residential energy is exempt from the 4% state sales tax, leaving the 4.5% city tax."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not financial advice. Rates change; the review date above is when these figures were last checked against their sources."
+}

@@ -1,0 +1,126 @@
+{
+  "slug": "sunny-act",
+  "title": "Is plug-in solar legal in New York? SUNNY Act status &middot; balco.nyc",
+  "og_title": "Is plug-in solar legal in New York? SUNNY Act status",
+  "breadcrumb": "SUNNY Act status",
+  "description": "Plug-in solar is not yet legal in New York. The SUNNY Act (S8512C / A9111C) would change that: what it does, what it deliberately does not do, and where it stands as of September 2026.",
+  "eyebrow": "Legal status",
+  "h1": "Is plug-in solar legal in New York?",
+  "lede": "<strong>Not yet &mdash; but the barrier is one signature away.</strong> New York requires utility approval for any device that pushes power back into a household circuit, and no utility currently grants it for plug-in solar. The SUNNY Act removes that requirement for compliant devices up to 1,200&nbsp;W. It has passed both chambers of the Legislature and is waiting on the Governor. This page tracks where it stands, what it will change, and &mdash; the part most coverage skips &mdash; what it deliberately will not change.",
+  "date_label": "Status as of",
+  "reviewed": "2026-09-04",
+  "reviewed_human": "September 4, 2026",
+  "published": "2026-09-04",
+  "reading_time": "~6 minutes",
+  "tags": [
+    "S8512C / A9111C",
+    "1,200&nbsp;W AC",
+    "Awaiting signature"
+  ],
+  "about_legislation": true,
+  "sections": [
+    {
+      "id": "status",
+      "toc": "Where the bill stands",
+      "html": "        <section id=\"status\">\n          <h2><span class=\"sec-num\">1</span>Where the bill stands</h2>\n          <div class=\"callout\">\n            <p><strong>As of September 4, 2026: passed, unsigned.</strong> The Solar Up Now New York Act passed the State Senate unanimously in April 2026 and cleared the Assembly in late May 2026. It now sits with Governor Hochul, who has until the end of 2026 to sign or veto it. It takes effect 90 days after signing.</p>\n          </div>\n          <p>The bill is S8512C in the Senate and A9111C in the Assembly &mdash; the &ldquo;C&rdquo; amendment is the version that passed, which matters if you are reading the text rather than the summaries. It was sponsored by Senator Liz Krueger and Assemblymember Emily Gallagher.</p>\n          <p>Nothing about your legal position changes until it is signed. If you are reading this after the Governor has acted, the date above tells you how stale this page is; we review it whenever the bill's status moves.</p>\n        </section>"
+    },
+    {
+      "id": "changes",
+      "toc": "What the Act changes",
+      "html": "        <section id=\"changes\">\n          <h2><span class=\"sec-num\">2</span>What the Act changes</h2>\n          <p>Today, New York treats a plug-in solar device the same way it treats a rooftop array: it is a generator connected to the grid, so it needs an interconnection agreement with your utility. That process is designed for permanent installations with an electrician, a permit and a meter change. For an appliance you hang on a railing and plug into an outlet, it is a wall.</p>\n          <p>The SUNNY Act removes that wall for small devices. Specifically, it:</p>\n          <ul>\n            <li>exempts compliant plug-in solar of up to 1,200&nbsp;W AC output from interconnection and net-metering requirements;</li>\n            <li>bars utilities from requiring you to obtain approval to use one;</li>\n            <li>bars utilities from charging a fee tied to using one.</li>\n          </ul>\n          <p>What it does not do is pay you. These devices are not net-metered, so power you generate and do not use is not credited &mdash; it simply flows to your neighbours. The economics come entirely from offsetting what you would otherwise buy, which is why the value depends so heavily on Con Edison's rate rather than on any incentive.</p>\n        </section>"
+    },
+    {
+      "id": "not",
+      "toc": "What it does not change",
+      "html": "        <section id=\"not\">\n          <h2><span class=\"sec-num\">3</span>What it does not change</h2>\n          <div class=\"callout\">\n            <p><strong>The Act removes the utility barrier only. It grants no right to install anything.</strong></p>\n          </div>\n          <p>This is the most consistently misreported part of the bill, and for most New Yorkers it is the part that decides whether they can actually do this. Roughly two thirds of New York City households rent, and a large share of the rest are in co-ops or condos. In all of those cases the balcony railing, the facade and the window frame are not yours to modify unilaterally.</p>\n          <p>After the Act is signed you will still need, depending on your building:</p>\n          <ul>\n            <li><strong>Renting:</strong> your landlord's permission, and a lease that does not prohibit attaching things to the railing or facade.</li>\n            <li><strong>Co-op:</strong> board approval, usually under the house rules covering alterations and anything visible from the street.</li>\n            <li><strong>Condo:</strong> board approval, since a balcony is typically a limited common element rather than your own property.</li>\n            <li><strong>Landmarked or historic district buildings:</strong> potentially Landmarks Preservation Commission review for anything that changes the appearance of a facade.</li>\n          </ul>\n          <p>None of that is affected by the SUNNY Act. If you want one of these, the conversation with your building is the real work, and it can start now.</p>\n        </section>"
+    },
+    {
+      "id": "limits",
+      "toc": "The limits that apply",
+      "html": "        <section id=\"limits\">\n          <h2><span class=\"sec-num\">4</span>The limits that apply</h2>\n          <div class=\"table-wrap\">\n            <table>\n              <thead>\n                <tr><th>Requirement</th><th>What it means in practice</th></tr>\n              </thead>\n              <tbody>\n                <tr><td><strong>1,200&nbsp;W AC inverter output</strong></td><td>The cap is on the inverter, not the panels. A system with more panel wattage is fine so long as the inverter's AC output stays at or under the cap. A typical balcony setup is 400&ndash;800&nbsp;W, comfortably inside it.</td></tr>\n                <tr><td><strong>Accredited-lab certification</strong></td><td>The device must be certified by a laboratory such as UL. Imported kits sold without a recognised certification will not qualify, however cheap they are.</td></tr>\n                <tr><td><strong>State fire code compliance</strong></td><td>Applies to the device and to how it is mounted. Balcony fire-egress rules still apply: a panel must not block a fire escape or an egress path.</td></tr>\n                <tr><td><strong>90 days after signing</strong></td><td>The Act is not in force the day it is signed. Count 90 days forward from the signature.</td></tr>\n              </tbody>\n            </table>\n          </div>\n        </section>"
+    },
+    {
+      "id": "when",
+      "toc": "When you could actually install",
+      "html": "        <section id=\"when\">\n          <h2><span class=\"sec-num\">5</span>When you could actually install</h2>\n          <p>Take the two dates together. The Governor has until the end of 2026 to act, and the Act takes effect 90 days after she does. A signature in late 2026 puts the earliest lawful residential installation in <strong>early 2027</strong>. A signature earlier than that pulls the date forward by the same amount; a veto resets the clock to the next legislative session.</p>\n          <p>That gap is not dead time. Getting building permission, working out which railing actually faces the sun, and choosing a certified kit are all things you can do before the law changes &mdash; and the first of those is usually the slowest.</p>\n        </section>"
+    },
+    {
+      "id": "elsewhere",
+      "toc": "How New York compares",
+      "html": "        <section id=\"elsewhere\">\n  <h2><span class=\"sec-num\">6</span>How New York compares</h2>\n  <p>New York is not first. Utah passed the first plug-in solar law in 2025, carving out an exemption for systems up to 1.2&nbsp;kW, and by August 2026 Maine, Virginia, Colorado, Maryland, Connecticut, New Hampshire and Vermont had signed comparable laws &mdash; eight states, most using the same 1,200&nbsp;W AC threshold New York has chosen. New York would be the ninth.</p>\n  <p>New Jersey is in the same position as New York: its legislature has passed a plug-in solar bill and it is awaiting the Governor&rsquo;s signature. Reporting on which states have <em>signed</em> versus merely <em>passed</em> is inconsistent, so treat any list you read &mdash; including this one &mdash; as needing a date and a check against the state&rsquo;s own legislature page.</p>\n  <p>Germany is the usual reference point for what happens next: <em>Balkonkraftwerk</em> installations there are counted in the millions, following rule changes that made registration trivial. Germany also granted tenants a right to install, which is the step New York has explicitly not taken.</p>\n  <p>The practical consequence of the state-by-state patchwork is that compliance does not travel. A kit sold as legal in one state is not automatically legal here, and the certification requirement is where most imported hardware fails.</p>\n</section>"
+    },
+    {
+      "id": "now",
+      "toc": "What to do now",
+      "html": "        <section id=\"now\">\n          <h2><span class=\"sec-num\">7</span>What to do now</h2>\n          <p>If you are trying to work out whether this is worth pursuing for your apartment, the binding constraint is almost never the law &mdash; it is whether your balcony gets enough sun. A high-floor south-facing railing can produce roughly three times what a low-floor north-facing one does, and in a city this dense the buildings across the street matter as much as the direction you face.</p>\n          <p><a href=\"/\">Run your address through the calculator</a> to see what an 800&nbsp;W system would produce where you actually live, modelled against the real shadows of your block. If the answer is small, the legal question is moot for you. If it is large, start the conversation with your landlord or board now, because that is the part with the longest lead time.</p>\n        </section>"
+    }
+  ],
+  "faq": [
+    [
+      "Is plug-in solar legal in New York right now?",
+      "Not yet. New York requires utility approval for any device that pushes power back into a household circuit, and Con Edison does not currently grant it for plug-in solar. The SUNNY Act removes that requirement, but it has not been signed. Until it is, installing a plug-in solar device in New York means operating outside your utility's interconnection rules."
+    ],
+    [
+      "What is the SUNNY Act?",
+      "The Solar Up Now New York Act (S8512C / A9111C) exempts compliant plug-in solar devices of up to 1,200 watts AC inverter output from New York's interconnection and net-metering requirements, and bars utilities from requiring approval or charging a fee for them. It was sponsored by Senator Liz Krueger and Assemblymember Emily Gallagher."
+    ],
+    [
+      "Has the Governor signed the SUNNY Act?",
+      "As of September 4, 2026, no. The bill passed the Senate unanimously in April 2026 and the Assembly in late May 2026, and is awaiting Governor Hochul's signature. She has until the end of 2026 to sign or veto it."
+    ],
+    [
+      "When could I actually install a balcony solar panel in New York?",
+      "The Act takes effect 90 days after it is signed. If it is signed in late 2026, the realistic opening for a legal residential installation is early 2027."
+    ],
+    [
+      "Does the SUNNY Act give me the right to install a panel on my balcony?",
+      "No. This is the most commonly misunderstood part of the bill. The Act removes the utility barrier only. It does not override a lease, a co-op's house rules, a condo board's bylaws, or a landlord's decision. If you rent, or live in a co-op or condo, you will still need permission from whoever controls the facade or railing."
+    ],
+    [
+      "What size system does the SUNNY Act allow?",
+      "Up to 1,200 watts of AC inverter output. The device must comply with New York's fire code and be certified by an accredited testing laboratory such as UL. The panel wattage can exceed 1,200W as long as the inverter's AC output does not."
+    ],
+    [
+      "Is balcony solar legal anywhere else in the US?",
+      "Yes. Utah passed the first plug-in solar law in 2025, and by August 2026 Maine, Virginia, Colorado, Maryland, Connecticut, New Hampshire and Vermont had signed comparable laws. New Jersey, like New York, has passed a bill through its legislature that is awaiting the Governor's signature. The rules differ by state, so a device that is compliant in one is not automatically compliant in another."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512",
+      "title": "NY State Senate &mdash; Bill S8512",
+      "note": "the bill text and its status history &mdash; the primary source for anything on this page."
+    },
+    {
+      "url": "https://www.nysenate.gov/newsroom/press-releases/2026/liz-krueger/senate-unanimously-passes-sunny-act",
+      "title": "Senate unanimously passes the SUNNY Act",
+      "note": "April 2026 passage."
+    },
+    {
+      "url": "https://www.nysenate.gov/newsroom/press-releases/2026/liz-krueger/sunny-act-passes-nys-legislature-bringing-plug-solar-one",
+      "title": "SUNNY Act passes the NYS Legislature",
+      "note": "passage of both chambers."
+    },
+    {
+      "url": "https://pv-magazine-usa.com/2026/06/01/new-york-legislature-passes-sunny-act-plug-in-solar-legislation/",
+      "title": "New York legislature passes SUNNY Act plug-in solar legislation",
+      "note": "the 1,200&nbsp;W cap and certification requirement."
+    },
+    {
+      "url": "https://gothamist.com/news/new-yorkers-can-soon-hang-solar-panels-from-their-windows-if-gov-hochul-approves",
+      "title": "New Yorkers can soon hang solar panels from their windows, if Gov. Hochul approves",
+      "note": "NYC context."
+    },
+    {
+      "url": "https://www.newyorkalmanack.com/2026/07/balcony-solar-plug-in-power-hochul/",
+      "title": "Balcony solar plug-in power awaits Hochul's signature",
+      "note": "status through July 2026."
+    },
+    {
+      "url": "https://www.canarymedia.com/articles/solar/states-passing-balcony-solar-laws",
+      "title": "Where does balcony solar stand in your state?",
+      "note": "state-by-state tracker &mdash; which states have signed and which are still pending."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not legal advice. Verify the bill&rsquo;s current status against the Senate page above before acting on it."
+}

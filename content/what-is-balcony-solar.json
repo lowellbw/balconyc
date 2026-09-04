@@ -1,0 +1,132 @@
+{
+  "slug": "what-is-balcony-solar",
+  "title": "What is balcony solar? Plug-in solar explained &middot; balco.nyc",
+  "og_title": "What is balcony solar? Plug-in solar explained",
+  "breadcrumb": "What is balcony solar",
+  "description": "Balcony solar is a small photovoltaic system that plugs into an ordinary outlet. How it works, what it saves, what it is bad at, and why it is not yet legal in New York.",
+  "eyebrow": "Explainer",
+  "h1": "What is balcony solar?",
+  "lede": "Balcony solar, also called plug-in solar, is a small photovoltaic system &mdash; usually one to four panels on a balcony railing, facade or window &mdash; connected to a microinverter that plugs into an ordinary wall outlet. The power flows into your apartment&rsquo;s circuits and is used by whatever is switched on. It is not off-grid: it shuts down in a blackout. Output is typically capped at 800&ndash;1,200 watts AC. Several US states allow it; New York does not yet.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-04",
+  "reviewed_human": "September 4, 2026",
+  "published": "2026-09-04",
+  "reading_time": "~7 minutes",
+  "tags": [
+    "Plug-in solar",
+    "800&ndash;1,200&nbsp;W AC",
+    "Not yet legal in NY"
+  ],
+  "about_legislation": true,
+  "sections": [
+    {
+      "id": "what-it-is",
+      "toc": "What a balcony solar system actually is",
+      "html": "        <section id=\"what-it-is\">\n  <h2><span class=\"sec-num\">1</span>What a balcony solar system actually is</h2>\n  <p>A balcony solar kit is a complete, self-contained generator small enough to be carried up in a lift and installed without an electrician. Four parts, and no more than four:</p>\n  <ul>\n    <li><strong>Panels.</strong> Usually one to four rigid or semi-flexible modules, hung from a railing, clamped to a parapet, bolted to a facade or mounted outside a window.</li>\n    <li><strong>A microinverter.</strong> A weatherproof box, roughly the size of a hardback book, that converts the panels&rsquo; DC output into grid-frequency AC and limits how much it delivers.</li>\n    <li><strong>A cable and plug.</strong> A single AC lead ending in a standard household plug, or in a locking connector on systems designed for a dedicated socket.</li>\n    <li><strong>Mounting hardware.</strong> Rail hooks, ballasted feet or brackets. Usually the part that decides whether a given balcony is workable at all.</li>\n  </ul>\n  <p>What it is <em>not</em> is worth stating as plainly. It is not a rooftop array made small, and it is not a camping power station. Those three things behave very differently:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th></th><th>Balcony solar</th><th>Rooftop solar</th><th>Portable panel and battery</th></tr></thead><tbody>\n    <tr><td>How it connects</td><td>A plug into an existing outlet</td><td>Hardwired to the electrical panel by a licensed contractor, under a utility interconnection agreement</td><td>Not connected to the building at all &mdash; it charges a battery you plug appliances into</td></tr>\n    <tr><td>Who installs it</td><td>The resident, in an afternoon</td><td>A contractor, over days, with permits and inspection</td><td>The resident, in minutes</td></tr>\n    <tr><td>Scale</td><td>Hundreds of watts to about 1.2&nbsp;kW AC</td><td>Several kilowatts</td><td>Whatever the battery can hold</td></tr>\n    <tr><td>Works in a blackout</td><td>No &mdash; it shuts off automatically</td><td>No, unless paired with a battery and transfer switch</td><td>Yes; that is the whole point of it</td></tr>\n    <tr><td>Surplus sold back</td><td>Where legal, generally earns nothing</td><td>Credited under net metering rules</td><td>Nothing to sell &mdash; it never touches the grid</td></tr>\n  </tbody></table></div>\n</section>"
+    },
+    {
+      "id": "how-it-works",
+      "toc": "How the electricity gets into your apartment",
+      "html": "        <section id=\"how-it-works\">\n  <h2><span class=\"sec-num\">2</span>How the electricity gets into your apartment</h2>\n  <p>The microinverter is the whole trick. It is a <em>grid-following</em> device: it reads the voltage and frequency already present at the outlet, locks onto that 60&nbsp;Hz waveform, and pushes current out in phase with it. It cannot create a supply of its own. It can only add to one that is already there.</p>\n  <p>Once that current is on the branch circuit, ordinary physics takes over. Electricity flows to the nearest load, so a fridge on the same circuit draws from the inverter before it draws from the street. Your meter simply records less coming in. There is no switching, no controller, and nothing for you to operate.</p>\n  <p>If the grid goes down, the inverter loses its reference waveform and stops within about two seconds. This is called anti-islanding, and it is a safety requirement, not a defect: it stops your panels from energising a line that a utility crew believes is dead. The practical consequence for you is that <strong>balcony solar gives you no backup power whatsoever</strong>. In a blackout it is inert.</p>\n  <p>The wattage caps you see in legislation come from the outlet, not the panels. At 120 volts, 1,200 watts is ten amps &mdash; a load a normal household branch circuit and its breaker can absorb without anyone recalculating anything. Certification standards for this equipment cover the same ground: anti-islanding behaviour, voltage and frequency trip limits, and the safety of a plug that is energised from both ends.</p>\n</section>"
+    },
+    {
+      "id": "what-it-saves",
+      "toc": "Where the savings come from",
+      "html": "        <section id=\"what-it-saves\">\n  <h2><span class=\"sec-num\">3</span>Where the savings come from</h2>\n  <p>A balcony system saves money in exactly one way: by displacing electricity you would otherwise have bought. There is no second mechanism.</p>\n  <p>In Con Edison territory the number that matters is the all-in marginal rate &mdash; supply, delivery and surcharges together &mdash; which balco.nyc models at <strong>$0.34/kWh</strong>. Every kilowatt-hour your panels produce <em>and you consume at that moment</em> is worth that much. Every kilowatt-hour produced while the apartment is empty flows out to the grid and, in the states that have legalised these devices, generally earns nothing at all.</p>\n  <p>That makes self-consumption the dominant variable, and it is a behavioural one rather than a technical one. A refrigerator, a router, a standby television and a hot-water recirculation pump run through the middle of the day whether or not you are home, and they absorb a real share of a small system&rsquo;s output. Beyond that baseload, the value depends on who is in the flat at noon.</p>\n  <p>For sizing, balco.nyc models a typical 800&nbsp;W NYC system at roughly <strong>400&ndash;900&nbsp;kWh a year</strong>. That is a wide band on purpose. A high-floor, south-facing balcony produces about <strong>three times</strong> what a low-floor, north-facing one does, and the difference between those two cases is far larger than the difference between a budget kit and a premium one.</p>\n  <div class=\"callout\"><p><strong>One thing balcony solar can never touch: Con Edison&rsquo;s fixed monthly customer charge, about $20, is billed whether you use any electricity or not. It is excluded from the $0.34/kWh marginal rate, and no amount of generation reduces it.</strong></p></div>\n  <p>Kit costs for a typical 800&nbsp;W NYC setup run about <strong>$850 budget, $1,200 mid-range, $1,600 premium</strong>. To see the yield and payback for a specific address, floor and facing direction rather than a typical one, use the <a href=\"/\">calculator</a>, or read the <a href=\"/balcony-solar-cost\">cost and payback breakdown</a>.</p>\n</section>"
+    },
+    {
+      "id": "legality",
+      "toc": "Whether it is legal where you live",
+      "html": "        <section id=\"legality\">\n  <h2><span class=\"sec-num\">4</span>Whether it is legal where you live</h2>\n  <p><strong>Plug-in solar is not yet legal in New York.</strong> The obstacle is not a fire code or a building rule &mdash; it is that New York requires anyone connecting a generator to the grid to sign an interconnection agreement with their utility, and no tariff recognises a device you plug into a wall socket. There is no compliant path to install one today.</p>\n  <p>The bill that would change this is the SUNNY Act (S8512C / A9111C). It would exempt compliant devices producing up to <strong>1,200&nbsp;W of AC inverter output</strong> from interconnection and net-metering requirements, and bar utilities from charging fees for them. It passed the Senate unanimously in April 2026 and the Assembly in late May 2026. It now awaits Governor Hochul&rsquo;s signature; she has until the end of 2026 to act, and it would take effect 90 days after signing.</p>\n  <p>What the SUNNY Act does not do is as important as what it does. <strong>It removes the utility barrier only. It grants no right to install anything.</strong> A renter still needs the landlord&rsquo;s permission, and a co-op or condo resident still needs the board&rsquo;s. The <a href=\"/sunny-act\">SUNNY Act page</a> covers the text, the timeline and what would still stand in your way.</p>\n  <p>Elsewhere the picture has moved quickly. Utah passed the first plug-in solar law in 2025, and by August 2026 Maine, Virginia, Colorado, Maryland, Connecticut, New Hampshire and Vermont had signed comparable laws &mdash; eight states, most using the same 1,200&nbsp;W AC threshold. New York would be the ninth. New Jersey, like New York, has passed a bill and is waiting on its governor.</p>\n</section>"
+    },
+    {
+      "id": "germany",
+      "toc": "Germany, the case everyone points to",
+      "html": "        <section id=\"germany\">\n  <h2><span class=\"sec-num\">5</span>Germany, the case everyone points to</h2>\n  <p>Balcony solar is not a new idea being tried out. It is a mature German consumer product, sold in supermarkets, that the United States is now importing along with its regulatory shape.</p>\n  <ul>\n    <li>German rules cap the inverter&rsquo;s <strong>AC output at 800 watts</strong> while allowing considerably more panel capacity behind it &mdash; the inverter simply clips the peak, which raises output in dim conditions without ever exceeding the limit.</li>\n    <li>Since the 2024 Solarpaket I reforms, an owner registers the system in the Bundesnetzagentur&rsquo;s Marktstammdatenregister online, in minutes. No grid-operator approval is involved.</li>\n    <li>More than <strong>1.3 million</strong> systems were recorded as operating in that register by mid-2026, with roughly 430,000 added during 2025 alone.</li>\n    <li>Since October 2024, German law treats a balcony system as a privileged modification: landlords and owners&rsquo; associations can no longer refuse a reasonable request without documented grounds.</li>\n  </ul>\n  <p>Two cautions before reading German experience across. German households run on 230&nbsp;V circuits, which changes the current a given wattage draws. And Germany paired legalisation with a tenant&rsquo;s right to install &mdash; the step New York has explicitly not taken.</p>\n</section>"
+    },
+    {
+      "id": "limits",
+      "toc": "What balcony solar is bad at",
+      "html": "        <section id=\"limits\">\n  <h2><span class=\"sec-num\">6</span>What balcony solar is bad at</h2>\n  <p>It is a modest device and it is worth being clear about its ceiling.</p>\n  <ul>\n    <li><strong>It is at the mercy of your balcony.</strong> Orientation, floor height and the buildings across the street matter more than any equipment choice. In dense Manhattan and downtown Brooklyn, a neighbouring tower can take most of a winter&rsquo;s production.</li>\n    <li><strong>It gives you no resilience.</strong> Anti-islanding means it goes dark exactly when you might want it most. Backup requires a battery, which is a separate purchase and a separate decision.</li>\n    <li><strong>Surplus is wasted.</strong> Without export compensation, generation that exceeds what your flat is drawing is simply given away.</li>\n    <li><strong>Mounting is a real engineering question in a tall building.</strong> Wind loading on a panel at the fortieth floor is not the same as on a German ground-floor balcony, and the NYC Building Code requires railing components to be designed for wind where the load is significant. This is the point at which many NYC balconies turn out not to work.</li>\n    <li><strong>There is no federal tax credit.</strong> The residential clean-energy credit under Section&nbsp;25D expired for systems placed in service after 31 December 2025. Balcony solar is bought at full price.</li>\n    <li><strong>Permission is the usual sticking point.</strong> Even after legalisation, a co-op board that objects to the look of a panel from the street can end the conversation.</li>\n  </ul>\n</section>"
+    },
+    {
+      "id": "how-we-model",
+      "toc": "How this site estimates output for a specific balcony",
+      "html": "        <section id=\"how-we-model\">\n  <h2><span class=\"sec-num\">7</span>How this site estimates output for a specific balcony</h2>\n  <p>Anything you read about balcony solar in general &mdash; including everything above &mdash; describes a category. What decides whether it is worth it for you is one particular balcony, on one particular floor, facing one particular direction, with particular buildings in front of it.</p>\n  <p>balco.nyc estimates that case by running an 8,760-hour annual simulation in <strong>NREL&rsquo;s PVWatts V8</strong>, positioned using <strong>NYC PLUTO</strong> building data, with a custom 3D shadow model of neighbouring buildings within <strong>200 metres</strong>, and emissions converted using the <strong>EPA eGRID2023 NYCW</strong> factor.</p>\n  <p>The stated accuracy is <strong>&plusmn;15%</strong>, or &plusmn;20% on the client-side fallback path. That figure describes the modelled band, and nothing more.</p>\n  <div class=\"callout\"><p><strong>These estimates are modelled, not metered. No installed NYC system has been measured against them, because none can legally be installed yet. Treat the output as a well-constructed simulation, not as a measurement.</strong></p></div>\n  <p>The full method, its inputs and its known weaknesses are set out on the <a href=\"/methodology\">methodology page</a>.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "What is balcony solar?",
+      "Balcony solar, also called plug-in solar, is a small photovoltaic system of roughly one to four panels mounted on a balcony railing, facade or window and connected to a microinverter that plugs into a standard household outlet. The electricity it generates flows into the apartment's circuits and is consumed by whatever appliances are running. Systems are typically limited to between 800 and 1,200 watts of AC output."
+    ],
+    [
+      "How does balcony solar work?",
+      "The panels feed a microinverter that reads the voltage and frequency already present at the wall outlet and pushes matching AC current onto that circuit. Appliances draw from this nearby source before drawing from the grid, so the meter records less imported electricity. Because the inverter needs an existing grid signal to synchronise with, it shuts down automatically within about two seconds if the power goes out."
+    ],
+    [
+      "Is balcony solar legal in New York?",
+      "No. As of September 2026, New York still requires an interconnection agreement with the utility for any grid-connected generator, and no tariff covers a device plugged into an outlet. The SUNNY Act (S8512C / A9111C) would exempt compliant systems up to 1,200 W AC; it passed both chambers in 2026 and awaits Governor Hochul's signature, taking effect 90 days after she signs."
+    ],
+    [
+      "Does balcony solar work during a power outage?",
+      "No. Grid-following microinverters require an existing grid waveform to synchronise with, and safety rules require them to stop energising the circuit within about two seconds of an outage so that utility crews are not exposed to a live line. Balcony solar therefore provides no backup power at all. Blackout resilience requires a separate battery system."
+    ],
+    [
+      "Will I still need my landlord's or co-op board's permission?",
+      "Yes. The SUNNY Act, if signed, would remove the utility's ability to require an interconnection agreement or charge fees, but it grants no right to install anything on a building. Renters would still need landlord approval and co-op or condo residents would still need board approval. Germany added a tenant's right to install in 2024; New York's bill does not include one."
+    ],
+    [
+      "How much does a balcony solar kit cost, and how much does it produce in New York City?",
+      "A typical 800 W setup costs roughly $850 for a budget kit, $1,200 mid-range, or $1,600 premium, before mounting complications. balco.nyc models annual production for such a system in New York City at roughly 400 to 900 kWh, with a high-floor south-facing balcony producing about three times what a low-floor north-facing one does. These are modelled estimates with a stated accuracy of plus or minus 15%, not metered results."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512",
+      "title": "NY Senate Bill 2025-S8512 (SUNNY Act)",
+      "note": "bill text, the 1,200&nbsp;W AC definition, and the interconnection and net-metering exemptions."
+    },
+    {
+      "url": "https://pv-magazine-usa.com/2026/06/01/new-york-legislature-passes-sunny-act-plug-in-solar-legislation/",
+      "title": "New York legislature passes SUNNY Act plug-in solar legislation",
+      "note": "Assembly passage, certification and fire-code conditions, anti-islanding requirement."
+    },
+    {
+      "url": "https://www.canarymedia.com/articles/solar/states-passing-balcony-solar-laws",
+      "title": "Where does balcony solar stand in your state?",
+      "note": "state-by-state tracker for which states have signed and which are pending."
+    },
+    {
+      "url": "https://grist.org/energy/utah-portable-plug-in-solar-law/",
+      "title": "How deep-red Utah helped launch a portable plug-in solar movement",
+      "note": "Utah HB 340, the first state law, and its 1,200&nbsp;W AC threshold."
+    },
+    {
+      "url": "https://www.ul.com/news/ul-solutions-debuts-testing-and-certification-framework-safer-plug-solar-across-united-states",
+      "title": "UL Solutions debuts a testing and certification framework for plug-in solar",
+      "note": "the UL 3700 certification framework for complete plug-in PV systems."
+    },
+    {
+      "url": "https://www.mdpi.com/1996-1073/18/8/2132",
+      "title": "Barriers to Balcony Solar and Plug-In Distributed Energy Resources in the United States",
+      "note": "peer-reviewed survey of US regulatory and code barriers to plug-in PV."
+    },
+    {
+      "url": "https://strom-report.com/balkonkraftwerk/",
+      "title": "Balkonkraftwerk Marktreport 2026",
+      "note": "German registration counts &mdash; over 1.3 million systems in the Marktstammdatenregister."
+    },
+    {
+      "url": "https://balkon.solar/news/2024/10/17/germany-grants-renters-the-right-to-install-solar-systems-on-balconies/",
+      "title": "Germany grants renters the right to install solar systems on balconies",
+      "note": "the October 2024 tenant right to install, which New York's bill does not include."
+    },
+    {
+      "url": "https://www.congress.gov/crs-product/IN12611",
+      "title": "Expiration and carryforward rules for the Residential Clean Energy Credit",
+      "note": "Section&nbsp;25D expiry for systems placed in service after 31 December 2025."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not legal advice, and it does not recommend or sell any product."
+}

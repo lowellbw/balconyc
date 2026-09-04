@@ -336,6 +336,21 @@ describe('Analytics', () => {
     }
   });
 
+  it('puts the masking options where PostHog actually reads them', () => {
+    // mask_all_element_attributes and mask_all_text are top-level PostHogConfig
+    // keys. AutocaptureConfig holds only allowlists and ignorelists, so nesting
+    // them under `autocapture` drops them silently — no error, no warning, and
+    // both fall back to false. That shipped once; this stops it shipping twice.
+    const init = analytics.slice(analytics.indexOf('posthog.init('));
+    const nested = init.match(/autocapture:\s*\{[\s\S]*?\}/);
+    assert(!nested || !/mask_all_/.test(nested[0]),
+      'mask_all_* is nested under autocapture, where PostHog ignores it');
+    for (const key of ['mask_all_element_attributes: true', 'mask_all_text: false']) {
+      assert(new RegExp('^\\s{6}' + key.replace(/[:]/g, '[:]'), 'm').test(init),
+        `${key} must sit at the top level of init(), not inside another block`);
+    }
+  });
+
   it('reports its own state so a silent failure is findable', () => {
     // Analytics fails quietly: no error, no broken layout, just no data three
     // weeks later. Every exit path has to leave a word behind in

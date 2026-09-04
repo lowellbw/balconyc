@@ -1,11 +1,12 @@
 // ============================================================
 // balco.nyc — analytics (PostHog).
 //
-// Set PROJECT_KEY to the project's phc_... key and analytics starts.
-// Leave it empty and this file does nothing at all: no script is fetched,
-// no cookie is set, no request leaves the browser. That is deliberate —
-// a half-configured key looks installed and collects nothing, and you
-// find out weeks later.
+// Live. Events go to PostHog project 593517 on US cloud.
+//
+// If PROJECT_KEY is ever emptied or malformed, this file does nothing at
+// all: no script is fetched, no cookie is set, no request leaves the
+// browser. That guard is deliberate — a half-configured key looks
+// installed and collects nothing, and you find out weeks later.
 //
 // PRIVACY, and why the settings below are what they are. People type
 // their home address into this site. PostHog's session replay would
@@ -23,8 +24,11 @@
 // else. No address, no coordinates.
 // ============================================================
 (function () {
-  var PROJECT_KEY = '';                       // <- paste the phc_... key here
-  var API_HOST    = 'https://us.i.posthog.com';  // 'https://eu.i.posthog.com' for EU
+  // Project 593517, US cloud. This token is public by design: it ships in
+  // the JavaScript every visitor downloads. It identifies where events go,
+  // it does not grant access to anything.
+  var PROJECT_KEY = 'phc_z67vrAYf4GQLGK3mqCFL7zPY6AW4n6WhFCk2Z9LJuN2L';
+  var API_HOST    = 'https://us.i.posthog.com';
 
   if (!/^phc_[A-Za-z0-9]+$/.test(PROJECT_KEY)) return;
   if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;

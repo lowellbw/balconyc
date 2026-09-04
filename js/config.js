@@ -65,12 +65,12 @@ const SolarConfig = {
   PANEL_DEGRADATION: 0.005,
   PANEL_DEGRADATION_BY_TIER: { budget: 0.007, mid: 0.005, premium: 0.004 },
 
-  // 2026 retail for an 800W kit; scaled linearly by system size.
-  // Reviewed 2026-08-31 against the July 2026 price move: Bright Saver
-  // (nonprofit, zero markup) sells 360W at $414 to members / $699 retail,
-  // i.e. roughly $1.15-1.94/W, and Craftstrom's 800W sits at $1,327-1,600.
-  // The previous $1,200/1,500/1,800 tiers pre-dated that shift and made
-  // payback look roughly 40% longer than the cheapest real path.
+  // Hardware-only 800W planning benchmarks; scaled linearly by system size.
+  // Reviewed 2026-09-04. Bright Saver lists 360W at $414.17 for members
+  // (plus a $29 annual membership) and $699 for non-members, but currently
+  // cannot ship to New York because no market system yet has the state's
+  // required whole-system certification. These tiers are model inputs, not
+  // verified offers available to NYC buyers; electrical work is excluded.
   SYSTEM_COST_BY_TIER: { budget: 850, mid: 1200, premium: 1600 },
 
   // PVWatts already models cell temperature via TMY weather (array_type: 0).

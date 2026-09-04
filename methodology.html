@@ -431,17 +431,18 @@ bill_offset_%   = annual_kwh / (billable / 0.34 × 12) × 100</code></pre>
           <h3>4.5 System cost scaling</h3>
           <p>The user selects a cost tier (budget / mid / premium) calibrated to an 800W kit. For other system sizes, cost scales linearly:</p>
           <pre><code>adjusted_cost = tier_cost × (system_watts / 800)</code></pre>
-          <p><strong>Reference costs (800W complete kit, 2026 US retail):</strong></p>
+          <p><strong>Hardware-only planning assumptions (800W system, 2026):</strong></p>
           <div class="table-wrap">
             <table>
               <thead><tr><th>Tier</th><th>Cost</th><th>Notes</th></tr></thead>
               <tbody>
-                <tr><td>Budget</td><td>$850</td><td>Nonprofit/wholesale kits (Bright Saver member pricing, ~$1.15/W)</td></tr>
-                <tr><td>Mid</td><td>$1,200</td><td>EcoFlow PowerStream, Anker SOLIX entry, Bright Saver retail</td></tr>
+                <tr><td>Budget</td><td>$850</td><td>Low-end US hardware benchmark; not a verified offer available in New York</td></tr>
+                <tr><td>Mid</td><td>$1,200</td><td>Mid-market hardware benchmark; electrical work excluded</td></tr>
                 <tr><td>Premium</td><td>$1,600</td><td>Anker SOLIX RS40P, Craftstrom complete kit</td></tr>
               </tbody>
             </table>
           </div>
+          <p>These tiers are calculator inputs, not a list of systems New Yorkers can currently buy. As of September 2026, Bright Saver lists a 360W kit at $414.17 for members, plus a $29 annual membership, and $699 without membership. It says it cannot ship the kit to New York because no system on the market yet has the whole-system certification New York requires.</p>
           <p>The Federal Residential Clean Energy Credit (<a href="https://www.irs.gov/credits-deductions/residential-clean-energy-credit" target="_blank" rel="noopener">§25D</a>) expired for expenditures after December 31, 2025 under <a href="https://www.congress.gov/bill/119th-congress/house-bill/21" target="_blank" rel="noopener">P.L. 119-21</a>. Cost figures are gross; no federal credit is netted out.</p>
 
           <h3>4.6 Offset assumption</h3>

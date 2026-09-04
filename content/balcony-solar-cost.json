@@ -6,7 +6,7 @@
   "description": "Kit prices, the costs that are not the kit, and the payback arithmetic worked through at four production levels \u2014 including why every savings figure is a ceiling rather than an expectation.",
   "eyebrow": "Cost and payback",
   "h1": "What does a balcony solar kit cost in NYC?",
-  "lede": "A balcony solar kit for a typical 800-watt New York City setup costs about $850 budget, $1,200 mid-range, or $1,600 premium; the nonprofit Bright Saver has sold a 360&nbsp;W kit at cost since July 2026 for $414 plus a $29 membership. At Con Edison&rsquo;s $0.34 per kilowatt-hour, a well-sited system saves roughly $300 a year and pays back in three to five years. A shaded, low-floor balcony takes six to ten.",
+  "lede": "balco.nyc uses hardware-only cost assumptions of $850 budget, $1,200 mid-range, and $1,600 premium for a typical 800-watt system. These are planning benchmarks, not currently verified New York offers. At Con Edison&rsquo;s $0.34 per kilowatt-hour, a well-sited system saves roughly $300 a year and pays back in three to five years. A shaded, low-floor balcony takes six to ten.",
   "date_label": "Prices checked",
   "reviewed": "2026-09-04",
   "reviewed_human": "September 4, 2026",
@@ -22,7 +22,7 @@
     {
       "id": "what-kits-cost",
       "toc": "What a kit costs right now",
-      "html": "        <section id=\"what-kits-cost\">\n  <h2><span class=\"sec-num\">1</span>What a kit costs right now</h2>\n  <p>balco.nyc models a typical 800&nbsp;W New York City setup at three price points: <strong>$850 budget</strong>, <strong>$1,200 mid</strong>, <strong>$1,600 premium</strong>. That is panels, microinverter, cabling and a railing mount &mdash; the hardware, not the electrician.</p>\n  <p>Per watt, those work out to <strong>$1.06</strong>, <strong>$1.50</strong> and <strong>$2.00</strong>. Per watt is the number to compare on, because a kit twice the size costs roughly twice as much and produces roughly twice as much, so kit size barely moves your payback period. Siting does.</p>\n  <p>For an external reference point on the low end: Bright Saver, a nonprofit, opened nationwide at-cost sales in July 2026 at <strong>$285.30 for 180&nbsp;W</strong> and <strong>$414.17 for 360&nbsp;W</strong> to members, against <strong>$499</strong> and <strong>$699</strong> without membership. Membership is $29 a year.</p>\n  <p>We cite this because it is the best-documented at-cost price in the US market and it tells you what the hardware genuinely costs before markup. It is not a recommendation. balco.nyc does not rank brands, take affiliate revenue, or tell you what to buy.</p>\n  <div class=\"callout\"><p><strong>Prices in this market moved sharply during 2026. Any figure you read without a date on it is worthless. Every price on this page carries the date we found it.</strong></p></div>\n</section>"
+      "html": "        <section id=\"what-kits-cost\">\n  <h2><span class=\"sec-num\">1</span>What a kit costs right now</h2>\n  <p>balco.nyc models a typical 800&nbsp;W New York City setup at three hardware-only price points: <strong>$850 budget</strong>, <strong>$1,200 mid</strong>, and <strong>$1,600 premium</strong>. Treat these as planning benchmarks rather than currently verified New York offers. They cover panels, a microinverter, cabling, and a railing mount &mdash; not an electrician or building work.</p>\n  <p>Per watt, those assumptions are <strong>$1.06</strong>, <strong>$1.50</strong>, and <strong>$2.00</strong>. Because system cost and output both scale roughly with size, siting usually changes payback more than kit size does.</p>\n  <p>For a current price reference, Bright Saver lists <strong>180&nbsp;W at $285.30</strong> and <strong>360&nbsp;W at $414.17</strong> for members, plus a $29 annual membership. The non-member prices are <strong>$499</strong> and <strong>$699</strong>. As of September 2026, Bright Saver says it cannot ship these kits to New York because no system on the market yet has the whole-system certification New York requires.</p>\n  <p>We cite Bright Saver as a transparent US hardware-price benchmark, not as a kit New Yorkers can currently order. balco.nyc does not rank brands, take affiliate revenue, or tell you what to buy.</p>\n  <div class=\"callout\"><p><strong>Prices and availability changed quickly in 2026. Check the seller&rsquo;s current price, certification, and New York shipping status before budgeting.</strong></p></div>\n</section>"
     },
     {
       "id": "other-costs",
@@ -53,7 +53,7 @@
   "faq": [
     [
       "How much does a balcony solar kit cost in NYC?",
-      "For a typical 800 W setup, balco.nyc models $850 at the budget end, $1,200 mid-range and $1,600 premium \u2014 hardware only. Smaller kits cost proportionally less: the nonprofit Bright Saver has sold a 360 W kit at cost since July 2026 for $414 to members, plus a $29 annual membership. None of these figures include an electrician, and many NYC balconies need one to add an outdoor outlet."
+      "For a typical 800 W setup, balco.nyc uses hardware-only planning assumptions of $850 at the budget end, $1,200 mid-range, and $1,600 premium. As of September 2026, Bright Saver lists a 360 W kit at $414.17 for members, plus a $29 annual membership, and $699 without membership, but says it cannot ship the kit to New York because no system on the market yet has the whole-system certification New York requires. None of these figures include an electrician or building work."
     ],
     [
       "Is balcony solar worth it in New York?",
@@ -80,12 +80,12 @@
     {
       "url": "https://www.brightsaver.org/balcony-solar-kits",
       "title": "Bright Saver &mdash; balcony solar kits",
-      "note": "at-cost kit prices as listed from July 2026: 180&nbsp;W at $285.30 and 360&nbsp;W at $414.17 to members."
+      "note": "current member and non-member prices, plus Bright Saver&rsquo;s notice that it cannot ship to New York because no market system yet has the required whole-system certification."
     },
     {
       "url": "https://pv-magazine-usa.com/2026/07/13/bright-saver-begins-offering-plug-in-solar-kits-at-wholesale-costs-to-customers-nationwide/",
       "title": "Bright Saver begins offering plug-in solar kits at wholesale costs nationwide (13 July 2026)",
-      "note": "confirms the nationwide at-cost launch and the member and non-member price pairs."
+      "note": "reports the July 2026 launch and price pairs; the seller&rsquo;s current page is the source for present New York availability."
     },
     {
       "url": "https://www.canarymedia.com/articles/solar/balcony-panel-bright-saver-deal",

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Enter any NYC address. See how much electricity, money, and CO₂ an 800W plug-in solar panel could produce on your balcony, modeled from real building geometry and a year of sun.">
+  <meta name="description" content="Enter an NYC address and choose the wall and floor. Estimate annual output, bill savings, and CO₂ for an 800W balcony-solar system using NYC building geometry and NREL solar data.">
   <title>balco.nyc · NYC's Balcony Solar Calculator</title>
   <link rel="icon" type="image/webp" href="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp">
   <link rel="icon" type="image/png" href="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png">
@@ -14,7 +14,7 @@
   <meta property="og:site_name" content="balco.nyc">
   <meta property="og:url" content="https://balco.nyc/">
   <meta property="og:title" content="balco.nyc · NYC's Balcony Solar Calculator">
-  <meta property="og:description" content="Enter any NYC address. See how much electricity, money, and CO₂ an 800W plug-in solar panel could produce on your balcony, modeled from real building geometry and a year of sun.">
+  <meta property="og:description" content="Enter an NYC address and choose the wall and floor. Estimate annual output, bill savings, and CO₂ for an 800W balcony-solar system using NYC building geometry and NREL solar data.">
   <!-- JPEG rather than WebP: several link scrapers still refuse WebP previews. -->
   <meta property="og:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -22,7 +22,7 @@
   <meta property="og:image:height" content="1047">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="balco.nyc · NYC's Balcony Solar Calculator">
-  <meta name="twitter:description" content="Enter any NYC address. See how much electricity, money, and CO₂ an 800W plug-in solar panel could produce on your balcony, modeled from real building geometry and a year of sun.">
+  <meta name="twitter:description" content="Enter an NYC address and choose the wall and floor. Estimate annual output, bill savings, and CO₂ for an 800W balcony-solar system using NYC building geometry and NREL solar data.">
   <meta name="twitter:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -782,11 +782,11 @@
         "applicationCategory": "UtilityApplication",
         "applicationSubCategory": "Solar Energy Calculator",
         "operatingSystem": "Any (web)",
-        "browserRequirements": "Requires JavaScript and WebGL",
+        "browserRequirements": "Requires JavaScript; WebGL is optional",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "description": "Estimates the annual electricity production, dollar savings, and CO₂ avoided by an 800W plug-in solar panel on any NYC balcony, using NREL PVWatts, NYC PLUTO building data, and a 3D shadow model of the building and its neighbors within 200m.",
+        "description": "Estimates annual electricity production, dollar savings, and CO₂ avoided for an 800W balcony-solar system at an NYC address, using NREL PVWatts, NYC PLUTO building data, and a 3D shadow model of nearby buildings.",
         "featureList": [
-          "Address-level solar production estimate for any NYC building",
+          "Address-level solar production estimates for NYC buildings",
           "3D shadow model accounting for neighboring buildings within 200m",
           "Hourly simulation across 8,760 hours per year via NREL PVWatts V8",
           "Con Edison SC-1 rate-based savings",
@@ -831,7 +831,7 @@
             "name": "Is plug-in solar legal in NYC?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Not yet, but it is close. New York requires utility approval for any device that pushes power back into a household circuit, which plug-in kits do. The SUNNY Act (S8512C/A9111C) changes that. It passed the State Senate unanimously in April 2026 and the Assembly on May 28, 2026, and is now awaiting the Governor's signature. It takes effect 90 days after being signed, so the realistic opening is early 2027. Note that the Act removes the utility barrier only. It grants no right to install, so renters and co-op residents may still need landlord or board sign-off."
+              "text": "Not yet. New York still requires utility approval for plug-in solar. The SUNNY Act (S8512C/A9111C) has passed the State Senate and Assembly and is awaiting the Governor's signature. If signed, it would remove that utility requirement 90 days later. It would grant no right to install, so renters and co-op owners may still need landlord or board approval."
             }
           },
           {
@@ -839,15 +839,15 @@
             "name": "Does it work for any apartment?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Any NYC address with sun on at least one side. A high-floor south-facing balcony can produce 3× what a low-floor north-facing one does. The 3D simulation accounts for neighbor buildings within 200m, so wide-avenue and midblock exposures come out differently."
+              "text": "Not every apartment. Production depends on how much sky the balcony can see, its floor level and direction, and nearby buildings. In the calculator's model, a high-floor south-facing balcony can produce about three times as much as a low-floor north-facing one. The model includes buildings within 200 m, but it cannot assess the railing, outlet, or building rules."
             }
           },
           {
             "@type": "Question",
-            "name": "How does plug-in balcony solar actually plug in?",
+            "name": "Where does balcony solar plug in?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The panel connects to a small micro-inverter with a cord ending in a standard 120V plug, the same as anything else you plug into a household outlet. NYC balconies almost never have an outdoor outlet, so in practice the cord runs from the panel through a window or sliding door to an indoor outlet, often the same circuit you'd use for a window AC. Secure the cord to the railing so it doesn't catch on anyone, and don't daisy-chain it through an extension cord. Kit manufacturers sell longer panel cables for runs over about 10 feet."
+              "text": "A microinverter converts the panels' DC output to 120V AC. A certified kit should plug directly into a properly rated, weather-protected outlet using the manufacturer's cord—never an extension cord, power strip, or adapter. If the balcony has no suitable outlet, adding one may require a licensed electrician and building approval."
             }
           },
           {
@@ -855,31 +855,31 @@
             "name": "How accurate is this estimate?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Roughly within 15% of real-world production for a typical NYC apartment. We model the major shadows on your block but can't see micro-shading (a neighbor's AC unit, a corner tree) or know your exact panel orientation. That figure is a modeled uncertainty band, not a field-validated one; no measured NYC installations have been compared against it yet."
+              "text": "Treat the result as a planning estimate. We use a modeled uncertainty range of about 15%, but no metered NYC balcony systems have been checked against it yet. The model captures shadows from nearby buildings, not smaller obstructions such as an AC unit or tree, and it cannot know the panel's exact angle."
             }
           },
           {
             "@type": "Question",
-            "name": "How is the estimate calculated?",
+            "name": "How is this calculated?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "PVWatts hourly simulation, NYC building data, and a 3D shadow model of your block. Built on NREL, NYC PLUTO, Con Edison SC-1 rates, and EPA eGRID."
+              "text": "We run NREL PVWatts hour by hour and adjust the result with a 3D model built from NYC building data. Savings use Con Edison SC-1 rates; emissions use EPA eGRID."
             }
           },
           {
             "@type": "Question",
-            "name": "What does a balcony solar kit cost?",
+            "name": "What does a kit cost?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Less than it used to. Since Bright Saver, a nonprofit, began selling complete kits nationwide at cost in July 2026, a 360W kit runs about $414 for members and $699 otherwise. For a typical 800W NYC setup, budget roughly $850 at the wholesale end, $1,200 mid-range, and $1,600 for premium hardware."
+              "text": "Bright Saver is a useful price benchmark, but not a New York option yet. As of September 2026, its 360W kit is $414.17 for members, plus $29 per year, or $699 for nonmembers. It says it cannot ship the kit to New York because no kit yet has the required whole-system certification. For an 800W system, this calculator uses hardware-only assumptions of $850, $1,200, or $1,600. Open Adjust assumptions to change the tier."
             }
           },
           {
             "@type": "Question",
-            "name": "What electricity rate is used to compute savings?",
+            "name": "Why does the calculator use 34¢/kWh?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Con Edison's residential rate, roughly 34¢/kWh in 2026 — the all-in marginal rate, supply plus delivery plus surcharges, with the fixed monthly charge excluded because solar does not reduce it. That is roughly 1.8 times the U.S. average. The Customize panel lets you adjust your monthly bill and the long-term rate escalation assumption."
+              "text": "Savings use a 2026 Con Edison residential marginal rate of about 34¢/kWh. That includes supply, delivery, and surcharges, but not the fixed monthly charge, which solar does not reduce. Open Adjust assumptions to change the bill and rate-growth settings."
             }
           }
         ]
@@ -926,7 +926,7 @@
   <div class="hero-layout">
     <div class="hero-content" id="heroContent">
       <h1 id="heroH1" data-default="How much could solar on your balcony save you?">How much could solar on your balcony save you?</h1>
-      <p>Enter your NYC address. We model your building, simulate a year of sun, and show what an 800W panel could produce in kWh, dollars, and CO&#8322;.</p>
+      <p>Enter an NYC address, then choose the wall and floor. You&rsquo;ll get an estimate of annual output, bill savings, and CO&#8322; avoided for an 800W system.</p>
       <div class="hero-input-wrap">
         <div class="hero-input-field">
           <input type="text" class="hero-input ph-no-capture" id="addressInput" placeholder="Enter an NYC address" autocomplete="off" data-private>
@@ -968,8 +968,8 @@
           <span>Sun study / in progress</span>
           <span id="modellingContext">Selected balcony</span>
         </div>
-        <p class="modelling-label">Following daylight across your balcony</p>
-        <p class="mod-sub">Tracing a June day while calculating the annual shade profile.</p>
+        <p class="modelling-label">Checking how shadows move through the day</p>
+        <p class="mod-sub">Previewing a June day while the annual estimate runs.</p>
         <div class="sun-study-timeline" aria-hidden="true">
           <span>05:30</span>
           <div class="sun-study-rule">
@@ -1275,16 +1275,16 @@
     <source srcset="Gemini_Generated_Image_d2ucutd2ucutd2uc.webp" type="image/webp">
     <img src="Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg" alt="Solar panels clamped to the fire-escape balconies of a Brooklyn walk-up" width="1920" height="1047" loading="lazy" decoding="async">
   </picture>
-  <p class="street-caption">Panels on a walk-up. No roof, no rights, no electrician &mdash; just a railing facing the right way.</p>
+  <p class="street-caption">Illustration only. Never mount panels on a fire escape or block another exit route.</p>
 </section>
 
 <!-- ABOUT / WHAT IS BALCONY SOLAR -->
 <section class="explainer" id="about">
   <div class="container">
     <div class="explainer-header">
-      <span class="section-eyebrow">About</span>
-      <h2>What is balcony solar?</h2>
-      <p class="section-lede">A small solar panel that clamps to a balcony railing and plugs into a regular outlet. The electricity it produces flows back into the apartment&rsquo;s circuit, offsetting whatever&rsquo;s drawing power at that moment.</p>
+      <span class="section-eyebrow">The setup</span>
+      <h2>A small solar system for one apartment</h2>
+      <p class="section-lede">A typical kit has one or two panels, a mounting system, and a microinverter. It supplies part of the apartment&rsquo;s daytime power; the grid supplies the rest.</p>
     </div>
     <div class="explainer-grid">
       <div class="explainer-image">
@@ -1297,22 +1297,22 @@
         <div class="explainer-card">
           <div class="ex-num">1</div>
           <div>
-            <h3>A panel on your railing</h3>
-            <p>One or two solar panels, 400 to 800 watts total, that mount on the outside of a balcony railing or sit on a stand. No roof needed.</p>
+            <h3>Mount one or two panels</h3>
+            <p>Most setups use 400 to 800 watts of panels. They clamp to a suitable railing or sit on a weighted stand; the roof is not involved.</p>
           </div>
         </div>
         <div class="explainer-card">
           <div class="ex-num">2</div>
           <div>
-            <h3>Plugs into any outlet</h3>
-            <p>A small micro-inverter converts the DC output to standard 120V AC and feeds it into the apartment&rsquo;s wiring through a normal outlet. No electrician required.</p>
+            <h3>Connect through a suitable outlet</h3>
+            <p>A microinverter converts the panels&rsquo; DC output to 120V AC. A certified kit plugs directly into a properly rated, weather-protected outlet. If the balcony has no suitable outlet, adding one may require a licensed electrician and building approval.</p>
           </div>
         </div>
         <div class="explainer-card">
           <div class="ex-num">3</div>
           <div>
-            <h3>Offsets your bill in real time</h3>
-            <p>Every watt the panel produces is one less watt the grid has to supply. Whatever&rsquo;s on at the moment (fridge, AC, laptop) uses the panel&rsquo;s electricity first.</p>
+            <h3>Draw less power from the grid</h3>
+            <p>While the panels are generating, their output supplies part of the apartment&rsquo;s load. The meter records less electricity coming in from the grid.</p>
           </div>
         </div>
       </div>
@@ -1329,13 +1329,13 @@
         <h2>Common questions</h2>
       </div>
       <div class="faq-list">
-      <details class="faq-item"><summary>Is plug-in solar legal in NYC?<span class="faq-toggle">+</span></summary><p>Not yet, but it is close. New York requires utility approval for any device that pushes power back into a household circuit, which plug-in kits do. The <a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">SUNNY Act (S8512C/A9111C)</a> changes that. It passed the State Senate unanimously in April 2026 and the Assembly on 28 May 2026, and now awaits the Governor&rsquo;s signature. It takes effect 90 days after signing, so the realistic opening is early 2027. One thing to know: the Act removes the <em>utility</em> barrier only. It grants no right to install, so renters and co-op residents may still need landlord or board sign-off. <a href="/sunny-act">Full status, and what the Act does not cover &rarr;</a></p></details>
-      <details class="faq-item"><summary>Does it work for any apartment?<span class="faq-toggle">+</span></summary><p>Any NYC address with sun on at least one side. A high-floor south-facing balcony can produce 3&times; what a low-floor north-facing one does. The 3D simulation accounts for neighbor buildings within 200m, so wide-avenue and midblock exposures come out differently.</p></details>
-      <details class="faq-item"><summary>How does it actually plug in?<span class="faq-toggle">+</span></summary><p>The panel connects to a small micro-inverter with a cord ending in a standard 120V plug, the same as anything else you plug into a household outlet. NYC balconies almost never have an outdoor outlet, so in practice the cord runs from the panel through a window or sliding door to an indoor outlet, often the same circuit you&rsquo;d use for a window AC. Secure the cord to the railing so it doesn&rsquo;t catch on anyone, and don&rsquo;t daisy-chain it through an extension cord. Kit manufacturers sell longer panel cables for runs over ~10 feet.</p></details>
-      <details class="faq-item"><summary>How accurate is this estimate?<span class="faq-toggle">+</span></summary><p>Within about 15% of real-world production for a typical NYC apartment. We model the major shadows on your block but can&rsquo;t see micro-shading (a neighbor&rsquo;s AC unit, a corner tree) or know your exact panel orientation. That band is modeled, not measured: no NYC installations have been metered against it yet, so treat it as a considered estimate rather than a validated tolerance.</p></details>
-      <details class="faq-item"><summary>How is this calculated?<span class="faq-toggle">+</span></summary><p>PVWatts hourly simulation, NYC building data, and a 3D shadow model of your block. Built on NREL, NYC PLUTO, Con Edison SC-1 rates, and EPA eGRID. <a href="/methodology">Read the full methodology &rarr;</a></p></details>
-      <details class="faq-item"><summary>What does a kit cost?<span class="faq-toggle">+</span></summary><p>Less than it used to. Since <a href="https://www.brightsaver.org/balcony-solar-kits" target="_blank" rel="noopener">Bright Saver</a>, a nonprofit, began selling complete kits nationwide at cost in July 2026, a 360W kit runs about $414 for members and $699 otherwise. For a typical 800W NYC setup, budget roughly $850 at the wholesale end, $1,200 mid-range, and $1,600 for premium hardware. The Customize panel lets you switch tiers.</p></details>
-      <details class="faq-item"><summary>What rate is used to compute savings?<span class="faq-toggle">+</span></summary><p>Con Edison&rsquo;s residential rate, roughly 34&cent;/kWh in 2026 &mdash; the all-in marginal rate, supply plus delivery plus surcharges, with the fixed monthly charge excluded because solar does not reduce it. That is roughly 1.8 times the U.S. average. The Customize panel lets you adjust your monthly bill and the long-term rate escalation assumption. <a href="/electricity-rate">Why 34&cent; and not 18&cent; &rarr;</a></p></details>
+      <details class="faq-item"><summary>Is plug-in solar legal in NYC?<span class="faq-toggle">+</span></summary><p>Not yet. New York still requires utility approval for plug-in solar. The <a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">SUNNY Act (S8512C/A9111C)</a> has passed the State Senate and Assembly and is awaiting the Governor&rsquo;s signature. If signed, it would remove that utility requirement 90 days later. It would grant no right to install, so renters and co-op owners may still need landlord or board approval. <a href="/sunny-act">Read the current status and limits &rarr;</a></p></details>
+      <details class="faq-item"><summary>Does it work for any apartment?<span class="faq-toggle">+</span></summary><p>Not every apartment. Production depends on how much sky the balcony can see, its floor level and direction, and nearby buildings. In the calculator&rsquo;s model, a high-floor south-facing balcony can produce about three times as much as a low-floor north-facing one. The model includes buildings within 200 m, but it cannot assess the railing, outlet, or building rules.</p></details>
+      <details class="faq-item"><summary>Where does balcony solar plug in?<span class="faq-toggle">+</span></summary><p>A microinverter converts the panels&rsquo; DC output to 120V AC. A certified kit should plug directly into a properly rated, weather-protected outlet using the manufacturer&rsquo;s cord &mdash; never an extension cord, power strip, or adapter. If the balcony has no suitable outlet, adding one may require a licensed electrician and building approval.</p></details>
+      <details class="faq-item"><summary>How accurate is this estimate?<span class="faq-toggle">+</span></summary><p>Treat the result as a planning estimate. We use a modeled uncertainty range of about 15%, but no metered NYC balcony systems have been checked against it yet. The model captures shadows from nearby buildings, not smaller obstructions such as an AC unit or tree, and it cannot know the panel&rsquo;s exact angle.</p></details>
+      <details class="faq-item"><summary>How is this calculated?<span class="faq-toggle">+</span></summary><p>We run NREL PVWatts hour by hour and adjust the result with a 3D model built from NYC building data. Savings use Con Edison SC-1 rates; emissions use EPA eGRID. <a href="/methodology">Read the full methodology &rarr;</a></p></details>
+      <details class="faq-item"><summary>What does a kit cost?<span class="faq-toggle">+</span></summary><p><a href="https://www.brightsaver.org/balcony-solar-kits" target="_blank" rel="noopener">Bright Saver</a> is a useful price benchmark, but not a New York option yet. As of September 2026, its 360W kit is $414.17 for members, plus $29 per year, or $699 for nonmembers. It says it cannot ship the kit to New York because no kit yet has the required whole-system certification. For an 800W system, this calculator uses hardware-only assumptions of $850, $1,200, or $1,600. Open Adjust assumptions to change the tier.</p></details>
+      <details class="faq-item"><summary>Why does the calculator use 34&cent;/kWh?<span class="faq-toggle">+</span></summary><p>Savings use a 2026 Con Edison residential marginal rate of about 34&cent;/kWh. That includes supply, delivery, and surcharges, but not the fixed monthly charge, which solar does not reduce. Open Adjust assumptions to change the bill and rate-growth settings. <a href="/electricity-rate">See how the rate is calculated &rarr;</a></p></details>
       </div>
     </div>
   </div>
@@ -1345,32 +1345,32 @@
 <section class="guides" id="guides">
   <div class="container">
     <span class="section-eyebrow">Guides</span>
-    <h2>The questions behind the number</h2>
-    <p class="guides-lede">The calculator answers one question well. These answer the ones that come before and after it, with the sources they rest on.</p>
+    <h2>Sources and practical guides</h2>
+    <p class="guides-lede">Details on New York law, sunlight, installation, kit prices, and the electricity rate used in the estimate.</p>
     <div class="guides-grid">
       <a class="guide-card" href="/sunny-act">
         <h3>Is plug-in solar legal in New York?</h3>
-        <p>Where the bill stands, and the part it deliberately does not cover.</p>
+        <p>Current bill status, utility rules, and building permission.</p>
       </a>
       <a class="guide-card" href="/what-is-balcony-solar">
         <h3>What is balcony solar?</h3>
-        <p>How a panel that plugs into a wall socket actually works.</p>
+        <p>Panels, microinverters, the outlet, and the apartment circuit.</p>
       </a>
       <a class="guide-card" href="/balcony-sunlight">
         <h3>Does my balcony get enough sun?</h3>
-        <p>Why the building opposite matters more than which way you face.</p>
+        <p>How direction, floor height, and nearby buildings affect output.</p>
       </a>
       <a class="guide-card" href="/install-balcony-solar">
         <h3>How do I put a solar panel on my balcony?</h3>
-        <p>Permission, outlets, mounting and wind &mdash; and why the install waits.</p>
+        <p>Building permission, outlet safety, mounting, and wind loads.</p>
       </a>
       <a class="guide-card" href="/balcony-solar-cost">
         <h3>What does a balcony solar kit cost in NYC?</h3>
-        <p>Kit prices and the payback arithmetic, worked at four production levels.</p>
+        <p>Current kit prices and payback at four output levels.</p>
       </a>
       <a class="guide-card" href="/electricity-rate">
         <h3>What does a kilowatt-hour actually cost in NYC?</h3>
-        <p>Why we value a kWh at 34&cent; when other calculators use half that.</p>
+        <p>How supply, delivery, and surcharges add up to about 34&cent;/kWh.</p>
       </a>
     </div>
   </div>
@@ -1380,7 +1380,7 @@
 <footer>
   <div class="container">
     <a href="#" class="footer-logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
-    <p class="footer-disclaimer">balco.nyc is an independent open tool for estimating balcony solar potential in NYC. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL. Estimates are educational and may vary by about 15% from real-world production. Plug-in solar is not yet legal for residential use in New York: the <a href="/sunny-act">SUNNY Act</a> has passed both chambers and awaits the Governor&rsquo;s signature. <a href="/methodology">Full methodology &rarr;</a></p>
+    <p class="footer-disclaimer">balco.nyc is an independent calculator built from public building, weather, and electricity-rate data. It is not affiliated with the City of New York, Con Edison, NYSERDA, or NREL. Results are planning estimates with a modeled uncertainty range of about 15%. New York still requires utility approval for plug-in solar; the <a href="/sunny-act">SUNNY Act</a> has passed both chambers and awaits the Governor&rsquo;s signature. <a href="/methodology">Read the methodology &rarr;</a></p>
     <p class="footer-meta">&copy; 2026</p>
   </div>
 </footer>

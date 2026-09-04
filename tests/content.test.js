@@ -22,10 +22,29 @@ const shadowModel = read('js/3d-shadow-model.js');
 // METHODOLOGY.md used to sit alongside it and the two drifted; the page is now
 // the only copy, reached at /methodology (and via a redirect from the old path).
 const methodologyHtml = read('methodology.html');
+const costPage = read('balcony-solar-cost.html');
+const costSpec = read('content/balcony-solar-cost.json');
 const llms = read('llms.txt');
 const robots = read('robots.txt');
 const { SolarConfig } = loadModules();
 
+function normalizeVisibleCopy(html) {
+  return html
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&rsquo;|&#x27;|&#39;/g, "'")
+    .replace(/&ldquo;|&rdquo;|&quot;/g, '"')
+    .replace(/&cent;/g, '¢')
+    .replace(/&mdash;/g, '—')
+    .replace(/&rarr;/g, '→')
+    .replace(/&amp;/g, '&')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s*—\s*/g, '—')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+const visibleFaqMarkup = (index.match(/<section class="faq"[\s\S]*?<\/section>/) || [''])[0];
+const footerMarkup = (index.match(/<footer>[\s\S]*?<\/footer>/) || [''])[0];
 const ALL_PUBLIC = { 'index.html': index, 'methodology.html': methodologyHtml, 'llms.txt': llms };
 
 describe('Electricity rate is stated consistently', () => {
@@ -56,19 +75,20 @@ describe('CO2 factor is stated consistently', () => {
 describe('Accuracy claim agrees across surfaces', () => {
   // The visible FAQ answer and its JSON-LD twin must say the same thing.
   it('states about 15% in the visible FAQ', () => {
-    assert(/Within about 15%/.test(index), 'visible FAQ should state about 15%');
+    assert(/modeled uncertainty range of about 15%/.test(visibleFaqMarkup),
+      'visible FAQ should state about 15%');
   });
 
   it('states the same figure in the FAQPage schema', () => {
     const ld = JSON.parse(index.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
     const faq = ld['@graph'].find(n => n['@type'] === 'FAQPage');
     const accuracy = faq.mainEntity.find(q => /accurate/i.test(q.name));
-    assert(/within 15%/i.test(accuracy.acceptedAnswer.text),
+    assert(/modeled uncertainty range of about 15%/i.test(accuracy.acceptedAnswer.text),
       `schema accuracy answer drifted from the visible FAQ: ${accuracy.acceptedAnswer.text.slice(0, 80)}`);
   });
 
   it('states the same figure in the footer and llms.txt', () => {
-    assert(/about 15% from real-world/.test(index), 'footer should state about 15%');
+    assert(/modeled uncertainty range of about 15%/.test(footerMarkup), 'footer should state about 15%');
     assert(/about 15%/.test(llms), 'llms.txt should state about 15%');
   });
 
@@ -113,6 +133,62 @@ describe('SUNNY Act status is current', () => {
   it('notes that the Act grants no right to install', () => {
     assert(/no right to install/i.test(index), 'index.html should note the Act grants no right to install');
     assert(/no right to install/i.test(methodologyHtml), 'methodology.html should note the same');
+  });
+});
+
+describe('Homepage copy stays concrete and safe', () => {
+  it('does not overpromise the electrical installation', () => {
+    assert(!/Plugs into any outlet|No electrician required|cord runs from the panel through a window/i.test(index),
+      'the homepage should not imply that any outlet or an improvised cable route is safe');
+    assert(/properly rated, weather-protected outlet/i.test(index) && /licensed electrician/i.test(index),
+      'the homepage should state the real outlet and electrician constraints');
+  });
+
+  it('keeps retired brochure language out of the lower page', () => {
+    for (const phrase of ['No roof, no rights', 'Less than it used to', 'The questions behind the number']) {
+      assert(!index.includes(phrase), `retired homepage phrase returned: ${phrase}`);
+    }
+    assert(/cannot ship (?:the|these) kit(?:s)? to New York/i.test(index),
+      'current kit copy should disclose the New York certification constraint');
+  });
+
+  it('labels the fire-escape image as an illustration, not an installation example', () => {
+    assert(/Never mount panels on a fire escape or block another exit route/i.test(index),
+      'the homepage should not imply that a required egress route is a usable solar mount');
+  });
+
+  it('does not present an unavailable kit as a current New York purchase', () => {
+    for (const [name, text] of [
+      ['homepage', index],
+      ['cost guide', costPage],
+      ['cost guide source', costSpec],
+      ['methodology', methodologyHtml],
+      ['llms.txt', llms],
+    ]) {
+      assert(/cannot ship (?:the|these) kit(?:s)? to New York/i.test(text),
+        name + ' should disclose the current New York shipping constraint');
+      assert(/whole-system certification/i.test(text),
+        name + ' should explain why the kit is not available in New York');
+    }
+  });
+
+  it('keeps structured FAQ copy aligned with the questions visitors see', () => {
+    const visible = [...visibleFaqMarkup.matchAll(
+      /<details class="faq-item"><summary>([\s\S]*?)<span class="faq-toggle">[\s\S]*?<\/span><\/summary><p>([\s\S]*?)<\/p><\/details>/g
+    )].map(match => ({
+      question: normalizeVisibleCopy(match[1]),
+      answer: normalizeVisibleCopy(match[2]),
+    }));
+    const ld = JSON.parse(index.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+    const structured = ld['@graph'].find(node => node['@type'] === 'FAQPage').mainEntity;
+
+    assert(visible.length === structured.length, 'visible and structured FAQs should have the same count');
+    structured.forEach((item, position) => {
+      assert(visible[position].question === item.name,
+        `FAQ question ${position + 1} differs between the page and JSON-LD`);
+      assert(visible[position].answer.startsWith(normalizeVisibleCopy(item.acceptedAnswer.text)),
+        `FAQ answer ${position + 1} differs between the page and JSON-LD`);
+    });
   });
 });
 

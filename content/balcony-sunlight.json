@@ -1,0 +1,162 @@
+{
+  "slug": "balcony-sunlight",
+  "title": "Does my balcony get enough sun for solar? &middot; balco.nyc",
+  "og_title": "Does my balcony get enough sun for solar panels in NYC?",
+  "breadcrumb": "Sunlight and shading",
+  "description": "There is no hours-of-sun threshold. In NYC what decides it is obstruction and floor height more than which way you face — and the answer is a kWh number.",
+  "eyebrow": "Sunlight and shading",
+  "h1": "Does my balcony get enough sun for solar?",
+  "lede": "There is no threshold: the honest answer is a kilowatt-hour number, not a yes or no. In a dense city what sets it is mostly how much sky your balcony can see past the building opposite, and how high up you are &mdash; which way it faces matters less than the rules of thumb suggest. A typical 800&nbsp;W New York system produces 400 to 900&nbsp;kWh a year, and a high-floor south balcony makes roughly three times what a low-floor north one does.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-04",
+  "reviewed_human": "September 4, 2026",
+  "published": "2026-09-04",
+  "reading_time": "~9 minutes",
+  "tags": [
+    "400&ndash;900&nbsp;kWh/yr",
+    "Obstruction beats orientation",
+    "&plusmn;15% modelled"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "what-enough-means",
+      "toc": "\"Enough sun\" is a number, not a threshold",
+      "html": "        <section id=\"what-enough-means\">\n  <h2><span class=\"sec-num\">1</span>&ldquo;Enough sun&rdquo; is a number, not a threshold</h2>\n  <p>The standard answer to this question is a rule of thumb: three to four hours of direct sunlight a day and you are fine. It is a reasonable rule and it comes from somewhere sensible &mdash; it is roughly the line between a balcony that will grow herbs and one that will not. But it treats the question as a gate you either pass or fail, and that is not how a solar system behaves. A panel does not switch on at four hours. It produces a continuously varying amount all year, and the useful output of that arithmetic is a single figure: annual kilowatt-hours.</p>\n  <p>That figure is what everything downstream depends on. In New York the number to multiply it by is Con&nbsp;Edison&rsquo;s all-in marginal rate of about <strong>$0.34 per kilowatt-hour</strong> &mdash; supply, delivery and surcharges together, which is <a href=\"/electricity-rate\">the correct rate for electricity you generate and consume yourself</a>. A typical 800&nbsp;W system on an NYC balcony lands somewhere between <strong>400 and 900 kWh a year</strong>, so the annual saving runs from roughly $136 to roughly $306. On a $1,200 mid-range kit that is the difference between a <a href=\"/balcony-solar-cost\">payback of under four years and one of over eight</a>. Both of those balconies get &ldquo;enough&rdquo; sun in the sense that the panels work. Only one of them is a good idea.</p>\n  <p>This is also where a widely repeated figure needs qualifying. You will often read that an 800&nbsp;W kit covers 15&ndash;25% of an apartment&rsquo;s electricity. That is a nameplate-ideal number with no shading derate applied. Against the EIA&rsquo;s New York average household consumption of about 6,850&nbsp;kWh a year, the real 400&ndash;900&nbsp;kWh band works out at <strong>6% to 13%</strong> &mdash; and the lower end of that is not a rounding error, it is what a shaded low-floor balcony actually delivers. The 15&ndash;25% figure describes a well-sited system belonging to a light consumer. It is a ceiling, not an expectation.</p>\n  <div class=\"callout\"><p><strong>One number, not a verdict.</strong> If someone answers &ldquo;does my balcony get enough sun&rdquo; with yes or no, they have skipped the only part of the answer that changes what you should do.</p></div>\n</section>"
+    },
+    {
+      "id": "four-variables",
+      "toc": "The four things that decide it, in order",
+      "html": "        <section id=\"four-variables\">\n  <h2><span class=\"sec-num\">2</span>The four things that decide it, in order</h2>\n  <p>Most solar guidance is written for a detached house, where orientation is the first question because it is very nearly the only one. In a dense city the ranking inverts. Here is the order that actually matters for an NYC balcony:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th></th><th>Variable</th><th>What it really is</th><th>Why it ranks here</th></tr></thead><tbody>\n    <tr><td>1</td><td><strong>Obstruction</strong></td><td>The height of the building across the street relative to yours, and how far away it stands</td><td>It sets the floor of the sky you can see. On a low floor in a narrow canyon it can remove the entire middle of the day for months at a time &mdash; a bigger swing than every other variable combined. You cannot change it, and it is the one nobody asks about.</td></tr>\n    <tr><td>2</td><td><strong>Floor height</strong></td><td>How far above the street the panel sits</td><td>Every storey you climb drops the skyline. The same balcony, facing the same way, is a materially different proposition on the 3rd floor and the 12th. Published research on vertical facade PV finds incident energy distributed <em>non-uniformly along the height of the wall</em> for exactly this reason.</td></tr>\n    <tr><td>3</td><td><strong>Orientation</strong></td><td>The compass direction the railing faces</td><td>Real, predictable and correctly priced by any decent model &mdash; but it only prices sun you can actually see. Orientation decides how you use an open sky; obstruction decides whether you have one.</td></tr>\n    <tr><td>4</td><td><strong>Tilt</strong></td><td>Flat against the railing (vertical, 90&deg;) or angled out on a bracket</td><td>The only variable you get to choose, and the one most often taken away by the railing design or the building&rsquo;s rules. balco.nyc models four mount angles &mdash; 35&deg;, 60&deg;, 70&deg; and vertical &mdash; because the gap between them is worth knowing before you argue with a board.</td></tr>\n  </tbody></table></div>\n  <p>This ordering is why one particular claim deserves care. You will find it stated as a constant, across many pages, that a north-facing balcony produces <strong>75% less</strong> than a south-facing one. We could not trace that figure to a primary source; it appears without attribution and gets copied forward. The deeper problem is not the number, it is the framing. It presents azimuth as if it were the whole answer, on a page written for someone whose real constraint is the twelve-storey building forty feet away.</p>\n  <p>In a city the two effects compete, and obstruction usually wins. <strong>An unobstructed high-floor north balcony can out-produce a south-facing balcony boxed in by a taller building across a narrow street.</strong> balco.nyc&rsquo;s own modelling puts roughly <strong>3&times;</strong> between the best and worst realistic NYC cases &mdash; a high-floor south balcony against a low-floor north one &mdash; and that spread is the <em>combination</em> of all four variables, not orientation working alone. Attribute the whole gap to which way you face and you will mis-rank two apartments in the same building.</p>\n  <p>One local wrinkle before you take the listing at its word: most of Manhattan&rsquo;s grid is rotated about <strong>29&deg; east of true north</strong>, aligned to the axis of the island rather than to the compass. What a broker calls a north-facing apartment is usually facing north-north-east. That rotation is large enough to change the answer, which is why the calculator asks for an address rather than a direction.</p>\n</section>"
+    },
+    {
+      "id": "street-canyon",
+      "toc": "A street canyon is not a suburban lot",
+      "html": "        <section id=\"street-canyon\">\n  <h2><span class=\"sec-num\">3</span>A street canyon is not a suburban lot</h2>\n  <p>The geometry is worth making concrete, because once you see it the rest of the page follows. A panel receives direct sunlight when the sun is above the skyline in that direction. In the suburbs the skyline is a fence and a maple tree, so it sits a few degrees above the horizon and the sun clears it for most of the day. The sun&rsquo;s path is the story. In a street canyon the skyline is a wall, it can sit thirty or forty degrees up, and the sun&rsquo;s path is just the thing that does or does not cross it.</p>\n  <p>Take a standard Manhattan side street. The Commissioners&rsquo; Plan of 1811 set cross streets at <strong>60 feet</strong> (about 18&nbsp;m) building face to building face, and avenues at 100 feet. Put a six-storey building &mdash; roughly 18&nbsp;m &mdash; directly opposite, and ask how high the sun has to climb before it reaches your railing:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Your floor</th><th>Panel height above street</th><th>Sun must be above</th><th>Clears the 21 Dec noon sun (26&deg;)?</th><th>Clears the equinox noon sun (49&deg;)?</th></tr></thead><tbody>\n    <tr><td>2nd</td><td>4&nbsp;m</td><td>37&deg;</td><td>No</td><td>Yes</td></tr>\n    <tr><td>4th</td><td>10&nbsp;m</td><td>24&deg;</td><td>Barely</td><td>Yes</td></tr>\n    <tr><td>6th</td><td>16&nbsp;m</td><td>6&deg;</td><td>Yes</td><td>Yes</td></tr>\n    <tr><td>8th and up</td><td>22&nbsp;m+</td><td>Clear</td><td>Yes</td><td>Yes</td></tr>\n  </tbody></table></div>\n  <p>Nothing about that table depends on which way the balcony faces. A second-floor apartment on that street has no direct midday sun for weeks around the winter solstice whether it is south-facing or not, because the sun never gets high enough to clear the parapet opposite. Six floors up, on the same facade, the obstruction has essentially vanished. That is the whole argument for putting address and height ahead of azimuth.</p>\n  <p>Two things make the real city messier than the table, both in the same direction. Buildings are rarely a uniform wall &mdash; a setback, a gap at the corner, a lower neighbour mid-block can open a wedge of sky that changes a balcony&rsquo;s year. And the obstruction that matters is not only the one across the street: the wing of your own building, the tower on the diagonal, and the balcony slab immediately above you all take a bite. This is why a real answer needs a model of the actual surrounding block rather than a street width and a rule.</p>\n</section>"
+    },
+    {
+      "id": "diffuse-light",
+      "toc": "Diffuse light, and why a north balcony is not zero",
+      "html": "        <section id=\"diffuse-light\">\n  <h2><span class=\"sec-num\">4</span>Diffuse light, and why a north balcony is not zero</h2>\n  <p>Sunlight arrives in two forms. <strong>Beam</strong> (or direct) radiation travels in a straight line from the disc of the sun, and it is what casts a shadow. <strong>Diffuse</strong> radiation has been scattered by the atmosphere and by cloud, and it arrives from the whole dome of the sky at once. Panels convert both. Almost every intuition people have about balconies concerns only the first.</p>\n  <p>The split matters more than the vocabulary suggests. In the northeastern United States roughly <strong>40% of annual global horizontal irradiance is diffuse</strong>, which is the figure balco.nyc&rsquo;s shadow model uses for its beam/diffuse constants (see <a href=\"/methodology\">the methodology</a>). On a clear day the diffuse share is small; on an overcast day it is essentially everything, and under a fully overcast sky <em>surface orientation stops being a significant variable at all</em>. Roughly two-fifths of the year&rsquo;s energy, then, does not care which way your railing points. It cares how much sky your railing can see.</p>\n  <p>That is the honest case for a north-facing balcony, and it is a real one. A vertical panel sees half the sky dome no matter which direction it faces. Diffuse light is not free of the city &mdash; the building opposite blocks its share of that half-dome exactly as it blocks the beam &mdash; but what it takes away is set by obstruction, not by compass direction. A north balcony&rsquo;s output is not a fraction of a south balcony&rsquo;s because of some efficiency penalty; it is lower because it has given up most of its beam.</p>\n  <p>Most, but not all. The sun rises north of due east between the equinoxes: at the June solstice in New York it comes up at an azimuth of about <strong>58&deg;</strong> and sets at about <strong>302&deg;</strong>. A true-north-facing wall therefore has the sun in front of it for around seven hours of a fifteen-hour midsummer day. The catch is that all of those hours are at a glancing angle with the sun low in the sky, so the beam they deliver is modest. And from the September equinox to the March equinox, a true-north vertical panel receives <strong>essentially no direct sunlight at all</strong> &mdash; the sun rises and sets south of the east&ndash;west line for the entire winter half of the year. Everything it produces in those six months is diffuse.</p>\n  <p>Here the Manhattan grid rotation earns its keep again. A balcony facing 29&deg; rather than 0&deg; meets the summer morning sun much closer to head-on, and still catches a couple of hours of direct sun around the equinoxes, when a true-north wall catches none. A &ldquo;north-facing&rdquo; NYC apartment and a true-north-facing one are not the same object.</p>\n</section>"
+    },
+    {
+      "id": "winter",
+      "toc": "Winter, honestly",
+      "html": "        <section id=\"winter\">\n  <h2><span class=\"sec-num\">5</span>Winter, honestly</h2>\n  <p>Winter is where the two halves of this page collide, and where the standard reassurance is most misleading. The reassurance goes: photovoltaic cells are <em>more</em> efficient when cold, so winter is not the problem you think. The first clause is true. Cell efficiency does improve below the 25&deg;C rating temperature, which is why the same panel makes slightly more per unit of sunlight in February than in July. The second clause does not follow from it, and the gap between them is most of the winter story.</p>\n  <p>What actually costs you output in a New York winter is three things, none of them temperature:</p>\n  <ul>\n    <li><strong>Short days.</strong> About <strong>9 hours 15 minutes</strong> of daylight on 21 December, against 15 hours 6 minutes at the June solstice. Roughly 40% fewer hours to work with, before anything else happens.</li>\n    <li><strong>Low sun.</strong> At 40.7&deg;N the sun reaches only about <strong>26&deg;</strong> above the horizon at solar noon on the winter solstice (25.9&deg;, from latitude and the 23.44&deg; solar declination). At the June solstice it reaches 73&deg;.</li>\n    <li><strong>Inter-building shading.</strong> Long shadows down the canyon, all day, at the exact time of year they are hardest to escape.</li>\n  </ul>\n  <p>That third point is the one that gets left out, and it is not an independent penalty &mdash; it is caused by the second. Low sun elevation is precisely the condition under which street-canyon shading is worst, because the sun spends the whole day below the parapet opposite instead of above it. Look back at the table in section 3: the second-floor balcony needs the sun above 37&deg; and December offers 26&deg;. A cell-efficiency bonus of a few percent does not touch a balcony that is in shadow from breakfast to dusk.</p>\n  <p>There is a genuine and rarely mentioned consolation, though, and it applies specifically to balcony systems. A <em>vertical</em> panel likes a low sun. A south-facing vertical panel meets the December noon sun almost square on &mdash; within about 26&deg; of perpendicular &mdash; while in June that same panel watches the noon sun pass 73&deg; overhead and catches very little of it. In pure incidence-angle terms, winter is the season a railing-mounted panel is built for. The reason December is still the worst month in New York is not the panel&rsquo;s geometry. It is the building across the street.</p>\n  <p>None of which means winter output is zero. It means winter is the trough, that the depth of the trough is set by your skyline rather than by the thermometer, and that a model which does not simulate your specific block cannot tell you how deep it is.</p>\n</section>"
+    },
+    {
+      "id": "your-address",
+      "toc": "Getting the number for your actual address",
+      "html": "        <section id=\"your-address\">\n  <h2><span class=\"sec-num\">6</span>Getting the number for your actual address</h2>\n  <p>The usual advice at this point is to go and look: stand on the balcony, note when the sun arrives and leaves, and repeat across the seasons. It is honest advice and it is not wrong &mdash; but it asks for a year of your attention to produce an observation, and an observation is still not a kilowatt-hour figure. The winter answer, which is the one that decides whether your worst months are workable, cannot be had before December. A shadow model answers the same question in seconds, because the geometry is entirely known in advance.</p>\n  <p>That is what balco.nyc does. For any NYC address it assembles three things:</p>\n  <ul>\n    <li><strong>The buildings.</strong> NYC PLUTO records and building-footprint data give the heights and shapes of every neighbouring structure <strong>within 200&nbsp;m</strong>, which are assembled into a 3D scene around your balcony.</li>\n    <li><strong>The sun.</strong> Sun positions are traced against that scene through the year to produce monthly shade factors &mdash; how much of the light your balcony would otherwise receive is actually blocked, beam and diffuse separately.</li>\n    <li><strong>The weather.</strong> NREL&rsquo;s <strong>PVWatts&nbsp;V8</strong> runs an <strong>8,760-hour</strong> simulation over a typical meteorological year for your location, with the panel&rsquo;s real tilt and azimuth, which is where orientation gets priced properly rather than by rule of thumb.</li>\n  </ul>\n  <p>Stated accuracy is <strong>&plusmn;15%</strong> on annual production, or &plusmn;20% when the client-side fallback is used. That is a <em>modelled</em> band and we are explicit about the distinction: it comes from the uncertainty in the inputs and the method, not from comparing predictions against meters. <strong>No metered NYC balcony installation has been compared against this model</strong>, for the straightforward reason that plug-in solar is not yet legal here and so there are very few of them to compare against. The full derivation is on <a href=\"/methodology\">the methodology page</a>.</p>\n  <div class=\"callout\"><p><strong>Worth knowing before you shop.</strong> Plug-in solar is not yet legal in New York. The SUNNY Act passed both chambers of the Legislature and is awaiting the Governor&rsquo;s signature; it has not been signed. <a href=\"/sunny-act\">What the Act does and does not change</a> &mdash; including that it grants no right to install, so renters and co-op residents still need permission.</p></div>\n</section>"
+    },
+    {
+      "id": "blind-spots",
+      "toc": "What the model cannot see",
+      "html": "        <section id=\"blind-spots\">\n  <h2><span class=\"sec-num\">7</span>What the model cannot see</h2>\n  <p>A shadow model built from building footprints resolves buildings. Everything smaller than a building is invisible to it, and on a balcony some of those things are two metres from the panel. The honest list:</p>\n  <ul>\n    <li><strong>Micro-shading.</strong> A window air-conditioner projecting from the unit above. A street tree at the corner in full leaf from May to October. Your own parapet, or the underside of the balcony slab overhead, which on a deep-set balcony can shade a vertical panel for much of the day. A satellite dish, a laundry rack, a neighbour&rsquo;s planter. None of these appear in PLUTO.</li>\n    <li><strong>Exactly where the panel goes.</strong> The model assumes the balcony&rsquo;s facade direction. If you mount at an angle to the railing, hang the panel on the return wall, or shift it to the shadier end to keep the view, your result moves off the modelled figure.</li>\n    <li><strong>Facade detail.</strong> Setbacks, bay windows, cornices and the geometry of your own building&rsquo;s wings are represented at footprint resolution, which is coarser than the things immediately around a single balcony.</li>\n    <li><strong>Validation against reality.</strong> Stated again because it belongs in this list: the &plusmn;15% is modelled, not measured.</li>\n  </ul>\n  <p>This is where a few minutes of your own observation genuinely helps, and it is a different task from watching your balcony for a year. The model has already handled the part that takes a year &mdash; the sun&rsquo;s path, the seasons, the surrounding block. What it needs from you is the part it cannot see: stand at the railing on one clear morning and look for anything within a few metres that casts a shadow onto the spot where the panel would sit. If there is nothing, take the modelled number as it stands. If there is something, treat it as a haircut on that number rather than as a reason to start over.</p>\n  <p>Then run the address. If you have not read <a href=\"/what-is-balcony-solar\">what a plug-in system actually is</a> or <a href=\"/balcony-solar-cost\">what one costs in New York</a>, those are the two pages that turn a kilowatt-hour figure into a decision.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "How many hours of direct sun does a balcony need for solar to be worth it?",
+      "There is no hour threshold that makes solar work or not work — panels produce continuously, so the meaningful output is annual kilowatt-hours rather than a pass/fail. The common \"three to four hours\" rule comes from gardening advice and gives no method for finding out whether a given balcony clears it. In NYC, a typical 800 W system produces 400–900 kWh a year, worth roughly $136 to $306 at Con Edison's $0.34/kWh marginal rate."
+    ],
+    [
+      "Do balcony solar panels work in winter in New York?",
+      "Yes, but less. The real winter losses are short days (about 9h15m of daylight on 21 December against 15h06m in June), a sun that reaches only about 26 degrees above the horizon at solar noon, and inter-building shading — which is worst precisely when the sun is lowest. Cold weather does slightly improve cell efficiency, but that is the smallest term in the equation and it does not compensate for a balcony sitting in the shadow of the building opposite all day."
+    ],
+    [
+      "Is a north-facing balcony worth solar panels?",
+      "Sometimes, and more often than the widely repeated \"75% less\" figure implies — a claim we could not trace to any primary source. About 40% of the year's light in the Northeast is diffuse and reaches a north-facing panel regardless of orientation, and from late September to late March a north-facing wall gets no direct sun at all, so diffuse is most of what it lives on. In a dense city an unobstructed high-floor north balcony can out-produce a south-facing one boxed in by a taller building across a narrow street."
+    ],
+    [
+      "Does my floor number really change the answer that much?",
+      "Considerably, and often more than orientation does. With a six-storey building directly across a standard 60-foot Manhattan side street, a 2nd-floor balcony needs the sun above 37 degrees to see it at all — which never happens in December — while a 6th-floor balcony on the same facade needs only 6 degrees. Same building, same direction, very different year."
+    ],
+    [
+      "Can I just watch my balcony to work out how much sun it gets?",
+      "You can, but it takes a year to do properly and still returns hours rather than kilowatt-hours. The sun's path is known in advance and the surrounding buildings are in public data, so a shadow model answers the seasonal question immediately. Direct observation is best reserved for the things a model genuinely cannot see: a window AC unit above you, a corner tree, a deep parapet."
+    ],
+    [
+      "Will an 800 W kit really cover 15–25% of my electricity?",
+      "Usually not in New York. That figure is a nameplate-ideal one quoted with no shading derate applied. Against the EIA's New York average household consumption of about 6,850 kWh a year, the realistic 400–900 kWh NYC production band works out at roughly 6–13%, and a shaded low-floor balcony sits at the bottom of it."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://www.eia.gov/electricity/sales_revenue_price/pdf/table_5A.pdf",
+      "title": "EIA &mdash; 2024 Average Monthly Bill, Residential (Table 5A)",
+      "note": "New York average residential consumption of 571&nbsp;kWh/month, about 6,850&nbsp;kWh a year, which sets the 6&ndash;13% share figure."
+    },
+    {
+      "url": "https://pvwatts.nrel.gov/",
+      "title": "NREL PVWatts Calculator",
+      "note": "the V8 hourly production model behind the 8,760-hour simulation."
+    },
+    {
+      "url": "https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/irradiance-insolation/diffuse-horizontal-irradiance/",
+      "title": "Sandia PV Performance Modeling Collaborative &mdash; diffuse horizontal irradiance",
+      "note": "the beam/diffuse decomposition of GHI underlying the model&rsquo;s 0.60/0.40 constants."
+    },
+    {
+      "url": "https://www.sciencedirect.com/topics/engineering/diffuse-irradiance",
+      "title": "ScienceDirect &mdash; diffuse irradiance",
+      "note": "definition of diffuse radiation and its distribution across the sky dome."
+    },
+    {
+      "url": "https://www.sciencedirect.com/topics/engineering/overcast-day",
+      "title": "ScienceDirect &mdash; overcast day",
+      "note": "that under overcast skies, with virtually no direct irradiation, surface orientation is not a significant variable."
+    },
+    {
+      "url": "https://www.mdpi.com/2413-8851/10/5/258",
+      "title": "Analytical modeling of solar radiation distribution on vertical PV facades in urban settings, <em>Urban Science</em> (2026)",
+      "note": "non-uniform distribution of incident energy along the height of a facade, and the role of building separation."
+    },
+    {
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0306261919303046",
+      "title": "A solar-based sustainable urban design, <em>Applied Energy</em>",
+      "note": "street width, aspect ratio and sky view factor as the controls on urban solar access."
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Commissioners%27_Plan_of_1811",
+      "title": "Commissioners&rsquo; Plan of 1811",
+      "note": "Manhattan cross streets at 60 feet building face to building face, avenues at 100 feet."
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Manhattanhenge",
+      "title": "Manhattanhenge",
+      "note": "the Manhattan street grid&rsquo;s ~29&deg; rotation east of true north."
+    },
+    {
+      "url": "https://www.sunrisesunsettime.org/north-america/united-states/new-york-city-day-length.htm",
+      "title": "New York City day length",
+      "note": "9h15m of daylight on 21 December and 15h06m on 21 June."
+    },
+    {
+      "url": "https://www.omnicalculator.com/physics/sun-angle",
+      "title": "Sun angle calculator",
+      "note": "the solar-noon elevation relation (90&deg; &minus; latitude + declination) and the 23.44&deg; maximum declination, from which the 26&deg;/49&deg;/73&deg; figures are derived for 40.71&deg;N."
+    },
+    {
+      "url": "https://www.nysenate.gov/newsroom/press-releases/2026/liz-krueger/sunny-act-passes-nys-legislature-bringing-plug-solar-one",
+      "title": "SUNNY Act passes NYS Legislature (NY Senate)",
+      "note": "passage of S8512C / A9111C through both chambers."
+    },
+    {
+      "url": "https://www.newyorkalmanack.com/2026/07/balcony-solar-plug-in-power-hochul/",
+      "title": "Balcony solar plug-in power awaits Gov. Hochul&rsquo;s signature (New York Almanack)",
+      "note": "that the bill remains unsigned, with a year-end deadline."
+    },
+    {
+      "url": "https://www.solar.com/learn/guide-to-balcony-plug-in-solar/",
+      "title": "2026 guide to balcony and plug-in solar (Solar.com)",
+      "note": "an example of the widely repeated claim that 800&nbsp;W covers 15&ndash;25% of an apartment&rsquo;s electricity, quoted here in order to qualify it."
+    },
+    {
+      "url": "https://www.energysage.com/solar/solar-panels-in-winter-weather-snow-affect-power-production/",
+      "title": "Do solar panels work in snow and during winter? (EnergySage)",
+      "note": "the cold-improves-efficiency framing, and the acknowledgement that shorter days offset it."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. Production figures are modelled, not metered. Solar geometry here is computed for 40.71&deg;N; your own block is what the calculator simulates."
+}

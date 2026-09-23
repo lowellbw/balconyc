@@ -1,0 +1,205 @@
+{
+  "slug": "balcony-vs-community-solar",
+  "title": "Balcony solar or community solar? &middot; balco.nyc",
+  "og_title": "Balcony solar or community solar: which saves a renter more? Five states compared",
+  "breadcrumb": "Balcony vs community solar",
+  "cluster": "compare",
+  "pillar": false,
+  "card_title": "Balcony solar or community solar: which saves more?",
+  "card": "Year-one savings in five states, what the discount covers, and when a balcony panel wins.",
+  "llms": "a comparison for New York, New Jersey, Illinois, Massachusetts and Minnesota showing a community solar subscription discounted 10% to 20% saving an average household $117 to $415 in year one with no upfront cost, against $114 to $204 for an unshaded 800 W balcony panel ($44 to $79 shaded), plus each program's credit value, minimum discount and contract rules, and where the balcony still wins.",
+  "related": [
+    "balcony-solar-renters",
+    "is-balcony-solar-worth-it",
+    "balcony-vs-rooftop-solar"
+  ],
+  "description": "Community solar vs an 800 W balcony panel in five states: $117 to $415 a year with nothing to buy, against $114 to $204 for an unshaded panel.",
+  "eyebrow": "Compare",
+  "h1": "Balcony solar or community solar: which saves a renter more?",
+  "lede": "For an average household that pays its own electric bill, community solar usually saves more, and it costs nothing to start. balco.nyc compared the two in New York, New Jersey, Illinois, Massachusetts and Minnesota: a subscription discounted 10% to 20% saves about <strong>$117 to $415</strong> in the first year, while an unshaded south-facing 800&nbsp;W balcony panel saves $114 to $204 after a ${{kits.mid}} purchase, and $44 to $79 with a taller building across the street. The balcony comes out ahead mainly where no subscription is available, or for someone who would rather own a panel than sign a contract.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~10 minutes",
+  "tags": [
+    "Community: $117&ndash;$415 in year one",
+    "Balcony: $114&ndash;$204 open, $44&ndash;$79 shaded",
+    "$0 vs ${{kits.mid}} upfront"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "five-states",
+      "toc": "The answer in five states",
+      "html": "        <section id=\"five-states\">\n  <h2><span class=\"sec-num\">1</span>The answer in five states</h2>\n<p>balco.nyc put the two side by side in five states with established community solar programs: New York, Massachusetts and Minnesota, three of the four largest markets in the country, plus New Jersey and Illinois. The household uses the state&rsquo;s average amount of electricity, from the U.S. Energy Information Administration: 570 to 712&nbsp;kWh a month. The balcony is an 800&nbsp;W panel hung vertically on a south-facing railing in the state&rsquo;s largest city, first with an open view, then on the 3rd floor with a building of 6 to 10 floors across a 20&nbsp;m street.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>State (average use)</th><th>Community solar, year one</th><th>Balcony, open view, year one</th><th>Balcony, building opposite, year one</th><th>Balcony payback on a ${{kits.mid}} kit: open / shaded</th><th>After ten years: community vs open balcony, net of the kit</th></tr></thead><tbody>\n    <tr><td><a href=\"/states/new-york\">New York</a> (571&nbsp;kWh/mo)</td><td>$192</td><td>$169</td><td>$63</td><td>6.6 / 15.7 yrs</td><td>$2,197 vs $690</td></tr>\n    <tr><td><a href=\"/states/new-jersey\">New Jersey</a> (662)</td><td>$379</td><td>$153</td><td>$57</td><td>7.3 / 17.1 yrs</td><td>$4,339 vs $513</td></tr>\n    <tr><td><a href=\"/states/illinois\">Illinois</a> (693)</td><td>$130</td><td>$114</td><td>$44</td><td>9.4 / 21.0 yrs</td><td>$1,487 vs $79</td></tr>\n    <tr><td><a href=\"/states/massachusetts\">Massachusetts</a> (570)</td><td>$415</td><td>$204</td><td>$79</td><td>5.5 / 13.1 yrs</td><td>$4,762 vs $1,089</td></tr>\n    <tr><td><a href=\"/states/minnesota\">Minnesota</a> (712)</td><td>$117</td><td>$118</td><td>$46</td><td>9.2 / 20.3 yrs</td><td>$1,345 vs $120</td></tr>\n  </tbody></table></div>\n  <p class=\"table-note\">balco.nyc&rsquo;s computation. <strong>Community solar</strong> = average use &times; 12 &times; what a kWh of credit is worth &times; the discount. New York: 571 &times; 12 = 6,854&nbsp;kWh &times; 28.0&cent; = $1,916 of credit, and 10% of that is $192. Credits are valued at the EIA average price in New York, New Jersey and Massachusetts (a ceiling; see section 3), at ComEd&rsquo;s 10.4&cent; supply price in Illinois and at 85% of the average price in Minnesota; discounts are 10%, 20%, 15%, 20% and 10%. <strong>Balcony</strong> = balco.nyc&rsquo;s PVWatts output for the largest city after the 0.95 railing factor (604, 643, 616, 673 and 730&nbsp;kWh a year) &times; the EIA average price (28.0&cent;, 23.8&cent;, 18.5&cent;, 30.4&cent;, 16.2&cent;). New York: 604 &times; 28.0&cent; = $169. The shaded case runs the calculator&rsquo;s street-canyon model, which keeps 37% to 39% of the output. Paybacks and ten-year totals use the calculator&rsquo;s loop (prices up 3% a year, panels down 0.5% a year, nominal dollars) and assume the subscription and its discount last all ten years.</p>\n  <p>In New Jersey and Massachusetts, where new projects must now guarantee a 20% discount, a subscription saves two to two and a half times what an open south-facing balcony panel does in the first year. In New York at 10% it is ahead by $23; at the 5% minimum for net-crediting projects, it saves $96, about half what the balcony does. In Illinois and Minnesota the first year is roughly even. Then count the kit. A subscription costs nothing to start, while the panel spends 5.5 to 9.4 years earning back ${{kits.mid}}, so after ten years community solar is ahead in all five states, by $1,200 to $3,800. Put a building across the street and the balcony saves $44 to $79 a year and takes 13 to 21 years to pay back.</p>\n  <p>The balcony figures are generous in one respect: they assume every kWh the panel makes is used at home, which <a href=\"/balcony-solar-net-metering\">depends on what is running in daylight</a>. Community solar credits do not depend on when you use power.</p>\n</section>"
+    },
+    {
+      "id": "what-it-is",
+      "toc": "What community solar is, and where you can get it",
+      "html": "        <section id=\"what-it-is\">\n  <h2><span class=\"sec-num\">2</span>What community solar is, and where you can get it</h2>\n<p>Community solar is a share of a solar farm you never see: the U.S. Department of Energy defines it as a solar project whose benefits flow to multiple customers. In most programs you subscribe to part of an off-site array&rsquo;s output, the utility turns your share of each month&rsquo;s production into a credit on your bill, and you pay the project&rsquo;s owner a subscription fee. New York&rsquo;s Public Service Commission describes that fee as fixed or variable but generally designed to be less than the credits. The gap between the two is your saving.</p>\n  <p>For a renter, what matters is what is missing. Nothing is installed, so there is no landlord to ask, no outlet to find and no shade from the building across the street: the panels are in a field somewhere in your utility&rsquo;s territory. What you need is an electricity account in your own name. If power is included in your rent you cannot subscribe, and a balcony panel would lower your landlord&rsquo;s bill, not yours.</p>\n  <p>Where it exists: as of February 2025, 24 states and the District of Columbia had policies that enable community solar, according to the National Laboratory of the Rockies (NLR, formerly NREL), which tracks the market; 20 of them include provisions for low- and moderate-income households. Installed capacity passed 11&nbsp;GW by June 2025, and about 75% of it is in four states: Florida, New York, Massachusetts and Minnesota. Florida&rsquo;s capacity comes mainly from utility-run programs in a state without enabling legislation. Those work differently and are left out here.</p>\n  <p>A state policy does not guarantee a place, and most programs have capacity caps. In Illinois, subscriptions are offered only in ComEd and Ameren territory. Minnesota&rsquo;s newer program can approve no more than 100&nbsp;MW a year through 2026 and 80&nbsp;MW a year from 2027 to 2030. New Jersey opened a 3,000&nbsp;MW round on 6 March 2026, with registrations accepted until 31 December 2029 or until it fills, and at least 51% reserved for low- and moderate-income subscribers.</p>\n</section>"
+    },
+    {
+      "id": "the-discount",
+      "toc": "What the discount is a discount on",
+      "html": "        <section id=\"the-discount\">\n  <h2><span class=\"sec-num\">3</span>What the discount is a discount on</h2>\n<p>The advertised percentage is a discount on the value of the credits, not on your whole bill. What you save depends on what a kWh of credit is worth as much as on the discount, and both differ by state:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>State and program</th><th>What a kWh of credit is worth</th><th>Minimum saving required</th><th>Used in section 1</th></tr></thead><tbody>\n    <tr><td>New York: Community Distributed Generation</td><td>The project&rsquo;s tariff compensation (the &ldquo;Value Stack&rdquo;, or an older volumetric rate), not your retail rate</td><td>5% for projects on net crediting, where the fee and credits share one utility bill; no set minimum otherwise</td><td>10% (NYSERDA: often 5&ndash;20%)</td></tr>\n    <tr><td>New Jersey: Community Solar Energy Program</td><td>The pre-tax retail rate for supply and delivery, minus non-bypassable charges such as the Societal Benefits Charge, for up to 20 years</td><td>20% (25% for low- and moderate-income) for projects registered from 6 March 2026, for the life of the subscription</td><td>20%</td></tr>\n    <tr><td>Illinois: Illinois Shines</td><td>Your energy supply rate. ComEd&rsquo;s Price to Compare from 1 June 2026 is 10.4&cent; (8.68&cent; supply, 1.72&cent; transmission), against an average price of 18.5&cent;</td><td>None in Illinois Shines, though a seller may not promise savings the contract does not guarantee. Illinois Solar for All, for income-eligible households, sets a minimum</td><td>15% (Citizens Utility Board: most offers 10&ndash;20%)</td></tr>\n    <tr><td>Massachusetts: SMART 3.0 community shared solar</td><td>Bill credits from net metering or SMART&rsquo;s alternative on-bill credit</td><td>20% (40% for low-income) under the rules effective 12 September 2025; projects under earlier SMART rules are not covered</td><td>20%</td></tr>\n    <tr><td>Minnesota: community solar gardens</td><td>Gardens since 2024: 85% of the average retail rate for residential subscribers who are not low- or moderate-income (100% for those who are). Older Xcel gardens: Xcel&rsquo;s value-of-solar rate</td><td>The subscription may not cost more than the credit; for low- and moderate-income subscribers, no more than 90% of it</td><td>10%, an illustration</td></tr>\n  </tbody></table></div>\n  <p>Illinois is where the credit matters most. It covers the supply side of the bill, and ComEd&rsquo;s 10.4&cent; is 56% of the state&rsquo;s average price. A 15% discount on it is worth 1.6&cent; per kWh; the same 15% on a Massachusetts credit near 30&cent; would be worth almost three times as much. If a ComEd credit excludes the transmission charge, the Illinois saving is a sixth lower: $108 rather than $130.</p>\n  <p>In New York, New Jersey and Massachusetts, the EIA average price overstates the credit somewhat, because it includes fixed monthly charges and, in New Jersey, surcharges the credit does not cover. The balcony side uses the same average, so both are a little high and the comparison between them holds. Minnesota&rsquo;s law caps the subscription price rather than setting a discount, and balco.nyc found no published typical figure; 10% is there so the row can be compared.</p>\n</section>"
+    },
+    {
+      "id": "contracts",
+      "toc": "Contracts, cancellation and moving",
+      "html": "        <section id=\"contracts\">\n  <h2><span class=\"sec-num\">4</span>Contracts, cancellation and moving</h2>\n<p>A balcony panel is a purchase. A subscription is a contract, and the terms vary more than the discounts do. What the five programs require or advise:</p>\n  <ul>\n    <li><strong>New York.</strong> NYSERDA advises checking for cancellation fees and for the notice needed to leave without penalty, which it says is often 30 to 90 days. Some projects let you move a subscription to a new address; not all do.</li>\n    <li><strong>New Jersey.</strong> The guaranteed discount applies for as long as the subscription runs, and the credit&rsquo;s value is tied to retail rates for up to 20 years.</li>\n    <li><strong>Illinois.</strong> Illinois Shines requires a standard disclosure form before you subscribe, and subscriptions must be portable or transferable. It does not ban termination fees, and the Citizens Utility Board tells subscribers to expect one and to ask about it first. Illinois Solar for All subscribers can cancel at any time on 30 days&rsquo; notice.</li>\n    <li><strong>Massachusetts.</strong> Every SMART 3.0 subscriber signs a state-designed disclosure form, which the project files with its application.</li>\n    <li><strong>Minnesota.</strong> For gardens under the 2023 law, the subscriber organization may not check a residential subscriber&rsquo;s credit or charge an exit fee, the subscription is transferable and portable within the utility&rsquo;s Minnesota territory, and the utility must offer a single bill. The Department of Commerce warns that contract terms can vary greatly.</li>\n  </ul>\n  <p>Two risks are easy to miss. The value of a credit can change after you sign: Minnesota regulators ordered subscribers in Xcel&rsquo;s oldest gardens moved to the lower value-of-solar rate from 1 April 2025, with 3&cent; a kWh added for residential subscribers. And billing can go wrong. In February 2026 the Citizens Utility Board reported that Ameren customers on budget billing did not see their community solar savings until the budget amount was recalculated.</p>\n  <p>The Department of Energy&rsquo;s list of consumer-protection best practices is a useful yardstick for any offer: at least 20% household savings, no exit, termination or sign-up fees, and a plain-language disclosure before you sign. An offer that misses one is not necessarily bad, but know which clause you are accepting.</p>\n</section>"
+    },
+    {
+      "id": "balcony-wins",
+      "toc": "Where the balcony wins",
+      "html": "        <section id=\"balcony-wins\">\n  <h2><span class=\"sec-num\">5</span>Where the balcony wins</h2>\n<p>The balcony has real advantages, and sometimes they decide it:</p>\n  <ul>\n    <li><strong>Low use, open railing.</strong> A subscription&rsquo;s saving grows with your bill; a balcony panel&rsquo;s does not, as long as you use what it makes. In the first year an unshaded south panel beats the subscription in section 1 for households using less than about 270&nbsp;kWh a month in New Jersey, 280 in Massachusetts, 500 in New York (1,000 at a 5% discount), 610 in Illinois and 715 in Minnesota. The averages include houses, so check your own bills. Count the kit, though, and over ten years the balcony is ahead only below 40 to 180&nbsp;kWh a month, depending on the state.</li>\n    <li><strong>Ownership, no contract.</strong> No credit check, no fee schedule, nothing to cancel, and it moves with you to the next apartment, including across a utility or state line, where a subscription stops.</li>\n    <li><strong>No program, or no room in one.</strong> In the 26 states without a state community solar policy, the choice may be a utility&rsquo;s own program or nothing. There, and where projects in your utility area are full, the comparison is a balcony panel against no solar at all.</li>\n    <li><strong>A higher rate.</strong> In New York City, at Con&nbsp;Edison&rsquo;s {{coned.rate_cents}}&cent; marginal rate, the same open south panel saves $205 a year and pays back a ${{kits.mid}} kit in 5.5 years. balco.nyc did not model the value-stack credit a Con&nbsp;Edison subscriber would receive.</li>\n  </ul>\n  <p>It also carries a hurdle a subscription does not: none of these five states has a plug-in solar law in force as of 23 September 2026. New York&rsquo;s SUNNY Act has passed both chambers and {{sunny.phrase}}. New Jersey&rsquo;s law takes effect on 1 March 2027 and is the only one of the five that limits a landlord&rsquo;s power to refuse, for tenants who pay their own electric bill. Illinois and Massachusetts have bills pending, and Minnesota&rsquo;s died when the session ended in May. Without a law in force, the utility&rsquo;s interconnection rules apply, and until New Jersey&rsquo;s law starts, a renter in any of the five needs the landlord&rsquo;s yes (<a href=\"/balcony-solar-renters\">what renters can and cannot do</a>). This summarizes state law and is not legal advice; <a href=\"/balcony-solar-laws-compared\">the laws compared</a> has the detail.</p>\n</section>"
+    },
+    {
+      "id": "both",
+      "toc": "Doing both, and choosing",
+      "html": "        <section id=\"both\">\n  <h2><span class=\"sec-num\">6</span>Doing both, and choosing</h2>\n<p>The two are not either-or. A balcony panel cuts the kWh you buy at the full rate; a subscription sized to what you still buy then earns its discount on the rest. The only overlap is the discount the subscription would have earned on the balcony&rsquo;s kWh, which in balco.nyc&rsquo;s figures is $10 to $41 a year. With an open south railing, doing both saves $344 in the first year in New York, $501 in New Jersey, $234 in Illinois, $579 in Massachusetts and $225 in Minnesota. Size the subscription after the panel is up, and check how your program treats credits that exceed your bill.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Your situation</th><th>The better bet on these numbers</th><th>Why</th></tr></thead><tbody>\n    <tr><td>You pay your own electric bill and a project in your utility area has room</td><td>Community solar</td><td>No upfront cost; 8% to 20% off an average bill in these five states</td></tr>\n    <tr><td>Low floor, a taller building across the street</td><td>Community solar</td><td>The balcony saves $44 to $79 a year and takes 13 to 21 years to pay back</td></tr>\n    <tr><td>Open south railing, low electricity use</td><td>Close; the balcony only if it is allowed</td><td>It can out-save a subscription in the first years; over a decade it wins only below about 40 to 180&nbsp;kWh a month</td></tr>\n    <tr><td>No community solar where you live</td><td>The balcony, where the law and the landlord allow it</td><td>The alternative is no solar</td></tr>\n    <tr><td>You move often, or will not sign a long contract</td><td>The balcony</td><td>It goes with you; a subscription ends at the utility&rsquo;s boundary</td></tr>\n    <tr><td>Electricity is included in your rent</td><td>Neither pays you</td><td>You have no bill to credit and no bill to cut</td></tr>\n    <tr><td>Both are open to you</td><td>Both</td><td>The overlap costs $10 to $41 a year</td></tr>\n  </tbody></table></div>\n  <p>For your own balcony, <a href=\"/\">the calculator</a> gives the kWh figure for any US address, including what stands across the street. See also <a href=\"/balcony-vs-rooftop-solar\">balcony vs rooftop solar</a> and <a href=\"/is-balcony-solar-worth-it\">payback in every state</a>.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Does community solar save more than balcony solar?",
+      "For an average household that pays its own electric bill, usually yes. balco.nyc's comparison for New York, New Jersey, Illinois, Massachusetts and Minnesota puts a community solar subscription discounted 10% to 20% at $117 to $415 in the first year, with nothing to buy. An unshaded south-facing 800 W balcony panel saves $114 to $204 a year at state average prices after a ${{kits.mid}} purchase, and $44 to $79 with a taller building across the street. After ten years, net of the kit, community solar is ahead in all five states."
+    ],
+    [
+      "Is community solar worth it for renters?",
+      "Where a project in your utility area has room and the electricity account is in your name, it is one of the few solar options a renter can take without the landlord: there is nothing to install. Savings depend on the program. New Jersey and Massachusetts require new projects to discount credits by at least 20%, New York requires 5% for projects on consolidated billing, Minnesota only requires that the subscription not cost more than the credit, and Illinois sets no minimum. Read the cancellation terms before signing."
+    ],
+    [
+      "What discount does community solar give?",
+      "The discount applies to the value of the bill credits, not the whole bill. As of September 2026: at least 20% (25% for low- and moderate-income subscribers) for New Jersey projects registered from 6 March 2026; at least 20% (40% for low-income) under Massachusetts' SMART 3.0 rules; at least 5% for New York projects on net crediting; no required minimum in Illinois, where the Citizens Utility Board says most offers are 10% to 20%. In Illinois the credit is worth only the supply part of the bill, about 10.4 cents a kWh in ComEd territory."
+    ],
+    [
+      "Do I need my landlord's permission for community solar?",
+      "No. A community solar subscription attaches to your utility account and the panels are on an off-site solar farm, so nothing is installed at your home. You do need to pay your own electric bill; if electricity is included in your rent, there is no bill for the credits to reduce."
+    ],
+    [
+      "Can I have community solar and a balcony panel at the same time?",
+      "Yes. The balcony panel cuts the electricity you buy at the full rate, and a subscription sized to what you still buy earns its discount on the rest. The only overlap is the discount you would have earned on the balcony's output, which balco.nyc puts at $10 to $41 a year in New York, New Jersey, Illinois, Massachusetts and Minnesota. Size the subscription after the panel is up."
+    ],
+    [
+      "Can I cancel a community solar subscription?",
+      "It depends on the contract and the state. NYSERDA says New York projects often require 30 to 90 days' notice to leave without penalty; Illinois does not ban termination fees but requires subscriptions to be portable or transferable; Minnesota bans exit fees for residential subscribers in gardens under its 2023 law. Moving out of your utility's territory generally ends a subscription, while a balcony kit goes with you."
+    ],
+    [
+      "Where is community solar available?",
+      "According to the National Laboratory of the Rockies (formerly NREL), 24 states and the District of Columbia had policies enabling community solar as of February 2025, and about 75% of installed capacity is in Florida, New York, Massachusetts and Minnesota. Florida's is mainly utility-run programs. Even in a state with a policy, availability depends on your utility and on whether projects have room."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://www.nlr.gov/state-local-tribal/community-solar",
+      "title": "National Laboratory of the Rockies (NLR) &mdash; Community Solar",
+      "note": "24 states and DC with enabling policies as of February 2025, 20 with low- and moderate-income provisions; more than 11&nbsp;GW installed by June 2025, about 75% in Florida, New York, Massachusetts and Minnesota; the definition of community solar."
+    },
+    {
+      "url": "https://docs.nlr.gov/docs/fy25osti/91361.pdf",
+      "title": "NLR &mdash; Sharing the Sun: Community Solar Deployment and Subscriptions (as of June 2024)",
+      "note": "Florida, Texas and Georgia driving capacity in states without enabling legislation; utility-led programs in Florida; program caps."
+    },
+    {
+      "url": "https://www.energy.gov/cmei/systems/community-solar-basics",
+      "title": "U.S. Department of Energy &mdash; Community Solar Basics",
+      "note": "the federal definition, how subscriptions and bill credits work, suitability for renters, and the consumer-protection best practices (at least 20% household savings, no exit or sign-up fees, plain-language disclosure)."
+    },
+    {
+      "url": "https://dps.ny.gov/news/psc-improves-utility-billing-and-crediting-processes-community-distributed-generation",
+      "title": "New York Department of Public Service &mdash; PSC improves billing and crediting for Community Distributed Generation (17 July 2025)",
+      "note": "how CDG works: credits on the utility bill, a subscription fee generally designed to be less than the credits, and net crediting adopted in 2019."
+    },
+    {
+      "url": "https://documents.dps.ny.gov/public/Common/ViewDoc.aspx?DocRefId=%7B90DF749B-0000-CE28-BA4A-780CBC52090A%7D",
+      "title": "National Grid &mdash; Community Distributed Generation Net Crediting Manual, v3.0 (filed with the NY PSC, 31 Dec 2025)",
+      "note": "CDG savings rates &ldquo;shall not be less than 5 percent&rdquo; under net crediting (Case 19-M-0463, 12 December 2019); net crediting is opt-in; Value Stack and volumetric compensation."
+    },
+    {
+      "url": "https://www.nyserda.ny.gov/All-Programs/NY-Sun/Community-Solar/Choosing-a-Project",
+      "title": "NYSERDA &mdash; Community Solar: Choosing a Project",
+      "note": "discounts often 5&ndash;20%; cancellation notice often 30&ndash;90 days; transfer on moving possible in some cases."
+    },
+    {
+      "url": "https://www.nj.gov/bpu/newsroom/2026/approved/20260305.html",
+      "title": "New Jersey Board of Public Utilities &mdash; 3,000&nbsp;MW Community Solar Energy Program expansion (5 March 2026)",
+      "note": "the 3,000&nbsp;MW round, registrations through 31 December 2029, at least 51% of capacity for low- and moderate-income subscribers, and at least a 25% discount for them."
+    },
+    {
+      "url": "https://cleanenergy.nj.gov/programs/solar/community-solar-energy-program-csep",
+      "title": "New Jersey&rsquo;s Clean Energy Program &mdash; Community Solar Energy Program (CSEP)",
+      "note": "guaranteed bill credit discount of at least 20% (25% for LMI) for registrations from 6 March 2026, for the duration of the subscription."
+    },
+    {
+      "url": "https://cleanenergy.nj.gov/support/category/community-solar-bill-credits",
+      "title": "New Jersey&rsquo;s Clean Energy Program &mdash; Community solar bill credits",
+      "note": "credits valued at the retail rate for supply and delivery, not applied to non-bypassable charges, for up to 20 years."
+    },
+    {
+      "url": "https://ipa.illinois.gov/content/dam/soi/en/web/ipa/documents/ipapowerhour3onnetmetering42922.pdf",
+      "title": "Illinois Power Agency &mdash; Power Hour: Net Metering (29 April 2022)",
+      "note": "community solar subscribers are net metered at the subscriber&rsquo;s energy supply rate (220 ILCS 5/16-107.5(l)); subscriptions only in ComEd and Ameren territory."
+    },
+    {
+      "url": "https://ipa.illinois.gov/content/dam/soi/en/web/ipa/documents/ipa-il-shines-ilsfa-101-factsheet-web-post_6-23-23.pdf",
+      "title": "Illinois Power Agency &mdash; Exploring Illinois Shines and Illinois Solar for All (fact sheet, June 2023)",
+      "note": "Illinois Shines sellers may not claim guaranteed savings without a binding guarantee in the contract; Illinois Solar for All requires no upfront cost and a minimum saving, and lets community solar subscribers cancel at any time on 30 days&rsquo; notice."
+    },
+    {
+      "url": "https://plugin.illinois.gov/understanding-the-price-to-compare/price-to-compare-comed.html",
+      "title": "Plug In Illinois (Illinois Commerce Commission) &mdash; ComEd Price to Compare",
+      "note": "10.399&cent;/kWh from 1 June 2026: 8.677&cent; electric supply plus 1.722&cent; transmission."
+    },
+    {
+      "url": "https://illinoisshines.com/exploring-community-solar/",
+      "title": "Illinois Shines &mdash; Exploring Community Solar",
+      "note": "required disclosure form before subscribing; subscriptions must be portable or transferable; questions to ask about contract term and early-exit fees."
+    },
+    {
+      "url": "https://www.citizensutilityboard.org/community-solar-illinois/",
+      "title": "Citizens Utility Board &mdash; Community Solar in Illinois",
+      "note": "expected savings of 10&ndash;20% on the electricity from a subscription, and the likelihood of a termination fee."
+    },
+    {
+      "url": "https://www.citizensutilityboard.org/blog/2026/02/13/cub-qa-community-solar-billing/",
+      "title": "Citizens Utility Board &mdash; Q&amp;A: community solar billing (13 February 2026)",
+      "note": "dual and consolidated billing, most discounts 10&ndash;20% (higher for income-eligible projects), and the Ameren budget-billing problem."
+    },
+    {
+      "url": "https://www.revisor.mn.gov/statutes/cite/216B.1641",
+      "title": "Minnesota Statutes &sect; 216B.1641 &mdash; Community solar garden",
+      "note": "credit at 85% of the average retail rate for non-LMI residential subscribers; subscription no more than the credit (90% for LMI); no credit checks or residential exit fees; portability within the utility&rsquo;s territory; consolidated billing."
+    },
+    {
+      "url": "https://www.house.mn.gov/hrd/pubs/solarchng24.pdf",
+      "title": "Minnesota House Research &mdash; Changes to Xcel Energy&rsquo;s Community Solar Garden Program: 2023&ndash;2024 (December 2024)",
+      "note": "the 2023 law applying to gardens approved from 2024, the 100&nbsp;MW and 80&nbsp;MW annual caps, and the 1 April 2025 move of the oldest gardens to the value-of-solar rate with a 3&cent; residential adder."
+    },
+    {
+      "url": "https://mn.gov/commerce/energy/consumer/energy-programs/community-solar-gardens.jsp",
+      "title": "Minnesota Department of Commerce &mdash; Community Solar Gardens",
+      "note": "which program a garden falls under, suitability for renters, and the warning that contract terms can vary greatly."
+    },
+    {
+      "url": "https://www.mass.gov/doc/225-cmr-28-solar-massachusetts-renewable-target-smart-program-30/download",
+      "title": "Massachusetts DOER &mdash; 225 CMR 28.00, SMART Program 3.0 (effective 12 September 2025)",
+      "note": "community shared solar must discount allocated bill credits by at least 20% for residential subscribers and 40% for low-income subscribers, and file a signed disclosure form for each subscriber."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia861m/",
+      "title": "U.S. EIA &mdash; Form EIA-861M monthly sales and revenue by state",
+      "note": "state average residential prices, revenue divided by sales over the twelve months to June 2026, so they include fixed charges."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/sales_revenue_price/xls/table_5A.xlsx",
+      "title": "U.S. EIA &mdash; 2024 average monthly bill, residential (Table 5A)",
+      "note": "average monthly household use: 571&nbsp;kWh (NY), 662 (NJ), 693 (IL), 570 (MA), 712 (MN)."
+    },
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "NLR &mdash; PVWatts V8 API documentation",
+      "note": "the production model behind the balcony figures, run for each state&rsquo;s largest city with the calculator&rsquo;s parameters."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not financial or legal advice, and balco.nyc does not sell or recommend community solar subscriptions or solar products. Program rules, credit values and discounts change and differ by utility; check the terms of any offer, and the review date above, before relying on these figures."
+}

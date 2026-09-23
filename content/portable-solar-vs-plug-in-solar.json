@@ -9,6 +9,7 @@
   "card": "About half the usable energy, but no utility approval and power in a blackout.",
   "llms": "how an off-grid solar power station compares with plug-in balcony solar: what each needs legally, what each does in a blackout, and, from balco.nyc's hourly PVWatts model, how much usable energy and what payback each gives in New York City, Maryland and Texas (604 vs 294 kWh a year in NYC for a 1 kWh station used after dark).",
   "related": [
+    "window-solar-panels",
     "balcony-solar-net-metering",
     "balcony-solar-laws-compared",
     "what-is-balcony-solar"

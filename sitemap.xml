@@ -127,6 +127,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://balco.nyc/balcony-vs-community-solar</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://balco.nyc/balcony-vs-rooftop-solar</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://balco.nyc/calculate-balcony-solar-output</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>

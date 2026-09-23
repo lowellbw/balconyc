@@ -52,7 +52,9 @@
 ## Guides: comparisons
 
 - [A power station with solar, or plug-in balcony solar?](https://balco.nyc/portable-solar-vs-plug-in-solar): how an off-grid solar power station compares with plug-in balcony solar: what each needs legally, what each does in a blackout, and, from balco.nyc's hourly PVWatts model, how much usable energy and what payback each gives in New York City, Maryland and Texas (604 vs 294 kWh a year in NYC for a 1 kWh station used after dark).
+- [Balcony solar or community solar: which saves more?](https://balco.nyc/balcony-vs-community-solar): a comparison for New York, New Jersey, Illinois, Massachusetts and Minnesota showing a community solar subscription discounted 10% to 20% saving an average household $117 to $415 in year one with no upfront cost, against $114 to $204 for an unshaded 800 W balcony panel ($44 to $79 shaded), plus each program's credit value, minimum discount and contract rules, and where the balcony still wins.
 - [How much does a solar panel lose behind a window?](https://balco.nyc/window-solar-panels): balco.nyc's calculation for a south-facing window in New York, Chicago, Los Angeles and Houston: a panel behind clear double glazing makes about half of its open-railing output and about a third behind mid-range low-e glass, because low-e coatings block the near-infrared that supplies about half a silicon cell's current; a 100-200 W window panel makes 24-89 kWh a year.
+- [Is balcony solar as good as rooftop solar?](https://balco.nyc/balcony-vs-rooftop-solar): that on an unshaded south-facing railing an 800 W balcony kit makes electricity more cheaply per kWh than a typical 7.7 kW rooftop system at Berkeley Lab's 2025 median price, that the roof makes and saves 16 to 18 times as much, and who can install which, with permits, interconnection, net metering and lifespans compared.
 
 ## Guides: basics
 

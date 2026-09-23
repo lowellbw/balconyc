@@ -11,10 +11,20 @@ Each spec carries a `reviewed` date. It appears on the page, in the JSON-LD
 as dateModified, and in the sitemap — one date, three places, so a page
 cannot claim to be fresher in one surface than another.
 """
-import html, json, pathlib, sys
+import html, json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SHELL = ROOT / "methodology.html"
+OG_IMAGE = "https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg"
+# The full Organization node lives on the homepage. Each page repeats the
+# identifying fields so its graph resolves on its own when read in isolation.
+ORG_NODE = {
+    "@type": "Organization",
+    "@id": "https://balco.nyc/#org",
+    "name": "balco.nyc",
+    "url": "https://balco.nyc/",
+    "logo": "https://balco.nyc/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp",
+}
 
 
 def shell_parts():
@@ -27,19 +37,28 @@ def shell_parts():
     }
 
 
-def esc(t):
-    return html.escape(t, quote=True)
+# Search engines and AI crawlers read description, headline and FAQ text out
+# of meta tags and JSON-LD as plain strings. Spec fields are HTML (entities,
+# <a>, <em>), so they are reduced to plain text before going into either:
+# html.escape()-ing the raw HTML used to ship literal "&#x27;" and "&lt;em&gt;"
+# inside every guide's structured data.
+MAX_DESCRIPTION = 160
 
 
-def faq_jsonld(faq, indent="          "):
-    out = []
-    for q, a in faq:
-        out.append(
-            f'{indent}{{\n{indent}  "@type": "Question",\n'
-            f'{indent}  "name": "{esc(q)}",\n'
-            f'{indent}  "acceptedAnswer": {{ "@type": "Answer", "text": "{esc(a)}" }}\n'
-            f'{indent}}}')
-    return ",\n".join(out)
+def plain(t):
+    t = re.sub(r"<[^>]+>", "", t)
+    return re.sub(r"\s+", " ", html.unescape(t)).strip()
+
+
+def attr(t):
+    return html.escape(plain(t), quote=True)
+
+
+def jsonld(graph, indent="  "):
+    # json.dumps escapes quotes and backslashes; "</" is escaped so no string
+    # can close the <script> element early.
+    body = json.dumps(graph, ensure_ascii=False, indent=2).replace("</", "<\\/")
+    return "\n".join(indent + line for line in body.splitlines())
 
 
 def faq_html(faq):
@@ -73,79 +92,91 @@ def build(spec_path):
     tags = "\n".join(f'          <span class="doc-tag">{t}</span>' for t in spec["tags"])
     body = "\n\n".join(s["html"] for s in spec["sections"])
 
-    extra = ""
-    if spec.get("about_legislation"):
-        extra = ('\n        "about": [\n          { "@type": "Legislation", '
-                 '"name": "Solar Up Now New York (SUNNY) Act", '
-                 '"legislationIdentifier": "S8512C / A9111C", '
-                 '"legislationJurisdiction": "New York State", '
-                 '"legislationLegalForce": "NotInForce" }\n        ],')
+    description = plain(spec["description"])
+    if len(description) > MAX_DESCRIPTION:
+        raise SystemExit(f'{slug}: description is {len(description)} chars; '
+                         f'search results cut it at about {MAX_DESCRIPTION}')
 
-    citations = ",\n".join(
-        f'          {{ "@type": "CreativeWork", "name": "{esc(s["title"])}", "url": "{s["url"]}" }}'
-        for s in spec["sources"][:6])
+    article = {
+        "@type": "Article",
+        "@id": f"{url}#article",
+        "headline": plain(spec["og_title"]),
+        "description": description,
+        "url": url,
+        "mainEntityOfPage": url,
+        "inLanguage": "en-US",
+        "datePublished": spec["published"],
+        "dateModified": spec["reviewed"],
+        "image": OG_IMAGE,
+        "author": {"@id": "https://balco.nyc/#org"},
+        "publisher": {"@id": "https://balco.nyc/#org"},
+        "isPartOf": {"@id": "https://balco.nyc/#app"},
+    }
+    if spec.get("about_legislation"):
+        article["about"] = [{
+            "@type": "Legislation",
+            "name": "Solar Up Now New York (SUNNY) Act",
+            "legislationIdentifier": "S8512C / A9111C",
+            "legislationJurisdiction": "New York State",
+            "legislationLegalForce": "NotInForce",
+        }]
+    article["citation"] = [
+        {"@type": "CreativeWork", "name": plain(s["title"]), "url": s["url"]}
+        for s in spec["sources"]]
+
+    graph = {
+        "@context": "https://schema.org",
+        "@graph": [
+            article,
+            {
+                "@type": "FAQPage",
+                "@id": f"{url}#faq",
+                "dateModified": spec["reviewed"],
+                "inLanguage": "en-US",
+                "mainEntity": [
+                    {"@type": "Question", "name": plain(q),
+                     "acceptedAnswer": {"@type": "Answer", "text": plain(a)}}
+                    for q, a in faq],
+            },
+            ORG_NODE,
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "balco.nyc",
+                     "item": "https://balco.nyc/"},
+                    {"@type": "ListItem", "position": 2, "name": plain(spec["breadcrumb"]),
+                     "item": url},
+                ],
+            },
+        ],
+    }
 
     page = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{esc(spec["description"])}">
+  <meta name="description" content="{attr(spec["description"])}">
   <title>{spec["title"]}</title>
-  <link rel="icon" type="image/webp" href="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp">
+  <link rel="icon" type="image/webp" href="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp">
   <link rel="canonical" href="{url}">
   <meta name="theme-color" content="#7F1D1D">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="balco.nyc">
   <meta property="og:url" content="{url}">
-  <meta property="og:title" content="{esc(spec["og_title"])}">
-  <meta property="og:description" content="{esc(spec["description"])}">
-  <meta property="og:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
+  <meta property="og:title" content="{attr(spec["og_title"])}">
+  <meta property="og:description" content="{attr(spec["description"])}">
+  <meta property="og:image" content="{OG_IMAGE}">
   <meta property="article:modified_time" content="{spec["reviewed"]}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{esc(spec["og_title"])}">
-  <meta name="twitter:description" content="{esc(spec["description"])}">
-  <meta name="twitter:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
+  <meta name="twitter:title" content="{attr(spec["og_title"])}">
+  <meta name="twitter:description" content="{attr(spec["description"])}">
+  <meta name="twitter:image" content="{OG_IMAGE}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
   <script type="application/ld+json">
-  {{
-    "@context": "https://schema.org",
-    "@graph": [
-      {{
-        "@type": "Article",
-        "@id": "{url}#article",
-        "headline": "{esc(spec["og_title"])}",
-        "description": "{esc(spec["description"])}",
-        "url": "{url}",
-        "inLanguage": "en-US",
-        "datePublished": "{spec["published"]}",
-        "dateModified": "{spec["reviewed"]}",
-        "publisher": {{ "@id": "https://balco.nyc/#org" }},
-        "isPartOf": {{ "@id": "https://balco.nyc/#app" }},{extra}
-        "citation": [
-{citations}
-        ]
-      }},
-      {{
-        "@type": "FAQPage",
-        "@id": "{url}#faq",
-        "dateModified": "{spec["reviewed"]}",
-        "inLanguage": "en-US",
-        "mainEntity": [
-{faq_jsonld(faq)}
-        ]
-      }},
-      {{
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {{ "@type": "ListItem", "position": 1, "name": "balco.nyc", "item": "https://balco.nyc/" }},
-          {{ "@type": "ListItem", "position": 2, "name": "{esc(spec["breadcrumb"])}", "item": "{url}" }}
-        ]
-      }}
-    ]
-  }}
+{jsonld(graph)}
   </script>
   {p["style"]}
 </head>

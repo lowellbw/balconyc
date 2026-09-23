@@ -3,7 +3,7 @@
   "title": "What does a kWh actually cost in NYC? &middot; balco.nyc",
   "og_title": "What does a kilowatt-hour actually cost in New York City?",
   "breadcrumb": "What a kWh costs",
-  "description": "Con Edison publishes several different rates and they answer different questions. Why balco.nyc values self-consumed solar at 34 cents per kWh rather than a supply-only figure, and which number applies to you.",
+  "description": "Con Edison publishes several rates that answer different questions. Why balco.nyc values self-consumed solar at 34 cents per kWh, and which rate applies to you.",
   "eyebrow": "Rates",
   "h1": "What does a kilowatt-hour actually cost in NYC?",
   "lede": "In New York City, a kWh you don&rsquo;t buy from Con Edison is worth about 34 cents. That is the all-in marginal rate &mdash; supply, delivery, surcharges and the 4.5% city sales tax &mdash; from Con Edison&rsquo;s published SC-1 residential bill history (33.83&cent;/kWh in 2025) plus the 3.5% delivery increase approved on 22 January 2026. Lower figures near 13&ndash;18&cent; are supply only: correct for comparing suppliers, too low for valuing solar you consume yourself.",

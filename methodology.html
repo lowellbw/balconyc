@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Technical documentation of the energy model, 3D shadow simulation, and financial assumptions behind balco.nyc, the NYC balcony solar calculator. Sources: NREL PVWatts, NYC PLUTO, Con Edison, EPA eGRID.">
+  <meta name="description" content="How balco.nyc models balcony solar output in NYC: the PVWatts simulation, a 3D shadow model of the block, and the financial assumptions, each with its source.">
   <title>Methodology · balco.nyc Balcony Solar Calculator</title>
+  <link rel="icon" type="image/webp" href="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp">
   <link rel="canonical" href="https://balco.nyc/methodology">
   <meta name="theme-color" content="#7F1D1D">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="balco.nyc">
   <meta property="og:url" content="https://balco.nyc/methodology">
   <meta property="og:title" content="How balco.nyc calculates balcony solar production in NYC">
-  <meta property="og:description" content="Technical documentation of the energy model, 3D shadow simulation, and financial assumptions behind balco.nyc, the NYC balcony solar calculator.">
+  <meta property="og:description" content="How balco.nyc models balcony solar output in NYC: the PVWatts simulation, a 3D shadow model of the block, and the financial assumptions, each with its source.">
   <meta property="og:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How balco.nyc calculates balcony solar production in NYC">
-  <meta name="twitter:description" content="Technical documentation of the energy model, 3D shadow simulation, and financial assumptions behind balco.nyc.">
+  <meta name="twitter:description" content="How balco.nyc models balcony solar output in NYC: the PVWatts simulation, a 3D shadow model of the block, and the financial assumptions, each with its source.">
   <meta name="twitter:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
   <meta property="article:published_time" content="2026-05-17">
   <meta property="article:modified_time" content="2026-08-31">
@@ -136,48 +137,91 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "TechArticle",
-    "@id": "https://balco.nyc/methodology#article",
-    "headline": "How balco.nyc calculates balcony solar production in NYC",
-    "alternativeHeadline": "Solar Calculator Methodology",
-    "description": "Technical documentation of the energy model, 3D shadow simulation, and financial assumptions behind balco.nyc, the NYC balcony solar calculator.",
-    "url": "https://balco.nyc/methodology",
-    "mainEntityOfPage": "https://balco.nyc/methodology",
-    "datePublished": "2026-05-17",
-    "dateModified": "2026-05-17",
-    "inLanguage": "en-US",
-    "author": {
-      "@type": "Organization",
-      "name": "balco.nyc",
-      "url": "https://balco.nyc/"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "balco.nyc",
-      "url": "https://balco.nyc/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://balco.nyc/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp"
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": "https://balco.nyc/methodology#article",
+        "headline": "How balco.nyc calculates balcony solar production in NYC",
+        "alternativeHeadline": "Solar Calculator Methodology",
+        "description": "How balco.nyc models balcony solar output in NYC: the PVWatts simulation, a 3D shadow model of the block, and the financial assumptions, each with its source.",
+        "url": "https://balco.nyc/methodology",
+        "mainEntityOfPage": "https://balco.nyc/methodology",
+        "datePublished": "2026-05-17",
+        "dateModified": "2026-08-31",
+        "inLanguage": "en-US",
+        "author": {
+          "@id": "https://balco.nyc/#org"
+        },
+        "publisher": {
+          "@id": "https://balco.nyc/#org"
+        },
+        "image": "https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg",
+        "about": [
+          {
+            "@type": "Thing",
+            "name": "Plug-in balcony solar"
+          },
+          {
+            "@type": "Thing",
+            "name": "PVWatts solar simulation"
+          },
+          {
+            "@type": "Place",
+            "name": "New York City"
+          }
+        ],
+        "keywords": "balcony solar, plug-in solar, NYC, PVWatts, NREL, NYC PLUTO, Con Edison, solar calculator methodology",
+        "citation": [
+          {
+            "@type": "CreativeWork",
+            "name": "NREL PVWatts V8",
+            "url": "https://developer.nrel.gov/docs/solar/pvwatts/v8/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "NYC PLUTO",
+            "url": "https://www.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "NYC Building Footprints",
+            "url": "https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "EPA eGRID2023",
+            "url": "https://www.epa.gov/egrid"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "NYSERDA NY Solar Map",
+            "url": "https://www.nysolarmap.com/about/map-assumptions/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "NREL 2024 PV Degradation Review",
+            "url": "https://www.nrel.gov/docs/fy24osti/87524.pdf"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "HTW Berlin Stecker-Solar-Simulator",
+            "url": "https://solar.htw-berlin.de/rechner/stecker-solar-simulator/"
+          }
+        ],
+        "isAccessibleForFree": true,
+        "license": "https://github.com/lowellbw/balconyc",
+        "isPartOf": {
+          "@id": "https://balco.nyc/#app"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://balco.nyc/#org",
+        "name": "balco.nyc",
+        "url": "https://balco.nyc/",
+        "logo": "https://balco.nyc/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp"
       }
-    },
-    "image": "https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.webp",
-    "about": [
-      { "@type": "Thing", "name": "Plug-in balcony solar" },
-      { "@type": "Thing", "name": "PVWatts solar simulation" },
-      { "@type": "Place", "name": "New York City" }
-    ],
-    "keywords": "balcony solar, plug-in solar, NYC, PVWatts, NREL, NYC PLUTO, Con Edison, solar calculator methodology",
-    "citation": [
-      { "@type": "CreativeWork", "name": "NREL PVWatts V8", "url": "https://developer.nrel.gov/docs/solar/pvwatts/v8/" },
-      { "@type": "CreativeWork", "name": "NYC PLUTO", "url": "https://www.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" },
-      { "@type": "CreativeWork", "name": "NYC Building Footprints", "url": "https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" },
-      { "@type": "CreativeWork", "name": "EPA eGRID2023", "url": "https://www.epa.gov/egrid" },
-      { "@type": "CreativeWork", "name": "NYSERDA NY Solar Map", "url": "https://www.nysolarmap.com/about/map-assumptions/" },
-      { "@type": "CreativeWork", "name": "NREL 2024 PV Degradation Review", "url": "https://www.nrel.gov/docs/fy24osti/87524.pdf" },
-      { "@type": "CreativeWork", "name": "HTW Berlin Stecker-Solar-Simulator", "url": "https://solar.htw-berlin.de/rechner/stecker-solar-simulator/" }
-    ],
-    "isAccessibleForFree": true,
-    "license": "https://balco.nyc/"
+    ]
   }
   </script>
 </head>
@@ -185,7 +229,7 @@
 
 <nav class="doc-nav">
   <div class="container">
-    <a href="/" class="logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco.nyc" width="400" height="218" decoding="async"></a>
+    <a href="/" class="logo"><img src="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco.nyc" width="400" height="218" decoding="async"></a>
     <div class="nav-links">
       <a href="/#about">About</a>
       <a href="/#faq">FAQ</a>
@@ -653,13 +697,13 @@ Or read the guides this model feeds: <a href="/balcony-sunlight">whether your ba
 
 <footer>
   <div class="container">
-    <a href="/" class="footer-logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
+    <a href="/" class="footer-logo"><img src="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
     <p class="footer-disclaimer">balco.nyc is an independent open tool for estimating balcony solar potential in NYC. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL. Estimates are educational and may vary by about 15% from real-world production. Plug-in solar is not yet legal for residential use in New York: the SUNNY Act has passed both chambers and awaits the Governor's signature.</p>
     <p class="footer-meta">&copy; 2026</p>
   </div>
 </footer>
 
-<script src="js/analytics.js"></script>
+<script src="/js/analytics.js"></script>
 
 <script>
   // Highlight the TOC entry corresponding to the visible section.

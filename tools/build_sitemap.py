@@ -1,13 +1,14 @@
 """Generate sitemap.xml from what is actually on disk.
 
 It used to be hand-written, and its lastmod said 31 August while the homepage
-had changed several times since. Dates now come from one of two places and
-never from a keyboard: a content page's `reviewed` date in its spec, and
-git's last-commit date for everything else.
+had changed several times since. Dates now come from one of three places and
+never from a keyboard: a content page's `reviewed` date in its spec, the
+methodology page's own review date, and git's last-commit date for the
+homepage.
 
     python3 tools/build_sitemap.py
 """
-import json, pathlib, subprocess, sys
+import json, pathlib, re, subprocess, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
@@ -22,6 +23,15 @@ CONTENT_CHANGEFREQ = "monthly"
 FREQ_OVERRIDE = {"sunny-act": ("weekly", "0.9")}
 
 
+def page_reviewed(path):
+    # The methodology page states when it was last checked against the code.
+    # A commit that only adds a link is not a review, so git's date would
+    # overstate its freshness; the page's own article:modified_time is used.
+    m = re.search(r'<meta property="article:modified_time" content="([0-9-]+)">',
+                  (ROOT / path).read_text(encoding="utf-8"))
+    return m.group(1) if m else None
+
+
 def git_date(path):
     r = subprocess.run(["git", "log", "-1", "--format=%cs", "--", path],
                        cwd=ROOT, capture_output=True, text=True)
@@ -31,7 +41,7 @@ def git_date(path):
 def entries():
     out = []
     for f, url, freq, pri in CORE:
-        d = git_date(f)
+        d = page_reviewed(f) or git_date(f)
         if not d:
             sys.exit(f"{f} has no git history; commit it before building the sitemap")
         out.append((url, d, freq, pri))

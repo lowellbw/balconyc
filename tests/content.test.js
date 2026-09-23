@@ -267,6 +267,39 @@ describe('Retired prototype pages are gone', () => {
     assert(/Disallow: \/api\//.test(robots), '/api/ must stay disallowed');
   });
 
+  it('applies the disallows to every crawler group, not just *', () => {
+    // A crawler obeys only the most specific group that names it. Named AI-bot
+    // groups carrying only "Allow: /" once let GPTBot, ClaudeBot and the rest
+    // crawl /api/, /admin/ and /design/ while the * group looked correct.
+    const groups = [];
+    let cur = null, lastWasAgent = false;
+    for (const raw of robots.split('\n')) {
+      const line = raw.replace(/#.*/, '').trim();
+      if (!line) continue;
+      const i = line.indexOf(':');
+      const key = line.slice(0, i).trim().toLowerCase(), val = line.slice(i + 1).trim();
+      if (key === 'user-agent') {
+        if (!lastWasAgent) { cur = { agents: [], rules: [] }; groups.push(cur); }
+        cur.agents.push(val);
+        lastWasAgent = true;
+      } else {
+        lastWasAgent = false;
+        if (cur && (key === 'allow' || key === 'disallow')) cur.rules.push(`${key} ${val}`);
+      }
+    }
+    assert(groups.length > 0, 'robots.txt has no groups');
+    for (const g of groups) {
+      for (const path of ['/api/', '/admin/', '/design/']) {
+        assert(g.rules.includes(`disallow ${path}`),
+          `the group for ${g.agents.join(', ')} does not disallow ${path}`);
+      }
+    }
+    const agents = groups.flatMap(g => g.agents.map(a => a.toLowerCase()));
+    for (const bot of ['gptbot', 'oai-searchbot', 'claudebot', 'perplexitybot', 'ccbot', 'google-extended', 'bingbot']) {
+      assert(agents.includes(bot), `robots.txt should name ${bot} explicitly`);
+    }
+  });
+
   it('leaves /js/ crawlable so search engines can render the calculator', () => {
     assert(!/Disallow: \/js\//.test(robots), '/js/ must stay crawlable for rendering');
   });
@@ -341,6 +374,58 @@ describe('Content pages and crawl surface', () => {
         const json = b.replace(/^<script[^>]*>/, '').replace(/<\/script>$/, '');
         try { JSON.parse(json); } catch (e) { assert(false, `${f} has unparsable JSON-LD: ${e.message}`); }
       }
+    }
+  });
+
+  it('puts plain text, not HTML, into structured data', () => {
+    // AI answers quote FAQ and headline text straight out of JSON-LD. The
+    // generator once html.escape()d HTML spec fields into it, so every guide
+    // told crawlers "Con Edison&#x27;s" and "&lt;em&gt;".
+    const strings = (v, out = []) => {
+      if (typeof v === 'string') out.push(v);
+      else if (v && typeof v === 'object') Object.values(v).forEach(x => strings(x, out));
+      return out;
+    };
+    for (const f of ['index.html', 'methodology.html', ...specs.map(s => `${s.slug}.html`)]) {
+      const blocks = read(f).match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g) || [];
+      for (const b of blocks) {
+        const json = JSON.parse(b.replace(/^<script[^>]*>/, '').replace(/<\/script>$/, ''));
+        for (const str of strings(json)) {
+          assert(!/&[#a-z0-9]+;|<[a-z\/]/i.test(str),
+            `${f} JSON-LD contains markup or an HTML entity: ${JSON.stringify(str.slice(0, 80))}`);
+        }
+      }
+    }
+  });
+
+  it('keeps every meta description short enough to show in full', () => {
+    for (const f of ['index.html', 'methodology.html', ...specs.map(s => `${s.slug}.html`)]) {
+      const m = read(f).match(/<meta name="description" content="([^"]*)">/);
+      assert(m, `${f} has no meta description`);
+      const text = m[1].replace(/&#39;|&#x27;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&');
+      assert(text.length <= 160, `${f} description is ${text.length} characters (limit 160)`);
+    }
+  });
+
+  it('gives the methodology page one review date everywhere it is stated', () => {
+    const visible = methodologyHtml.match(/<time datetime="([0-9-]+)">/);
+    const meta = methodologyHtml.match(/<meta property="article:modified_time" content="([0-9-]+)">/);
+    const ld = methodologyHtml.match(/"dateModified": "([0-9-]+)"/);
+    const row = sitemap.split('<url>').find(u => u.includes('/methodology<'));
+    assert(visible && meta && ld && row, 'methodology.html is missing one of its date surfaces');
+    const d = visible[1];
+    assert(meta[1] === d, `article:modified_time ${meta[1]} differs from the visible date ${d}`);
+    assert(ld[1] === d, `JSON-LD dateModified ${ld[1]} differs from the visible date ${d}`);
+    assert(row.includes(`<lastmod>${d}</lastmod>`), `sitemap lastmod for /methodology differs from ${d}`);
+  });
+
+  it('uses root-relative asset paths so pages work at any URL depth', () => {
+    // A relative "js/analytics.js" resolves to /states/js/analytics.js on a
+    // nested page. Every src and href must be absolute, root-relative or an anchor.
+    for (const f of ['index.html', 'methodology.html', ...specs.map(s => `${s.slug}.html`)]) {
+      const bad = (read(f).match(/\s(?:src|href|srcset)="(?![\/#]|https?:|mailto:|tel:)[^"]*"/g) || [])
+        .filter(x => !x.includes("' + "));
+      assert(bad.length === 0, `${f} has relative paths: ${bad.slice(0, 3).join(' ')}`);
     }
   });
 
@@ -456,6 +541,20 @@ describe('Analytics', () => {
 describe('Deployment configuration', () => {
   const vercel = JSON.parse(read('vercel.json'));
 
+  it('keeps working material out of the deployment', () => {
+    // Vercel serves every uploaded file at its path. Without these, the
+    // strategy docs, content specs, tests and SQL were all public URLs.
+    const ignore = read('.vercelignore').split('\n').map(l => l.trim());
+    for (const entry of ['design/', 'docs/', 'tools/', 'tests/', 'content/', 'supabase/', '*.md']) {
+      assert(ignore.includes(entry), `.vercelignore should exclude ${entry}`);
+    }
+    assert(!ignore.includes('data/'), 'data/ must deploy: the calculator fetches it at runtime');
+  });
+
+  it('serves one URL per page, without a trailing-slash twin', () => {
+    assert(vercel.trailingSlash === false, 'vercel.json should set trailingSlash: false');
+  });
+
   it('does not cache un-fingerprinted JS immutably for a year', () => {
     // The model files keep stable names, so an immutable year-long cache
     // meant a physics fix could not reach returning visitors.
@@ -501,7 +600,7 @@ describe('Deployment configuration', () => {
     // exactly like the deploy not having happened. Stamped by
     // design/home-directions/build_city_hero.py; re-run it if this fails.
     const crypto = require('crypto');
-    const m = read('index.html').match(/src="js\/city-hero\.js\?v=([0-9a-f]+)"/);
+    const m = read('index.html').match(/src="\/js\/city-hero\.js\?v=([0-9a-f]+)"/);
     assert(m, 'index.html does not load city-hero.js with a ?v= fingerprint');
     const want = crypto.createHash('sha256')
       .update(read('js/city-hero.js'), 'utf8').digest('hex').slice(0, m[1].length);

@@ -1,0 +1,201 @@
+{
+  "slug": "balcony-solar-glossary",
+  "title": "Balcony solar glossary &middot; balco.nyc",
+  "og_title": "Balcony solar glossary: 38 terms, each with the number balco.nyc uses",
+  "breadcrumb": "Glossary",
+  "cluster": "basics",
+  "pillar": false,
+  "card_title": "What do the balcony solar terms mean?",
+  "card": "38 terms, from anti-islanding to eGRID, each tied to the figure balco.nyc uses.",
+  "llms": "defines 38 balcony solar terms (hardware, standards, law, the energy model, money, grid emissions), each tied to the parameter or result balco.nyc uses, such as the 0.95 railing factor, the 2-second anti-islanding limit and an 8.6% capacity factor for a vertical NYC panel.",
+  "related": [
+    "what-is-balcony-solar",
+    "calculate-balcony-solar-output",
+    "balcony-solar-laws-compared"
+  ],
+  "description": "38 balcony solar terms in plain English, each tied to the figure balco.nyc uses: 2-second anti-islanding, a 0.95 railing factor, an 8.6% capacity factor.",
+  "eyebrow": "Glossary",
+  "h1": "Balcony solar glossary: the terms, with the numbers behind them",
+  "lede": "Each of the 38 terms below comes with a plain definition and the figure balco.nyc uses for it, from its calculator, its own PVWatts runs or its reading of the state laws: anti-islanding means an inverter stops within 2&nbsp;seconds of a blackout, the railing factor for a vertical mount is {{model.railing_factor.90}}, and nine states had signed a plug-in solar law as of 23 September 2026. One figure is new here. By balco.nyc&rsquo;s arithmetic, an unshaded, south-facing 800&nbsp;W railing panel in New York City making 604&nbsp;kWh a year has a capacity factor of <strong>8.6%</strong>, about a third of US utility-scale solar&rsquo;s 24.4%.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~12 minutes",
+  "tags": [
+    "38 terms",
+    "8.6% capacity factor (NYC)",
+    "Anti-islanding: 2&nbsp;s"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "hardware",
+      "toc": "Hardware and the circuit",
+      "html": "        <section id=\"hardware\">\n  <h2><span class=\"sec-num\">1</span>The hardware and the household circuit</h2>\n  <p>The terms that matter describe what happens when a small inverter feeds power into a circuit built to carry it the other way.</p>\n  <dl>\n    <dt id=\"plug-in-solar\"><strong>Plug-in solar (balcony solar, Balkonkraftwerk)</strong> &middot; 1,200&nbsp;W cap in 8 of 9 US laws</dt>\n    <dd>A small grid-tied solar system, usually one to four panels on a railing or wall, whose microinverter plugs into a household outlet. Germany calls it a Balkonkraftwerk and caps it at 800&nbsp;VA; eight of the nine signed US laws cap it at 1,200&nbsp;W. See <a href=\"/what-is-balcony-solar\">what balcony solar is</a>.</dd>\n    <dt id=\"microinverter\"><strong>Microinverter</strong> &middot; 96.5% efficient, DC/AC ratio 1.1</dt>\n    <dd>A small inverter that turns one or two panels&rsquo; direct current into grid-synchronized alternating current. balco.nyc models 96.5% efficiency and 1.1&nbsp;watts of panel per inverter watt, so little is lost at the inverter&rsquo;s limit: a vertical south panel in New York reaches 90% of it about 5&nbsp;hours a year. See <a href=\"/is-plug-in-solar-safe#circuit-arithmetic\">hours near full output</a>.</dd>\n    <dt id=\"anti-islanding\"><strong>Anti-islanding</strong> &middot; stop within 2&nbsp;seconds</dt>\n    <dd>Keeping an inverter from energizing wires after the grid fails, which could shock a line worker who believes the line is dead. Under UL&nbsp;1741 and IEEE&nbsp;1547 it must stop within 2&nbsp;seconds of losing the grid, which is also why a plug-in system gives no backup power. Maine&rsquo;s law asks for 0.2&nbsp;seconds. See <a href=\"/is-plug-in-solar-safe#plugs-and-blackouts\">blackouts and live plugs</a>.</dd>\n    <dt id=\"backfeed\"><strong>Backfeed</strong> &middot; 25&nbsp;A on a 15&nbsp;A circuit, worst case</dt>\n    <dd>Current entering a circuit at an outlet instead of from the breaker panel, so appliances can draw from both while the breaker sees only its share. balco.nyc&rsquo;s worst case: a 1,200&nbsp;W inverter on a 15&nbsp;A circuit lets part of the wire carry 25&nbsp;A, 67% over its rating, without tripping. See <a href=\"/is-plug-in-solar-safe#circuit-arithmetic\">the circuit arithmetic</a>.</dd>\n    <dt id=\"branch-circuit\"><strong>Branch circuit</strong> &middot; 15&nbsp;A &times; 120&nbsp;V = 1,800&nbsp;W</dt>\n    <dd>The wiring from one breaker to its outlets, commonly 15&nbsp;A (1,800&nbsp;W at 120&nbsp;V) or 20&nbsp;A. A 1,200&nbsp;W inverter draws 10&nbsp;A, two-thirds of a 15&nbsp;A rating. A dedicated circuit removes the backfeed worst case; Maine requires one above 420&nbsp;W. See <a href=\"/is-plug-in-solar-safe#checklist\">the safety checklist</a>.</dd>\n    <dt id=\"gfci\"><strong>GFCI</strong> &middot; 28.6&nbsp;ms limit; 32.8&ndash;36.7&nbsp;ms under backfeed</dt>\n    <dd>A ground-fault circuit interrupter cuts power when current leaks to ground through water or a person; its standard, UL&nbsp;943, evaluates it for one-way current only. In UL Solutions&rsquo; backfeed tests, GFCI breakers took 32.8 to 36.7&nbsp;milliseconds to clear a simulated body fault, beyond the 28.6&nbsp;ms limit; GFCI receptacles met it. See <a href=\"/is-plug-in-solar-safe#plugs-and-blackouts\">GFCIs and backfeed</a>.</dd>\n  </dl>\n</section>"
+    },
+    {
+      "id": "standards",
+      "toc": "Standards and certification",
+      "html": "        <section id=\"standards\">\n  <h2><span class=\"sec-num\">2</span>Standards and certification</h2>\n  <p>Three documents and one federal definition decide what &ldquo;certified&rdquo; means for a plug-in system, and a listing to one says nothing about the others.</p>\n  <dl>\n    <dt id=\"ul-1741\"><strong>UL 1741</strong> &middot; edition 3, 2021</dt>\n    <dd>The US safety standard for inverters and other grid-interconnection equipment, used with IEEE&nbsp;1547; edition 3 is dated 28 September 2021. A microinverter listed to it was evaluated alone, not with panels, cord or circuit. Connecticut&rsquo;s is the only signed plug-in law naming it. See <a href=\"/ul-3700-plug-in-solar-certification#vocabulary\">the certification vocabulary</a>.</dd>\n    <dt id=\"ieee-1547\"><strong>IEEE 1547</strong> &middot; 2018 edition</dt>\n    <dd>The IEEE standard for connecting distributed generators to the grid: how they respond to voltage and frequency, and how they avoid islanding. The 2018 edition replaced the 2003 original. It governs grid behavior, not shock or fire safety; Vermont&rsquo;s law names IEEE&nbsp;1547-2018. See <a href=\"/ul-3700-plug-in-solar-certification#vocabulary\">how the documents differ</a>.</dd>\n    <dt id=\"ul-3700\"><strong>UL 3700</strong> &middot; outline, edition 1, 11 Dec 2025</dt>\n    <dd>UL&rsquo;s Outline of Investigation for Interactive Plug-In PV Equipment and Systems, the first US safety document for a plug-in system as a whole: an outline, not a consensus standard. As of 23 September 2026 no complete system is listed to it; a few microinverters claim certification. Only Maine&rsquo;s and Vermont&rsquo;s laws require a system listing. See <a href=\"/ul-3700-plug-in-solar-certification\">UL&nbsp;3700 explained</a>.</dd>\n    <dt id=\"nrtl\"><strong>NRTL and &ldquo;listed&rdquo;</strong> &middot; 29&nbsp;CFR&nbsp;1910.7</dt>\n    <dd>A nationally recognized testing laboratory, recognized by OSHA under 29&nbsp;CFR&nbsp;1910.7 to test, list and label products independently of their makers; UL LLC, CSA Group and Intertek are among them. &ldquo;Listed&rdquo; means named in such a lab&rsquo;s list. Every signed plug-in law accepts labs other than UL, except Colorado&rsquo;s 2027 sales rule. See <a href=\"/ul-3700-plug-in-solar-certification#check-a-listing\">how to check a listing</a>.</dd>\n  </dl>\n</section>"
+    },
+    {
+      "id": "law",
+      "toc": "Law and permission",
+      "html": "        <section id=\"law\">\n  <h2><span class=\"sec-num\">3</span>The law and permission</h2>\n  <p>Most plug-in laws settle whether the utility gets a say, not whether anyone else does. These are summaries, not legal advice; details vary by state and utility.</p>\n  <dl>\n    <dt id=\"plug-in-solar-law\"><strong>Plug-in solar law</strong> &middot; 9 states signed, 5 in force</dt>\n    <dd>A state statute letting a small plug-in system connect without utility approval, under a wattage cap and a certification rule. balco.nyc&rsquo;s check of every legislature on 23 September 2026 counts nine signed laws, five in force (Utah, Maine, Colorado, Maryland and Vermont), covering 5.2% of US residents. New York&rsquo;s <a href=\"/sunny-act\">SUNNY Act</a> ({{sunny.bill}}) has passed both chambers and {{sunny.phrase}}; it grants no right to install. See <a href=\"/balcony-solar-laws-compared\">every law compared</a>.</dd>\n    <dt id=\"interconnection\"><strong>Interconnection</strong> &middot; waived by all 9 signed laws</dt>\n    <dd>The utility&rsquo;s approval process for a generator running in parallel with the grid: application, agreement, sometimes fees. All nine signed laws bar the utility from requiring approval, fees or extra equipment, and eight expressly exempt the device from interconnection review. Some still require notice. See <a href=\"/balcony-solar-laws-compared#exempt-vs-right\">exempt versus a right to install</a>.</dd>\n    <dt id=\"right-to-install\"><strong>Right to install</strong> &middot; 4 of 9 laws; Vermont&rsquo;s in force</dt>\n    <dd>A clause stopping a landlord, association or town from prohibiting a compliant device, usually allowing &ldquo;reasonable&rdquo; limits; it is separate from the interconnection exemption. Four signed laws limit landlords (Vermont, Virginia, New Jersey and Colorado); as of 23 September 2026 only Vermont&rsquo;s protection is in force. See <a href=\"/balcony-solar-renters\">what renters can do</a>.</dd>\n    <dt id=\"solar-access-law\"><strong>Solar-access law</strong> &middot; 1 of 10 statutes clearly covers a railing</dt>\n    <dd>An older kind of statute voiding association rules against solar, written for the roof of a house the owner owns. balco.nyc read ten against a condo or co-op railing panel: one clearly covers it (Vermont&rsquo;s), two are unclear, seven do not. New York&rsquo;s, Real Property Law &sect;342, covers only rooftops. See <a href=\"/balcony-solar-condo-hoa\">condo, co-op and HOA rules</a>.</dd>\n    <dt id=\"common-element\"><strong>Common element (condo)</strong> &middot; 3 of 9 laws curb association bans</dt>\n    <dd>The parts of a condominium owned by all unit owners together. A balcony and its railing are commonly a limited common element: reserved for one unit, controlled by the association. Three signed laws curb association bans (New Jersey, Vermont and, from 2027, Colorado); Virginia&rsquo;s expressly preserves them. See <a href=\"/balcony-solar-condo-hoa#why-it-stops\">why access laws stop at the balcony</a>.</dd>\n    <dt id=\"alteration-agreement\"><strong>Alteration agreement (co-op)</strong> &middot; facade inspections every 5 years</dt>\n    <dd>A co-op&rsquo;s proprietary lease typically requires the board&rsquo;s written consent for alterations, usually given as an alteration agreement setting conditions for the work. Boards have a reason for caution: New York City buildings over six stories must have their facades, railings and attached equipment included, examined every five years. See <a href=\"/balcony-solar-condo-hoa#new-york-co-ops\">co-ops and condos in NYC</a>.</dd>\n  </dl>\n</section>"
+    },
+    {
+      "id": "energy-model",
+      "toc": "The energy model",
+      "html": "        <section id=\"energy-model\">\n  <h2><span class=\"sec-num\">4</span>The energy model</h2>\n  <p>balco.nyc&rsquo;s estimate is PVWatts output for the panel&rsquo;s tilt and direction, times a railing factor, times a shade factor, month by month.</p>\n  <dl>\n    <dt id=\"kwh\"><strong>Kilowatt (kW) and kilowatt-hour (kWh)</strong> &middot; 800&nbsp;W makes 604&nbsp;kWh a year (NYC)</dt>\n    <dd>A kilowatt is a rate of power; a kilowatt-hour is energy, one kilowatt for one hour, and what the utility bills. balco.nyc&rsquo;s PVWatts run puts an unshaded, south-facing 800&nbsp;W railing panel in New York City at 604&nbsp;kWh a year, 8.8% of an average New York household&rsquo;s use. See <a href=\"/800w-balcony-solar-output\">output by state and direction</a>.</dd>\n    <dt id=\"capacity-factor\"><strong>Capacity factor</strong> &middot; 8.6% for a vertical NYC panel</dt>\n    <dd>Energy produced divided by what the system would make at full rated power all year. By balco.nyc&rsquo;s arithmetic, 604&nbsp;kWh &divide; (0.8&nbsp;kW &times; 8,760&nbsp;h) = 8.6% in New York City, 14.1% tilted to 35&deg;, and a median 9.4% for a vertical south panel across all 51 state runs. The EIA reports 24.4% for US utility-scale solar in 2025. See <a href=\"/what-is-pvwatts#seasons\">why a vertical panel differs</a>.</dd>\n    <dt id=\"pvwatts\"><strong>PVWatts</strong> &middot; V8; defaults overstate a railing by 72%</dt>\n    <dd>The free hourly solar model from the National Laboratory of the Rockies (NLR, formerly NREL), which balco.nyc runs for every estimate. At its rooftop defaults it overstates a vertical, south-facing 800&nbsp;W panel in New York City by about 72% (1,037&nbsp;kWh against 604), mostly through the 20&deg; default tilt. See <a href=\"/what-is-pvwatts\">what PVWatts gets wrong</a>.</dd>\n    <dt id=\"tmy-nsrdb\"><strong>TMY and NSRDB</strong> &middot; 8,760 hours</dt>\n    <dd>A typical meteorological year is 8,760 hours of weather chosen to represent a multi-year period. PVWatts V8 uses TMY files from the National Solar Radiation Database (NSRDB), NLR&rsquo;s satellite-derived record of direct and diffuse sunlight, on a 4&nbsp;km grid. Any real year will differ. See <a href=\"/what-is-pvwatts#what-pvwatts-is\">how accurate PVWatts is</a>.</dd>\n    <dt id=\"tilt\"><strong>Tilt</strong> &middot; 35&deg; makes 64% more than vertical (NYC)</dt>\n    <dd>The panel&rsquo;s angle from horizontal; a railing panel hangs at 90&deg;. balco.nyc models 35&deg;, 60&deg;, 70&deg; and 90&deg;. In New York, tilting a south-facing panel from vertical to 35&deg; raises output from 604 to 988&nbsp;kWh a year, because a vertical panel sees only half the sky and meets the summer sun at a glancing angle. See <a href=\"/800w-balcony-solar-output#vertical-vs-roof\">railing versus roof</a>.</dd>\n    <dt id=\"azimuth\"><strong>Azimuth</strong> &middot; north makes 72% less than south (NYC)</dt>\n    <dd>The compass direction a panel faces, in degrees clockwise from true north: 90&deg; east, 180&deg; south. In balco.nyc&rsquo;s New York runs a vertical panel facing east makes 26% less than one facing south, west 30% less and north 72% less. Manhattan&rsquo;s street grid runs about 29&deg; off true north. See <a href=\"/800w-balcony-solar-output#direction\">east, west and north</a>.</dd>\n    <dt id=\"railing-factor\"><strong>Railing factor</strong> &middot; {{model.railing_factor.90}} for a vertical mount</dt>\n    <dd>balco.nyc&rsquo;s multiplier for light the railing, brackets and slab above take off a panel&rsquo;s lower edge, which PVWatts cannot see; an assumption, not a measurement. It is {{model.railing_factor.90}} at 90&deg;, 0.97 at 70&deg;, 0.98 at 60&deg; and 0.99 at 35&deg;, turning New York&rsquo;s 635.7&nbsp;kWh PVWatts result into 604. See <a href=\"/calculate-balcony-solar-output#steps-2-3-shade\">where it enters the chain</a>.</dd>\n    <dt id=\"soiling\"><strong>Soiling</strong> &middot; 3&ndash;7% a month, 5% on average</dt>\n    <dd>Light lost to dust, pollen and grime on the glass. PVWatts&rsquo; default 14% losses include 2% for it; balco.nyc models soiling separately, month by month, from 3% in winter to 7% in pollen season, 5% on average, and keeps 14% for wiring and other losses. See <a href=\"/methodology\">the methodology</a>.</dd>\n    <dt id=\"beam-diffuse\"><strong>Beam and diffuse light</strong> &middot; 60/40 split</dt>\n    <dd>Beam light comes straight from the sun and casts shadows; diffuse light is scattered by air and cloud and comes from the whole sky. balco.nyc&rsquo;s shade model splits light 60% beam and 40% diffuse, in line with the Northeast&rsquo;s diffuse share of about 35&ndash;42%, which is why a north-facing panel does not produce zero. See <a href=\"/balcony-sunlight#diffuse-light\">diffuse light</a>.</dd>\n    <dt id=\"horizon-profile\"><strong>Horizon profile</strong> &middot; 360 one-degree bins</dt>\n    <dd>The skyline seen from the balcony: the highest obstruction angle in each direction. balco.nyc builds it in 360 one-degree bins, in New York City from every building within 200&nbsp;m, elsewhere from your description of what stands opposite. When the sun is below the profile, there is no beam light. See <a href=\"/calculate-balcony-solar-output#steps-2-3-shade\">how the shade step works</a>.</dd>\n    <dt id=\"shade-factor\"><strong>Shade factor</strong> &middot; 1.00 open; 0.38 on a low NYC floor</dt>\n    <dd>The share of the light PVWatts assumed that reaches the balcony. It prices obstruction only, so an open view scores 1.00 in any direction; monthly values are floored at 0.10. A third-floor New York balcony facing a six-to-ten-story building 20&nbsp;m away scores an effective 0.38, cutting 604&nbsp;kWh a year to 227. See <a href=\"/calculate-balcony-solar-output#worked-examples\">the worked examples</a>.</dd>\n  </dl>\n</section>"
+    },
+    {
+      "id": "money",
+      "toc": "Money",
+      "html": "        <section id=\"money\">\n  <h2><span class=\"sec-num\">5</span>Money</h2>\n  <p>Savings are kilowatt-hours times the price of a kilowatt-hour you no longer buy; most disagreements between calculators come down to which price.</p>\n  <dl>\n    <dt id=\"self-consumption\"><strong>Self-consumption</strong> &middot; 60% at a 150&nbsp;W baseload (NYC)</dt>\n    <dd>The share of output used in the home as it is produced; with exports unpaid, only that share saves money. balco.nyc&rsquo;s hourly New York run finds an apartment drawing a steady 150&nbsp;W uses about 60% of an 800&nbsp;W panel&rsquo;s 604&nbsp;kWh, saving $124 a year rather than $205. See <a href=\"/balcony-solar-net-metering#how-much-you-use\">how much an apartment uses</a>.</dd>\n    <dt id=\"marginal-rate\"><strong>Marginal rate vs average price</strong> &middot; {{coned.rate_cents}}&cent; (Con Edison) vs 27.96&cent; (NY average)</dt>\n    <dd>The marginal rate is what one kWh more or less costs, excluding fixed charges; the average price divides the whole bill, fixed charges included, by kWh. Solar saves at the margin. balco.nyc uses Con Edison&rsquo;s {{coned.rate_cents}}&cent; in New York City and EIA state averages elsewhere; New York State&rsquo;s, 27.96&cent;, blends in lower-priced utilities outside the city. See <a href=\"/electricity-rate\">what a kWh costs</a>.</dd>\n    <dt id=\"price-to-compare\"><strong>Price to compare</strong> &middot; supply only, about 13&ndash;18&cent;</dt>\n    <dd>The utility&rsquo;s supply-only price per kWh, published for comparing independent suppliers (ESCOs in New York). Reported Con Edison figures for 2026 run about 13&ndash;18&cent;: right for choosing a supplier, too low for valuing solar you use, which also avoids delivery charges, surcharges and tax. See <a href=\"/electricity-rate#supply-only\">supply-only rates</a>.</dd>\n    <dt id=\"customer-charge\"><strong>Fixed customer charge</strong> &middot; ${{coned.customer_charge}} a month set aside (NYC)</dt>\n    <dd>A charge billed every month regardless of use, for costs such as billing and meter reading. Solar cannot reduce it, so balco.nyc subtracts ${{coned.customer_charge}} from a New York City bill before converting it to kWh. Elsewhere the EIA average spreads fixed charges over every kWh, which can overstate savings. See <a href=\"/electricity-rate#fixed-charge\">why it is left out</a>.</dd>\n    <dt id=\"payback\"><strong>Payback (nominal)</strong> &middot; 5.5 years in NYC; 9.9 in the median state</dt>\n    <dd>Years until cumulative savings equal the kit&rsquo;s cost. balco.nyc&rsquo;s figure compounds rate escalation and degradation with no discount rate, so it is nominal. On a ${{kits.mid}} kit an unshaded south-facing railing pays back in 5.5 years in New York City (5.8 simple) and 9.9 in the median state&rsquo;s largest city. See <a href=\"/is-balcony-solar-worth-it\">payback in every state</a>.</dd>\n    <dt id=\"degradation\"><strong>Degradation</strong> &middot; 0.5% a year; 88.7% left in year 25</dt>\n    <dd>The slow loss of a panel&rsquo;s output with age. A review by NREL researchers of more than 11,000 measured rates found a median of 0.5&ndash;0.6% a year for crystalline silicon. balco.nyc uses 0.5% for mid-tier equipment, leaving 88.7% of the original output in year 25. See <a href=\"/methodology\">the methodology</a>.</dd>\n    <dt id=\"escalation\"><strong>Escalation</strong> &middot; 3% a year by default</dt>\n    <dd>The assumed yearly rise in electricity prices, which raises the value of future kWh. balco.nyc defaults to 3%, with 2% and 4% presets. By its arithmetic, the unshaded New York City panel&rsquo;s 25-year nominal savings are $7,000 at 3%, $6,165 at 2% and $7,976 at 4%. See <a href=\"/balcony-solar-cost#reading-the-25-year-number\">reading the 25-year number</a>.</dd>\n  </dl>\n</section>"
+    },
+    {
+      "id": "grid",
+      "toc": "Grid and emissions",
+      "html": "        <section id=\"grid\">\n  <h2><span class=\"sec-num\">6</span>The grid and emissions</h2>\n  <p>What happens to power the apartment does not use, and what the power it does use displaces.</p>\n  <dl>\n    <dt id=\"net-metering\"><strong>Net metering</strong> &middot; no signed plug-in law pays for exports</dt>\n    <dd>Billing that credits electricity sent to the grid against electricity bought; it normally comes with the paperwork plug-in laws waive. balco.nyc&rsquo;s reading of the nine signed laws finds none requiring payment for plug-in exports, and at least five expressly excluding the devices from net metering. See <a href=\"/balcony-solar-net-metering\">surplus power</a>.</dd>\n    <dt id=\"export-compensation\"><strong>Export compensation</strong> &middot; none; 240&nbsp;kWh a year given away (NYC)</dt>\n    <dd>Payment or credit for surplus power leaving through the meter. balco.nyc assumes none unless a law or tariff provides it; New York&rsquo;s SUNNY Act bill says exports &ldquo;shall be uncompensated&rdquo;. In the site&rsquo;s hourly New York run, an apartment drawing a steady 150&nbsp;W gives away 240&nbsp;kWh a year of an 800&nbsp;W panel&rsquo;s output. See <a href=\"/balcony-solar-net-metering#given-away\">surplus is given away</a>.</dd>\n    <dt id=\"egrid-subregion\"><strong>eGRID subregion</strong> &middot; 27 regions; NYC&rsquo;s rate is 3.6&times; upstate&rsquo;s</dt>\n    <dd>One of 27 grid regions in the EPA&rsquo;s eGRID database, each with its own plant mix and emission rates; balco.nyc finds an address&rsquo;s subregion from its ZIP code. New York City and Westchester (NYCW), 98% gas-fired, emit 864.5&nbsp;lb of CO&#8322; per MWh, 3.6 times upstate New York&rsquo;s 242.1. See <a href=\"/calculate-balcony-solar-output#steps-4-6-value\">CO&#8322; in the calculation</a>.</dd>\n    <dt id=\"co2-rate\"><strong>CO&#8322; output emission rate</strong> &middot; {{co2.nycw_lb_per_kwh}}&nbsp;lb per kWh (NYC)</dt>\n    <dd>Pounds of CO&#8322; per unit of electricity generated in a subregion, averaged over all its plants. balco.nyc uses eGRID2023&rsquo;s total output rate: 604&nbsp;kWh &times; {{co2.nycw_lb_per_kwh}}&nbsp;lb is about 522&nbsp;lb a year in New York City. The non-baseload rate, 976.9&nbsp;lb/MWh in NYCW, would give a larger figure. See <a href=\"/methodology\">the methodology</a>.</dd>\n  </dl>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "What is a microinverter in balcony solar?",
+      "A microinverter is the small inverter that turns a solar panel&rsquo;s direct current into alternating current synchronized to the grid, so the power can flow into a home&rsquo;s circuits through a plug. US plug-in laws cap its AC output, most often at 1,200&nbsp;W."
+    ],
+    [
+      "What is anti-islanding?",
+      "Anti-islanding is the inverter function that stops a solar system from energizing wires after the grid goes down, which could shock a utility worker. Under UL&nbsp;1741 and IEEE&nbsp;1547 an inverter must stop within 2&nbsp;seconds of losing the grid, which is also why a plug-in panel gives no power in a blackout."
+    ],
+    [
+      "What does kWh mean for a solar panel?",
+      "A kilowatt-hour is energy: one kilowatt for one hour, the unit a utility bills. A panel&rsquo;s watt rating says how fast it can produce; its annual kWh says how much it does. balco.nyc puts an unshaded, south-facing 800&nbsp;W railing panel in New York City at 604&nbsp;kWh a year."
+    ],
+    [
+      "Are balcony solar and plug-in solar the same thing?",
+      "Yes. Both describe a small solar system whose microinverter plugs into a household outlet and feeds the home&rsquo;s circuits; the German name is Balkonkraftwerk. Germany caps these devices at 800&nbsp;VA of inverter output, and eight of the nine signed US state laws cap them at 1,200&nbsp;W."
+    ],
+    [
+      "What is the capacity factor of a balcony solar panel?",
+      "By balco.nyc&rsquo;s arithmetic, an unshaded south-facing 800&nbsp;W railing panel in New York City has a capacity factor of 8.6%, and the median across the largest city in every state and DC is 9.4%, against 24.4% for US utility-scale solar in 2025. Shade lowers a balcony&rsquo;s figure further."
+    ],
+    [
+      "Is UL 3700 a standard?",
+      "Not a consensus standard. UL&nbsp;3700 is UL LLC&rsquo;s Outline of Investigation for Interactive Plug-In PV Equipment and Systems, edition 1, dated 11 December 2025. As of 23 September 2026 no complete plug-in system is listed to it, though a few microinverters claim certification as components."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://www.eia.gov/tools/glossary/index.php?id=K",
+      "title": "U.S. Energy Information Administration &mdash; Glossary: K",
+      "note": "the definitions of kilowatt and kilowatt-hour (1 kW of power for one hour)."
+    },
+    {
+      "url": "https://www.eia.gov/tools/glossary/index.php?id=C",
+      "title": "U.S. Energy Information Administration &mdash; Glossary: C",
+      "note": "the definitions of capacity factor and customer charge."
+    },
+    {
+      "url": "https://www.eia.gov/tools/glossary/index.php?id=N",
+      "title": "U.S. Energy Information Administration &mdash; Glossary: N",
+      "note": "the definition of net metering."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_b",
+      "title": "EIA &mdash; Electric Power Monthly, Table 6.07.B: capacity factors for utility-scale generators primarily using non-fossil fuels",
+      "note": "the 24.4% annual capacity factor for utility-scale solar photovoltaic plants in 2025."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/sales_revenue_price/pdf/table_5A.pdf",
+      "title": "EIA &mdash; 2024 Average Monthly Bill, Residential (Table 5A)",
+      "note": "New York&rsquo;s average residential use of 571&nbsp;kWh a month, the basis of the 8.8% share."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia861m/",
+      "title": "EIA &mdash; Form EIA-861M monthly sales and revenue by state",
+      "note": "the data behind the 27.96&cent;/kWh New York State average residential price, 12 months to June 2026."
+    },
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "NLR Developer Network &mdash; PVWatts V8 API",
+      "note": "the V8 model, its NSRDB tmy-2020 datasets and the monthly soiling input."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/docs/en/help_system_sysloss.php",
+      "title": "NLR PVWatts help &mdash; System Losses",
+      "note": "the 14% default system losses, including 2% for soiling."
+    },
+    {
+      "url": "https://developer.nlr.gov/docs/solar/nsrdb/",
+      "title": "NLR Developer Network &mdash; National Solar Radiation Database (NSRDB)",
+      "note": "the NSRDB as satellite-derived direct, diffuse and global irradiance, with GOES TMY data at 4&nbsp;km, hourly."
+    },
+    {
+      "url": "https://www.epa.gov/system/files/documents/2025-06/summary_tables_rev2.pdf",
+      "title": "EPA &mdash; eGRID2023 Summary Tables (revision 2)",
+      "note": "the 27 subregions; NYCW total output rate 864.5 and non-baseload 976.9&nbsp;lb CO&#8322;/MWh, 98.2% gas; NYUP 242.1&nbsp;lb/MWh."
+    },
+    {
+      "url": "https://www.shopulstandards.com/ProductDetail.aspx?UniqueKey=49440",
+      "title": "UL Standards &amp; Engagement &mdash; UL 3700, Outline of Investigation for Interactive Plug-In PV (PIPV) Equipment and Systems",
+      "note": "edition 1 dated 11 December 2025, an outline of investigation rather than a consensus standard."
+    },
+    {
+      "url": "https://www.shopulstandards.com/ProductDetail.aspx?productId=UL1741_3_S_20210928",
+      "title": "UL Standards &amp; Engagement &mdash; UL 1741, Inverters, Converters, Controllers and Interconnection System Equipment",
+      "note": "edition 3, dated 28 September 2021, covering stand-alone and grid-interactive inverters."
+    },
+    {
+      "url": "https://standards.ieee.org/ieee/1547/5915/",
+      "title": "IEEE &mdash; IEEE 1547-2018, interconnection and interoperability of distributed energy resources",
+      "note": "the standard&rsquo;s scope, including islanding; it superseded IEEE 1547-2003."
+    },
+    {
+      "url": "https://legislature.maine.gov/testimony/resources/EUT20260106Soltan134125472587136094.pdf",
+      "title": "UL Solutions &mdash; Interactions of Plug-In PV with Protection of Existing Power Systems (white paper, filed as Maine legislative testimony)",
+      "note": "the two-second cease-to-energize requirement under UL 1741 and IEEE 1547; UL 943&rsquo;s 28.6&nbsp;ms and the 32.8&ndash;36.7&nbsp;ms GFCI breaker results under backfeed."
+    },
+    {
+      "url": "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1910/subpart-A/section-1910.7",
+      "title": "eCFR &mdash; 29 CFR 1910.7, definition and requirements for a nationally recognized testing laboratory",
+      "note": "what makes a laboratory an NRTL: OSHA recognition, testing, listing or labeling, and independence."
+    },
+    {
+      "url": "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1910/subpart-S/subject-group-ECFR314553c63ae81f4/section-1910.399",
+      "title": "eCFR &mdash; 29 CFR 1910.399, electrical definitions",
+      "note": "the federal definition of &ldquo;listed&rdquo;."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "New York State Senate &mdash; S8512C (SUNNY Act)",
+      "note": "the 1,200&nbsp;W limit, the exemption from interconnection and net metering, uncompensated exports and listing as a complete plug-in photovoltaic system; last action 28 May 2026."
+    },
+    {
+      "url": "https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/ErneuerbareEnergien/Solaranlagen/Balkon_table.html",
+      "title": "Bundesnetzagentur &mdash; Balkon-Solaranlagen (in German)",
+      "note": "the term Balkonkraftwerk and the 800&nbsp;VA inverter limit."
+    },
+    {
+      "url": "https://www.coned.com/en/save-money/shop-for-energy-service-companies/how-to-choose-your-energy-supplier",
+      "title": "Con Edison &mdash; How to choose your energy supplier",
+      "note": "the monthly Price to Compare as Con Edison&rsquo;s supply price, for comparing energy suppliers."
+    },
+    {
+      "url": "https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf",
+      "title": "Con Edison &mdash; historical average full-service electric rates",
+      "note": "the SC-1 all-in series behind balco.nyc&rsquo;s {{coned.rate_cents}}&cent; marginal rate (33.83&cent; in 2025)."
+    },
+    {
+      "url": "https://www.osti.gov/biblio/1400540",
+      "title": "OSTI &mdash; Jordan et al., Compendium of photovoltaic degradation rates (2016)",
+      "note": "more than 11,000 measured rates; median degradation of 0.5&ndash;0.6% a year for crystalline silicon."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/buildings/rules/1_RCNY_103-04.pdf",
+      "title": "NYC Department of Buildings &mdash; 1 RCNY &sect;103-04 (Fa&ccedil;ade Inspection &amp; Safety Program)",
+      "note": "five-year examinations for buildings over six stories; appurtenances include railings and equipment attached to or protruding from the facade."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. Its definitions are summaries as of 23&nbsp;September 2026, not legal, electrical or financial advice; laws, standards and rates change, and the review date above is when each figure was last checked."
+}

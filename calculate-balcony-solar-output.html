@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PVWatts, a 0.95 railing factor, a monthly shade factor, the marginal price of a kWh: the full chain, worked for Phoenix, Chicago and New York City.">
+  <title>How to calculate balcony solar output and savings &middot; balco.nyc</title>
+  <link rel="icon" type="image/webp" href="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp">
+  <link rel="canonical" href="https://balco.nyc/calculate-balcony-solar-output">
+  <meta name="theme-color" content="#7F1D1D">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="balco.nyc">
+  <meta property="og:url" content="https://balco.nyc/calculate-balcony-solar-output">
+  <meta property="og:title" content="How to calculate balcony solar output and savings for any US address, step by step">
+  <meta property="og:description" content="PVWatts, a 0.95 railing factor, a monthly shade factor, the marginal price of a kWh: the full chain, worked for Phoenix, Chicago and New York City.">
+  <meta property="og:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
+  <meta property="article:modified_time" content="2026-09-23">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to calculate balcony solar output and savings for any US address, step by step">
+  <meta name="twitter:description" content="PVWatts, a 0.95 railing factor, a monthly shade factor, the marginal price of a kWh: the full chain, worked for Phoenix, Chicago and New York City.">
+  <meta name="twitter:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://balco.nyc/calculate-balcony-solar-output#article",
+        "headline": "How to calculate balcony solar output and savings for any US address, step by step",
+        "description": "PVWatts, a 0.95 railing factor, a monthly shade factor, the marginal price of a kWh: the full chain, worked for Phoenix, Chicago and New York City.",
+        "url": "https://balco.nyc/calculate-balcony-solar-output",
+        "mainEntityOfPage": "https://balco.nyc/calculate-balcony-solar-output",
+        "inLanguage": "en-US",
+        "datePublished": "2026-09-23",
+        "dateModified": "2026-09-23",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg",
+          "width": 1920,
+          "height": 1047
+        },
+        "author": {
+          "@id": "https://balco.nyc/#org"
+        },
+        "publisher": {
+          "@id": "https://balco.nyc/#org"
+        },
+        "isPartOf": {
+          "@id": "https://balco.nyc/#app"
+        },
+        "citation": [
+          {
+            "@type": "CreativeWork",
+            "name": "NLR (formerly NREL) — PVWatts V8 API",
+            "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "Dobos, PVWatts Version 5 Manual (NREL, 2014)",
+            "url": "https://pvwatts.nlr.gov/downloads/pvwattsv5.pdf"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "NLR — National Solar Radiation Database (NSRDB) data",
+            "url": "https://developer.nlr.gov/docs/solar/nsrdb/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "EIA — Form EIA-861M monthly sales and revenue by state",
+            "url": "https://www.eia.gov/electricity/data/eia861m/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "EIA — 2024 Average Monthly Bill, Residential (Table 5A)",
+            "url": "https://www.eia.gov/electricity/sales_revenue_price/pdf/table_5A.pdf"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "Con Edison — historical average full-service electric rates",
+            "url": "https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "EPA — eGRID2023 Summary Tables (revision 2, June 2025)",
+            "url": "https://www.epa.gov/system/files/documents/2025-06/summary_tables_rev2.pdf"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "IRS — Residential Clean Energy Credit",
+            "url": "https://www.irs.gov/credits-deductions/residential-clean-energy-credit"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://balco.nyc/calculate-balcony-solar-output#faq",
+        "dateModified": "2026-09-23",
+        "inLanguage": "en-US",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much electricity will an 800 W balcony solar panel produce in a year?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It depends mostly on tilt and shade. balco.nyc's PVWatts runs put an 800 W south-facing panel hung vertically on a railing at about 778 kWh a year in Phoenix, 616 in Chicago and 604 in New York City with an open view, after a 5% railing loss. From a third floor facing a six-to-ten-story building across a 20 m street, the same panel makes about 328, 239 and 227 kWh."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I calculate balcony solar output by hand?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Take PVWatts' monthly output for your location, tilt and direction, multiply each month by 0.95 for a vertical railing mount and by that month's shade factor for the buildings opposite, and add the twelve months. PVWatts is NREL's free production model. The shade factor is the share of beam and diffuse light that still reaches the panel, and it equals 1.00 for an open view."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why are balcony solar estimates lower than rooftop solar estimates?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because a railing panel usually hangs vertically. In balco.nyc's PVWatts runs for Phoenix, Chicago and New York City, a vertical south-facing panel makes 60% to 64% of what the same panel tilted to 35 degrees would make, before any shading or railing loss. An estimate near 1,000 kWh a year for an 800 W railing panel in the Northeast is probably a tilted-panel figure."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What electricity rate should I use to calculate balcony solar savings?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use the marginal rate: what one fewer kWh takes off your bill, including supply, delivery, surcharges and tax but excluding fixed monthly charges. To get it, subtract the fixed charges from a recent bill and divide by the kWh billed. In New York City balco.nyc uses Con Edison's all-in marginal rate of 34 cents; elsewhere it uses the EIA state average, which includes fixed charges and can overstate the value of an avoided kWh."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does a building across the street reduce balcony solar output?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It can more than halve it. In balco.nyc's model, a third-floor south-facing balcony facing a six-to-ten-story building 20 m away loses 58% to 62% of its annual output in Phoenix, Chicago and New York City. Most of the loss comes in winter, when the sun stays below the building opposite all day, and that is also when a vertical panel would produce the most."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is balcony solar payback calculated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Divide the kit cost by the first year's savings for a simple payback, or run a year-by-year loop in which output falls 0.5% and the electricity price rises 3% each year until cumulative savings reach the kit cost. For an unshaded 800 W vertical south panel in New York City at a $1,200 kit cost and Con Edison's 34-cent rate, balco.nyc gets 5.5 years on the loop and 5.8 years simple."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://balco.nyc/#org",
+        "name": "balco.nyc",
+        "url": "https://balco.nyc/",
+        "logo": "https://balco.nyc/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp",
+        "description": "balco.nyc is an independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings.",
+        "sameAs": [
+          "https://github.com/lowellbw/balconyc"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "balco.nyc",
+            "item": "https://balco.nyc/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Guides",
+            "item": "https://balco.nyc/guides"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Calculating output",
+            "item": "https://balco.nyc/calculate-balcony-solar-output"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #FFFFFF; --text: #171717; --text-sub: #596580; --text-muted: #8896AB;
+      --accent: #7F1D1D; --accent-hover: #5C1212;
+      --border: #E2E8F0; --border-soft: #EEF0F3;
+      --code-bg: #F7F7F8; --callout-bg: #FAF7F4;
+      --radius: 12px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1360px; margin: 0 auto; padding: 0 40px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    /* NAV (matches index.html scrolled style, but always solid on doc pages) */
+    nav.doc-nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-soft); }
+    nav.doc-nav .container { display: flex; justify-content: space-between; align-items: center; padding-top: 6px; padding-bottom: 6px; }
+    .logo { display: inline-block; text-decoration: none; line-height: 0; }
+    .logo img { height: 64px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
+    .nav-links a:hover { opacity: 0.7; text-decoration: none; }
+
+    /* DOC LAYOUT */
+    main { padding: 56px 0 96px; }
+    .doc-header { max-width: 760px; margin: 0 0 48px; }
+    .doc-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .doc-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .doc-header h1 { font-size: clamp(2rem, 3.6vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; text-wrap: balance; }
+    .doc-header .lede { font-size: 1.15rem; color: var(--text-sub); max-width: 65ch; }
+    .doc-meta-row { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; margin-top: 20px; font-size: 0.88rem; color: var(--text-muted); }
+    .doc-meta-row strong { color: var(--text-sub); font-weight: 600; }
+    .doc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .doc-tag { font-size: 0.78rem; padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--text-sub); }
+
+    /* TWO-COLUMN LAYOUT */
+    .doc-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 64px; align-items: start; }
+    .doc-toc { position: sticky; top: 88px; max-height: calc(100vh - 120px); overflow-y: auto; padding-right: 16px; }
+    .doc-toc h2 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .doc-toc ol { list-style: none; padding: 0; counter-reset: tocsec; }
+    .doc-toc li { counter-increment: tocsec; margin: 0; }
+    .doc-toc a { display: block; padding: 6px 0 6px 28px; position: relative; font-size: 0.92rem; color: var(--text-sub); border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; text-decoration: none; }
+    .doc-toc a::before { content: counter(tocsec) "."; position: absolute; left: 8px; top: 6px; font-variant-numeric: tabular-nums; color: var(--text-muted); font-size: 0.85rem; }
+    .doc-toc a:hover, .doc-toc a.active { color: var(--text); border-left-color: var(--accent); }
+
+    /* DOC CONTENT */
+    .doc-content { max-width: 760px; min-width: 0; }
+    .doc-content section { padding-top: 24px; margin-bottom: 48px; scroll-margin-top: 80px; }
+    .doc-content section + section { border-top: 1px solid var(--border-soft); }
+    .doc-content h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; margin: 0 0 20px; }
+    .doc-content h2 .sec-num { color: var(--text-muted); font-weight: 500; margin-right: 12px; font-variant-numeric: tabular-nums; }
+    .doc-content h3 { font-size: 1.18rem; font-weight: 700; letter-spacing: -0.01em; margin: 36px 0 14px; }
+    .doc-content h4 { font-size: 1rem; font-weight: 700; margin: 24px 0 10px; }
+    .doc-content p { margin-bottom: 16px; color: var(--text); }
+    .doc-content p + p { margin-top: -4px; }
+    .doc-content ul, .doc-content ol { padding-left: 24px; margin-bottom: 18px; }
+    .doc-content li { margin-bottom: 6px; }
+    .doc-content li > ul, .doc-content li > ol { margin: 8px 0; }
+    .doc-content strong { font-weight: 700; }
+    .doc-content em { font-style: italic; color: var(--text-sub); }
+
+    /* CODE */
+    code, pre { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em; }
+    p code, li code, td code { background: var(--code-bg); padding: 1px 6px; border-radius: 4px; color: var(--text); font-size: 0.86em; }
+    pre { background: var(--code-bg); border: 1px solid var(--border-soft); border-radius: 8px; padding: 16px 20px; overflow-x: auto; margin: 12px 0 20px; line-height: 1.55; }
+    pre code { background: none; padding: 0; font-size: 0.86em; }
+
+    /* TABLES */
+    .table-wrap { margin: 8px 0 24px; overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    table th, table td { padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+    table th { background: #FAFAFB; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.02em; text-transform: uppercase; color: var(--text-sub); }
+    table tr:last-child td { border-bottom: none; }
+    table td code { font-size: 0.84em; }
+
+    /* CALLOUT */
+    .callout { background: var(--callout-bg); border-left: 3px solid var(--accent); padding: 14px 18px; border-radius: 4px; margin: 12px 0 22px; font-size: 0.95rem; }
+    .callout p:last-child { margin-bottom: 0; }
+    .callout strong { color: var(--accent); }
+
+    /* SOURCES LIST */
+    .sources-list a { font-weight: 500; }
+    .sources-list .src-host { color: var(--text-muted); font-size: 0.85em; font-family: 'JetBrains Mono', monospace; }
+
+    /* BACK TO TOP / DOC FOOTER */
+    .doc-foot { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-soft); display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.9rem; }
+    .btn-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--accent); color: #fff; border-radius: 999px; font-weight: 700; font-size: 0.92rem; text-decoration: none; }
+    .btn-cta:hover { background: var(--accent-hover); text-decoration: none; }
+
+    /* FOOTER */
+    footer { padding: 48px 0 32px; border-top: 1px solid var(--border-soft); margin-top: 48px; }
+    footer .container { display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; }
+    .footer-logo img { height: 56px; width: auto; opacity: 0.85; }
+    .footer-disclaimer { font-size: 0.84rem; color: var(--text-muted); max-width: 64ch; line-height: 1.6; }
+    .footer-meta { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* MOBILE */
+    @media (max-width: 960px) {
+      .container { padding: 0 24px; }
+      .doc-layout { grid-template-columns: 1fr; gap: 24px; }
+      .doc-toc { position: static; max-height: none; padding: 16px; border: 1px solid var(--border-soft); border-radius: 8px; }
+      .doc-toc a { padding-left: 24px; }
+      main { padding: 32px 0 64px; }
+      .doc-header { margin-bottom: 28px; }
+      .doc-content section { margin-bottom: 36px; }
+      .doc-content h2 { font-size: 1.4rem; }
+      .doc-content h3 { font-size: 1.08rem; }
+      .logo img { height: 52px; }
+    }
+
+    /* --- Shared blocks (tools/sitelib.py) --- */
+    .crumbs { margin: 20px 0 -8px; }
+    .crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; font-size: 0.8rem; color: var(--text-muted); }
+    .crumbs li + li::before { content: "\203A"; margin-right: 6px; color: var(--text-muted); }
+    .crumbs a { color: var(--text-sub); text-decoration: none; }
+    .crumbs a[aria-current="page"] { color: var(--text-muted); }
+    .cta-block { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin: 8px 0 40px; padding: 18px 20px; border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 4px; background: #FCFBF7; }
+    .cta-block p { margin: 0; max-width: 56ch; }
+    .cta-button { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 4px; background: var(--accent); color: #fff !important; font-weight: 700; text-decoration: none !important; }
+    .cta-button:hover { background: var(--accent-hover); }
+    .related { margin: 40px 0 0; padding-top: 24px; border-top: 1px solid var(--border); }
+    .related h2 { font-size: 1.1rem; margin-bottom: 12px; }
+    .related ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .related li a { font-weight: 700; }
+    .related li span { display: block; color: var(--text-sub); font-size: 0.88rem; }
+    .footer-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; width: 100%; max-width: 860px; text-align: left; }
+    .footer-links h2 { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+    .footer-links a { display: block; padding: 4px 0; font-size: 0.88rem; color: var(--text-sub); }
+    @media (max-width: 720px) { .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .hub-content { max-width: 760px; padding-bottom: 24px; }
+    .hub-content section { margin-bottom: 36px; }
+    .hub-content h2 { font-size: 1.35rem; margin-bottom: 12px; }
+    .hub-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .hub-list li a { font-weight: 700; }
+    .hub-list li span { display: block; color: var(--text-sub); font-size: 0.92rem; }
+    .table-note { font-size: 0.85rem; color: var(--text-sub); }
+    .tile-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 4px; margin: 8px 0 12px; }
+    .tile { display: flex; align-items: center; justify-content: center; height: 40px; border-radius: 3px; font-size: 0.78rem; font-weight: 700; text-decoration: none !important; color: #1B1A18; background: #EEF0F3; }
+    .tile.s-in_force { background: #7F1D1D; color: #fff; }
+    .tile.s-enacted_not_yet_effective { background: #C2452A; color: #fff; }
+    .tile.s-passed_awaiting_signature { background: #E46740; color: #fff; }
+    .tile.s-pending { background: #F2C9B8; }
+    .tile.s-failed_or_vetoed { background: #D8D2C8; }
+    .tile.s-no_specific_law { background: #EEF0F3; }
+    .tile.s-unknown { background: #fff; border: 1px dashed #C8C2B8; color: #8896AB; }
+    .tile-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 0.82rem; color: var(--text-sub); }
+    .tile-key::before { content: ""; display: inline-block; width: 12px; height: 12px; margin-right: 6px; border-radius: 2px; vertical-align: -1px; background: #EEF0F3; }
+    .tile-key.s-in_force::before { background: #7F1D1D; }
+    .tile-key.s-enacted_not_yet_effective::before { background: #C2452A; }
+    .tile-key.s-passed_awaiting_signature::before { background: #E46740; }
+    .tile-key.s-pending::before { background: #F2C9B8; }
+    .tile-key.s-failed_or_vetoed::before { background: #D8D2C8; }
+    .tile-key.s-unknown::before { background: #fff; border: 1px dashed #C8C2B8; }
+    .state-table td:nth-child(n+3), .state-table th:nth-child(n+3) { text-align: right; white-space: nowrap; }
+    .doc-content dl { margin: 0 0 24px; }
+    .doc-content dt { font-weight: 700; margin-top: 16px; scroll-margin-top: 90px; }
+    .doc-content dd { margin: 4px 0 0; color: var(--text); }
+  </style>
+</head>
+<body>
+
+<nav class="doc-nav">
+  <div class="container">
+    <a href="/" class="logo"><img src="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco.nyc" width="400" height="218" decoding="async"></a>
+    <div class="nav-links">
+      <a href="/">Calculator</a>
+      <a href="/guides">Guides</a>
+      <a href="/states">States</a>
+      <a href="/nyc">NYC</a>
+      <a href="/methodology">Methodology</a>
+      <a href="/about">About</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <!--shared:start-->
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">balco.nyc</a></li><li><a href="/guides">Guides</a></li><li><a href="/calculate-balcony-solar-output" aria-current="page">Calculating output</a></li></ol></nav>
+    <!--shared:end-->
+    <header class="doc-header">
+      <div class="doc-eyebrow"><span class="dot"></span> The calculation</div>
+      <h1>How to calculate balcony solar output and savings for any US address</h1>
+      <p class="lede">Take NREL&rsquo;s PVWatts output for your location, tilt and direction. Multiply it by 0.95 for the railing and by a month-by-month shade factor for whatever stands opposite, then value each kWh at the price you actually stop paying. Worked through that chain with balco.nyc&rsquo;s own PVWatts runs, an 800&nbsp;W south-facing panel on a vertical railing makes <strong>778&nbsp;kWh a year in Phoenix, 616 in Chicago and 604 in New York City</strong> with an open view, and 328, 239 and 227&nbsp;kWh on a third floor facing a six-to-ten-story building across a 20&nbsp;m street. Shade changes the kWh more than the city does, and the price of a kWh decides the payback.</p>
+      <div class="doc-meta-row">
+        <div><strong>Last reviewed:</strong> <time datetime="2026-09-23">September 23, 2026</time></div>
+        <div><strong>Reading time:</strong> ~12 minutes</div>
+        <div class="doc-tags">
+          <span class="doc-tag">604&ndash;778&nbsp;kWh/yr open view</span>
+          <span class="doc-tag">Shade: &minus;58&ndash;62%</span>
+          <span class="doc-tag">Marginal, not average</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="doc-layout">
+      <aside class="doc-toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#the-chain">The chain, and what it gives</a></li>
+          <li><a href="#step-1-pvwatts">Step 1: sun and panel geometry</a></li>
+          <li><a href="#steps-2-3-shade">Steps 2&ndash;3: railing and shade</a></li>
+          <li><a href="#steps-4-6-value">Steps 4&ndash;6: price, payback, CO&#8322;</a></li>
+          <li><a href="#worked-examples">Worked examples</a></li>
+          <li><a href="#check-a-calculator">Checking any calculator</a></li>
+          <li><a href="#questions">Common questions</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ol>
+      </aside>
+
+      <article class="doc-content">
+
+        <section id="the-chain">
+  <h2><span class="sec-num">1</span>The chain in one line, and what it gives for three cities</h2>
+  <p>Every balcony solar estimate, including the one <a href="/">the balco.nyc calculator</a> gives you, is a few multiplications and one loop:</p>
+  <ul>
+    <li><strong>kWh a year</strong> = the sum over twelve months of (PVWatts monthly output &times; railing factor &times; that month&rsquo;s shade factor)</li>
+    <li><strong>Savings a year</strong> = kWh &times; the price of a kWh you no longer buy</li>
+    <li><strong>Payback</strong> = years until cumulative savings reach the kit cost, with the price rising 3% and output falling 0.5% a year</li>
+    <li><strong>CO&#8322; avoided</strong> = kWh &times; your grid region&rsquo;s emission rate</li>
+  </ul>
+  <p>That is six steps, each with a number and a source, set out below so you can run the chain by hand or check another calculator against it. To show what it does, balco.nyc ran it for an 800&nbsp;W system on a vertical, south-facing railing in three cities with very different sun and prices, using the site&rsquo;s own PVWatts runs for each state&rsquo;s largest city and its own shade code:</p>
+  <ul>
+    <li><strong>With an open view</strong> the panel makes about <strong>778&nbsp;kWh a year in Phoenix, 616 in Chicago and 604 in New York City</strong>. On a railing, Phoenix&rsquo;s desert sun buys only 29% more than New York&rsquo;s, against 37% more at a roof-style 35&deg; tilt, because a vertical panel meets the high summer sun at a glancing angle.</li>
+    <li><strong>From a third floor facing a six-to-ten-story building across a 20&nbsp;m street</strong>, the same panel loses 58% to 62% of that: <strong>328, 239 and 227&nbsp;kWh</strong>. What stands opposite matters more than which city you are in.</li>
+    <li><strong>Price matters more than sun.</strong> At Con&nbsp;Edison&rsquo;s 34&cent; marginal rate the open New York panel saves $205 a year. At Arizona&rsquo;s 15.4&cent; average the Phoenix panel makes 29% more electricity and saves $120.</li>
+  </ul>
+  <p>These are modeled figures for one reference point per city, not measurements. The full table is in section 5.</p>
+</section>
+
+        <section id="step-1-pvwatts">
+  <h2><span class="sec-num">2</span>Step 1: the sun and the panel&rsquo;s geometry (PVWatts&nbsp;V8)</h2>
+  <p>The first number is the one everything else multiplies: what the panel would make at this spot, tilt and direction with nothing in the way. balco.nyc gets it from NREL&rsquo;s <strong>PVWatts&nbsp;V8</strong>, the Department of Energy&rsquo;s reference production model, which simulates every hour of a typical meteorological year (TMY) drawn from the satellite-derived National Solar Radiation Database. The calculator sends these inputs:</p>
+  <div class="table-wrap"><table><thead><tr><th>PVWatts input</th><th>Value</th><th>Why</th></tr></thead><tbody>
+    <tr><td><code>system_capacity</code></td><td>0.8&nbsp;kW</td><td>Two 400&nbsp;W panels (the calculator allows 0.4&ndash;1.6&nbsp;kW)</td></tr>
+    <tr><td><code>tilt</code></td><td>90&deg;</td><td>Hung flat on a railing; 70&deg;, 60&deg; and 35&deg; model angled brackets</td></tr>
+    <tr><td><code>azimuth</code></td><td>180&deg;</td><td>Due south (0 north, 90 east, 270 west)</td></tr>
+    <tr><td><code>module_type</code></td><td>1 (premium)</td><td>PVWatts&rsquo;s higher-efficiency crystalline module</td></tr>
+    <tr><td><code>array_type</code></td><td>0 (fixed, open rack)</td><td>Air moves behind a railing panel, so it runs cooler than a roof-flush one</td></tr>
+    <tr><td><code>losses</code></td><td>14%</td><td>PVWatts&rsquo;s default total, which balco.nyc reads as wiring, mismatch, connections, nameplate and availability</td></tr>
+    <tr><td><code>soiling</code></td><td>3, 3, 4, 5, 6, 7, 7, 7, 6, 5, 4, 3% by month</td><td>balco.nyc&rsquo;s urban dust profile, heaviest in summer</td></tr>
+    <tr><td><code>dc_ac_ratio</code> / <code>inv_eff</code></td><td>1.1 / 96.5%</td><td>A microinverter matched to one or two modules</td></tr>
+    <tr><td><code>albedo</code></td><td>0.20</td><td>A concrete balcony floor</td></tr>
+  </tbody></table></div>
+  <p>One caveat: PVWatts&rsquo;s own manual builds its 14% default partly from 2% soiling and 3% shading, and balco.nyc applies soiling and shading again separately. Any overlap pushes the estimate down, not up.</p>
+  <p>For an 800&nbsp;W vertical south panel PVWatts returns <strong>819.4&nbsp;kWh a year in Phoenix, 648.8 in Chicago and 635.7 in New York City</strong>, before any railing loss. Tilted to 35&deg; the same panel would make 1,369, 1,010 and 998&nbsp;kWh, so a vertical railing keeps only <strong>60% to 64%</strong> of a rooftop-style figure. That ratio explains most inflated balcony estimates: they quote a tilted panel&rsquo;s output for one that will hang straight down.</p>
+  <p>The monthly shape matters too. A vertical south panel is a winter machine: it meets the low winter sun almost head-on. In Phoenix it peaks at 104.7&nbsp;kWh in December and bottoms out at 26.5 in June; in New York it runs from 73.0 in January to 31.9 in June. Winter is also when buildings opposite do the most damage. And a TMY is a typical year, not a forecast; any real year will differ.</p>
+</section>
+
+        <!--shared:start-->
+        <aside class="cta-block">
+          <p><strong>Estimate your own balcony.</strong> Enter any US address to see what a panel on your balcony would produce and save, month by month.</p>
+          <a class="cta-button" href="/">Open the calculator &rarr;</a>
+        </aside>
+        <!--shared:end-->
+
+        <section id="steps-2-3-shade">
+  <h2><span class="sec-num">3</span>Steps 2 and 3: the railing, and the building across the street</h2>
+  <p><strong>Step 2, the railing.</strong> The railing, the mounting hardware and the slab above clip a rail-mounted panel&rsquo;s lower edge, and PVWatts cannot see them. balco.nyc multiplies by <strong>0.95 for a vertical panel</strong> (0.97 at 70&deg;, 0.98 at 60&deg;, 0.99 at 35&deg;). It is the site&rsquo;s own assumption, not a measurement, and it applies to every estimate. Open-view output is therefore 819.4 &times; 0.95 = <strong>778&nbsp;kWh</strong> in Phoenix, 616 in Chicago and 604 in New York.</p>
+  <p><strong>Step 3, the buildings opposite.</strong> PVWatts assumes an open horizon, so the shade model answers one question: of the light PVWatts assumed, how much reaches this balcony? It starts from a horizon profile, the highest obstruction angle in each of 360 compass directions. In New York City the profile comes from real building footprints and heights within 200&nbsp;m. Elsewhere it comes from your description, modeled as a continuous wall parallel to your facade:</p>
+  <div class="callout"><p>&beta;(&phi;) = atan( (H &minus; h) &times; cos&nbsp;&phi; / D ), with h = (floor &minus; 1) &times; 3.05&nbsp;m + 1.0&nbsp;m</p></div>
+  <p>H is the height of the building opposite, h your balcony&rsquo;s height, D the distance and &phi; the angle away from straight out. In the worked examples a third floor gives h = 7.1&nbsp;m, &ldquo;6 to 10 floors&rdquo; is H = 25&nbsp;m, and &ldquo;across a street&rdquo; is D = 20&nbsp;m. Straight out, the wall rises to atan(17.9 / 20) = <strong>41.8&deg;</strong> (32.3&deg; at 45&deg; either side). The winter-solstice noon sun reaches only about 33&deg; in Phoenix, 25&deg; in Chicago and 26&deg; in New York. It clears 41.8&deg; at noon only from about early March to early October in Chicago and New York, and early February to early November in Phoenix.</p>
+  <p>The shade factor comes from a sweep: on the 15th of each month, every 10 minutes from sunrise to sunset, light is split into beam (0.60) and diffuse (0.40). Beam counts only when the sun is above the horizon profile in its direction. Diffuse counts in proportion to the sky the panel can still see, which this wall cuts to 33%:</p>
+  <div class="callout"><p>shade factor = &Sigma; received / &Sigma; assumed, where received = beam &times; (sun visible) + diffuse &times; sky openness, and assumed = beam + diffuse</p></div>
+  <p>Hours with the sun behind the facade add almost nothing to either sum, since PVWatts has already priced orientation, so <strong>an open view returns 1.00 at every orientation</strong>, north included. Behind this wall New York&rsquo;s factor is 0.73 in March, 0.54 in June and 0.72 in September. From October through February it falls to 0.10&ndash;0.12, with the sun below the wall all day. Three of those months sit at or just above the model&rsquo;s floor of 0.10.</p>
+  <p>Apply the factors month by month, never as one annual average, because the shade is worst when a vertical panel produces most. In Phoenix the panel makes 373&nbsp;kWh from November to February with an open view and 74 behind this wall: two-thirds of the year&rsquo;s loss in four months. Multiplying by the plain average of Phoenix&rsquo;s twelve factors (0.46) would overstate its shaded output by 10%. The month-by-month result is equivalent to 0.42 in Phoenix, 0.39 in Chicago and 0.38 in New York.</p>
+</section>
+
+        <section id="steps-4-6-value">
+  <h2><span class="sec-num">4</span>Steps 4 to 6: the price of a kWh, payback and carbon</h2>
+  <p><strong>Step 4, what a kWh is worth.</strong> balco.nyc assumes every kWh is used at home, replacing one you would have bought. Over a year the volume is small: 604&nbsp;kWh is under 9% of the average New York household&rsquo;s 6,854&nbsp;kWh. But self-consumption is decided hour by hour. When the panel makes more than the apartment is drawing, the surplus goes to the grid and is assumed to earn nothing unless your state or utility credits it, so the savings figure is a ceiling, not an expectation. Whether you may connect a panel at all varies by state and utility (see <a href="/states">the state pages</a>). None of this is legal advice.</p>
+  <p>The right price is the <em>marginal</em> one: what one fewer kWh takes off your bill, meaning supply, delivery, surcharges and tax but not the fixed monthly charge. In New York City balco.nyc knows the tariff, so it uses <strong>Con&nbsp;Edison&rsquo;s 34&cent;/kWh</strong> all-in marginal rate. That starts from Con&nbsp;Edison&rsquo;s own SC-1 bill history (33.83&cent; in 2025) and is <a href="/electricity-rate">carried into 2026 here</a>. Elsewhere it uses the state&rsquo;s average residential price, which balco.nyc computes from EIA revenue and sales over the 12 months to June 2026: <strong>15.40&cent; in Arizona, 18.54&cent; in Illinois, 27.96&cent; in New York</strong>. An average spreads fixed charges over every kWh, so it can overstate what an avoided kWh saves, and on tiered or time-of-use tariffs it can miss either way. It also blends utilities: New York&rsquo;s statewide figure sits about six cents below Con&nbsp;Edison&rsquo;s marginal rate. The best number is your own: a recent bill&rsquo;s total minus fixed charges, divided by kWh billed. Enter it under Adjust assumptions, or as <code>rate</code> in a link.</p>
+  <p><strong>Step 5, payback.</strong> The cost basis is balco.nyc&rsquo;s mid-tier planning figure of $1,200 for 800&nbsp;W ($850 budget, $1,600 premium), hardware only, with no electrical work. No federal credit is netted out: the residential clean energy credit (IRC 25D) ended with 2025. Simple payback is cost over first-year savings. The calculator&rsquo;s figure comes from a loop, in nominal dollars with no discounting:</p>
+  <ol>
+    <li>Year 1 savings = kWh &times; price.</li>
+    <li>Each later year, output falls 0.5% (degradation) and the price rises 3% (the default; 2% and 4% are presets).</li>
+    <li>Add each year to a running total until it reaches the kit cost, then interpolate within that year.</li>
+  </ol>
+  <p>For the open New York panel, year 1 saves 603.9 &times; $0.34 = $205.33. The next four years save $210.43, $215.66, $221.02 and $226.51, for $1,078.96 after five. Year 6 adds $232.14, and $1,200 is reached 52% of the way through it: <strong>5.5 years</strong>, against 5.8 simple.</p>
+  <p><strong>Step 6, carbon.</strong> CO&#8322; avoided = kWh &times; the EPA eGRID2023 total output emission rate for the address&rsquo;s grid subregion: 0.704&nbsp;lb per kWh for WECC Southwest (Phoenix), 0.911 for RFC West (Chicago) and 0.864 for NYC/Westchester. eGRID&rsquo;s non-baseload rates are higher in all three, so this is the conservative choice. Grid mix is why the Chicago panel avoids slightly more CO&#8322; than the Phoenix one (562 against 548&nbsp;lb a year) while making 21% fewer kWh.</p>
+</section>
+
+        <section id="worked-examples">
+  <h2><span class="sec-num">5</span>Worked examples: Phoenix, Chicago and New York City</h2>
+  <p>The whole chain side by side, for an 800&nbsp;W vertical south panel at the $1,200 mid-tier cost, open and then from a third floor facing a six-to-ten-story building 20&nbsp;m away. The shade step is balco.nyc&rsquo;s own code run at each city&rsquo;s latitude. In New York City the live calculator would use real footprints rather than a described wall; the wall is used here so the three cities are compared on equal terms. New York appears at Con&nbsp;Edison&rsquo;s marginal rate, which the calculator uses, and at the EIA state average for comparison.</p>
+  <div class="table-wrap"><table><thead><tr><th>Step</th><th>Phoenix, AZ</th><th>Chicago, IL</th><th>New York City</th><th>NYC at EIA state average</th></tr></thead><tbody>
+    <tr><td>1. PVWatts, 90&deg; south (kWh/yr)</td><td>819.4</td><td>648.8</td><td>635.7</td><td>635.7</td></tr>
+    <tr><td>2. &times; 0.95 railing = open view (kWh)</td><td><strong>778</strong></td><td><strong>616</strong></td><td><strong>604</strong></td><td>604</td></tr>
+    <tr><td>3. Shade factor, applied monthly (effective)</td><td>0.42</td><td>0.39</td><td>0.38</td><td>0.38</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;Shaded output (kWh)</td><td><strong>328</strong></td><td><strong>239</strong></td><td><strong>227</strong></td><td>227</td></tr>
+    <tr><td>4. Price of a kWh</td><td>15.40&cent; (EIA avg)</td><td>18.54&cent; (EIA avg)</td><td>34&cent; (Con&nbsp;Ed marginal)</td><td>27.96&cent; (EIA avg)</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;Year-1 savings, open / shaded</td><td>$120 / $50</td><td>$114 / $44</td><td>$205 / $77</td><td>$169 / $63</td></tr>
+    <tr><td>5. Payback, open (loop / simple)</td><td>9.0 / 10.0 yrs</td><td>9.4 / 10.5 yrs</td><td><strong>5.5</strong> / 5.8 yrs</td><td>6.6 / 7.1 yrs</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;Payback, shaded (loop / simple)</td><td>18.9 / 23.8 yrs</td><td>21.0 / 27.1 yrs</td><td>13.3 / 15.6 yrs</td><td>15.7 / 18.9 yrs</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;25-year savings, open / shaded (nominal)</td><td>$4,087 / $1,720</td><td>$3,896 / $1,512</td><td>$7,000 / $2,629</td><td>$5,757 / $2,162</td></tr>
+    <tr><td>6. CO&#8322; avoided, open / shaded (lb/yr)</td><td>548 / 231</td><td>562 / 218</td><td>522 / 196</td><td>522 / 196</td></tr>
+  </tbody></table></div>
+  <p>The shaded New York case month by month (PVWatts output &times; 0.95 &times; shade factor), so the sum can be checked:</p>
+  <div class="table-wrap"><table><thead><tr><th>Month</th><th>PVWatts (kWh)</th><th>Shade factor</th><th>Result (kWh)</th><th>Month</th><th>PVWatts (kWh)</th><th>Shade factor</th><th>Result (kWh)</th></tr></thead><tbody>
+    <tr><td>Jan</td><td>73.0</td><td>0.100</td><td>6.9</td><td>Jul</td><td>36.2</td><td>0.558</td><td>19.2</td></tr>
+    <tr><td>Feb</td><td>69.2</td><td>0.109</td><td>7.2</td><td>Aug</td><td>41.2</td><td>0.635</td><td>24.9</td></tr>
+    <tr><td>Mar</td><td>64.9</td><td>0.735</td><td>45.3</td><td>Sep</td><td>55.7</td><td>0.716</td><td>37.9</td></tr>
+    <tr><td>Apr</td><td>47.6</td><td>0.669</td><td>30.2</td><td>Oct</td><td>61.6</td><td>0.116</td><td>6.8</td></tr>
+    <tr><td>May</td><td>37.8</td><td>0.586</td><td>21.0</td><td>Nov</td><td>58.2</td><td>0.102</td><td>5.6</td></tr>
+    <tr><td>Jun</td><td>31.9</td><td>0.536</td><td>16.3</td><td>Dec</td><td>58.4</td><td>0.100</td><td>5.5</td></tr>
+  </tbody></table></div>
+  <p>The total is <strong>226.8&nbsp;kWh</strong>. Three things follow:</p>
+  <ul>
+    <li><strong>New York pays back fastest while making the fewest kWh</strong>: 5.5 years open against Phoenix&rsquo;s 9.0, and 13.3 shaded against 18.9. Price does that, not sun.</li>
+    <li><strong>The choice of rate is worth a year.</strong> The same New York panel pays back in 5.5 years at Con&nbsp;Edison&rsquo;s marginal rate and 6.6 at the state average. A calculator that does not say which it used has hidden a result-changing input.</li>
+    <li><strong>Heavy shade in a cheap-power state can eat most of a panel&rsquo;s life.</strong> Chicago&rsquo;s shaded case needs 21 years on the loop. That argues for running your own address, not for giving up: a higher floor, a lower building or a wider street changes the answer quickly.</li>
+  </ul>
+</section>
+
+        <section id="check-a-calculator">
+  <h2><span class="sec-num">6</span>The five numbers to check in any balcony solar calculator</h2>
+  <p>A trustworthy balcony calculator shows five things. If any is missing, you cannot tell whether its answer is generous, cautious or wrong:</p>
+  <ol>
+    <li><strong>Annual kWh, with the tilt and direction behind it.</strong> balco.nyc&rsquo;s runs put an open 800&nbsp;W vertical south panel at about 600&ndash;780&nbsp;kWh across three very different cities. Near 1,000&nbsp;kWh for a railing panel in the Northeast is probably a 35&deg; rooftop number.</li>
+    <li><strong>The electricity rate, and whether it is marginal.</strong> Supply-only, average and all-in marginal rates answer different questions, and move the same New York panel&rsquo;s payback by a year or more.</li>
+    <li><strong>The shading method.</strong> None, a flat percentage, or a horizon from real or described buildings, ideally applied by month. &ldquo;No shading&rdquo; on a low city floor is a best case, not an estimate.</li>
+    <li><strong>The self-consumption assumption.</strong> Whether every kWh is assumed to be used at home, and what surplus earns. Unless your state or utility credits exports, it earns nothing.</li>
+    <li><strong>The cost basis.</strong> Which kit price, whether wiring is included, and whether a tax credit was subtracted. The federal 25D credit ended with 2025.</li>
+  </ol>
+  <p>balco.nyc states each of these with its estimates, and <a href="/methodology">the methodology</a> documents every constant used above. To run your own address, start at <a href="/">the calculator</a>. To share an estimate, or have an assistant hand you one, use a prefilled link:</p>
+  <div class="callout"><p><code>https://balco.nyc/?address=STREET+ADDRESS,+CITY,+STATE&amp;floor=3&amp;facing=south&amp;across=tall&amp;distance=street</code></p></div>
+  <p><code>facing</code> takes the eight compass points; <code>across</code> takes <code>none</code>, <code>low</code>, <code>mid</code>, <code>tall</code> or <code>tower</code>; <code>distance</code> takes <code>alley</code>, <code>street</code>, <code>wide</code> or <code>far</code>. Optional <code>tilt</code>, <code>watts</code>, <code>bill</code> and <code>rate</code> (cents per kWh from your bill) also work. Outside New York City, a link with address, floor, facing and across runs at once; in the city you still pin your balcony on the 3D model, because real buildings replace the description. State figures are on the <a href="/states/arizona">Arizona</a>, <a href="/states/illinois">Illinois</a> and <a href="/states/new-york">New York</a> pages, and <a href="/balcony-sunlight">does my balcony get enough sun?</a> and <a href="/balcony-solar-cost">what balcony solar costs</a> go deeper on shade and kit prices.</p>
+</section>
+
+        <section id="questions">
+          <h2><span class="sec-num">7</span>Common questions</h2>
+        <details>
+          <summary>How much electricity will an 800 W balcony solar panel produce in a year?</summary>
+          <p>It depends mostly on tilt and shade. balco.nyc's PVWatts runs put an 800 W south-facing panel hung vertically on a railing at about 778 kWh a year in Phoenix, 616 in Chicago and 604 in New York City with an open view, after a 5% railing loss. From a third floor facing a six-to-ten-story building across a 20 m street, the same panel makes about 328, 239 and 227 kWh.</p>
+        </details>
+        <details>
+          <summary>How do I calculate balcony solar output by hand?</summary>
+          <p>Take PVWatts' monthly output for your location, tilt and direction, multiply each month by 0.95 for a vertical railing mount and by that month's shade factor for the buildings opposite, and add the twelve months. PVWatts is NREL's free production model. The shade factor is the share of beam and diffuse light that still reaches the panel, and it equals 1.00 for an open view.</p>
+        </details>
+        <details>
+          <summary>Why are balcony solar estimates lower than rooftop solar estimates?</summary>
+          <p>Because a railing panel usually hangs vertically. In balco.nyc's PVWatts runs for Phoenix, Chicago and New York City, a vertical south-facing panel makes 60% to 64% of what the same panel tilted to 35 degrees would make, before any shading or railing loss. An estimate near 1,000 kWh a year for an 800 W railing panel in the Northeast is probably a tilted-panel figure.</p>
+        </details>
+        <details>
+          <summary>What electricity rate should I use to calculate balcony solar savings?</summary>
+          <p>Use the marginal rate: what one fewer kWh takes off your bill, including supply, delivery, surcharges and tax but excluding fixed monthly charges. To get it, subtract the fixed charges from a recent bill and divide by the kWh billed. In New York City balco.nyc uses Con Edison's all-in marginal rate of 34 cents; elsewhere it uses the EIA state average, which includes fixed charges and can overstate the value of an avoided kWh.</p>
+        </details>
+        <details>
+          <summary>How much does a building across the street reduce balcony solar output?</summary>
+          <p>It can more than halve it. In balco.nyc's model, a third-floor south-facing balcony facing a six-to-ten-story building 20 m away loses 58% to 62% of its annual output in Phoenix, Chicago and New York City. Most of the loss comes in winter, when the sun stays below the building opposite all day, and that is also when a vertical panel would produce the most.</p>
+        </details>
+        <details>
+          <summary>How is balcony solar payback calculated?</summary>
+          <p>Divide the kit cost by the first year's savings for a simple payback, or run a year-by-year loop in which output falls 0.5% and the electricity price rises 3% each year until cumulative savings reach the kit cost. For an unshaded 800 W vertical south panel in New York City at a $1,200 kit cost and Con Edison's 34-cent rate, balco.nyc gets 5.5 years on the loop and 5.8 years simple.</p>
+        </details>
+        </section>
+
+        <section id="sources">
+          <h2><span class="sec-num">8</span>Sources</h2>
+          <ul>
+            <li><a href="https://developer.nlr.gov/docs/solar/pvwatts/v8/" target="_blank" rel="noopener">NLR (formerly NREL) &mdash; PVWatts V8 API</a> <span class="src-host">developer.nlr.gov</span> &mdash; the request parameters used in step 1 (module_type, array_type 0 &ldquo;Fixed &ndash; Open Rack&rdquo;, tilt, azimuth, losses, dc_ac_ratio, inv_eff, albedo, the 12-value monthly soiling array) and the ac_monthly and ac_annual outputs.</li>
+            <li><a href="https://pvwatts.nlr.gov/downloads/pvwattsv5.pdf" target="_blank" rel="noopener">Dobos, PVWatts Version 5 Manual (NREL, 2014)</a> <span class="src-host">pvwatts.nlr.gov</span> &mdash; the 14% default total system loss, and its components (including 2% soiling and 3% shading), behind the caveat in step 1.</li>
+            <li><a href="https://developer.nlr.gov/docs/solar/nsrdb/" target="_blank" rel="noopener">NLR &mdash; National Solar Radiation Database (NSRDB) data</a> <span class="src-host">developer.nlr.gov</span> &mdash; the satellite-derived irradiance, with typical meteorological year products, that PVWatts simulates from.</li>
+            <li><a href="https://www.eia.gov/electricity/data/eia861m/" target="_blank" rel="noopener">EIA &mdash; Form EIA-861M monthly sales and revenue by state</a> <span class="src-host">eia.gov</span> &mdash; the residential revenue and sales from which balco.nyc computes the 12-month state averages to June 2026: 15.40&cent; Arizona, 18.54&cent; Illinois, 27.96&cent; New York.</li>
+            <li><a href="https://www.eia.gov/electricity/sales_revenue_price/pdf/table_5A.pdf" target="_blank" rel="noopener">EIA &mdash; 2024 Average Monthly Bill, Residential (Table 5A)</a> <span class="src-host">eia.gov</span> &mdash; average New York household consumption of 571&nbsp;kWh a month (about 6,854 a year), used for the self-consumption comparison in step 4.</li>
+            <li><a href="https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf" target="_blank" rel="noopener">Con Edison &mdash; historical average full-service electric rates</a> <span class="src-host">coned.com</span> &mdash; the NYC SC-1 residential rate of 33.83&cent;/kWh in 2025 that the 34&cent; marginal rate starts from.</li>
+            <li><a href="https://www.epa.gov/system/files/documents/2025-06/summary_tables_rev2.pdf" target="_blank" rel="noopener">EPA &mdash; eGRID2023 Summary Tables (revision 2, June 2025)</a> <span class="src-host">epa.gov</span> &mdash; subregion total output CO&#8322; rates of 703.7 (WECC Southwest), 911.4 (RFC West) and 864.5&nbsp;lb/MWh (NYC/Westchester), and the higher non-baseload rates.</li>
+            <li><a href="https://www.irs.gov/credits-deductions/residential-clean-energy-credit" target="_blank" rel="noopener">IRS &mdash; Residential Clean Energy Credit</a> <span class="src-host">irs.gov</span> &mdash; that the credit is not available for property placed in service after December 31, 2025, so none is netted out of the cost basis.</li>
+          </ul>
+          <p>This page is maintained by <a href="/">balco.nyc</a>, an independent balcony-solar calculator. Production figures are modeled, not metered, and the worked examples use one reference point per city; your own address, floor and surroundings are what the calculator simulates. It is not financial or legal advice.</p>
+        </section>
+
+        <!--shared:start-->
+        <aside class="related" aria-labelledby="relatedHeading">
+          <h2 id="relatedHeading">Related guides</h2>
+          <ul>
+          <li><a href="/800w-balcony-solar-output">How much does an 800 W balcony system produce?</a><span>Unshaded kWh a year for every state&#x27;s largest city, by direction and tilt.</span></li>
+          <li><a href="/balcony-solar-kwh-formula">How do I estimate balcony solar output by hand?</a><span>A five-term formula tested in every state, and why the rooftop one overstates a railing by 60%.</span></li>
+          <li><a href="/is-balcony-solar-worth-it">Is balcony solar worth it?</a><span>Payback in all 50 states and DC, and why the price of power matters more than the sun.</span></li>
+          <li><a href="/balcony-solar-panel-angle">What angle should a balcony solar panel be?</a><span>What 70°, 60° and 35° add over vertical by state, what it is worth, and why shade changes it.</span></li>
+          </ul>
+        </aside>
+        <!--shared:end-->
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <a href="/" class="footer-logo"><img src="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
+    <nav class="footer-links" aria-label="Site">
+      <div>
+        <h2>Calculator</h2>
+        <a href="/">Estimate your balcony</a>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <a href="/balcony-solar-laws-compared">Which states allow plug-in solar, and on what terms?</a>
+        <a href="/calculate-balcony-solar-output">How do I calculate my balcony’s solar output and savings?</a>
+        <a href="/is-balcony-solar-worth-it">Is balcony solar worth it?</a>
+        <a href="/sunny-act">Is plug-in solar legal in New York?</a>
+        <a href="/what-is-balcony-solar">What is balcony solar?</a>
+        <a href="/guides">All guides</a>
+      </div>
+      <div>
+        <h2>By place</h2>
+        <a href="/states">Plug-in solar by state</a>
+        <a href="/nyc">New York City</a>
+        <a href="/sunny-act">New York&rsquo;s SUNNY Act</a>
+      </div>
+      <div>
+        <h2>About</h2>
+        <a href="/about">About balco.nyc</a>
+        <a href="/methodology">Methodology</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </nav>
+    <p class="footer-disclaimer">balco.nyc is an independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings. Not affiliated with the City of New York, Con Edison, NYSERDA, NREL, the EIA, the EPA, or any seller of solar equipment. NYC results carry a modeled uncertainty range of about 15%. Plug-in solar rules vary by state; in New York the <a href="/sunny-act">SUNNY Act</a> has passed both chambers and awaits the Governor&#x27;s signature.</p>
+    <p class="footer-meta">&copy; 2026</p>
+  </div>
+</footer>
+
+<script src="/js/analytics.js?v=61ea8fc9"></script>
+
+<script>
+  // Highlight the TOC entry corresponding to the visible section.
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.doc-toc a'));
+    var sections = links.map(function (a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    }).filter(Boolean);
+
+    if (!('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          links.forEach(function (a) {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(function (s) { observer.observe(s); });
+  }());
+</script>
+
+</body>
+</html>

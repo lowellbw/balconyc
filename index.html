@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Enter an NYC address and choose the wall and floor. Estimate annual output, bill savings, and CO₂ for an 800W balcony-solar system using NYC building geometry and NREL solar data.">
-  <title>NYC Balcony Solar Savings Calculator · balco.nyc</title>
-  <link rel="icon" type="image/webp" href="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp">
-  <link rel="icon" type="image/png" href="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png">
-  <link rel="apple-touch-icon" href="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png">
+  <meta name="description" content="Estimate what a plug-in balcony solar panel would produce and save at any US address, from NREL solar data. NYC addresses get a 3D model of the block.">
+  <title>Balcony Solar Calculator: Any US Address, NYC in 3D · balco.nyc</title>
+  <link rel="icon" type="image/webp" href="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp">
+  <link rel="icon" type="image/png" href="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png">
+  <link rel="apple-touch-icon" href="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.png">
   <link rel="canonical" href="https://balco.nyc/">
   <meta name="theme-color" content="#7F1D1D">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="balco.nyc">
   <meta property="og:url" content="https://balco.nyc/">
-  <meta property="og:title" content="NYC Balcony Solar Savings Calculator">
-  <meta property="og:description" content="Enter an NYC address and choose the wall and floor. Estimate annual output, bill savings, and CO₂ for an 800W balcony-solar system using NYC building geometry and NREL solar data.">
+  <meta property="og:title" content="Balcony Solar Calculator for Any US Address">
+  <meta property="og:description" content="Estimate what a plug-in balcony solar panel would produce and save at any US address, from NREL solar data. NYC addresses get a 3D model of the block.">
   <!-- JPEG rather than WebP: several link scrapers still refuse WebP previews. -->
   <meta property="og:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1920">
   <meta property="og:image:height" content="1047">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="NYC Balcony Solar Savings Calculator">
-  <meta name="twitter:description" content="Enter an NYC address and choose the wall and floor. Estimate annual output, bill savings, and CO₂ for an 800W balcony-solar system using NYC building geometry and NREL solar data.">
+  <meta name="twitter:title" content="Balcony Solar Calculator for Any US Address">
+  <meta name="twitter:description" content="Estimate what a plug-in balcony solar panel would produce and save at any US address, from NREL solar data. NYC addresses get a 3D model of the block.">
   <meta name="twitter:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -374,6 +374,7 @@
     .manual-close:hover { background: #E4E4E4; }
     .manual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 18px; margin-bottom: 22px; }
     .manual-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+    .manual-field[hidden], .bd-place-section[hidden] { display: none; }
     .manual-field label { font-size: 0.8rem; font-weight: 600; color: var(--text-sub); }
     .manual-field input, .manual-field select {
       padding: 11px 12px; border: 1px solid var(--border); border-radius: 9px;
@@ -502,6 +503,17 @@
     .bd-offset-text strong { color: #27241F; }
 
     .bd-impact-section { margin-top: 31px; padding-top: 24px; border-top: 1px solid #8D877E; }
+    .bd-place-section { margin-top: 31px; padding-top: 24px; border-top: 1px solid #8D877E; }
+    .bd-place-list { margin: 0; border-top: 1px solid #D8D2C8; }
+    .bd-place-list > div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 16px; padding: 10px 0; border-bottom: 1px solid #D8D2C8; }
+    .bd-place-list dt { color: #6B655C; font-size: 0.7rem; font-weight: 650; }
+    .bd-place-list dd { margin: 0; color: #282521; font-size: 0.78rem; line-height: 1.45; }
+    .bd-place-list dd a { color: var(--accent); }
+    @media (max-width: 640px) { .bd-place-list > div { grid-template-columns: 1fr; gap: 2px; } }
+    .bd-copy-link { margin-left: auto; min-height: 44px; padding: 0 14px; border: 1px solid #8D877E; border-radius: 3px; background: #fff; color: #1B1A18; font: inherit; font-size: 0.76rem; font-weight: 650; cursor: pointer; }
+    .bd-copy-link:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    .bd-copy-status { margin-left: 10px; color: #6B655C; font-size: 0.7rem; }
+    .bd-footer { flex-wrap: wrap; gap: 8px; }
     .bd-impact-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 11px; }
     .bd-impact-heading h3 { margin: 0; color: #1B1A18; font-size: 1.02rem; font-weight: 650; }
     .bd-impact-heading p { max-width: 430px; margin: 0; color: #6B655C; font-size: 0.71rem; line-height: 1.45; text-align: right; }
@@ -804,26 +816,33 @@
         "operatingSystem": "Any (web)",
         "browserRequirements": "Requires JavaScript; WebGL is optional",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "description": "Estimates annual electricity production, dollar savings, and CO₂ avoided for an 800W balcony-solar system at an NYC address, using NREL PVWatts, NYC PLUTO building data, and a 3D shadow model of nearby buildings.",
+        "description": "Estimates annual electricity production, dollar savings, and CO₂ avoided for an 800W balcony-solar system at any US address, using NREL PVWatts for the location. New York City addresses also get NYC PLUTO building data and a 3D shadow model of nearby buildings; elsewhere the visitor describes what stands across from the balcony.",
         "featureList": [
-          "Address-level solar production estimates for NYC buildings",
-          "3D shadow model accounting for neighboring buildings within 200m",
+          "Balcony solar production estimates for any US address",
+          "3D shadow model of neighboring buildings within 200m for New York City addresses",
+          "Street-canyon shading from a described view for addresses outside New York City",
           "Hourly simulation across 8,760 hours per year via NREL PVWatts V8",
-          "Con Edison SC-1 rate-based savings",
-          "Payback period and 25-year lifetime value"
+          "Con Edison SC-1 marginal-rate savings in NYC; EIA state average residential prices elsewhere",
+          "Plug-in solar legal status by state, with sources and review dates",
+          "Payback period and 25-year lifetime value",
+          "Prefilled links: https://balco.nyc/?address=...&floor=...&facing=...&across=...&distance=..."
         ],
         "publisher": { "@id": "https://balco.nyc/#org" },
-        "areaServed": { "@type": "City", "name": "New York City" },
+        "areaServed": [
+          { "@type": "Country", "name": "United States" },
+          { "@type": "City", "name": "New York City" }
+        ],
         "inLanguage": "en-US",
         "isAccessibleForFree": true,
         "datePublished": "2026-05-17",
         "dateModified": "2026-09-04",
         "license": "https://github.com/lowellbw/balconyc",
         "citation": [
-          { "@type": "CreativeWork", "name": "NREL PVWatts V8", "url": "https://pvwatts.nrel.gov/" },
+          { "@type": "CreativeWork", "name": "NREL PVWatts V8", "url": "https://pvwatts.nlr.gov/" },
           { "@type": "CreativeWork", "name": "NYC PLUTO / MapPLUTO", "url": "https://www.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" },
           { "@type": "CreativeWork", "name": "Con Edison Schedule for Electricity Service (SC-1)", "url": "https://www.coned.com/en/accounts-billing/your-bill/about-con-edisons-rates" },
-          { "@type": "CreativeWork", "name": "EPA eGRID2023", "url": "https://www.epa.gov/egrid" }
+          { "@type": "CreativeWork", "name": "EPA eGRID2023", "url": "https://www.epa.gov/egrid" },
+          { "@type": "CreativeWork", "name": "EIA Electric Power Monthly, average price of electricity to residential customers by state", "url": "https://www.eia.gov/electricity/monthly/" }
         ]
       },
       {
@@ -832,12 +851,13 @@
         "name": "balco.nyc",
         "url": "https://balco.nyc/",
         "logo": "https://balco.nyc/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp",
-        "description": "An independent open tool for estimating NYC balcony solar potential. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL.",
+        "description": "An independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings. Not affiliated with the City of New York, Con Edison, NYSERDA, NREL, or any seller of solar equipment.",
         "sameAs": ["https://github.com/lowellbw/balconyc"],
         "foundingDate": "2026",
         "knowsAbout": [
           "Balcony solar", "Plug-in solar", "SUNNY Act", "New York City solar potential",
-          "Con Edison SC-1 tariff", "Photovoltaic shading analysis"
+          "Con Edison SC-1 tariff", "Photovoltaic shading analysis",
+          "Plug-in solar laws by US state", "US residential electricity prices"
         ]
       },
       {
@@ -851,7 +871,7 @@
             "name": "How much does balcony solar save in NYC?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "An 800 W balcony system in New York City produces roughly 400 to 900 kWh a year in this model, worth about $136 to $306 at the 2026 Con Edison marginal rate of 34¢/kWh. With the calculator's $1,200 mid-range cost assumption, modeled payback is about 3.8 to 8.1 years. Floor level, nearby buildings, and direction drive most of the range. These figures assume all generated power is used in the apartment."
+              "text": "An 800 W panel on a New York City railing makes up to about 604 kWh a year facing south with an open view, worth about $205 at the 2026 Con Edison marginal rate of 34¢/kWh, and pays back a $1,200 kit in about 5.5 years. East or west it makes about 434 kWh ($147), north about 167 ($57), and from a third floor facing a six-to-ten-story building across the street a south panel makes about 227 kWh ($77). These figures assume all generated power is used in the apartment."
             }
           },
           {
@@ -867,7 +887,15 @@
             "name": "Does it work for any apartment?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Not every apartment. Production depends on how much sky the balcony can see, its floor level and direction, and nearby buildings. In the calculator's model, a high-floor south-facing balcony can produce about three times as much as a low-floor north-facing one. The model includes buildings within 200 m, but it cannot assess the railing, outlet, or building rules."
+              "text": "Not every apartment. Production depends on how much sky the balcony can see, its floor level and direction, and nearby buildings. In the calculator's model, an open south-facing balcony produces more than three times what an open north-facing one does, and a low floor boxed in by the building opposite can lose more than half its output. The model includes buildings within 200 m, but it cannot assess the railing, outlet, or building rules."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this work outside New York City?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Enter any US address. In New York City the calculator builds a 3D model of your block from city building data. Everywhere else it runs NREL PVWatts for your exact location, models the building across from your balcony from your description, values the savings at your state's average residential electricity price from the EIA, and shows what we know about your state's plug-in solar law. In most states a plug-in system still needs the utility's approval."
             }
           },
           {
@@ -883,7 +911,7 @@
             "name": "How accurate is this estimate?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Treat the result as a planning estimate. We use a modeled uncertainty range of about 15%, but no metered NYC balcony systems have been checked against it yet. The model captures shadows from nearby buildings, not smaller obstructions such as an AC unit or tree, and it cannot know the panel's exact angle."
+              "text": "Treat the result as a planning estimate. In New York City, where we model your block in 3D, we use a modeled uncertainty range of about 15%, but no metered NYC balcony systems have been checked against it yet. The model captures shadows from nearby buildings, not smaller obstructions such as an AC unit or tree, and it cannot know the panel's exact angle. Outside NYC the shading comes from your description, so the range is wider."
             }
           },
           {
@@ -891,7 +919,7 @@
             "name": "How is this calculated?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "We run NREL PVWatts hour by hour and adjust the result with a 3D model built from NYC building data. Savings use Con Edison SC-1 rates; emissions use EPA eGRID."
+              "text": "We run NREL PVWatts hour by hour for your location. In New York City we adjust the result with a 3D model built from NYC building data; elsewhere we use a street model built from your description of what stands opposite. Savings use Con Edison SC-1 rates in NYC and your state's average residential price elsewhere; emissions use EPA eGRID for your region."
             }
           },
           {
@@ -907,7 +935,7 @@
             "name": "Why does the calculator use 34¢/kWh?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Savings use a 2026 Con Edison residential marginal rate of about 34¢/kWh. That includes supply, delivery, and surcharges, but not the fixed monthly charge, which solar does not reduce. Open Adjust assumptions to change the bill and rate-growth settings."
+              "text": "In New York City, savings use a 2026 Con Edison residential marginal rate of about 34¢/kWh. That includes supply, delivery, and surcharges, but not the fixed monthly charge, which solar does not reduce. Elsewhere the default is your state's average residential price. Open Adjust assumptions to enter the rate from your own bill."
             }
           }
         ]
@@ -921,7 +949,7 @@
 <!-- NAV -->
 <nav id="mainNav">
   <div class="container">
-    <a href="index.html" class="logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco.nyc" width="400" height="218" decoding="async"></a>
+    <a href="/" class="logo"><img src="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco.nyc" width="400" height="218" decoding="async"></a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#faq">FAQ</a>
@@ -954,10 +982,10 @@
   <div class="hero-layout">
     <div class="hero-content" id="heroContent">
       <h1 id="heroH1" data-default="How much could solar on your balcony save you?">How much could solar on your balcony save you?</h1>
-      <p>Enter an NYC address, then choose the wall and floor. You&rsquo;ll get an estimate of annual output, bill savings, and CO&#8322; avoided for an 800W system.</p>
+      <p>Enter any US address. In New York City you pin your wall and floor on a 3D model of the block; anywhere else you describe what stands across from your balcony. You&rsquo;ll get annual output, bill savings, and CO&#8322; avoided for an 800W system.</p>
       <div class="hero-input-wrap">
         <div class="hero-input-field">
-          <input type="text" class="hero-input ph-no-capture" id="addressInput" placeholder="Enter an NYC address" autocomplete="off" data-private>
+          <input type="text" class="hero-input ph-no-capture" id="addressInput" placeholder="Enter a US address" autocomplete="off" data-private>
           <div class="hero-input-spinner" id="heroSpinner"></div>
         </div>
         <button type="button" class="hero-input-submit" id="heroSubmit" aria-label="Calculate">Calculate &rarr;</button>
@@ -1073,7 +1101,7 @@
         <label for="manualFloor">Your floor</label>
         <input type="number" id="manualFloor" min="1" max="120" step="1" placeholder="e.g. 2" required>
       </div>
-      <div class="manual-field">
+      <div class="manual-field" data-mode="nyc">
         <label for="manualTotalFloors">Floors in the building</label>
         <input type="number" id="manualTotalFloors" min="1" max="120" step="1" placeholder="e.g. 3" required>
       </div>
@@ -1091,7 +1119,26 @@
         </select>
         <span class="manual-hint" id="manualDirectionHint"></span>
       </div>
-      <div class="manual-field">
+      <div class="manual-field" data-mode="us" hidden>
+        <label for="manualAcross">What stands across from your balcony?</label>
+        <select id="manualAcross">
+          <option value="none">Nothing, an open view</option>
+          <option value="low">1 to 2 floors, or trees</option>
+          <option value="mid" selected>3 to 5 floors</option>
+          <option value="tall">6 to 10 floors</option>
+          <option value="tower">11 floors or more</option>
+        </select>
+      </div>
+      <div class="manual-field" data-mode="us" hidden>
+        <label for="manualDistance">How far away is it?</label>
+        <select id="manualDistance">
+          <option value="alley">Very close: an alley, courtyard or light well</option>
+          <option value="street" selected>Across a street</option>
+          <option value="wide">Across a wide road or parking lot</option>
+          <option value="far">Far away</option>
+        </select>
+      </div>
+      <div class="manual-field" data-mode="nyc">
         <label for="manualShading">Surroundings</label>
         <select id="manualShading">
           <option value="open">Open, little around you</option>
@@ -1103,7 +1150,7 @@
     </div>
 
     <button type="button" class="manual-submit" id="manualSubmit">Calculate my estimate</button>
-    <p class="manual-hint">Manual details use NYC floor and density averages for shading, so this estimate is less precise than pinning your exact balcony in 3D.</p>
+    <p class="manual-hint" id="manualModeHint">Manual details use NYC floor and density averages for shading, so this estimate is less precise than pinning your exact balcony in 3D.</p>
   </div>
 </div>
 
@@ -1182,7 +1229,7 @@
           <section class="bd-section" aria-labelledby="productionHeading">
             <div class="bd-section-kicker">02 / Output</div>
             <h3 id="productionHeading">Production through the year <span aria-label="in kilowatt-hours">(kWh)</span></h3>
-            <p class="bd-section-lede">Seasonality for the floor and wall you pinned.</p>
+            <p class="bd-section-lede" id="productionLede">Seasonality for the floor and wall you pinned.</p>
             <div class="bd-chart-wrap">
               <div class="chart-container" id="monthlyChart" role="list" aria-label="Estimated monthly solar production"></div>
               <p class="bd-chart-note">Taller bars mark your strongest solar months.</p>
@@ -1196,6 +1243,18 @@
             </div>
           </section>
         </div>
+
+        <section class="bd-place-section" id="bdPlace" aria-labelledby="placeHeading" hidden>
+          <div class="bd-impact-heading">
+            <h3 id="placeHeading">Where you are</h3>
+            <p>The rules and prices this estimate assumes for your address.</p>
+          </div>
+          <dl class="bd-place-list">
+            <div><dt>Plug-in solar law</dt><dd id="placeLegal"></dd></div>
+            <div><dt>Electricity price</dt><dd id="placeRate"></dd></div>
+            <div><dt>Power you don&rsquo;t use</dt><dd id="placeExport">We assume surplus power earns nothing. If your state or utility credits exports, this estimate is conservative.</dd></div>
+          </dl>
+        </section>
 
         <section class="bd-impact-section" aria-labelledby="impactHeading">
           <div class="bd-impact-heading">
@@ -1218,7 +1277,7 @@
           </span>
           <span class="cust-toggle" aria-hidden="true">&darr;</span>
         </summary>
-        <p class="bd-customize-sub">Defaults reflect a typical 800W mid-tier kit on Con Edison SC-1. Prices reflect August 2026 retail.</p>
+        <p class="bd-customize-sub">Defaults reflect a typical 800W mid-tier kit on <span id="custRateBasis">Con Edison SC-1</span>. Kit prices are hardware-only planning benchmarks.</p>
 
         <div class="bd-cust-grid">
           <div class="bd-cust-field">
@@ -1262,7 +1321,7 @@
 
           <div class="bd-cust-field bd-cust-mode" id="custShadingMode" hidden>
             <span class="bd-cust-label">Surrounding shading</span>
-            <strong>Modeled from your pinned block</strong>
+            <strong id="custShadingModeTitle">Modeled from your pinned block</strong>
             <span>Recomputed automatically when you change the panel tilt.</span>
           </div>
 
@@ -1270,6 +1329,12 @@
             <label class="bd-cust-label" for="custMonthlyBill">Monthly electric bill</label>
             <input class="bd-cust-input" type="number" id="custMonthlyBill" min="20" max="800" step="10" value="140" inputmode="decimal" aria-describedby="custBillHint">
             <span class="bd-cust-hint" id="custBillHint">Enter an amount from $20 to $800.</span>
+          </div>
+
+          <div class="bd-cust-field">
+            <label class="bd-cust-label" for="custRate">Electricity rate (&cent;/kWh)</label>
+            <input class="bd-cust-input" type="number" id="custRate" min="5" max="100" step="0.1" placeholder="34" inputmode="decimal" aria-describedby="custRateHint">
+            <span class="bd-cust-hint" id="custRateHint">Leave blank to use the default. Your bill&rsquo;s per-kWh charges are the best number.</span>
           </div>
 
           <div class="bd-cust-field">
@@ -1291,6 +1356,8 @@
 
       <footer class="bd-footer">
         <a href="/methodology">See how this estimate is calculated</a>
+        <button type="button" class="bd-copy-link" id="copyEstimateLink">Copy a link to this estimate</button>
+        <span class="bd-copy-status" id="copyEstimateStatus" role="status" aria-live="polite"></span>
       </footer>
     </div>
   </div>
@@ -1300,8 +1367,8 @@
      explanation, where it illustrates rather than obscures. -->
 <section class="street-band">
   <picture>
-    <source srcset="Gemini_Generated_Image_d2ucutd2ucutd2uc.webp" type="image/webp">
-    <img src="Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg" alt="Solar panels clamped to the fire-escape balconies of a Brooklyn walk-up" width="1920" height="1047" loading="lazy" decoding="async">
+    <source srcset="/Gemini_Generated_Image_d2ucutd2ucutd2uc.webp" type="image/webp">
+    <img src="/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg" alt="Solar panels clamped to the fire-escape balconies of a Brooklyn walk-up" width="1920" height="1047" loading="lazy" decoding="async">
   </picture>
   <p class="street-caption">Illustration only. Never mount panels on a fire escape or block another exit route.</p>
 </section>
@@ -1317,8 +1384,8 @@
     <div class="explainer-grid">
       <div class="explainer-image">
         <picture>
-          <source srcset="assets/yuma-solar-oZ4IhVjyFwk-unsplash.webp" type="image/webp">
-          <img src="assets/yuma-solar-oZ4IhVjyFwk-unsplash.jpg" alt="Solar panel on an apartment balcony" width="1200" height="800" loading="lazy" decoding="async">
+          <source srcset="/assets/yuma-solar-oZ4IhVjyFwk-unsplash.webp" type="image/webp">
+          <img src="/assets/yuma-solar-oZ4IhVjyFwk-unsplash.jpg" alt="Solar panel on an apartment balcony" width="1200" height="800" loading="lazy" decoding="async">
         </picture>
       </div>
       <div class="explainer-cards">
@@ -1353,20 +1420,21 @@
   <div class="container">
     <span class="section-eyebrow">Savings</span>
     <h2>How much does balcony solar save in NYC?</h2>
-    <p class="section-lede">An 800&nbsp;W balcony system produces roughly <strong>400 to 900 kilowatt-hours a year</strong> in this model. At the 2026 Con&nbsp;Edison marginal rate, that is <strong>$136 to $306</strong> in first-year savings if the apartment uses all of the power as it is produced.</p>
+    <p class="section-lede">An 800&nbsp;W panel on a New York City railing makes up to about <strong>600 kilowatt-hours a year</strong> facing south with nothing in the way, worth about <strong>$205</strong> in the first year at the 2026 Con&nbsp;Edison marginal rate if the apartment uses all of it. East or west it makes about 430&nbsp;kWh, north about 170, and a building across the street can take half or more of any of them.</p>
 
     <div class="savings-table-wrap">
       <table class="savings-table">
-        <thead><tr><th>Annual output</th><th>Year-one saving</th><th>Payback, $1,200 kit</th><th>25-year net</th></tr></thead>
+        <thead><tr><th>An 800&nbsp;W NYC balcony</th><th>Annual output</th><th>Year-one saving</th><th>Payback, $1,200 kit</th><th>25-year net</th></tr></thead>
         <tbody>
-          <tr><td>400 kWh <small>poorly sited</small></td><td>$136</td><td>8.1 years</td><td>+$3,435</td></tr>
-          <tr><td>550 kWh</td><td>$187</td><td>6.0 years</td><td>+$5,175</td></tr>
-          <tr><td>700 kWh</td><td>$238</td><td>4.8 years</td><td>+$6,915</td></tr>
-          <tr><td>900 kWh <small>well sited</small></td><td>$306</td><td>3.8 years</td><td>+$9,235</td></tr>
+          <tr><td>South, open view, 35&deg; bracket</td><td>988 kWh</td><td>$336</td><td>3.5 years</td><td>+$10,252</td></tr>
+          <tr><td>South, open view, on the railing</td><td>604 kWh</td><td>$205</td><td>5.5 years</td><td>+$5,801</td></tr>
+          <tr><td>East or west, open view</td><td>434 kWh</td><td>$147</td><td>7.5 years</td><td>+$3,831</td></tr>
+          <tr><td>South, 3rd floor, 6&ndash;10 floors across a street</td><td>227 kWh</td><td>$77</td><td>13.3 years</td><td>+$1,431</td></tr>
+          <tr><td>North, open view</td><td>167 kWh</td><td>$57</td><td>17.2 years</td><td>+$736</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="savings-note">Payback assumes 3% annual rate growth and 0.5% panel degradation. It is a best-case estimate because exported power earns no credit under the SUNNY Act. Actual savings depend on how much electricity the apartment uses while the panels are generating. <a href="/balcony-solar-cost">See the full calculation</a>.</p>
+    <p class="savings-note">balco.nyc&rsquo;s PVWatts runs for a point at City Hall, with a 5% railing loss and its shade model for the building opposite. Payback assumes 3% annual rate growth and 0.5% panel degradation. Every figure is a ceiling: exported power earns no credit under the SUNNY Act, so savings depend on how much the apartment uses while the panel is generating. <a href="/balcony-solar-cost">See the full calculation</a>.</p>
 
     <div class="savings-points">
       <div>
@@ -1374,12 +1442,12 @@
         <p>Con&nbsp;Edison&rsquo;s 2026 marginal rate includes supply, delivery, and surcharges. It excludes the fixed monthly charge because solar cannot reduce it. <a href="/electricity-rate">See how the rate is calculated</a>.</p>
       </div>
       <div>
-        <h3>About 6&ndash;13% of annual electricity use</h3>
-        <p>A New York household uses about 6,850&nbsp;kWh a year on average. Producing 400&ndash;900&nbsp;kWh would cover roughly <strong>6% to 13%</strong>; the share of the bill actually avoided also depends on when the apartment uses power.</p>
+        <h3>At most about 9% of a year&rsquo;s electricity</h3>
+        <p>A New York household uses about 6,850&nbsp;kWh a year on average. An open south-facing railing covers about <strong>9%</strong> of that, an east or west one about 6%, and a shaded one 3% or less; the share of the bill actually avoided also depends on when the apartment uses power.</p>
       </div>
       <div>
-        <h3>Floor level and nearby buildings matter most</h3>
-        <p>Sky view and nearby shadows create most of the roughly <strong>3&times;</strong> range between the lowest and highest estimates. Direction matters too. <a href="/balcony-sunlight">See what affects balcony sunlight</a>.</p>
+        <h3>The building across the street matters most</h3>
+        <p>From the third floor, a six-to-ten-story building across a 20&nbsp;m street cuts a south panel from about 604 to 227&nbsp;kWh; eight floors up, the same building costs it only a few percent. Direction matters too. <a href="/balcony-sunlight">See what affects balcony sunlight</a>.</p>
       </div>
     </div>
   </div>
@@ -1394,14 +1462,15 @@
         <h2>Common questions</h2>
       </div>
       <div class="faq-list">
-      <details class="faq-item"><summary>How much does balcony solar save in NYC?<span class="faq-toggle">+</span></summary><p>An 800&nbsp;W balcony system in New York City produces roughly 400 to 900 kWh a year in this model, worth about $136 to $306 at the 2026 Con&nbsp;Edison marginal rate of 34&cent;/kWh. With the calculator&rsquo;s $1,200 mid-range cost assumption, modeled payback is about 3.8 to 8.1 years. Floor level, nearby buildings, and direction drive most of the range. These figures assume all generated power is used in the apartment. <a href="#savings">See the full range &rarr;</a></p></details>
+      <details class="faq-item"><summary>How much does balcony solar save in NYC?<span class="faq-toggle">+</span></summary><p>An 800&nbsp;W panel on a New York City railing makes up to about 604 kWh a year facing south with an open view, worth about $205 at the 2026 Con&nbsp;Edison marginal rate of 34&cent;/kWh, and pays back a $1,200 kit in about 5.5 years. East or west it makes about 434 kWh ($147), north about 167 ($57), and from a third floor facing a six-to-ten-story building across the street a south panel makes about 227 kWh ($77). These figures assume all generated power is used in the apartment. <a href="#savings">See the full range &rarr;</a></p></details>
       <details class="faq-item"><summary>Is plug-in solar legal in NYC?<span class="faq-toggle">+</span></summary><p>Not yet. New York still requires utility approval for plug-in solar. The <a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">SUNNY Act (S8512C/A9111C)</a> has passed the State Senate and Assembly and is awaiting the Governor&rsquo;s signature. If signed, it would remove that utility requirement 90 days later. It would grant no right to install, so renters and co-op owners may still need landlord or board approval. <a href="/sunny-act">Read the current status and limits &rarr;</a></p></details>
-      <details class="faq-item"><summary>Does it work for any apartment?<span class="faq-toggle">+</span></summary><p>Not every apartment. Production depends on how much sky the balcony can see, its floor level and direction, and nearby buildings. In the calculator&rsquo;s model, a high-floor south-facing balcony can produce about three times as much as a low-floor north-facing one. The model includes buildings within 200 m, but it cannot assess the railing, outlet, or building rules.</p></details>
+      <details class="faq-item"><summary>Does it work for any apartment?<span class="faq-toggle">+</span></summary><p>Not every apartment. Production depends on how much sky the balcony can see, its floor level and direction, and nearby buildings. In the calculator&rsquo;s model, an open south-facing balcony produces more than three times what an open north-facing one does, and a low floor boxed in by the building opposite can lose more than half its output. The model includes buildings within 200 m, but it cannot assess the railing, outlet, or building rules.</p></details>
+      <details class="faq-item"><summary>Does this work outside New York City?<span class="faq-toggle">+</span></summary><p>Yes. Enter any US address. In New York City the calculator builds a 3D model of your block from city building data. Everywhere else it runs NREL PVWatts for your exact location, models the building across from your balcony from your description, values the savings at your state&rsquo;s average residential electricity price from the EIA, and shows what we know about your state&rsquo;s plug-in solar law. In most states a plug-in system still needs the utility&rsquo;s approval.</p></details>
       <details class="faq-item"><summary>Where does balcony solar plug in?<span class="faq-toggle">+</span></summary><p>A microinverter converts the panels&rsquo; DC output to 120V AC. A certified kit should plug directly into a properly rated, weather-protected outlet using the manufacturer&rsquo;s cord &mdash; never an extension cord, power strip, or adapter. If the balcony has no suitable outlet, adding one may require a licensed electrician and building approval.</p></details>
-      <details class="faq-item"><summary>How accurate is this estimate?<span class="faq-toggle">+</span></summary><p>Treat the result as a planning estimate. We use a modeled uncertainty range of about 15%, but no metered NYC balcony systems have been checked against it yet. The model captures shadows from nearby buildings, not smaller obstructions such as an AC unit or tree, and it cannot know the panel&rsquo;s exact angle.</p></details>
-      <details class="faq-item"><summary>How is this calculated?<span class="faq-toggle">+</span></summary><p>We run NREL PVWatts hour by hour and adjust the result with a 3D model built from NYC building data. Savings use Con Edison SC-1 rates; emissions use EPA eGRID. <a href="/methodology">Read the full methodology &rarr;</a></p></details>
+      <details class="faq-item"><summary>How accurate is this estimate?<span class="faq-toggle">+</span></summary><p>Treat the result as a planning estimate. In New York City, where we model your block in 3D, we use a modeled uncertainty range of about 15%, but no metered NYC balcony systems have been checked against it yet. The model captures shadows from nearby buildings, not smaller obstructions such as an AC unit or tree, and it cannot know the panel&rsquo;s exact angle. Outside NYC the shading comes from your description, so the range is wider.</p></details>
+      <details class="faq-item"><summary>How is this calculated?<span class="faq-toggle">+</span></summary><p>We run NREL PVWatts hour by hour for your location. In New York City we adjust the result with a 3D model built from NYC building data; elsewhere we use a street model built from your description of what stands opposite. Savings use Con Edison SC-1 rates in NYC and your state&rsquo;s average residential price elsewhere; emissions use EPA eGRID for your region. <a href="/methodology">Read the full methodology &rarr;</a></p></details>
       <details class="faq-item"><summary>What does a kit cost?<span class="faq-toggle">+</span></summary><p><a href="https://www.brightsaver.org/balcony-solar-kits" target="_blank" rel="noopener">Bright Saver</a> is a useful price benchmark, but not a New York option yet. As of September 2026, its 360W kit is $414.17 for members, plus $29 per year, or $699 for nonmembers. It says it cannot ship the kit to New York because no kit yet has the required whole-system certification. For an 800W system, this calculator uses hardware-only assumptions of $850, $1,200, or $1,600. Open Adjust assumptions to change the tier.</p></details>
-      <details class="faq-item"><summary>Why does the calculator use 34&cent;/kWh?<span class="faq-toggle">+</span></summary><p>Savings use a 2026 Con Edison residential marginal rate of about 34&cent;/kWh. That includes supply, delivery, and surcharges, but not the fixed monthly charge, which solar does not reduce. Open Adjust assumptions to change the bill and rate-growth settings. <a href="/electricity-rate">See how the rate is calculated &rarr;</a></p></details>
+      <details class="faq-item"><summary>Why does the calculator use 34&cent;/kWh?<span class="faq-toggle">+</span></summary><p>In New York City, savings use a 2026 Con Edison residential marginal rate of about 34&cent;/kWh. That includes supply, delivery, and surcharges, but not the fixed monthly charge, which solar does not reduce. Elsewhere the default is your state&rsquo;s average residential price. Open Adjust assumptions to enter the rate from your own bill. <a href="/electricity-rate">See how the rate is calculated &rarr;</a></p></details>
       </div>
     </div>
   </div>
@@ -1412,8 +1481,21 @@
   <div class="container">
     <span class="section-eyebrow">Guides</span>
     <h2>Sources and practical guides</h2>
-    <p class="guides-lede">Details on New York law, sunlight, installation, kit prices, and the electricity rate used in the estimate.</p>
+    <p class="guides-lede">How balcony solar output is estimated, what it saves, and the rules in New York and every other state.</p>
+    <!-- shell:guides -->
     <div class="guides-grid">
+      <a class="guide-card" href="/balcony-solar-laws-compared">
+        <h3>Which states allow plug-in solar, and on what terms?</h3>
+        <p>Nine signed laws and two bills, compared on caps, certification, exports, landlords and HOAs.</p>
+      </a>
+      <a class="guide-card" href="/calculate-balcony-solar-output">
+        <h3>How do I calculate my balcony’s solar output and savings?</h3>
+        <p>The six-step chain behind every estimate, worked for Phoenix, Chicago and New York City.</p>
+      </a>
+      <a class="guide-card" href="/is-balcony-solar-worth-it">
+        <h3>Is balcony solar worth it?</h3>
+        <p>Payback in all 50 states and DC, and why the price of power matters more than the sun.</p>
+      </a>
       <a class="guide-card" href="/sunny-act">
         <h3>Is plug-in solar legal in New York?</h3>
         <p>Current bill status, utility rules, and building permission.</p>
@@ -1422,31 +1504,33 @@
         <h3>What is balcony solar?</h3>
         <p>Panels, microinverters, the outlet, and the apartment circuit.</p>
       </a>
-      <a class="guide-card" href="/balcony-sunlight">
-        <h3>Does my balcony get enough sun?</h3>
-        <p>How direction, floor height, and nearby buildings affect output.</p>
+      <a class="guide-card" href="/800w-balcony-solar-output">
+        <h3>How much does an 800 W balcony system produce?</h3>
+        <p>Unshaded kWh a year for every state&#x27;s largest city, by direction and tilt.</p>
       </a>
-      <a class="guide-card" href="/install-balcony-solar">
-        <h3>How do I put a solar panel on my balcony?</h3>
-        <p>Building permission, outlet safety, mounting, and wind loads.</p>
+      <a class="guide-card" href="/balcony-solar-battery">
+        <h3>Does a battery make balcony solar pay?</h3>
+        <p>A 2 kWh battery adds $45-80 a year in NYC. Break-even prices, and the city&#x27;s 1 kWh storage threshold.</p>
+      </a>
+      <a class="guide-card" href="/balcony-solar-condo-hoa">
+        <h3>Can my condo, co-op or HOA ban balcony solar?</h3>
+        <p>Ten solar-access laws read against a railing panel: one covers it, two are unclear, seven do not.</p>
       </a>
       <a class="guide-card" href="/balcony-solar-cost">
         <h3>What does a balcony solar kit cost in NYC?</h3>
         <p>Current kit prices and payback at four output levels.</p>
       </a>
-      <a class="guide-card" href="/electricity-rate">
-        <h3>What does a kilowatt-hour actually cost in NYC?</h3>
-        <p>How supply, delivery, and surcharges add up to about 34&cent;/kWh.</p>
-      </a>
     </div>
+    <p class="guides-more"><a href="/guides">All guides &rarr;</a> &middot; <a href="/states">Plug-in solar rules by state &rarr;</a> &middot; <a href="/nyc">Balcony solar in New York City &rarr;</a></p>
+    <!-- /shell:guides -->
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <a href="#" class="footer-logo"><img src="Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
-    <p class="footer-disclaimer">balco.nyc is an independent calculator built from public building, weather, and electricity-rate data. It is not affiliated with the City of New York, Con Edison, NYSERDA, or NREL. Results are planning estimates with a modeled uncertainty range of about 15%. New York still requires utility approval for plug-in solar; the <a href="/sunny-act">SUNNY Act</a> has passed both chambers and awaits the Governor&rsquo;s signature. <a href="/methodology">Read the methodology &rarr;</a></p>
+    <a href="/" class="footer-logo"><img src="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
+    <p class="footer-disclaimer">balco.nyc is an independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings. It is not affiliated with the City of New York, Con Edison, NYSERDA, NREL, or any seller of solar equipment. NYC results are planning estimates with a modeled uncertainty range of about 15%. Plug-in solar rules vary by state. New York still requires utility approval; the <a href="/sunny-act">SUNNY Act</a> has passed both chambers and awaits the Governor&rsquo;s signature. <a href="/methodology">Read the methodology &rarr;</a></p>
     <p class="footer-meta">&copy; 2026</p>
   </div>
 </footer>
@@ -1455,11 +1539,13 @@
 <!-- The model itself is small and needed on first interaction. The 3D stack
      (Three.js + OrbitControls + scene code) is ~600KB and is only needed once
      an address resolves, so it is injected on demand by loadSceneStack(). -->
-<script src="js/analytics.js"></script>
-<script src="js/config.js"></script>
-<script src="js/solar-api.js"></script>
-<script src="js/sun-position.js"></script>
-<script src="js/city-hero.js?v=0441c4cf" defer></script>
+<script src="/js/analytics.js?v=61ea8fc9"></script>
+<script src="/js/config.js?v=64f53255"></script>
+<script src="/js/solar-api.js?v=032fc01e"></script>
+<script src="/js/sun-position.js?v=4c568613"></script>
+<script src="/js/regions.js?v=83d7484e"></script>
+<script src="/js/calc-params.js?v=3b7fa934"></script>
+<script src="/js/city-hero.js?v=0441c4cf" defer></script>
 <script>
 // ============================================================
 // CALCULATOR 4 — Click-to-Select Balcony + Sun Animation Reveal
@@ -1477,6 +1563,19 @@ let sceneRunToken = 0;
 let estimateRunToken = 0;
 let breakdownReturnFocus = null;
 let breakdownInertedElements = [];
+// Where the current address is: Regions.nycProfile() or Regions.usProfile().
+let currentRegion = null;
+// How the visitor arrived: 'direct', 'url_params' (a prefilled link, which
+// is how an AI assistant hands someone an estimate), or a referring host.
+let entrySource = 'direct';
+// Calculator inputs from a prefilled link, consumed once the address resolves.
+let pendingParams = null;
+
+function escapeHtml(text) {
+  return String(text == null ? '' : text).replace(/[&<>"']/g, function(c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+  });
+}
 
 // Default customizable assumptions (mirrors the modal's initial .active states)
 const CUSTOMIZE_DEFAULTS = {
@@ -1485,9 +1584,12 @@ const CUSTOMIZE_DEFAULTS = {
   costTier: 'mid',
   shading: 'some',
   // ~350 kWh/mo (the NYC apartment average quoted in the breakdown) at the
-  // $0.34 marginal rate plus the ~$20 fixed customer charge.
+  // $0.34 marginal rate plus the $21 fixed customer charge.
   monthlyBill: 140,
   escalationPreset: 'mid',
+  // null = the region's own rate (Con Ed marginal in NYC, the state average
+  // elsewhere). A number is cents per kWh typed by the visitor.
+  rateCents: null,
 };
 
 function readCustomizeInputs() {
@@ -1506,6 +1608,11 @@ function readCustomizeInputs() {
   if (billEl && billEl.value) {
     const v = Number(billEl.value);
     if (Number.isFinite(v) && v > 0) out.monthlyBill = v;
+  }
+  const rateEl = document.getElementById('custRate');
+  if (rateEl && rateEl.value) {
+    const r = Number(rateEl.value);
+    if (Number.isFinite(r) && r > 0) out.rateCents = r;
   }
   return out;
 }
@@ -1527,6 +1634,11 @@ function setCustomizeInputs(values) {
     billEl.value = values.monthlyBill;
     billEl.removeAttribute('aria-invalid');
   }
+  const rateEl = document.getElementById('custRate');
+  if (rateEl) {
+    rateEl.value = values.rateCents || '';
+    rateEl.removeAttribute('aria-invalid');
+  }
 }
 
 function setCustomizeStatus(message, isError) {
@@ -1545,8 +1657,29 @@ function validateCustomizeInputs() {
   if (!valid) {
     setCustomizeStatus('Enter a monthly electric bill from $20 to $800.', true);
     billEl.focus();
+    return false;
+  }
+  const rateEl = document.getElementById('custRate');
+  if (rateEl && rateEl.value !== '') {
+    const rate = Number(rateEl.value);
+    const rateValid = Number.isFinite(rate) && rate >= 5 && rate <= 100;
+    rateEl.setAttribute('aria-invalid', String(!rateValid));
+    if (!rateValid) {
+      setCustomizeStatus('Enter an electricity rate from 5 to 100 cents per kWh, or leave it blank.', true);
+      rateEl.focus();
+      return false;
+    }
   }
   return valid;
+}
+
+/** Customize defaults for the current region: its typical bill, no rate override. */
+function regionDefaults() {
+  const d = Object.assign({}, CUSTOMIZE_DEFAULTS);
+  if (currentRegion && currentRegion.defaultMonthlyBill) {
+    d.monthlyBill = Math.min(800, Math.max(20, currentRegion.defaultMonthlyBill));
+  }
+  return d;
 }
 
 document.addEventListener('click', function(e) {
@@ -1566,7 +1699,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const resetBtn = document.getElementById('custResetBtn');
   if (recalcBtn) recalcBtn.addEventListener('click', recalculateFromCustomize);
   if (resetBtn) resetBtn.addEventListener('click', function() {
-    setCustomizeInputs(CUSTOMIZE_DEFAULTS);
+    setCustomizeInputs(regionDefaults());
     setCustomizeStatus('Defaults restored. Updating your estimate.');
     recalculateFromCustomize();
   });
@@ -1665,7 +1798,9 @@ async function recalculateFromCustomize() {
   // itself is geometry-only and is cached inside ShadowModel.
   let shadeProfile = lastShadeProfile;
   if (shadeProfile && typeof ShadowModel !== 'undefined' && ShadowModel.initialized) {
+    const source = shadeProfile.source;
     shadeProfile = ShadowModel.computeAnnualShadeProfile(custom.tilt);
+    shadeProfile.source = source;
     lastShadeProfile = shadeProfile;
   }
 
@@ -1674,6 +1809,8 @@ async function recalculateFromCustomize() {
     floor: selectedFloor,
     totalFloors: totalFloors,
     shadeProfile: shadeProfile,
+    region: currentRegion,
+    surroundings: lastFormInputs && lastFormInputs.surroundings,
   }, custom);
   try {
     const result = await SolarAPI.calculateEstimate(formInputs);
@@ -1684,7 +1821,9 @@ async function recalculateFromCustomize() {
   } catch (err) {
     if (runToken === estimateRunToken) {
       console.warn('[Calc] Recalculation failed:', err);
-      setCustomizeStatus('We could not update the estimate. Check your connection and try again.', true);
+      setCustomizeStatus(err && err.code === 'PVWATTS_UNAVAILABLE'
+        ? 'The NREL solar simulation is not answering right now. Wait a minute and try again.'
+        : 'We could not update the estimate. Check your connection and try again.', true);
     }
   } finally {
     if (runToken === estimateRunToken) {
@@ -1701,11 +1840,14 @@ async function recalculateFromCustomize() {
 // Three.js, OrbitControls and the scene modules total ~600KB and are useless
 // until an address resolves, so they are fetched on demand rather than
 // blocking first paint. Supabase rides along since logging is fire-and-forget.
+// Local scripts carry a ?v= content hash (tools/stamp_scripts.py) so a deploy
+// never pairs a fresh page with a cached older module for ten minutes.
+const SHADOW_MODEL_SRC = '/js/3d-shadow-model.js?v=c3b0d070';
 const SCENE_SCRIPTS = [
   'https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js',
   'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js',
-  'js/3d-scene.js',
-  'js/3d-shadow-model.js',
+  '/js/3d-scene.js?v=37e30b68',
+  SHADOW_MODEL_SRC,
 ];
 const ANALYTICS_SCRIPT = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
 
@@ -1774,21 +1916,47 @@ function logEstimate(result, formInputs) {
   if (window.balcoTrack) {
     window.balcoTrack('estimate_complete', {
       annual_kwh: Math.round(result.annualKwh),
-      used_pvwatts: !!result.usedPVWatts
+      used_pvwatts: !!result.usedPVWatts,
+      mode: result.mode || 'nyc',
+      entry: entrySource
     });
   }
+  const isUS = result.mode === 'us';
+  // Outside NYC nothing finer than state and ZIP3 is kept: the address
+  // adds nothing the model needs and is personal data held for no reason.
+  const baseRow = {
+    address: isUS ? null : SolarState.address,
+    lat: isUS ? null : SolarState.lat,
+    lon: isUS ? null : SolarState.lon,
+    azimuth: formInputs.azimuth, tilt: formInputs.tilt,
+    system_watts: formInputs.systemWatts, floor_level: formInputs.floor,
+    total_floors: formInputs.totalFloors, shading: formInputs.shading,
+    annual_kwh: Math.round(result.annualKwh * 10) / 10,
+    annual_savings: Math.round(result.annualSavings * 100) / 100,
+    shade_factor: result.shadeFactor, used_pvwatts: result.usedPVWatts,
+    data_sources: result.dataSources,
+  };
+  const zip = Regions.zip(SolarState.addressComponents);
+  const fullRow = Object.assign({}, baseRow, {
+    mode: formInputs.shadeProfile && formInputs.shadeProfile.source === '3d' ? 'nyc_3d'
+      : (isUS ? 'us_described' : 'nyc_manual'),
+    state_code: currentRegion ? currentRegion.stateCode : null,
+    zip3: zip ? zip.slice(0, 3) : null,
+    electricity_rate: result.electricityRate,
+    rate_source: result.rateSource,
+    obstruction: formInputs.surroundings || null,
+    entry_source: entrySource,
+    calculator_version: '6',
+  });
   initSupabase().then(function() {
     if (!supabaseClient) return;
-    return supabaseClient.from('estimates').insert({
-      address: SolarState.address, lat: SolarState.lat, lon: SolarState.lon,
-      azimuth: formInputs.azimuth, tilt: formInputs.tilt,
-      system_watts: formInputs.systemWatts, floor_level: formInputs.floor,
-      total_floors: formInputs.totalFloors, shading: formInputs.shading,
-      annual_kwh: Math.round(result.annualKwh * 10) / 10,
-      annual_savings: Math.round(result.annualSavings * 100) / 100,
-      shade_factor: result.shadeFactor, used_pvwatts: result.usedPVWatts,
-      data_sources: result.dataSources,
-      calculator_version: '5',
+    return supabaseClient.from('estimates').insert(fullRow).then(function(res) {
+      // Until the region columns are migrated, PostgREST rejects the whole
+      // row. Fall back to the columns every version has rather than lose it.
+      if (res && res.error && /column/i.test(res.error.message || '')) {
+        return supabaseClient.from('estimates').insert(Object.assign({}, baseRow, { calculator_version: '6-legacy' }));
+      }
+      return res;
     }).then(function(res) {
       if (res && res.error) console.warn('[Calc] Estimate logging failed:', res.error.message);
     });
@@ -1805,6 +1973,7 @@ window.addEventListener('scroll', function() {
 // Google Places
 function initGooglePlaces() {
   SolarAPI.initAutocomplete(document.getElementById('addressInput'), onPlaceSelected);
+  window.dispatchEvent(new Event('balco:mapsready'));
 }
 window.initGooglePlaces = initGooglePlaces;
 
@@ -1841,13 +2010,9 @@ async function submitTypedAddress() {
   spinner.classList.add('active');
 
   try {
-    const bounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(SolarConfig.NYC_BOUNDS.south, SolarConfig.NYC_BOUNDS.west),
-      new google.maps.LatLng(SolarConfig.NYC_BOUNDS.north, SolarConfig.NYC_BOUNDS.east)
-    );
     const geocoder = new google.maps.Geocoder();
     const result = await new Promise(function(resolve, reject) {
-      geocoder.geocode({ address: query, bounds: bounds, componentRestrictions: { country: 'us' } },
+      geocoder.geocode({ address: query, componentRestrictions: { country: 'us' } },
         function(results, status) {
           if (status === 'OK' && results && results.length) resolve(results[0]);
           else reject(new Error('Geocode failed: ' + status));
@@ -1855,18 +2020,6 @@ async function submitTypedAddress() {
     });
 
     const loc = result.geometry.location;
-    if (!bounds.contains(loc)) {
-      spinner.classList.remove('active');
-      submitInFlight = false;
-      addressLookupInFlight = false;
-      setAddressLookupLocked(false);
-      input.setCustomValidity('');
-      input.value = query;
-      input.focus();
-      console.warn('[Calc] Address is outside NYC');
-      return;
-    }
-
     SolarState.lat = loc.lat();
     SolarState.lon = loc.lng();
     SolarState.address = result.formatted_address;
@@ -1906,7 +2059,16 @@ async function onPlaceSelected(place, lookupReserved) {
   }
 
   try {
-    await loadSelectedAddress(place);
+    // The five boroughs get the building-data and 3D path. Every other US
+    // address gets PVWatts for its location plus described surroundings.
+    const nyc = Regions.isNYC(SolarState.addressComponents);
+    SunPosition.setLocation(nyc ? null : { lat: SolarState.lat, lon: SolarState.lon });
+    if (nyc) {
+      currentRegion = Regions.nycProfile();
+      await loadSelectedAddress(place);
+    } else {
+      await loadUSAddress();
+    }
   } catch (err) {
     console.warn('[Calc] Building lookup failed:', err.message);
     document.getElementById('heroSpinner').classList.remove('active');
@@ -1956,23 +2118,24 @@ async function loadSelectedAddress(place) {
   if (infoHtml) { infoEl.innerHTML = infoHtml; infoEl.classList.add('visible'); }
 
   // Swap left panel: hide input, show CTAs immediately
-  document.getElementById('heroSection').classList.add('has-scene');
-  window.dispatchEvent(new Event('balco:sceneopen'));
-  document.querySelector('.hero-input-wrap').style.display = 'none';
-  document.getElementById('heroBuildingInfo').style.display = 'none';
-  document.querySelector('#heroContent > p').style.display = 'none';
   var addrShort = SolarState.address ? SolarState.address.split(',')[0] : '';
-  document.getElementById('hprSummary').innerHTML =
-    '<strong>' + addrShort + '</strong>' +
+  enterResultLayout(
+    '<strong>' + escapeHtml(addrShort) + '</strong>' +
     (floorCountLabel ? ' &middot; ' + floorCountLabel : '') +
-    (SolarState.heightroof ? ' &middot; ' + Math.round(SolarState.heightroof) + ' ft' : '');
-  document.getElementById('heroPostResults').classList.add('visible');
+    (SolarState.heightroof ? ' &middot; ' + Math.round(SolarState.heightroof) + ' ft' : ''));
 
   // The 3D path needs a building footprint, a working WebGL context and the
   // scene modules. Any of those missing and we fall back to the manual form
   // rather than stranding the visitor in an empty viewport.
   const can3D = stackLoaded && !!SolarState.footprintCoords &&
     Number.isFinite(totalFloors) && totalFloors > 0 && typeof THREE !== 'undefined';
+
+  // A prefilled link's floor and direction seed the manual form; its tilt,
+  // size, bill and rate apply to the 3D path too. Auto-pinning the 3D model
+  // from a link is not supported yet, so an NYC link still asks for the pin.
+  const params = pendingParams;
+  pendingParams = null;
+  if (params) prefillManualPanel(params);
 
   if (!can3D) {
     console.log('[Calc] Falling back to manual entry (footprint/WebGL unavailable)');
@@ -1991,6 +2154,76 @@ async function loadSelectedAddress(place) {
   setTimeout(function() { initScene(); }, 400);
 }
 
+/** Collapse the hero into its post-address state with a one-line summary. */
+function enterResultLayout(summaryHtml) {
+  document.getElementById('heroSection').classList.add('has-scene');
+  window.dispatchEvent(new Event('balco:sceneopen'));
+  document.querySelector('.hero-input-wrap').style.display = 'none';
+  document.getElementById('heroBuildingInfo').style.display = 'none';
+  document.querySelector('#heroContent > p').style.display = 'none';
+  document.getElementById('hprSummary').innerHTML = summaryHtml;
+  document.getElementById('heroPostResults').classList.add('visible');
+}
+
+// --- ANYWHERE ELSE IN THE US ---
+// No PLUTO, no footprints, no 3D. The visitor describes what stands across
+// from the balcony; ShadowModel turns that into a street canyon, and the
+// state's price and plug-in solar law come from /data.
+async function loadUSAddress() {
+  const spinner = document.getElementById('heroSpinner');
+  spinner.classList.add('active');
+  const state = Regions.stateCode(SolarState.addressComponents);
+  let data = null;
+  try {
+    const loads = await Promise.all([Regions.loadData(), loadScript(SHADOW_MODEL_SRC)]);
+    data = loads[0];
+  } catch (err) {
+    console.warn('[Calc] Region data failed to load:', err.message);
+  }
+  spinner.classList.remove('active');
+
+  const profile = state && data ? Regions.usProfile(state, Regions.zip(SolarState.addressComponents), data) : null;
+  if (!profile || typeof ShadowModel === 'undefined') {
+    setAddressLookupLocked(false);
+    const input = document.getElementById('addressInput');
+    input.value = '';
+    input.placeholder = state
+      ? 'We could not load data for this address. Try again in a moment.'
+      : 'Enter a street address in one of the 50 states or DC';
+    input.focus();
+    return;
+  }
+  currentRegion = profile;
+  // Fetched now, used only if PVWatts does not answer.
+  Regions.loadFallback().then(function(fb) {
+    if (currentRegion === profile) profile.fallback = fb.states[state] || null;
+  }).catch(function() {});
+  setCustomizeInputs(regionDefaults());
+
+  var addrShort = SolarState.address ? SolarState.address.split(',')[0] : '';
+  enterResultLayout('<strong>' + escapeHtml(addrShort) + '</strong> &middot; ' + escapeHtml(profile.stateName.replace(/^the /, '')));
+
+  const params = pendingParams;
+  pendingParams = null;
+  if (params) prefillManualPanel(params);
+  showManualPanel('Outside New York City we do not have 3D building data, so tell us your floor, which way the balcony faces, and what stands across from it.');
+  if (params && CalcParams.isComplete(params)) runManualEstimate();
+}
+
+/** Put prefilled-link values into the manual panel. */
+function prefillManualPanel(params) {
+  if (params.floor != null) document.getElementById('manualFloor').value = params.floor;
+  if (params.facing != null) document.getElementById('manualDirection').value = String(params.facing);
+  if (params.across) document.getElementById('manualAcross').value = params.across;
+  if (params.distance) document.getElementById('manualDistance').value = params.distance;
+  const custom = regionDefaults();
+  if (params.tilt) custom.tilt = params.tilt;
+  if (params.watts) custom.systemWatts = params.watts;
+  if (params.bill) custom.monthlyBill = params.bill;
+  if (params.rate) custom.rateCents = params.rate;
+  setCustomizeInputs(custom);
+}
+
 // --- MANUAL ENTRY PATH ---
 // Keyboard-accessible, no WebGL, no footprint required. Also the only route
 // to a result for screen-reader users, since balcony selection is a click on
@@ -2000,6 +2233,24 @@ function showManualPanel(message) {
   if (!panel) return;
   const note = document.getElementById('manualNote');
   if (note) note.textContent = message || '';
+
+  const us = !!(currentRegion && currentRegion.mode === 'us');
+  panel.querySelectorAll('[data-mode]').forEach(function(field) {
+    field.hidden = field.getAttribute('data-mode') !== (us ? 'us' : 'nyc');
+  });
+  const modeHint = document.getElementById('manualModeHint');
+  if (modeHint) modeHint.textContent = us
+    ? 'Your description is turned into the skyline across from your balcony. Treat the result as an estimate: the building opposite is assumed to run the length of the street.'
+    : 'Manual details use NYC floor and density averages for shading, so this estimate is less precise than pinning your exact balcony in 3D.';
+  if (us) {
+    const direction = document.getElementById('manualDirectionHint');
+    if (direction) direction.textContent = '';
+    panel.classList.add('visible');
+    document.body.classList.add('scene-modal-open');
+    const floorField = document.getElementById('manualFloor');
+    if (floorField) floorField.focus();
+    return;
+  }
 
   // Seed the floor selector from PLUTO when we have it.
   const totalInput = document.getElementById('manualTotalFloors');
@@ -2032,16 +2283,22 @@ async function runManualEstimate() {
   const trigger = document.activeElement;
   const totalControl = document.getElementById('manualTotalFloors');
   const floorControl = document.getElementById('manualFloor');
-  const total = parseInt(totalControl.value, 10);
+  const us = !!(currentRegion && currentRegion.mode === 'us');
+  const total = us ? null : parseInt(totalControl.value, 10);
   const floor = parseInt(floorControl.value, 10);
   const note = document.getElementById('manualNote');
 
-  if (!Number.isInteger(total) || total < 1) {
+  if (us && (!Number.isInteger(floor) || floor < 1 || floor > 120)) {
+    if (note) note.textContent = 'Enter your floor, from 1 for the ground floor.';
+    floorControl.focus();
+    return;
+  }
+  if (!us && (!Number.isInteger(total) || total < 1)) {
     if (note) note.textContent = 'Enter the number of floors in your building.';
     totalControl.focus();
     return;
   }
-  if (!Number.isInteger(floor) || floor < 1 || floor > total) {
+  if (!us && (!Number.isInteger(floor) || floor < 1 || floor > total)) {
     if (note) note.textContent = 'Enter your floor between 1 and ' + total + '.';
     floorControl.focus();
     return;
@@ -2059,8 +2316,30 @@ async function runManualEstimate() {
     const custom = readCustomizeInputs();
     custom.shading = shading;
 
+    // Outside NYC the description becomes a horizon; ShadowModel then runs
+    // exactly as it does for a pinned NYC balcony.
+    let shadeProfile = null;
+    let surroundings = null;
+    if (us) {
+      const across = document.getElementById('manualAcross').value;
+      const distance = document.getElementById('manualDistance').value;
+      const heightM = Regions.balconyHeightM(floor);
+      surroundings = { across: across, distance: distance };
+      ShadowModel.initSynthetic({
+        azimuthDeg: azimuth, balconyHeightM: heightM, floor: floor,
+        horizonProfile: ShadowModel.synthesizeStreetCanyon({
+          facadeAzimuthDeg: azimuth, balconyHeightM: heightM,
+          obstructionHeightM: Regions.ACROSS[across].heightM,
+          distanceM: Regions.DISTANCE[distance].distanceM,
+        }),
+      });
+      shadeProfile = ShadowModel.computeAnnualShadeProfile(custom.tilt);
+      shadeProfile.source = 'described';
+    }
+
     const formInputs = Object.assign({
-      azimuth: azimuth, floor: floor, totalFloors: total, shadeProfile: null,
+      azimuth: azimuth, floor: floor, totalFloors: total, shadeProfile: shadeProfile,
+      region: currentRegion, surroundings: surroundings,
     }, custom);
 
     const result = await SolarAPI.calculateEstimate(formInputs);
@@ -2068,7 +2347,7 @@ async function runManualEstimate() {
     totalFloors = total;
     selectedFloor = floor;
     selectedAzimuth = azimuth;
-    lastShadeProfile = null;   // static shade factor path
+    lastShadeProfile = shadeProfile;   // null on the NYC static-shade path
     setCustomizeInputs(custom);
     lastFormInputs = formInputs;
     animationDone = true;
@@ -2092,7 +2371,9 @@ async function runManualEstimate() {
     if (runToken === estimateRunToken) {
       console.warn('[Calc] Manual estimate failed:', err);
       const note = document.getElementById('manualNote');
-      if (note) note.textContent = 'Something went wrong computing that estimate. Please try again.';
+      if (note) note.textContent = err && err.code === 'PVWATTS_UNAVAILABLE'
+        ? 'The NREL solar simulation is not answering right now. Wait a minute and press Calculate again.'
+        : 'Something went wrong computing that estimate. Please try again.';
     }
   } finally {
     if (runToken === estimateRunToken) {
@@ -2474,6 +2755,7 @@ async function runSunAnimation(runToken) {
 
   // Shade depends on the panel's tilt, so compute it for the selected mount.
   var shadeProfile = ShadowModel.computeAnnualShadeProfile(customInputs.tilt);
+  shadeProfile.source = '3d';
   console.log('[Calc] 3D shade factor:', shadeProfile.annualShadeFactor.toFixed(3));
 
   var formInputs = Object.assign({
@@ -2481,6 +2763,7 @@ async function runSunAnimation(runToken) {
     floor: selectedFloor,
     totalFloors: totalFloors,
     shadeProfile: shadeProfile,
+    region: currentRegion,
   }, customInputs);
   // Stash for recalculation
   lastShadeProfile = shadeProfile;
@@ -2574,10 +2857,14 @@ function updateEstimateBanner(r) {
   if (!banner || !quality) return;
   const notes = [];
 
-  if (!r.usedPVWatts) {
+  if (!r.usedPVWatts && r.fallbackCity) {
+    notes.push('PVWatts did not answer, so production is scaled from our published PVWatts run for ' + r.fallbackCity + ', the largest city in your state. Treat it as rough, and try again later for your exact location.');
+  } else if (!r.usedPVWatts) {
     notes.push('PVWatts was unavailable, so production uses our fallback model (about ±20%).');
   }
-  if (!r.shadeFactorFrom3D) {
+  if (r.mode === 'us') {
+    notes.push('Outside New York City, shading comes from your description of what stands opposite, and savings use your state\u2019s average electricity price. Enter the per-kWh rate from your bill under Adjust assumptions for a closer figure.');
+  } else if (!r.shadeFactorFrom3D) {
     notes.push('Shading uses NYC floor and density averages rather than surrounding geometry.');
   }
 
@@ -2630,7 +2917,9 @@ function setFloatingResultsVisible(visible) {
 }
 
 function showResults(r, inputs) {
-  r.shadeFactorFrom3D = !!(inputs && inputs.shadeProfile && inputs.shadeProfile.monthlyShadeFactors);
+  r.shadeFactorFrom3D = !!(inputs && inputs.shadeProfile && inputs.shadeProfile.monthlyShadeFactors &&
+    inputs.shadeProfile.source !== 'described');
+  const shadeDescribed = !!(inputs && inputs.shadeProfile && inputs.shadeProfile.source === 'described');
   updateEstimateBanner(r);
   const context = resultContext(inputs, r);
   const annualKwh = Math.round(r.annualKwh);
@@ -2642,7 +2931,7 @@ function showResults(r, inputs) {
   document.getElementById('rcKwh').textContent = annualKwh.toLocaleString() + ' kWh';
   document.getElementById('rcPayback').textContent = r.escalatedPayback < 25 ? r.escalatedPayback.toFixed(1) + ' yrs' : '25+ yrs';
   document.getElementById('rcOffset').textContent = offsetPct + '%';
-  document.getElementById('rcCo2').textContent = Math.round(r.co2Lbs) + ' lbs';
+  document.getElementById('rcCo2').textContent = r.co2Lbs != null ? Math.round(r.co2Lbs) + ' lbs' : '\u2014';
   document.getElementById('rcContext').textContent = context.address + ' \u00b7 ' + context.details;
 
   setFloatingResultsVisible(true);
@@ -2672,14 +2961,26 @@ function showResults(r, inputs) {
   var paybackYrs = r.escalatedPayback < 25 ? r.escalatedPayback.toFixed(1) + ' years' : '25+ years';
   document.getElementById('paybackYears').textContent = paybackYrs;
   document.getElementById('lifetimeSavings').textContent = '$' + Math.round(r.lifetimeSavings).toLocaleString();
-  document.getElementById('co2Offset').textContent = Math.round(r.co2Lbs).toLocaleString();
-  document.getElementById('treesEquiv').textContent = r.treesEquiv.toFixed(1);
-  document.getElementById('milesOffset').textContent = Math.round(r.milesOffset).toLocaleString();
+  document.getElementById('co2Offset').textContent = r.co2Lbs != null ? Math.round(r.co2Lbs).toLocaleString() : '\u2014';
+  document.getElementById('treesEquiv').textContent = r.treesEquiv != null ? r.treesEquiv.toFixed(1) : '\u2014';
+  document.getElementById('milesOffset').textContent = r.milesOffset != null ? Math.round(r.milesOffset).toLocaleString() : '\u2014';
 
   // A 3D shade profile supersedes the generic selector. Do not show a control
   // that cannot affect the result; manual estimates still expose it.
   document.getElementById('custShadingField').hidden = r.shadeFactorFrom3D;
   document.getElementById('custShadingMode').hidden = !r.shadeFactorFrom3D;
+  if (shadeDescribed) {
+    // A described skyline supersedes the generic selector just as a 3D one does.
+    const s = inputs.surroundings || {};
+    document.getElementById('custShadingField').hidden = true;
+    document.getElementById('custShadingMode').hidden = false;
+    document.getElementById('custShadingModeTitle').textContent = 'From your description: ' +
+      (Regions.ACROSS[s.across] ? Regions.ACROSS[s.across].label.toLowerCase() : 'your surroundings') +
+      (Regions.DISTANCE[s.distance] ? ', ' + Regions.DISTANCE[s.distance].label.toLowerCase() : '');
+  } else {
+    document.getElementById('custShadingModeTitle').textContent = 'Modeled from your pinned block';
+  }
+  renderPlace(r);
 
   // Payback bar
   var paybackPct = Math.min(100, (r.escalatedPayback / 25) * 100);
@@ -2694,6 +2995,75 @@ function showResults(r, inputs) {
 
   renderChart(r.monthlyKwh);
 }
+
+/** The "Where you are" block and the rate basis line in Adjust assumptions. */
+function renderPlace(r) {
+  const region = currentRegion || Regions.nycProfile();
+  const cents = (r.electricityRate * 100).toFixed(1).replace(/\.0$/, '');
+  const basis = document.getElementById('custRateBasis');
+  const rateInput = document.getElementById('custRate');
+  if (rateInput) rateInput.placeholder = (region.electricityRate * 100).toFixed(1).replace(/\.0$/, '');
+  if (basis) basis.textContent = region.mode === 'us'
+    ? region.stateName.replace(/^the /, '') + '\u2019s average residential electricity price'
+    : 'Con Edison SC-1';
+
+  const lede = document.getElementById('productionLede');
+  if (lede) lede.textContent = region.mode === 'us'
+    ? 'Seasonality for the floor and direction you described.'
+    : 'Seasonality for the floor and wall you pinned.';
+
+  const place = document.getElementById('bdPlace');
+  if (!place) return;
+  if (region.mode !== 'us') { place.hidden = true; return; }
+  place.hidden = false;
+
+  const legal = document.getElementById('placeLegal');
+  const entry = region.legal;
+  legal.textContent = Regions.legalCopy(entry, region.stateName) + ' ';
+  const source = entry && entry.sources && entry.sources[0];
+  if (source && /^https:\/\//.test(source.url)) {
+    const a = document.createElement('a');
+    a.href = source.url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = 'Source';
+    legal.appendChild(a);
+    legal.appendChild(document.createTextNode(entry.reviewed ? ', checked ' + entry.reviewed + '. ' : '. '));
+  }
+  legal.appendChild(document.createTextNode('Not legal advice.'));
+
+  document.getElementById('placeRate').textContent = r.rateSource === 'user'
+    ? cents + '\u00a2/kWh, the rate you entered.'
+    : cents + '\u00a2/kWh, ' + region.rateLabel + '. An average spreads fixed charges over every kWh, so it can differ from what a kWh you no longer buy saves, especially on tiered or time-of-use rates.';
+}
+
+/** Build a link that reopens this estimate. Addresses stay out of the URL bar until asked for. */
+function estimateLink() {
+  const f = lastFormInputs || {};
+  const s = f.surroundings || {};
+  return 'https://balco.nyc/?' + CalcParams.toQuery({
+    address: SolarState.address,
+    floor: f.floor,
+    facing: f.azimuth,
+    across: s.across,
+    distance: s.distance,
+    tilt: f.tilt,
+    watts: f.systemWatts,
+    bill: f.monthlyBill,
+    rate: f.rateCents,
+  });
+}
+
+document.getElementById('copyEstimateLink').addEventListener('click', function() {
+  const status = document.getElementById('copyEstimateStatus');
+  const link = estimateLink();
+  const done = function(ok) { status.textContent = ok ? 'Link copied.' : link; };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(link).then(function() { done(true); }, function() { done(false); });
+  } else {
+    done(false);
+  }
+});
 
 function renderChart(monthlyKwh) {
   var container = document.getElementById('monthlyChart');
@@ -2784,7 +3154,16 @@ function resetCalculator() {
   totalFloors = null;
   lastShadeProfile = null;
   lastFormInputs = null;
+  pendingParams = null;
+  currentRegion = null;
+  SunPosition.setLocation(null);
   setCustomizeInputs(CUSTOMIZE_DEFAULTS);
+  var place = document.getElementById('bdPlace');
+  if (place) place.hidden = true;
+  var copyStatus = document.getElementById('copyEstimateStatus');
+  if (copyStatus) copyStatus.textContent = '';
+  var addressField = document.getElementById('addressInput');
+  if (addressField) addressField.placeholder = 'Enter a US address';
   var custDetails = document.getElementById('bdCustomize');
   if (custDetails) custDetails.removeAttribute('open');
   SolarState.reset();
@@ -2932,6 +3311,44 @@ document.getElementById('addressInput').addEventListener('keydown', function(e) 
   // onPlaceSelected fires and submitTypedAddress becomes a no-op.
   setTimeout(function() { if (!SolarState.lat) submitTypedAddress(); }, 300);
 });
+
+// --- PREFILLED LINKS ---
+// https://balco.nyc/?address=...&floor=3&facing=south&across=mid&distance=street
+// opens straight onto an estimate. This is the link an AI assistant can hand
+// someone who asks what a balcony panel would make; llms.txt documents it.
+// The calculator's own parameters are read once and then removed from the
+// address bar, so an address does not stay in history or reach analytics.
+(function readCalculatorLink() {
+  const params = CalcParams.parse(window.location.search);
+  const query = new URLSearchParams(window.location.search);
+  const ref = document.referrer ? (function() {
+    try { return new URL(document.referrer).hostname.replace(/^www\./, ''); } catch (e) { return ''; }
+  })() : '';
+  if (params.address) entrySource = 'url_params';
+  else if (query.get('utm_source')) entrySource = query.get('utm_source').slice(0, 60);
+  else if (ref && ref !== 'balco.nyc' && ref !== window.location.hostname) entrySource = ref.slice(0, 60);
+
+  const own = CalcParams.KEYS.filter(function(k) { return query.has(k); });
+  if (own.length && window.history && history.replaceState) {
+    own.forEach(function(k) { query.delete(k); });
+    const rest = query.toString();
+    history.replaceState(null, '', window.location.pathname + (rest ? '?' + rest : '') + window.location.hash);
+  }
+  if (!params.address) return;
+
+  pendingParams = params;
+  const input = document.getElementById('addressInput');
+  input.value = params.address;
+  // Crawlers that run JavaScript would otherwise spend the Google and NREL
+  // quotas on every prefilled link they find. People get the estimate; bots
+  // get a filled-in form.
+  const bot = navigator.webdriver ||
+    /bot|crawl|spider|slurp|preview|fetch|headless|lighthouse/i.test(navigator.userAgent || '');
+  if (bot) return;
+  const start = function() { submitTypedAddress(); };
+  if (typeof google !== 'undefined' && google.maps && google.maps.Geocoder) start();
+  else window.addEventListener('balco:mapsready', start, { once: true });
+})();
 
 if (typeof google !== 'undefined' && google.maps) initGooglePlaces();
 </script>

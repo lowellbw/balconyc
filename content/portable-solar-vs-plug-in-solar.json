@@ -1,0 +1,167 @@
+{
+  "slug": "portable-solar-vs-plug-in-solar",
+  "title": "Portable power station with solar, or plug-in balcony solar? &middot; balco.nyc",
+  "og_title": "A power station with solar panels, or plug-in balcony solar? Energy, legality, blackouts and payback",
+  "breadcrumb": "Power station vs plug-in",
+  "cluster": "compare",
+  "pillar": false,
+  "card_title": "A power station with solar, or plug-in balcony solar?",
+  "card": "About half the usable energy, but no utility approval and power in a blackout.",
+  "llms": "how an off-grid solar power station compares with plug-in balcony solar: what each needs legally, what each does in a blackout, and, from balco.nyc's hourly PVWatts model, how much usable energy and what payback each gives in New York City, Maryland and Texas (604 vs 294 kWh a year in NYC for a 1 kWh station used after dark).",
+  "related": [
+    "window-solar-panels",
+    "balcony-solar-net-metering",
+    "balcony-solar-laws-compared",
+    "what-is-balcony-solar"
+  ],
+  "description": "A power station needs no utility approval and works in a blackout; plug-in solar gives about twice the usable energy. balco.nyc's numbers for three states.",
+  "eyebrow": "Off-grid vs plug-in",
+  "h1": "A portable power station with solar, or plug-in balcony solar?",
+  "lede": "On the numbers, plug-in solar wins. balco.nyc&rsquo;s hour-by-hour model of an 800&nbsp;W south-facing railing in New York City finds that a plug-in system can displace up to <strong>604&nbsp;kWh a year</strong>, about $205 at Con&nbsp;Edison&rsquo;s {{coned.rate_cents}}&cent;, while the same panels charging a 1&nbsp;kWh power station that you empty every night deliver about <strong>294&nbsp;kWh</strong> ($100), because the battery is full on 263 days of the year and the rest of the sun is wasted. What the power station buys instead is independence: it never connects to the grid, so there is nothing for the utility to approve, and it keeps working in a blackout, when a plug-in system switches itself off.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~9 minutes",
+  "tags": [
+    "604 vs 294&nbsp;kWh/yr in NYC",
+    "No utility approval off-grid",
+    "Only one works in a blackout"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "two-setups",
+      "toc": "Two setups that share only the panels",
+      "html": "        <section id=\"two-setups\">\n  <h2><span class=\"sec-num\">1</span>Two setups that share only the panels</h2>\n  <p>Both setups start with the same panels on the same railing. They differ in where the power goes next.</p>\n  <ul>\n    <li><strong>Plug-in, or grid-tied:</strong> panel &rarr; microinverter &rarr; wall outlet. The microinverter turns the panels&rsquo; direct current into alternating current synchronized with the grid and feeds it into the apartment&rsquo;s wiring, where whatever is switched on uses it first. What the apartment is not using at that moment flows out to the grid, <a href=\"/balcony-solar-net-metering\">generally unpaid</a>.</li>\n    <li><strong>Off-grid:</strong> panel &rarr; power station &rarr; the appliances you plug into it. A power station is a battery with a solar charge controller, an inverter and its own outlets. It never touches the building&rsquo;s wiring, and once the battery is full the rest of the day&rsquo;s sun goes uncollected.</li>\n  </ul>\n  <div class=\"table-wrap\"><table><thead><tr><th></th><th>Plug-in balcony solar</th><th>Panels and a power station</th></tr></thead><tbody>\n    <tr><td><strong>Utility approval</strong></td><td>Needed, unless a state plug-in law in force exempts it</td><td>None; there is no connection to approve</td></tr>\n    <tr><td><strong>In a blackout</strong></td><td>Shuts itself off within two seconds</td><td>Runs on its battery; the panels refill it by day</td></tr>\n    <tr><td><strong>Output you can use</strong></td><td>What the apartment draws while the sun is up</td><td>What the battery holds, plus whatever runs from it while the sun is up</td></tr>\n    <tr><td><strong>Surplus</strong></td><td>Exported, usually unpaid</td><td>Lost once the battery is full</td></tr>\n    <tr><td><strong>Safety standard</strong></td><td>Inverter: UL&nbsp;1741. Complete system: the <a href=\"/ul-3700-plug-in-solar-certification\">UL&nbsp;3700 outline</a>, to which no complete system was listed as of September 2026</td><td>UL&nbsp;2743, the standard for portable power packs</td></tr>\n  </tbody></table></div>\n  <p>Some batteries sold for balconies include an inverter that feeds a wall socket. However they are marketed, those run in parallel with the grid, so they need a plug-in law that covers them or the utility&rsquo;s approval; they are covered in <a href=\"/balcony-solar-battery\">adding a battery to balcony solar</a>. This page is about a power station that stays off the grid.</p>\n</section>"
+    },
+    {
+      "id": "legal",
+      "toc": "What each needs legally",
+      "html": "        <section id=\"legal\">\n  <h2><span class=\"sec-num\">2</span>What each setup needs legally</h2>\n  <p><strong>Off-grid needs no utility approval, because nothing connects to the utility.</strong> Interconnection rules govern generators that run in parallel with the grid. New York&rsquo;s Standardized Interconnection Requirements (effective 9 February 2026) exempt generators and storage &ldquo;neither designed to operate, nor operating, in parallel&rdquo; with the utility&rsquo;s system; Texas&rsquo;s rule covers &ldquo;the interconnection and parallel operation&rdquo; of on-site generation. A power station charged by its own panels and powering only what is plugged into it does neither.</p>\n  <p><strong>Grid-tied needs a plug-in law or the utility&rsquo;s approval.</strong> As of 23 September 2026, five states have plug-in solar laws in force (Utah, Maine, Colorado, Maryland and Vermont) and four more have signed laws that start by March 2027 (<a href=\"/balcony-solar-laws-compared\">compared provision by provision</a>; every state is on <a href=\"/states\">the states page</a>). Elsewhere, a panel feeding an outlet falls under the utility&rsquo;s interconnection process. For the three places modeled below:</p>\n  <ul>\n    <li><strong><a href=\"/states/new-york\">New York</a>:</strong> the <a href=\"/sunny-act\">SUNNY Act</a> (S8512C / A9111C), which would exempt devices of up to 1,200&nbsp;W AC from interconnection, has passed both chambers and {{sunny.phrase}}. Until it is signed and in effect, the interconnection requirements apply.</li>\n    <li><strong><a href=\"/states/maryland\">Maryland</a>:</strong> a plug-in law has been in force since 1 July 2026. The utility cannot require approval or a fee for a certified device of up to 1,200&nbsp;W, but must be notified before installation.</li>\n    <li><strong><a href=\"/states/texas\">Texas</a>:</strong> no plug-in solar bill has been filed, by balco.nyc&rsquo;s search of the legislature&rsquo;s records, so the Public Utility Commission&rsquo;s interconnection rule applies.</li>\n  </ul>\n  <p>Three things apply either way. A landlord, co-op board or association can refuse panels on a railing however they are wired (see <a href=\"/balcony-solar-renters\">renters</a> and <a href=\"/balcony-solar-condo-hoa\">condos and HOAs</a>), and in New York City panels and cables must stay off fire escapes. A power station&rsquo;s output must never be connected to a wall outlet, which turns a plug into a live generator lead (<a href=\"/is-plug-in-solar-safe\">is plug-in solar safe?</a>). And UL notes that installation codes treat a portable battery installed in a stationary situation as stationary energy storage, which must be listed to UL&nbsp;9540. This is not legal advice; details vary by state and utility.</p>\n</section>"
+    },
+    {
+      "id": "blackout",
+      "toc": "What happens in a blackout",
+      "html": "        <section id=\"blackout\">\n  <h2><span class=\"sec-num\">3</span>What each does in a blackout</h2>\n  <p>A plug-in system goes dark when the grid does. UL&nbsp;1741 and IEEE&nbsp;1547 require its inverter to stop energizing its output within two seconds of losing the grid, so it cannot feed a line a utility crew believes is dead. Without a battery it gives no backup power at all.</p>\n  <p>A power station keeps running whatever is plugged into it until the battery is empty, and the panels refill it each day. In balco.nyc&rsquo;s hourly model of an 800&nbsp;W south-facing railing in New York City (section&nbsp;4), the panels average <strong>2.33&nbsp;kWh a day in January and 1.07 in June</strong>; a vertical panel meets the low winter sun almost head-on. The worst seven-day stretch of the modeled year averages 0.66&nbsp;kWh a day, about 0.56&nbsp;kWh at the outlets after storage losses. In Houston in July, the month Hurricane Beryl left 2.6 million Texas customers without power in 2024, the same railing averages 0.88&nbsp;kWh a day, about 0.75 at the outlets. That keeps phones, a router, a laptop and LED lights going, not air conditioning.</p>\n  <p>How much that is worth depends on where you live. The EIA reports that US customers averaged 11 hours without power in 2024, nearly twice the previous decade&rsquo;s average, mostly from hurricanes and other major events; outside such events, outages routinely total about two hours a year. For most households backup is insurance against a rare long outage, and the payback figures below give it no value. For anyone who depends on powered medical equipment it may be the main reason to own one.</p>\n</section>"
+    },
+    {
+      "id": "usable-energy",
+      "toc": "How much of the output you use",
+      "html": "        <section id=\"usable-energy\">\n  <h2><span class=\"sec-num\">4</span>How much of the output you actually get to use</h2>\n  <p>A plug-in panel&rsquo;s output saves money only when the apartment is using power at the same moment. A power station&rsquo;s saves money only if the battery has room for it and you then use what it holds. The second limit is tighter.</p>\n  <p><strong>How balco.nyc modeled it.</strong> We ran PVWatts V8, the National Laboratory of the Rockies&rsquo; model that the calculator uses, hour by hour for an 800&nbsp;W vertical south-facing railing in New York City, Baltimore and Houston with the calculator&rsquo;s parameters; the runs reproduce the site&rsquo;s state data exactly, and every hour is multiplied by the 0.95 railing factor. The plug-in system gets the AC output (604&nbsp;kWh a year in New York); the power station, which needs no microinverter, gets the DC output (632&nbsp;kWh). Energy passing through the station loses 15%: 85% is the round-trip efficiency the laboratory&rsquo;s Annual Technology Baseline adopts for a home lithium-iron-phosphate battery. We found no government or standards-body measurement of portable power stations&rsquo; round-trip efficiency; one reviewer&rsquo;s bench tests found AC output alone ranging from under 70% to over 90% of rated capacity, so brackets show a weaker unit at 75%. Whatever the station cannot supply is bought from the utility. Capacity fade and the station&rsquo;s standby draw are ignored, which flatters it.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>New York City, 800&nbsp;W south-facing railing</th><th>kWh used a year</th><th>Worth at {{coned.rate_cents}}&cent;</th></tr></thead><tbody>\n    <tr><td>Plug-in, every kWh used at home (the ceiling)</td><td><strong>604</strong></td><td>$205</td></tr>\n    <tr><td>Plug-in, apartment drawing a steady 150&nbsp;W, empty in the daytime</td><td>364</td><td>$124</td></tr>\n    <tr><td>1&nbsp;kWh power station, used after dark and emptied every night</td><td><strong>294</strong> (273)</td><td>$100 ($93)</td></tr>\n    <tr><td>2&nbsp;kWh power station, used after dark and emptied every night</td><td>447 (406)</td><td>$152 ($138)</td></tr>\n    <tr><td>1&nbsp;kWh power station, a steady 100&nbsp;W running from it day and night</td><td>433 (398)</td><td>$147 ($135)</td></tr>\n    <tr><td>2&nbsp;kWh power station, a steady 100&nbsp;W running from it day and night</td><td>505 (457)</td><td>$172 ($156)</td></tr>\n    <tr><td>Either power station, with 0.5&nbsp;kWh a day of use moved onto it</td><td>181</td><td>$62</td></tr>\n  </tbody></table></div>\n  <p>balco.nyc&rsquo;s computation. Brackets assume 75% efficiency. The 150&nbsp;W row is from <a href=\"/balcony-solar-net-metering\">how much of the output an apartment uses</a>.</p>\n  <p><strong>A 1&nbsp;kWh station is too small for this railing.</strong> The panels make more than it can hold on 263 days of the year, and 286 of their 632&nbsp;kWh, 45%, is never collected; in January they make 2.33&nbsp;kWh a day. A 2&nbsp;kWh station fills on 111 days and loses 105&nbsp;kWh.</p>\n  <p><strong>Daytime use matters as much as size.</strong> Energy used while the sun is up need not be stored, so a steady 100&nbsp;W lets even a 1&nbsp;kWh station deliver 433&nbsp;kWh. But 100&nbsp;W around the clock is 2.4&nbsp;kWh a day, about an eighth of an average New York household&rsquo;s use, and it has to be appliances you can move from the wall to the station. And what you move is the ceiling: half a kilowatt-hour a day caps either station at about 181&nbsp;kWh a year.</p>\n  <p>The fair comparison is with the second plug-in row. An apartment empty all day and drawing a steady 150&nbsp;W uses 364 of the plug-in system&rsquo;s 604&nbsp;kWh; on the same hourly data, one drawing 200&nbsp;W uses 433 and one drawing 300&nbsp;W uses 524. A 2&nbsp;kWh station emptied every night beats the first two. On energy alone, a power station worked hard can match a plug-in system in a small, efficient apartment. The money is another matter.</p>\n</section>"
+    },
+    {
+      "id": "payback",
+      "toc": "Cost and payback in three states",
+      "html": "        <section id=\"payback\">\n  <h2><span class=\"sec-num\">5</span>Cost and payback in New York, Maryland and Texas</h2>\n  <p><strong>Costs.</strong> The plug-in system is the ${{kits.mid}} mid-range 800&nbsp;W kit balco.nyc uses throughout. The off-grid setup is charged the same ${{kits.mid}} for panels and mounting, plus $550 for a 1&nbsp;kWh station or $900 for a 2&nbsp;kWh one: median selling prices of about $0.55 and $0.44 per watt-hour for units of those sizes in an August 2026 survey of 114 models by a review site. Charging it the full kit price, microinverter included, flatters the plug-in side by the price of a microinverter. New York City is valued at Con&nbsp;Edison&rsquo;s all-in marginal rate; Maryland and Texas at EIA state averages for the 12 months to June 2026, which include fixed charges and so overstate what an avoided kWh saves. Payback is simple: cost over the first year&rsquo;s saving, with no price rises or panel degradation. (The calculator&rsquo;s loop, with prices rising 3% a year, gives 5.5 years for the New York plug-in kit.)</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Setup (cost)</th><th>New York City, {{coned.rate_cents}}&cent;</th><th>Maryland (Baltimore), 20.75&cent;</th><th>Texas (Houston), 15.9&cent;</th></tr></thead><tbody>\n    <tr><td>Plug-in, every kWh used (${{kits.mid}})</td><td>604&nbsp;kWh &middot; $205/yr &middot; <strong>5.8 yrs</strong></td><td>673&nbsp;kWh &middot; $140/yr &middot; 8.6 yrs</td><td>575&nbsp;kWh &middot; $91/yr &middot; 13.1 yrs</td></tr>\n    <tr><td>1&nbsp;kWh station, used after dark (${{kits.mid}} + $550)</td><td>294&nbsp;kWh &middot; $100/yr &middot; <strong>17.5 yrs</strong></td><td>307&nbsp;kWh &middot; $64/yr &middot; 27.5 yrs</td><td>294&nbsp;kWh &middot; $47/yr &middot; 37.5 yrs</td></tr>\n    <tr><td>2&nbsp;kWh station, used after dark (${{kits.mid}} + $900)</td><td>447&nbsp;kWh &middot; $152/yr &middot; 13.8 yrs</td><td>487&nbsp;kWh &middot; $101/yr &middot; 20.8 yrs</td><td>422&nbsp;kWh &middot; $67/yr &middot; 31.3 yrs</td></tr>\n    <tr><td>2&nbsp;kWh station, steady 100&nbsp;W day and night (${{kits.mid}} + $900)</td><td>505&nbsp;kWh &middot; $172/yr &middot; 12.2 yrs</td><td>557&nbsp;kWh &middot; $115/yr &middot; 18.2 yrs</td><td>479&nbsp;kWh &middot; $76/yr &middot; 27.6 yrs</td></tr>\n  </tbody></table></div>\n  <p>balco.nyc&rsquo;s computation: hourly PVWatts V8, 0.95 railing factor, 85% station efficiency, simple payback. The Texas plug-in row assumes the utility approves the connection.</p>\n  <p>In every city and setup the plug-in system pays back two to three times as fast, and where power is cheap the gap in years is widest: in Texas every power-station setup takes more than 27 years.</p>\n  <p><strong>Battery wear.</strong> Used after dark, every kWh passes through the battery: a 1&nbsp;kWh station in New York goes through about 319 full cycles a year, a 2&nbsp;kWh station about 243. Sandia National Laboratories&rsquo; multi-year test of commercial cells found lithium-iron-phosphate cells lasting 2,500 to 9,000 equivalent full cycles before falling to 80% of capacity, depending on conditions (mostly extrapolated, since the cells had not yet reached 80%), against 200 to 2,500 for NMC cells. At the low end, the two stations reach 80% in about 8 and 10 years, before either pays back in New York; the laboratory&rsquo;s cost baseline assumes a home battery lasts 15 years, long enough for the 2&nbsp;kWh setup but not the 1&nbsp;kWh one. In Maryland and Texas the paybacks run past both. These are tests of cells, not whole power stations; a manufacturer&rsquo;s cycle rating for a complete unit is its own claim.</p>\n  <p><strong>Where it does work: you want the station anyway.</strong> If you would buy a power station for outages regardless, count only the panels. Still charging them the full ${{kits.mid}}, a 2&nbsp;kWh station used after dark pays the panels back in 7.9 years in New York City, 11.9 in Maryland and 17.9 in Texas; with a steady 100&nbsp;W load, 7.0, 10.4 and 15.8.</p>\n</section>"
+    },
+    {
+      "id": "which",
+      "toc": "Which fits which apartment",
+      "html": "        <section id=\"which\">\n  <h2><span class=\"sec-num\">6</span>Which one fits which apartment</h2>\n  <ul>\n    <li><strong>A plug-in law is in force and the building agrees:</strong> plug-in solar gives about twice the usable energy of a 1&nbsp;kWh station for less money, provided the apartment uses a fair share of the output while the sun is up. See <a href=\"/is-balcony-solar-worth-it\">payback in every state</a>.</li>\n    <li><strong>No law in force and no realistic route to utility approval:</strong> the power station needs nobody&rsquo;s sign-off but the building&rsquo;s. In New York that holds until the SUNNY Act is signed and takes effect. Expect about half the plug-in system&rsquo;s energy from a 1&nbsp;kWh station used after dark, more from a 2&nbsp;kWh one or from running loads through it all day.</li>\n    <li><strong>Outages are the concern:</strong> only the power station helps. A battery that feeds a wall socket is still grid-tied, and needs a plug-in law that covers it or the utility&rsquo;s approval.</li>\n    <li><strong>Choosing a size:</strong> in New York City the second kilowatt-hour of capacity adds 153&nbsp;kWh a year of use after dark, worth about $52, for about $350 more.</li>\n  </ul>\n  <p>These figures are for an unshaded south-facing railing; east, west and north railings, and balconies facing taller buildings, produce less (see <a href=\"/800w-balcony-solar-output\">output by direction</a> and <a href=\"/balcony-sunlight\">sunlight and shading</a>). <a href=\"/\">The calculator</a> runs your own address, direction and surroundings, and <a href=\"/methodology\">the methodology</a> explains the model.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Do I need utility approval to charge a portable power station with solar panels?",
+      "No. Utility interconnection rules cover generators that operate in parallel with the grid, and a power station charged by its own panels and powering only what is plugged into it never connects to the grid. New York's interconnection requirements, for example, say systems neither designed nor operating in parallel with the utility are not subject to them. A landlord, co-op board or association can still refuse panels on a railing, and this is not legal advice."
+    ],
+    [
+      "Does plug-in balcony solar work during a power outage?",
+      "No. UL 1741 and IEEE 1547 require a grid-tied inverter to stop energizing its output within two seconds of losing the grid, so a plug-in balcony system shuts down in a blackout. That protects utility crews working on lines they believe are dead. A power station charged by solar panels keeps running whatever is plugged into it until its battery is empty, and the panels refill it by day."
+    ],
+    [
+      "Which saves more money, a solar power station or plug-in balcony solar?",
+      "Plug-in solar, in every case balco.nyc modeled. For an 800 W south-facing railing in New York City, a plug-in system can displace up to 604 kWh a year, worth about $205 at Con Edison's {{coned.rate_cents}}-cent marginal rate, against 294 kWh ($100) through a 1 kWh power station emptied every night and 447 kWh ($152) through a 2 kWh one. Simple payback is 5.8 years for the plug-in kit against 13.8 to 17.5 years for the power stations used after dark."
+    ],
+    [
+      "How big a power station does an 800 W balcony solar panel need?",
+      "Bigger than 1 kWh to make use of it. In balco.nyc's hourly New York City model, an 800 W south-facing railing produces 2.33 kWh a day in January, so a 1 kWh station fills on 263 days of the year and 45% of the panels' output is never collected. A 2 kWh station fills on 111 days. In New York the second kilowatt-hour of capacity adds about 153 kWh a year of use after dark, worth about $52."
+    ],
+    [
+      "Can I plug a power station into a wall outlet to power my apartment?",
+      "No. Connecting a power station's output to a wall outlet backfeeds the building's wiring and can leave the prongs of a plug live, a shock hazard. Batteries sold for balconies that do feed a wall socket through a grid-tied inverter run in parallel with the grid, so they need a state plug-in law that covers them or the utility's approval. Wiring a battery into a home's electrical panel is stationary energy storage, which installation codes require to be listed to UL 9540."
+    ],
+    [
+      "How long does a power station battery last?",
+      "It depends on chemistry and use. Sandia National Laboratories' multi-year test of commercial cells found lithium-iron-phosphate cells lasting 2,500 to 9,000 equivalent full cycles before falling to 80% of capacity, depending on conditions, against 200 to 2,500 for NMC cells. A 1 kWh station charged by an 800 W railing in New York City and emptied every night goes through about 319 cycles a year, so it would reach 80% in about 8 years at the low end of that range."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "National Laboratory of the Rockies &mdash; PVWatts V8 API",
+      "note": "the hourly AC and DC output behind balco.nyc&rsquo;s power-station and plug-in comparisons for New York City, Baltimore and Houston; the runs used the calculator&rsquo;s parameters and reproduce the site&rsquo;s state data."
+    },
+    {
+      "url": "https://atb.nlr.gov/electricity/2025/residential_battery_storage",
+      "title": "National Laboratory of the Rockies &mdash; Annual Technology Baseline 2025: residential battery storage",
+      "note": "85% as the representative round-trip efficiency for a lithium-iron-phosphate home battery, a 15-year lifetime and about one cycle a day."
+    },
+    {
+      "url": "https://www.osti.gov/biblio/1650174",
+      "title": "Preger et al., &ldquo;Degradation of Commercial Lithium-Ion Cells as a Function of Chemistry and Cycling Conditions,&rdquo; Sandia National Laboratories, <em>J. Electrochem. Soc.</em> (2020)",
+      "note": "LFP cells lasting 2,500 to 9,000 equivalent full cycles to 80% capacity (mostly extrapolated), against 250 to 1,500 for NCA and 200 to 2,500 for NMC."
+    },
+    {
+      "url": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station/how-we-test",
+      "title": "GearLab &mdash; how we tested power stations",
+      "note": "a reviewer&rsquo;s bench test of AC output against claimed capacity, ranging from under 70% to over 90%; the basis for the 75% sensitivity case. Not a standards test."
+    },
+    {
+      "url": "https://www.solarwaypoint.com/portable-power-station-price-index/",
+      "title": "Solar Waypoint &mdash; Portable Power Station Price Index 2026",
+      "note": "median selling prices of about $0.55/Wh for 950&ndash;1,100&nbsp;Wh units and $0.44/Wh for 1,601&ndash;3,200&nbsp;Wh units across 114 models (28 August 2026), used for the $550 and $900 station prices. An affiliate review site, cited only for prices."
+    },
+    {
+      "url": "https://dps.ny.gov/nys-standardized-interconnection-requirements",
+      "title": "New York State Public Service Commission &mdash; Standardized Interconnection Requirements (effective 9 February 2026)",
+      "note": "generators and storage neither designed to operate nor operating in parallel with the utility&rsquo;s system are not subject to the requirements."
+    },
+    {
+      "url": "https://www.puc.texas.gov/agency/rulesnlaws/subrules/electric/25.211/25.211.pdf",
+      "title": "Public Utility Commission of Texas &mdash; 16 TAC &sect;25.211, Interconnection of On-Site Distributed Generation",
+      "note": "the rule governs the interconnection and parallel operation of on-site generation."
+    },
+    {
+      "url": "https://psc.maryland.gov/regulated-utilities/electricity/renewable-energy/balcony-solar/",
+      "title": "Maryland Public Service Commission &mdash; balcony solar",
+      "note": "up to 1,200&nbsp;W, no utility approval or fee, notice to the utility before installation, certification by a nationally recognized testing laboratory."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "New York State Senate &mdash; S8512C (SUNNY Act)",
+      "note": "exemption from interconnection and net-metering requirements for devices up to 1,200&nbsp;W AC and the outage shut-off requirement; passage of both chambers on 28 May 2026."
+    },
+    {
+      "url": "https://legislature.maine.gov/testimony/resources/EUT20260106Soltan134125472587136094.pdf",
+      "title": "UL Solutions &mdash; Interactions of Plug-In PV with Protection of Existing Power Systems (testimony to the Maine Legislature)",
+      "note": "a grid-interactive inverter must cease to energize its output within two seconds of losing the grid under UL&nbsp;1741 and IEEE&nbsp;1547."
+    },
+    {
+      "url": "https://www.ul.com/thecodeauthority/knowledgecenter/qa-portable-power-packs",
+      "title": "UL Solutions &mdash; Q&amp;A: portable power packs",
+      "note": "UL&nbsp;2743 covers portable power packs intended for use when grid power is unavailable; a portable battery installed in a stationary situation falls under stationary storage rules requiring UL&nbsp;9540."
+    },
+    {
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=66744",
+      "title": "EIA &mdash; Hurricanes in 2024 led to the most hours without power in the United States in 10 years",
+      "note": "11 hours of interruptions per customer in 2024, about two hours a year outside major events, and 2.6 million Texas customers without power after Hurricane Beryl."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia861m/",
+      "title": "EIA &mdash; Form EIA-861M monthly sales and revenue",
+      "note": "the data behind balco.nyc&rsquo;s Maryland (20.75&cent;) and Texas (15.9&cent;) average residential prices, 12 months to June 2026."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/sales_revenue_price/pdf/table_5A.pdf",
+      "title": "EIA &mdash; 2024 Average Monthly Bill, Residential (Table 5A)",
+      "note": "New York average residential consumption of about 571&nbsp;kWh a month, the basis for comparing a 2.4&nbsp;kWh-a-day load with household use."
+    },
+    {
+      "url": "https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf",
+      "title": "Con Edison &mdash; historical average full-service electric rates",
+      "note": "the SC-1 series behind the {{coned.rate_cents}}&cent; marginal rate used for New York City."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not legal or financial advice, and it does not recommend any product. Power-station figures are modeled from hourly PVWatts output with an assumed efficiency and usage pattern, not measured."
+}

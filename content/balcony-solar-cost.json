@@ -3,18 +3,26 @@
   "title": "What does a balcony solar kit cost in NYC? &middot; balco.nyc",
   "og_title": "What does a balcony solar kit cost in NYC, and does it pay for itself?",
   "breadcrumb": "Cost and payback",
-  "description": "Kit prices, the costs that are not the kit, and the payback arithmetic worked through at four production levels \u2014 including why every savings figure is a ceiling rather than an expectation.",
+  "cluster": "economics",
+  "card_title": "What does a balcony solar kit cost in NYC?",
+  "card": "Current kit prices and payback at four output levels.",
+  "llms": "kit prices with dates, the costs that are not the kit, and payback worked at four production levels.",
+  "related": [
+    "electricity-rate",
+    "balcony-sunlight",
+    "sunny-act"
+  ],
+  "description": "What a balcony solar kit costs in NYC, the costs that are not the kit, and payback worked at four production levels. Every savings figure is a ceiling.",
   "eyebrow": "Cost and payback",
   "h1": "What does a balcony solar kit cost in NYC?",
-  "lede": "balco.nyc uses hardware-only cost assumptions of $850 budget, $1,200 mid-range, and $1,600 premium for a typical 800-watt system. These are planning benchmarks, not currently verified New York offers. At Con Edison&rsquo;s $0.34 per kilowatt-hour, a well-sited system saves roughly $300 a year and pays back in three to five years. A shaded, low-floor balcony takes six to ten.",
+  "lede": "balco.nyc uses hardware-only cost assumptions of $850 budget, $1,200 mid-range, and $1,600 premium for a typical 800-watt system. These are planning benchmarks, not currently verified New York offers. At Con Edison&rsquo;s $0.34 per kilowatt-hour, an open south-facing railing saves up to about $205 a year and pays back a mid-range kit in about five and a half years. East or west takes about seven and a half; a shaded low floor or a north-facing balcony takes thirteen or more.",
   "date_label": "Prices checked",
-  "reviewed": "2026-09-04",
-  "reviewed_human": "September 4, 2026",
+  "reviewed": "2026-09-23",
   "published": "2026-09-04",
   "reading_time": "~8 minutes",
   "tags": [
     "$850&ndash;$1,600",
-    "2.7&ndash;10.4&nbsp;yr payback",
+    "5.5&nbsp;yr payback, open south",
     "No export credit"
   ],
   "about_legislation": false,
@@ -37,7 +45,7 @@
     {
       "id": "payback-table",
       "toc": "The payback arithmetic, worked",
-      "html": "        <section id=\"payback-table\">\n  <h2><span class=\"sec-num\">4</span>The payback arithmetic, worked</h2>\n  <p>An 800&nbsp;W system in New York City produces roughly <strong>400&ndash;900&nbsp;kWh a year</strong>. The spread across balconies is about <strong>3&times;</strong> from worst to best &mdash; high floor facing south against low floor facing north, with the buildings across the street doing most of the damage.</p>\n  <p>The table runs four production levels across the band. Savings are year one at $0.34/kWh, at 100% self-consumption. Payback years account for 3%/year rate escalation and 0.5%/year panel degradation, and are the year cumulative savings first exceed the kit price.</p>\n  <div class=\"table-wrap\"><table><thead>\n    <tr><th>Annual output</th><th>Year-1 saving (ceiling)</th><th>Payback, $850 kit</th><th>Payback, $1,200 kit</th><th>Payback, $1,600 kit</th><th>25-yr net, $1,200 kit (nominal)</th></tr>\n  </thead><tbody>\n    <tr><td>400 kWh (poorly sited)</td><td>$136</td><td>5.9 yr</td><td>8.1 yr</td><td>10.4 yr</td><td>+$3,435</td></tr>\n    <tr><td>550 kWh</td><td>$187</td><td>4.4 yr</td><td>6.0 yr</td><td>7.9 yr</td><td>+$5,175</td></tr>\n    <tr><td>700 kWh</td><td>$238</td><td>3.5 yr</td><td>4.8 yr</td><td>6.3 yr</td><td>+$6,915</td></tr>\n    <tr><td>900 kWh (well sited)</td><td>$306</td><td>2.7 yr</td><td>3.8 yr</td><td>5.0 yr</td><td>+$9,235</td></tr>\n  </tbody></table></div>\n  <p>Read across a row rather than down a column. Moving from the premium kit to the budget kit at fixed siting saves you about four and a half years in the worst row. Moving from the worst siting to the best at a fixed kit saves you four to five. <strong>Where the panel points matters about as much as what you pay for it, and you can only change one of those after you have signed the lease.</strong></p>\n</section>"
+      "html": "        <section id=\"payback-table\">\n  <h2><span class=\"sec-num\">4</span>The payback arithmetic, worked</h2>\n  <p>In balco.nyc&rsquo;s PVWatts runs for a point at City Hall, with a 5% loss for the railing, an 800&nbsp;W panel on an NYC railing makes at most about <strong>604&nbsp;kWh a year</strong> facing south with an open view. East or west it makes about 434, north about 167. The building across the street does the rest of the damage: from the third floor, a six-to-ten-story building across a 20&nbsp;m street cuts a south panel to about 227&nbsp;kWh. An angled bracket works the other way; a south panel at 35&deg; makes about 988.</p>\n  <p>The table runs those five situations. Savings are year one at $0.34/kWh, at 100% self-consumption. Payback years account for 3%/year rate escalation and 0.5%/year panel degradation, and are the year cumulative savings first exceed the kit price.</p>\n  <div class=\"table-wrap\"><table><thead>\n    <tr><th>Balcony</th><th>Annual output</th><th>Year-1 saving (ceiling)</th><th>Payback, $850 kit</th><th>Payback, $1,200 kit</th><th>Payback, $1,600 kit</th><th>25-yr net, $1,200 kit (nominal)</th></tr>\n  </thead><tbody>\n    <tr><td>South, open view, 35&deg; bracket</td><td>988 kWh</td><td>$336</td><td>2.5 yr</td><td>3.5 yr</td><td>4.6 yr</td><td>+$10,252</td></tr>\n    <tr><td>South, open view, on the railing</td><td>604 kWh</td><td>$205</td><td>4.0 yr</td><td>5.5 yr</td><td>7.2 yr</td><td>+$5,801</td></tr>\n    <tr><td>East or west, open view</td><td>434 kWh</td><td>$147</td><td>5.4 yr</td><td>7.5 yr</td><td>9.7 yr</td><td>+$3,831</td></tr>\n    <tr><td>South, 3rd floor, 6&ndash;10 floors opposite</td><td>227 kWh</td><td>$77</td><td>9.9 yr</td><td>13.3 yr</td><td>16.9 yr</td><td>+$1,431</td></tr>\n    <tr><td>North, open view</td><td>167 kWh</td><td>$57</td><td>12.9 yr</td><td>17.2 yr</td><td>21.6 yr</td><td>+$736</td></tr>\n  </tbody></table></div>\n  <p>Read across a row rather than down a column. Moving from the premium kit to the budget kit at fixed siting saves you three to nine years. Moving from a shaded or north-facing balcony to an open south-facing one at a fixed kit saves you eight to twelve. <strong>Where the panel points, and what stands in front of it, matters more than what you pay for it, and you can only change one of those after you have signed the lease.</strong></p>\n</section>"
     },
     {
       "id": "reading-the-25-year-number",
@@ -47,7 +55,7 @@
     {
       "id": "when-it-is-not-worth-it",
       "toc": "When the answer is no",
-      "html": "        <section id=\"when-it-is-not-worth-it\">\n  <h2><span class=\"sec-num\">6</span>When the answer is no</h2>\n  <p>If your balcony is on a low floor, faces north, or spends the middle of the day in the shadow of the building opposite, the arithmetic is bad and you should not spend the money on economic grounds.</p>\n  <p>Work it through. Roughly 400&nbsp;kWh a year is <strong>$136</strong> of avoided electricity at best. Put that against a $1,600 premium kit and payback is <strong>10.4 years</strong> before you add an electrician, before you subtract exported kilowatt-hours you are not paid for, and before the &plusmn;15% band, which could push it past 12. If you may move within five years, and you probably will if you rent, you will not get your money back.</p>\n  <p>Buy the cheapest kit that is properly certified, or do not buy one. A budget kit on a poor balcony pays back in 5.9 years; a premium kit on the same balcony takes 10.4. Paying more for a system that will never see full sun is the single most expensive mistake available here.</p>\n  <div class=\"callout\"><p><strong>None of this is legal in New York yet.</strong> The SUNNY Act passed both chambers in late May 2026 and awaits the Governor&rsquo;s signature; it takes effect 90 days after signing. Do not buy hardware on the assumption the timeline will hold &mdash; see <a href=\"/sunny-act\">the SUNNY Act status page</a>.</p></div>\n  <p>Run your own floor, orientation and consumption through <a href=\"/\">the calculator</a> rather than reading a row off this table. The table is four points on a wide band; your balcony is one point.</p>\n</section>"
+      "html": "        <section id=\"when-it-is-not-worth-it\">\n  <h2><span class=\"sec-num\">6</span>When the answer is no</h2>\n  <p>If your balcony is on a low floor, faces north, or spends the middle of the day in the shadow of the building opposite, the arithmetic is bad and you should not spend the money on economic grounds.</p>\n  <p>Work it through. A south panel on a third floor facing a six-to-ten-story building across the street makes about 227&nbsp;kWh a year, <strong>$77</strong> of avoided electricity at best. Put that against a $1,600 premium kit and payback is <strong>16.9 years</strong> before you add an electrician, before you subtract exported kilowatt-hours you are not paid for, and before the &plusmn;15% band. If you may move within five years, and you probably will if you rent, you will not get your money back.</p>\n  <p>Buy the cheapest kit that is properly certified, or do not buy one. A budget kit on that balcony pays back in 9.9 years; a premium kit on the same balcony takes 16.9. Paying more for a system that will never see full sun is the single most expensive mistake available here.</p>\n  <div class=\"callout\"><p><strong>None of this is legal in New York yet.</strong> The SUNNY Act passed both chambers in late May 2026 and awaits the Governor&rsquo;s signature; it takes effect 90 days after signing. Do not buy hardware on the assumption the timeline will hold &mdash; see <a href=\"/sunny-act\">the SUNNY Act status page</a>.</p></div>\n  <p>Run your own floor, orientation and consumption through <a href=\"/\">the calculator</a> rather than reading a row off this table. The table is five points on a wide range; your balcony is one point.</p>\n</section>"
     }
   ],
   "faq": [
@@ -57,7 +65,7 @@
     ],
     [
       "Is balcony solar worth it in New York?",
-      "It depends almost entirely on your balcony, not on the kit. A high-floor, south-facing, unshaded balcony producing 900 kWh a year saves about $306 and pays back a mid-range kit in 3.8 years. A low-floor, north-facing one producing 400 kWh saves $136 and takes 8.1 years on the same kit \u2014 or over 10 on a premium one, which is a bad deal."
+      "It depends almost entirely on your balcony, not on the kit. An open, south-facing railing makes about 604 kWh a year, saves about $205 and pays back a mid-range kit in about 5.5 years. A north-facing one makes about 167 kWh, saves $57 and takes about 17 years on the same kit, and a low floor facing a tall building across the street does little better; those are bad deals."
     ],
     [
       "Do I get paid for the electricity I don't use?",
@@ -65,7 +73,7 @@
     ],
     [
       "What is the payback period for balcony solar in NYC?",
-      "Between roughly 2.7 and 10.4 years, depending on siting and kit price, assuming full self-consumption. A mid-range $1,200 kit lands between 3.8 and 8.1 years across the typical 400\u2013900 kWh production band. Those figures include 3%/year rate escalation and 0.5%/year panel degradation, and carry a modelled plus or minus 15% accuracy band."
+      "Between roughly 2.5 and more than 20 years, depending on siting and kit price, assuming full self-consumption. A mid-range $1,200 kit pays back in about 5.5 years on an open south-facing railing, 7.5 facing east or west, and 13 or more on a shaded low floor or a north-facing balcony. Those figures include 3%/year rate escalation and 0.5%/year panel degradation."
     ],
     [
       "Will balcony solar zero out my Con Edison bill?",

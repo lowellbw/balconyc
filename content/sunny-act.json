@@ -3,13 +3,22 @@
   "title": "Is plug-in solar legal in New York? SUNNY Act status &middot; balco.nyc",
   "og_title": "Is plug-in solar legal in New York? SUNNY Act status",
   "breadcrumb": "SUNNY Act status",
-  "description": "Plug-in solar is not yet legal in New York. The SUNNY Act (S8512C / A9111C) would change that: what it does, what it deliberately does not do, and where it stands as of September 2026.",
+  "cluster": "legal",
+  "pillar": true,
+  "card_title": "Is plug-in solar legal in New York?",
+  "card": "Current bill status, utility rules, and building permission.",
+  "llms": "the SUNNY Act's status, what it changes, and what it deliberately does not — it removes the utility barrier only and grants no right to install, so renters and co-op residents still need permission.",
+  "related": [
+    "install-balcony-solar",
+    "what-is-balcony-solar",
+    "balcony-solar-cost"
+  ],
+  "description": "Plug-in solar is not yet legal in New York. What the SUNNY Act (S8512C / A9111C) does, what it deliberately does not, and where it stands in September 2026.",
   "eyebrow": "Legal status",
   "h1": "Is plug-in solar legal in New York?",
   "lede": "<strong>Not yet &mdash; but the barrier is one signature away.</strong> New York requires utility approval for any device that pushes power back into a household circuit, and no utility currently grants it for plug-in solar. The SUNNY Act removes that requirement for compliant devices up to 1,200&nbsp;W. It has passed both chambers of the Legislature and is waiting on the Governor. This page tracks where it stands, what it will change, and &mdash; the part most coverage skips &mdash; what it deliberately will not change.",
   "date_label": "Status as of",
-  "reviewed": "2026-09-04",
-  "reviewed_human": "September 4, 2026",
+  "reviewed": "2026-09-23",
   "published": "2026-09-04",
   "reading_time": "~6 minutes",
   "tags": [
@@ -22,7 +31,7 @@
     {
       "id": "status",
       "toc": "Where the bill stands",
-      "html": "        <section id=\"status\">\n          <h2><span class=\"sec-num\">1</span>Where the bill stands</h2>\n          <div class=\"callout\">\n            <p><strong>As of September 4, 2026: passed, unsigned.</strong> The Solar Up Now New York Act passed the State Senate unanimously in April 2026 and cleared the Assembly in late May 2026. It now sits with Governor Hochul, who has until the end of 2026 to sign or veto it. It takes effect 90 days after signing.</p>\n          </div>\n          <p>The bill is S8512C in the Senate and A9111C in the Assembly &mdash; the &ldquo;C&rdquo; amendment is the version that passed, which matters if you are reading the text rather than the summaries. It was sponsored by Senator Liz Krueger and Assemblymember Emily Gallagher.</p>\n          <p>Nothing about your legal position changes until it is signed. If you are reading this after the Governor has acted, the date above tells you how stale this page is; we review it whenever the bill's status moves.</p>\n        </section>"
+      "html": "        <section id=\"status\">\n          <h2><span class=\"sec-num\">1</span>Where the bill stands</h2>\n          <div class=\"callout\">\n            <p><strong>As of September 23, 2026: passed, unsigned.</strong> The Solar Up Now New York Act passed the State Senate unanimously in April 2026, and its final version cleared both chambers on 28 May 2026 (the Assembly vote was 89&ndash;47). It awaits the Governor&rsquo;s signature: the legislature&rsquo;s records show it has not yet been delivered to Governor Hochul, and her time to decide starts only when it is. The bill stays alive until the 2025&ndash;26 session ends on 31 December 2026. If signed, it takes effect 90 days later.</p>\n          </div>\n          <p>The bill is S8512C in the Senate and A9111C in the Assembly &mdash; the &ldquo;C&rdquo; amendment is the version that passed, which matters if you are reading the text rather than the summaries. It was sponsored by Senator Liz Krueger and Assemblymember Emily Gallagher.</p>\n          <p>Nothing about your legal position changes until it is signed. If you are reading this after the Governor has acted, the date above tells you how stale this page is; we review it whenever the bill's status moves.</p>\n        </section>"
     },
     {
       "id": "changes",
@@ -47,12 +56,12 @@
     {
       "id": "elsewhere",
       "toc": "How New York compares",
-      "html": "        <section id=\"elsewhere\">\n  <h2><span class=\"sec-num\">6</span>How New York compares</h2>\n  <p>New York is not first. Utah passed the first plug-in solar law in 2025, carving out an exemption for systems up to 1.2&nbsp;kW, and by August 2026 Maine, Virginia, Colorado, Maryland, Connecticut, New Hampshire and Vermont had signed comparable laws &mdash; eight states, most using the same 1,200&nbsp;W AC threshold New York has chosen. New York would be the ninth.</p>\n  <p>New Jersey is in the same position as New York: its legislature has passed a plug-in solar bill and it is awaiting the Governor&rsquo;s signature. Reporting on which states have <em>signed</em> versus merely <em>passed</em> is inconsistent, so treat any list you read &mdash; including this one &mdash; as needing a date and a check against the state&rsquo;s own legislature page.</p>\n  <p>Germany is the usual reference point for what happens next: <em>Balkonkraftwerk</em> installations there are counted in the millions, following rule changes that made registration trivial. Germany also granted tenants a right to install, which is the step New York has explicitly not taken.</p>\n  <p>The practical consequence of the state-by-state patchwork is that compliance does not travel. A kit sold as legal in one state is not automatically legal here, and the certification requirement is where most imported hardware fails.</p>\n</section>"
+      "html": "        <section id=\"elsewhere\">\n  <h2><span class=\"sec-num\">6</span>How New York compares</h2>\n  <p>New York is not first. Utah passed the first plug-in solar law in 2025, carving out an exemption for systems up to 1.2&nbsp;kW. By September 2026 eight more states had signed comparable laws: Maine, Virginia, Colorado, Maryland, Connecticut, New Hampshire, Vermont and, on 1 September, New Jersey. That makes nine. New York would be the tenth unless California gets there first: its SB&nbsp;868 has also passed both houses and awaits Governor Newsom&rsquo;s decision, due by 30 September 2026. Five are already in force (Utah, Maine, Colorado, Maryland and Vermont); Connecticut&rsquo;s takes effect on 1 October 2026, Virginia&rsquo;s and New Hampshire&rsquo;s on 1 January 2027, and New Jersey&rsquo;s on 1 March 2027. Most use the same 1,200&nbsp;W threshold New York has chosen; Colorado allows 1,920&nbsp;W.</p>\n  <p>Several go further than New York on permission. New Jersey bars landlords from stopping tenants who pay their own electric bill, stops homeowners&rsquo; associations enforcing bans on exterior placement, and stops towns banning the devices; Vermont lets tenants proceed after ten days&rsquo; notice; Virginia bars larger landlords from prohibiting them. Reporting on which states have <em>signed</em> versus merely <em>passed</em> a bill, and on when each law takes effect, is inconsistent, so treat any list you read &mdash; including this one &mdash; as needing a date and a check against the state&rsquo;s own legislature page. balco.nyc keeps a <a href=\"/states\">sourced, dated table of every state</a>.</p>\n  <p>Germany is the usual reference point for what happens next: <em>Balkonkraftwerk</em> installations there are counted in the millions, following rule changes that made registration trivial. Germany also granted tenants a right to install, which is the step New York has explicitly not taken.</p>\n  <p>The practical consequence of the state-by-state patchwork is that compliance does not travel. A kit sold as legal in one state is not automatically legal here, and the certification requirement is where most imported hardware fails.</p>\n</section>"
     },
     {
       "id": "now",
       "toc": "What to do now",
-      "html": "        <section id=\"now\">\n          <h2><span class=\"sec-num\">7</span>What to do now</h2>\n          <p>If you are trying to work out whether this is worth pursuing for your apartment, the binding constraint is almost never the law &mdash; it is whether your balcony gets enough sun. A high-floor south-facing railing can produce roughly three times what a low-floor north-facing one does, and in a city this dense the buildings across the street matter as much as the direction you face &mdash; <a href=\"/balcony-sunlight\">which is the question worth answering first</a>. If the sun is there, the next two are <a href=\"/balcony-solar-cost\">what a kit costs and how long it takes to pay back</a> and <a href=\"/install-balcony-solar\">what installing one actually involves</a>.</p>\n          <p><a href=\"/\">Run your address through the calculator</a> to see what an 800&nbsp;W system would produce where you actually live, modelled against the real shadows of your block. If the answer is small, the legal question is moot for you. If it is large, start the conversation with your landlord or board now, because that is the part with the longest lead time.</p>\n        </section>"
+      "html": "        <section id=\"now\">\n          <h2><span class=\"sec-num\">7</span>What to do now</h2>\n          <p>If you are trying to work out whether this is worth pursuing for your apartment, the binding constraint is almost never the law &mdash; it is whether your balcony gets enough sun. An open south-facing railing produces more than three times what an open north-facing one does, and in a city this dense the buildings across the street matter as much as the direction you face &mdash; <a href=\"/balcony-sunlight\">which is the question worth answering first</a>. If the sun is there, the next two are <a href=\"/balcony-solar-cost\">what a kit costs and how long it takes to pay back</a> and <a href=\"/install-balcony-solar\">what installing one actually involves</a>.</p>\n          <p><a href=\"/\">Run your address through the calculator</a> to see what an 800&nbsp;W system would produce where you actually live, modelled against the real shadows of your block. If the answer is small, the legal question is moot for you. If it is large, start the conversation with your landlord or board now, because that is the part with the longest lead time.</p>\n        </section>"
     }
   ],
   "faq": [
@@ -82,7 +91,7 @@
     ],
     [
       "Is balcony solar legal anywhere else in the US?",
-      "Yes. Utah passed the first plug-in solar law in 2025, and by August 2026 Maine, Virginia, Colorado, Maryland, Connecticut, New Hampshire and Vermont had signed comparable laws. New Jersey, like New York, has passed a bill through its legislature that is awaiting the Governor's signature. The rules differ by state, so a device that is compliant in one is not automatically compliant in another."
+      "Yes. Utah passed the first plug-in solar law in 2025, and by September 2026 Maine, Virginia, Colorado, Maryland, Connecticut, New Hampshire, Vermont and New Jersey had signed comparable laws, nine states in all; five are already in force. New York and California have each passed a bill that awaits its governor. The rules differ by state, so a device that is compliant in one is not automatically compliant in another."
     ]
   ],
   "sources": [
@@ -120,6 +129,26 @@
       "url": "https://www.canarymedia.com/articles/solar/states-passing-balcony-solar-laws",
       "title": "Where does balcony solar stand in your state?",
       "note": "state-by-state tracker &mdash; which states have signed and which are still pending."
+    },
+    {
+      "url": "https://www.njleg.state.nj.us/bill-search/2026/S2368",
+      "title": "New Jersey Legislature &mdash; S2368 (P.L.2026, c.82)",
+      "note": "New Jersey&rsquo;s plug-in solar law: signed 1 September 2026, effective 1 March 2027, with tenant, association and municipal protections."
+    },
+    {
+      "url": "https://legislature.vermont.gov/bill/status/2026/S.202",
+      "title": "Vermont Legislature &mdash; S.202 (Act 149)",
+      "note": "Vermont&rsquo;s plug-in solar law, in force from 1 July 2026, including the tenant-notice provision."
+    },
+    {
+      "url": "https://lis.virginia.gov/bill-details/20261/HB395",
+      "title": "Virginia LIS &mdash; HB 395 (Chapter 1052)",
+      "note": "Virginia&rsquo;s plug-in solar law, effective 1 January 2027, including the landlord provision."
+    },
+    {
+      "url": "https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202520260SB868",
+      "title": "California Legislative Information &mdash; SB 868",
+      "note": "California&rsquo;s plug-in solar bill, passed by both houses and presented to the Governor on 31 August 2026."
     }
   ],
   "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not legal advice. Verify the bill&rsquo;s current status against the Senate page above before acting on it."

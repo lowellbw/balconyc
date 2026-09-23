@@ -1,0 +1,161 @@
+{
+  "slug": "con-edison-plug-in-solar",
+  "title": "Con Edison and plug-in solar: the rules today and after the SUNNY Act &middot; balco.nyc",
+  "og_title": "Con Edison and plug-in solar: what applies today, and after the SUNNY Act",
+  "breadcrumb": "Con Edison rules",
+  "cluster": "nyc",
+  "pillar": false,
+  "card_title": "What does Con Edison require for plug-in solar?",
+  "card": "Today's interconnection rules, the SUNNY Act's 30-day notice, smart meters, and SC-1 savings by month.",
+  "llms": "what Con Edison requires of a plug-in solar device today under its tariff and New York's Standardized Interconnection Requirements, what the SUNNY Act would change, what is and is not known about how its smart meters treat exports, and balco.nyc's month-by-month SC-1 savings for an 800 W south-facing railing.",
+  "related": [
+    "sunny-act",
+    "electricity-rate",
+    "balcony-solar-net-metering"
+  ],
+  "description": "What Con Edison requires of small solar today under New York's SIR, what the SUNNY Act would change, and what an 800 W railing saves by month on SC-1.",
+  "eyebrow": "Con Edison",
+  "h1": "Con Edison and plug-in solar: what applies today, and after the SUNNY Act",
+  "lede": "Today Con&nbsp;Edison treats a plug-in panel like any other generator: its tariff allows no second source of power in a home outside its net-metering and standby rules, and New York&rsquo;s Standardized Interconnection Requirements set the process, which for 50&nbsp;kW or less means an online application and a certified inverter but no fee. If the SUNNY Act, which has passed both chambers and {{sunny.phrase}}, becomes law, a compliant device of up to 1,200&nbsp;W needs only a notice to Con&nbsp;Edison within 30 days of installation. balco.nyc&rsquo;s month-by-month model puts what an unshaded 800&nbsp;W south-facing railing saves an SC-1 customer at about <strong>$205 a year</strong> if every kWh is used ($209 with the summer delivery tier), or $124 in an apartment drawing a steady 150&nbsp;W, which gives 240&nbsp;kWh a year to the grid uncredited.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~9 minutes",
+  "tags": [
+    "No fee under 50&nbsp;kW",
+    "30-day notice if signed",
+    "240&nbsp;kWh/yr uncredited"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "today",
+      "toc": "Today: a generator, whatever its size",
+      "html": "        <section id=\"today\">\n  <h2><span class=\"sec-num\">1</span>Today: a generator, whatever its size</h2>\n  <p>Con&nbsp;Edison&rsquo;s electric tariff, PSC No.&nbsp;10, starts from a blunt rule. General Rule&nbsp;8.1, &ldquo;Segregated Service&rdquo;, says no other source of electric energy may be introduced in connection with a customer&rsquo;s equipment except under a short list of provisions: Rider&nbsp;R (net metering and the Value Stack), emergency generators wired so they cannot run in parallel with the grid, a few demand-response cases, and Standby Service. Every interconnection of generating equipment must comply with Rider&nbsp;R or the Standby Service rules. There is no exception for small equipment.</p>\n  <p>The interconnection itself is governed by the New York State Standardized Interconnection Requirements (SIR), the Public Service Commission&rsquo;s rulebook for generators and batteries of 5&nbsp;MW or less that run in parallel with a utility&rsquo;s distribution system. The current edition took effect on 9&nbsp;February 2026. It has no minimum size. The only systems it leaves out are those &ldquo;neither designed to operate, nor operating, in parallel&rdquo; with the grid, and a plug-in microinverter is designed to do exactly that: it synchronizes with the voltage at the outlet and pushes current into it. Con&nbsp;Edison&rsquo;s own solar guide puts it from the utility&rsquo;s side: solar of 5&nbsp;MW or less is subject to the SIR.</p>\n  <p>So under the rules in force on 23&nbsp;September 2026, a balcony panel feeding a Con&nbsp;Edison customer&rsquo;s outlet without an approved interconnection is operating outside the tariff. This page is not legal advice. The useful questions are what the lawful route involves and what New York&rsquo;s pending bill would change.</p>\n</section>"
+    },
+    {
+      "id": "sir-small",
+      "toc": "What the SIR asks of a system under 50&nbsp;kW",
+      "html": "        <section id=\"sir-small\">\n  <h2><span class=\"sec-num\">2</span>What the SIR asks of a system under 50&nbsp;kW</h2>\n  <p>The SIR splits projects at 50&nbsp;kW AC. Below that line is the expedited process nearly all home solar uses; Con&nbsp;Edison&rsquo;s 2022 solar guide put about 98% of its solar jobs in it. An 800&nbsp;W railing would take the same path as a rooftop array.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Step</th><th>What the SIR and Con&nbsp;Edison require</th><th>Clock</th></tr></thead><tbody>\n    <tr><td>Apply</td><td>Online only: the SIR requires electronic submission through an interconnection portal, which at Con&nbsp;Edison is PowerClerk&rsquo;s Small DG portal for 50&nbsp;kW AC or less. Con&nbsp;Edison asks for the 14-digit account and 7-digit meter numbers.</td><td>&mdash;</td></tr>\n    <tr><td>Fee</td><td>None at 50&nbsp;kW or less. Con&nbsp;Edison charges $750 above that.</td><td>&mdash;</td></tr>\n    <tr><td>Package</td><td>Application form; a signed copy of the standard interconnection contract; a single-line drawing showing the inverter&rsquo;s protection settings; the inverter&rsquo;s UL&nbsp;1741 certificate and data sheet; the manufacturer&rsquo;s verification test procedure.</td><td>&mdash;</td></tr>\n    <tr><td>Equipment</td><td>Inverter tested by an OSHA-recognized laboratory to the current UL&nbsp;1741, including Supplement&nbsp;SB, with the settings in Con&nbsp;Edison&rsquo;s technical requirements.</td><td>&mdash;</td></tr>\n    <tr><td>Review</td><td>Con&nbsp;Edison decides whether the application is complete and approved.</td><td>10 business days; 10 more after missing information arrives, which the applicant has 30 business days to send</td></tr>\n    <tr><td>Install</td><td>Once installed, an inverter system may be connected for no more than two hours, only to check that it works; regular operation starts after the verification test.</td><td>&mdash;</td></tr>\n    <tr><td>Test</td><td>For single-phase inverters of 25&nbsp;kW or less: cut the grid supply, confirm the inverter disconnects and stays off for at least five minutes after power returns, keep a log, and repeat every four years.</td><td>Owner certifies within 5 business days of testing</td></tr>\n    <tr><td>Acceptance</td><td>A formal acceptance letter; Con&nbsp;Edison also orders a net meter.</td><td>5 business days</td></tr>\n  </tbody></table></div>\n  <p>Two things make the route harder, or dearer, in New York City than the table suggests.</p>\n  <p><strong>The network.</strong> SIR Exception&nbsp;3 says systems of 50&nbsp;kW or less in underground secondary network areas may need more information and review, and that &ldquo;in some cases, interconnection may not be allowed or approved.&rdquo; Con&nbsp;Edison&rsquo;s guide says network grids are used extensively throughout Manhattan, Brooklyn, Queens and the Bronx. For many apartment dwellers the small-system path comes with an extra review.</p>\n  <p><strong>The monthly charge.</strong> Net-metered residential solar interconnected since 1&nbsp;January 2022 pays a Customer Benefit Contribution on panel capacity. Con&nbsp;Edison&rsquo;s 2026 statement sets it at <strong>$1.29 per kW DC a month</strong> for SC-1 solar on Phase One net metering: about $12 a year for 800&nbsp;W of panels.</p>\n  <p>None of this was written with a plug-in device in mind. balco.nyc found nothing in Con&nbsp;Edison&rsquo;s distributed-generation pages or solar guide that addresses plug-in or balcony systems. Whether an outlet connection belongs on a single-line drawing at all is a wiring question, covered on <a href=\"/is-plug-in-solar-safe\">the safety page</a>.</p>\n</section>"
+    },
+    {
+      "id": "sunny",
+      "toc": "What the SUNNY Act would change",
+      "html": "        <section id=\"sunny\">\n  <h2><span class=\"sec-num\">3</span>What the SUNNY Act would change</h2>\n  <p>The SUNNY Act (S8512C / A9111C) adds a subdivision on &ldquo;portable solar generation devices&rdquo; to section 66-j of the Public Service Law. balco.nyc read the text that passed, on the Assembly&rsquo;s bill page. It covers a device of up to 1,200&nbsp;W of continuous AC inverter output that plugs into a standard outlet, is listed by an accredited laboratory &ldquo;as a complete plug-in photovoltaic system&rdquo;, and stops energizing the building during an outage. The bill has passed both chambers and {{sunny.phrase}}.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th></th><th>Today: tariff and SIR</th><th>If the SUNNY Act takes effect</th></tr></thead><tbody>\n    <tr><td>Approval</td><td>An accepted application and a passed verification test before regular operation</td><td>Con&nbsp;Edison may not require approval before installing or using the device</td></tr>\n    <tr><td>Paperwork</td><td>Application, drawing, signed contract, test certification</td><td>A notice within 30 days of installing: name and contact details, service address and account number, make and model, rated size</td></tr>\n    <tr><td>Fees</td><td>No application fee; $1.29/kW DC a month if net metered</td><td>No &ldquo;fee or charge related to the device or for feeding energy back into the utility electric grid&rdquo;</td></tr>\n    <tr><td>Equipment</td><td>Net meter, and possibly more in network areas</td><td>No &ldquo;additional controls or equipment beyond what is integrated into the device&rdquo;</td></tr>\n    <tr><td>Certification</td><td>Inverter to UL&nbsp;1741&nbsp;SB</td><td>The whole system listed as a complete plug-in system, which <a href=\"/ul-3700-plug-in-solar-certification\">no complete system is yet</a></td></tr>\n    <tr><td>Exports</td><td>Credited under net metering (Rider&nbsp;R)</td><td>&ldquo;Shall be uncompensated&rdquo; unless the owner voluntarily enters a net-metering or other compensation agreement</td></tr>\n  </tbody></table></div>\n  <p>Two clocks follow a signature. The Act takes effect on the 90th day after it becomes law, and every electric utility then has 30 days to post a &ldquo;simple notification form&rdquo; on its website, so Con&nbsp;Edison&rsquo;s form would be due about 120 days after signing. An owner would then have 30 days from installing to file it. The bill has not yet been delivered to the Governor, so neither clock has started; <a href=\"/sunny-act\">the SUNNY Act page</a> tracks its status.</p>\n  <p>The Act keeps the SIR route open for anyone who wants credit for exports. For an 800&nbsp;W railing the prize is small. The 240&nbsp;kWh a year that balco.nyc&rsquo;s model has an empty 150&nbsp;W apartment exporting would be worth at most about $82 at {{coned.rate_cents}}&cent;; less the $12 contribution, roughly $70 a year, before the paperwork and any network review. Nor does the Act give anyone a right to hang a panel. Permission is a separate question for <a href=\"/nyc-coop-condo-board-balcony-solar\">co-op and condo boards</a>, <a href=\"/nyc-rent-stabilized-nycha-balcony-solar\">landlords and NYCHA</a>, <a href=\"/nyc-landmarks-balcony-solar\">landmarked facades</a> and <a href=\"/nyc-fire-escape-facade-rules\">fire escapes</a>.</p>\n</section>"
+    },
+    {
+      "id": "smart-meter",
+      "toc": "What a Con&nbsp;Edison smart meter does with exported power",
+      "html": "        <section id=\"smart-meter\">\n  <h2><span class=\"sec-num\">4</span>What a Con&nbsp;Edison smart meter does with exported power</h2>\n  <p>Con&nbsp;Edison began installing smart meters in 2017, more than 4.8&nbsp;million gas and electric meters in what it called the largest capital project in its history, and it shows customers their electric use in 15-minute increments. On paper the meters can also see power leaving an apartment. Con&nbsp;Edison&rsquo;s 2015 smart-meter business plan, filed with the Public Service Commission, lists the Commission&rsquo;s minimum requirement that &ldquo;AMI systems must provide net metering&rdquo;, and its own specification called for meters that support net metering, remote configuration and downloadable firmware. The plan also counted as a saving that smart meters would end the need for a separate meter at solar sites.</p>\n  <p>What is not published is how an ordinary residential meter, on an account not enrolled in net metering, is configured to treat power flowing out. It could ignore it, net it against use, or add it to use. The tariff says bills are based on &ldquo;the registration of the Company-owned meters&rdquo;, so the configuration decides the bill. balco.nyc found no Con&nbsp;Edison or Commission document that says which applies to an SC-1 account without net metering. Ask Con&nbsp;Edison in writing how the meter on your account registers power flowing out, and how it would be billed, before plugging anything in.</p>\n  <p>Other states show why the answer matters. The Maryland Public Service Commission warns that a meter unable to track exports may treat them as zero or add them to consumption in error, depending on the meter, and Connecticut&rsquo;s law requires every device to warn that surplus generation will be &ldquo;charged to the customer as usage&rdquo; without a net-metering meter. New York&rsquo;s bill is worded differently: it bars &ldquo;any fee or charge&rdquo; for feeding energy back into the grid, which on its face would rule out billing exports as usage. How the Commission and Con&nbsp;Edison would implement that is not yet known. If exports were billed as usage, the 150&nbsp;W example in the next section would fall from about $124 to about $42 a year. The three possible meter outcomes are set out on <a href=\"/balcony-solar-net-metering\">the surplus-power page</a>.</p>\n</section>"
+    },
+    {
+      "id": "by-month",
+      "toc": "Month by month: what an 800&nbsp;W railing saves on SC-1",
+      "html": "        <section id=\"by-month\">\n  <h2><span class=\"sec-num\">5</span>Month by month: what an 800&nbsp;W railing saves on SC-1</h2>\n  <p>Con&nbsp;Edison&rsquo;s standard residential rate, SC-1 Rate&nbsp;I, has one seasonal feature. From 1&nbsp;February 2026 (Leaf&nbsp;388, Case 25-E-0072) the energy delivery charge is 16.402&cent;/kWh in every month, except that from June through September each kWh above the first 250 in the month costs 18.858&cent;. The customer charge of $21.00 a month does not change with use, and a panel cannot reduce it. Supply and the other per-kWh adjustments are set separately, most of them monthly, and this table does not try to forecast them.</p>\n  <p>A panel&rsquo;s kWh come off the top of the bill. In a summer month where the apartment still uses more than 250&nbsp;kWh after the panel, every solar kWh avoids the upper tier: 2.456&cent; more, about 2.6&cent; with the 4.5% city sales tax. balco.nyc added that to the flat {{coned.rate_cents}}&cent; <a href=\"/electricity-rate\">marginal rate</a> for June to September. That slightly overstates the summer figure, since the annual {{coned.rate_cents}}&cent; already averages in some upper-tier kWh; below 250&nbsp;kWh a month there is no summer premium at all. Output is balco.nyc&rsquo;s PVWatts&nbsp;V8 run for New York City, 800&nbsp;W on an unshaded vertical south-facing railing, times the 0.95 railing factor. The split at a steady 150&nbsp;W draw comes from the same run, hour by hour, as on <a href=\"/balcony-solar-net-metering\">the surplus-power page</a>.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Month</th><th>Output (kWh)</th><th>Value per kWh</th><th>Saved if all used</th><th>Used at 150&nbsp;W (kWh)</th><th>Exported, uncredited (kWh)</th><th>Saved at 150&nbsp;W</th></tr></thead><tbody>\n    <tr><td>January</td><td>69</td><td>{{coned.rate_cents}}&cent;</td><td>$23.58</td><td>30</td><td>40</td><td>$10.07</td></tr>\n    <tr><td>February</td><td>66</td><td>{{coned.rate_cents}}&cent;</td><td>$22.35</td><td>30</td><td>36</td><td>$10.24</td></tr>\n    <tr><td>March</td><td>62</td><td>{{coned.rate_cents}}&cent;</td><td>$20.96</td><td>33</td><td>29</td><td>$11.10</td></tr>\n    <tr><td>April</td><td>45</td><td>{{coned.rate_cents}}&cent;</td><td>$15.37</td><td>32</td><td>13</td><td>$10.79</td></tr>\n    <tr><td>May</td><td>36</td><td>{{coned.rate_cents}}&cent;</td><td>$12.21</td><td>31</td><td>5</td><td>$10.62</td></tr>\n    <tr><td>June</td><td>30</td><td>36.6&cent;</td><td>$11.08</td><td>29</td><td>1</td><td>$10.59</td></tr>\n    <tr><td>July</td><td>34</td><td>36.6&cent;</td><td>$12.58</td><td>32</td><td>3</td><td>$11.65</td></tr>\n    <tr><td>August</td><td>39</td><td>36.6&cent;</td><td>$14.31</td><td>31</td><td>8</td><td>$11.49</td></tr>\n    <tr><td>September</td><td>53</td><td>36.6&cent;</td><td>$19.35</td><td>34</td><td>19</td><td>$12.39</td></tr>\n    <tr><td>October</td><td>59</td><td>{{coned.rate_cents}}&cent;</td><td>$19.90</td><td>31</td><td>27</td><td>$10.68</td></tr>\n    <tr><td>November</td><td>55</td><td>{{coned.rate_cents}}&cent;</td><td>$18.80</td><td>26</td><td>30</td><td>$8.70</td></tr>\n    <tr><td>December</td><td>55</td><td>{{coned.rate_cents}}&cent;</td><td>$18.86</td><td>26</td><td>30</td><td>$8.76</td></tr>\n    <tr><td><strong>Year</strong></td><td><strong>604</strong></td><td>&mdash;</td><td><strong>$209</strong></td><td><strong>364</strong></td><td><strong>240</strong></td><td><strong>$127</strong></td></tr>\n  </tbody></table></div>\n  <p>Monthly kWh are rounded, so they do not sum exactly. At a flat {{coned.rate_cents}}&cent; all year the totals would be $205 and $124.</p>\n  <ul>\n    <li><strong>The summer tier is worth about $4 a year to this railing</strong> ($209 against $205). A vertical south-facing panel makes only 26% of its output from June to September, when the high sun strikes it at a glancing angle.</li>\n    <li><strong>Winter does the work, and the giving away.</strong> October to March produces 61% of the output and 80% of the exports. In January the railing makes 69&nbsp;kWh and, against a 150&nbsp;W draw, sends 40 of them to the grid for nothing.</li>\n    <li><strong>This is a best case.</strong> Shade from the building opposite, or a railing facing east or west, cuts every column; <a href=\"/800w-balcony-solar-output\">output by direction</a> has the other orientations, and <a href=\"/\">the calculator</a> models your own block.</li>\n  </ul>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Does Con Edison allow plug-in solar today?",
+      "Only through the same process as any other generator. Con Edison's tariff (General Rule 8.1) bars any other source of electricity in a customer's installation except under its net-metering, standby or emergency-generator provisions, and interconnection follows New York's Standardized Interconnection Requirements. For systems of 50 kW or less that means an online application, a UL 1741 SB-certified inverter, a signed contract and a verification test, with no application fee. Con Edison publishes no separate route for plug-in devices."
+    ],
+    [
+      "Will I have to tell Con Edison about a balcony solar panel under the SUNNY Act?",
+      "Yes, but only tell, not ask. If the SUNNY Act, which has passed both chambers and {{sunny.phrase}}, becomes law, the owner must notify the utility within 30 days of installing a device, using a simple web form each utility must post within 30 days of the law taking effect. The form may ask only for name and contact details, service address and account number, the device's make and model, and its rated size. Con Edison could not require approval, fees or extra equipment."
+    ],
+    [
+      "Is there a fee to connect small solar to Con Edison?",
+      "There is no application fee for systems of 50 kW AC or less under New York's Standardized Interconnection Requirements; Con Edison charges $750 above that. Net-metered residential solar interconnected since 1 January 2022 does pay a monthly Customer Benefit Contribution, $1.29 per kW DC a month on SC-1 in 2026, about $12 a year for 800 W of panels. The SUNNY Act would bar any fee or charge related to a compliant plug-in device."
+    ],
+    [
+      "Does a Con Edison smart meter record power a balcony panel sends to the grid?",
+      "Con Edison's smart meters were specified to support net metering, which implies they can measure power in both directions, and Con Edison shows electric use in 15-minute increments. What Con Edison has not published is how an ordinary, non-net-metered residential meter is configured to treat exports: ignored, netted, or counted as usage. Ask Con Edison in writing before plugging a panel in."
+    ],
+    [
+      "How much does an 800 W balcony panel save a Con Edison customer?",
+      "In balco.nyc's model, an unshaded, vertical south-facing 800 W railing in New York City produces about 604 kWh a year, worth about $205 at Con Edison's {{coned.rate_cents}}-cent marginal rate if every kWh is used at home, or $209 counting the June-to-September delivery tier. In an apartment drawing a steady 150 W with nobody home, about 364 kWh is used and the saving falls to about $127, or $124 at the flat rate; the other 240 kWh go to the grid uncredited."
+    ],
+    [
+      "Does Con Edison charge more for electricity in summer?",
+      "On standard residential SC-1 service, yes for kWh above the first 250 in a month. From 1 February 2026 the energy delivery charge is 16.402 cents per kWh all year, but from June through September each kWh above 250 in the month costs 18.858 cents. The supply charge also changes monthly. For a south-facing balcony panel the summer tier is worth only about $4 a year, because a vertical south panel produces most in winter."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://dps.ny.gov/nys-standardized-interconnection-requirements",
+      "title": "New York State Public Service Commission &mdash; Standardized Interconnection Requirements, effective 9 February 2026",
+      "note": "scope (5&nbsp;MW or less, in parallel with the grid), the 50&nbsp;kW process and its timelines, no application fee at 50&nbsp;kW or less, Exception&nbsp;3 for underground network areas, UL&nbsp;1741&nbsp;SB certification, the two-hour test window, the five-minute verification test and the Appendix&nbsp;F checklist."
+    },
+    {
+      "url": "https://www.coned.com/en/save-money/using-distributed-generation-energy-sources/applying-for-interconnection",
+      "title": "Con Edison &mdash; Applying for distributed generation interconnection",
+      "note": "applications through PowerClerk; the Small DG portal for 50&nbsp;kW or less; no application fee for small projects and $750 above 50&nbsp;kW."
+    },
+    {
+      "url": "https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/solar-photovoltaics-guide.pdf",
+      "title": "Con Edison &mdash; Solar Photovoltaics Guide, version 5 (July 2022)",
+      "note": "solar of 5&nbsp;MW or less is subject to the SIR; about 98% of jobs are under 50&nbsp;kW; network grids used extensively in Manhattan, Brooklyn, Queens and the Bronx; account and meter numbers; the net meter order at final acceptance."
+    },
+    {
+      "url": "https://www.coned.com/-/media/files/coned/documents/rates/electric/psc-10/electric-tariff.pdf",
+      "title": "Con Edison &mdash; Schedule for Electricity Service, PSC No. 10",
+      "note": "General Rule 8.1 (Segregated Service), General Rule 10.1 (bills based on meter registration), Rider&nbsp;R&rsquo;s Customer Benefit Contribution, and Leaf&nbsp;388: SC-1 Rate&nbsp;I customer charge $21.00 and energy delivery charges of 16.402&cent; and 18.858&cent;, effective 1&nbsp;February 2026."
+    },
+    {
+      "url": "https://www.coned.com/-/media/files/coned/documents/rates/electric/psc-10/other/customer-benefit-contribution/cbc-202601.pdf",
+      "title": "Con Edison &mdash; Customer Benefit Contribution Statement No. 7, effective 1 January 2026",
+      "note": "Phase One net metering CBC of $1.29 per kW DC a month for SC-1 solar."
+    },
+    {
+      "url": "https://nyassembly.gov/leg/?default_fld=&bn=A09111&term=2025&Summary=Y&Actions=Y&Text=Y&Memo=Y",
+      "title": "New York State Assembly &mdash; A9111C (SUNNY Act), text and actions",
+      "note": "the passed text: definition, exemption from interconnection and net metering, uncompensated exports, no approval, fee or added equipment, the 30-day notice and form, 90-day effective date; the action list ending &ldquo;returned to Assembly&rdquo; on 28&nbsp;May 2026."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "New York State Senate &mdash; S8512C",
+      "note": "the Senate version and its status."
+    },
+    {
+      "url": "https://documents.dps.ny.gov/public/Common/ViewDoc.aspx?DocRefId=%7B02E2B007-8581-4708-A487-190FA6D73B80%7D",
+      "title": "Con Edison &mdash; Advanced Metering Infrastructure Business Plan, 15 October 2015 (Case 15-E-0050)",
+      "note": "the Commission&rsquo;s minimum requirement that AMI systems provide net metering; Con Edison&rsquo;s meter specification; 15-minute residential intervals; the avoided cost of separate solar meters."
+    },
+    {
+      "url": "https://www.coned.com/en/our-energy-future/our-energy-vision/where-we-are-going/smart-meters/how-will-a-smart-meter-help-me",
+      "title": "Con Edison &mdash; Smart meter features and benefits",
+      "note": "electric usage shown in 15-minute increments."
+    },
+    {
+      "url": "https://www.coned.com/en/about-us/media-center/news/2022/06-23/con-edison-smart-meters-give-customers-the-power-of-information",
+      "title": "Con Edison &mdash; Smart meters give customers the power of information (June 2022)",
+      "note": "installation of more than 4.8&nbsp;million smart meters began in 2017; the largest capital project in the company&rsquo;s history."
+    },
+    {
+      "url": "https://www.coned.com/en/save-money/using-distributed-generation-energy-sources/solar-energy/solar-energy-installation-faq",
+      "title": "Con Edison &mdash; Solar energy installation FAQ",
+      "note": "what a net meter measures for net-metered customers."
+    },
+    {
+      "url": "https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf",
+      "title": "Con Edison &mdash; Electric average bill history",
+      "note": "the New York City SC-1 average of 33.83&cent;/kWh in 2025 behind the {{coned.rate_cents}}&cent; marginal rate."
+    },
+    {
+      "url": "https://psc.maryland.gov/regulated-utilities/electricity/renewable-energy/balcony-solar/",
+      "title": "Maryland Public Service Commission &mdash; Balcony Solar",
+      "note": "comparison: a meter that cannot track exports may treat them as zero consumption or add them to consumption in error."
+    },
+    {
+      "url": "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00127-R00HB-05340-PA.PDF",
+      "title": "Connecticut General Assembly &mdash; Public Act 26-127",
+      "note": "comparison: the required warning that surplus generation is charged to the customer as usage without a net-metering meter."
+    },
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "National Laboratory of the Rockies &mdash; PVWatts V8 API",
+      "note": "the model behind balco.nyc&rsquo;s monthly and hourly New York City output."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not legal advice. Tariff figures are from Con Edison&rsquo;s PSC No.&nbsp;10 as in effect on the review date and change; savings are modeled from PVWatts output, not metered."
+}

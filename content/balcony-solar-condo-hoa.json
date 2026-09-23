@@ -1,0 +1,231 @@
+{
+  "slug": "balcony-solar-condo-hoa",
+  "title": "Do solar-access laws cover balcony solar in a condo, co-op or HOA? &middot; balco.nyc",
+  "og_title": "Condo, co-op and HOA rules: do solar-access laws cover balcony solar?",
+  "breadcrumb": "Condos, co-ops and HOAs",
+  "cluster": "legal",
+  "pillar": false,
+  "card_title": "Can my condo, co-op or HOA ban balcony solar?",
+  "card": "Ten solar-access laws read against a railing panel: one covers it, two are unclear, seven do not.",
+  "llms": "which state solar-access statutes and plug-in solar laws limit what a condo, co-op or HOA can do about a railing-mounted panel, with a verdict per state read from the statute text as of September 2026.",
+  "related": [
+    "balcony-solar-renters",
+    "balcony-solar-laws-compared",
+    "install-balcony-solar"
+  ],
+  "description": "Most solar-access laws protect roofs, not condo balconies. A statute-by-statute verdict, and the plug-in laws in NJ, VT and CO that reach associations.",
+  "eyebrow": "Condos, co-ops and HOAs",
+  "h1": "Condo, co-op and HOA rules: do solar-access laws cover balcony solar?",
+  "lede": "Rarely. balco.nyc read ten state solar-access statutes against a plug-in panel clamped to a condo or co-op balcony railing: <strong>one clearly covers it</strong> (Vermont, and only since a July 2026 amendment), two are unclear and seven do not. Most protect roofs or the owner&rsquo;s own property and leave associations in control of common elements, which is where condo balconies commonly sit. Of the nine plug-in solar laws enacted so far, balco.nyc&rsquo;s state tracker finds three that curb association bans (New Jersey, Vermont and, from 2027, Colorado), one that expressly preserves them (Virginia) and five that say nothing.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~11 minutes",
+  "tags": [
+    "1 of 10 statutes clearly covers it",
+    "3 of 9 plug-in laws curb associations",
+    "Not legal advice"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "why-it-stops",
+      "toc": "Why solar-access laws stop at the balcony",
+      "html": "        <section id=\"why-it-stops\">\n  <h2><span class=\"sec-num\">1</span>Why solar-access laws mostly stop at the balcony</h2>\n  <p>Solar-access laws, sometimes called solar-rights laws, are old and were written for one situation: a homeowner who wants panels on the roof of a house they own, and an association that wants to stop it. Florida&rsquo;s dates from 1980. DSIRE, the state-policy database run by the NC Clean Energy Technology Center, counts solar access or easement laws in <strong>45 states plus DC</strong> as of March 2026, but that figure combines two different things. Easement statutes only let neighbors record an agreement not to block sunlight. Access statutes void association rules. Only the second kind helps with a board.</p>\n  <p>Three things in an access statute decide whether a railing panel is inside it:</p>\n  <ul>\n    <li><strong>What it protects.</strong> Most define the device broadly enough to include a plug-in panel. New York&rsquo;s does not: it covers only a system &ldquo;installed on a rooftop&rdquo;.</li>\n    <li><strong>Where it applies.</strong> Most protect installations on the owner&rsquo;s own property, then give the association express control of the common elements.</li>\n    <li><strong>Whom it binds.</strong> Most name homeowners&rsquo; and condominium associations. Few mention co-ops.</li>\n  </ul>\n  <p>The second point sinks most balcony claims. In a condominium you own your unit plus a share of everything else, and the balcony, its slab and its railing are commonly a <em>limited common element</em>: owned in common, reserved for your use. California makes that the default. Unless the declaration says otherwise, balconies and patios outside a unit are &ldquo;exclusive use common area&rdquo; (Civil Code &sect;4145). Colorado&rsquo;s 2026 plug-in law writes of a &ldquo;limited common element patio, deck, or balcony&rdquo;. A statute that protects the owner&rsquo;s property and leaves common elements to the association therefore protects the roof of a house, not the railing of a condo. A co-op is further removed. The corporation owns the building and you hold shares and a proprietary lease, so there is no real property of yours for a statute to protect.</p>\n  <p>If you own a house or townhouse under an HOA and the deck is part of your own lot, several of these laws do reach it, subject to &ldquo;reasonable&rdquo; restrictions. This page is mainly about condos and co-ops, where the answer is mostly no.</p>\n  <div class=\"callout\"><p><strong>Not legal advice.</strong> This page summarizes statutes as written on 23&nbsp;September 2026. Your declaration, bylaws or proprietary lease, and how your state&rsquo;s courts read them, decide your case.</p></div>\n</section>"
+    },
+    {
+      "id": "statute-by-statute",
+      "toc": "Ten statutes, read against a railing panel",
+      "html": "        <section id=\"statute-by-statute\">\n  <h2><span class=\"sec-num\">2</span>Ten statutes, read against a railing panel</h2>\n  <p>balco.nyc read the current text of each statute and asked one question: would a plug-in panel clamped to the railing of a condo or co-op balcony plausibly fall inside it? For each we noted how the statute defines the protected system, where it says the protection applies, and what it leaves to the association. &ldquo;Unclear&rdquo; means the text can reasonably be read either way. We did not survey case law, so a court in your state may already have settled a point we mark as open.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>State and statute</th><th>What it protects</th><th>Where it stops</th><th>A railing panel in a condo or co-op?</th></tr></thead><tbody>\n    <tr><td><a href=\"/states/california\">California</a>, Civil Code &sect;&sect;714, 714.1, 4746</td><td>Any &ldquo;solar energy system&rdquo;, defined broadly enough to include a plug-in panel. Governing-document rules that &ldquo;effectively prohibit or restrict&rdquo; one are void. A decision must be in writing, and an application not denied within 45 days is deemed approved.</td><td>In common areas the association may limit installations to &ldquo;those systems approved by the association&rdquo;. A balcony is common area unless the declaration says otherwise. The firmest protections (&sect;714.1(b), &sect;4746) are written for roofs. Stock cooperatives are covered.</td><td><strong>Partly.</strong> The panel is inside the statute and the approval rules apply, but on the balcony the association keeps the power to approve.</td></tr>\n    <tr><td><a href=\"/states/florida\">Florida</a>, &sect;163.04</td><td>Solar collectors and &ldquo;other energy devices based on renewable resources&rdquo;. Permission may not be denied &ldquo;within the boundaries of a condominium unit&rdquo;.</td><td>&ldquo;This section shall not apply to patio railings in condominiums, cooperatives, or apartments.&rdquo;</td><td><strong>No</strong> for a railing mount. A panel standing inside the unit&rsquo;s legal boundary is a closer question.</td></tr>\n    <tr><td><a href=\"/states/texas\">Texas</a>, Property Code &sect;202.010</td><td>Any &ldquo;solar energy device&rdquo;. The chapter&rsquo;s definitions include condominium regimes.</td><td>An association may prohibit a device on property it owns or maintains, on property owned in common, or anywhere on the owner&rsquo;s property except the roof or a fenced yard or patio.</td><td><strong>No.</strong></td></tr>\n    <tr><td><a href=\"/states/arizona\">Arizona</a>, A.R.S. &sect;&sect;33-1816, 33-439</td><td>A &ldquo;solar energy device&rdquo;, defined to include one serving a &ldquo;multifamily structure&rdquo;. Planned-community HOAs may not prohibit one. Covenants that &ldquo;effectively prohibit&rdquo; one are void.</td><td>&sect;33-1816 excludes condominiums, leaving condo owners only &sect;33-439, which says nothing about common elements. Arizona has no plug-in law, so utility rules still apply.</td><td><strong>Unclear</strong> for condos. More plausible in a planned-community HOA.</td></tr>\n    <tr><td><a href=\"/states/colorado\">Colorado</a>, C.R.S. 38-30-168</td><td>Covenants that restrict a &ldquo;renewable energy generation device&rdquo; are void. Reasonable aesthetic limits are allowed.</td><td>Confers no right to place a device on &ldquo;a limited common element or general common element&rdquo;.</td><td><strong>No, today.</strong> From 1&nbsp;January 2027 the plug-in law overrides this for limited common elements (section 3).</td></tr>\n    <tr><td><a href=\"/states/north-carolina\">North Carolina</a>, G.S. 22B-20</td><td>Solar collectors on &ldquo;residential property&rdquo;.</td><td>&ldquo;Residential property&rdquo; excludes a condominium &ldquo;in a multi-story building containing units having horizontal boundaries&rdquo;. Covenants may also ban collectors visible from the ground on a facade facing common or public areas.</td><td><strong>No.</strong></td></tr>\n    <tr><td><a href=\"/states/virginia\">Virginia</a>, Code &sect;55.1-1951.1 (condos), &sect;55.1-1820.1 (HOAs)</td><td>A &ldquo;solar energy collection device&rdquo; on &ldquo;that owner&rsquo;s property&rdquo;.</td><td>Protected only &ldquo;unless the recorded declaration&rdquo; prohibits it. The association &ldquo;may prohibit or restrict&rdquo; devices on common elements.</td><td><strong>No.</strong></td></tr>\n    <tr><td><a href=\"/states/maryland\">Maryland</a>, Real Property &sect;2-119</td><td>A &ldquo;solar collector system&rdquo; on &ldquo;the roof or exterior walls&rdquo; the owner owns or has exclusive use of. Condo bylaws and rules are covered.</td><td>An association &ldquo;may prohibit or restrict&rdquo; installation in common elements.</td><td><strong>Unlikely.</strong> A railing is neither roof nor wall, and is usually a common element.</td></tr>\n    <tr><td><a href=\"/states/new-york\">New York</a>, Real Property Law &sect;342</td><td>A &ldquo;solar power system&rdquo;, defined as one &ldquo;installed on a rooftop&rdquo;, against HOA rules.</td><td>Associations may ban systems on property they own or members own in common. Condos and co-ops are not mentioned.</td><td><strong>No.</strong> A railing is not a rooftop.</td></tr>\n    <tr><td><a href=\"/states/vermont\">Vermont</a>, 27 V.S.A. &sect;544, amended by Act&nbsp;149</td><td>Solar collectors and, since 1&nbsp;July 2026, plug-in devices &ldquo;appurtenant to buildings&rdquo;. Covenants may not prohibit them.</td><td>The old carve-out for &ldquo;patio railings in condominiums, cooperatives, or apartments&rdquo; now ends &ldquo;except for a plug-in photovoltaic device&rdquo;.</td><td><strong>Yes</strong>, for a device that meets the Act&rsquo;s definition (section 3).</td></tr>\n  </tbody></table></div>\n  <p>The tally is <strong>one yes, two unclear and seven that do not</strong> (or, in Maryland&rsquo;s case, almost certainly do not). The one yes is recent and deliberate. Florida and Vermont had the same railing carve-out, word for word. Vermont amended its version in 2026 to except plug-in devices; Florida has not. Where a statute is silent about balconies the usual pattern decides it: protection for the owner&rsquo;s property, association control of the common elements.</p>\n</section>"
+    },
+    {
+      "id": "plug-in-laws",
+      "toc": "The plug-in laws that reach associations",
+      "html": "        <section id=\"plug-in-laws\">\n  <h2><span class=\"sec-num\">3</span>The plug-in laws that reach associations</h2>\n  <p>The new plug-in solar laws are mostly about the utility: they stop it requiring approval or an interconnection agreement for a small device. balco.nyc&rsquo;s state tracker counts nine enacted as of 23&nbsp;September 2026. Five &mdash; <a href=\"/states/utah\">Utah</a>, <a href=\"/states/maine\">Maine</a>, Maryland, <a href=\"/states/connecticut\">Connecticut</a> and <a href=\"/states/new-hampshire\">New Hampshire</a> &mdash; say nothing about associations. Maine comes closest. A customer who installs on &ldquo;a structure the customer does not own&rdquo; must protect its integrity and restore it on removal, which fits a condo balcony exactly but gives no right to use one. The other four go in different directions:</p>\n  <ul>\n    <li><strong><a href=\"/states/new-jersey\">New Jersey</a></strong> (P.L.2026, c.82, signed 1&nbsp;September 2026, effective 1&nbsp;March 2027). Homeowners&rsquo; associations, condominium associations and cooperative housing corporations may not enforce governing documents that bar an owner or tenant from placing a device on the exterior of their premises. They keep &ldquo;reasonable restrictions concerning the size, placement, or manner of placement of a portable solar generation device on the exterior of a unit owner&rsquo;s or tenant&rsquo;s premises&rdquo;, and contrary provisions of a master deed or bylaws are void. Residents give 14 days&rsquo; written notice.</li>\n    <li><strong>Vermont</strong> (Act&nbsp;149, in force 1&nbsp;July 2026). The covenant rule in the table above now reaches railings, but only for a device that meets the Act&rsquo;s definition: certified to UL&nbsp;3700 &ldquo;or an equivalent certification&rdquo;, on a smart-metered supply, and &ldquo;temporarily but securely attached&rdquo;. As of September 2026 no complete plug-in system has been certified to UL&nbsp;3700, so which products qualify is for now an open question.</li>\n    <li><strong>Colorado</strong> (HB26-1007; the association clauses apply from 1&nbsp;January 2027). A covenant that &ldquo;unreasonably&rdquo; prohibits a device is void, and an owner &ldquo;may install, use, or operate a device on real property that is a limited common element&rdquo;. The association may require the device to be reasonably secured &ldquo;to their unit or any limited common element patio, deck, or balcony&rdquo;, and may put liability, costs and indemnity on the owner. It is the most balcony-specific text in any US statute we have read. Its express permission covers limited common elements, not general ones.</li>\n    <li><strong>Virginia</strong> (Chapters 1052 and 998, from 1&nbsp;January 2027). The section that stops towns banning the devices says: &ldquo;Nothing in this section shall be construed to supersede or limit&rdquo; condominium instruments, the cooperative instruments of a co-op, or a property owners&rsquo; association declaration. Tenants of landlords with more than four units get a right to install. Condo owners do not, and a tenant renting a condo unit can be approved by the landlord and still refused by the association.</li>\n  </ul>\n  <p>Both bills awaiting a governor are silent on associations. New York&rsquo;s SUNNY Act has passed both chambers and {{sunny.phrase}}. California&rsquo;s SB&nbsp;868 was presented to Governor Newsom on 31&nbsp;August, with a 30&nbsp;September deadline. Two bills that would have limited association rules died in 2026: <a href=\"/states/oregon\">Oregon</a>&rsquo;s HB&nbsp;4080 and <a href=\"/states/south-carolina\">South Carolina</a>&rsquo;s H&nbsp;4579. <a href=\"/states/hawaii\">Hawaii</a>&rsquo;s condo-only SB&nbsp;2902 also died, and would not have overridden association rules anyway.</p>\n  <p><strong>What the new right is worth.</strong> balco.nyc&rsquo;s PVWatts runs for each state&rsquo;s largest city put an unshaded, south-facing 800&nbsp;W railing system, after the site&rsquo;s 0.95 railing factor, at 676.6 &times; 0.95 = <strong>643&nbsp;kWh</strong> a year in Newark, 658 in Burlington and 805 in Denver. At each state&rsquo;s EIA average residential price over the 12 months to June 2026 (23.81&cent;, 23.65&cent; and 16.45&cent;), that is roughly <strong>$153, $156 and $132</strong> a year. Those are ceilings, not expectations: no shade, the best orientation, and state averages that include fixed charges and so overstate what a saved kWh is worth. The value of these laws is less the money than that they turn a flat no into a negotiation about placement.</p>\n</section>"
+    },
+    {
+      "id": "new-york-co-ops",
+      "toc": "Co-ops, condos and New York City",
+      "html": "        <section id=\"new-york-co-ops\">\n  <h2><span class=\"sec-num\">4</span>Co-ops, condos and New York City</h2>\n  <p>For a New York City apartment none of section 2 helps. The state&rsquo;s solar-rights statute, Real Property Law &sect;342 (enacted in August 2021), covers rooftop systems and homeowners&rsquo; associations and mentions neither condos nor co-ops. The <a href=\"/sunny-act\">SUNNY Act</a>, which has passed both chambers and {{sunny.phrase}}, would remove the utility barrier and nothing else. Its text says nothing about landlords, associations, co-ops or leases. In New York City, permission is entirely the board&rsquo;s to give.</p>\n  <p><strong>Co-ops are not HOAs.</strong> A co-op is a corporation that owns the building. You own shares and hold a proprietary lease, and the lease and house rules typically require the board&rsquo;s written consent for alterations. Expect the request to become an alteration agreement. A condo is closer to an HOA. A board of managers administers the declaration and bylaws, and the balcony is often a limited common element, so a railing mount is a change to property you do not own alone.</p>\n  <p><strong>Courts defer to the board.</strong> New York reviews co-op and condo board decisions under the business judgment rule set out in <em>Levandusky v. One Fifth Avenue Apartment Corp.</em> (1990). A decision made in good faith, within the board&rsquo;s authority and for the building&rsquo;s purposes will generally stand. Later cases carve out decisions with no legitimate relationship to the building&rsquo;s welfare, or ones that single out an individual. There is no statute for a shareholder to invoke against a refusal.</p>\n  <p><strong>Why the board cares.</strong> Owners of buildings over six stories must have their exterior walls and &ldquo;appurtenances&rdquo; inspected every five years under the city&rsquo;s Fa&ccedil;ade Inspection &amp; Safety Program. The rule&rsquo;s list of appurtenances includes &ldquo;railings&rdquo; and &ldquo;any equipment attached to or protruding from the facade&rdquo;. A panel clamped to a railing plausibly falls into the second category. The building&rsquo;s inspector would then have to examine it, and if it came loose it would be the building&rsquo;s problem. Landmarked buildings add Landmarks Preservation Commission review. The practical detail is on <a href=\"/install-balcony-solar\">how to install balcony solar</a>.</p>\n</section>"
+    },
+    {
+      "id": "asking-the-board",
+      "toc": "How to ask a board",
+      "html": "        <section id=\"asking-the-board\">\n  <h2><span class=\"sec-num\">5</span>How to ask a board</h2>\n  <p>Where a statute does not decide it, which is most places, the board does. A vague request invites a vague refusal, so answer the board&rsquo;s questions before it asks them:</p>\n  <ul>\n    <li><strong>Read your documents first.</strong> Condo owners need the declaration, bylaws and rules. Co-op shareholders need the proprietary lease and house rules. Look for clauses on alterations, the exterior, terraces and anything attached to railings. In New Jersey, Vermont, Colorado or California, quote the specific statute text above. In New York, do not lead with the law, because there is none on your side.</li>\n    <li><strong>One page on the hardware.</strong> Name the product and its certification listing, the panel&rsquo;s size and weight, and how it attaches. The strongest answers are inside the railing, clamped rather than drilled, with a secondary tether. Say which outlet the cable reaches and by what route, and how the whole thing comes down.</li>\n    <li><strong>Offer the paperwork.</strong> Offer an alteration agreement with an indemnity, and a certificate of insurance. California&rsquo;s rule for systems on a shared condo roof is a usable model: liability coverage kept in force, with a certificate within 14&nbsp;days of approval and every year after (&sect;4746). Commit to removal and restoration at your own cost on sale, on request, and for facade inspections or repairs.</li>\n    <li><strong>An engineer&rsquo;s letter if asked.</strong> The install guide recommends one anyway for glass or aged railings. Weigh its cost against the money at stake. In New York City an 800&nbsp;W panel on an open south-facing railing makes at most about 604&nbsp;kWh a year, about $205 at Con Edison&rsquo;s {{coned.rate_cents}}&cent; marginal rate, and a shaded low floor far less. Conditions costing more than a year or two of that change the decision. <a href=\"/\">The calculator</a> gives the figure for your own balcony.</li>\n    <li><strong>Time the request.</strong> In New York you can ask for approval conditional on the SUNNY Act taking effect, since the utility barrier stays until it does. In Colorado and New Jersey, the dates in section 3 change what a board is allowed to refuse.</li>\n    <li><strong>Get the answer in writing</strong>, including any conditions, and keep it with your lease or deed.</li>\n  </ul>\n  <p>If the board says no in a state without a plug-in association clause, that is usually the end of it. A floor-standing panel that attaches to nothing still needs an outdoor outlet and still falls under the building&rsquo;s rules. It is a better request, not a way around the board. If the answer is a firm no, <a href=\"/balcony-solar-renters\">renters&rsquo; options</a> and <a href=\"/balcony-solar-laws-compared\">the state laws side by side</a> show what may change and when.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Can my HOA or condo association ban solar panels on my balcony?",
+      "In most states, yes, if the balcony is a common element, which it commonly is in a condominium. Solar-access laws generally protect roofs or the owner's own property and let associations prohibit or restrict devices on common elements. The exceptions for plug-in panels are Vermont (since 1 July 2026), New Jersey (from 1 March 2027) and Colorado (from 1 January 2027), where associations may set reasonable limits on placement but may not simply ban the devices. This is a summary of statutes, not legal advice."
+    ],
+    [
+      "Does my state's solar access law protect a balcony solar panel?",
+      "Usually not for a condo or co-op balcony. balco.nyc read ten state statutes (California, Florida, Texas, Arizona, Colorado, North Carolina, Virginia, Maryland, New York and Vermont) against a railing-mounted plug-in panel: only Vermont's clearly covers it, California's and Arizona's are unclear, and the other seven either exclude condo railings, protect only roofs, or let associations control common elements. Florida's statute says outright that it does not apply to patio railings in condominiums, cooperatives or apartments."
+    ],
+    [
+      "Can a New York City co-op board refuse balcony solar?",
+      "Yes. New York's solar-rights statute, Real Property Law section 342, covers only rooftop systems and homeowners' associations and does not mention co-ops, and the SUNNY Act, which awaits the Governor's signature, would give no right to install. Co-op alterations are governed by the proprietary lease and house rules, and New York courts review board decisions under the business judgment rule, so a refusal made in good faith and within the board's authority will generally stand."
+    ],
+    [
+      "Does the SUNNY Act let me install balcony solar in my co-op or condo?",
+      "No. The SUNNY Act (S8512C / A9111C) has passed both chambers of the New York Legislature and awaits the Governor's signature. It would exempt small plug-in devices from utility interconnection and approval, but its text says nothing about landlords, associations, co-ops or leases, so board permission would still be required."
+    ],
+    [
+      "Which states stop condo associations from banning plug-in solar?",
+      "As of 23 September 2026, three: Vermont, whose covenant rule has covered qualifying plug-in devices on condo, co-op and apartment patio railings since 1 July 2026; New Jersey, where associations may not enforce bans on exterior placement from 1 March 2027; and Colorado, where from 1 January 2027 an owner may install a device on a limited common element such as a balcony. Virginia's law expressly does not override condominium, co-op or HOA documents, and the other five enacted plug-in laws are silent on associations."
+    ],
+    [
+      "What should I give my board when asking to install balcony solar?",
+      "A one-page description of the product and its certification, its size and weight, how it attaches (ideally inside the railing, clamped not drilled, with a secondary tether), which outlet it uses and how it is removed. Offer an alteration agreement with an indemnity, a certificate of liability insurance, and a commitment to remove it and restore the railing at your own cost on sale, on request or for facade work. Get the answer and any conditions in writing."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://ncsolarcen-prod.s3.amazonaws.com/wp-content/uploads/2026/03/DSIRE_Solar_Access_Laws_March2026.pdf",
+      "title": "DSIRE (NC Clean Energy Technology Center) &mdash; Solar Access and Easement Policy map, March 2026",
+      "note": "the compilation used as a starting point: solar access or easement laws in 45 states plus DC, a count that combines both kinds."
+    },
+    {
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=714.",
+      "title": "California Legislative Information &mdash; Civil Code &sect;714",
+      "note": "governing-document rules that effectively prohibit or restrict a solar energy system are void; written decisions and the 45-day deemed approval."
+    },
+    {
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=714.1.",
+      "title": "California Legislative Information &mdash; Civil Code &sect;714.1",
+      "note": "an association may restrict installations in common areas to systems it approves; the rooftop-only protections in subdivision (b)."
+    },
+    {
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=4145.",
+      "title": "California Legislative Information &mdash; Civil Code &sect;4145",
+      "note": "balconies and patios outside a unit are exclusive use common area unless the declaration provides otherwise."
+    },
+    {
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=4746.",
+      "title": "California Legislative Information &mdash; Civil Code &sect;4746",
+      "note": "rules for solar on a multifamily common-area roof, including liability coverage and a certificate of insurance within 14 days and annually."
+    },
+    {
+      "url": "https://www.flsenate.gov/Laws/Statutes/2025/163.04",
+      "title": "The Florida Senate &mdash; Florida Statutes &sect;163.04",
+      "note": "the protection within condominium unit boundaries, and the exclusion of patio railings in condominiums, cooperatives or apartments."
+    },
+    {
+      "url": "https://tcss.legis.texas.gov/resources/PR/htm/PR.202.htm",
+      "title": "Texas Legislature &mdash; Property Code Chapter 202 (&sect;&sect;202.001, 202.010)",
+      "note": "the exceptions letting an association prohibit devices on common property and off the roof or fenced yard or patio; condominium regimes within the definitions."
+    },
+    {
+      "url": "https://www.azleg.gov/ars/33/01816.htm",
+      "title": "Arizona Legislature &mdash; A.R.S. &sect;33-1816",
+      "note": "planned-community associations may not prohibit a solar energy device; reasonable placement rules allowed."
+    },
+    {
+      "url": "https://www.azleg.gov/ars/33/01802.htm",
+      "title": "Arizona Legislature &mdash; A.R.S. &sect;33-1802",
+      "note": "the planned-community definition excludes condominiums governed by chapter 9."
+    },
+    {
+      "url": "https://www.azleg.gov/ars/33/00439.htm",
+      "title": "Arizona Legislature &mdash; A.R.S. &sect;33-439",
+      "note": "covenants that effectively prohibit a solar energy device are void, with no reference to common elements."
+    },
+    {
+      "url": "https://colorado.public.law/statutes/crs_38-30-168",
+      "title": "C.R.S. 38-30-168 (text of the Colorado Revised Statutes, via Public.Law)",
+      "note": "no right to place a device on a limited or general common element (subsection 3)."
+    },
+    {
+      "url": "https://leg.colorado.gov/bill_files/116074/download",
+      "title": "Colorado General Assembly &mdash; HB26-1007, signed act",
+      "note": "C.R.S. 40-2-140(7): from 1 January 2027, unreasonable prohibitions void and devices allowed on limited common elements, including balconies."
+    },
+    {
+      "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_22B/GS_22B-20.html",
+      "title": "North Carolina General Assembly &mdash; G.S. 22B-20",
+      "note": "the exclusion of multi-story condominiums from residential property, and the facade exception."
+    },
+    {
+      "url": "https://law.lis.virginia.gov/vacode/title55.1/chapter19/section55.1-1951.1/",
+      "title": "Code of Virginia &mdash; &sect;55.1-1951.1 (Condominium Act)",
+      "note": "protection only on the owner&rsquo;s property and only unless the declaration prohibits; associations may prohibit on common elements."
+    },
+    {
+      "url": "https://law.lis.virginia.gov/vacode/title55.1/chapter18/section55.1-1820.1/",
+      "title": "Code of Virginia &mdash; &sect;55.1-1820.1 (Property Owners&rsquo; Association Act)",
+      "note": "the same rule for property owners&rsquo; associations."
+    },
+    {
+      "url": "https://lis.blob.core.windows.net/files/1225204.PDF",
+      "title": "Virginia Acts of Assembly 2026, Chapter 1052 (HB&nbsp;395)",
+      "note": "the plug-in law, effective 1 January 2027, and its clause preserving condominium, cooperative and association instruments."
+    },
+    {
+      "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=grp&section=2-119&enactments=false",
+      "title": "Maryland General Assembly &mdash; Real Property &sect;2-119",
+      "note": "protection limited to roofs or exterior walls the owner owns or has exclusive use of; associations may prohibit in common elements."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/laws/RPP/342",
+      "title": "New York State Senate &mdash; Real Property Law &sect;342",
+      "note": "a solar power system is defined as one installed on a rooftop; associations may prohibit systems on common property."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "New York State Senate &mdash; S8512C (SUNNY Act)",
+      "note": "status, and a text that contains no landlord, association, co-op or lease provision."
+    },
+    {
+      "url": "https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf",
+      "title": "Vermont Legislature &mdash; Act 149 (S.202) as enacted",
+      "note": "the amended 27 V.S.A. &sect;544 railing carve-out, the device definition (UL 3700 or equivalent, smart meter) and the 1 July 2026 effective date."
+    },
+    {
+      "url": "https://www.nj.gov/governor/news/2026/approved/20260901a.shtml",
+      "title": "State of New Jersey, Office of the Governor &mdash; Garden State Balcony Solar Act signed, 1 September 2026",
+      "note": "the signing, and that associations may not broadly prohibit the devices."
+    },
+    {
+      "url": "https://www.capehart.com/new-jersey-becomes-the-10th-state-to-legalize-and-regulate-portable-solar-generation-devices/",
+      "title": "Capehart Scatchard &mdash; New Jersey becomes the 10th state to legalize and regulate portable solar generation devices",
+      "note": "the association provisions: no blanket bans, reasonable limits on size and placement, 14 days&rsquo; notice, contrary governing documents void."
+    },
+    {
+      "url": "https://pv-magazine-usa.com/2026/09/01/new-jersey-legalizes-plug-in-solar-up-to-1200-w/",
+      "title": "pv magazine USA &mdash; New Jersey legalizes plug-in solar up to 1,200 W",
+      "note": "the quoted reasonable-restrictions language and the 1 March 2027 effective date."
+    },
+    {
+      "url": "https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132",
+      "title": "Maine Legislature &mdash; LD 1730 (chapter 644), enacting 35-A MRSA &sect;3475",
+      "note": "subsection 8: protect and restore a structure the customer does not own; no right to install."
+    },
+    {
+      "url": "https://www.herrick.com/publications/board-repair-obligations-revisited/",
+      "title": "Herrick, Feinstein (New York Law Journal) &mdash; Board repair obligations, revisited",
+      "note": "the business judgment rule applies to co-ops and condos (<em>Levandusky</em>, 1990), and its limits."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/buildings/rules/1_RCNY_103-04.pdf",
+      "title": "NYC Department of Buildings &mdash; 1 RCNY &sect;103-04",
+      "note": "the definition of appurtenance, including railings and any equipment attached to or protruding from the facade."
+    },
+    {
+      "url": "https://www.nyc.gov/site/buildings/safety/facade-inspection-safety-program-fisp-filing-instructions.page",
+      "title": "NYC Department of Buildings &mdash; Fa&ccedil;ade Inspection &amp; Safety Program filing instructions",
+      "note": "buildings over six stories inspected every five years."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/",
+      "title": "NREL PVWatts Calculator",
+      "note": "the V8 model behind balco.nyc&rsquo;s per-state runs for Newark, Burlington and Denver."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia861m/",
+      "title": "EIA &mdash; Form EIA-861M monthly sales and revenue",
+      "note": "state average residential prices, 12 months to June 2026, which include fixed charges."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It summarizes statutes as written on 23&nbsp;September 2026 and is not legal advice. Your declaration, bylaws or proprietary lease, and your state&rsquo;s courts, decide your case."
+}

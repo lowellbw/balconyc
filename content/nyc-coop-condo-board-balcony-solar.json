@@ -1,0 +1,180 @@
+{
+  "slug": "nyc-coop-condo-board-balcony-solar",
+  "title": "Getting balcony solar past an NYC co-op or condo board &middot; balco.nyc",
+  "og_title": "Getting balcony solar past a New York City co-op or condo board",
+  "breadcrumb": "Co-op and condo boards",
+  "cluster": "nyc",
+  "pillar": false,
+  "card_title": "Can my NYC co-op or condo board stop me installing balcony solar?",
+  "card": "One NYC home in five answers to a board. What an alteration agreement asks and what a board can refuse.",
+  "llms": "how many New York City homes are in co-ops and owned condos whose boards control the exterior (balco.nyc's PLUTO count: 724,425, or 19.4%), what the NYC Bar's model alteration agreements require, and how the business judgment rule limits a challenge to a refusal.",
+  "related": [
+    "balcony-solar-condo-hoa",
+    "sunny-act",
+    "install-balcony-solar"
+  ],
+  "description": "About one NYC home in five is in a co-op or owned condo whose board can refuse a balcony panel. What alteration agreements ask for, and how to ask.",
+  "eyebrow": "Co-ops and condos",
+  "h1": "Getting balcony solar past an NYC co-op or condo board",
+  "lede": "Yes, your board can stop you, and in New York City about one home in five has a board to ask. balco.nyc&rsquo;s count of the city&rsquo;s PLUTO tax-lot file puts <strong>724,425 of 3.74 million homes (19.4%)</strong> in co-ops or individually owned condos, and one in three in Manhattan. No New York law gives a shareholder or unit owner a right to a railing panel, so the job is a request a board can approve: a removable device, nothing drilled, insurance and an indemnity, and a promise to take it down when the facade needs work.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~10 minutes",
+  "tags": [
+    "19.4% of NYC homes have a board",
+    "33.4% in Manhattan",
+    "Not legal advice"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "who-answers",
+      "toc": "One NYC home in five answers to a board",
+      "html": "        <section id=\"who-answers\">\n  <h2><span class=\"sec-num\">1</span>One New York home in five answers to a board</h2>\n  <p>Whose permission you need depends on how your building is owned, and New York City publishes enough data to count it. balco.nyc summed residential units by building class in PLUTO, the Department of City Planning&rsquo;s tax-lot file (version 26v2, the dataset the calculator uses for building heights). Co-ops are the classes the Department of Finance defines as cooperatives: C6 and C8 walk-ups, D4 and D0 elevator buildings, R9 (a co-op inside a condominium) and A8 (land co-ops such as Breezy Point). Condos are the R classes. PLUTO reports each condominium as one record with all its apartments added together.</p>\n  <p>That raw count overstates condos, because many newer rental towers are legally condominiums with a handful of tax lots, often one residential unit holding hundreds of apartments owned by a landlord. balco.nyc matched each PLUTO condo to the Department of Finance&rsquo;s list of condominium unit lots and treated any condo with fewer unit lots than a quarter of its apartments as a rental. That moves 149,017 apartments in 1,102 condominiums out of the board column. Moving the cut to a half or three-quarters changes the total by under 8,500.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Borough</th><th>All homes</th><th>Co-op</th><th>Owned condo</th><th>Board-run properties</th><th>Share with a board</th><th>Condo-structured rentals</th></tr></thead><tbody>\n    <tr><td>Manhattan</td><td>958,956</td><td>197,566</td><td>122,702</td><td>6,243</td><td><strong>33.4%</strong></td><td>62,076</td></tr>\n    <tr><td>Brooklyn</td><td>1,115,989</td><td>83,405</td><td>67,351</td><td>7,291</td><td>13.5%</td><td>42,505</td></tr>\n    <tr><td>Queens</td><td>890,313</td><td>123,044</td><td>44,412</td><td>2,280</td><td>18.8%</td><td>23,400</td></tr>\n    <tr><td>Bronx</td><td>591,146</td><td>56,266</td><td>16,962</td><td>664</td><td>12.4%</td><td>20,079</td></tr>\n    <tr><td>Staten Island</td><td>180,241</td><td>1,937</td><td>10,780</td><td>246</td><td>7.1%</td><td>957</td></tr>\n    <tr><td><strong>New York City</strong></td><td>3,736,645</td><td>462,218</td><td>262,207</td><td>16,724</td><td><strong>19.4%</strong></td><td>149,017</td></tr>\n  </tbody></table></div>\n  <p>Residential units from PLUTO 26v2, counted by balco.nyc. &ldquo;Properties&rdquo; are tax lots, and one lot can hold many buildings: Co-op City&rsquo;s 15,372 apartments sit on two.</p>\n  <p>So <strong>724,425 homes, 19.4% of the city&rsquo;s 3.74 million</strong>, are in buildings where a board of shareholders or unit owners, not a landlord or the occupant, decides what goes on a railing. Nearly two thirds of them are co-ops. The rest of the city splits into condo-structured rentals (4.0%), one- and two-family houses (21.9%), and rental buildings and everything else (54.7%, a group that also holds three-family houses and small mixed-use buildings, many of them owner-occupied).</p>\n  <p>Two checks. The 2023 Housing and Vacancy Survey, as reported by the City Comptroller, counted 450,000 occupied co-op apartments and 318,000 in condominiums, 22% of occupied homes: close to PLUTO&rsquo;s co-op count, with the condo figure between balco.nyc&rsquo;s two condo counts (262,207 owned, 411,224 in every condo-structured building). And building classes are only labels. One Roosevelt Island lot of 8,018 apartments, which holds rental buildings as well as co-ops, is classed as a co-op; leaving it out gives 19.2%.</p>\n</section>"
+    },
+    {
+      "id": "what-the-board-decides",
+      "toc": "What the board is deciding",
+      "html": "        <section id=\"what-the-board-decides\">\n  <h2><span class=\"sec-num\">2</span>What the board is deciding, and why no law overrides it</h2>\n  <p>No statute helps a New York City shareholder or unit owner here. The state&rsquo;s solar-rights law covers rooftop systems and homeowners&rsquo; associations (<a href=\"/balcony-solar-condo-hoa\">the statute-by-statute reading</a>), and the <a href=\"/sunny-act\">SUNNY Act</a>, which has passed both chambers and {{sunny.phrase}}, would remove the utility&rsquo;s veto and says nothing about boards, landlords or leases. What governs is your building&rsquo;s own documents.</p>\n  <ul>\n    <li><strong>Co-op.</strong> The corporation owns the building; you hold shares and a proprietary lease, which typically bars installing equipment or making alterations without the corporation&rsquo;s consent. The NYC Bar&rsquo;s model co-op alteration agreement opens by reciting exactly that. The Attorney General&rsquo;s guide to co-op boards points shareholders to the offering plan, the board or the managing agent for copies of the lease, bylaws and house rules.</li>\n    <li><strong>Condo.</strong> New York&rsquo;s Condominium Act lets a unit include a &ldquo;balcony, terrace and patio&rdquo; but lists main walls and fire escapes among the common elements, so your declaration decides which side of the line your balcony falls on. The wall, and often the railing, belongs to everyone. The NYC Bar&rsquo;s 2026 model condo agreement forbids changes to common elements unless the board approves them in its &ldquo;sole and absolute discretion&rdquo;.</li>\n    <li><strong>A new building still run by its sponsor.</strong> The City Bar&rsquo;s notes to that condo form say sponsor-controlled boards commonly restrict renovations until the building has a permanent certificate of occupancy. In a co-op, the Attorney General generally requires the sponsor to give up control once it has sold more than half the shares, or five years after closing, whichever comes first.</li>\n    <li><strong>Renting inside a co-op or condo.</strong> You need the apartment owner&rsquo;s consent and then the board&rsquo;s, because the owner is bound by the lease or condominium documents and would sign any alteration agreement. <a href=\"/balcony-solar-renters\">Renters&rsquo; options</a> and <a href=\"/nyc-rent-stabilized-nycha-balcony-solar\">the rent-stabilized and NYCHA guide</a> cover the landlord side.</li>\n  </ul>\n  <p>Two approvals sit outside the board: the utility, which is the part the SUNNY Act addresses (<a href=\"/con-edison-plug-in-solar\">what Con Edison requires</a>), and, in a designated building or historic district, the <a href=\"/nyc-landmarks-balcony-solar\">Landmarks Preservation Commission</a>.</p>\n</section>"
+    },
+    {
+      "id": "alteration-agreement",
+      "toc": "What an alteration agreement asks for",
+      "html": "        <section id=\"alteration-agreement\">\n  <h2><span class=\"sec-num\">3</span>What an alteration agreement asks for</h2>\n  <p>The closest thing New York City has to a standard is a pair of model forms from the New York City Bar Association&rsquo;s Cooperative and Condominium Law Committee: a co-op agreement last updated in 2010, and a condo agreement, approved by both the City and State bar associations, that the City Bar published in 2026. The Bar calls them a starting point and many buildings use their own, but clause by clause they show what a board will ask:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Clause</th><th>What the model forms say</th><th>What it means for a railing panel</th></tr></thead><tbody>\n    <tr><td>Plans</td><td>Detailed plans and specifications, prepared by a licensed architect or engineer if the board requires, reviewed by the board&rsquo;s designated engineer, whose changes you must make.</td><td>For a removable device, a data sheet, a mounting drawing and photos may do. Ask before paying for stamped drawings.</td></tr>\n    <tr><td>Deposits and fees</td><td>Blanks for a security deposit, a managing agent&rsquo;s processing fee, and a review deposit that pays the board&rsquo;s lawyer and engineer.</td><td>The one cost that can exceed the kit. Ask for a waiver or a cap.</td></tr>\n    <tr><td>Insurance</td><td>Co-op model: liability cover of at least $1,000,000, which may be part of a homeowner&rsquo;s policy or umbrella, naming the corporation and its agents. Condo model: amounts to be set with the building&rsquo;s insurer.</td><td>Ask your unit-owner insurer for a certificate naming the board, and whether the policy covers a device outside the unit.</td></tr>\n    <tr><td>Indemnity</td><td>You, and any contractor, defend and indemnify the building against claims arising from the work.</td><td>A falling panel is the claim the board is pricing. The indemnity is only as good as the insurance behind it.</td></tr>\n    <tr><td>Permits</td><td>You obtain whatever the Department of Buildings, the Fire Department or the Landmarks Preservation Commission requires, and the board&rsquo;s engineer decides what is required.</td><td>A new outdoor outlet means a licensed electrician. A designated building may need Landmarks approval.</td></tr>\n    <tr><td>Exterior walls</td><td>Co-op model: no penetration of any exterior wall. Condo model: none without the board&rsquo;s approval, at its discretion.</td><td>Clamp; do not drill. Route the cable through an existing opening.</td></tr>\n    <tr><td>Upkeep and removal</td><td>You maintain the work and restore it after any building repair. The co-op model lets the corporation remove air conditioners, terrace plantings and similar installations for repairs, at the shareholder&rsquo;s expense.</td><td>Expect to take the panel down for facade inspections and repairs, at your cost.</td></tr>\n    <tr><td>Sale</td><td>A buyer must take on the agreement before the co-op registers the transfer or the condo waives its right of first refusal.</td><td>Take the panel down before selling, or tell buyers it comes with obligations.</td></tr>\n  </tbody></table></div>\n  <p>Neither form was written with a plug-in device in mind; both assume construction, with contractors, working hours and debris. A panel with no contractor and nothing built can reasonably ask for a shorter process than a kitchen renovation.</p>\n</section>"
+    },
+    {
+      "id": "facade",
+      "toc": "Why the facade makes boards cautious",
+      "html": "        <section id=\"facade\">\n  <h2><span class=\"sec-num\">4</span>Why the facade makes boards cautious</h2>\n  <p>In a building over six stories, a railing panel lands in an expensive compliance program. The city&rsquo;s Facade Inspection &amp; Safety Program (FISP, still widely called Local Law 11) requires the exterior walls and appurtenances of those buildings to be examined every five years by an inspector the owner hires. The rule&rsquo;s list of appurtenances includes railings, window air conditioners and &ldquo;any equipment attached to or protruding from the facade&rdquo;. It also requires balcony guards and railings to be checked for whether their parts are positively secured against movement; any that are not are filed as unsafe.</p>\n  <p>An unsafe filing is the building&rsquo;s problem, not yours. The owner must start repairs at once, put up whatever the public needs, such as sidewalk sheds, fences or netting, and correct the condition within 90 days or on a timetable the inspector sets, with monthly penalties if it stays uncorrected. That is the arithmetic behind the conditions boards reach for first: mount on the inside of the railing, never the street side; add a secondary tether; and take the panel down, at your cost, whenever the inspector or the facade contractor needs the railing. The inspection cycle, the fire-escape rule (nothing may obstruct one) and what an inspector looks for are on <a href=\"/nyc-fire-escape-facade-rules\">the facade and fire-escape rules page</a>.</p>\n</section>"
+    },
+    {
+      "id": "what-a-board-can-refuse",
+      "toc": "What a board can refuse",
+      "html": "        <section id=\"what-a-board-can-refuse\">\n  <h2><span class=\"sec-num\">5</span>What a board can refuse, and what a court will review</h2>\n  <p>The leading New York case on board power is itself an alteration dispute. In <em>Levandusky v One Fifth Avenue Apartment Corp.</em> (75 NY2d 530, decided 5 April 1990), a shareholder moved a two-inch steam riser during a kitchen renovation, despite a lease clause requiring the corporation&rsquo;s prior written consent, and the board issued a stop-work order; the dispute also covered three air conditioners that the Landmarks Preservation Commission had cited. The Court of Appeals held that &ldquo;so long as the board acts for the purposes of the cooperative, within the scope of its authority and in good faith, courts will not substitute their judgment for the board&rsquo;s.&rdquo; A challenger must show that the decision has no legitimate relationship to the building&rsquo;s welfare, deliberately singles someone out, was made without considering the relevant facts, or exceeds the board&rsquo;s authority. New York courts give condo boards the same deference. Where a proprietary lease promises that consent to alterations will not be unreasonably withheld, the test becomes reasonableness, but in 2018 the Appellate Division upheld a refusal under such a clause (<em>Perrault v Village Dunes Apt. Corp.</em>) as legitimately related to the co-op&rsquo;s welfare.</p>\n  <p>Most refusals a board is likely to give would survive that review:</p>\n  <ul>\n    <li>anything on the street side of the railing, or hanging over a sidewalk, yard or neighbor&rsquo;s terrace;</li>\n    <li>anything that drills into the facade, parapet, balcony slab or waterproofing;</li>\n    <li>a device installed before the SUNNY Act takes effect, while New York still requires utility approval to connect one, or one without a listing for the complete system. As of September 2026 no complete plug-in system is listed to <a href=\"/ul-3700-plug-in-solar-certification\">UL&nbsp;3700</a>, so a board that waits for one is not being arbitrary;</li>\n    <li>a railing the board&rsquo;s engineer cannot vouch for, or any placement near a fire escape;</li>\n    <li>a building-wide rule about what may be visible from the street, applied evenly.</li>\n  </ul>\n  <p>The refusals most open to challenge fit <em>Levandusky</em>&rsquo;s exceptions: treating you differently from a neighbor whose identical installation was approved, or a decision driven by a director&rsquo;s private interest. In 2023 the Appellate Division let a shareholder&rsquo;s claim proceed against two board members he alleged had blocked his penthouse renovation at 860 Fifth Avenue because of its effect on their own apartment (<em>Tahari v 860 Fifth Ave. Corp.</em>). Filed in 2018, the case was back before that court in October 2025. Set against a panel worth at most about $205 a year (section 6), the realistic remedy is persuasion, not a lawsuit.</p>\n</section>"
+    },
+    {
+      "id": "request-packet",
+      "toc": "The request packet",
+      "html": "        <section id=\"request-packet\">\n  <h2><span class=\"sec-num\">6</span>The request packet</h2>\n  <p>Start with what the panel is worth, because that sets how much process is worth paying for. balco.nyc&rsquo;s PVWatts runs for New York City put an unshaded 800&nbsp;W vertical railing system, after the site&rsquo;s 0.95 railing factor, at 635.7 &times; 0.95 = <strong>604&nbsp;kWh</strong> a year facing south, 446 facing east, 421 west and 167 north. At Con Edison&rsquo;s {{coned.rate_cents}}&cent; marginal rate that is about <strong>$205</strong>, $152, $143 and $57 a year. Those are ceilings: no shade from the buildings opposite, and every kWh used in the apartment as it is made (<a href=\"/balcony-solar-net-metering\">why that matters</a>). A mid-range kit costs about ${{kits.mid}}; a review deposit that rivals it changes the decision, so ask about fees first. <a href=\"/\">The calculator</a> gives the figure for your own railing.</p>\n  <ul>\n    <li><strong>Your documents, read first.</strong> The proprietary lease and house rules, or the declaration, bylaws and rules. Look for clauses on alterations, the exterior, window air conditioners and terraces, and for whether consent may not be unreasonably withheld.</li>\n    <li><strong>One page on the device.</strong> Product, the certification listing for the complete system, panel size and weight, inverter output (the SUNNY Act caps it at 1,200&nbsp;W), and the anti-islanding function that stops it within two seconds of a grid outage.</li>\n    <li><strong>A mounting drawing and photos.</strong> Inside face of the railing, clamped not drilled, a secondary tether to a solid anchor, and the cable through an existing opening. If there is a fire escape, show the panel clear of it.</li>\n    <li><strong>The outlet.</strong> Which existing outdoor receptacle it uses and what else is on that circuit. If there is none, adding one is electrical work: in New York City that means a licensed electrician and, for most work, a Department of Buildings permit, and it becomes an ordinary alteration of its own.</li>\n    <li><strong>An insurance certificate.</strong> From your unit-owner policy, naming the corporation or board and its agents, at the limit your building&rsquo;s form sets ($1,000,000 in the City Bar&rsquo;s co-op model).</li>\n    <li><strong>Signed undertakings.</strong> An indemnity; removal on request for facade inspection or repair, before a sale, and if the building later adopts a rule against the devices; restoration of the railing at your cost.</li>\n    <li><strong>Two specific asks.</strong> Approval conditional on the SUNNY Act taking effect and on a listed device, and a waiver or cap on review fees for work that involves no construction.</li>\n  </ul>\n  <p>Consider asking for a policy rather than an exception, as buildings already have for the other appliance hung on a facade, the window air conditioner. A house rule for plug-in panels (placement, a mounting standard, insurance, removal) lets the board&rsquo;s engineer review one design once and makes the next request routine. The Attorney General&rsquo;s co-op guide notes that a request backed by many shareholders carries more weight, and that an organized group can seek to elect new directors. Put the request in writing, and get the answer and any conditions in writing too.</p>\n  <div class=\"callout\"><p><strong>Not legal advice.</strong> This page describes model forms, a court standard and city rules as of 23&nbsp;September 2026. Your lease or declaration and your building&rsquo;s own forms decide your case, and a lawyer who handles co-op and condo matters can read them with you.</p></div>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Can my co-op board stop me installing balcony solar in New York City?",
+      "Yes. A co-op's proprietary lease typically requires the corporation's consent before equipment is installed or anything is altered, and no New York law gives a shareholder a right to a railing-mounted panel. The SUNNY Act, which has passed both chambers and awaits the Governor's signature, removes only the utility barrier. Courts review a refusal under the business judgment rule from Levandusky v One Fifth Avenue Apartment Corp. (1990) and defer to it if the board acted in good faith, within its authority and for the building's purposes. This is not legal advice."
+    ],
+    [
+      "Does a New York City condo owner need board approval for a balcony solar panel?",
+      "Almost always. New York's Condominium Act lets a unit include a balcony, but main walls and fire escapes are common elements, and a panel clamped to a railing on the facade affects property the owners hold in common. Condo bylaws and alteration agreements generally forbid changes to common elements or penetrations of exterior walls without the board's consent; the NYC Bar's 2026 model condo agreement leaves that to the board's sole and absolute discretion."
+    ],
+    [
+      "How many New York City homes are in co-ops or condos?",
+      "balco.nyc's count of the city's PLUTO tax-lot file (version 26v2, August 2026) finds 462,218 co-op apartments and 262,207 individually owned condo units: 724,425 homes, or 19.4% of 3.74 million. Another 149,017 apartments are in rental buildings legally structured as condominiums. In Manhattan the co-op and owned-condo share is 33.4%. The 2023 Housing and Vacancy Survey, as reported by the City Comptroller, counted 450,000 occupied co-op apartments and 318,000 in condominiums."
+    ],
+    [
+      "What does a co-op or condo alteration agreement ask for?",
+      "The NYC Bar's model forms ask for plans and specifications (by a licensed architect or engineer if the board requires), review by the board's engineer, security and review deposits, liability insurance naming the building (at least $1,000,000 in the co-op model), an indemnity, any government permits the work needs, no penetration of exterior walls, and a commitment to maintain the work and restore it after building repairs. A buyer of the apartment must take the agreement on."
+    ],
+    [
+      "Can I sue my co-op or condo board if it refuses balcony solar?",
+      "You can, but New York courts defer to boards under the business judgment rule. A challenger must show the decision has no legitimate relationship to the building's welfare, singles them out, was made without considering the relevant facts, or exceeds the board's authority. Litigation is also slow and costly next to the stakes: balco.nyc's PVWatts runs put an unshaded south-facing 800 W railing system in New York City at about 604 kWh a year, worth about $205 at Con Edison's marginal rate."
+    ],
+    [
+      "I rent an apartment in a co-op or condo. Whose permission do I need for balcony solar?",
+      "Both the apartment owner's and the board's. The owner is bound by the proprietary lease or condominium documents and would sign any alteration agreement, so the request goes through them. Neither the SUNNY Act nor any other New York law requires either of them to agree."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://data.cityofnewyork.us/City-Government/Primary-Land-Use-Tax-Lot-Output-PLUTO-/64uk-42ks",
+      "title": "NYC Open Data (Department of City Planning) &mdash; Primary Land Use Tax Lot Output (PLUTO)",
+      "note": "version 26v2; residential units, building class and condominium number for every tax lot, which balco.nyc grouped by borough and class through the Socrata API on 23 September 2026."
+    },
+    {
+      "url": "https://s-media.nyc.gov/agencies/dcp/assets/files/pdf/data-tools/bytes/pluto_datadictionary.pdf",
+      "title": "NYC Department of City Planning &mdash; PLUTO Data Dictionary, August 2026 (26v2)",
+      "note": "building class codes (C6, C8, D0 and D4 cooperatives; R classes condominiums; R9 co-op within a condominium; A8 land co-op) and how condominium unit lots are merged into one billing-lot record."
+    },
+    {
+      "url": "https://data.cityofnewyork.us/City-Government/Digital-Tax-Map-Condominium-Units/eguu-7ie3",
+      "title": "NYC Open Data (Department of Finance) &mdash; Digital Tax Map: Condominium Units",
+      "note": "unit lots per condominium, used to separate individually owned condos from condominium-structured rentals."
+    },
+    {
+      "url": "https://comptroller.nyc.gov/reports/spotlight-new-york-citys-homeowner-housing-market/",
+      "title": "Office of the New York City Comptroller &mdash; Spotlight: New York City&rsquo;s Homeowner Housing Market (March 2024)",
+      "note": "the 2023 Housing and Vacancy Survey cross-check: 450,000 occupied co-op apartments and 318,000 condominium apartments, 22% of occupied homes."
+    },
+    {
+      "url": "https://www.nycbar.org/wp-content/uploads/2026/02/20071861-Alteration-Agreement-for-Cooperative-Apartment.pdf",
+      "title": "New York City Bar Association &mdash; Alteration Agreement for Cooperative Apartment (model form, updated 2010)",
+      "note": "the lease-consent recital, plans, deposits, $1,000,000 shareholder liability insurance, indemnity, permits, no penetration of exterior walls, removal of installations for repairs, and purchaser assumption."
+    },
+    {
+      "url": "https://www.nycbar.org/wp-content/uploads/2026/02/20221592-Condominium-Alteration-Agreement_FINAL.pdf",
+      "title": "New York City Bar Association &mdash; Alteration Agreement for Condominium Unit (model form, 2026)",
+      "note": "no change to common elements and no penetration of exterior walls without the board&rsquo;s approval in its sole and absolute discretion; maintenance and restoration duties."
+    },
+    {
+      "url": "https://www.nycbar.org/wp-content/uploads/2026/02/20221592-Notes-for-City-Bar-2025-Condo-Alt-Agmt_FINAL.pdf",
+      "title": "New York City Bar Association &mdash; Notes to New Form of Condominium Alteration Agreement",
+      "note": "approval by the City and State bar associations, the aim of an industry standard, sponsor-controlled boards restricting renovations before a permanent certificate of occupancy, insurance set with the building&rsquo;s insurer, and assignment to a purchaser."
+    },
+    {
+      "url": "https://www.nycourts.gov/reporter/archives/levandusky_one.htm",
+      "title": "New York State Unified Court System &mdash; Matter of Levandusky v One Fifth Ave. Apt. Corp., 75 NY2d 530 (1990)",
+      "note": "the steam riser and air conditioners, the business judgment standard, and the four grounds on which a board decision can be reviewed."
+    },
+    {
+      "url": "https://www.sbjlaw.com/blogs/are-boards-always-protected-by-the-business-judgment-rule/",
+      "title": "Smith, Buss &amp; Jacobs LLP &mdash; Are Boards Always Protected by the &ldquo;Business Judgment&rdquo; Rule? (2019)",
+      "note": "the rule applied to co-op and condo boards, and Perrault v Village Dunes Apt. Corp. (2d Dept 2018) on leases requiring that consent not be unreasonably withheld."
+    },
+    {
+      "url": "https://caselaw.findlaw.com/court/ny-supreme-court-appellate-division/2192954.html",
+      "title": "FindLaw &mdash; Tahari v 860 Fifth Ave. Corp., Appellate Division, First Department (14 March 2023)",
+      "note": "a fiduciary-duty claim allowed to proceed against two board members alleged to have refused a penthouse renovation because of its effect on their own apartment."
+    },
+    {
+      "url": "https://caselaw.findlaw.com/court/ny-supreme-court-appellate-division/117812552.html",
+      "title": "FindLaw &mdash; Tahari v 860 Fifth Ave. Corp., Appellate Division, First Department (9 October 2025)",
+      "note": "the same 2018 action (index no. 654702/18) before the Appellate Division again in October 2025."
+    },
+    {
+      "url": "https://ag.ny.gov/sites/default/files/coop_board_directors.pdf",
+      "title": "New York State Attorney General &mdash; Understanding &amp; Dealing With a Co-op Board of Directors",
+      "note": "where to find the lease, bylaws and house rules; sponsor control ending after half the shares are sold or five years; the value of requests backed by many shareholders and of electing new directors."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/laws/RPP/339-E",
+      "title": "New York State Senate &mdash; Real Property Law &sect;339-e (Condominium Act definitions)",
+      "note": "a unit may include a balcony, terrace and patio; main walls and fire escapes are common elements."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/buildings/rules/1_RCNY_103-04.pdf",
+      "title": "NYC Department of Buildings &mdash; 1 RCNY &sect;103-04, Periodic Inspection of Exterior Walls and Appurtenances",
+      "note": "the definition of appurtenance, the check that balcony railings are positively secured, and the owner&rsquo;s duties on an unsafe filing (repairs, sidewalk sheds, 90 days)."
+    },
+    {
+      "url": "https://www.nyc.gov/site/buildings/safety/facade-inspection-safety-program-fisp-filing-instructions.page",
+      "title": "NYC Department of Buildings &mdash; Facade Inspection &amp; Safety Program (FISP) filing instructions",
+      "note": "buildings higher than six stories inspected every five years."
+    },
+    {
+      "url": "https://www.nyc.gov/site/buildings/property-or-business-owner/electrical-permit.page",
+      "title": "NYC Department of Buildings &mdash; Electrical Permit",
+      "note": "an electrical permit is required for most electrical work, performed by electrical contractors licensed by the Department."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/",
+      "title": "National Laboratory of the Rockies (NLR) &mdash; PVWatts Calculator",
+      "note": "the V8 model behind balco.nyc&rsquo;s New York City runs for a vertical 800 W railing system in four directions."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "New York State Senate &mdash; S8512C (SUNNY Act)",
+      "note": "status, and a text with no provision on landlords, condominium boards, co-ops or leases."
+    }
+  ]
+}

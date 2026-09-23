@@ -1,0 +1,26 @@
+{
+ "intro_html": "<p>In New York today, a balcony panel that feeds a household circuit is treated like any other generator. Con Edison asks anyone installing distributed generation to complete an interconnection application in its PowerClerk portal before installing, a process built for permanent systems. The SUNNY Act would replace that, for devices of up to 1,200&nbsp;W AC, with a simple form sent to the utility within 30 days of installation. It has passed both chambers and {{sunny.phrase}}; if signed, it takes effect 90 days later.</p>\n  <p>Two details decide how much it would change for an apartment. The bill requires a device to be listed or certified by an accredited laboratory as a complete plug-in system, and as of August 2026 no kit had been certified as a complete system under UL&nbsp;3700, the standard written for that purpose. And it has no landlord, co-op, condominium or local-government provision, so a lease, a proprietary lease or a condo board&rsquo;s rules on railings and facades would still decide whether a panel goes up. Exported power would be unpaid unless the customer signs a net-metering or other compensation agreement.</p>\n  <p>For New York City addresses, balco.nyc&rsquo;s calculator models shade from surrounding buildings in 3D and values each kWh at Con Edison&rsquo;s marginal rate of about {{coned.rate_cents}}&cent;, not the statewide average used elsewhere on this page. <a href=\"/sunny-act\">Where the SUNNY Act stands</a>.</p>",
+ "sources": [
+  {
+   "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+   "title": "New York State Senate &mdash; S8512C (2025-2026) bill text and actions",
+   "note": "the 1,200 W AC cap, the 30-day notification form, listing as a complete plug-in system, uncompensated exports, the 90-day effective date and the May 28, 2026 passage."
+  },
+  {
+   "url": "https://www.coned.com/en/save-money/using-distributed-generation-energy-sources/applying-for-interconnection",
+   "title": "Con Edison &mdash; Applying for Distributed Generation Interconnection",
+   "note": "the PowerClerk interconnection application required before installing any distributed generation."
+  },
+  {
+   "url": "https://www.vecan.net/energynews/plug-in-solar-coming-soon-to-a-porch-balcony-or-backyard-near-you",
+   "title": "Vermont Energy &amp; Climate Action Network &mdash; Plug-In Solar: Coming Soon to a Porch, Balcony or Backyard Near You (August 2026)",
+   "note": "that no plug-in kit had been certified as a complete system under the full UL 3700 standard."
+  }
+ ],
+ "faq": [
+  [
+   "Can I use a balcony solar panel in New York City before the SUNNY Act is signed?",
+   "Only through Con Edison's interconnection process, which asks anyone installing distributed generation to apply through its PowerClerk portal before installing and was built for permanent systems. The SUNNY Act (S8512C / A9111C) would exempt plug-in devices of up to 1,200 W AC; it has passed both chambers and {{sunny.phrase}}."
+  ]
+ ]
+}

@@ -109,8 +109,8 @@ def fingerprint(src):
     """
     stamp = hashlib.sha256(src.encode("utf-8")).hexdigest()[:8]
     page = PAGE.read_text(encoding="utf-8")
-    new, n = re.subn(r'src="js/city-hero\.js(?:\?v=[0-9a-f]+)?"',
-                     f'src="js/city-hero.js?v={stamp}"', page)
+    new, n = re.subn(r'src="/?js/city-hero\.js(?:\?v=[0-9a-f]+)?"',
+                     f'src="/js/city-hero.js?v={stamp}"', page)
     assert n == 1, f"expected one city-hero.js script tag, found {n}"
     if new != page:
         PAGE.write_text(new, encoding="utf-8")

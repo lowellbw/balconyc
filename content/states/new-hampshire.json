@@ -1,0 +1,31 @@
+{
+ "intro_html": "<p>New Hampshire&rsquo;s law starts on 1 January 2027 and keeps the utility&rsquo;s role small. It allows one plug-in system of up to 1,200&nbsp;W AC per metered customer, certified by a nationally recognized testing laboratory, with no utility approval, interconnection review, fee or added equipment; the utility may ask only to be told the system&rsquo;s wattage. In Manchester that utility is Eversource, New Hampshire&rsquo;s largest.</p>\n  <p>Two things are unsettled. The section dealing with the state building code takes effect only once the Department of Energy certifies that a nationally recognized plug-in standard exists, and the Building Code Review Board was still working on the rules when the bill was signed. And the law does not say whether exported power is credited. At an April 2026 hearing, Eversource and Unitil representatives said some meters would record power sent back to the grid as electricity used, leading to a transmission charge, depending on the kind of meter installed. A system sized below the home&rsquo;s daytime use sidesteps that, and it is the assumption balco.nyc&rsquo;s savings figures below make.</p>\n  <p>The law has no landlord, tenant or condominium provision. During the bill&rsquo;s hearings a legislator argued that property owners should keep authority over what is installed on their premises, and the text as signed leaves that authority with the landlord or the association.</p>",
+ "sources": [
+  {
+   "url": "https://vnews.com/2026/08/14/nh-balcony-solar-law-2027/",
+   "title": "Valley News &mdash; New Hampshire to allow balcony solar starting January 2027 (August 2026)",
+   "note": "the January 1, 2027 start, the 1,200 W AC cap per meter, no utility approval or fees, and the building code board&rsquo;s role."
+  },
+  {
+   "url": "https://www.nhpr.org/nh-news/2026-04-08/solar-homes-plug-in-balcony-energy-electricity-newhampshire-nh",
+   "title": "New Hampshire Public Radio / New Hampshire Bulletin &mdash; Legislators seek a safe path for New Hampshire to join &lsquo;plug and play&rsquo; solar trend (April 2026)",
+   "note": "Eversource and Unitil on meters recording exports as usage, and the argument that property owners should keep authority over installations."
+  },
+  {
+   "url": "https://www.concordmonitor.com/2026/07/03/ayotte-signs-balcony-solar-bill/",
+   "title": "Concord Monitor &mdash; Ayotte signs &lsquo;balcony solar&rsquo; bill (July 2026)",
+   "note": "rules still being developed, including by the Building Code Review Board, at signing."
+  },
+  {
+   "url": "https://www.eversource.com/content/residential/about/our-company/news-room/new-hampshire-news/detail/eversource-nh-default-service-customers-expected-to-see-decrease-in-electric-supply-rate",
+   "title": "Eversource &mdash; New Hampshire news release (December 2024)",
+   "note": "Eversource as New Hampshire&rsquo;s largest electric utility."
+  }
+ ],
+ "faq": [
+  [
+   "Does a New Hampshire utility have to be told about a balcony solar panel?",
+   "Only if it asks. Under SB 540 (Chapter 262, Laws of 2026), which takes effect January 1, 2027, a utility cannot require approval, an interconnection review, fees or extra equipment for a qualifying plug-in system of up to 1,200 W AC, but it may require the customer to tell it the system's wattage."
+  ]
+ ]
+}

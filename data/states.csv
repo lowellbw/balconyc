@@ -1,0 +1,52 @@
+state,code,plug_in_solar_law,bills,effective_date,size_limit_w,law_checked,avg_price_cents_kwh,price_period,reference_city,kwh_yr_south_vertical,kwh_yr_east,kwh_yr_west,kwh_yr_north,savings_yr_south,payback_yrs_mid_kit_south,source
+Alabama,AL,no_specific_law,,,,2026-09-23,16.39,12 months to June 2026,Huntsville,618,498,479,198,101,10.5,https://balco.nyc/states/alabama
+Alaska,AK,failed_or_vetoed,HB 257,,1200,2026-09-23,26.74,12 months to June 2026,Anchorage,535,324,378,178,143,7.7,https://balco.nyc/states/alaska
+Arizona,AZ,failed_or_vetoed,SB 1606 / HB 2843,,1200,2026-09-23,15.40,12 months to June 2026,Phoenix,778,616,605,203,120,9.0,https://balco.nyc/states/arizona
+Arkansas,AR,no_specific_law,,,,2026-09-23,13.31,12 months to June 2026,Little Rock,613,488,482,194,82,12.7,https://balco.nyc/states/arkansas
+California,CA,passed_awaiting_signature,SB 868,,1200,2026-09-23,32.89,12 months to June 2026,Los Angeles,720,532,599,185,237,4.8,https://balco.nyc/states/california
+Colorado,CO,in_force,HB26-1007,2026-08-12,1920,2026-09-23,16.45,12 months to June 2026,Denver,805,596,534,211,132,8.3,https://balco.nyc/states/colorado
+Connecticut,CT,enacted_not_yet_effective,HB 5340 (Public Act 26-127),2026-10-01,1200,2026-09-23,28.36,12 months to June 2026,Bridgeport,631,454,441,190,179,6.3,https://balco.nyc/states/connecticut
+Delaware,DE,failed_or_vetoed,SB 270,,800,2026-09-23,17.59,12 months to June 2026,Wilmington,658,480,455,189,116,9.3,https://balco.nyc/states/delaware
+District of Columbia,DC,pending,B26-0602,,,2026-09-23,23.96,12 months to June 2026,Washington,675,483,472,193,162,6.9,https://balco.nyc/states/district-of-columbia
+Florida,FL,no_specific_law,,,,2026-09-23,15.40,12 months to June 2026,Jacksonville,612,525,481,200,94,11.2,https://balco.nyc/states/florida
+Georgia,GA,failed_or_vetoed,HB 1304,,1200,2026-09-23,15.04,12 months to June 2026,Atlanta,618,505,493,196,93,11.3,https://balco.nyc/states/georgia
+Hawaii,HI,failed_or_vetoed,SB 2902 / HB 2435,,1200,2026-09-23,42.75,12 months to June 2026,Honolulu,510,543,536,214,218,5.2,https://balco.nyc/states/hawaii
+Idaho,ID,failed_or_vetoed,H 612,,1200,2026-09-23,12.50,12 months to June 2026,Boise,714,533,531,196,89,11.7,https://balco.nyc/states/idaho
+Illinois,IL,pending,SB 3104 / HB 4524,,391,2026-09-23,18.54,12 months to June 2026,Chicago,616,444,450,176,114,9.4,https://balco.nyc/states/illinois
+Indiana,IN,failed_or_vetoed,SB 74 / HB 1084,,1200,2026-09-23,16.88,12 months to June 2026,Indianapolis,647,494,478,214,109,9.8,https://balco.nyc/states/indiana
+Iowa,IA,failed_or_vetoed,HF 2046,,1200,2026-09-23,14.04,12 months to June 2026,Des Moines,694,484,503,203,97,10.9,https://balco.nyc/states/iowa
+Kansas,KS,no_specific_law,,,,2026-09-23,14.99,12 months to June 2026,Wichita,722,531,537,202,108,9.9,https://balco.nyc/states/kansas
+Kentucky,KY,no_specific_law,,,,2026-09-23,13.85,12 months to June 2026,Louisville,626,478,464,192,87,12.0,https://balco.nyc/states/kentucky
+Louisiana,LA,no_specific_law,,,,2026-09-23,13.04,12 months to June 2026,New Orleans,605,530,490,201,79,13.1,https://balco.nyc/states/louisiana
+Maine,ME,in_force,LD 1730 (SP 676),2026-07-29,1200,2026-09-23,28.99,12 months to June 2026,Portland,692,480,473,198,201,5.6,https://balco.nyc/states/maine
+Maryland,MD,in_force,HB 1532 (Chapter 353),2026-07-01,1200,2026-09-23,20.75,12 months to June 2026,Baltimore,673,489,468,193,140,7.9,https://balco.nyc/states/maryland
+Massachusetts,MA,pending,H.5175 / S.3143 / S.3166 (Senate substitute text),,1200,2026-09-23,30.38,12 months to June 2026,Boston,673,484,469,195,204,5.5,https://balco.nyc/states/massachusetts
+Michigan,MI,pending,HB 5764,,1200,2026-09-23,20.75,12 months to June 2026,Detroit,638,491,477,215,132,8.3,https://balco.nyc/states/michigan
+Minnesota,MN,failed_or_vetoed,SF 4504 / HF 3555 / SF 3873 / SF 4774,,1200,2026-09-23,16.15,12 months to June 2026,Minneapolis,730,519,502,224,118,9.2,https://balco.nyc/states/minnesota
+Mississippi,MS,no_specific_law,,,,2026-09-23,14.66,12 months to June 2026,Jackson,602,502,494,201,88,11.9,https://balco.nyc/states/mississippi
+Missouri,MO,failed_or_vetoed,HB 2528 / HB 2444,,1200,2026-09-23,13.89,12 months to June 2026,Kansas City,700,509,509,205,97,10.9,https://balco.nyc/states/missouri
+Montana,MT,no_specific_law,,,,2026-09-23,13.77,12 months to June 2026,Billings,715,512,470,195,99,10.8,https://balco.nyc/states/montana
+Nebraska,NE,no_specific_law,,,,2026-09-23,12.76,12 months to June 2026,Omaha,739,533,518,221,94,11.2,https://balco.nyc/states/nebraska
+Nevada,NV,no_specific_law,,,,2026-09-23,13.32,12 months to June 2026,Las Vegas,817,639,596,205,109,9.9,https://balco.nyc/states/nevada
+New Hampshire,NH,enacted_not_yet_effective,"SB 540-FN (Chapter 262, Laws of 2026)",2027-01-01,1200,2026-09-23,26.27,12 months to June 2026,Manchester,697,507,486,223,183,6.1,https://balco.nyc/states/new-hampshire
+New Jersey,NJ,enacted_not_yet_effective,S2368 / A4836,2027-03-01,1200,2026-09-23,23.81,12 months to June 2026,Newark,643,463,446,185,153,7.3,https://balco.nyc/states/new-jersey
+New Mexico,NM,failed_or_vetoed,SB 157 / SM 10,,1920,2026-09-23,15.28,12 months to June 2026,Albuquerque,819,647,582,203,125,8.7,https://balco.nyc/states/new-mexico
+New York,NY,passed_awaiting_signature,S8512C / A9111C,,1200,2026-09-23,27.96,12 months to June 2026,New York City,604,446,421,167,169,6.6,https://balco.nyc/states/new-york
+North Carolina,NC,pending,HB 1129,,1200,2026-09-23,14.57,12 months to June 2026,Charlotte,640,491,468,189,93,11.3,https://balco.nyc/states/north-carolina
+North Dakota,ND,no_specific_law,,,,2026-09-23,12.30,12 months to June 2026,Fargo,700,488,492,205,86,12.1,https://balco.nyc/states/north-dakota
+Ohio,OH,pending,HB 755 / SB 383,,1200,2026-09-23,18.02,12 months to June 2026,Columbus,622,490,459,207,112,9.6,https://balco.nyc/states/ohio
+Oklahoma,OK,failed_or_vetoed,HB 4060,,1200,2026-09-23,13.60,12 months to June 2026,Oklahoma City,711,536,552,209,97,11.0,https://balco.nyc/states/oklahoma
+Oregon,OR,failed_or_vetoed,HB 4080,,1200,2026-09-23,15.47,12 months to June 2026,Portland,526,378,420,165,81,12.7,https://balco.nyc/states/oregon
+Pennsylvania,PA,pending,HB 1971,,1200,2026-09-23,20.47,12 months to June 2026,Philadelphia,663,488,456,192,136,8.1,https://balco.nyc/states/pennsylvania
+Rhode Island,RI,failed_or_vetoed,H 7269 (Sub A) / S 2359,,1200,2026-09-23,29.01,12 months to June 2026,Providence,670,477,469,194,194,5.8,https://balco.nyc/states/rhode-island
+South Carolina,SC,failed_or_vetoed,H 4579,,,2026-09-23,15.55,12 months to June 2026,Charleston,611,483,472,177,95,11.1,https://balco.nyc/states/south-carolina
+South Dakota,SD,no_specific_law,,,,2026-09-23,14.11,12 months to June 2026,Sioux Falls,769,537,551,241,108,9.9,https://balco.nyc/states/south-dakota
+Tennessee,TN,no_specific_law,,,,2026-09-23,13.51,12 months to June 2026,Nashville,602,483,456,193,81,12.7,https://balco.nyc/states/tennessee
+Texas,TX,no_specific_law,,,,2026-09-23,15.90,12 months to June 2026,Houston,576,509,499,208,92,11.5,https://balco.nyc/states/texas
+Utah,UT,in_force,HB 340,2025-05-07,1200,2026-09-23,13.36,12 months to June 2026,Salt Lake City,724,558,531,212,97,10.9,https://balco.nyc/states/utah
+Vermont,VT,in_force,S.202 (Act 149),2026-07-01,1200,2026-09-23,23.65,12 months to June 2026,Burlington,658,483,473,219,156,7.1,https://balco.nyc/states/vermont
+Virginia,VA,enacted_not_yet_effective,HB 395 / SB 250,2027-01-01,1200,2026-09-23,16.29,12 months to June 2026,Virginia Beach,654,486,489,201,107,10.0,https://balco.nyc/states/virginia
+Washington,WA,failed_or_vetoed,SB 6050 / HB 2296,,1200,2026-09-23,14.02,12 months to June 2026,Seattle,524,361,392,149,73,13.9,https://balco.nyc/states/washington
+West Virginia,WV,failed_or_vetoed,HB 5648,,1200,2026-09-23,15.45,12 months to June 2026,Charleston,579,454,446,195,89,11.7,https://balco.nyc/states/west-virginia
+Wisconsin,WI,no_specific_law,,,,2026-09-23,18.65,12 months to June 2026,Milwaukee,668,488,489,210,125,8.7,https://balco.nyc/states/wisconsin
+Wyoming,WY,failed_or_vetoed,HB 146,,1200,2026-09-23,14.03,12 months to June 2026,Cheyenne,809,593,548,233,113,9.5,https://balco.nyc/states/wyoming

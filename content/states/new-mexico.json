@@ -1,0 +1,26 @@
+{
+ "intro_html": "<p>SB&nbsp;157 died when the 30-day session ended on 19&nbsp;February 2026, so a new bill would have to be filed for the session that opens in January 2027. In Albuquerque the utility is PNM, whose customer solar program runs through an online application, a technical review, and inspections and approvals before a system is connected, under 17.9.568 NMAC. Two details matter for a plug-in kit: since 29&nbsp;March 2024 every application must specify an advanced inverter compliant with IEEE&nbsp;1547-2018, and PNM&rsquo;s FAQ says customers may do the work themselves if they are licensed electricians.</p>\n  <p>New Mexico&rsquo;s solar-rights law is broad on paper. NMSA &sect;3-18-32 voids any covenant, restriction or condition in an instrument affecting &ldquo;the transfer, sale or use of, or an interest in, real property&rdquo; that effectively prohibits a solar collector, and the Solar Rights Act defines a solar collector to include any device that collects solar energy for &ldquo;the generation of electricity&rdquo;. The Attorney General has read &ldquo;effectively prohibit&rdquo; to include rules that make installation unreasonably difficult or costly (Op. No.&nbsp;11-02). Read literally, that could reach condominium rules about balconies. But SB&nbsp;157 would have applied the same rule to plug-in devices by name, &ldquo;pursuant to&rdquo; &sect;3-18-32, which suggests its sponsors did not regard the point as settled, and nothing in these statutes removes PNM&rsquo;s interconnection requirements.</p>\n  <p>balco.nyc&rsquo;s calculator models a specific Albuquerque address and lets you enter the rate from your own PNM bill in place of the state&rsquo;s 15.3&cent; average.</p>",
+ "sources": [
+  {
+   "url": "https://www.pnm.com/solar/",
+   "title": "PNM &mdash; Customer Solar Program",
+   "note": "application, review, inspection and approval steps; 17.9.568.11 NMAC; IEEE 1547-2018 advanced inverters required from 29 March 2024; licensed electricians may do their own work."
+  },
+  {
+   "url": "https://law.justia.com/codes/new-mexico/chapter-3/article-18/section-3-18-32/",
+   "title": "Justia &mdash; New Mexico Statutes &sect;3-18-32, Limitation of county and municipal restrictions on solar collectors",
+   "note": "covenants and other real-property instruments that effectively prohibit a solar collector are void; annotation citing 2011 Op. Att&rsquo;y Gen. No. 11-02 on what &ldquo;effectively prohibit&rdquo; means."
+  },
+  {
+   "url": "https://law.justia.com/codes/new-mexico/chapter-47/article-3/section-47-3-3/",
+   "title": "Justia &mdash; New Mexico Statutes &sect;47-3-3, Solar Rights Act definitions",
+   "note": "a solar collector includes any device that collects solar energy for the generation of electricity."
+  }
+ ],
+ "faq": [
+  [
+   "Does New Mexico's solar rights law protect a balcony solar panel?",
+   "Possibly, but it is untested. NMSA &sect;3-18-32 voids covenants and other real-property instruments that effectively prohibit a solar collector, and the Solar Rights Act defines a solar collector to include devices that generate electricity. SB&nbsp;157 would have applied that rule to plug-in devices by name, suggesting the point was not considered settled, and none of it removes PNM&rsquo;s interconnection requirements. This is not legal advice."
+  ]
+ ]
+}

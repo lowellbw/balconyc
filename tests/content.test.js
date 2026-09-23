@@ -68,7 +68,10 @@ describe('CO2 factor is stated consistently', () => {
     for (const [name, text] of Object.entries(ALL_PUBLIC)) {
       assert(!text.includes('0.65 lbs'), `${name} still quotes the retired 0.65 lbs/kWh factor`);
     }
-    assert(methodologyHtml.includes('0.89'), 'methodology.html should state the eGRID2023 factor');
+    assert(methodologyHtml.includes('0.864 lbs CO₂/kWh'), 'methodology.html should state the eGRID2023 NYCW factor');
+    for (const [name, text] of Object.entries(ALL_PUBLIC)) {
+      assert(!/0\.89 lbs? CO/.test(text), `${name} still quotes the eGRID2022 0.89 lb/kWh factor`);
+    }
   });
 });
 
@@ -267,6 +270,39 @@ describe('Retired prototype pages are gone', () => {
     assert(/Disallow: \/api\//.test(robots), '/api/ must stay disallowed');
   });
 
+  it('applies the disallows to every crawler group, not just *', () => {
+    // A crawler obeys only the most specific group that names it. Named AI-bot
+    // groups carrying only "Allow: /" once let GPTBot, ClaudeBot and the rest
+    // crawl /api/, /admin/ and /design/ while the * group looked correct.
+    const groups = [];
+    let cur = null, lastWasAgent = false;
+    for (const raw of robots.split('\n')) {
+      const line = raw.replace(/#.*/, '').trim();
+      if (!line) continue;
+      const i = line.indexOf(':');
+      const key = line.slice(0, i).trim().toLowerCase(), val = line.slice(i + 1).trim();
+      if (key === 'user-agent') {
+        if (!lastWasAgent) { cur = { agents: [], rules: [] }; groups.push(cur); }
+        cur.agents.push(val);
+        lastWasAgent = true;
+      } else {
+        lastWasAgent = false;
+        if (cur && (key === 'allow' || key === 'disallow')) cur.rules.push(`${key} ${val}`);
+      }
+    }
+    assert(groups.length > 0, 'robots.txt has no groups');
+    for (const g of groups) {
+      for (const path of ['/api/', '/admin/', '/design/']) {
+        assert(g.rules.includes(`disallow ${path}`),
+          `the group for ${g.agents.join(', ')} does not disallow ${path}`);
+      }
+    }
+    const agents = groups.flatMap(g => g.agents.map(a => a.toLowerCase()));
+    for (const bot of ['gptbot', 'oai-searchbot', 'claudebot', 'perplexitybot', 'ccbot', 'google-extended', 'bingbot']) {
+      assert(agents.includes(bot), `robots.txt should name ${bot} explicitly`);
+    }
+  });
+
   it('leaves /js/ crawlable so search engines can render the calculator', () => {
     assert(!/Disallow: \/js\//.test(robots), '/js/ must stay crawlable for rendering');
   });
@@ -344,6 +380,58 @@ describe('Content pages and crawl surface', () => {
     }
   });
 
+  it('puts plain text, not HTML, into structured data', () => {
+    // AI answers quote FAQ and headline text straight out of JSON-LD. The
+    // generator once html.escape()d HTML spec fields into it, so every guide
+    // told crawlers "Con Edison&#x27;s" and "&lt;em&gt;".
+    const strings = (v, out = []) => {
+      if (typeof v === 'string') out.push(v);
+      else if (v && typeof v === 'object') Object.values(v).forEach(x => strings(x, out));
+      return out;
+    };
+    for (const f of ['index.html', 'methodology.html', ...specs.map(s => `${s.slug}.html`)]) {
+      const blocks = read(f).match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g) || [];
+      for (const b of blocks) {
+        const json = JSON.parse(b.replace(/^<script[^>]*>/, '').replace(/<\/script>$/, ''));
+        for (const str of strings(json)) {
+          assert(!/&[#a-z0-9]+;|<[a-z\/]/i.test(str),
+            `${f} JSON-LD contains markup or an HTML entity: ${JSON.stringify(str.slice(0, 80))}`);
+        }
+      }
+    }
+  });
+
+  it('keeps every meta description short enough to show in full', () => {
+    for (const f of ['index.html', 'methodology.html', ...specs.map(s => `${s.slug}.html`)]) {
+      const m = read(f).match(/<meta name="description" content="([^"]*)">/);
+      assert(m, `${f} has no meta description`);
+      const text = m[1].replace(/&#39;|&#x27;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&');
+      assert(text.length <= 160, `${f} description is ${text.length} characters (limit 160)`);
+    }
+  });
+
+  it('gives the methodology page one review date everywhere it is stated', () => {
+    const visible = methodologyHtml.match(/<time datetime="([0-9-]+)">/);
+    const meta = methodologyHtml.match(/<meta property="article:modified_time" content="([0-9-]+)">/);
+    const ld = methodologyHtml.match(/"dateModified": "([0-9-]+)"/);
+    const row = sitemap.split('<url>').find(u => u.includes('/methodology<'));
+    assert(visible && meta && ld && row, 'methodology.html is missing one of its date surfaces');
+    const d = visible[1];
+    assert(meta[1] === d, `article:modified_time ${meta[1]} differs from the visible date ${d}`);
+    assert(ld[1] === d, `JSON-LD dateModified ${ld[1]} differs from the visible date ${d}`);
+    assert(row.includes(`<lastmod>${d}</lastmod>`), `sitemap lastmod for /methodology differs from ${d}`);
+  });
+
+  it('uses root-relative asset paths so pages work at any URL depth', () => {
+    // A relative "js/analytics.js" resolves to /states/js/analytics.js on a
+    // nested page. Every src and href must be absolute, root-relative or an anchor.
+    for (const f of ['index.html', 'methodology.html', ...specs.map(s => `${s.slug}.html`)]) {
+      const bad = (read(f).match(/\s(?:src|href|srcset)="(?![\/#]|https?:|mailto:|tel:)[^"]*"/g) || [])
+        .filter(x => !x.includes("' + "));
+      assert(bad.length === 0, `${f} has relative paths: ${bad.slice(0, 3).join(' ')}`);
+    }
+  });
+
   it('leaves host canonicalisation to the Vercel domain settings', () => {
     // The www -> apex hop is configured on the project's domains in Vercel
     // (balco.nyc primary, www.balco.nyc redirecting to it). A host-matched
@@ -354,13 +442,8 @@ describe('Content pages and crawl surface', () => {
     assert(hostRules.length === 0, `vercel.json must not redirect by host; found ${JSON.stringify(hostRules)}`);
   });
 
-  it('keeps every content page reachable from the homepage', () => {
-    // An orphan page is a page search engines discover late and users never do.
-    for (const spec of specs) {
-      assert(index.includes(`/${spec.slug}"`) || index.includes(`/${spec.slug}#`),
-        `nothing on the homepage links to /${spec.slug}`);
-    }
-  });
+  // Reachability now covers every generated page: see tests/site.test.js
+  // ("puts every indexable page within two clicks of the homepage").
 });
 
 describe('Analytics', () => {
@@ -453,8 +536,70 @@ describe('Analytics', () => {
   });
 });
 
+describe('Any US address', () => {
+  const { CalcParams } = loadModules();
+  const analytics = read('js/analytics.js');
+  const vercel = JSON.parse(read('vercel.json'));
+
+  it('says on the homepage and in llms.txt that any US address works', () => {
+    assert(/any US address/i.test(index), 'index.html should say it works for any US address');
+    assert(/any US address/i.test(llms), 'llms.txt should say it works for any US address');
+    assert(/placeholder="Enter a US address"/.test(index), 'the address field should not ask for an NYC address');
+  });
+
+  it('declares the whole country as the area served', () => {
+    const ld = JSON.parse(index.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+    const app = ld['@graph'].find(n => n['@type'] === 'WebApplication');
+    const areas = [].concat(app.areaServed || []);
+    assert(areas.some(a => a['@type'] === 'Country' && a.name === 'United States'),
+      'WebApplication.areaServed should include the United States');
+  });
+
+  it('documents every link parameter the calculator reads, in llms.txt', () => {
+    for (const key of CalcParams.KEYS) {
+      assert(llms.includes('`' + key + '`'), `llms.txt does not document the ${key} parameter`);
+    }
+    const example = llms.match(/Example: (https:\/\/balco\.nyc\/\?\S+)/);
+    assert(example, 'llms.txt should give an example link');
+    const parsed = CalcParams.parse(new URL(example[1]).search);
+    assert(CalcParams.isComplete(parsed), `the llms.txt example link would not run: ${JSON.stringify(parsed)}`);
+  });
+
+  it('keeps addresses from prefilled links out of analytics', () => {
+    assert(/before_send:/.test(analytics), 'analytics.js should scrub URLs before sending');
+    assert(/PRIVATE_PARAMS = \[[^\]]*'address'/.test(analytics), 'the scrubber must remove the address parameter');
+    assert(/history\.replaceState/.test(index), 'the page should strip calculator parameters from the address bar');
+  });
+
+  it('keeps prefilled links out of search indexes', () => {
+    const rule = vercel.headers.find(h => h.source === '/' &&
+      JSON.stringify(h.has || []).includes('"address"'));
+    assert(rule && rule.headers.some(x => x.key === 'X-Robots-Tag' && /noindex/.test(x.value)),
+      'vercel.json should send X-Robots-Tag: noindex for /?address= links');
+  });
+
+  it('does not let crawlers spend the API quotas on prefilled links', () => {
+    assert(/navigator\.webdriver/.test(index) && /bot\|crawl\|spider/.test(index),
+      'prefilled links should not auto-run for bots');
+  });
+});
+
 describe('Deployment configuration', () => {
   const vercel = JSON.parse(read('vercel.json'));
+
+  it('keeps working material out of the deployment', () => {
+    // Vercel serves every uploaded file at its path. Without these, the
+    // strategy docs, content specs, tests and SQL were all public URLs.
+    const ignore = read('.vercelignore').split('\n').map(l => l.trim());
+    for (const entry of ['design/', 'docs/', 'tools/', 'tests/', 'content/', 'supabase/', '*.md']) {
+      assert(ignore.includes(entry), `.vercelignore should exclude ${entry}`);
+    }
+    assert(!ignore.includes('data/'), 'data/ must deploy: the calculator fetches it at runtime');
+  });
+
+  it('serves one URL per page, without a trailing-slash twin', () => {
+    assert(vercel.trailingSlash === false, 'vercel.json should set trailingSlash: false');
+  });
 
   it('does not cache un-fingerprinted JS immutably for a year', () => {
     // The model files keep stable names, so an immutable year-long cache
@@ -494,6 +639,26 @@ describe('Deployment configuration', () => {
       `expected the five boroughs, got ${boroughs}`);
   });
 
+  it('stamps every local script with a hash of its current contents', () => {
+    // js/ is cached for ten minutes and file names never change. Without a
+    // matching ?v= stamp a fresh page can run against an older cached module
+    // (the new page calling a function the old file lacks). Re-stamp with
+    // tools/stamp_scripts.py, then rebuild the content pages.
+    const crypto = require('crypto');
+    const specsHere = fs.readdirSync(path.join(ROOT, 'content')).filter(f => f.endsWith('.json'))
+      .map(f => JSON.parse(read(path.join('content', f))).slug + '.html');
+    for (const page of ['index.html', 'methodology.html', ...specsHere]) {
+      const refs = [...read(page).matchAll(/["']\/js\/([a-z0-9-]+\.js)(\?v=([0-9a-f]+))?["']/g)];
+      assert(refs.length > 0, `${page} loads no local scripts`);
+      for (const [, file, , stamp] of refs) {
+        assert(stamp, `${page} loads /js/${file} without a ?v= stamp`);
+        const want = crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, 'js', file)))
+          .digest('hex').slice(0, stamp.length);
+        assert(stamp === want, `${page}: /js/${file}?v=${stamp} is stale (file hashes to ${want}); run tools/stamp_scripts.py`);
+      }
+    }
+  });
+
   it('busts the hero map cache when the map changes', () => {
     // js/ is cached for 10 minutes and city-hero.js never changes name, while
     // the HTML is max-age=0. Without a fingerprint, for ten minutes after a
@@ -501,7 +666,7 @@ describe('Deployment configuration', () => {
     // exactly like the deploy not having happened. Stamped by
     // design/home-directions/build_city_hero.py; re-run it if this fails.
     const crypto = require('crypto');
-    const m = read('index.html').match(/src="js\/city-hero\.js\?v=([0-9a-f]+)"/);
+    const m = read('index.html').match(/src="\/js\/city-hero\.js\?v=([0-9a-f]+)"/);
     assert(m, 'index.html does not load city-hero.js with a ?v= fingerprint');
     const want = crypto.createHash('sha256')
       .update(read('js/city-hero.js'), 'utf8').digest('hex').slice(0, m[1].length);
@@ -518,7 +683,7 @@ describe('Deployment configuration', () => {
 describe('index.html wiring', () => {
   it('actually sends the estimate log rather than building a lazy query', () => {
     // supabase-js v2 builders are lazy; without a .then() nothing is sent.
-    assert(/\.insert\(\{[\s\S]*?\}\)\.then\(/.test(index),
+    assert(/\.insert\((?:\{[\s\S]*?\}|\w+)\)\.then\(/.test(index),
       'the estimates insert must be subscribed to with .then() or it never fires');
   });
 

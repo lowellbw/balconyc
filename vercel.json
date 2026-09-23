@@ -1,10 +1,27 @@
 {
   "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
-    { "source": "/METHODOLOGY.md", "destination": "/methodology", "permanent": true },
-    { "source": "/methodology.md", "destination": "/methodology", "permanent": true },
-    { "source": "/design", "destination": "/", "permanent": false },
-    { "source": "/design/(.*)", "destination": "/", "permanent": false }
+    {
+      "source": "/METHODOLOGY.md",
+      "destination": "/methodology",
+      "permanent": true
+    },
+    {
+      "source": "/methodology.md",
+      "destination": "/methodology",
+      "permanent": true
+    },
+    {
+      "source": "/design",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/design/(.*)",
+      "destination": "/",
+      "permanent": false
+    }
   ],
   "functions": {
     "api/visualize-v3.js": {
@@ -15,43 +32,88 @@
     {
       "source": "/(.*)\\.(webp|avif|jpg|jpeg|png|gif|svg|ico)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/(.*)\\.(woff|woff2|ttf|otf|eot)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/js/(.*)\\.js",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=600, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=600, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*)\\.css",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=600, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=600, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*)\\.html",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "address"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/data/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=600, must-revalidate"
+        }
       ]
     }
   ]

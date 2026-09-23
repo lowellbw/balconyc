@@ -1,0 +1,35 @@
+{
+ "intro_html": "<p>Vermont&rsquo;s law is in force, but in practice it is waiting on equipment. A qualifying device must comply with UL&nbsp;3700, the standard written for complete plug-in systems, or hold an equivalent certification from another nationally recognized testing laboratory, and must run to IEEE&nbsp;1547-2018. The first microinverter certified to UL&nbsp;3700 was announced in July 2026, but as of August 2026 no kit had been certified as a complete system under the full standard, according to the Vermont Energy &amp; Climate Action Network.</p>\n  <p>Once one is, the rules are unusually concrete. There is no utility approval, fee, interconnection agreement or notice, but a device may only be connected where there is a smart meter; Burlington Electric Department&rsquo;s plan for about 20,000 smart meters was approved by the Public Utility Commission in 2012, and a customer without one cannot use this law. A household that already net meters cannot add a device, and exports earn nothing. A tenant must give the landlord at least 10 days&rsquo; notice; the landlord may reply within 10 days with reasonable restrictions, such as having a licensed electrician do any electrical work at the tenant&rsquo;s cost, and if it does not reply the tenant may proceed. Deed restrictions and covenants, including those covering patio railings in condominiums, can no longer prohibit a plug-in device, and zoning bylaws may not regulate one.</p>\n  <p>The law also requires a device to be attached to the ground or a structure &ldquo;temporarily but securely&rdquo;; balco.nyc&rsquo;s figures below assume a panel fixed to a balcony railing.</p>",
+ "sources": [
+  {
+   "url": "https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf",
+   "title": "Vermont Legislature &mdash; Act 149 (S.202) as enacted",
+   "note": "the UL 3700 or equivalent and IEEE 1547-2018 definition, smart-meter and secure-attachment requirements, no net metering or export payment, the 10-day tenant notice, and the covenant and zoning changes."
+  },
+  {
+   "url": "https://www.vecan.net/energynews/plug-in-solar-coming-soon-to-a-porch-balcony-or-backyard-near-you",
+   "title": "Vermont Energy &amp; Climate Action Network &mdash; Plug-In Solar: Coming Soon to a Porch, Balcony or Backyard Near You (August 2026)",
+   "note": "that no plug-in kit had been certified as a complete system under the full UL 3700 standard, with no definitive timeline."
+  },
+  {
+   "url": "https://electrek.co/2026/07/20/us-first-ul-3700-balcony-solar-microinverter-hoymiles/",
+   "title": "Electrek &mdash; The US&rsquo;s first UL 3700 balcony solar microinverter is here (July 2026)",
+   "note": "the first microinverter certified to UL 3700: a component, not a complete system."
+  },
+  {
+   "url": "https://publicservice.vermont.gov/regulated-utilities/electric/advanced-meter-infrastructure-ami-plans",
+   "title": "Vermont Department of Public Service &mdash; Advanced Meter Infrastructure (AMI) plans",
+   "note": "Burlington Electric Department&rsquo;s smart-meter plan: about 20,000 meters, approved by the Public Utility Commission in April 2012."
+  }
+ ],
+ "faq": [
+  [
+   "Can a landlord in Vermont stop a tenant installing balcony solar?",
+   "Not outright. Under 30 V.S.A. 256 a tenant gives the landlord at least 10 days' notice; the landlord may respond within 10 days with reasonable restrictions, such as requiring the tenant to pay for any electrical work by a licensed electrician. If the landlord does not respond, the tenant may proceed. A tenant may not do electrical work on the premises without the landlord's permission."
+  ],
+  [
+   "Do I need a smart meter for balcony solar in Vermont?",
+   "Yes. Act 149 allows plug-in photovoltaic devices to be connected only to systems using smart meters, and only up to 1,200 W of combined inverter capacity per meter."
+  ]
+ ]
+}

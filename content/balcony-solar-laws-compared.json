@@ -1,0 +1,200 @@
+{
+  "slug": "balcony-solar-laws-compared",
+  "title": "US plug-in solar laws compared, provision by provision &middot; balco.nyc",
+  "og_title": "What the US plug-in solar laws actually say, provision by provision",
+  "breadcrumb": "State laws compared",
+  "cluster": "legal",
+  "pillar": true,
+  "card_title": "Which states allow plug-in solar, and on what terms?",
+  "card": "Nine signed laws and two bills, compared on caps, certification, exports, landlords and HOAs.",
+  "llms": "a provision-by-provision comparison, compiled by balco.nyc from legislature pages on 23 September 2026, of the nine signed US plug-in solar laws and the New York and California bills awaiting a governor: all nine bar utility approval, eight cap devices at 1,200 W, six take them out of net metering, and only four limit what landlords, associations or towns can do.",
+  "related": [
+    "sunny-act",
+    "balcony-solar-renters",
+    "ul-3700-plug-in-solar-certification"
+  ],
+  "description": "Nine states have signed plug-in solar laws. balco.nyc compared every clause: size caps, certification wording, exports, landlords, HOAs and towns.",
+  "eyebrow": "State laws compared",
+  "h1": "What the US plug-in solar laws actually say, provision by provision",
+  "lede": "Nine US states have signed plug-in solar laws, and five are in force today: Utah, Maine, Colorado, Maryland and Vermont. All nine stop the utility from requiring its approval and eight cap a device at 1,200&nbsp;W, but only four limit what a landlord, association or town can do, and the certification wording differs enough that a kit can qualify in one state and not the next. balco.nyc&rsquo;s compilation of the legislature pages, weighted by Census population, puts <strong>5.2% of US residents</strong> under a law in force today, and 29.5% if every signed law and the New York and California bills take effect.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~11 minutes",
+  "tags": [
+    "9 signed laws",
+    "1,200&nbsp;W in 8 of 9",
+    "4 limit landlords or HOAs"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "the-count",
+      "toc": "The count on 23 September 2026",
+      "html": "        <section id=\"the-count\">\n  <h2><span class=\"sec-num\">1</span>The count on 23&nbsp;September 2026</h2>\n  <p>balco.nyc checked plug-in solar legislation in all 50 states and the District of Columbia on 23&nbsp;September 2026, from each legislature&rsquo;s own bill pages and enacted text rather than third-party trackers, which disagree with the primary sources on several effective dates. (Trackers list Maryland&rsquo;s as taking effect on signing or on 1&nbsp;October; the act and the state&rsquo;s fiscal note both say 1&nbsp;July 2026.) The result:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Status</th><th>Count</th><th>Where</th><th>Share of US residents</th></tr></thead><tbody>\n    <tr><td><strong>In force</strong></td><td>5</td><td><a href=\"/states/utah\">Utah</a>, <a href=\"/states/maine\">Maine</a>, <a href=\"/states/colorado\">Colorado</a>, <a href=\"/states/maryland\">Maryland</a>, <a href=\"/states/vermont\">Vermont</a></td><td>5.2%</td></tr>\n    <tr><td><strong>Signed, not yet in force</strong></td><td>4</td><td><a href=\"/states/connecticut\">Connecticut</a> (1&nbsp;Oct 2026), <a href=\"/states/virginia\">Virginia</a> and <a href=\"/states/new-hampshire\">New Hampshire</a> (1&nbsp;Jan 2027), <a href=\"/states/new-jersey\">New Jersey</a> (1&nbsp;Mar 2027)</td><td>6.9%</td></tr>\n    <tr><td>Passed, awaiting a governor</td><td>2</td><td><a href=\"/states/new-york\">New York</a>, <a href=\"/states/california\">California</a></td><td>17.4%</td></tr>\n    <tr><td>Bill pending</td><td>7</td><td><a href=\"/states/district-of-columbia\">District of Columbia</a>, <a href=\"/states/illinois\">Illinois</a>, <a href=\"/states/massachusetts\">Massachusetts</a>, <a href=\"/states/michigan\">Michigan</a>, <a href=\"/states/north-carolina\">North Carolina</a>, <a href=\"/states/ohio\">Ohio</a>, <a href=\"/states/pennsylvania\">Pennsylvania</a></td><td>19.6%</td></tr>\n    <tr><td>Bill died, 2025&ndash;26</td><td>18</td><td><a href=\"/states/alaska\">Alaska</a>, <a href=\"/states/arizona\">Arizona</a>, <a href=\"/states/delaware\">Delaware</a>, <a href=\"/states/georgia\">Georgia</a>, <a href=\"/states/hawaii\">Hawaii</a>, <a href=\"/states/idaho\">Idaho</a>, <a href=\"/states/indiana\">Indiana</a>, <a href=\"/states/iowa\">Iowa</a>, <a href=\"/states/minnesota\">Minnesota</a>, <a href=\"/states/missouri\">Missouri</a>, <a href=\"/states/new-mexico\">New Mexico</a>, <a href=\"/states/oklahoma\">Oklahoma</a>, <a href=\"/states/oregon\">Oregon</a>, <a href=\"/states/rhode-island\">Rhode Island</a>, <a href=\"/states/south-carolina\">South Carolina</a>, <a href=\"/states/washington\">Washington</a>, <a href=\"/states/west-virginia\">West Virginia</a>, <a href=\"/states/wyoming\">Wyoming</a></td><td>21.7%</td></tr>\n    <tr><td>No bill found</td><td>15</td><td><a href=\"/states/alabama\">Alabama</a>, <a href=\"/states/arkansas\">Arkansas</a>, <a href=\"/states/florida\">Florida</a>, <a href=\"/states/kansas\">Kansas</a>, <a href=\"/states/kentucky\">Kentucky</a>, <a href=\"/states/louisiana\">Louisiana</a>, <a href=\"/states/mississippi\">Mississippi</a>, <a href=\"/states/montana\">Montana</a>, <a href=\"/states/nebraska\">Nebraska</a>, <a href=\"/states/nevada\">Nevada</a>, <a href=\"/states/north-dakota\">North Dakota</a>, <a href=\"/states/south-dakota\">South Dakota</a>, <a href=\"/states/tennessee\">Tennessee</a>, <a href=\"/states/texas\">Texas</a>, <a href=\"/states/wisconsin\">Wisconsin</a></td><td>29.3%</td></tr>\n  </tbody></table></div>\n  <p>The shares are balco.nyc&rsquo;s arithmetic: each jurisdiction&rsquo;s July&nbsp;2025 Census Bureau population estimate, summed by status, over the 341.8&nbsp;million total for the 50 states and DC (rounded). Read cumulatively, <strong>5.2% of US residents</strong> live where a plug-in law is in force today, 12.1% will once New Jersey&rsquo;s starts on 1&nbsp;March 2027, and 29.5% would if New York and California enact theirs. Sources for every state are on <a href=\"/states\">the states page</a>.</p>\n  <div class=\"callout\"><p><strong>No law is not the same as a ban.</strong> Before its act passed, Maryland&rsquo;s legislative analysts noted that balcony solar was not prohibited there, but that utilities &ldquo;frequently require customers to enter into interconnection agreements&rdquo; first. That is broadly the position in the 42 jurisdictions without a signed law. A plug-in law takes the device out of that process.</p></div>\n</section>"
+    },
+    {
+      "id": "exempt-vs-right",
+      "toc": "Exempt from interconnection vs a right to install",
+      "html": "        <section id=\"exempt-vs-right\">\n  <h2><span class=\"sec-num\">2</span>&ldquo;Exempt from interconnection&rdquo; is not a right to install</h2>\n  <p>Every plug-in law can answer two separate questions. Most answer only the first.</p>\n  <p><strong>The utility question</strong> is whether you need your power company&rsquo;s permission. A device that feeds power into your wiring while the grid is live is, in utility rules, a small generator, which normally needs an interconnection application and agreement before it runs. All nine signed laws bar the utility from requiring its approval, charging a fee or demanding extra equipment; eight expressly free the device from interconnection agreements or review, and Colorado gets there by listing what the utility may not demand. That is &ldquo;exempt from interconnection&rdquo;, and it is the whole of what Utah, Maine, Maryland, Connecticut and New Hampshire do.</p>\n  <p><strong>The property question</strong> is whether anyone else can stop you: a landlord, a lease, a condominium declaration, a homeowners&rsquo; association, a town&rsquo;s zoning. An interconnection exemption does not touch any of it. A <em>right to install</em> is a separate clause that makes some of those prohibitions unenforceable, usually while allowing &ldquo;reasonable&rdquo; limits on size and placement. Only Vermont, Virginia, New Jersey and Colorado have one.</p>\n  <p>Two points get lost in between. <strong>Notice is not approval</strong>: Maryland and Virginia require notice to the utility before installing, Maine within 30 days above 420&nbsp;W, and none lets the utility refuse a compliant device. And <strong>codes still apply</strong>: Connecticut says its exemption does not reach the building and fire codes or &ldquo;any local ordinance or regulation&rdquo;, and Colorado and New Jersey require installation to meet the fire, electrical or construction codes.</p>\n</section>"
+    },
+    {
+      "id": "utility-side",
+      "toc": "The utility side, law by law",
+      "html": "        <section id=\"utility-side\">\n  <h2><span class=\"sec-num\">3</span>The utility side, law by law</h2>\n  <p>The first matrix is what each enacted text says about the device and the utility, quoting the statute where the wording matters. &ldquo;Not addressed&rdquo; means we read the provision and it is silent; &ldquo;unclear&rdquo; means it says something that does not settle the point. NRTL is a nationally recognized testing laboratory; NEC the National Electrical Code. The two bills awaiting a governor are in italics; they are not law.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Law</th><th>In force</th><th>Size cap, as worded</th><th>Certification wording</th><th>Utility notice</th><th>Net metering and exports</th></tr></thead><tbody>\n    <tr><td><a href=\"/states/utah\">Utah</a><br>HB&nbsp;340</td><td>7 May 2025</td><td>1,200&nbsp;W &ldquo;maximum power output&rdquo;; AC or DC not stated</td><td>&ldquo;Certified by Underwriters Laboratories or an equivalent&rdquo; NRTL; NEC</td><td>None</td><td>&ldquo;Not subject to&rdquo; net metering</td></tr>\n    <tr><td><a href=\"/states/maine\">Maine</a><br>LD&nbsp;1730</td><td>29 Jul 2026</td><td>1,200&nbsp;W AC inverter output per address; above 420&nbsp;W, licensed electrician and dedicated circuit</td><td>&ldquo;In accordance with UL 3700&rdquo;, a comparable NRTL standard, or configured per the NEC</td><td>Within 30 days, above 420&nbsp;W only</td><td>&ldquo;May not be used for net energy billing&rdquo;</td></tr>\n    <tr><td><a href=\"/states/colorado\">Colorado</a><br>HB26-1007</td><td>12 Aug 2026; property rules 1 Jan 2027</td><td>1,920&nbsp;W &ldquo;to the electric grid&rdquo;; one system per address</td><td>&ldquo;Labeled and listed&rdquo; by an NRTL; from 2027, over 391&nbsp;W must be &ldquo;UL labeled and listed&rdquo; to be sold</td><td>Utility may ask for presence and size</td><td>Not addressed</td></tr>\n    <tr><td><a href=\"/states/maryland\">Maryland</a><br>HB&nbsp;1532</td><td>1 Jul 2026</td><td>1,200&nbsp;W supplied back to the building; one per meter</td><td>&ldquo;Certified by Underwriters Laboratory or an equivalent&rdquo; NRTL</td><td>Before installing, with a safety and capacity certification</td><td>Outside net metering; no renewable energy credits</td></tr>\n    <tr><td><a href=\"/states/vermont\">Vermont</a><br>Act&nbsp;149</td><td>1 Jul 2026</td><td>1,200&nbsp;W combined inverter capacity per meter; smart meter required</td><td>&ldquo;Complies with UL 3700&rdquo; or an equivalent certification; IEEE&nbsp;1547</td><td>None</td><td>Ineligible; exports &ldquo;shall not be compensated&rdquo;</td></tr>\n    <tr><td><a href=\"/states/connecticut\">Connecticut</a><br>PA&nbsp;26-127</td><td>1 Oct 2026</td><td>1,200&nbsp;W &ldquo;maximum power output&rdquo;; one per meter</td><td>UL or an equivalent NRTL, &ldquo;and meets&rdquo; UL&nbsp;1741; IEEE&nbsp;1547; NEC</td><td>None</td><td>Must warn that excess is &ldquo;charged to the customer as usage&rdquo; without a net-metering meter</td></tr>\n    <tr><td><a href=\"/states/virginia\">Virginia</a><br>HB&nbsp;395 / SB&nbsp;250</td><td>1 Jan 2027</td><td>1,200&nbsp;W per customer or multifamily unit</td><td>An NRTL (29&nbsp;CFR 1910.7) or equivalent; NEC</td><td>State form before installing; utility has 15 days to query it</td><td>Outside net metering</td></tr>\n    <tr><td><a href=\"/states/new-hampshire\">New Hampshire</a><br>SB&nbsp;540</td><td>1 Jan 2027</td><td>1,200&nbsp;W AC inverter output; one per metered customer</td><td>An NRTL, to &ldquo;nationally recognized safety standards&rdquo; (none named)</td><td>Optional, after installation</td><td>Unclear: no credit provided</td></tr>\n    <tr><td><a href=\"/states/new-jersey\">New Jersey</a><br>S2368 / A4836</td><td>1 Mar 2027</td><td>1,200&nbsp;W combined per address or dwelling unit</td><td>&ldquo;In accordance with&rdquo; UL&nbsp;3700 or &ldquo;a comparable standard&rdquo;, by an NRTL</td><td>None</td><td>Outside net-metering requirements; credit not addressed</td></tr>\n    <tr><td><em><a href=\"/states/new-york\">New York</a></em><br><em>SUNNY Act (bill)</em></td><td><em>90 days after enactment</em></td><td><em>1,200&nbsp;W AC inverter nameplate, to the grid</em></td><td><em>NRTL listing &ldquo;as a complete plug-in photovoltaic system&rdquo;</em></td><td><em>Within 30 days</em></td><td><em>&ldquo;Uncompensated&rdquo; unless the owner opts in</em></td></tr>\n    <tr><td><em><a href=\"/states/california\">California</a></em><br><em>SB&nbsp;868 (bill)</em></td><td><em>1 Jan 2027 if enacted; exemption ends 2030</em></td><td><em>1,200&nbsp;W aggregated AC per dwelling</em></td><td><em>&ldquo;Certified as a plug-in photovoltaic system&rdquo; by UL or an NRTL</em></td><td><em>Utility may require online registration</em></td><td><em>Not addressed</em></td></tr>\n  </tbody></table></div>\n  <p>The caps do not all measure the same thing. Maine, Vermont, New Hampshire and California&rsquo;s bill cap inverter AC output, so panel wattage behind a smaller inverter does not count; Maryland, Colorado and New York&rsquo;s bill cap what is supplied back to the building or grid; Utah, Connecticut and New Jersey say only &ldquo;maximum power output&rdquo;. Several also limit the number of devices: one per meter in Maryland, Connecticut and New Hampshire, one system per address in Colorado.</p>\n</section>"
+    },
+    {
+      "id": "property-side",
+      "toc": "Landlords, associations and towns",
+      "html": "        <section id=\"property-side\">\n  <h2><span class=\"sec-num\">4</span>The property side: landlords, associations and towns</h2>\n  <p>The second matrix is where the laws genuinely diverge. Five of the nine say nothing about who else may stop you; four do, each in its own way.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Law</th><th>Landlord and tenant</th><th>HOA, condo and co-op</th><th>Local government</th></tr></thead><tbody>\n    <tr><td><a href=\"/states/utah\">Utah</a></td><td>Not addressed</td><td>Not addressed</td><td>Not addressed</td></tr>\n    <tr><td><a href=\"/states/maine\">Maine</a></td><td>No right; on a structure you do not own you must protect it, meet building, fire and zoning codes, and restore it</td><td>Not addressed</td><td>Not addressed</td></tr>\n    <tr><td><a href=\"/states/colorado\">Colorado</a></td><td>From 2027, no &ldquo;unreasonable&rdquo; prohibition; the owner may set reasonable limits, including prior notice</td><td>From 2027, unreasonable covenants are void; may install on a limited common element such as a balcony</td><td>Fire and local building codes apply; the 2027 bar binds any &ldquo;person&rdquo;, which includes governments (our reading)</td></tr>\n    <tr><td><a href=\"/states/maryland\">Maryland</a></td><td>Not addressed</td><td>Not addressed</td><td>Not addressed in &sect;7-321</td></tr>\n    <tr><td><a href=\"/states/vermont\">Vermont</a></td><td>10 days&rsquo; notice; the landlord may set reasonable restrictions; silence lets the tenant proceed</td><td>Covenants may not prohibit, including on condo, co-op and apartment patio railings</td><td>Zoning bylaws may not regulate them</td></tr>\n    <tr><td><a href=\"/states/connecticut\">Connecticut</a></td><td>Not addressed</td><td>Not addressed</td><td>Local ordinances and codes still apply</td></tr>\n    <tr><td><a href=\"/states/virginia\">Virginia</a></td><td>Landlords with more than four units may not prohibit on the tenant&rsquo;s exterior; reasonable limits; 7 days&rsquo; notice</td><td>Not overridden: association, condo and co-op instruments preserved</td><td>May not prohibit on residential structures; height, setback and historic rules apply</td></tr>\n    <tr><td><a href=\"/states/new-hampshire\">New Hampshire</a></td><td>Not addressed</td><td>Not addressed</td><td>Not addressed</td></tr>\n    <tr><td><a href=\"/states/new-jersey\">New Jersey</a></td><td>May not bar tenants who pay their own electric bill, including on a balcony or patio; reasonable limits; 14 days&rsquo; notice</td><td>May not enforce bans on exterior placement; reasonable limits allowed</td><td>May not prohibit, or require a permit, fee or approval</td></tr>\n    <tr><td><em><a href=\"/states/new-york\">New York</a> (bill)</em></td><td>Not addressed</td><td>Not addressed</td><td>Not addressed</td></tr>\n    <tr><td><em><a href=\"/states/california\">California</a> (bill)</em></td><td>Not addressed</td><td>Not addressed</td><td>Not addressed</td></tr>\n  </tbody></table></div>\n  <p>The four rights are not one right. Vermont&rsquo;s turns on notice: silence from the landlord lets the tenant proceed. Virginia&rsquo;s covers only tenants of landlords with more than four units, and leaves condominium and association documents intact. New Jersey&rsquo;s covers tenants who pay their own electric bill and also binds associations and towns. Colorado&rsquo;s bars &ldquo;unreasonable&rdquo; prohibitions from 1&nbsp;January 2027; our reading that it reaches towns rests on state law defining a &ldquo;person&rdquo; to include governmental subdivisions.</p>\n  <p>On balco.nyc&rsquo;s population arithmetic those four states hold <strong>7.3%</strong> of US residents, but three of the four rights are not yet operative. The only one in force today is Vermont&rsquo;s, covering about 0.2%. What this means in practice is covered in <a href=\"/balcony-solar-renters\">balcony solar for renters</a> and <a href=\"/balcony-solar-condo-hoa\">condos, co-ops and HOAs</a>.</p>\n</section>"
+    },
+    {
+      "id": "kit-portability",
+      "toc": "Why a kit legal in one state may not be in another",
+      "html": "        <section id=\"kit-portability\">\n  <h2><span class=\"sec-num\">5</span>Why a kit that qualifies in one state may not qualify in the next</h2>\n  <p>Each law protects only a device that meets its own definition, and the definitions differ most in the certification clause:</p>\n  <ul>\n    <li><strong>Certified by a lab, standard unnamed:</strong> Utah, Maryland, Virginia and Colorado. None says certified <em>to what</em>, or whether listings of the separate components count.</li>\n    <li><strong>A component standard, or a description of one:</strong> Connecticut adds UL&nbsp;1741, the inverter standard; New Hampshire asks for &ldquo;nationally recognized safety standards&rdquo; without naming one.</li>\n    <li><strong>UL&nbsp;3700 or something comparable:</strong> Maine, Vermont and New Jersey. Maine and New Jersey identify UL&nbsp;3700 by its title, an &ldquo;Outline of Investigation&rdquo;, and Maine also accepts a system configured to the electrical code.</li>\n    <li><strong>Certified as a complete system:</strong> New York&rsquo;s bill and California&rsquo;s.</li>\n  </ul>\n  <p>The spread matters because, as of September 2026, no complete plug-in system has been certified to UL&nbsp;3700; the components (panels, microinverters) carry their own listings. A kit sold with a UL&nbsp;1741-listed microinverter and listed panels may therefore satisfy the unnamed-standard wording of Utah or Maryland, while in Vermont the question becomes what counts as an &ldquo;equivalent certification&rdquo;, and under New York&rsquo;s or California&rsquo;s bill whether any complete-system listing exists for it at all. The statutes do not answer those questions and we cannot either. The standard itself is covered in <a href=\"/ul-3700-plug-in-solar-certification\">what UL&nbsp;3700 is, and is not</a>, and the hazards these clauses target in <a href=\"/is-plug-in-solar-safe\">is plug-in solar safe?</a></p>\n  <p>Certification is not the only trap. A device sized to Colorado&rsquo;s 1,920&nbsp;W cap falls outside every other state&rsquo;s definition. An 800&nbsp;W kit that meets Utah&rsquo;s definition with no installer requirement needs, in Maine, a licensed electrician and a dedicated circuit. Vermont allows devices only on smart-metered services. And a second unit behind the same meter in Connecticut or Maryland takes you outside the law even if each unit qualifies.</p>\n</section>"
+    },
+    {
+      "id": "patterns",
+      "toc": "The patterns: 1,200 W, 391 W, exports",
+      "html": "        <section id=\"patterns\">\n  <h2><span class=\"sec-num\">6</span>The patterns: 1,200&nbsp;W, 391&nbsp;W, and exports nobody pays for</h2>\n  <p><strong>1,200&nbsp;W is the default.</strong> Of the 36 jurisdictions where balco.nyc found a plug-in bill in 2025&ndash;26, 34 wrote in a wattage figure, and 30 of those chose 1,200&nbsp;W, including eight of the nine signed laws and both bills now with a governor. The exceptions: Colorado&rsquo;s 1,920&nbsp;W, also proposed by <a href=\"/states/new-mexico\">New Mexico</a>&rsquo;s SB&nbsp;157 before it died; <a href=\"/states/delaware\">Delaware</a>&rsquo;s 800&nbsp;W bill; and Illinois. Utah&rsquo;s 2025 law, the first, is visibly the template: Connecticut, Virginia and New Jersey reuse its definition almost word for word, down to &ldquo;intended primarily to offset part of the customer&rsquo;s electricity consumption&rdquo;.</p>\n  <p><strong>391&nbsp;W is the other number.</strong> Colorado, Maryland and Virginia exempt devices at or below 391&nbsp;W from code or listing provisions that would require rewiring; New Jersey sets that line at 400&nbsp;W, and Maine&rsquo;s unconditional tier stops at 420&nbsp;W. None of the texts explains 391, and we could not trace its origin. <a href=\"/states/illinois\">Illinois&rsquo;</a> SB&nbsp;3104, as amended in committee in March 2026, would make it a ceiling: it prohibits any system above 391&nbsp;W until the National Electrical Code adopts a standard for them, about a third of what every signed law allows. It cleared committee 9&ndash;4, was sent back to the Assignments committee on 22&nbsp;May 2026, and has not moved since.</p>\n  <p><strong>Exports are almost never paid for.</strong> Five of the nine signed laws expressly take the device out of net metering or deny it any export credit (Utah, Maine, Maryland, Vermont, Virginia); New Jersey exempts it from net-metering program requirements without saying whether exports are paid; Connecticut requires a warning that exports are billed as usage; and none provides another credit. Vermont says exports &ldquo;shall not be compensated&rdquo;; Connecticut goes further, requiring a warning that excess generation is charged as usage unless the meter allows net metering. Colorado is silent, and New Hampshire shields the utility from &ldquo;compensation or charges&rdquo; without saying more. The one bill in balco.nyc&rsquo;s data that would have credited exports, <a href=\"/states/oregon\">Oregon</a>&rsquo;s HB&nbsp;4080, died in March 2026. See <a href=\"/balcony-solar-net-metering\">why surplus earns nothing</a>.</p>\n  <p><strong>Who is bound varies by utility.</strong> The statutes bind utilities under different labels (&ldquo;electrical corporation&rdquo;, &ldquo;electric company&rdquo;, &ldquo;electric distribution company&rdquo;, &ldquo;electric public utility&rdquo;, &ldquo;provider of retail electric service&rdquo;), each defined by its own state&rsquo;s law. California&rsquo;s bill names local publicly owned utilities outright; most others leave it to those definitions, which we have not resolved state by state. If you buy power from a municipal utility or a cooperative, ask it whether the law applies.</p>\n</section>"
+    },
+    {
+      "id": "awaiting",
+      "toc": "New York, California, and checking your state",
+      "html": "        <section id=\"awaiting\">\n  <h2><span class=\"sec-num\">7</span>The two bills on a governor&rsquo;s desk, and checking your own state</h2>\n  <p><a href=\"/states/new-york\">New York</a>&rsquo;s SUNNY Act (S8512C / A9111C) has passed both chambers and {{sunny.phrase}}. The final version cleared both on 28&nbsp;May 2026; as of 23&nbsp;September the Assembly&rsquo;s record shows no delivery to the Governor, so her decision clock has not started. If signed, it takes effect on the 90th day. It would exempt devices of up to 1,200&nbsp;W AC from interconnection and net metering, leave exports uncompensated unless the owner opts into an agreement, require notice within 30 days, and require listing as a complete system. It grants no right to install: renters, co-op shareholders and condo owners would still need permission. <a href=\"/sunny-act\">The SUNNY Act in detail</a>.</p>\n  <p><a href=\"/states/california\">California</a>&rsquo;s SB&nbsp;868 was presented to Governor Newsom on 31&nbsp;August 2026. Under the state constitution he has until 30&nbsp;September to act, or it becomes law without his signature; if enacted, it takes effect on 1&nbsp;January 2027. It binds local publicly owned utilities as well as investor-owned ones, and is silent on exports, landlords and associations. It is the only text here with an end date: the exemption is repealed on 1&nbsp;January 2030, the day a ban begins on selling plug-in devices that do not meet its code and certification conditions.</p>\n  <p>For any state, check five things against the enacted text before relying on a summary, including this one: the effective date; how the cap is measured; the certification wording, against your device&rsquo;s paperwork; whether and when the utility must be told; and whether the law mentions your landlord, association or town &mdash; if it does not, their rules still apply. This page summarizes statutes as written. It is not legal advice, and a utility, court or building department may read a clause differently.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Which states allow plug-in or balcony solar?",
+      "As of 23 September 2026, nine states have signed plug-in solar laws. Five are in force: Utah, Maine, Colorado, Maryland and Vermont. Connecticut's takes effect on 1 October 2026, Virginia's and New Hampshire's on 1 January 2027, and New Jersey's on 1 March 2027. New York's SUNNY Act and California's SB 868 have passed both chambers and await their governors. Elsewhere a plug-in system is not necessarily banned, but the utility's ordinary interconnection rules for generators apply."
+    ],
+    [
+      "Which states give renters a right to install balcony solar?",
+      "Four signed laws limit a landlord's power to say no, each differently. Vermont lets a tenant proceed if the landlord does not answer a 10-day notice; Virginia bars landlords with more than four units from prohibiting devices on the exterior of the tenant's premises; New Jersey protects tenants who pay their own electric bill; Colorado bars unreasonable prohibitions. Only Vermont's is in force today: Colorado's and Virginia's start on 1 January 2027 and New Jersey's on 1 March 2027. Utah, Maine, Maryland, Connecticut and New Hampshire give tenants no such right, and neither would New York's SUNNY Act."
+    ],
+    [
+      "Is 1,200 watts the limit in every state?",
+      "Nearly. Eight of the nine signed plug-in solar laws cap devices at 1,200 W, and 30 of the 34 jurisdictions whose 2025-26 plug-in bills set a wattage figure chose 1,200 W. Colorado allows 1,920 W supplied to the grid. Maine allows up to 420 W with no conditions and up to 1,200 W only if a licensed electrician installs each system on a dedicated circuit and the utility is notified. The caps are also measured differently: some count inverter AC output, some the power supplied back to the building or grid, and some just say maximum power output."
+    ],
+    [
+      "Do plug-in solar laws pay you for electricity sent to the grid?",
+      "Almost never. Five of the nine signed laws take plug-in devices out of net metering or deny them export credit, and none provides another credit; Vermont's says exported power shall not be compensated, New Jersey's exempts the devices from net-metering program requirements without saying whether exports are paid, and Connecticut's requires a warning that excess generation will be charged as usage unless the meter allows net metering. New York's SUNNY Act would leave exports uncompensated unless the owner opts into an agreement. Plan on the value coming only from electricity you use yourself."
+    ],
+    [
+      "What does 'exempt from interconnection' mean for plug-in solar?",
+      "It means the utility cannot make you apply, sign an interconnection agreement, pay a fee or add equipment before using a compliant device, as it can for a rooftop array. It says nothing about whether a landlord, condo board, homeowners' association or town can stop you; that takes a separate right-to-install clause, which only four of the nine signed plug-in laws (Vermont, Virginia, New Jersey and Colorado) contain."
+    ],
+    [
+      "If a plug-in solar kit is legal in one state, is it legal in another?",
+      "Not necessarily. Each law protects only devices that meet its own definition, and the certification wording differs: Utah and Maryland ask for certification by UL or an equivalent lab without naming a standard, Maine, Vermont and New Jersey name UL 3700 or a comparable standard, and New York's and California's bills require certification as a complete plug-in system. As of September 2026 no complete plug-in system has been certified to UL 3700. Wattage caps, per-meter device limits and Vermont's smart-meter requirement also differ."
+    ],
+    [
+      "Is balcony solar legal in New York or California yet?",
+      "Not yet in either. New York's SUNNY Act has passed both chambers and {{sunny.phrase}}; it had not been delivered to her as of 23 September 2026 and would take effect 90 days after becoming law. California's SB 868 was presented to Governor Newsom on 31 August 2026; he has until 30 September 2026 to act, it becomes law without his signature if he does not, and it would take effect on 1 January 2027."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf",
+      "title": "Utah Legislature &mdash; H.B. 340 Solar Power Amendments, enrolled copy (2025)",
+      "note": "the 1,200&nbsp;W &ldquo;maximum power output&rdquo; definition, UL-or-NRTL certification, anti-islanding, exemption from interconnection and net metering, and the 7 May 2025 effective date."
+    },
+    {
+      "url": "https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132",
+      "title": "Maine Legislature &mdash; LD 1730, Public Law 2026 chapter 644 (35-A MRSA &sect;3475)",
+      "note": "the 420&nbsp;W and 1,200&nbsp;W tiers, electrician and dedicated-circuit condition, 30-day notice, UL&nbsp;3700 wording, the net energy billing bar and the duties on structures the customer does not own."
+    },
+    {
+      "url": "https://legislature.maine.gov/",
+      "title": "Maine Legislature &mdash; home page",
+      "note": "the 29 July 2026 general effective date for non-emergency laws of the 2026 session."
+    },
+    {
+      "url": "https://leg.colorado.gov/bills/hb26-1007",
+      "title": "Colorado General Assembly &mdash; HB26-1007 bill page",
+      "note": "signed 7 May 2026, Session Law chapter 127, effective 12 August 2026."
+    },
+    {
+      "url": "https://leg.colorado.gov/bill_files/116074/download",
+      "title": "Colorado General Assembly &mdash; HB26-1007 signed act (C.R.S. 40-2-140)",
+      "note": "the 1,920&nbsp;W cap, NRTL listing, optional notice, 391&nbsp;W exemption, and the 1 January 2027 UL sales rule, ban on unreasonable prohibitions and limited-common-element provision."
+    },
+    {
+      "url": "https://codes.findlaw.com/co/title-2-legislative/co-rev-st-sect-2-4-401/",
+      "title": "C.R.S. &sect;2-4-401 definitions (FindLaw)",
+      "note": "that &ldquo;person&rdquo; in Colorado statutes includes a government or governmental subdivision, the basis of our reading of the 2027 clause."
+    },
+    {
+      "url": "https://mgaleg.maryland.gov/2026RS/Chapters_noln/CH_353_hb1532e.pdf",
+      "title": "Maryland General Assembly &mdash; Chapter 353 of 2026 (HB 1532), Public Utilities &sect;7-321",
+      "note": "the text of the portable solar section: 1,200&nbsp;W, one per meter, notice, net-metering and REC exclusions, 391&nbsp;W exemption."
+    },
+    {
+      "url": "https://mgaleg.maryland.gov/2026RS/fnotes/bil_0002/hb1532.pdf",
+      "title": "Maryland Department of Legislative Services &mdash; Fiscal and Policy Note, HB 1532 (Enrolled - Revised)",
+      "note": "the 1 July 2026 effective date for the portable solar provisions, notice before installation, and the description of utilities&rsquo; prior practice."
+    },
+    {
+      "url": "https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf",
+      "title": "Vermont Legislature &mdash; Act 149 (S.202) as enacted",
+      "note": "UL&nbsp;3700 wording, smart-meter condition, uncompensated exports, tenant notice, covenant and zoning provisions, 1 July 2026 effective date."
+    },
+    {
+      "url": "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00127-R00HB-05340-PA.PDF",
+      "title": "Connecticut General Assembly &mdash; Public Act 26-127 (HB 5340), sections 9&ndash;10",
+      "note": "the device definition including UL&nbsp;1741 and the excess-generation warning, one device per meter, retained codes and local ordinances, 1 October 2026 effective date."
+    },
+    {
+      "url": "https://lis.blob.core.windows.net/files/1225204.PDF",
+      "title": "Virginia Acts of Assembly &mdash; 2026 Chapter 1052 (HB 395)",
+      "note": "the landlord, locality and utility sections, the state notification form, and the 1 January 2027 effective date."
+    },
+    {
+      "url": "https://gc.nh.gov/bill_status/legacy/bs2016/billText.aspx?sy=2026&id=1317&txtFormat=html",
+      "title": "New Hampshire General Court &mdash; SB 540-FN, Chapter 262, Laws of 2026",
+      "note": "one 1,200&nbsp;W AC system per metered customer, certification wording, optional notice, liability clause, 1 January 2027 effective date."
+    },
+    {
+      "url": "https://pub.njleg.gov/Bills/2026/S2500/2368_R3.HTM",
+      "title": "New Jersey Legislature &mdash; S2368 [Third Reprint], Garden State Balcony Solar Act",
+      "note": "the UL&nbsp;3700 wording, 400&nbsp;W exemption, landlord, association and municipal sections, and the six-month effective date."
+    },
+    {
+      "url": "https://www.nj.gov/governor/news/2026/approved/20260901a.shtml",
+      "title": "Office of the Governor of New Jersey &mdash; Garden State Balcony Solar Act signed, 1 September 2026",
+      "note": "the signing date that sets the 1 March 2027 effective date."
+    },
+    {
+      "url": "https://nyassembly.gov/leg/?default_fld=&bn=A09111&term=2025&Summary=Y&Actions=Y&Text=Y&Memo=Y",
+      "title": "New York State Assembly &mdash; A09111C (SUNNY Act) actions and text",
+      "note": "passage on 28 May 2026, no delivery to the Governor recorded, and the bill text: 1,200&nbsp;W AC, complete-system listing, uncompensated exports, 30-day notice, 90-day effective date."
+    },
+    {
+      "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB868",
+      "title": "California Legislative Information &mdash; SB 868, enrolled text",
+      "note": "1,200&nbsp;W per dwelling, complete-system certification, optional registration, the 2030 repeal and sales ban."
+    },
+    {
+      "url": "https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202520260SB868",
+      "title": "California Legislative Information &mdash; SB 868 history",
+      "note": "presented to the Governor on 31 August 2026, with no later action recorded as of 23 September."
+    },
+    {
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CONS&sectionNum=SEC.%2010.&article=IV",
+      "title": "California Constitution, article IV &sect;10",
+      "note": "the 30 September deadline for bills in the Governor&rsquo;s possession on or after 1 September of the biennium&rsquo;s second year."
+    },
+    {
+      "url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=3104&GAID=18&DocTypeID=SB&SessionID=114&GA=104",
+      "title": "Illinois General Assembly &mdash; SB 3104 bill status (archived 15 June 2026)",
+      "note": "the committee amendment prohibiting systems above 391&nbsp;W until the NEC adopts a standard, and the bill&rsquo;s actions; ilga.gov itself did not load from our network."
+    },
+    {
+      "url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv",
+      "title": "US Census Bureau &mdash; Vintage 2025 population estimates (SUB-EST2025)",
+      "note": "July 2025 state populations used for the share-of-residents figures."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It summarizes enacted text as of 23&nbsp;September 2026 and is not legal advice. Check the state legislature&rsquo;s page before relying on any cell."
+}

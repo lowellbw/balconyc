@@ -1,0 +1,166 @@
+{
+  "slug": "us-balcony-solar-potential",
+  "title": "How many US homes could use balcony solar? &middot; balco.nyc",
+  "og_title": "How many US homes could use balcony solar, and how much could they make?",
+  "breadcrumb": "US potential",
+  "cluster": "basics",
+  "pillar": false,
+  "card_title": "How many US homes could use balcony solar?",
+  "card": "8 to 14 million apartment households, by balco.nyc&rsquo;s Census-based count, and what they could make.",
+  "llms": "balco.nyc's estimate from the Census Bureau's ACS 2024 and AHS 2023 that 34.7 million US households live in buildings of two or more units, 22.5 million have a porch, deck, balcony or patio, and 8.0 to 14.1 million have outdoor space plausible for a railing panel facing a usable direction; an unshaded 800 W panel there makes about 579 kWh a year, 5% adoption would produce 232 to 407 million kWh, and 5.0% of apartment households live where a plug-in law is in force.",
+  "related": [
+    "balcony-solar-laws-compared",
+    "balcony-solar-renters",
+    "is-balcony-solar-worth-it"
+  ],
+  "description": "About 8 to 14 million US apartment households have outdoor space where a railing panel is plausible. balco.nyc's Census-based count, output and states.",
+  "eyebrow": "National estimate",
+  "h1": "How many US homes could use balcony solar, and how much could they make?",
+  "lede": "About 34.7&nbsp;million US households, 68&nbsp;million people, live in buildings of two or more units. balco.nyc&rsquo;s estimate from Census Bureau surveys puts 22.5&nbsp;million of them with a porch, deck, balcony or patio, and <strong>8&nbsp;million to 14&nbsp;million</strong> with outdoor space where a railing panel is plausible, facing a usable direction. An unshaded 800&nbsp;W panel there makes about 580&nbsp;kWh a year; if 5% installed one, the total would be 230 to 410&nbsp;million kWh, under 0.03% of what American homes use.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~10 minutes",
+  "tags": [
+    "34.7M apartment households",
+    "8&ndash;14M plausible balconies",
+    "~580&nbsp;kWh per panel"
+  ],
+  "about_legislation": false,
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. The counts are estimates built from Census Bureau survey data and the assumptions stated on the page, not a census of balconies. Output is modeled for one city per state with no shading. Law status is as of 23&nbsp;September 2026 and is not legal advice.",
+  "sections": [
+    {
+      "id": "the-estimate",
+      "toc": "The estimate in five steps",
+      "html": "        <section id=\"the-estimate\">\n  <h2><span class=\"sec-num\">1</span>The estimate in five steps</h2>\n  <p>No US survey counts balconies, so balco.nyc built the number from two Census Bureau surveys and its own solar runs. The American Community Survey (ACS) counts households by building size. The American Housing Survey (AHS), run for the Department of Housing and Urban Development, reports which homes have outdoor space and how tall their buildings are. balco.nyc&rsquo;s PVWatts runs for the largest city in every state give what a panel there would make. Each step narrows the count:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Step</th><th>US households</th><th>Where the number comes from</th></tr></thead><tbody>\n    <tr><td>All occupied homes, 2024</td><td>132.7&nbsp;million</td><td>ACS 2024 1-year, table B25032</td></tr>\n    <tr><td>&hellip;in a building with two or more units</td><td>34.7&nbsp;million (26.2%)</td><td>ACS B25032</td></tr>\n    <tr><td>&hellip;with a porch, deck, balcony or patio</td><td>22.5&nbsp;million</td><td>AHS 2023 share by building size, applied to the ACS counts</td></tr>\n    <tr><td>&hellip;of which above the ground floor</td><td>12.8&nbsp;million</td><td>AHS 2023 stories in structure, units spread evenly over the floors</td></tr>\n    <tr><td>&hellip;facing south, south-east, south-west, east or west</td><td><strong>8.0 to 14.1&nbsp;million</strong></td><td>5 of the 8 compass directions, assuming facades face every way equally</td></tr>\n  </tbody></table></div>\n  <p class=\"table-note\">balco.nyc&rsquo;s computation, state by state. The low end of the last row starts from the above-ground count; the high end from every porch, deck, balcony or patio.</p>\n  <p>So the answer is <strong>roughly 8&nbsp;million to 14&nbsp;million households</strong>, 23% to 40% of those in apartment buildings. It is a ceiling on what is physically possible, not a forecast. It does not ask whether the household may install a panel (86% of them rent), whether there is an outdoor outlet, whether a plug-in law applies, or whether the building across the street blocks the sun. Each of those removes more.</p>\n</section>"
+    },
+    {
+      "id": "apartments",
+      "toc": "How many Americans live in apartments",
+      "html": "        <section id=\"apartments\">\n  <h2><span class=\"sec-num\">2</span>How many Americans live in apartments</h2>\n  <p>The ACS 2024 1-year estimates, the newest released, count 132,737,146 occupied homes in the United States; <strong>34,742,315 (26.2%)</strong> are in buildings of two or more units, from a two-family house to a tower. In people (table B25033), that is 68.3&nbsp;million Americans, 20.6% of the 331.7&nbsp;million living in households, and 46.5&nbsp;million of them are in buildings of five or more units. Counting vacant units too (table B25024), there are 39.6&nbsp;million homes in multi-unit buildings.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Building size</th><th>Households, 2024</th><th>Renting</th></tr></thead><tbody>\n    <tr><td>2 to 4 units</td><td>9,689,275</td><td>81.9%</td></tr>\n    <tr><td>5 to 9 units</td><td>5,725,714</td><td>87.9%</td></tr>\n    <tr><td>10 to 19 units</td><td>5,484,624</td><td>89.7%</td></tr>\n    <tr><td>20 to 49 units</td><td>4,920,407</td><td>86.9%</td></tr>\n    <tr><td>50 or more units</td><td>8,922,295</td><td>87.1%</td></tr>\n    <tr><td><strong>All buildings of 2+ units</strong></td><td><strong>34,742,315</strong></td><td><strong>86.2%</strong></td></tr>\n  </tbody></table></div>\n  <p class=\"table-note\">US Census Bureau, ACS 2024 1-year, table B25032. Margins of error on these national counts are under 1%.</p>\n  <p>Two things follow. Apartment households are overwhelmingly renters: 29.9&nbsp;million of 34.7&nbsp;million, and 65% of all US renter households. For them a panel is the landlord&rsquo;s decision first (<a href=\"/balcony-solar-renters\">can renters install balcony solar?</a>). And the biggest group lives in the smallest buildings: 9.7&nbsp;million households in duplexes, triple-deckers and small walk-ups, more than the 8.9&nbsp;million in buildings of 50 or more units.</p>\n</section>"
+    },
+    {
+      "id": "balconies",
+      "toc": "How many apartments have a balcony",
+      "html": "        <section id=\"balconies\">\n  <h2><span class=\"sec-num\">3</span>How many apartments have a balcony</h2>\n  <p>No federal survey counts balconies on their own. The AHS asks about a &ldquo;porch, deck, balcony, or patio&rdquo; as one item, in its 2023 table <em>Rooms, Size, and Amenities</em>, and counts one if it is attached to the unit or free-standing, open or enclosed, and at least 4 by 4 feet. That makes it an upper bound: a ground-floor patio or an enclosed porch counts, and neither is a railing facing open sky.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Building size</th><th>Porch, deck, balcony or patio: US</th><th>New York State</th><th>Above the ground floor (US, estimated)</th></tr></thead><tbody>\n    <tr><td>2 to 4 units</td><td>73%</td><td>55%</td><td>44%</td></tr>\n    <tr><td>5 to 9 units</td><td>70%</td><td>34%</td><td>52%</td></tr>\n    <tr><td>10 to 19 units</td><td>69%</td><td>35%</td><td>59%</td></tr>\n    <tr><td>20 to 49 units</td><td>59%</td><td>15%</td><td>64%</td></tr>\n    <tr><td>50 or more units</td><td>51%</td><td>21%</td><td>75%</td></tr>\n  </tbody></table></div>\n  <p class=\"table-note\">Shares of occupied units, AHS 2023 Table Creator. The last column is balco.nyc&rsquo;s estimate from the AHS count of stories per building. Margins of error at 90% confidence: about &plusmn;2 points for the US shares, &plusmn;4 to &plusmn;10 for New York&rsquo;s.</p>\n  <p>The share falls as buildings get taller, and owners report outdoor space more often than renters (61% against 49% in buildings of 50+ units). Place matters even more. New York is the outlier among the states the AHS reports: about a third of its apartment households have any outdoor space, against two-thirds nationally. Where the AHS publishes a state figure for a building size (all five sizes for New York, Illinois and Massachusetts; four for Ohio and Pennsylvania), balco.nyc used it; elsewhere, the national rate with those five states removed, 62% to 76% by building size. The survey withholds this detail for California, Texas and Florida, so their counts rest on that rate. The result is <strong>22.5&nbsp;million households</strong>, 65% of apartment households, the same share the AHS reports nationally.</p>\n  <p>The AHS does not record which floor a unit is on, only how many stories its building has. If units are spread evenly across floors (buildings of four to six stories counted as five, seven or more as ten), 44% of homes in two- to four-unit buildings are above the ground floor, rising to 75% in buildings of 50+ units. Assuming outdoor space is as common upstairs as down, that leaves <strong>12.8&nbsp;million</strong>. This is the least certain step (section&nbsp;7).</p>\n</section>"
+    },
+    {
+      "id": "output",
+      "toc": "What one balcony could make",
+      "html": "        <section id=\"output\">\n  <h2><span class=\"sec-num\">4</span>What one balcony could make</h2>\n  <p>Nothing records which way American balconies face, so balco.nyc assumed facades face every way equally and counted five of eight compass directions as usable: south, south-east, south-west, east and west. That is the 5/8. The three left out earn it: a vertical north-facing railing makes about 29% of a south-facing one in the median state, north-east or north-west about 45% (<a href=\"/800w-balcony-solar-output\">output by direction</a>).</p>\n  <p>For output, balco.nyc averaged its PVWatts runs for those five directions in each state&rsquo;s largest city, for an 800&nbsp;W system hung vertically, and multiplied by 0.95, the site&rsquo;s allowance for the railing shading the bottom of the panel. Weighted by where the balconies are, one panel makes <strong>579&nbsp;kWh a year</strong>, from 441&nbsp;kWh in Anchorage to 725&nbsp;kWh in Las Vegas; in New York City, 520&nbsp;kWh (604 facing south, 421 facing west).</p>\n  <p>That is about 9% of an apartment&rsquo;s electricity: the EIA&rsquo;s 2020 Residential Energy Consumption Survey puts average use at 6,093&nbsp;kWh a year in buildings of five or more units and 6,665&nbsp;kWh in two- to four-unit buildings. At each state&rsquo;s EIA average residential price (20.4&cent; weighted by where the balconies are), it is worth about <strong>$119 a year</strong> if every kWh is used at home. Those averages include fixed charges, so they somewhat overstate what a kWh not bought is worth, and exported surplus earns nothing under most plug-in laws (<a href=\"/balcony-solar-net-metering\">self-consumption</a>).</p>\n  <p>All of this assumes an open view. balco.nyc&rsquo;s shade model keeps only 38% to 43% of a south railing&rsquo;s output on a third floor facing a six- to ten-story building 20&nbsp;m away (<a href=\"/is-balcony-solar-worth-it\">is balcony solar worth it?</a>). A national count cannot see what stands opposite each balcony; the calculator can, given an address.</p>\n</section>"
+    },
+    {
+      "id": "adoption",
+      "toc": "If 1% or 5% took it up",
+      "html": "        <section id=\"adoption\">\n  <h2><span class=\"sec-num\">5</span>If 1% or 5% took it up</h2>\n  <p>Take-up cannot be measured yet, so here are two round scenarios applied to the 8.0 to 14.1&nbsp;million households, each with one 800&nbsp;W panel, unshaded and fully used at home:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Households adopting</th><th>Households</th><th>Panels</th><th>Electricity a year</th><th>Worth, at state-average prices</th></tr></thead><tbody>\n    <tr><td>1%</td><td>80,000 &ndash; 141,000</td><td>64 &ndash; 113&nbsp;MW</td><td>46 &ndash; 81&nbsp;million kWh</td><td>$10 &ndash; $17&nbsp;million</td></tr>\n    <tr><td>5%</td><td>401,000 &ndash; 703,000</td><td>321 &ndash; 563&nbsp;MW</td><td>232 &ndash; 407&nbsp;million kWh</td><td>$48 &ndash; $84&nbsp;million</td></tr>\n  </tbody></table></div>\n  <p class=\"table-note\">balco.nyc&rsquo;s computation: households &times; each state&rsquo;s five-direction PVWatts output &times; 0.95 &times; the state&rsquo;s EIA average price. Shade would lower the last two columns.</p>\n  <p>Nationally these are small numbers. The top of the 5% range is under 0.03% of the 1,483&nbsp;billion kWh American homes bought in 2024 (EIA: 143.1&nbsp;million residential customers averaging 863&nbsp;kWh a month), or the annual use of 38,000 to 67,000 apartments. The case for balcony solar is made household by household, not on the grid. As a market, 5% adoption at the site&rsquo;s ${{kits.mid}} mid-range kit price is $0.5&nbsp;billion to $0.8&nbsp;billion of kits, bought once: arithmetic on these assumptions, not a forecast.</p>\n  <p>The obvious benchmark is Germany. Its register of generators, the Marktstammdatenregister kept by the Bundesnetzagentur, listed <strong>1,512,855</strong> plug-in systems in operation when balco.nyc queried it on 23&nbsp;September 2026, and the Bundesnetzagentur says about 430,000 were registered in 2025 alone. The US 5% scenario is 0.9 to 1.6 years of German registrations at that pace, and Germany&rsquo;s registered total equals 11% to 19% of the whole US pool above. The comparison is of scale only: German systems also sit on houses and gardens, German rules allow up to 2,000&nbsp;W of panels behind an 800&nbsp;VA inverter, and the register counts only what owners register. <a href=\"/germany-balcony-solar\">What Germany&rsquo;s numbers show</a>.</p>\n</section>"
+    },
+    {
+      "id": "states",
+      "toc": "Where the potential is, and where it is legal",
+      "html": "        <section id=\"states\">\n  <h2><span class=\"sec-num\">6</span>Where the potential is, and where it is legal</h2>\n  <p>Five states hold 44% of apartment households and ten hold just over 60%. New York has the highest share of any state, 51.2% of its households (only the District of Columbia is higher, at 67.7%), but its low rate of outdoor space puts California, Texas and Florida ahead of it in plausible balconies:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>State</th><th>Apartment households</th><th>Share of state&rsquo;s households</th><th>Plausible for a railing panel</th><th>kWh/yr per panel</th><th>Plug-in law, 23&nbsp;Sep 2026</th></tr></thead><tbody>\n    <tr><td><a href=\"/states/california\">California</a></td><td>4,369,726</td><td>31.7%</td><td>1.12 &ndash; 1.92&nbsp;million</td><td>653</td><td>Passed, awaiting the Governor</td></tr>\n    <tr><td><a href=\"/states/new-york\">New York</a></td><td>4,007,157</td><td>51.2%</td><td>0.45 &ndash; 0.83&nbsp;million</td><td>520</td><td>Passed, awaiting the Governor</td></tr>\n    <tr><td><a href=\"/states/texas\">Texas</a></td><td>2,908,158</td><td>25.4%</td><td>0.76 &ndash; 1.27&nbsp;million</td><td>551</td><td>No bill found</td></tr>\n    <tr><td><a href=\"/states/florida\">Florida</a></td><td>2,510,189</td><td>27.5%</td><td>0.65 &ndash; 1.10&nbsp;million</td><td>567</td><td>No bill found</td></tr>\n    <tr><td><a href=\"/states/illinois\">Illinois</a></td><td>1,646,905</td><td>32.3%</td><td>0.34 &ndash; 0.62&nbsp;million</td><td>535</td><td>Bill pending</td></tr>\n    <tr><td><a href=\"/states/new-jersey\">New Jersey</a></td><td>1,299,775</td><td>36.7%</td><td>0.32 &ndash; 0.58&nbsp;million</td><td>549</td><td>Signed; in force 1&nbsp;Mar 2027</td></tr>\n    <tr><td><a href=\"/states/massachusetts\">Massachusetts</a></td><td>1,198,494</td><td>42.4%</td><td>0.22 &ndash; 0.44&nbsp;million</td><td>574</td><td>Bill pending</td></tr>\n    <tr><td><a href=\"/states/pennsylvania\">Pennsylvania</a></td><td>1,113,895</td><td>20.8%</td><td>0.22 &ndash; 0.41&nbsp;million</td><td>567</td><td>Bill pending</td></tr>\n    <tr><td><a href=\"/states/ohio\">Ohio</a></td><td>1,056,109</td><td>21.4%</td><td>0.23 &ndash; 0.43&nbsp;million</td><td>552</td><td>Bill pending</td></tr>\n    <tr><td><a href=\"/states/washington\">Washington</a></td><td>903,714</td><td>28.5%</td><td>0.24 &ndash; 0.39&nbsp;million</td><td>453</td><td>Bill died</td></tr>\n  </tbody></table></div>\n  <p class=\"table-note\">balco.nyc&rsquo;s computation. Apartment households: buildings of 2+ units (ACS 2024, B25032). Output: average of five railing directions for the state&rsquo;s largest city, unshaded, after the 0.95 railing factor. Law status: balco.nyc&rsquo;s state tracker.</p>\n  <p>Where it is legal is a much smaller map:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Plug-in law, 23&nbsp;Sep 2026</th><th>Where</th><th>Apartment households</th><th>Share of US</th><th>Plausible for a railing panel</th></tr></thead><tbody>\n    <tr><td>In force</td><td>Colorado, Maine, Maryland, Utah, Vermont</td><td>1,726,863</td><td>5.0%</td><td>445,000 &ndash; 760,000</td></tr>\n    <tr><td>Signed, not yet in force</td><td>Connecticut (1&nbsp;Oct 2026), New Hampshire and Virginia (1&nbsp;Jan 2027), New Jersey (1&nbsp;Mar 2027)</td><td>2,727,857</td><td>7.9%</td><td>683,000 &ndash; 1,211,000</td></tr>\n    <tr><td>Passed, awaiting a governor</td><td>California, New York</td><td>8,376,883</td><td>24.1%</td><td>1,565,000 &ndash; 2,746,000</td></tr>\n    <tr><td>Bill pending, bill died, or none found</td><td>39 other states and DC</td><td>21,910,712</td><td>63.1%</td><td>5,327,000 &ndash; 9,351,000</td></tr>\n  </tbody></table></div>\n  <p>About one apartment household in twenty lives where a plug-in law is in force; nearly one in four lives in the two states waiting on a governor. California&rsquo;s SB&nbsp;868 was presented to Governor Newsom on 31&nbsp;August and, as of 23&nbsp;September 2026, awaits his decision, due by 30&nbsp;September; New York&rsquo;s SUNNY Act has passed both chambers and {{sunny.phrase}}, and it grants no right to install. A law is not permission either: most of these households rent, and of the five in-force states only Vermont limits a landlord&rsquo;s power to refuse today (Colorado&rsquo;s limit starts on 1&nbsp;January 2027). See the <a href=\"/balcony-solar-laws-compared\">provision-by-provision comparison</a> and each <a href=\"/states\">state page</a>. This is a summary of statutes, not legal advice.</p>\n</section>"
+    },
+    {
+      "id": "assumptions",
+      "toc": "Every assumption, and which way it cuts",
+      "html": "        <section id=\"assumptions\">\n  <h2><span class=\"sec-num\">7</span>Every assumption, and which way it cuts</h2>\n  <p>The estimate rests on assumptions that can be stated, and most of them push it up rather than down:</p>\n  <ul>\n    <li><strong>Outdoor space is a combined item.</strong> The AHS does not separate balconies from porches, decks and patios, so 22.5&nbsp;million overstates balconies.</li>\n    <li><strong>The ground-floor step is a model.</strong> Ground-floor units probably have patios more often than upper floors have balconies, and the AHS counts a basement as a story, so 12.8&nbsp;million is likely high. Against that, some ground-floor patios have a fence or railing a panel could hang on. Assuming different heights for the tallest buildings moves the count by about 2%.</li>\n    <li><strong>Direction is assumed uniform.</strong> If balconies favor the sunny side, more than 5/8 are usable; if they face the street, it depends on the grid.</li>\n    <li><strong>State detail is thin.</strong> Forty-five states and DC, including California, Texas and Florida, use the national rate without New York, Illinois, Massachusetts, Ohio and Pennsylvania. AHS shares from 2023 are applied to ACS counts from 2024.</li>\n    <li><strong>Output is a ceiling.</strong> One city per state, an 800&nbsp;W panel hung vertically, no shade, every kWh used at home.</li>\n    <li><strong>Not counted:</strong> landlord, condo or co-op permission; an outdoor outlet; state law; a certified kit (as of September 2026 no complete plug-in system is certified to UL&nbsp;3700, although components are). Houses and townhouses are left out; most have a roof or yard instead.</li>\n  </ul>\n  <p>The honest reading: the US has several million apartment balconies where a plug-in panel is physically plausible, each able to make roughly 440 to 725&nbsp;kWh a year on an open view, worth $63 (Washington) to $233 (Hawaii) at state-average prices, $96 in the median state. How many get one depends on law, landlords and shade, not on the count of balconies. For a single balcony, the calculator replaces every assumption here with your address, your direction and what stands across the street.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "How many Americans live in apartments?",
+      "The Census Bureau's 2024 American Community Survey counts 34.7 million households, 26.2% of the 132.7 million in the US, in buildings with two or more units. That is 68.3 million people, 20.6% of Americans living in households, and 46.5 million of them live in buildings with five or more units. About 86% of these apartment households rent."
+    ],
+    [
+      "How many US apartments have a balcony?",
+      "No federal survey counts balconies separately. The 2023 American Housing Survey asks about a 'porch, deck, balcony, or patio' as one item, and about 65% of households in multi-unit buildings report one, falling from 73% in two- to four-unit buildings to 51% in buildings of 50 or more units. balco.nyc's estimate is 22.5 million households, an upper bound on balconies because ground-floor patios count too. New York is far lower: about a third of its apartment households report any outdoor space."
+    ],
+    [
+      "How many US homes could use balcony solar?",
+      "balco.nyc estimates 8.0 to 14.1 million apartment households have outdoor space where a railing panel is physically plausible and that faces south, south-east, south-west, east or west. The low end counts only outdoor space above the ground floor; the high end counts every porch, deck, balcony or patio. The figure ignores permission, outlets, shade and state law, each of which lowers it."
+    ],
+    [
+      "How much electricity could balcony solar produce in the US?",
+      "An unshaded 800 W panel hung on a railing facing a usable direction makes about 579 kWh a year on average, by balco.nyc's PVWatts runs weighted by where the balconies are, or about 9% of what an apartment uses. If 5% of the plausible 8 to 14 million households installed one, the total would be 232 to 407 million kWh a year, under 0.03% of US residential electricity use. Shade would lower it."
+    ],
+    [
+      "How many apartment households live in states where plug-in solar is legal?",
+      "As of 23 September 2026, 1.73 million, or 5.0% of US apartment households, live in the five states with a plug-in solar law in force: Colorado, Maine, Maryland, Utah and Vermont. Another 7.9% live in Connecticut, New Hampshire, New Jersey and Virginia, whose laws are signed but not yet in force, and 24.1% in California and New York, where bills have passed and await the governor. A law in force is not a right to install for renters in most of these states."
+    ],
+    [
+      "How does the US compare with Germany on balcony solar?",
+      "Germany's national generator register, the Marktstammdatenregister, listed 1,512,855 plug-in solar systems in operation on 23 September 2026, and the Bundesnetzagentur says about 430,000 were registered in 2025 alone. If 5% of plausible US apartment balconies got a panel, that would be 401,000 to 703,000 systems, about 0.9 to 1.6 years of German registrations at the 2025 pace. The comparison is of scale only, since German systems also sit on houses and gardens."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://data.census.gov/table/ACSDT1Y2024.B25032",
+      "title": "US Census Bureau &mdash; ACS 2024 1-year, table B25032 (Tenure by Units in Structure)",
+      "note": "occupied homes by building size and tenure, national and by state: the 34.7&nbsp;million households in buildings of 2+ units, the renter shares, and every state count on this page."
+    },
+    {
+      "url": "https://data.census.gov/table/ACSDT1Y2024.B25033",
+      "title": "US Census Bureau &mdash; ACS 2024 1-year, table B25033 (Population in Occupied Housing Units by Tenure by Units in Structure)",
+      "note": "the 68.3&nbsp;million people living in buildings of 2+ units, and 46.5&nbsp;million in buildings of 5+."
+    },
+    {
+      "url": "https://data.census.gov/table/ACSDT1Y2024.B25024",
+      "title": "US Census Bureau &mdash; ACS 2024 1-year, table B25024 (Units in Structure)",
+      "note": "all housing units including vacant ones: 39.6&nbsp;million in buildings of 2+ units."
+    },
+    {
+      "url": "https://www.census.gov/programs-surveys/ahs/data/interactive/ahstablecreator.html?year=2023&tablename=TABLE2&bygroup1=COL_STRUC_TYP&bygroup2=COL_TENURE",
+      "title": "US Census Bureau &mdash; American Housing Survey 2023, Table Creator: Rooms, Size, and Amenities by units in structure and tenure",
+      "note": "the national &ldquo;Porch, deck, balcony, or patio&rdquo; row by building size and tenure (for example 3,728,000 of 7,299,000 occupied units in buildings of 50+ units), with margins of error."
+    },
+    {
+      "url": "https://www.census.gov/programs-surveys/ahs/data/interactive/ahstablecreator.html?year=2023&areas=00036&tablename=TABLE2&bygroup1=COL_STRUC_TYP",
+      "title": "US Census Bureau &mdash; American Housing Survey 2023, Table Creator: Rooms, Size, and Amenities, New York State",
+      "note": "New York&rsquo;s shares by building size; the same table with the area set to Illinois, Massachusetts, Ohio or Pennsylvania gives theirs, and California, Texas, Florida, Colorado, Maryland and Virginia withhold the building-size detail."
+    },
+    {
+      "url": "https://www.census.gov/programs-surveys/ahs/data/interactive/ahstablecreator.html?year=2023&tablename=TABLE1&bygroup1=COL_STRUC_TYP",
+      "title": "US Census Bureau &mdash; American Housing Survey 2023, Table Creator: General Housing by units in structure",
+      "note": "stories in structure by building size, the basis of balco.nyc&rsquo;s above-ground-floor estimate."
+    },
+    {
+      "url": "https://www2.census.gov/programs-surveys/ahs/2023/2023%20AHS%20Definitions.pdf",
+      "title": "US Census Bureau &mdash; American Housing Survey 2023, Definitions",
+      "note": "a porch, deck, balcony or patio counts if attached to the unit or free-standing, open or enclosed, and at least 4 feet by 4 feet; stories in structure include any basement."
+    },
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "NLR &mdash; PVWatts V8 API documentation",
+      "note": "the production model behind balco.nyc&rsquo;s runs for each state&rsquo;s largest city, eight railing directions per city, before the site&rsquo;s 0.95 railing factor."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia861m/",
+      "title": "U.S. EIA &mdash; Form EIA-861M monthly sales and revenue by state",
+      "note": "state average residential prices over the twelve months to June 2026 (revenue divided by sales, so they include fixed charges)."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/sales_revenue_price/pdf/table_5A.pdf",
+      "title": "U.S. EIA &mdash; 2024 average monthly bill, residential (Table 5A)",
+      "note": "143.1&nbsp;million US residential customers averaging 863&nbsp;kWh a month in 2024, about 1,483&nbsp;billion kWh a year."
+    },
+    {
+      "url": "https://www.eia.gov/consumption/residential/data/2020/c&e/pdf/ce2.1.pdf",
+      "title": "U.S. EIA &mdash; 2020 Residential Energy Consumption Survey, Table CE2.1",
+      "note": "average household electricity use: 6,093&nbsp;kWh in buildings of 5+ units, 6,665&nbsp;kWh in 2&ndash;4 unit buildings, 10,566&nbsp;kWh for all homes."
+    },
+    {
+      "url": "https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2026/20260108_EEG.html",
+      "title": "Bundesnetzagentur &mdash; Ausbau Erneuerbarer Energien 2025 (press release, 8 January 2026)",
+      "note": "about 430,000 plug-in solar systems registered in the Marktstammdatenregister in 2025, 0.5&nbsp;GW and 3.2% of German solar additions."
+    },
+    {
+      "url": "https://www.marktstammdatenregister.de/MaStR/Einheit/Einheiten/ErweiterteOeffentlicheEinheitenuebersicht",
+      "title": "Bundesnetzagentur &mdash; Marktstammdatenregister, public unit overview",
+      "note": "filtered to &ldquo;Steckerfertige Solaranlage (sog. Balkonkraftwerk)&rdquo; and status &ldquo;In Betrieb&rdquo;, it returned 1,512,855 units when balco.nyc queried it on 23&nbsp;September 2026."
+    },
+    {
+      "url": "https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/ErneuerbareEnergien/Solaranlagen/Balkon_table.html",
+      "title": "Bundesnetzagentur &mdash; Balkon-Solaranlagen",
+      "note": "German plug-in systems may have up to 2,000&nbsp;W of panels and 800&nbsp;VA of inverter output."
+    }
+  ]
+}

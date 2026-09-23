@@ -1,0 +1,204 @@
+{
+  "slug": "balcony-solar-myths",
+  "title": "Balcony solar claims, checked &middot; balco.nyc",
+  "og_title": "Balcony solar claims, checked: nine numbers traced to their source",
+  "breadcrumb": "Claims, checked",
+  "cluster": "economics",
+  "pillar": false,
+  "card_title": "Which balcony solar claims hold up?",
+  "card": "Nine widely repeated numbers, traced to their source and rerun for all 50 states and DC.",
+  "llms": "which of nine widely repeated balcony-solar claims hold up when traced to their source and rerun against balco.nyc&rsquo;s PVWatts runs for the largest city in every state, EIA prices and every state&rsquo;s plug-in solar law.",
+  "related": [
+    "balcony-sunlight",
+    "balcony-solar-tax-credit",
+    "is-balcony-solar-worth-it"
+  ],
+  "description": "Nine common balcony solar claims traced to their source and rerun for every state: coverage, north-facing loss, payback, tax credit, blackouts, outlets, law.",
+  "eyebrow": "Claims, checked",
+  "h1": "Balcony solar claims, checked: nine numbers traced to their source",
+  "lede": "Of nine claims widely repeated about balcony solar, one holds up roughly as stated, two are best cases presented as typical, and six are wrong or out of date. balco.nyc&rsquo;s PVWatts runs for the largest city in every state and DC put an unshaded, south-facing 800&nbsp;W railing system at a median <strong>6.4% of the average home&rsquo;s electricity</strong> (4.2% to 11.9%), not 15&ndash;25%, and at a median payback of <strong>9.9 years</strong> on a ${{kits.mid}} kit, with no state under four. The claim that survives is the unexpected one: a north-facing railing really does produce about 70% less than a south-facing one.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~12 minutes",
+  "tags": [
+    "Median 6.4% of home use",
+    "Payback median 9.9&nbsp;yr",
+    "9 claims, 51 states"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "verdicts",
+      "toc": "The nine claims and their verdicts",
+      "html": "        <section id=\"verdicts\">\n  <h2><span class=\"sec-num\">1</span>The nine claims and their verdicts</h2>\n  <p>Each claim below is stated as it usually circulates, traced as far back as we could take it, and checked against balco.nyc&rsquo;s own data: NREL&rsquo;s PVWatts&nbsp;V8 run with the calculator&rsquo;s settings for an 800&nbsp;W system at the <strong>largest city in each of the 50 states and DC</strong>; the EIA&rsquo;s state prices and household consumption; and every state&rsquo;s plug-in solar law, researched from legislature pages and checked on 23 September 2026.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th></th><th>The claim</th><th>Where it comes from</th><th>Verdict</th></tr></thead><tbody>\n    <tr><td>1</td><td>An 800&nbsp;W kit covers 15&ndash;25% of your electricity</td><td>Solar.com&rsquo;s 2026 guide, among others; no derivation given</td><td><strong>A ceiling.</strong> A south-facing railing panel covers a median 6.4% of the state-average home. No state reaches 15%</td></tr>\n    <tr><td>2</td><td>A north-facing balcony produces 75% less</td><td>Earliest we found: a 2024 newsletter. It matches a PVGIS run for a vertical panel in Berlin</td><td><strong>Roughly right</strong> for an unshaded vertical panel: 58% to 75% less in US cities, median 71%</td></tr>\n    <tr><td>3</td><td>You need four hours of direct sun a day</td><td>Could not be traced</td><td><strong>No threshold exists.</strong> A north-facing railing gets essentially no direct sun from October to March and still produces a median 70&nbsp;kWh</td></tr>\n    <tr><td>4</td><td>It pays for itself in two years</td><td>Bright Saver, for a kit bought at cost in a high-rate state</td><td><strong>A special case.</strong> A ${{kits.mid}} kit on a south railing takes 4.8 to 13.9 years, median 9.9</td></tr>\n    <tr><td>5</td><td>You get the 30% federal tax credit</td><td>IRC &sect;25D, which was real through 2025</td><td><strong>Out of date.</strong> It ended for expenditures after 31 December 2025</td></tr>\n    <tr><td>6</td><td>It keeps your lights on in a blackout</td><td>Could not be traced</td><td><strong>False.</strong> The inverter must shut off within 2 seconds of an outage</td></tr>\n    <tr><td>7</td><td>Any outlet will do</td><td>Sellers&rsquo; shorthand for &ldquo;it has a plug&rdquo;</td><td><strong>False.</strong> It needs a weather-rated outdoor outlet on a circuit with room for it</td></tr>\n    <tr><td>8</td><td>It is legal in every state</td><td>Seller copy</td><td><strong>False.</strong> 5 states have a law in effect and 4 more have signed one</td></tr>\n    <tr><td>9</td><td>It sells your surplus back to the grid</td><td>Carried over from rooftop net metering</td><td><strong>False under the signed laws.</strong> Six rule it out, three are silent, none provides a credit</td></tr>\n  </tbody></table></div>\n  <p>That is one claim that holds up roughly as stated (2), two best cases presented as typical (1 and 4), and six that are wrong or out of date. Every output figure on this page applies the site&rsquo;s railing-obstruction factor &mdash; 0.95 for a vertical panel, 0.99 at 35&deg; &mdash; and none includes shade from neighboring buildings, so each is the <em>unobstructed best case</em> for its city. Paybacks use the calculator&rsquo;s own loop: 0.5% a year panel degradation, prices rising 3% a year, and every kilowatt-hour used at home at the state&rsquo;s EIA average price.</p>\n</section>"
+    },
+    {
+      "id": "output-claims",
+      "toc": "Output: 15&ndash;25%, 75% less, four hours of sun",
+      "html": "        <section id=\"output-claims\">\n  <h2><span class=\"sec-num\">2</span>Output: 15&ndash;25%, 75% less, four hours of sun</h2>\n  <h3>1. &ldquo;An 800&nbsp;W kit covers 15&ndash;25% of your electricity&rdquo;</h3>\n  <p>Solar.com&rsquo;s 2026 guide says a standard 800&nbsp;W kit can often cover 15% to 25% of a typical apartment&rsquo;s monthly electricity. It shows no working, and we found none elsewhere. balco.nyc&rsquo;s runs give this:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>800&nbsp;W, facing south, unshaded</th><th>kWh a year (median city)</th><th>Share of the state&rsquo;s average home</th><th>Share of an average large-building apartment</th></tr></thead><tbody>\n    <tr><td>Vertical, on a railing</td><td>658</td><td>4.2% to 11.9%, median <strong>6.4%</strong></td><td>8.4% to 13.4%, median 10.8%</td></tr>\n    <tr><td>Tilted to 35&deg;</td><td>1,053</td><td>7.3% to 21.3%, median 10.3%</td><td>11.7% to 22.6%, median 17.3%</td></tr>\n  </tbody></table></div>\n  <p>Against the average home in its own state (EIA, 2024: a median of about 10,600&nbsp;kWh a year), no state&rsquo;s railing panel reaches 15%. Thirteen stay under 5%, most of them Southern states where homes use the most electricity; only California, Maine and New Mexico pass 10%. A fairer test of an apartment claim is an apartment: the EIA&rsquo;s 2020 Residential Energy Consumption Survey puts households in buildings of five or more units at 20.8&nbsp;million Btu of electricity, about <strong>6,100&nbsp;kWh a year</strong>. A railing panel still tops out at 13.4% of that. The 15&ndash;25% only appears when the panel is tilted to 35&deg;, sits in full sun and serves a smaller-than-average user &mdash; then 48 of the 51 land between 15% and 23%, and none reaches 25%. It is a ceiling, not an expectation. In New York City an open south-facing railing makes about 604&nbsp;kWh, about 9% of the state-average home, and balco.nyc&rsquo;s 3D shade model takes real balconies well below that.</p>\n  <h3>2. &ldquo;A north-facing balcony produces 75% less&rdquo;</h3>\n  <p>The earliest instance of this figure we have found is a February 2024 newsletter post that states it, together with &ldquo;30% less&rdquo; for east and west, without showing the calculation; its listed sources include the European Commission&rsquo;s PVGIS tool, run for Berlin. We reran PVGIS for Berlin ourselves with an 800&nbsp;W vertical panel: <strong>612&nbsp;kWh facing south, 154 facing north &mdash; 74.8% less</strong>. East and west averaged 419&nbsp;kWh, 31.5% less. Both numbers match, so a Berlin PVGIS run is the likely origin, though we cannot confirm the author used exactly that.</p>\n  <p>The surprise is that it roughly survives the trip to America. balco.nyc&rsquo;s PVWatts runs put a vertical north-facing railing <strong>58% to 75% below</strong> a south-facing one, with a median of 71%; 28 of the 51 cities lose 70% or more. The biggest losses are in the clear-skied Southwest &mdash; Albuquerque 75%, Las Vegas 75%, Phoenix 74% &mdash; because there the south side has the most direct sun to win. The smallest is Honolulu, 58%, where the midsummer sun passes north of overhead. So the verdict is roughly right, for an unobstructed vertical panel. What it leaves out is everything but the compass: in a street canyon a high-floor north balcony can out-produce a boxed-in south one, which is <a href=\"/balcony-sunlight\">why balco.nyc models the block rather than the direction</a>.</p>\n  <h3>3. &ldquo;You need four hours of direct sun a day&rdquo;</h3>\n  <p>The threshold circulates as four hours, four to five, or six to eight, and one guide we read gave two different figures on one page. We could not trace any version to a study or a standard. A panel has no threshold: it produces whatever the light allows, continuously. The cleanest test is a north-facing railing. Between the September and March equinoxes the sun rises and sets south of due east and west everywhere in the United States, so a north-facing vertical panel gets essentially <em>no</em> direct sun for half the year &mdash; zero hours, not four. balco.nyc&rsquo;s runs still give it a median <strong>70&nbsp;kWh from October to March</strong>, all of it from diffuse and reflected light, about 35% of its annual output. Small, and no reason on its own to buy, but proof that output fades with the light rather than switching off at a line. The useful question is how many kilowatt-hours, which <a href=\"/balcony-sunlight\">our guide to balcony sunlight</a> works through.</p>\n</section>"
+    },
+    {
+      "id": "money-claims",
+      "toc": "Money: the two-year payback and the tax credit",
+      "html": "        <section id=\"money-claims\">\n  <h2><span class=\"sec-num\">3</span>Money: the two-year payback and the tax credit</h2>\n  <h3>4. &ldquo;It pays for itself in two years&rdquo;</h3>\n  <p>The most specific source we found is Bright Saver, a nonprofit that sells kits at cost. It says that in a sunny, high-rate state such as California or New York, a kit bought at its at-cost price typically pays back in about two years. Its price is the first condition: 360&nbsp;W for $414.17 to members, about $1.15 a watt, against $1.50 a watt for balco.nyc&rsquo;s ${{kits.mid}} mid-range assumption for 800&nbsp;W. Rerun on balco.nyc&rsquo;s assumptions, a ${{kits.mid}} kit on an unshaded south-facing railing pays back as follows:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Payback on a ${{kits.mid}} kit</th><th>States (of 51)</th><th>Examples</th></tr></thead><tbody>\n    <tr><td>Under 2 years</td><td>0</td><td>&mdash;</td></tr>\n    <tr><td>Under 4 years</td><td>0</td><td>&mdash;</td></tr>\n    <tr><td>4 to 5 years</td><td>1</td><td>California (Los Angeles), 4.8</td></tr>\n    <tr><td>5 to 8 years</td><td>12</td><td>Hawaii 5.2, Massachusetts 5.5, New York 6.6</td></tr>\n    <tr><td>8 to 10 years</td><td>15</td><td>Pennsylvania 8.1, Colorado 8.3, Illinois 9.4</td></tr>\n    <tr><td>10 years or more</td><td>23</td><td>Florida 11.2, Texas 11.5, Louisiana 13.1; Washington (Seattle) slowest at 13.9</td></tr>\n  </tbody></table></div>\n  <p>The median is <strong>9.9 years</strong>. The arithmetic for the fastest state: 720&nbsp;kWh a year in Los Angeles at California&rsquo;s average 32.89&cent; is $237 in year one, and rising prices bring ${{kits.mid}} back in 4.8 years. Even the ${{kits.budget}} budget kit gets under five years in only eight states, all high-price ones: California, Hawaii and six in the Northeast. Two years does reproduce, but only when three conditions line up. Take Bright Saver&rsquo;s 360&nbsp;W price, tilt the panel to 35&deg; instead of hanging it on a railing, and put it in Los Angeles: about 579&nbsp;kWh (the 800&nbsp;W run scaled to 360&nbsp;W), $190 a year, <strong>2.1 years</strong>, or 2.3 counting the $29 membership. Hang the same panel on a railing and it is 3.8 years. At balco.nyc&rsquo;s budget price, a tilted 800&nbsp;W system beats two years in two states, Hawaii and California. A ${{kits.mid}} kit on a railing does it nowhere. These figures are generous (section 6); the <a href=\"/balcony-solar-cost\">cost and payback guide</a> works the same arithmetic for New York City.</p>\n  <h3>5. &ldquo;You get the 30% federal tax credit&rdquo;</h3>\n  <p>This one was true. The residential clean energy credit under IRC &sect;25D paid 30% of the cost of solar electric property installed from 2022 through 2025, and pages written in that period still say so. The One Big Beautiful Bill Act (P.L.&nbsp;119-21, signed 4 July 2025) ended it: the IRS says the credit is not allowed for any expenditure made after 31 December 2025, and that an expenditure counts as made when installation is complete. A kit installed in 2026 earns no federal credit, even one paid for in 2025. balco.nyc&rsquo;s payback figures net out no credit. The details are in <a href=\"/balcony-solar-tax-credit\">our tax credit guide</a>.</p>\n</section>"
+    },
+    {
+      "id": "hardware-claims",
+      "toc": "Hardware: blackouts and outlets",
+      "html": "        <section id=\"hardware-claims\">\n  <h2><span class=\"sec-num\">4</span>Hardware: blackouts and outlets</h2>\n  <h3>6. &ldquo;It keeps your lights on in a blackout&rdquo;</h3>\n  <p>It does the opposite, by design. Grid-connected inverters are built to IEEE Std 1547-2018 and tested under UL&nbsp;1741. The standard requires them to detect an outage &mdash; an &ldquo;unintentional island&rdquo; &mdash; and stop energizing the line <strong>within 2 seconds</strong>, then wait, by default, five minutes after the grid returns before starting again. The reason is safety: a line crew must be able to treat a dead line as dead. State plug-in laws write the same rule in. Utah requires a feature that stops the device energizing the building during an outage; Maine requires inverters that shut off 0.2 seconds after power is disrupted. We could not trace the belief to any source. Our guess is that it comes from portable &ldquo;solar generators&rdquo;, battery units that do run appliances in an outage because they connect to nothing. Backup power from a balcony means a battery system, a separate product and a separate decision.</p>\n  <h3>7. &ldquo;Any outlet will do&rdquo;</h3>\n  <p>A plug-in kit does end in an ordinary plug. That is true of the plug, not of every outlet, and three things narrow it:</p>\n  <ul>\n    <li><strong>It has to be outdoors and rated for it.</strong> An outlet on a balcony needs to be one rated and covered for a wet location, and many balconies have none. Adding one is work for a licensed electrician, and in an apartment building usually needs the building&rsquo;s approval too; <a href=\"/install-balcony-solar\">the installation guide</a> lists what to check.</li>\n    <li><strong>The circuit behind it matters.</strong> A standard breaker does not see current that a plug-in panel injects into the circuit, so household load plus solar output can exceed what the wiring was designed for without tripping anything. Protection against overloads is one of the things UL Solutions&rsquo; certification program for plug-in systems tests for.</li>\n    <li><strong>Some laws specify the outlet.</strong> Maine lets a household run up to 420&nbsp;W without an electrician, but anything larger, up to 1,200&nbsp;W, must be installed by a licensed electrician on a dedicated circuit with a single outlet.</li>\n  </ul>\n  <p>None of this is electrical advice: which outlet and circuit suit a given home is a question for an electrician.</p>\n</section>"
+    },
+    {
+      "id": "law-claims",
+      "toc": "Law: every state, and selling power back",
+      "html": "        <section id=\"law-claims\">\n  <h2><span class=\"sec-num\">5</span>Law: every state, and selling power back</h2>\n  <h3>8. &ldquo;It is legal in every state&rdquo;</h3>\n  <p>We saw this in the footer of one kit seller&rsquo;s website in August 2026, on a page whose own article counted ten states with laws. balco.nyc has now reviewed all 50 states and DC from their legislatures&rsquo; bill pages. As of 23 September 2026:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Status</th><th>Count</th><th>States</th></tr></thead><tbody>\n    <tr><td>Law in effect</td><td>5</td><td>Colorado, Maine, Maryland, Utah, Vermont</td></tr>\n    <tr><td>Signed, not yet in effect</td><td>4</td><td>Connecticut (1 Oct 2026), New Hampshire (1 Jan 2027), Virginia (1 Jan 2027), New Jersey (1 Mar 2027)</td></tr>\n    <tr><td>Passed, awaiting signature</td><td>2</td><td>California (SB&nbsp;868), New York (SUNNY Act)</td></tr>\n    <tr><td>Bill pending</td><td>7</td><td>DC, Illinois, Massachusetts, Michigan, North Carolina, Ohio, Pennsylvania</td></tr>\n    <tr><td>Bill failed or vetoed</td><td>18</td><td>Alaska, Arizona, Delaware, Georgia, Hawaii, Idaho, Indiana, Iowa, Minnesota, Missouri, New Mexico, Oklahoma, Oregon, Rhode Island, South Carolina, Washington, West Virginia, Wyoming</td></tr>\n    <tr><td>No plug-in law found</td><td>15</td><td>Alabama, Arkansas, Florida, Kansas, Kentucky, Louisiana, Mississippi, Montana, Nebraska, Nevada, North Dakota, South Dakota, Tennessee, Texas, Wisconsin</td></tr>\n  </tbody></table></div>\n  <p>Where there is no law, plug-in solar is not banned as such, but the utility&rsquo;s interconnection rules apply, and those usually require approval before anything feeds power into a home circuit. New York&rsquo;s SUNNY Act has passed both chambers and {{sunny.phrase}}; it would grant no right to install. California&rsquo;s SB&nbsp;868 was presented to Governor Newsom on 31 August 2026. Even where a law is in effect, most do not stop a landlord or a condo board from saying no: four of the nine signed laws (Colorado, New Jersey, Vermont, Virginia) limit that power in different ways, and the other five give no right to install. This is not legal advice; <a href=\"/states\">every state&rsquo;s bills, dates and limits</a> are listed with their sources, and <a href=\"/sunny-act\">the SUNNY Act page</a> covers New York.</p>\n  <h3>9. &ldquo;It sells your surplus back to the grid&rdquo;</h3>\n  <p>Rooftop solar usually earns credit for exported power under net metering, and the assumption carries over. For plug-in systems it mostly does not. Of the nine signed laws, <strong>six rule it out</strong>: Utah and Maryland exempt the devices from net-metering rules, Maine bars them from net energy billing, Virginia excludes them from its definition of an eligible customer-generator, and Vermont says exported generation shall not be compensated. Connecticut goes further: its law requires a warning that surplus is charged to the customer as usage unless the meter allows net metering. Colorado, New Hampshire and New Jersey are silent. New York&rsquo;s bill would leave exports uncompensated unless the owner signs a separate agreement, and California&rsquo;s is silent. None provides a credit. balco.nyc therefore assumes surplus earns nothing in every state, which is why the share of output used at home &mdash; the fridge, the router, whatever runs in daylight &mdash; matters as much as the output itself.</p>\n</section>"
+    },
+    {
+      "id": "limits",
+      "toc": "What these numbers leave out",
+      "html": "        <section id=\"limits\">\n  <h2><span class=\"sec-num\">6</span>What these numbers leave out</h2>\n  <p>The figures behind the nine verdicts are generous in some ways and blunt in others. Five limits are worth knowing before quoting them:</p>\n  <ul>\n    <li><strong>One city per state.</strong> Each state is represented by its largest city. Buffalo is not New York City, and Flagstaff is not Phoenix. The <a href=\"/states\">state pages</a> name the city behind every number.</li>\n    <li><strong>No shade.</strong> Every output figure assumes nothing blocks the sky. In New York City balco.nyc&rsquo;s 3D model finds roughly a threefold spread between the best and worst realistic balconies, mostly from the buildings opposite.</li>\n    <li><strong>Average prices.</strong> The EIA&rsquo;s state averages divide total revenue by total sales, so they include fixed monthly charges a panel cannot touch. That overstates the value of a kilowatt-hour you avoid buying. In New York City the calculator uses Con&nbsp;Edison&rsquo;s marginal rate of {{coned.rate_cents}}&cent; instead, and anywhere else the per-kWh rate from your own bill is the better input.</li>\n    <li><strong>Everything used at home.</strong> Savings and paybacks assume every kilowatt-hour displaces one you would have bought. Surplus earns nothing (claim 9), so a home that exports part of its output saves less.</li>\n    <li><strong>Modeled, not metered.</strong> These are PVWatts simulations over a typical weather year, not measurements from installed systems.</li>\n  </ul>\n  <p>The pattern across the nine claims is consistent: the numbers that travel furthest describe a tilted, unshaded panel serving a light user in a high-price state, then get repeated as if they described a railing panel anywhere. For one balcony rather than 51 cities, <a href=\"/\">run your own address</a>; the <a href=\"/methodology\">methodology</a> sets out every assumption used here.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Is balcony solar a scam?",
+      "No. A plug-in panel does generate electricity and cut a bill, but the most repeated numbers oversell it. balco.nyc's PVWatts runs for the largest city in every state put an unshaded, south-facing 800 W railing system at a median 658 kWh a year: about 6.4% of the average home's use, worth about $109 a year at the state's average price. It saves money slowly: balco.nyc's model finds no state where a $1,200 kit on a south-facing railing pays back in under four years."
+    ],
+    [
+      "Does balcony solar really save money?",
+      "Yes, but slowly in most states. On balco.nyc's $1,200 mid-range kit price, an unshaded south-facing 800 W railing system pays back in 4.8 years in California, the fastest, and 13.9 years in Washington, the slowest, with a median of 9.9 years across the 50 states and DC. Those figures assume every kWh is used at home and prices rise 3% a year; shade or unused surplus makes them longer."
+    ],
+    [
+      "How much of my electricity will an 800 W balcony kit cover?",
+      "For a south-facing railing panel, usually 4% to 12% of an average home's use, with a median of 6.4%, according to balco.nyc's PVWatts runs for the largest city in every state. The often-quoted 15-25% needs a panel tilted to about 35 degrees, no shading, and an apartment with below-average consumption."
+    ],
+    [
+      "Does a north-facing balcony really produce 75% less?",
+      "Close, for an unshaded vertical panel. balco.nyc's PVWatts runs put a north-facing railing 58% to 75% below a south-facing one across US cities, with a median of 71%, and the 75% figure matches a PVGIS calculation for a vertical panel in Berlin. In a dense city, the buildings opposite often matter more than the compass direction."
+    ],
+    [
+      "Does balcony solar work during a power outage?",
+      "No. Grid-connected inverters must detect an outage and stop energizing the line within 2 seconds under IEEE Std 1547-2018, and plug-in laws such as Utah's and Maine's require the same, so that line crews are not put at risk. Power during a blackout needs a battery system, which is a separate product."
+    ],
+    [
+      "Is plug-in solar legal in every state?",
+      "No. As of 23 September 2026, balco.nyc's review of all 50 states and DC finds a plug-in solar law in effect in 5 states (Colorado, Maine, Maryland, Utah, Vermont), signed but not yet in effect in 4 (Connecticut, New Hampshire, New Jersey, Virginia), and passed and awaiting signature in 2 (California, New York). Elsewhere the utility's interconnection rules apply, which usually means approval is required. This is not legal advice."
+    ],
+    [
+      "Can I sell surplus balcony solar power back to the utility?",
+      "Generally no. Six of the nine signed plug-in solar laws exclude these devices from net metering or deny any export credit, and the other three are silent; none provides a credit. Connecticut's law requires a warning that surplus is charged to the customer as usage unless the meter allows net metering."
+    ],
+    [
+      "Can I still claim the 30% federal solar tax credit on a balcony kit?",
+      "Not for a kit installed now. The residential clean energy credit under IRC section 25D ended for expenditures made after 31 December 2025 under the One Big Beautiful Bill Act, and the IRS treats an expenditure as made when installation is complete, so a kit installed in 2026 earns no federal credit."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "NLR &mdash; PVWatts V8 API documentation",
+      "note": "the hourly production model behind balco.nyc&rsquo;s 800&nbsp;W runs for the largest city in every state and DC (retrieved 23 September 2026)."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia861m/xls/sales_revenue.xlsx",
+      "title": "EIA &mdash; Form EIA-861M monthly sales and revenue by state",
+      "note": "state average residential prices over the twelve months to June 2026, used for savings and payback; averages that include fixed charges."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/sales_revenue_price/pdf/table_5A.pdf",
+      "title": "EIA &mdash; 2024 average monthly bill, residential (Table 5A)",
+      "note": "average household consumption by state, the denominator for the coverage figures."
+    },
+    {
+      "url": "https://www.eia.gov/consumption/residential/data/2020/c&e/pdf/ce2.1.pdf",
+      "title": "EIA &mdash; 2020 Residential Energy Consumption Survey, Table CE2.1",
+      "note": "20.8 million Btu (about 6,100&nbsp;kWh) of electricity a year for apartments in buildings of five or more units, against 36.1 million Btu for all homes."
+    },
+    {
+      "url": "https://www.solar.com/learn/guide-to-balcony-plug-in-solar/",
+      "title": "Solar.com &mdash; 2026 guide to balcony and plug-in solar",
+      "note": "an instance of the claim that an 800&nbsp;W kit covers 15&ndash;25% of an apartment&rsquo;s electricity, cited in order to check it."
+    },
+    {
+      "url": "https://tings.substack.com/p/balcony-solar-tiny-panels-big-promises",
+      "title": "&rsquo;tings &mdash; Balcony solar: tiny panels, big promises (February 2024)",
+      "note": "the earliest instance we found of the 75%-less north-facing figure, with 30% less for east and west, and its listing of a PVGIS run for Berlin among its sources."
+    },
+    {
+      "url": "https://re.jrc.ec.europa.eu/pvg_tools/en/",
+      "title": "European Commission Joint Research Centre &mdash; PVGIS",
+      "note": "the tool balco.nyc reran for an 800&nbsp;W vertical panel in Berlin: 612&nbsp;kWh facing south, 154 facing north, 425 east and 413 west."
+    },
+    {
+      "url": "https://www.brightsaver.org/post/is-plug-in-solar-worth-it",
+      "title": "Bright Saver &mdash; Is plug-in solar worth it?",
+      "note": "the two-year payback claim, for a kit bought at cost in a high-rate state such as California or New York. Its member price of $414.17 for 360&nbsp;W plus a $29 annual membership is as recorded in balco.nyc&rsquo;s cost guide in September 2026."
+    },
+    {
+      "url": "https://www.irs.gov/newsroom/faqs-for-modification-of-sections-25c-25d-25e-30c-30d-45l-45w-and-179d-under-public-law-119-21-139-stat-72-july-4-2025-commonly-known-as-the-one-big-beautiful-bill-obbb",
+      "title": "IRS &mdash; FAQs for modification of sections 25C, 25D and others under Public Law 119-21",
+      "note": "that the &sect;25D credit is not allowed for expenditures made after 31 December 2025, and that an expenditure is made when installation is complete."
+    },
+    {
+      "url": "https://www.irs.gov/credits-deductions/residential-clean-energy-credit",
+      "title": "IRS &mdash; Residential Clean Energy Credit",
+      "note": "that the credit equaled 30% of the cost of qualified property installed from 2022 through 31 December 2025."
+    },
+    {
+      "url": "https://docs.nlr.gov/docs/fy22osti/77782.pdf",
+      "title": "NLR &mdash; A primer on the unintentional islanding protection requirement in IEEE Std 1547-2018 (2022)",
+      "note": "that a DER must detect an island and cease to energize within 2 seconds, the five-minute default return-to-service delay, and UL&nbsp;1741 testing."
+    },
+    {
+      "url": "https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf",
+      "title": "Utah Legislature &mdash; H.B. 340 (2025), enrolled copy",
+      "note": "the required feature preventing a device from energizing the building during an outage, and the exemption from net metering program requirements."
+    },
+    {
+      "url": "https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132",
+      "title": "Maine Legislature &mdash; Public Law 2026, chapter 644 (LD 1730)",
+      "note": "inverters that shut off after 0.2 seconds, a licensed electrician and a dedicated single-outlet circuit above 420&nbsp;W, and no net energy billing."
+    },
+    {
+      "url": "https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf",
+      "title": "Vermont Legislature &mdash; Act 149 (S.202) as enacted",
+      "note": "that plug-in devices are not eligible for net metering and their exports shall not be compensated."
+    },
+    {
+      "url": "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00127-R00HB-05340-PA.PDF",
+      "title": "Connecticut General Assembly &mdash; Public Act 26-127",
+      "note": "the required warning that surplus generation is charged to the customer as usage unless the meter allows net metering."
+    },
+    {
+      "url": "https://lis.blob.core.windows.net/files/1225204.PDF",
+      "title": "Virginia Acts of Assembly, 2026, Chapter 1052 (HB 395)",
+      "note": "the exclusion of small portable solar generation devices from the definition of an eligible customer-generator and from net energy metering provisions."
+    },
+    {
+      "url": "https://mgaleg.maryland.gov/2026RS/Chapters_noln/CH_353_hb1532e.pdf",
+      "title": "Maryland General Assembly &mdash; 2026 Laws, Chapter 353 (HB 1532)",
+      "note": "that a portable solar energy generating system is not subject to the net metering sections, &sect;&sect;7-306 and 7-306.1."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "New York State Senate &mdash; S8512C (SUNNY Act)",
+      "note": "passage on 28 May 2026, and that exported energy would be uncompensated unless the customer enters a separate agreement."
+    },
+    {
+      "url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB868",
+      "title": "California Legislature &mdash; SB 868 status",
+      "note": "enrolled and presented to the Governor on 31 August 2026."
+    },
+    {
+      "url": "https://www.ul.com/news/ul-solutions-debuts-testing-and-certification-framework-safer-plug-solar-across-united-states",
+      "title": "UL Solutions &mdash; testing and certification framework for plug-in solar (January 2026)",
+      "note": "that the program requires features that protect against overloads and prevent current flowing in the wrong direction."
+    },
+    {
+      "url": "https://www.pv-magazine.com/2026/02/02/how-to-design-a-ul-certified-balcony-solar-kit-in-the-united-states/",
+      "title": "pv magazine &mdash; How to design a UL-certified balcony solar kit in the United States",
+      "note": "that plug-in systems can inject current standard breakers do not detect, so household load plus solar can exceed a circuit&rsquo;s limit."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not legal, tax or electrical advice. Production figures are modeled, not metered, and assume no shading; state laws were last checked on the review date above."
+}

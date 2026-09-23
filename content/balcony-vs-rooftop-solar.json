@@ -1,0 +1,176 @@
+{
+  "slug": "balcony-vs-rooftop-solar",
+  "title": "Balcony solar vs rooftop solar: cost per kWh compared &middot; balco.nyc",
+  "og_title": "Balcony solar vs rooftop solar: what a kWh costs from each, and how much more a roof saves",
+  "breadcrumb": "Balcony vs rooftop",
+  "cluster": "compare",
+  "pillar": false,
+  "card_title": "Is balcony solar as good as rooftop solar?",
+  "card": "Cheaper per kWh on an open railing; a roof makes 16 to 18 times as much. Five cities, side by side.",
+  "llms": "that on an unshaded south-facing railing an 800 W balcony kit makes electricity more cheaply per kWh than a typical 7.7 kW rooftop system at Berkeley Lab's 2025 median price, that the roof makes and saves 16 to 18 times as much, and who can install which, with permits, interconnection, net metering and lifespans compared.",
+  "related": [
+    "is-balcony-solar-worth-it",
+    "balcony-vs-community-solar",
+    "balcony-solar-cost"
+  ],
+  "description": "Per kWh, an open balcony railing beats a typical roof: 6.5 to 8.9 cents vs 8.9 to 12.3 in five big US cities. The roof makes 16 to 18 times as much.",
+  "eyebrow": "Balcony vs rooftop",
+  "h1": "Balcony solar vs rooftop solar: what a kWh costs from each",
+  "lede": "Per kilowatt-hour, an unshaded balcony railing is the cheaper of the two. balco.nyc&rsquo;s PVWatts runs for the five largest US cities put a ${{kits.mid}} 800&nbsp;W kit on a south-facing railing at <strong>6.5 to 8.9&cent; per kWh</strong> over 25 years, against 8.9 to 12.3&cent; for a typical 7.7&nbsp;kW rooftop system at Berkeley Lab&rsquo;s 2025 median price of $3.6 a watt. But the roof makes 16 to 18 times as much electricity, worth up to $1,600&ndash;$4,100 a year against the railing&rsquo;s $90&ndash;$240, if you have a roof: only 7.8% of New York City households own a detached house.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~10 minutes",
+  "tags": [
+    "Railing 6.5&ndash;8.9&cent;/kWh",
+    "Roof 8.9&ndash;12.3&cent;/kWh",
+    "Roof makes 16&ndash;18&times; more"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "cost-per-kwh",
+      "toc": "Cost per kWh, side by side",
+      "html": "        <section id=\"cost-per-kwh\">\n  <h2><span class=\"sec-num\">1</span>What a kWh costs from each, city by city</h2>\n  <p>The fair way to compare a small system with a large one is cost per kilowatt-hour: the up-front price divided by every kWh the system makes. balco.nyc worked it out for the five largest US cities with the site&rsquo;s own PVWatts runs and the calculator&rsquo;s assumptions: 25 years, output falling 0.5% a year, nominal dollars with no discounting, and no upkeep costs on either side. On those terms a system makes 23.56 times its first year&rsquo;s output.</p>\n  <ul>\n    <li><strong>Balcony:</strong> an 800&nbsp;W kit at the site&rsquo;s three hardware-only prices, ${{kits.budget}}, ${{kits.mid}} and ${{kits.premium}}. Output is PVWatts&nbsp;V8, from the National Laboratory of the Rockies (formerly NREL), for a vertical railing facing south, multiplied by 0.95 for the railing and mounting hardware; for a south-facing bracket at 35&deg;, by 0.99.</li>\n    <li><strong>Roof:</strong> a 7.7&nbsp;kW system, the median size of US residential systems installed in 2025 in Lawrence Berkeley National Laboratory&rsquo;s latest Tracking the Sun data update (August 2026). It is priced at that update&rsquo;s median for 2025 installations, <strong>$3.6 per watt</strong> in 2025 dollars, or $27,720: the price before incentives for systems their owners bought, without a battery. Cash buyers paid a median $3.0; loan buyers $4.5, which can include loan fees. Output is the same city&rsquo;s 35&deg; south-facing run scaled from 0.8 to 7.7&nbsp;kW, with no railing factor. We use 35&deg; as a proxy for a pitched roof; a separate run at 20&deg; came within 3% in all five cities.</li>\n  </ul>\n  <div class=\"table-wrap\"><table><thead><tr><th>City</th><th>Railing, ${{kits.budget}} kit</th><th>Railing, ${{kits.mid}} kit</th><th>Railing, ${{kits.premium}} kit</th><th>35&deg; bracket, ${{kits.mid}} kit</th><th>Roof, cash ($3.0/W)</th><th>Roof, median ($3.6/W)</th><th>Roof, loan ($4.5/W)</th></tr></thead><tbody>\n    <tr><td>New York City</td><td>6.0&cent;</td><td><strong>8.4&cent;</strong></td><td>11.2&cent;</td><td>5.2&cent;</td><td>10.2&cent;</td><td><strong>12.3&cent;</strong></td><td>15.3&cent;</td></tr>\n    <tr><td>Los Angeles</td><td>5.0&cent;</td><td><strong>7.1&cent;</strong></td><td>9.4&cent;</td><td>4.0&cent;</td><td>7.8&cent;</td><td><strong>9.4&cent;</strong></td><td>11.8&cent;</td></tr>\n    <tr><td>Chicago</td><td>5.9&cent;</td><td><strong>8.3&cent;</strong></td><td>11.0&cent;</td><td>5.1&cent;</td><td>10.1&cent;</td><td><strong>12.1&cent;</strong></td><td>15.1&cent;</td></tr>\n    <tr><td>Houston</td><td>6.3&cent;</td><td><strong>8.9&cent;</strong></td><td>11.8&cent;</td><td>4.8&cent;</td><td>9.5&cent;</td><td><strong>11.4&cent;</strong></td><td>14.2&cent;</td></tr>\n    <tr><td>Phoenix</td><td>4.6&cent;</td><td><strong>6.5&cent;</strong></td><td>8.7&cent;</td><td>3.8&cent;</td><td>7.4&cent;</td><td><strong>8.9&cent;</strong></td><td>11.2&cent;</td></tr>\n  </tbody></table></div>\n  <p class=\"table-note\">Cents per kWh over 25 years. balco.nyc&rsquo;s computation: price divided by 25 years of unshaded PVWatts&nbsp;V8 output for each city, declining 0.5% a year. No discounting, maintenance or incentives.</p>\n  <p>On an open, south-facing railing, the mid-range kit makes a kWh for 22% to 32% less than the median roof in all five cities. The premium kit roughly ties the roof: level in Los Angeles, 0.4&cent; dearer in Houston, slightly cheaper elsewhere. A 35&deg; bracket at the same price, where a building allows one, undercuts every roof price in the table.</p>\n  <p>The reason is price per watt, not sunshine. In these five cities a railing makes only 54% to 61% as much per watt as the roof, because a vertical panel meets the high summer sun at a glancing angle (<a href=\"/800w-balcony-solar-output\">why a railing makes less than a roof</a>). But the mid-range kit costs $1.50 a watt and the roof $3.6. The kit is hardware you carry home. The roof price also pays for labor, permits, interconnection, sales, financing fees and the installer&rsquo;s margin; Berkeley Lab puts these soft costs, with hardware other than panels and inverters, at about 80% of the installed price.</p>\n  <p>A check on the roof&rsquo;s output: PVWatts run with its standard roof-mounted settings gives 4% to 6% more than the scaled figures, mostly because the site&rsquo;s runs allow 3% to 7% a month for urban grime (with the same allowance, the New York gap is under 2%). If anything, the table leans slightly against the roof.</p>\n</section>"
+    },
+    {
+      "id": "annual-savings",
+      "toc": "What each saves in a year",
+      "html": "        <section id=\"annual-savings\">\n  <h2><span class=\"sec-num\">2</span>What each saves in a year</h2>\n  <p>Cost per kWh measures value for money. It says nothing about scale, and on scale the roof wins by more than an order of magnitude. A 7.7&nbsp;kW roof makes 16 to 18 times what an 800&nbsp;W railing makes in these cities, so it saves 16 to 18 times as much:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>City (price per kWh used)</th><th>Railing, kWh/yr</th><th>Railing saves</th><th>Roof, kWh/yr</th><th>Roof saves, at most</th><th>Roof output vs. an average household&rsquo;s use</th></tr></thead><tbody>\n    <tr><td>New York City ({{coned.rate_cents}}&cent;, Con&nbsp;Edison marginal)</td><td>604</td><td>$205</td><td>9,606</td><td><strong>$3,266</strong></td><td>140%</td></tr>\n    <tr><td>Los Angeles (32.89&cent;)</td><td>720</td><td>$237</td><td>12,503</td><td><strong>$4,112</strong></td><td>207%</td></tr>\n    <tr><td>Chicago (18.54&cent;)</td><td>616</td><td>$114</td><td>9,725</td><td><strong>$1,803</strong></td><td>117%</td></tr>\n    <tr><td>Houston (15.90&cent;)</td><td>576</td><td>$92</td><td>10,355</td><td><strong>$1,646</strong></td><td>79%</td></tr>\n    <tr><td>Phoenix (15.40&cent;)</td><td>778</td><td>$120</td><td>13,177</td><td><strong>$2,029</strong></td><td>102%</td></tr>\n  </tbody></table></div>\n  <p class=\"table-note\">First year, unshaded, every kWh valued at the price shown. Outside New York City the prices are EIA state averages for the 12 months to June 2026; they include fixed monthly charges, which solar cannot reduce, so they overstate what an avoided kWh is worth. Household use is EIA&rsquo;s 2024 state average (New York State&rsquo;s for New York City).</p>\n  <p>Both savings columns are ceilings, for mirror-image reasons. The railing figure assumes you use every kWh as it is made, because under most plug-in laws power sent back to the grid earns nothing. The roof figure assumes every kWh is worth the retail price, which holds only if the house uses it all or net metering credits exports at retail. The last column shows where that is a stretch: in Los Angeles a median-sized roof makes about twice what an average California household uses, and California&rsquo;s median system is the smallest of any state in Berkeley Lab&rsquo;s data. State averages include apartments, so a house may use more than this column assumes, but any surplus is worth only what the utility&rsquo;s export rules pay.</p>\n  <p>Even so, the gap is not close. A balcony kit is a small, cheap source of cheap electricity; a roof is a large, expensive source of slightly dearer electricity, and it takes a far bigger bite out of the bill.</p>\n</section>"
+    },
+    {
+      "id": "what-changes-it",
+      "toc": "What changes the answer",
+      "html": "        <section id=\"what-changes-it\">\n  <h2><span class=\"sec-num\">3</span>What changes the answer</h2>\n  <p>Section&nbsp;1 compares two best cases: an open, south-facing railing and a south-facing roof, each getting full value for every kWh. Real installations fall short of both, by different amounts.</p>\n  <ul>\n    <li><strong>Power you do not use.</strong> A kWh the apartment does not need at that moment is given away, so each kWh that does replace a purchase costs more. At 60% used, the mid-range kit costs 10.9 to 14.8&cent; per useful kWh, more than the median roof in all five cities; at 80% it is 8.2 to 11.1&cent;, still less. balco.nyc&rsquo;s hourly model puts a New York apartment with a steady 150&nbsp;W draw at 60% (<a href=\"/balcony-solar-net-metering\">how much of the output an apartment uses</a>). The roof&rsquo;s figure depends just as much on how its exports are credited.</li>\n    <li><strong>Shade.</strong> In balco.nyc&rsquo;s shade model, a 3rd-floor south balcony facing a 6-to-10-floor building across a 20&nbsp;m street keeps only 38% to 43% of its output (<a href=\"/is-balcony-solar-worth-it\">the building across the street</a>). That puts the mid-range kit at 17 to 22&cent; per kWh in New York City, Los Angeles, Chicago and Houston, dearer than any roof in the table. Roofs get shaded too, but people install on a roof because it gets sun; a balcony comes with the apartment.</li>\n    <li><strong>Which way the roof faces.</strong> Across Berkeley Lab&rsquo;s data about half of panels (53% in 2024) face within 45&deg; of south, 22% face west and most of the rest east. East- and west-facing roofs make less than the table shows, so the roof column is a ceiling too.</li>\n    <li><strong>Upkeep and lifetime.</strong> The National Laboratory of the Rockies&rsquo; Annual Technology Baseline allows $29.83 per kW a year for a home system&rsquo;s operation and maintenance, covering insurance, cleaning, component failures and administration. That adds about a fifth to the roof&rsquo;s figures (12.3&cent; becomes 14.8&cent; in New York City). The same baseline assumes a 30-year life, which cuts them by about 16%. Together, upkeep over 30 years leaves the roof about 5% above the table. We found no comparable benchmark for a railing kit.</li>\n    <li><strong>Tax credits.</strong> The federal residential clean energy credit (IRC&nbsp;25D) now helps neither. It ended for expenditures made after 31 December 2025, and an expenditure counts as made when installation is completed. On the median roof it was worth $8,316; on a mid-range kit $360, and whether a plug-in kit ever qualified was never settled (<a href=\"/balcony-solar-tax-credit\">what ended and when</a>). Some state incentives survive, and they favor the roof: New York&rsquo;s 25% solar credit, capped at $5,000, requires a net-metering contract or schedule, and the SUNNY Act would exempt plug-in systems from net metering.</li>\n    <li><strong>Costs outside the kit.</strong> The kit prices cover hardware only. If your balcony has no outdoor outlet, adding one is an electrician&rsquo;s job, and that bill belongs on the kit&rsquo;s side.</li>\n  </ul>\n</section>"
+    },
+    {
+      "id": "who-can",
+      "toc": "Who can install which",
+      "html": "        <section id=\"who-can\">\n  <h2><span class=\"sec-num\">4</span>Who can install which</h2>\n  <p>For most households the choice is made before any arithmetic. A roof system needs a roof you control. In Berkeley Lab&rsquo;s data, 93% of residential systems installed in 2025 went on single-family detached homes. The National Laboratory of the Rockies, then NREL, estimated in 2024 that 42% of US households cannot host solar on their own property, because they rent, live in a multifamily building or have an unsuitable roof.</p>\n  <p>balco.nyc counted the households rooftop solar is built for, those that own the detached house they live in, in the Census Bureau&rsquo;s 2024 American Community Survey (table B25032):</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Place</th><th>Households that own a detached house</th><th>Households that rent</th></tr></thead><tbody>\n    <tr><td>United States</td><td>53.6%</td><td>34.7%</td></tr>\n    <tr><td>New York City</td><td><strong>7.8%</strong></td><td>67.3%</td></tr>\n    <tr><td>Los Angeles</td><td>27.2%</td><td>64.1%</td></tr>\n    <tr><td>Chicago</td><td>23.0%</td><td>53.5%</td></tr>\n    <tr><td>Houston</td><td>34.5%</td><td>59.1%</td></tr>\n    <tr><td>Phoenix</td><td>49.3%</td><td>42.4%</td></tr>\n  </tbody></table></div>\n  <p class=\"table-note\">Share of occupied homes, ACS 2024 1-year estimates, table B25032; each city is the city proper. The margin of error on each share is at most about 1.3 percentage points.</p>\n  <p>In New York City fewer than one household in twelve owns a detached house. For most of the rest a roof is not an option at any price per kWh, and the useful comparisons are a balcony kit against nothing, or <a href=\"/balcony-vs-community-solar\">against community solar</a>. The balcony is not automatic either. Renters generally need the landlord&rsquo;s permission, and only four states have laws limiting a landlord&rsquo;s power to refuse (<a href=\"/balcony-solar-renters\">can renters install balcony solar?</a>). Condo boards, co-op boards and HOAs have <a href=\"/balcony-solar-condo-hoa\">their own say</a>.</p>\n</section>"
+    },
+    {
+      "id": "paperwork",
+      "toc": "Permits, the utility and net metering",
+      "html": "        <section id=\"paperwork\">\n  <h2><span class=\"sec-num\">5</span>Permits, the utility and net metering</h2>\n  <p>A rooftop system is a building project. It needs a building or electrical permit, an inspection, and the utility&rsquo;s approval before it may be switched on. The permit is usually the quick part: in Berkeley Lab&rsquo;s permit records, the median solar-only home system in 2025 got its permit 6 days after applying, and 80% within 25 days. The utility step is separate; in New York, grid-connected generators go through the state&rsquo;s Standardized Interconnection Requirements. The installer usually handles all of it, and the cost is inside the $3.6 a watt.</p>\n  <p>Once connected, a roof usually gets net metering or a successor tariff, which credits the power it sends to the grid. New York&rsquo;s Public Service Law requires utilities to offer net metering for residential solar up to 25&nbsp;kW. In California, customers of the three large investor-owned utilities who applied from 15 April 2023 are on a net billing tariff, whose export credit is, in the state commission&rsquo;s words, &ldquo;usually lower than the retail rate.&rdquo; Rules vary by state and utility, and they decide how much of the roof&rsquo;s savings column survives.</p>\n  <p>A plug-in kit, where a state law allows one, skips the process and gives up the credit. New York&rsquo;s SUNNY Act, which has passed both chambers and {{sunny.phrase}}, would exempt devices up to 1,200&nbsp;W from interconnection and net-metering requirements and says exported energy &ldquo;shall be uncompensated&rdquo; unless the owner signs a net-metering agreement. Utah&rsquo;s law already exempts them. Where no such law applies, the utility&rsquo;s interconnection rules do, which usually means approval before connecting anything that feeds power into a home circuit. As of 23 September 2026 none of the five cities here has a plug-in law in force: California&rsquo;s SB&nbsp;868 was presented to the Governor on 31 August and he has until 30 September to act, Illinois&rsquo;s bill has stalled, Arizona&rsquo;s died and Texas has none (<a href=\"/balcony-solar-laws-compared\">every state law compared</a>). Several laws, New York&rsquo;s among them, also require the complete system to be listed, and <a href=\"/ul-3700-plug-in-solar-certification\">no complete plug-in system is yet certified to UL&nbsp;3700</a>. This summarizes state rules and is not legal advice.</p>\n</section>"
+    },
+    {
+      "id": "lifespan",
+      "toc": "Lifespans, and moving house",
+      "html": "        <section id=\"lifespan\">\n  <h2><span class=\"sec-num\">6</span>How long each lasts, and what happens when you move</h2>\n  <p>The panels are the same technology. The Department of Energy puts the average working life of a solar panel at 25 to 35 years as of 2025, and the Annual Technology Baseline models a home rooftop system over 30. balco.nyc uses 25 years for both sides, which is conservative for the roof. For a railing kit there is little track record: the first US plug-in law took effect in 2025, and we know of no long-term US field data on how railing mounts, outdoor cables and plug-in microinverters hold up.</p>\n  <p>What matters more is moving. A kit comes with you and can keep saving in the next home if it has a usable balcony, though every figure here assumes 25 years in one place. A roof system stays with the house, so its cost per kWh depends on staying long enough, or on a buyer paying for it.</p>\n  <div class=\"callout\"><p><strong>The short version.</strong> If you own a house with a sunny roof, a rooftop system saves far more money, roughly $1,600 to $4,100 a year in these cities against $90 to $240 for a railing, at a slightly higher cost per kWh. If you do not, the roof was never on the table, and a well-sited balcony produces electricity as cheaply as any roof does. <a href=\"/\">The calculator</a> gives the kWh figure for your own address, direction and shade.</p></div>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Is balcony solar as good as rooftop solar?",
+      "Per kilowatt-hour, a well-sited balcony kit is at least as good: balco.nyc's PVWatts runs for the five largest US cities put a ${{kits.mid}} 800 W kit on an unshaded, south-facing railing at 6.5 to 8.9 cents per kWh over 25 years, against 8.9 to 12.3 cents for a typical 7.7 kW rooftop system at Berkeley Lab's 2025 median price of $3.6 per watt. In total output it is not close: the roof makes 16 to 18 times as much electricity. Shade, or using only part of the kit's output, can erase its cost advantage."
+    ],
+    [
+      "How much more does rooftop solar save than balcony solar?",
+      "About 16 to 18 times as much, because a median 7.7 kW roof makes 16 to 18 times the output of an 800 W railing. In balco.nyc's first-year figures for five large US cities, a roof saves at most about $1,600 to $4,100 a year and an unshaded south-facing railing about $90 to $240. In New York City the figures are $3,266 and $205. The roof figure assumes every kWh is worth the retail price, which needs net metering at retail for any surplus."
+    ],
+    [
+      "Why is a balcony kit cheaper per kWh than a rooftop system?",
+      "Because of installation costs, not sunshine. In balco.nyc's PVWatts runs, a vertical railing makes only 54% to 61% as much electricity per watt as a south-facing roof in New York City, Los Angeles, Chicago, Houston and Phoenix, but a mid-range 800 W kit costs about $1.50 per watt in hardware against a median installed price of $3.6 per watt for rooftop systems in 2025. Berkeley Lab puts soft costs such as labor, permitting, interconnection and sales, together with non-module hardware, at about 80% of a residential system's installed price."
+    ],
+    [
+      "Can renters or apartment dwellers get rooftop solar?",
+      "Rarely. The National Laboratory of the Rockies (formerly NREL) estimated in 2024 that 42% of US households cannot host solar on their own property, and 93% of residential systems installed in 2025 went on single-family detached homes. In New York City only 7.8% of households own a detached house, according to balco.nyc's count from the 2024 American Community Survey. The usual alternatives are a balcony kit, where the law and the landlord allow it, or community solar."
+    ],
+    [
+      "Does balcony solar need a permit or utility approval like a rooftop system?",
+      "A rooftop system needs a local permit, an inspection and the utility's interconnection approval before it runs, and it usually gets net metering. In states with a plug-in solar law, small balcony systems are generally exempt from interconnection and get no payment for exported power; New York's SUNNY Act, which has passed both chambers and {{sunny.phrase}}, would work this way. Where no such law is in force, the utility's interconnection rules apply. This varies by state and utility and is not legal advice."
+    ],
+    [
+      "Is there still a federal tax credit for rooftop solar?",
+      "No. The 30% residential clean energy credit (IRC 25D) ended for expenditures made after 31 December 2025, and an expenditure counts as made when installation is completed. On a median 7.7 kW rooftop system at $3.6 per watt it would have been worth about $8,316. Some state incentives remain for rooftop systems; New York's 25% solar credit, capped at $5,000, requires a net-metering contract or schedule, which plug-in systems would not have."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://emp.lbl.gov/sites/default/files/2026-08/Distributed%20Solar%20%26%20Storage-2026%20Data%20Update_FINAL.pdf",
+      "title": "Lawrence Berkeley National Laboratory &mdash; U.S. Distributed Solar and Storage: 2026 Data Update (Tracking the Sun), August 2026",
+      "note": "median residential system size of 7.7&nbsp;kW in 2025; median installed price of $3.6/W for host-owned, stand-alone residential systems in 2025 (cash $3.0, loan $4.5; before incentives; 2025 dollars); soft costs and other balance of system about 80% of the price; 93% of 2025 systems on single-family detached homes; 53% of panels facing south; residential permits issued a median 6 days after application, 25 days at the 80th percentile."
+    },
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "National Laboratory of the Rockies &mdash; PVWatts V8 API documentation",
+      "note": "the model behind every output figure: balco.nyc&rsquo;s published runs for each state&rsquo;s largest city, and the separate roof-mounted check run for the five cities."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia861m/",
+      "title": "U.S. EIA &mdash; Form EIA-861M monthly sales and revenue by state",
+      "note": "the California, Illinois, Texas and Arizona average residential prices (revenue divided by sales, 12 months to June 2026), which include fixed charges."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/sales_revenue_price/pdf/table_5A.pdf",
+      "title": "U.S. EIA &mdash; 2024 average monthly bill, residential (Table 5A)",
+      "note": "average household consumption by state, behind the roof-output-versus-household-use column."
+    },
+    {
+      "url": "https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf",
+      "title": "Con Edison &mdash; historical average full-service electric rates",
+      "note": "the SC-1 residential series behind the {{coned.rate_cents}}&cent; marginal rate used for New York City."
+    },
+    {
+      "url": "https://data.census.gov/table/ACSDT1Y2024.B25032",
+      "title": "U.S. Census Bureau &mdash; ACS 2024 1-year, table B25032 (Tenure by Units in Structure)",
+      "note": "owner-occupied detached houses and renter households for the US and the five cities, the basis of balco.nyc&rsquo;s count."
+    },
+    {
+      "url": "https://docs.nlr.gov/docs/fy24osti/87524.pdf",
+      "title": "NREL (now National Laboratory of the Rockies) &mdash; Technical Potential and Meaningful Benefits of Community Solar in the United States (2024)",
+      "note": "that 42% of US households are unable to access on-site (behind-the-meter) solar, down from an earlier estimate of 49%."
+    },
+    {
+      "url": "https://atb.nlr.gov/electricity/2025/residential_pv",
+      "title": "National Laboratory of the Rockies &mdash; 2025 Annual Technology Baseline, Residential PV",
+      "note": "fixed operation and maintenance of $29.83 per kW (DC) a year for 2024 (insurance, cleaning, component failure, administration) and a 30-year system lifetime."
+    },
+    {
+      "url": "https://www.energy.gov/cmei/systems/end-life-management-solar-photovoltaics",
+      "title": "U.S. Department of Energy &mdash; End-of-Life Management for Solar Photovoltaics",
+      "note": "the average operational lifespan of a solar panel, 25&ndash;35 years as of 2025."
+    },
+    {
+      "url": "https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/customer-generation/net-energy-metering-and-net-billing",
+      "title": "California Public Utilities Commission &mdash; Net Energy Metering and Net Billing",
+      "note": "customers of PG&amp;E, SCE and SDG&amp;E applying for interconnection since 15 April 2023 take the net billing tariff, which credits exports at a rate reflecting their value to the grid."
+    },
+    {
+      "url": "https://dps.ny.gov/distributed-generation-information",
+      "title": "New York Department of Public Service &mdash; Standardized Interconnection Requirements",
+      "note": "the application process for distributed generators of 5&nbsp;MW or less connected in parallel with utility systems."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/laws/PBS/66-J",
+      "title": "New York State Senate &mdash; Public Service Law &sect;66-j",
+      "note": "net energy metering for residential solar generating equipment up to 25&nbsp;kW."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "New York State Senate &mdash; S8512C (SUNNY Act)",
+      "note": "plug-in devices up to 1,200&nbsp;W would not be subject to interconnection or net-metering requirements, and exports would be uncompensated unless the customer enters a net-metering agreement."
+    },
+    {
+      "url": "https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf",
+      "title": "Utah Legislature &mdash; H.B. 340 Solar Power Amendments, enrolled copy",
+      "note": "a portable solar generation device is exempt from interconnection requirements and not subject to net metering program requirements."
+    },
+    {
+      "url": "https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202520260SB868",
+      "title": "California Legislative Information &mdash; SB 868 bill history",
+      "note": "presentation to the Governor on 31 August 2026."
+    },
+    {
+      "url": "https://www.irs.gov/newsroom/faqs-for-modification-of-sections-25c-25d-25e-30c-30d-45l-45w-and-179d-under-public-law-119-21-139-stat-72-july-4-2025-commonly-known-as-the-one-big-beautiful-bill-obbb",
+      "title": "IRS &mdash; FAQs on Public Law 119-21 (One Big Beautiful Bill) changes to &sect;25D",
+      "note": "the credit does not apply to expenditures made after 31 December 2025, and an expenditure is made when installation is completed."
+    },
+    {
+      "url": "https://www.tax.ny.gov/pdf/current_forms/it/it255i.pdf",
+      "title": "New York State Department of Taxation and Finance &mdash; Instructions for Form IT-255",
+      "note": "the 25% solar energy system equipment credit, limited to $5,000, and its net-metering contract requirement for systems that produce electricity."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not financial or legal advice. Production figures are modeled, unshaded ceilings from PVWatts, not metered results; rooftop prices are Berkeley Lab medians, and your installer&rsquo;s quote and your utility&rsquo;s rules decide your own numbers."
+}

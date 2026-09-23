@@ -51,13 +51,15 @@ const SolarConfig = {
 
   // Con Edison SC-1 residential all-in marginal rate (supply + delivery +
   // GRT + sales tax), 2026. Source: Con Ed historical bill table 2023-2025
-  // (2025 avg 33.83 c/kWh) + 2026 rate case settlement approved 2026-01-22 (+3.5%).
+  // (2025 avg 33.83 c/kWh) + the rate plan adopted 2026-01-22 in Case
+  // 25-E-0072 (typical residential bill +3.4-3.9% in 2026, per the DPS summary).
   ELECTRICITY_RATE: 0.34,
 
   // Fixed monthly Customer Charge, excluded from the marginal rate above
   // because solar cannot offset it. Subtracted from the user's stated bill
-  // before inferring their consumption.
-  MONTHLY_CUSTOMER_CHARGE: 20,
+  // before inferring their consumption. PSC No. 10, SC-1 Rate I: $21.00 from
+  // 2026-02-01, rising $1 a year through 2028 under Case 25-E-0072.
+  MONTHLY_CUSTOMER_CHARGE: 21,
 
   RATE_ESCALATION: 0.03,
   RATE_ESCALATION_PRESETS: { low: 0.02, mid: 0.03, high: 0.04 },
@@ -86,8 +88,11 @@ const SolarConfig = {
   // Field reports for vertical balcony mounts put the loss at 5-8%.
   RAILING_OBSTRUCTION_BY_TILT: { 90: 0.95, 70: 0.97, 60: 0.98, 35: 0.99 },
 
-  // EPA eGRID2023 NYCW subregion output emission rate (released 2025)
-  CO2_FACTOR: 0.89, // lbs CO2 per kWh (NYC grid)
+  // EPA eGRID2023 (rev2, June 2025) NYCW subregion total output CO2 rate,
+  // 864.469 lb/MWh. The 0.89 used until September 2026 was eGRID2022's
+  // 885.233 under an eGRID2023 label. data/grid-emissions.json carries the
+  // same figure for NYCW and a test holds the two equal.
+  CO2_FACTOR: 0.864, // lbs CO2 per kWh (NYC grid)
 
   // PVWatts reference: annual kWh per kW DC for NYC at optimal tilt (~40°)
   // Aligned with NYSERDA NY Solar Map (1,238) split with calc's prior 1,400.

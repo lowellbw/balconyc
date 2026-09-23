@@ -7,3 +7,22 @@ design/
 # Python leftovers from the design build scripts.
 __pycache__/
 *.pyc
+
+# Working material that is in the repo but is not the site. Vercel serves
+# every uploaded file at its path, so without these lines /docs/seo-geo-plan.md,
+# the content specs, the test suite and the SQL migrations were all public.
+# data/ is NOT listed: the calculator fetches its JSON at runtime.
+docs/
+tools/
+tests/
+content/
+supabase/
+archive/
+output/
+tmp/
+uk/
+data/cache/
+*.md
+*.xlsx
+*.docx
+balco-product-concepts.html

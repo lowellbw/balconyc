@@ -1,0 +1,21 @@
+{
+ "intro_html": "<p>New Jersey&rsquo;s Garden State Balcony Solar Act, signed on 1 September 2026, takes effect on 1 March 2027 and is written with renters in mind. A tenant who pays their own electric bill cannot be barred from using a device within the leased premises, including a balcony or patio. The steps are set out: at least 14 days&rsquo; written notice to the landlord, saying where the system will go and documenting that it meets the law; the landlord may then respond with reasonable restrictions on size, placement and manner of placement. Homeowners&rsquo; and condominium associations cannot enforce bans on exterior placement but may set similar reasonable rules, and a municipality may not prohibit the devices or require a permit, application or fee.</p>\n  <p>For the utility, which in Newark is PSE&amp;G, a device of up to 1,200&nbsp;W is exempt from interconnection and net-metering requirements, and the utility may not require approval, a fee or extra equipment. The act does not say whether exported power is credited. Equipment must be listed or certified by a nationally recognized laboratory to UL&nbsp;3700 or a comparable standard or combination of standards, so compliance does not hinge on UL&nbsp;3700 alone. Devices of 400&nbsp;W or less are exempt from listing and code provisions that would require rewiring; the 800&nbsp;W system balco.nyc models is not.</p>",
+ "sources": [
+  {
+   "url": "https://www.capehart.com/new-jersey-becomes-the-10th-state-to-legalize-and-regulate-portable-solar-generation-devices/",
+   "title": "Capehart Scatchard &mdash; New Jersey becomes the 10th state to legalize and regulate portable solar generation devices",
+   "note": "a law firm&rsquo;s summary of the act: 14 days&rsquo; notice, reasonable restrictions by landlords and associations, no municipal ban or permit, no utility fee or prior approval, the 400 W exemption and the March 1, 2027 start."
+  },
+  {
+   "url": "https://www.nj.gov/governor/news/2026/approved/20260901a.shtml",
+   "title": "Office of the Governor of New Jersey &mdash; signing of the Garden State Balcony Solar Act (September 1, 2026)",
+   "note": "the 1,200 W limit, limits on landlord, association and municipal bans, and the exemption from utility interconnection and metering requirements."
+  }
+ ],
+ "faq": [
+  [
+   "Can a New Jersey landlord refuse balcony solar?",
+   "Not outright, from March 1, 2027, if the tenant pays their own electric bill. The tenant must give at least 14 days' written notice with the planned location and documentation that the device meets the law, and the landlord may respond with reasonable restrictions on its size, placement and manner of placement."
+  ]
+ ]
+}

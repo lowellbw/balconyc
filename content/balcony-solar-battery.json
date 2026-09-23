@@ -1,0 +1,176 @@
+{
+ "slug": "balcony-solar-battery",
+ "title": "Does a battery make balcony solar pay? &middot; balco.nyc",
+ "og_title": "Does a battery make balcony solar pay? An hourly model, break-even prices and NYC's fire rules",
+ "breadcrumb": "Batteries",
+ "cluster": "economics",
+ "pillar": false,
+ "card_title": "Does a battery make balcony solar pay?",
+ "card": "A 2 kWh battery adds $45-80 a year in NYC. Break-even prices, and the city's 1 kWh storage threshold.",
+ "llms": "from balco.nyc's hourly PVWatts model of New York City and Los Angeles, how much a 1, 2 or 5 kWh battery adds to an 800 W balcony system, the price at which it pays back in 10 or 15 years against German market prices, and how New York City's energy-storage rules treat lithium-ion batteries.",
+ "related": [
+  "balcony-solar-net-metering",
+  "balcony-solar-system-size",
+  "portable-solar-vs-plug-in-solar"
+ ],
+ "description": "balco.nyc's hourly model: a 2 kWh battery adds $45-80 a year to NYC balcony solar, so it pays back in 10 years only under about $520-910.",
+ "eyebrow": "Batteries and storage",
+ "h1": "Does a battery make balcony solar pay?",
+ "lede": "Rarely, at New York prices. balco.nyc&rsquo;s hourly PVWatts model of an 800&nbsp;W south-facing railing in New York City finds that a 2&nbsp;kWh battery lets an apartment use 132 to 234 more kWh a year, worth <strong>$45 to $80</strong> at Con&nbsp;Edison&rsquo;s {{coned.rate_cents}}&cent;, so it pays for itself in 10 years only if it costs under about $520 to $910. The comparable plug-in batteries Stiftung Warentest tested in 2026 sold for about &euro;700 to &euro;1,000, roughly $800 to $1,140. And in New York City, a lithium-ion battery over 1&nbsp;kWh kept indoors appears to fall under energy-storage rules that call for listing, FDNY approval and permits.",
+ "date_label": "Last reviewed",
+ "reviewed": "2026-09-23",
+ "published": "2026-09-23",
+ "reading_time": "~10 minutes",
+ "tags": [
+  "2&nbsp;kWh: $45&ndash;80/yr in NYC",
+  "Break-even $520&ndash;910",
+  "NYC indoor threshold 1&nbsp;kWh"
+ ],
+ "about_legislation": false,
+ "sections": [
+  {
+   "id": "hourly-model",
+   "toc": "What a battery adds",
+   "html": "        <section id=\"hourly-model\">\n  <h2><span class=\"sec-num\">1</span>What a battery adds to an 800&nbsp;W railing, hour by hour</h2>\n  <p>A plug-in battery earns money one way: it stores midday power the apartment cannot use and releases it later, instead of electricity bought from the utility. Because no US plug-in solar law signed so far pays for exports (see <a href=\"/balcony-solar-net-metering\">what happens to surplus power</a>), each stored kWh is worth the full retail price, and the surplus caps what a battery can do.</p>\n  <p>To measure that, balco.nyc ran NREL&rsquo;s PVWatts&nbsp;V8 hour by hour for an 800&nbsp;W vertical, south-facing railing in New York City and in Los Angeles, with the calculator&rsquo;s own parameters. The two runs reproduce the site&rsquo;s state data exactly, 635.7 and 758.3&nbsp;kWh a year; after the 0.95 railing factor the site applies to vertical panels, that is <strong>604&nbsp;kWh</strong> in New York and 720&nbsp;kWh in Los Angeles. For each of the 8,760 hours, the panel first supplied a steady apartment load of 100, 150 or 200&nbsp;W. Any surplus charged a battery with 1, 2 or 5&nbsp;kWh of usable capacity, which then fed the load whenever the panel fell short, through the evening and night, without ever exporting. Round-trip efficiency is 78%, a laboratory figure from HTW Berlin explained in section&nbsp;5.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Apartment&rsquo;s steady draw</th><th>Surplus with no battery</th><th>1&nbsp;kWh battery</th><th>2&nbsp;kWh battery</th><th>5&nbsp;kWh battery</th></tr></thead><tbody>\n    <tr><td>100&nbsp;W</td><td>328&nbsp;kWh</td><td>173&nbsp;kWh &middot; $59/yr</td><td>234&nbsp;kWh &middot; <strong>$80/yr</strong></td><td>254&nbsp;kWh &middot; $86/yr</td></tr>\n    <tr><td>150&nbsp;W</td><td>240&nbsp;kWh</td><td>138&nbsp;kWh &middot; $47/yr</td><td>181&nbsp;kWh &middot; <strong>$62/yr</strong></td><td>186&nbsp;kWh &middot; $63/yr</td></tr>\n    <tr><td>200&nbsp;W</td><td>171&nbsp;kWh</td><td>106&nbsp;kWh &middot; $36/yr</td><td>132&nbsp;kWh &middot; <strong>$45/yr</strong></td><td>134&nbsp;kWh &middot; $45/yr</td></tr>\n  </tbody></table></div>\n  <p>Extra kWh used at home each year, and their value at Con&nbsp;Edison&rsquo;s {{coned.rate_cents}}&cent; marginal rate: New York City, vertical south-facing railing, PVWatts&nbsp;V8 hourly, 0.95 railing factor, no shading, 78% round-trip efficiency, no standby draw.</p>\n  <p>balco.nyc&rsquo;s <a href=\"/balcony-solar-net-metering\">surplus-power guide</a> gave a 2&nbsp;kWh battery $24 to $89 a year, assuming 90% efficiency and including a 300&nbsp;W apartment. That estimate used 1.92&nbsp;kWh of usable capacity and emptied the battery every evening; this model carries charge from day to day, and rerun on the same assumptions it agrees to within 4&nbsp;kWh a year. The figures above are 10% to 13% lower only because they use the measured 78%. At 90% the 2&nbsp;kWh column would read $88, $70 and $52.</p>\n</section>"
+  },
+  {
+   "id": "surplus-limit",
+   "toc": "Why size barely matters",
+   "html": "        <section id=\"surplus-limit\">\n  <h2><span class=\"sec-num\">2</span>Why a bigger battery adds almost nothing</h2>\n  <p>The 5&nbsp;kWh column barely differs from the 2&nbsp;kWh one: $63 against $62 a year at 150&nbsp;W. The surplus, not the battery, is the constraint. In balco.nyc&rsquo;s New York run with a 150&nbsp;W floor, the railing&rsquo;s surplus averages <strong>0.66&nbsp;kWh a day</strong>. It is under 0.5&nbsp;kWh on 215 days of the year and over 2&nbsp;kWh on only 35.</p>\n  <p>The surplus is also seasonal. A vertical south-facing panel meets the low winter sun almost head-on, so in New York it produces most from October to March, and that is when there is anything to store: <strong>79%</strong> of the 2&nbsp;kWh battery&rsquo;s annual output comes in those six months, and in June and July it has almost nothing to do. Los Angeles is similar, at 84%.</p>\n  <p>So the first kilowatt-hour of capacity does most of the work. At 150&nbsp;W, 1&nbsp;kWh is worth $47 a year, a second kWh adds $15, and the next three add $2 between them. Expressed as the price per kWh of capacity at which a battery repays itself in 10 years, that is $537 for a 1&nbsp;kWh unit, $354 for 2&nbsp;kWh and $145 for 5&nbsp;kWh. The more the apartment already uses in daylight, the lower all three go. The same diminishing return applies to panels; see <a href=\"/balcony-solar-system-size\">how big a system to buy</a>.</p>\n</section>"
+  },
+  {
+   "id": "break-even",
+   "toc": "Break-even price",
+   "html": "        <section id=\"break-even\">\n  <h2><span class=\"sec-num\">3</span>The price at which a battery pays for itself</h2>\n  <p>The break-even price is the annual value summed over the payback period, with the calculator&rsquo;s 3% yearly rise in the electricity price and no discounting. The table does this for a 2&nbsp;kWh battery at 78% efficiency, then shows what the battery does to the payback of a whole ${{kits.mid}} mid-range kit. The kit-alone column runs the calculator&rsquo;s own payback loop, with 0.5% yearly panel degradation, at the share of output each apartment uses without a battery; the battery&rsquo;s value is held constant, before any standby draw.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>City &middot; steady draw</th><th>2&nbsp;kWh battery worth</th><th>Pays back in 10 yrs if under</th><th>In 15 yrs if under</th><th>Payback at $800</th><th>Kit alone &rarr; kit + $800 battery</th></tr></thead><tbody>\n    <tr><td>New York &middot; 100&nbsp;W</td><td>$80/yr</td><td>$911</td><td>$1,479</td><td>8.9 yrs</td><td>11.3 &rarr; 10.2 yrs</td></tr>\n    <tr><td>New York &middot; 150&nbsp;W</td><td>$62/yr</td><td>$707</td><td>$1,148</td><td>11.1 yrs</td><td>8.8 &rarr; <strong>9.6 yrs</strong></td></tr>\n    <tr><td>New York &middot; 200&nbsp;W</td><td>$45/yr</td><td>$516</td><td>$838</td><td>14.4 yrs</td><td>7.5 &rarr; 9.3 yrs</td></tr>\n    <tr><td>Los Angeles &middot; 100&nbsp;W</td><td>$92/yr</td><td>$1,059</td><td>$1,718</td><td>7.8 yrs</td><td>10.4 &rarr; 9.2 yrs</td></tr>\n    <tr><td>Los Angeles &middot; 150&nbsp;W</td><td>$77/yr</td><td>$887</td><td>$1,438</td><td>9.1 yrs</td><td>8.0 &rarr; 8.4 yrs</td></tr>\n    <tr><td>Los Angeles &middot; 200&nbsp;W</td><td>$57/yr</td><td>$649</td><td>$1,053</td><td>12.0 yrs</td><td>6.8 &rarr; 8.2 yrs</td></tr>\n  </tbody></table></div>\n  <p>New York at Con&nbsp;Edison&rsquo;s {{coned.rate_cents}}&cent;; Los Angeles at California&rsquo;s EIA average of 32.89&cent; for the 12 months to June 2026, an average that includes fixed charges and so flatters the saving. Los Angeles&rsquo;s shares are computed from its own hourly sun: without a battery, a 150&nbsp;W apartment there uses 58% of the output, against 60% in New York.</p>\n  <p>The best neutral price data balco.nyc found are German. Stiftung Warentest, the German consumer testing foundation, bought five plug-in batteries of 1.92 to 2.69&nbsp;kWh in autumn 2025 and found them selling for about &euro;700 to &euro;1,000 in February 2026, roughly <strong>$800 to $1,140</strong> at the European Central Bank&rsquo;s reference rate of $1.1411 on 23 September 2026. The consumer advice center Verbraucherzentrale Niedersachsen put them at &euro;200 to &euro;400 per kWh of capacity in July 2026, about $228 to $456. balco.nyc found no neutral survey of US prices.</p>\n  <p>At those prices a 2&nbsp;kWh battery in New York repays itself in about 9 to 14 years at $800 and 12 to 19 years at $1,140. Added to a kit, it shortens the payback only in the emptiest apartment, where the panels alone waste the most; in the 150&nbsp;W case it stretches 8.8 years to 9.6. A battery helps most where the panels are oversized for the household.</p>\n</section>"
+  },
+  {
+   "id": "time-of-use",
+   "toc": "Time-of-use pricing",
+   "html": "        <section id=\"time-of-use\">\n  <h2><span class=\"sec-num\">4</span>Where time-of-use pricing changes the answer</h2>\n  <p>A flat price undervalues a battery wherever evening electricity costs more, because evening is when it discharges: in both cities, 55% of the 150&nbsp;W apartment&rsquo;s battery output lands between 4 and 9&nbsp;pm. A time-of-use plan prices that. Southern California Edison&rsquo;s TOU-D-4-9PM plan, as SCE publishes it for customers who buy both delivery and generation from SCE, charges 58&cent; from 4 to 9&nbsp;pm on summer weekdays (46&cent; at weekends) and 34&cent; otherwise; from October to May it charges 51&cent; from 4 to 9&nbsp;pm, 33&cent; from 8&nbsp;am to 4&nbsp;pm and 37&cent; overnight. The city of Los Angeles itself buys from its municipal utility, LADWP, whose rates differ; SCE&rsquo;s plan is used here as a published example of Southern California time-of-use pricing, applied to Los Angeles&rsquo;s sun.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Los Angeles &middot; steady draw</th><th>Share of battery output 4&ndash;9&nbsp;pm</th><th>At the EIA average</th><th>At SCE TOU-D-4-9PM</th><th>Pays back in 10 yrs if under</th></tr></thead><tbody>\n    <tr><td>100&nbsp;W</td><td>38%</td><td>$92/yr</td><td>$119/yr</td><td>$1,364</td></tr>\n    <tr><td>150&nbsp;W</td><td>55%</td><td>$77/yr</td><td><strong>$105/yr</strong></td><td>$1,208</td></tr>\n    <tr><td>200&nbsp;W</td><td>75%</td><td>$57/yr</td><td>$82/yr</td><td>$937</td></tr>\n  </tbody></table></div>\n  <p>2&nbsp;kWh battery, 78% efficiency, each hour&rsquo;s output valued at that hour&rsquo;s price; summer weekday and weekend peaks are averaged five days to two. At these prices an $800 battery repays itself in about 7 years in the 150&nbsp;W case. Two cautions: SCE&rsquo;s baseline credit takes 10&cent; off every kWh within a household&rsquo;s monthly allowance, which lowers the value of each kWh saved for a household that stays under its allowance, and customers of a community choice aggregator pay a different generation price. California&rsquo;s plug-in bill, SB&nbsp;868, was presented to the Governor on 31 August 2026 and, as of 23 September 2026, awaits his decision; his deadline is 30 September. Its text says nothing about paying for exports. balco.nyc values New York at a flat {{coned.rate_cents}}&cent; and has not modeled a time-of-use plan there.</p>\n</section>"
+  },
+  {
+   "id": "losses-and-wear",
+   "toc": "Losses and wear",
+   "html": "        <section id=\"losses-and-wear\">\n  <h2><span class=\"sec-num\">5</span>Efficiency, standby power and wear</h2>\n  <p>The 78% comes from HTW Berlin&rsquo;s 2026 Stromspeicher-Inspektion, a laboratory comparison of 12 home battery systems. The batteries themselves lost little, with efficiencies of 87.9% to 97.1%. The loss is in converting stored power back to household current at low output: even in highly efficient systems, discharge efficiency fell below 95% under 500&nbsp;W and below 90% under 300&nbsp;W, and a balcony battery spends the whole evening at 100 to 200&nbsp;W. Counting both conversions and the battery, HTW measured <strong>78%</strong> for a very efficient system delivering an average 200&nbsp;W, and 63% for an inefficient one. Those are larger home systems; Stiftung Warentest measured its plug-in units too, but its figures are behind a paywall and balco.nyc found no freely published laboratory figure for plug-in batteries. Treat 78% as an estimate and 90% as an optimistic case.</p>\n  <p>Standby draw can matter as much as efficiency. Electronics, Wi-Fi and power sensors run around the clock; HTW measured 4 to 64&nbsp;W across its systems with the battery empty. In balco.nyc&rsquo;s New York model, even 4&nbsp;W, the best HTW found, cuts the 2&nbsp;kWh battery&rsquo;s value by $10 to $11 a year; 10&nbsp;W cuts the 150&nbsp;W apartment&rsquo;s $62 to $34 and the 200&nbsp;W apartment&rsquo;s $45 to about $17. A battery&rsquo;s own consumption can cancel most of what it saves.</p>\n  <p>Wear is less of a problem than it sounds. The model&rsquo;s 2&nbsp;kWh battery in New York runs 75 to 132 equivalent full cycles a year, under 2,000 in 15 years. Most plug-in batteries use lithium iron phosphate (LFP) cells, according to Verbraucherzentrale Niedersachsen, which reports that manufacturers typically claim over 6,000 cycles and give 10-year warranties. In Sandia National Laboratories&rsquo; tests of commercial cells, LFP ran 2,500 to 9,000 equivalent full cycles, and most had not yet fallen to 80% of their capacity by the end of the reported tests. Losing capacity costs less than it seems, too: at 80% capacity the model&rsquo;s New York battery is worth only 3% to 6% less, because it is rarely full. Heat, age and the electronics are likelier limits. Sandia found LFP cells lose capacity faster as temperature rises from 15 to 35&deg;C, and a battery on a sunny balcony runs warm. A 15-year payback also outlasts a 10-year warranty.</p>\n</section>"
+  },
+  {
+   "id": "nyc-rules",
+   "toc": "NYC rules and fire safety",
+   "html": "        <section id=\"nyc-rules\">\n  <h2><span class=\"sec-num\">6</span>Permission and fire rules for batteries in New York City</h2>\n  <p>New York City regulates batteries far more tightly than panels. Since 26 October 2025, Department of Buildings rules have adopted a city-modified version of NFPA&nbsp;855, the national standard for stationary energy storage. Its threshold for lithium-ion storage indoors is <strong>1&nbsp;kWh</strong>, set at FDNY&rsquo;s request to reflect the hazards of smaller systems, and its scope expressly includes &ldquo;mobile and portable ESS installed in a stationary situation.&rdquo; Unless the standard exempts it, indoor storage above the threshold must be listed to UL&nbsp;9540 and backed by UL&nbsp;9540A fire testing, hold an FDNY Certificate of Approval, and go through DOB filing, permits and registration. FDNY&rsquo;s own guide requires a Certificate of Approval for every stationary battery system except outdoor units of 2&nbsp;kWh or less, a DOB work permit for a stationary system of any size, and an FDNY inspection and permit for every indoor one. In one- and two-family houses, storage may not go in a home&rsquo;s living area or in sleeping units.</p>\n  <p>What is unclear is whether any of this reaches a consumer battery plugged into an outlet. None of these documents mentions plug-in balcony batteries, and balco.nyc found no FDNY or DOB guidance on whether one counts as an installation. Read plainly, a 2&nbsp;kWh lithium-ion unit left in place inside an apartment is above the indoor threshold, and one on a balcony would still need a DOB permit as a stationary system. Until the city says otherwise, assume a battery needs approval: ask FDNY and DOB before buying, and your landlord or board as well (see <a href=\"/balcony-solar-renters\">renters</a> and <a href=\"/balcony-solar-condo-hoa\">condos and co-ops</a>). This is not legal advice.</p>\n  <p>State law does not settle it. New York&rsquo;s SUNNY Act, which has passed both chambers and {{sunny.phrase}}, covers photovoltaic systems; its text never mentions batteries or storage. Maine&rsquo;s law, by contrast, expressly covers &ldquo;plug-in battery systems&rdquo; that connect through a standard outlet.</p>\n  <p>On fire risk, FDNY counted 268 lithium-ion battery fires in 2023 and 277 in 2024; deaths fell from 18 to 6, and to one in 2025 as of its 16 December year-end report. Its lithium-ion task force was created in response to fires caused by micromobility devices such as e-bikes, and the published totals do not separate out home storage; balco.nyc has no fire data for plug-in balcony batteries. Quality varies: in Stiftung Warentest&rsquo;s test, three of the five batteries were rated deficient for electromagnetic interference, and water got into the built-in sockets of four during a heavy-rain test, although they were approved for outdoor use.</p>\n  <p>Nor is a plug-in battery a blackout plan. Whatever feeds the wall outlet must shut off when the grid does, like any plug-in inverter (see <a href=\"/is-plug-in-solar-safe\">whether plug-in solar is safe</a>); backup comes only from a separate off-grid socket, which the Warentest units had. That is closer to a portable power station, a different product compared in <a href=\"/portable-solar-vs-plug-in-solar\">portable solar vs plug-in solar</a>.</p>\n</section>"
+  }
+ ],
+ "faq": [
+  [
+   "Is a battery worth adding to balcony solar?",
+   "Rarely in New York City. balco.nyc's hourly model of an 800 W south-facing railing finds a 2 kWh battery adds $45 to $80 a year at Con Edison's {{coned.rate_cents}}-cent rate, depending on how much the apartment already uses in daylight, so it pays back in 10 years only if it costs under about $520 to $910. Added to a ${{kits.mid}} kit, an $800 battery shortens the payback only in the lightest-use case balco.nyc modeled, an apartment drawing 100 W; at 150 W it stretches 8.8 years to 9.6."
+  ],
+  [
+   "What size battery suits an 800 W balcony solar system?",
+   "Small. In balco.nyc's New York model, an apartment drawing a steady 150 W has an average surplus of only 0.66 kWh a day, so a 1 kWh battery is worth $47 a year, 2 kWh $62 and 5 kWh $63. Beyond about 2 kWh there is almost nothing left to store, and most of the surplus a vertical south-facing panel makes comes from October to March."
+  ],
+  [
+   "How long does a balcony solar battery take to pay for itself?",
+   "In balco.nyc's New York model, a 2 kWh battery bought for $800 pays back in about 9 to 14 years depending on the household's daytime use, and one bought for $1,140 in about 12 to 19 years. That assumes 78% round-trip efficiency, no standby draw and a 3% yearly rise in electricity prices; a battery that draws power on standby takes longer, and many carry 10-year warranties."
+  ],
+  [
+   "Does time-of-use pricing make a balcony battery pay?",
+   "It helps, because a battery discharges in the evening when time-of-use prices peak. In balco.nyc's Los Angeles model, 55% of a 2 kWh battery's output falls between 4 and 9 pm for an apartment drawing 150 W, and valued at Southern California Edison's TOU-D-4-9PM prices it is worth about $105 a year, against $77 at California's EIA average price."
+  ],
+  [
+   "Can I keep a lithium-ion battery for balcony solar in my New York City apartment?",
+   "Possibly not without approval. Since 26 October 2025, New York City's Department of Buildings rules set a 1 kWh threshold for lithium-ion storage indoors, above which a system needs UL 9540 listing, an FDNY Certificate of Approval and DOB permits, and the rules cover portable storage installed in a stationary situation. Neither FDNY nor DOB has published guidance on plug-in balcony batteries specifically, so ask both before buying. This is not legal advice."
+  ],
+  [
+   "Does a balcony solar battery provide backup power in a blackout?",
+   "Not through the wall outlet. Anything feeding power into a home's outlet must shut off when the grid goes down, so a plug-in battery can supply backup only through its own separate off-grid socket, if it has one. Plug-in solar without a battery produces nothing at all during an outage."
+  ]
+ ],
+ "sources": [
+  {
+   "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+   "title": "NLR &mdash; PVWatts V8 API documentation",
+   "note": "the hourly AC output behind balco.nyc&rsquo;s battery model; the New York City and Los Angeles runs used the calculator&rsquo;s parameters and reproduce the site&rsquo;s 635.7 and 758.3&nbsp;kWh."
+  },
+  {
+   "url": "https://solar.htw-berlin.de/wp-content/uploads/HTW-aquu-Stromspeicher-Inspektion-2026.pdf",
+   "title": "HTW Berlin &mdash; Stromspeicher-Inspektion 2026 (in German)",
+   "note": "laboratory results for 12 home battery systems: battery efficiencies of 87.9&ndash;97.1%; discharge efficiency below 95% under 500&nbsp;W and below 90% under 300&nbsp;W; 78% overall for a very efficient system at 200&nbsp;W and 63% for an inefficient one; standby draw of 4 to 64&nbsp;W."
+  },
+  {
+   "url": "https://www.test.de/speicher-fuer-balkonkraftwerke-test-6278221-0/",
+   "title": "Stiftung Warentest &mdash; Speicher f&uuml;r Balkonkraftwerke im Test (19 March 2026, in German)",
+   "note": "five plug-in batteries of 1.92&ndash;2.69&nbsp;kWh with built-in inverters and off-grid sockets, bought September&ndash;October 2025, priced at about &euro;700&ndash;1,000 in February 2026; three rated deficient for electromagnetic interference; water entered the sockets of four in a heavy-rain test."
+  },
+  {
+   "url": "https://www.verbraucherzentrale-niedersachsen.de/wissen/energie/erneuerbare-energien/batteriespeicher-fuer-balkonkraftwerke-lohnt-sich-das-123659",
+   "title": "Verbraucherzentrale Niedersachsen &mdash; Batteriespeicher f&uuml;r Balkonkraftwerke: Lohnt sich das? (1 July 2026, in German)",
+   "note": "plug-in batteries often cost &euro;200&ndash;400 per kWh of capacity; most use LFP cells; manufacturers typically state over 6,000 cycles and give 10-year warranties."
+  },
+  {
+   "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html",
+   "title": "European Central Bank &mdash; euro reference exchange rate, US dollar",
+   "note": "$1.1411 per euro on 23 September 2026, used to convert the German prices."
+  },
+  {
+   "url": "https://www.osti.gov/biblio/1650174",
+   "title": "Sandia National Laboratories (Preger et al.) &mdash; Degradation of Commercial Lithium-Ion Cells as a Function of Chemistry and Cycling Conditions, <em>J. Electrochem. Soc.</em> (2020)",
+   "note": "LFP cells ran 2,500 to 9,000 equivalent full cycles in testing, most without reaching 80% capacity; LFP capacity fade increased with temperature between 15 and 35&deg;C."
+  },
+  {
+   "url": "https://www.sce.com/residential/rates/Time-Of-Use-Residential-Rate-Plans",
+   "title": "Southern California Edison &mdash; Time-of-Use residential rate plans",
+   "note": "TOU-D-4-9PM prices for bundled customers: 58&cent; (weekdays) and 46&cent; (weekends) from 4 to 9&nbsp;pm in June&ndash;September, 34&cent; otherwise; 51&cent;, 33&cent; and 37&cent; in October&ndash;May; a 10&cent; baseline credit."
+  },
+  {
+   "url": "https://www.nyc.gov/assets/buildings/rules/1_RCNY_101-19_prom_details_date.pdf",
+   "title": "NYC Department of Buildings &mdash; promulgation of 1 RCNY &sect;101-19 and &sect;3616-07",
+   "note": "effective 26 October 2025; the lithium-ion threshold was changed to 1&nbsp;kWh at FDNY&rsquo;s request; indoor storage must meet NFPA&nbsp;855, UL&nbsp;9540 and UL&nbsp;9540A and hold an FDNY Certificate of Approval; filing, permits and registration."
+  },
+  {
+   "url": "https://www.nyc.gov/assets/buildings/rules/1_RCNY_3616-07.pdf",
+   "title": "NYC Department of Buildings &mdash; 1 RCNY &sect;3616-07, NFPA 855 as amended",
+   "note": "scope includes mobile and portable storage installed in a stationary situation; Table 1.3 threshold of 1&nbsp;kWh for lithium-ion; no storage in living areas or sleeping units of one- and two-family dwellings."
+  },
+  {
+   "url": "https://www.nyc.gov/assets/fdny/downloads/pdf/business/ess-equipment-approval-installation-guide.pdf",
+   "title": "FDNY &mdash; Energy Storage System Equipment Approval and Installation Guide (April 2025)",
+   "note": "a Certificate of Approval for stationary battery systems except outdoor units of 2&nbsp;kWh or less; a DOB work permit for every stationary installation of any size; FDNY inspection and permit for every indoor system."
+  },
+  {
+   "url": "https://www.nyc.gov/site/fdny/news/69-25/the-fdny-2025-end-of-year-accomplishments",
+   "title": "FDNY &mdash; 2025 end-of-year accomplishments (16 December 2025)",
+   "note": "268 lithium-ion battery fires in 2023 and 277 in 2024; deaths of 18, 6 and one to date in 2025; the task force created in response to fires caused by micromobility devices."
+  },
+  {
+   "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+   "title": "New York State Senate &mdash; S8512C (SUNNY Act), text and actions",
+   "note": "defines the covered device as a photovoltaic system and associated equipment; the text does not mention batteries or storage."
+  },
+  {
+   "url": "https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132",
+   "title": "Maine Legislature &mdash; LD 1730, Public Law ch. 644 (35-A MRSA &sect;3475)",
+   "note": "defines and covers &ldquo;plug-in battery systems&rdquo;: AC-coupled storage connected through a standard outlet, within a 1,200&nbsp;W export limit."
+  },
+  {
+   "url": "https://www.ladwp.com/who-we-are",
+   "title": "Los Angeles Department of Water and Power &mdash; Who we are",
+   "note": "LADWP, the city&rsquo;s municipal utility, supplies electricity to residents and businesses in Los Angeles."
+  },
+  {
+   "url": "https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202520260SB868",
+   "title": "California Legislative Information &mdash; SB 868 (portable solar generation devices), history",
+   "note": "enrolled and presented to the Governor on 31 August 2026; as of 23 September 2026 no further action is listed."
+  },
+  {
+   "url": "https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf",
+   "title": "Con Edison &mdash; historical average full-service electric rates",
+   "note": "the SC-1 series behind the {{coned.rate_cents}}&cent; marginal rate used for New York City."
+  },
+  {
+   "url": "https://www.eia.gov/electricity/data/eia861m/",
+   "title": "EIA &mdash; Form EIA-861M monthly sales and revenue",
+   "note": "the data behind balco.nyc&rsquo;s California average residential price of 32.89&cent; for the 12 months to June 2026."
+  }
+ ],
+ "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not legal or financial advice, and it does not recommend any product. Battery figures are modeled from hourly PVWatts output and a constant household load, not metered; storage rules vary by city and state."
+}

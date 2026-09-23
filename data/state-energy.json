@@ -1,0 +1,219 @@
+{
+ "source": "U.S. Energy Information Administration, Form EIA-861M monthly sales and revenue by state (the data behind Electric Power Monthly Tables 5.4-5.6)",
+ "source_url": "https://www.eia.gov/electricity/data/eia861m/xls/sales_revenue.xlsx",
+ "method": "Residential price = sum(revenue) / sum(sales) over the latest 12 months, per state. An average price, so it includes fixed monthly charges.",
+ "period_label": "12 months to June 2026",
+ "period_start": "2025-07",
+ "period_end": "2026-06",
+ "data_status": "Preliminary",
+ "us_cents": 17.9,
+ "usage_source": "EIA Table 5A, 2024 average monthly residential consumption",
+ "usage_source_url": "https://www.eia.gov/electricity/sales_revenue_price/xls/table_5A.xlsx",
+ "retrieved": "2026-09-23",
+ "states": {
+  "AL": {
+   "cents": 16.39,
+   "avg_monthly_kwh": 1143.2
+  },
+  "AK": {
+   "cents": 26.74,
+   "avg_monthly_kwh": 578.3
+  },
+  "AZ": {
+   "cents": 15.4,
+   "avg_monthly_kwh": 1074.9
+  },
+  "AR": {
+   "cents": 13.31,
+   "avg_monthly_kwh": 1048.4
+  },
+  "CA": {
+   "cents": 32.89,
+   "avg_monthly_kwh": 503.2
+  },
+  "CO": {
+   "cents": 16.45,
+   "avg_monthly_kwh": 674.2
+  },
+  "CT": {
+   "cents": 28.36,
+   "avg_monthly_kwh": 694.6
+  },
+  "DE": {
+   "cents": 17.59,
+   "avg_monthly_kwh": 910.7
+  },
+  "DC": {
+   "cents": 23.96,
+   "avg_monthly_kwh": 639.4
+  },
+  "FL": {
+   "cents": 15.4,
+   "avg_monthly_kwh": 1104.1
+  },
+  "GA": {
+   "cents": 15.04,
+   "avg_monthly_kwh": 1074.0
+  },
+  "HI": {
+   "cents": 42.75,
+   "avg_monthly_kwh": 494.9
+  },
+  "ID": {
+   "cents": 12.5,
+   "avg_monthly_kwh": 943.8
+  },
+  "IL": {
+   "cents": 18.54,
+   "avg_monthly_kwh": 693.1
+  },
+  "IN": {
+   "cents": 16.88,
+   "avg_monthly_kwh": 901.1
+  },
+  "IA": {
+   "cents": 14.04,
+   "avg_monthly_kwh": 832.2
+  },
+  "KS": {
+   "cents": 14.99,
+   "avg_monthly_kwh": 875.7
+  },
+  "KY": {
+   "cents": 13.85,
+   "avg_monthly_kwh": 1046.5
+  },
+  "LA": {
+   "cents": 13.04,
+   "avg_monthly_kwh": 1201.8
+  },
+  "ME": {
+   "cents": 28.99,
+   "avg_monthly_kwh": 550.1
+  },
+  "MD": {
+   "cents": 20.75,
+   "avg_monthly_kwh": 928.8
+  },
+  "MA": {
+   "cents": 30.38,
+   "avg_monthly_kwh": 569.7
+  },
+  "MI": {
+   "cents": 20.75,
+   "avg_monthly_kwh": 618.2
+  },
+  "MN": {
+   "cents": 16.15,
+   "avg_monthly_kwh": 712.3
+  },
+  "MS": {
+   "cents": 14.66,
+   "avg_monthly_kwh": 1155.9
+  },
+  "MO": {
+   "cents": 13.89,
+   "avg_monthly_kwh": 1000.6
+  },
+  "MT": {
+   "cents": 13.77,
+   "avg_monthly_kwh": 852.2
+  },
+  "NE": {
+   "cents": 12.76,
+   "avg_monthly_kwh": 956.4
+  },
+  "NV": {
+   "cents": 13.32,
+   "avg_monthly_kwh": 929.5
+  },
+  "NH": {
+   "cents": 26.27,
+   "avg_monthly_kwh": 619.0
+  },
+  "NJ": {
+   "cents": 23.81,
+   "avg_monthly_kwh": 662.4
+  },
+  "NM": {
+   "cents": 15.28,
+   "avg_monthly_kwh": 654.1
+  },
+  "NY": {
+   "cents": 27.96,
+   "avg_monthly_kwh": 571.2
+  },
+  "NC": {
+   "cents": 14.57,
+   "avg_monthly_kwh": 1015.3
+  },
+  "ND": {
+   "cents": 12.3,
+   "avg_monthly_kwh": 1028.6
+  },
+  "OH": {
+   "cents": 18.02,
+   "avg_monthly_kwh": 845.5
+  },
+  "OK": {
+   "cents": 13.6,
+   "avg_monthly_kwh": 1079.1
+  },
+  "OR": {
+   "cents": 15.47,
+   "avg_monthly_kwh": 881.9
+  },
+  "PA": {
+   "cents": 20.47,
+   "avg_monthly_kwh": 817.2
+  },
+  "RI": {
+   "cents": 29.01,
+   "avg_monthly_kwh": 566.9
+  },
+  "SC": {
+   "cents": 15.55,
+   "avg_monthly_kwh": 1050.4
+  },
+  "SD": {
+   "cents": 14.11,
+   "avg_monthly_kwh": 993.8
+  },
+  "TN": {
+   "cents": 13.51,
+   "avg_monthly_kwh": 1153.6
+  },
+  "TX": {
+   "cents": 15.9,
+   "avg_monthly_kwh": 1096.1
+  },
+  "UT": {
+   "cents": 13.36,
+   "avg_monthly_kwh": 774.2
+  },
+  "VT": {
+   "cents": 23.65,
+   "avg_monthly_kwh": 573.7
+  },
+  "VA": {
+   "cents": 16.29,
+   "avg_monthly_kwh": 1032.4
+  },
+  "WA": {
+   "cents": 14.02,
+   "avg_monthly_kwh": 955.5
+  },
+  "WV": {
+   "cents": 15.45,
+   "avg_monthly_kwh": 1026.6
+  },
+  "WI": {
+   "cents": 18.65,
+   "avg_monthly_kwh": 645.1
+  },
+  "WY": {
+   "cents": 14.03,
+   "avg_monthly_kwh": 863.4
+  }
+ }
+}

@@ -1,0 +1,204 @@
+{
+  "slug": "balcony-solar-tax-credit",
+  "title": "Is there a tax credit for balcony solar in 2026? &middot; balco.nyc",
+  "og_title": "Is there a tax credit for balcony solar in 2026? No: the 30% federal credit ended with 2025",
+  "breadcrumb": "Tax credits",
+  "cluster": "economics",
+  "pillar": false,
+  "card_title": "Is there a tax credit for balcony solar in 2026?",
+  "card": "The 30% federal credit ended with 2025. What it was worth, and which state tax breaks might apply.",
+  "llms": "why no federal tax credit applies to balcony solar installed in 2026, what the lost 30% would have done to payback in every state, and which state sales-tax exemptions might still apply to a plug-in kit.",
+  "related": [
+    "balcony-solar-cost",
+    "is-balcony-solar-worth-it",
+    "balcony-solar-laws-compared"
+  ],
+  "description": "No. The 30% federal credit ended for systems installed after 2025. What it was worth in each state, whether it ever covered plug-in kits, and state tax breaks.",
+  "eyebrow": "Tax credits",
+  "h1": "Is there a tax credit for balcony solar in 2026?",
+  "lede": "No. The 30% federal Residential Clean Energy Credit (IRC&nbsp;&sect;25D) does not cover anything installed in 2026: the One Big Beautiful Bill Act ended it for expenditures made after 31 December 2025, and the IRS counts an expenditure as made when installation is completed, not when you pay. On a ${{kits.mid}} mid-range kit the credit would have been worth $360. balco.nyc&rsquo;s PVWatts runs for the largest city in every state put the median payback at <strong>9.9 years at full price against 7.1 years at $840</strong>, so losing the credit adds a median 2.7 years.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~9 minutes",
+  "tags": [
+    "No federal credit in 2026",
+    "$360 on a ${{kits.mid}} kit",
+    "+2.7 years median payback"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "what-it-was-worth",
+      "toc": "No federal credit, and what it was worth",
+      "html": "        <section id=\"what-it-was-worth\">\n  <h2><span class=\"sec-num\">1</span>No federal credit in 2026, and what it would have been worth</h2>\n  <p>The credit solar sellers used to quote was the Residential Clean Energy Credit in section&nbsp;25D of the Internal Revenue Code: 30% of the cost of qualified solar electric property, with no dollar cap. Section&nbsp;70506 of Public Law 119-21, the One Big Beautiful Bill Act signed on 4 July 2025, rewrote its termination clause so that the credit &ldquo;shall not apply with respect to any expenditures made after December 31, 2025.&rdquo; The same act ended the separate home-improvement credit in section&nbsp;25C. There is no replacement federal credit for a household buying solar in 2026, plug-in or rooftop.</p>\n  <p>To put a number on what went away, balco.nyc reran its state-by-state payback with the credit restored. The method is the one behind the <a href=\"/states\">state pages</a>: an 800&nbsp;W kit on an unshaded south-facing railing in each state&rsquo;s largest city, NREL PVWatts&nbsp;V8 output multiplied by the 0.95 railing factor for a vertical panel, valued at the state&rsquo;s EIA average residential price for the 12 months to June 2026, with output falling 0.5% a year and prices rising 3% a year. The only thing that changes is the price: ${{kits.mid}} for a mid-range kit, or $840 after a 30% credit.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>State (reference city)</th><th>Output, kWh/yr</th><th>Average price</th><th>Payback at ${{kits.mid}}</th><th>Payback at $840</th><th>Credit was worth</th></tr></thead><tbody>\n    <tr><td>Maine (Portland)</td><td>692</td><td>28.99&cent;</td><td>5.6 years</td><td>4.0 years</td><td>1.6 years</td></tr>\n    <tr><td>New York (New York City)</td><td>604</td><td>27.96&cent;</td><td>6.6 years</td><td>4.7 years</td><td>1.9 years</td></tr>\n    <tr><td>Maryland (Baltimore)</td><td>673</td><td>20.75&cent;</td><td>7.9 years</td><td>5.7 years</td><td>2.2 years</td></tr>\n    <tr><td>Colorado (Denver)</td><td>805</td><td>16.45&cent;</td><td>8.3 years</td><td>6.0 years</td><td>2.3 years</td></tr>\n    <tr><td>Utah (Salt Lake City)</td><td>724</td><td>13.36&cent;</td><td>10.9 years</td><td>8.0 years</td><td>3.0 years</td></tr>\n    <tr><td><strong>Median, 50 states and DC</strong></td><td>&mdash;</td><td>&mdash;</td><td><strong>9.9 years</strong></td><td><strong>7.1 years</strong></td><td><strong>2.7 years</strong></td></tr>\n  </tbody></table></div>\n  <p>Three things follow from the full 51-row run. The credit was worth most, in years, where electricity is cheapest: 1.6 years in Maine, 3.0 in Utah, and 3.7 in Washington, which has the longest payback of the 51. With the credit, the mid-range kit would pay back inside ten years in 50 of the 51; at full price, 28 do. And a 30% price cut shortens payback by a little less than 30% &mdash; a median 28% &mdash; because the years it removes are the late ones, when rising prices make each year&rsquo;s saving larger. Differences in the table are computed before rounding.</p>\n  <p>Every figure here is a ceiling, not an expectation. It assumes an unshaded railing and that every kilowatt-hour is used in the home, since the model treats surplus power as earning nothing, which is how most of the new plug-in laws work. The EIA figures are averages that include fixed monthly charges a panel does not reduce, which flatters the value of each kWh. New York&rsquo;s row uses the state average, not the {{coned.rate_cents}}&cent; Con Edison marginal rate balco.nyc uses for <a href=\"/electricity-rate\">New York City addresses</a>.</p>\n</section>"
+    },
+    {
+      "id": "timing-rule",
+      "toc": "When an expenditure counted as &ldquo;made&rdquo;",
+      "html": "        <section id=\"timing-rule\">\n  <h2><span class=\"sec-num\">2</span>When an expenditure counted as &ldquo;made&rdquo;</h2>\n  <p>The cut-off is not the day you paid. Section&nbsp;25D(e)(8)(A) has long said that an expenditure is treated as made &ldquo;when the original installation of the item is completed.&rdquo; In its August 2025 questions and answers on the new law (Fact Sheet 2025-05, question 7), the IRS applied that rule to the termination directly: paying on or before 31 December 2025 does not preserve the credit if installation is completed afterwards.</p>\n  <p>For a plug-in kit the consequence is plain. A kit bought in December 2025 but mounted and switched on in January 2026 is outside the credit on the IRS&rsquo;s reading. The IRS has not said what &ldquo;installation completed&rdquo; means for a device you clamp to a railing and plug in yourself. The natural reading is the day it was mounted and running, but we could not find the point addressed anywhere.</p>\n  <p>The IRS&rsquo;s own credit page words the cut-off differently &mdash; the credit &ldquo;is not available for any property placed in service after December 31, 2025&rdquo; &mdash; and tells filers to claim it for the year the property &ldquo;is installed, not merely purchased.&rdquo; Both formulations point the same way, and the statute&rsquo;s test, the one the IRS applied in its FAQ, is completed installation.</p>\n  <p>What survives is narrow. A system installed in 2025 is claimed on the 2025 return, and the IRS says a taxpayer who missed it can generally amend within three years of filing or two years of paying the tax, whichever is later. Unused credit carries forward to later years. All of that assumes a plug-in kit was eligible in the first place, which is the question in section&nbsp;4. None of this is tax advice; a preparer can tell you how it applies to your return.</p>\n</section>"
+    },
+    {
+      "id": "thirty-percent-off",
+      "toc": "Why &ldquo;30% off&rdquo; pages are wrong",
+      "html": "        <section id=\"thirty-percent-off\">\n  <h2><span class=\"sec-num\">3</span>Why &ldquo;30% off with the federal tax credit&rdquo; is now wrong</h2>\n  <p>Kit listings, comparison pages and articles written before the summer of 2025 often advertise a plug-in kit as &ldquo;30% off with the federal tax credit,&rdquo; or print a net price with the credit already subtracted. Many are still online and still turn up in search. For any kit installed in 2026 the claim is wrong for the simplest reason: the credit no longer exists for new installations. Web pages are rarely rewritten when a tax law changes, and a price with 30% taken off is the most flattering number a seller can show.</p>\n  <p>The claim was loose even while the credit existed. Section&nbsp;25D was never a discount at checkout. It was a nonrefundable credit claimed on IRS Form&nbsp;5695 when you filed, limited to the tax you owed that year, with any excess carried forward. A household with little federal income tax got little or nothing in the year it installed the kit. And no seller could promise eligibility: that was between the taxpayer and the IRS, and for plug-in kits the IRS never addressed it.</p>\n  <p>The practical rule for 2026: compare kits on the sticker price. If a page shows a price &ldquo;after tax credit,&rdquo; divide it by 0.7 to recover the real one &mdash; an $840 net price is a ${{kits.mid}} kit. balco.nyc&rsquo;s own <a href=\"/balcony-solar-cost\">cost and payback figures</a> are gross, with no federal credit netted out.</p>\n</section>"
+    },
+    {
+      "id": "did-it-ever-apply",
+      "toc": "Did 25D ever cover a plug-in kit?",
+      "html": "        <section id=\"did-it-ever-apply\">\n  <h2><span class=\"sec-num\">4</span>Did 25D ever clearly cover a plug-in kit?</h2>\n  <p>Plausibly, but nobody with authority said so. The statutory definition is broad: a qualified solar electric property expenditure is one &ldquo;for property which uses solar energy to generate electricity for use in a dwelling unit&rdquo; in the United States that the taxpayer uses as a residence (&sect;25D(d)(2)). Nothing in it sets a minimum size or requires a roof, a licensed installer, net metering or the utility&rsquo;s approval. The IRS&rsquo;s FAQ adds that the taxpayer may rent the home, which is unusual for a tax break on equipment and mattered for apartment dwellers. For solar, the home did not have to be a main residence either; a second home the taxpayer lived in part-time counted.</p>\n  <p>What was never settled is how a device built to be moved fits a credit organized around installation. The timing rule keys to &ldquo;original installation,&rdquo; the IRS told filers to claim the year the property was installed, and several of the new state laws define plug-in devices as moveable or portable. We found no IRS ruling, FAQ, form instruction or publication that addresses plug-in or portable solar. One edge is clear: a battery bundled with a kit counted as battery storage technology only if its capacity was at least 3&nbsp;kWh.</p>\n  <p>There was also a practical wrinkle. On balco.nyc&rsquo;s state research, Utah was the only state with a plug-in solar law in force during 2025; everywhere else, connecting a kit meant going through the utility&rsquo;s interconnection rules. The tax code did not make the credit depend on that, but a claim could have rested on an installation the utility had not approved. The honest summary is eligible on the text, untested in practice, and moot for anything installed from 2026.</p>\n</section>"
+    },
+    {
+      "id": "state-incentives",
+      "toc": "State tax breaks in the plug-in states",
+      "html": "        <section id=\"state-incentives\">\n  <h2><span class=\"sec-num\">5</span>State tax breaks in the plug-in states</h2>\n  <p>We checked every state with a plug-in solar law in force or signed &mdash; Utah, Maine, Colorado, Maryland, Vermont, Connecticut, Virginia, New Hampshire and New Jersey &mdash; plus New York, whose SUNNY Act has passed both chambers and {{sunny.phrase}}. None has a state income-tax credit or rebate that plainly covers a self-installed plug-in kit. Five exempt solar equipment from sales tax in wording a kit plausibly fits, though none of the guidance we found mentions plug-in systems.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>State</th><th>What exists</th><th>Does it fit a plug-in kit?</th></tr></thead><tbody>\n    <tr><td>New York</td><td>Solar energy system equipment credit, 25% up to $5,000 (Tax Law &sect;606(g-1)). State sales-tax exemption for residential solar equipment; New York City charges no local tax on it.</td><td><strong>Credit: probably not.</strong> The IT-255 instructions require a net-metering contract (or compliance with the utility&rsquo;s net-metering schedule) and a connection to the utility&rsquo;s system; the SUNNY Act would exempt plug-in devices from net metering. <strong>Sales tax: plausibly</strong>, if a kit counts as equipment &ldquo;installed in a residence&rdquo;. Claimed with Form ST-121.</td></tr>\n    <tr><td>New Jersey</td><td>Sales-tax exemption for solar energy devices that provide electrical power (N.J.S.A. 54:32B-8.33)</td><td>Plausibly. Claimed with Form ST-4.</td></tr>\n    <tr><td>Connecticut</td><td>Sales-tax exemption for solar electricity generating systems, defined as systems that convert sunlight directly into electricity, including modules, inverters and mounting hardware</td><td>Plausibly. Claimed with Form CERT-140.</td></tr>\n    <tr><td>Maryland</td><td>Sales-tax exemption for solar energy equipment that generates electricity &ldquo;to be used in a structure or supplied to the electric grid&rdquo; (Tax-General &sect;11-230). Maryland Solar Access Program rebate of $750 per kW DC.</td><td><strong>Exemption: plausibly.</strong> <strong>Rebate: no.</strong> It is for income-qualified homeowners, requires a participating contractor and pays after interconnection.</td></tr>\n    <tr><td>Colorado</td><td>Sales-tax exemption for components that produce alternating-current electricity from a renewable source, including solar modules and inverters</td><td>Plausibly, but only for state and some special-district taxes. Most city and county taxes still apply unless adopted locally, and home-rule cities set their own.</td></tr>\n    <tr><td>Vermont</td><td>Renewable-energy equipment is generally taxable; the home exemptions cover off-grid systems and solar water heating</td><td>No. A plug-in device is grid-connected and cannot be net metered.</td></tr>\n    <tr><td>Utah</td><td>Renewable Energy Systems Tax Credit</td><td>No. Residential solar installed in 2024 or later is not eligible.</td></tr>\n    <tr><td>New Hampshire</td><td>Residential Renewable Electrical Generation Rebate</td><td>No. The program is permanently closed.</td></tr>\n    <tr><td>Maine, Virginia</td><td>We found no state credit, rebate or sales-tax exemption that applies</td><td>We could not confirm that none exists.</td></tr>\n  </tbody></table></div>\n  <p>An exemption is worth the sales tax you would otherwise pay. New York City is the largest case: residential solar equipment is exempt from the 4% state tax and the 0.375% Metropolitan Commuter Transportation District tax, and the city&rsquo;s own rate on it is zero, so a qualifying ${{kits.mid}} kit would avoid the full 8.875% combined rate, or <strong>$106.50</strong>. That is under a third of the $360 the federal credit used to be worth, and it depends on a retailer accepting an exemption certificate for a product the rules never contemplated. Ask before you pay: the exemption is normally claimed by giving the seller a certificate at the time of sale. In New York the question is also premature, since until the SUNNY Act is signed and takes effect the utility&rsquo;s approval is still required to connect a kit.</p>\n  <p>This is not legal or tax advice. Sales-tax treatment can turn on facts the published guidance does not address, local rates vary, and we found no state agency that has ruled on a plug-in kit. For what each state&rsquo;s law allows, see <a href=\"/balcony-solar-laws-compared\">how the state laws compare</a> or the individual <a href=\"/states\">state pages</a>; for whether a kit is worth buying at full price, see <a href=\"/is-balcony-solar-worth-it\">is balcony solar worth it</a>.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Is there a federal tax credit for balcony solar in 2026?",
+      "No. The 30% Residential Clean Energy Credit under section 25D of the Internal Revenue Code was ended by the One Big Beautiful Bill Act (Public Law 119-21, signed 4 July 2025) for expenditures made after 31 December 2025. There is no replacement federal credit for household solar, plug-in or rooftop."
+    ],
+    [
+      "I paid for a balcony solar kit in December 2025 but set it up in January 2026. Can I claim the 30% credit?",
+      "Not on the IRS's reading. Section 25D treats an expenditure as made when the original installation is completed, and the IRS's August 2025 FAQ says that paying on or before 31 December 2025 does not preserve the credit if installation was completed afterwards."
+    ],
+    [
+      "Did the 30% federal credit ever cover plug-in balcony solar?",
+      "Plausibly, but it was never confirmed. The statute covers property that uses solar energy to generate electricity for use in a home the taxpayer lives in, including a rented one, with no minimum size or interconnection requirement. But the credit is organized around installation, and the IRS never issued guidance on plug-in or portable systems. The question is moot for anything installed from 2026."
+    ],
+    [
+      "How much longer does balcony solar take to pay back without the tax credit?",
+      "balco.nyc's model of an 800 W kit on a south-facing railing in each state's largest city puts the median payback on a ${{kits.mid}} kit at 9.9 years, against 7.1 years at the $840 it would have cost after a 30% credit: about 2.7 years longer. The gap ranges from 1.4 years in California to 3.7 years in Washington, and every figure is a ceiling that assumes no shade and full self-consumption."
+    ],
+    [
+      "Does New York's solar tax credit apply to a plug-in balcony system?",
+      "Probably not. New York's solar energy system equipment credit (25% up to $5,000) requires, for systems that make electricity, a net-metering contract with the utility or compliance with its net-metering schedule, and a connection to the utility's system. The SUNNY Act, which has passed both chambers and {{sunny.phrase}}, would exempt plug-in devices from net metering. We could not confirm how the two would interact."
+    ],
+    [
+      "Is a balcony solar kit exempt from sales tax?",
+      "In some states, plausibly. New York, New Jersey, Connecticut, Maryland and Colorado exempt solar equipment from sales tax in wording a plug-in kit appears to fit, though no guidance we found mentions plug-in systems, and Colorado's exemption covers only state and some special-district taxes. Vermont's does not fit a grid-connected plug-in device. The exemption is normally claimed with a certificate at the time of sale."
+    ],
+    [
+      "Are there state rebates for balcony solar?",
+      "None that we found for a self-installed plug-in kit in the states with plug-in laws. Maryland's Solar Access Program requires a participating contractor and interconnection, New Hampshire's residential solar rebate is permanently closed, and Utah's residential solar credit ended for systems installed in 2024 or later."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm",
+      "title": "U.S. Government Publishing Office &mdash; Public Law 119-21 (One Big Beautiful Bill Act)",
+      "note": "enacted 4 July 2025; section 70506 (139 Stat. 251) amends &sect;25D(h) so the credit does not apply to expenditures made after 31 December 2025, and section 70505 ends &sect;25C."
+    },
+    {
+      "url": "https://www.congress.gov/bill/119th-congress/house-bill/1/text",
+      "title": "Congress.gov &mdash; H.R.1, 119th Congress, text",
+      "note": "the same enacted text, including section 70506."
+    },
+    {
+      "url": "https://www.law.cornell.edu/uscode/text/26/25D",
+      "title": "Legal Information Institute &mdash; 26 U.S. Code &sect;25D, Residential clean energy credit",
+      "note": "the current statutory text: the solar electric definition in (d)(2), the installation timing rule in (e)(8) and the amended termination in (h)."
+    },
+    {
+      "url": "https://www.irs.gov/newsroom/faqs-for-modification-of-sections-25c-25d-25e-30c-30d-45l-45w-and-179d-under-public-law-119-21-139-stat-72-july-4-2025-commonly-known-as-the-one-big-beautiful-bill-obbb",
+      "title": "IRS &mdash; Fact Sheet 2025-05, FAQs on Public Law 119-21 (21 August 2025)",
+      "note": "question 7: paying by 31 December 2025 does not preserve the credit if installation is completed after that date."
+    },
+    {
+      "url": "https://www.irs.gov/credits-deductions/residential-clean-energy-credit",
+      "title": "IRS &mdash; Residential Clean Energy Credit",
+      "note": "the credit is not available for property placed in service after 31 December 2025; it is nonrefundable, claimed on Form 5695 for the year the property is installed, with unused credit carried forward; battery storage needs at least 3 kWh."
+    },
+    {
+      "url": "https://www.irs.gov/credits-deductions/frequently-asked-questions-about-energy-efficient-home-improvements-and-residential-clean-energy-property-credits-residential-clean-energy-property-credit-qualifying-residence",
+      "title": "IRS &mdash; Residential clean energy property credit FAQ: qualifying residence",
+      "note": "for solar, the taxpayer may rent the home, and a second home used as a residence can qualify."
+    },
+    {
+      "url": "https://www.irs.gov/credits-deductions/frequently-asked-questions-about-energy-efficient-home-improvements-and-residential-clean-energy-property-credits-residential-clean-energy-property-credit-timing-of-credits",
+      "title": "IRS &mdash; Residential clean energy property credit FAQ: timing of credit",
+      "note": "a missed credit can generally be claimed on an amended return within three years of filing or two years of paying the tax."
+    },
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "NLR (formerly NREL) &mdash; PVWatts V8 API",
+      "note": "the production model behind balco.nyc&rsquo;s state runs."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia861m/",
+      "title": "EIA &mdash; Form EIA-861M monthly sales and revenue",
+      "note": "the state average residential prices (12 months to June 2026, preliminary) used in the payback table."
+    },
+    {
+      "url": "https://www.tax.ny.gov/pdf/current_forms/it/it255i.pdf",
+      "title": "New York State Department of Taxation and Finance &mdash; Instructions for Form IT-255",
+      "note": "the 25% / $5,000 solar credit, and its requirement of a net-metering contract and utility connection for systems that make electricity."
+    },
+    {
+      "url": "https://www.tax.ny.gov/pubs_and_bulls/tg_bulletins/st/solar_energy_equipment.htm",
+      "title": "New York State Department of Taxation and Finance &mdash; Residential solar energy systems equipment",
+      "note": "the state and MCTD sales-tax exemption, its definition, and the Form ST-121 claim."
+    },
+    {
+      "url": "https://www.tax.ny.gov/pdf/publications/sales/pub718s.pdf",
+      "title": "New York State Department of Taxation and Finance &mdash; Publication 718-S",
+      "note": "New York City&rsquo;s local rate on residential solar equipment is zero."
+    },
+    {
+      "url": "https://www.tax.ny.gov/pdf/publications/sales/pub718.pdf",
+      "title": "New York State Department of Taxation and Finance &mdash; Publication 718",
+      "note": "the 8&#8542;% combined sales tax rate in New York City."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "New York State Senate &mdash; S8512C (SUNNY Act)",
+      "note": "plug-in devices would not be subject to interconnection or net-metering requirements; the bill contains no tax provision."
+    },
+    {
+      "url": "https://www.nj.gov/treasury/taxation/pdf/pubs/sales/su6.pdf",
+      "title": "New Jersey Division of Taxation &mdash; Tax Topic Bulletin S&amp;U-6, Sales Tax Exemption Administration",
+      "note": "solar energy devices that provide electrical power are exempt, claimed with Form ST-4."
+    },
+    {
+      "url": "https://portal.ct.gov/drs/publications/special-notices/2007/sn-2007-7",
+      "title": "Connecticut Department of Revenue Services &mdash; SN 2007(7)",
+      "note": "the sales-tax exemption for solar electricity generating systems and the items it covers."
+    },
+    {
+      "url": "https://portal.ct.gov/drs/sales-tax/exemptions-from-sales-and-use-taxes",
+      "title": "Connecticut Department of Revenue Services &mdash; Exemptions from sales and use taxes",
+      "note": "the current list, which still exempts solar energy electricity generating systems with Form CERT-140."
+    },
+    {
+      "url": "https://mgaleg.maryland.gov/mgawebsite/laws/StatuteText?article=gtg&enactments=false&section=11-230",
+      "title": "Maryland General Assembly &mdash; Tax-General &sect;11-230",
+      "note": "the sales-tax exemption for solar energy equipment."
+    },
+    {
+      "url": "https://energy.maryland.gov/residential/SiteAssets/Pages/incentives/Maryland-Solar-Access-Program/FY27%20MSAP%20Funding%20Opportunity%20Announcement%20-%20Issued%207.29.26%20v2.pdf",
+      "title": "Maryland Energy Administration &mdash; FY27 Maryland Solar Access Program announcement",
+      "note": "the $750 per kW DC rebate, income limits, participating-contractor rule and payment after interconnection."
+    },
+    {
+      "url": "https://tax.colorado.gov/sites/tax/files/documents/SUTT_Renewable_Energy_Components_Sep_2021.pdf",
+      "title": "Colorado Department of Revenue &mdash; Sales &amp; Use Tax Topics: Renewable Energy Components",
+      "note": "the exemption for solar modules and inverters, and its limits for city, county and home-rule taxes."
+    },
+    {
+      "url": "https://tax.vermont.gov/sites/tax/files/documents/FS-1182.pdf",
+      "title": "Vermont Department of Taxes &mdash; FS-1182, Sales and Use Tax Applied on Renewable Energy Generation Facilities",
+      "note": "renewable-system equipment is generally taxable; the home exemptions cover off-grid systems and solar water heating."
+    },
+    {
+      "url": "https://energy.utah.gov/homepage/tax-credits/renewable-energy-systems-tax-credit/",
+      "title": "Utah Office of Energy Development &mdash; Renewable Energy Systems Tax Credit",
+      "note": "residential solar PV installed in 2024 and later is not eligible."
+    },
+    {
+      "url": "https://www.energy.nh.gov/renewable-energy/renewable-energy-rebates",
+      "title": "New Hampshire Department of Energy &mdash; Renewable Energy Rebates",
+      "note": "the residential renewable electrical generation rebate program is permanently closed."
+    }
+  ]
+}

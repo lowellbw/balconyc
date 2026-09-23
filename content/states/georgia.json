@@ -1,0 +1,35 @@
+{
+ "intro_html": "<p>HB&nbsp;1304 died with the 2025&ndash;26 session, so any plug-in bill must start over when the legislature returns in January 2027. Atlanta is Georgia Power territory, and it publishes two routes for a home generator, RNR and Energy Offset Only. Both begin with an application through its PowerClerk tool that lists a one-line drawing and the panel and inverter specifications. The RNR-11 tariff, which covers residential systems up to 10&nbsp;kW, adds that customers &ldquo;must enter into a written RNR Service Agreement with the Company prior to the interconnection or operation&rdquo; of a system, and that the interconnection fee must be paid before Georgia Power grants permission to operate.</p>\n  <p>We found no Georgia statute that limits a condominium or homeowners association&rsquo;s power to refuse solar. HB&nbsp;389, whose title limited it to solar devices on roofs, died in committee with the same session. A condo owner, like a renter, needs permission.</p>\n  <p>The payback figures below assume electricity prices rise 3% a year. Georgia Power&rsquo;s base rates, which exclude fuel, are frozen through at least the end of 2028 under a plan the Public Service Commission approved in July 2025, though fuel and storm costs can still move bills. balco.nyc&rsquo;s calculator lets you set your own rate for a specific Atlanta address.</p>",
+ "sources": [
+  {
+   "url": "https://www.georgiapower.com/residential/solutions/solar/rooftop-installations/faqs.html",
+   "title": "Georgia Power &mdash; Residential rooftop solar FAQs",
+   "note": "RNR and Energy Offset Only programs both require a PowerClerk application with a one-line drawing and panel and inverter specifications."
+  },
+  {
+   "url": "https://www.georgiapower.com/content/dam/georgia-power/pdfs/residential-pdfs/residential-rate-plans/RNR-11.pdf",
+   "title": "Georgia Power &mdash; Electric Service Tariff: Renewable and Nonrenewable Resources (RNR-11)",
+   "note": "written RNR Service Agreement required before interconnection or operation; fee paid before permission to operate; residential systems up to 10 kW AC."
+  },
+  {
+   "url": "https://www.georgiapower.com/news-hub/press-releases/georgia-psc-approves-plan-to-freeze-base-rates-through-2028.html",
+   "title": "Georgia Power &mdash; Georgia PSC approves plan to freeze Georgia Power base rates through at least 2028 (1 July 2025)",
+   "note": "base rates, exclusive of fuel, held through at least the end of 2028; storm costs handled separately."
+  },
+  {
+   "url": "https://www.billtrack50.com/billdetail/1828492",
+   "title": "BillTrack50 &mdash; GA HB 389 (2025&ndash;2026)",
+   "note": "bill to bar associations from preventing roof-mounted solar devices; last action in committee, dead 2 April 2026."
+  }
+ ],
+ "faq": [
+  [
+   "Does Georgia Power have to approve a small solar panel?",
+   "Georgia Power publishes two routes for customer generation, RNR and Energy Offset Only, and both begin with an application through its PowerClerk tool listing the panel and inverter specifications. Its RNR-11 tariff requires a written agreement before a system is interconnected or operated. Georgia has no plug-in solar law exempting small devices."
+  ],
+  [
+   "Can a Georgia HOA or condo board ban solar panels?",
+   "We found no Georgia statute that limits an association&rsquo;s power to refuse solar. HB&nbsp;389, which would have barred associations from preventing solar devices on common roofs, died in committee when the 2025&ndash;26 session ended. The declaration and rules decide; this is not legal advice."
+  ]
+ ]
+}

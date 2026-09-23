@@ -360,6 +360,65 @@ const ShadowModel = {
     return profile;
   },
 
+  // ============================================================
+  // Described surroundings — outside NYC there is no building data
+  // ============================================================
+
+  /**
+   * Horizon profile for a balcony facing a continuous wall across a street.
+   *
+   * Outside New York City there is no PLUTO or footprint data, so the
+   * visitor describes what stands opposite and roughly how far away. That
+   * is modelled as an infinitely long wall parallel to the facade: looking
+   * out at angle phi from the facade normal, the wall is D / cos(phi) away,
+   * so it rises to
+   *
+   *     beta(phi) = atan( max(0, H - h) * cos(phi) / D ),   |phi| < 90 deg
+   *
+   * and behind the facade (|phi| >= 90 deg) nothing is recorded, exactly as
+   * buildHorizonProfile() ignores the target building itself. An infinite
+   * wall has no gaps or cross streets, so it overstates obstruction a little:
+   * a described estimate errs low, never high.
+   *
+   * @param {{facadeAzimuthDeg: number, balconyHeightM: number,
+   *          obstructionHeightM: number, distanceM: number}} p
+   * @returns {Float64Array} obstruction altitude (radians) per azimuth bin
+   */
+  synthesizeStreetCanyon(p) {
+    const n = this.HORIZON_BINS;
+    const profile = new Float64Array(n).fill(-Math.PI / 2);
+    const rise = Math.max(0, (p.obstructionHeightM || 0) - (p.balconyHeightM || 0));
+    const dist = Math.max(1, p.distanceM || 0);
+    if (rise <= 0) return profile;                // nothing taller than the balcony
+
+    const facade = (p.facadeAzimuthDeg || 0) * Math.PI / 180;
+    for (let b = 0; b < n; b++) {
+      const az = (b + 0.5) / n * 2 * Math.PI;     // bin centre
+      let phi = az - facade;
+      while (phi > Math.PI) phi -= 2 * Math.PI;
+      while (phi < -Math.PI) phi += 2 * Math.PI;
+      const c = Math.cos(phi);
+      if (c <= 0) continue;
+      profile[b] = Math.atan(rise * c / dist);
+    }
+    return profile;
+  },
+
+  /**
+   * Initialise the model from a ready-made horizon profile, with no 3D scene.
+   * Used for described surroundings; computeAnnualShadeProfile() and
+   * directSunHours() then run unchanged.
+   * @param {{azimuthDeg: number, balconyHeightM: number, horizonProfile: Float64Array}} p
+   */
+  initSynthetic(p) {
+    this.balconyAzimuth = (p.azimuthDeg || 0) * Math.PI / 180;
+    this.targetBalconyPoint = { x: 0, y: p.balconyHeightM || 0, z: 0 };
+    this.horizonProfile = p.horizonProfile;
+    this.floor = p.floor || 1;
+    this.totalFloors = p.totalFloors || this.floor;
+    this.initialized = true;
+  },
+
   /**
    * Angle-of-incidence cosine of a sky direction on the panel.
    * Standard tilted-surface formula; reduces to cos(alt)·cos(Δazimuth)
@@ -420,9 +479,11 @@ const ShadowModel = {
    * An unobstructed balcony therefore returns 1.0 at every orientation.
    *
    * @param {number} [tiltDeg=90] - panel tilt from horizontal
+   * @param {{monthlyWeights?: number[]}} [opts] - how to weight months into
+   *   the annual figure; defaults to NYC's monthly GHI share
    * @returns {{ monthlyShadeFactors: number[], annualShadeFactor: number, skyOpenFraction: number }}
    */
-  computeAnnualShadeProfile(tiltDeg) {
+  computeAnnualShadeProfile(tiltDeg, opts) {
     const tilt = tiltDeg || 90;
     const tiltRad = tilt * Math.PI / 180;
 
@@ -470,9 +531,15 @@ const ShadowModel = {
       monthlyFactors.push(Math.max(0.10, Math.min(1, factor)));
     }
 
-    // Annual = weighted average using the NYC monthly GHI distribution
-    const ghiWeights = [0.056, 0.068, 0.082, 0.092, 0.105, 0.112,
+    // Annual = weighted average of the months. The calculator applies the
+    // monthly factors to monthly output, so this figure is for display; the
+    // weights default to NYC's monthly GHI share.
+    const nycWeights = [0.056, 0.068, 0.082, 0.092, 0.105, 0.112,
                         0.114, 0.103, 0.088, 0.073, 0.056, 0.051];
+    const given = opts && Array.isArray(opts.monthlyWeights) && opts.monthlyWeights.length === 12
+      ? opts.monthlyWeights : null;
+    const weightSum = given ? given.reduce((a, b) => a + b, 0) : 1;
+    const ghiWeights = given && weightSum > 0 ? given.map(w => w / weightSum) : nycWeights;
     let annualFactor = 0;
     for (let i = 0; i < 12; i++) {
       annualFactor += monthlyFactors[i] * ghiWeights[i];

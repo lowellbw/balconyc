@@ -1,0 +1,25 @@
+{
+ "intro_html": "<p>The GRID Amendment Act has had a public hearing but no committee vote, and it lapses if it has not passed when Council Period&nbsp;26 ends in January 2027; even an act the Council passes must then clear congressional review. Until then Pepco&rsquo;s interconnection process applies. In the District an inverter-based system of 20&nbsp;kW or less is a Level&nbsp;1 application with no fee, but every application also needs a net energy metering contract, and the process runs through a city electrical inspection and a net-capable meter. Pepco puts the whole thing at about 80&nbsp;business days.</p>\n  <p>Condo and co-op owners in the District already have a statutory solar right. D.C. Code &sect;8-1774.51 bars homeowners, condominium and cooperative associations from prohibiting a &ldquo;solar energy collection device&rdquo;, which expressly includes &ldquo;solar photovoltaic apparatus&rdquo;, on an owner&rsquo;s &ldquo;property or residential unit&rdquo;, and limits them to non-aesthetic guidelines aimed at preventing nuisance. But an association may still prohibit devices on the &ldquo;common elements&rdquo;, so whether a balcony panel is protected turns on whether the condominium declaration makes the balcony part of the unit or a common element. Renters get no comparable right.</p>\n  <p>balco.nyc&rsquo;s calculator models a specific Washington address and lets you enter the rate from your own Pepco bill.</p>",
+ "sources": [
+  {
+   "url": "https://code.dccouncil.gov/us/dc/council/code/sections/8-1774.51",
+   "title": "Council of the District of Columbia &mdash; D.C. Code &sect;8-1774.51",
+   "note": "associations may not prohibit solar energy collection devices on an owner&rsquo;s property or residential unit; may prohibit them on common elements; non-aesthetic guidelines only (D.C. Law 22-142, 2018)."
+  },
+  {
+   "url": "https://www.pepco.com/SmartEnergy/MyGreenPowerConnection/Pages/ConnectingYourSystemtotheGrid.aspx",
+   "title": "Pepco &mdash; Connecting your system to the grid",
+   "note": "DC Level 1 for inverter-based systems of 20 kW or less, no application fee; net energy metering contract required; inspection and net-capable meter; about 80 business days."
+  }
+ ],
+ "faq": [
+  [
+   "Can a DC condo association ban solar panels?",
+   "Not on the owner&rsquo;s own property or unit. D.C. Code &sect;8-1774.51 bars homeowners, condominium and cooperative associations from prohibiting a solar energy collection device there, and allows only non-aesthetic guidelines to prevent nuisance. Associations may still prohibit devices on common elements other than a roof covering a single unit, so how the condominium declaration classifies a balcony decides the question. This is not legal advice."
+  ],
+  [
+   "How long does Pepco take to connect a small solar system in DC?",
+   "Pepco puts its full interconnection process in the District at about 80 business days: an application with a net energy metering contract, installation, a city electrical inspection and a net-capable meter. A Level&nbsp;1 application, for inverter-based systems of 20&nbsp;kW or less, carries no application fee in DC."
+  ]
+ ]
+}

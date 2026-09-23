@@ -1,0 +1,170 @@
+{
+  "slug": "window-solar-panels",
+  "title": "Solar panels behind a window: how much do they lose? &middot; balco.nyc",
+  "og_title": "Solar panels behind a window: how much do they lose?",
+  "breadcrumb": "Window solar",
+  "cluster": "compare",
+  "pillar": false,
+  "card_title": "How much does a solar panel lose behind a window?",
+  "card": "Loses about half behind clear double glazing, two-thirds behind low-e: balco.nyc's numbers for 4 cities.",
+  "llms": "balco.nyc's calculation for a south-facing window in New York, Chicago, Los Angeles and Houston: a panel behind clear double glazing makes about half of its open-railing output and about a third behind mid-range low-e glass, because low-e coatings block the near-infrared that supplies about half a silicon cell's current; a 100-200 W window panel makes 24-89 kWh a year.",
+  "related": [
+    "portable-solar-vs-plug-in-solar",
+    "balcony-sunlight",
+    "what-is-balcony-solar"
+  ],
+  "description": "Behind a window a solar panel makes about half its outdoor output through clear double glazing and a third through low-e glass. Our numbers for four US cities.",
+  "eyebrow": "Window solar",
+  "h1": "Solar panels behind a window: how much do they lose?",
+  "lede": "A solar panel behind a window loses about half its output through ordinary double glazing and about two-thirds through low-e glass. balco.nyc&rsquo;s calculation for a south-facing window in New York City puts an 800&nbsp;W-equivalent panel that would make 604&nbsp;kWh a year on an open railing at <strong>307&nbsp;kWh behind clear double glazing and 206&nbsp;kWh behind low-e glass</strong>, and Chicago, Los Angeles and Houston come out in the same proportions. For the 100&ndash;200&nbsp;W panels people actually stand in windows, that is 24 to 89&nbsp;kWh a year, worth about $4 to $29 at state average prices.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~9 minutes",
+  "tags": [
+    "~50% kept behind clear glass",
+    "~34% kept behind low-e",
+    "24&ndash;89&nbsp;kWh/yr at 100&ndash;200&nbsp;W"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "the-answer",
+      "toc": "The short answer, by city",
+      "html": "        <section id=\"the-answer\">\n  <h2><span class=\"sec-num\">1</span>The short answer, in four cities</h2>\n  <p>Glass, sunlight angles and the window frame each take a share, and the shares multiply. balco.nyc started from its own unshaded PVWatts runs for a vertical, south-facing 800&nbsp;W panel in the four largest US cities (the runs behind <a href=\"/800w-balcony-solar-output\">the output-by-state guide</a>) and applied three factors: how much of the light silicon can use passes through the glass head-on (section 2), how much more is lost because sunlight rarely arrives head-on, and how much sky the frame and wall leave a panel inside the room (section 3). The outdoor baseline carries the calculator&rsquo;s 0.95 railing factor; behind a window, a 0.80 frame factor takes its place. In New York the chain runs: 635.7&nbsp;kWh (PVWatts, before any railing loss) &times; 0.712 (clear double glazing, head-on) &times; 0.848 (angles) &times; 0.80 (frame and reveal) &asymp; <strong>307&nbsp;kWh</strong>.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>South-facing, 800&nbsp;W equivalent, unshaded</th><th>Average price</th><th>Outdoors on a railing</th><th>Behind clear double glazing</th><th>Behind low-e double glazing</th></tr></thead><tbody>\n    <tr><td><a href=\"/states/new-york\">New York City</a></td><td>27.96&cent;</td><td>604&nbsp;kWh &middot; $169</td><td>307&nbsp;kWh &middot; $86</td><td>206&nbsp;kWh &middot; $58</td></tr>\n    <tr><td><a href=\"/states/illinois\">Chicago</a></td><td>18.54&cent;</td><td>616&nbsp;kWh &middot; $114</td><td>312&nbsp;kWh &middot; $58</td><td>209&nbsp;kWh &middot; $39</td></tr>\n    <tr><td><a href=\"/states/california\">Los Angeles</a></td><td>32.89&cent;</td><td>720&nbsp;kWh &middot; $237</td><td>357&nbsp;kWh &middot; $117</td><td>239&nbsp;kWh &middot; $79</td></tr>\n    <tr><td><a href=\"/states/texas\">Houston</a></td><td>15.90&cent;</td><td>576&nbsp;kWh &middot; $92</td><td>285&nbsp;kWh &middot; $45</td><td>191&nbsp;kWh &middot; $30</td></tr>\n  </tbody></table></div>\n  <p>Behind clear double glazing a panel keeps <strong>49&ndash;51%</strong> of its open-railing output in all four cities; behind the low-e glass we modeled, <strong>33&ndash;34%</strong>. The dollar figures use the EIA&rsquo;s average residential price for each state over the 12 months to June 2026, an average that includes fixed charges. At Con&nbsp;Edison&rsquo;s {{coned.rate_cents}}&cent; <a href=\"/electricity-rate\">marginal rate</a>, the New York window figures become $104 and $70.</p>\n  <p>&ldquo;800&nbsp;W equivalent&rdquo; is a unit for comparison: at the calculator&rsquo;s 19% module efficiency, 800&nbsp;W of panels covers about 4.2 square meters, more south-facing glass than most apartments have. Section 4 scales the numbers to panels that fit.</p>\n</section>"
+    },
+    {
+      "id": "near-infrared",
+      "toc": "Why low-e costs so much",
+      "html": "        <section id=\"near-infrared\">\n  <h2><span class=\"sec-num\">2</span>Why low-e glass costs so much: the near-infrared</h2>\n  <p>None of the numbers in a window&rsquo;s specifications is the one a solar panel cares about. The <strong>solar heat gain coefficient</strong> (SHGC) counts all the solar heat that ends up indoors, including energy the glass absorbs and re-radiates inward, so it is not a transmittance at all. <strong>Visible transmittance</strong> is weighted to the human eye. <strong>Solar transmittance</strong> averages over the whole solar spectrum out to 2,500&nbsp;nm, but a silicon cell&rsquo;s response fades out a little beyond 1,100&nbsp;nm.</p>\n  <p>The difference matters because of where silicon does its work. Weighting the standard spectrum for sunlight on a vertical surface (ASTM G197) by a generic silicon cell&rsquo;s quantum efficiency, balco.nyc finds that <strong>about half of the cell&rsquo;s current comes from near-infrared light between 700 and 1,200&nbsp;nm</strong> (50%, or 55% with an idealized cell). That is the band a spectrally selective low-e coating exists to turn away: a Department of Energy technology alert defines such glazings as ones that &ldquo;sharply cut off or reduce solar transmission beyond the visible range.&rdquo;</p>\n  <p>So we computed the number that matters directly. From the measured spectral transmittance and reflectance of glass products in Lawrence Berkeley National Laboratory&rsquo;s glazing database, published with LBNL&rsquo;s pyWinCalc code, we built each double-glazed unit wavelength by wavelength, allowing for light bouncing between the panes, and weighted it by that silicon response:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Glazing, light arriving head-on</th><th>Visible transmittance</th><th>Solar transmittance</th><th>PV-weighted transmittance (used here)</th></tr></thead><tbody>\n    <tr><td>Single clear pane, 3&nbsp;mm (older windows)</td><td>0.90</td><td>0.83</td><td>0.84</td></tr>\n    <tr><td>Clear double glazing</td><td>0.81</td><td>0.70</td><td><strong>0.71</strong></td></tr>\n    <tr><td>Double glazing, pyrolytic (&ldquo;hard-coat&rdquo;) low-e</td><td>0.75</td><td>0.57</td><td>0.64</td></tr>\n    <tr><td>Double glazing, sputtered silver low-e</td><td>0.65</td><td>0.39</td><td><strong>0.48</strong></td></tr>\n  </tbody></table></div>\n  <p>For clear glass, solar transmittance is a fair stand-in. For low-e it understates what a panel receives, because much of what the coating blocks lies beyond silicon&rsquo;s reach anyway, while visible transmittance overstates it. The two coatings differ for a reason the same DOE document gives: pyrolytic coatings transmit fairly evenly across the spectrum, while sputtered silver ones cut off sharply past the visible. The low-e column in section 1 uses the sputtered unit.</p>\n  <p>Low-e is the norm: by 2017, LBNL reported, 80% of US residential window sales included it. And our example is a mid-range coating. ENERGY STAR&rsquo;s current criteria require an SHGC of 0.40 or less in its North-Central zone and 0.23 or less in the South-Central and Southern zones. Because SHGC includes all the solar energy that passes straight through, a window rated 0.23 transmits well under the 39% our low-e unit does, and a panel behind it would lose more than our low-e column shows.</p>\n</section>"
+    },
+    {
+      "id": "angles-and-frames",
+      "toc": "Angles and the frame",
+      "html": "        <section id=\"angles-and-frames\">\n  <h2><span class=\"sec-num\">3</span>Angles, frames and a smaller piece of sky</h2>\n  <p>Glass reflects more as light strikes it more obliquely, and a double-glazed unit has four surfaces to reflect from. LBNL&rsquo;s WINDOW&nbsp;5 results for a clear double-glazed unit, distributed with the Department of Energy&rsquo;s EnergyPlus, give its solar transmittance as 0.727 head-on, 0.703 at 40&deg; from square, 0.601 at 60&deg;, 0.458 at 70&deg; and 0.220 at 80&deg;, and 0.624 for diffuse light arriving from the whole sky &mdash; 86% of the head-on value. balco.nyc applied that curve hour by hour to PVWatts&rsquo; direct and diffuse light on a south wall, weighting each hour by output. Over the year a south window keeps <strong>85% of its head-on transmittance in New York</strong>, 84% in Chicago and 82% in Los Angeles and Houston. We used the same curve for the low-e glass; coated glass behaves broadly, not exactly, alike.</p>\n  <p>The seasons help. In New York a south window keeps 94&ndash;95% of its head-on transmittance in December and January, when the low sun meets the glass almost square, and 70% in June, when the high sun glances off it. A vertical south panel makes most of its electricity in winter, so the window takes least when there is most to take. East and west windows in New York scored slightly better on this term, 0.87&ndash;0.88, on smaller totals.</p>\n  <p>Then there is the frame. Outdoors on a railing, a panel sees half the sky dome. Inside, it sees the sky through a hole in a wall whose sides, head and sill block the edges of the sky and, for much of the day, part of the direct sun. We modeled three placements against each city&rsquo;s hourly sun and weather:</p>\n  <ul>\n    <li>a 200&nbsp;W-size panel (0.7 &times; 1.3&nbsp;m) inside a 0.8 &times; 1.4&nbsp;m pane, 15&nbsp;cm behind the outer edge of the opening, keeps 81% of its view outdoors and 74&ndash;80% of its direct sun: <strong>0.77&ndash;0.80</strong> overall;</li>\n    <li>a 100&nbsp;W-size panel (0.54 &times; 1.0&nbsp;m) in a 0.6 &times; 1.1&nbsp;m opening set 25&nbsp;cm back, as in a thick masonry wall: 0.52&ndash;0.56;</li>\n    <li>the same panel behind a 1.2 &times; 1.5&nbsp;m picture window, 10&nbsp;cm back: 0.97&ndash;0.98.</li>\n  </ul>\n  <p>The tables use <strong>0.80</strong>: an assumption about a middling window, not a measurement. A real window can cost a tenth of that loss or more than twice it.</p>\n  <p>Two common things make it worse. A sash bar or the meeting rail of a double-hung window crossing the panel casts a thin shadow that costs far more than its area, because a panel&rsquo;s cells are wired in series and a string cannot carry more current than its most shaded cell. And an insect screen outside the glass takes a large bite: EnergyPlus&rsquo;s reference fiberglass screens, 0.38&ndash;0.41&nbsp;mm strands at 1.55&ndash;1.67&nbsp;mm spacing, are only 55&ndash;60% open to light arriving head-on.</p>\n</section>"
+    },
+    {
+      "id": "small-panels",
+      "toc": "What a real window panel makes",
+      "html": "        <section id=\"small-panels\">\n  <h2><span class=\"sec-num\">4</span>What &ldquo;window solar&rdquo; is, and what a real panel makes</h2>\n  <p>&ldquo;Window solar&rdquo; means three different things, and only two go in a window you already have:</p>\n  <ul>\n    <li><strong>A portable panel and a power station.</strong> The common setup: a small panel, often folding, that stands on the sill or hangs on suction cups, cabled to a portable power station &mdash; a battery with a built-in inverter and its own outlets.</li>\n    <li><strong>Pocket chargers.</strong> Small suction-cup panels with a built-in battery for a phone.</li>\n    <li><strong>Photovoltaic glass.</strong> A different product altogether: the window itself generates, and it is installed as the glazing rather than placed behind it. See-through designs trade efficiency for transparency. A 2017 lab device at the National Renewable Energy Laboratory (now the National Laboratory of the Rockies), a window that tints itself in sunlight, reached 11.3% efficiency tinted and 68% visible transmittance clear over 20 switching cycles; the Department of Energy calls unproven durability its greatest barrier.</li>\n  </ul>\n  <p>For the first kind, here is what balco.nyc&rsquo;s factors give for a 100&nbsp;W and a 200&nbsp;W panel behind a south-facing window, using the 0.80 frame factor:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>City</th><th>100&nbsp;W, clear double</th><th>100&nbsp;W, low-e double</th><th>200&nbsp;W, clear double</th><th>200&nbsp;W, low-e double</th></tr></thead><tbody>\n    <tr><td>New York City</td><td>38&nbsp;kWh &middot; $11</td><td>26&nbsp;kWh &middot; $7</td><td>77&nbsp;kWh &middot; $21</td><td>51&nbsp;kWh &middot; $14</td></tr>\n    <tr><td>Chicago</td><td>39&nbsp;kWh &middot; $7</td><td>26&nbsp;kWh &middot; $5</td><td>78&nbsp;kWh &middot; $14</td><td>52&nbsp;kWh &middot; $10</td></tr>\n    <tr><td>Los Angeles</td><td>45&nbsp;kWh &middot; $15</td><td>30&nbsp;kWh &middot; $10</td><td>89&nbsp;kWh &middot; $29</td><td>60&nbsp;kWh &middot; $20</td></tr>\n    <tr><td>Houston</td><td>36&nbsp;kWh &middot; $6</td><td>24&nbsp;kWh &middot; $4</td><td>71&nbsp;kWh &middot; $11</td><td>48&nbsp;kWh &middot; $8</td></tr>\n  </tbody></table></div>\n  <p>The same 200&nbsp;W panel on an open railing would make 144&ndash;180&nbsp;kWh in these cities. Behind a single clear pane, the clear-glass figures rise by about 18%.</p>\n  <p>These are ceilings: they assume every kilowatt-hour displaces one you would have bought. A power station loses some of what it stores in charging and in its inverter, and once it is full the panel&rsquo;s output goes nowhere; we have modeled neither. How a power-station setup compares with a plug-in kit is the subject of <a href=\"/portable-solar-vs-plug-in-solar\">portable solar vs plug-in solar</a>.</p>\n</section>"
+    },
+    {
+      "id": "permission",
+      "toc": "Off-grid or grid-tied",
+      "html": "        <section id=\"permission\">\n  <h2><span class=\"sec-num\">5</span>Permission: off-grid or grid-tied</h2>\n  <p>How the panel is wired decides who has a say, not where it sits. A panel charging a portable power station, with your devices plugged into the station&rsquo;s own outlets, never connects to the building&rsquo;s wiring. Utility interconnection rules cover generators running in parallel with the grid &mdash; New York&rsquo;s Standardized Interconnection Requirements are written for generators &ldquo;connected in parallel with utility distribution systems&rdquo; &mdash; so this setup needs no utility application and no plug-in solar law.</p>\n  <p>A plug-in microinverter behind a window is different. It feeds power into your circuits while the grid is live, which makes it a small grid-tied generator exactly as on a balcony; moving it indoors changes where the panel is, not what it is electrically. It needs your utility&rsquo;s interconnection approval or a state plug-in solar law that waives it, and <a href=\"/balcony-solar-laws-compared\">those laws differ provision by provision</a>. New York has no such law in force: the SUNNY Act has passed both chambers and {{sunny.phrase}}, and it grants no right to install.</p>\n  <p>A landlord&rsquo;s say is separate: anything screwed into the frame or hung outside the glass is a matter for the lease (<a href=\"/balcony-solar-renters\">the renters guide</a> covers asking). This is general information, not legal advice, and the rules vary by state and utility.</p>\n</section>"
+    },
+    {
+      "id": "heat",
+      "toc": "Heat behind glass",
+      "html": "        <section id=\"heat\">\n  <h2><span class=\"sec-num\">6</span>Heat behind the glass</h2>\n  <p>Most of the light a panel absorbs becomes heat, and all of it does once the battery it charges is full. Behind glass, in still air, the panel cannot shed that heat as it would on a breezy railing. PVWatts&rsquo; temperature model assumes an open rack outdoors, and we found no published measurement of panel temperatures behind residential windows, so we cannot say what the heat costs in output.</p>\n  <p>Two cautions do have sources. The U.S. Fire Administration says not to put lithium-ion batteries in direct sunlight and not to charge them above 105&deg;F (40&deg;C): the panel belongs in the window, the power station does not. And glass makers warn that indoor blinds and drapes close to a pane raise the glass&rsquo;s temperature and with it the risk of thermal stress cracking, with tinted and spectrally selective glass more susceptible than clear. A dark panel pressed against the glass looks like the same situation, though we found no test of it. Leaving a few centimeters of air costs a little sky (section 3) and is the more cautious choice. For a plug-in inverter behind a window, the circuit arithmetic in <a href=\"/is-plug-in-solar-safe\">is plug-in solar safe?</a> applies unchanged.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Do solar panels work through a window?",
+      "Yes, at reduced output. balco.nyc's calculation for a south-facing window in New York, Chicago, Los Angeles and Houston finds a panel behind clear double glazing makes about half of what it would on an open railing, and about a third behind a mid-range low-e window, once the glass, the angle of the sunlight and the window frame are all counted."
+    ],
+    [
+      "Why do low-e windows cut solar panel output so much?",
+      "About half of a silicon cell's current comes from near-infrared light between 700 and 1,200 nm, and that is the band spectrally selective low-e coatings are designed to reflect. Computed from LBNL spectral data and weighted for silicon, a sputtered low-e double-glazed unit passes 0.48 of the useful light head-on, against 0.71 for clear double glazing."
+    ],
+    [
+      "How much does a 100 W solar panel make behind a window?",
+      "Behind a south-facing window in the four largest US cities, balco.nyc's figures put a 100 W panel at 36 to 45 kWh a year behind clear double glazing and 24 to 30 kWh behind low-e glass, worth roughly $4 to $15 a year at state average electricity prices. Those are ceilings: they assume every kWh is used and ignore the power station's own losses."
+    ],
+    [
+      "Can I use a window's SHGC or visible transmittance to estimate solar panel output?",
+      "Neither is right. The solar heat gain coefficient includes heat the glass absorbs and re-radiates indoors, and visible transmittance is weighted to the human eye. Solar transmittance is a fair stand-in for clear glass; for low-e glass the transmittance that matters to silicon lies between the solar and the visible figures, 0.48 in balco.nyc's mid-range low-e example."
+    ],
+    [
+      "Does a solar panel in a window need utility approval?",
+      "Not if it only charges a portable power station whose own outlets you plug devices into: it never connects to the grid, and interconnection rules cover generators running in parallel with it. A plug-in microinverter behind a window is grid-tied and needs the utility's approval or a state plug-in solar law, just as on a balcony. This is general information, not legal advice."
+    ],
+    [
+      "Is it safe to leave a solar panel against a window?",
+      "Keep the battery out of the sun: the U.S. Fire Administration says not to put lithium-ion batteries in direct sunlight or charge them above 105 degrees F. Glass makers warn that blinds and similar objects close to a pane raise its temperature and the risk of thermal stress cracking, especially on tinted or low-e glass, so leaving an air gap behind the glass is the cautious choice."
+    ],
+    [
+      "Are transparent solar windows the same thing as window solar panels?",
+      "No. Photovoltaic glass replaces the window's glazing and generates power itself; it is installed as part of the window, not placed behind it. See-through designs give up efficiency for transparency: a switchable lab device at the National Renewable Energy Laboratory, now the National Laboratory of the Rockies, reached 11.3% efficiency in its tinted state in 2017, and the Department of Energy calls unproven durability its greatest barrier."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "National Laboratory of the Rockies &mdash; PVWatts V8 API documentation",
+      "note": "the model behind the outdoor baseline and the hourly direct (dn), diffuse and plane-of-array irradiance used to weight the window&rsquo;s angle and frame losses; balco.nyc&rsquo;s runs use the calculator&rsquo;s parameters for New York, Chicago, Los Angeles and Houston."
+    },
+    {
+      "url": "https://github.com/LBNL-ETA/pyWinCalc",
+      "title": "Lawrence Berkeley National Laboratory &mdash; pyWinCalc",
+      "note": "LBNL&rsquo;s window-calculation code, whose example data supply the spectral transmittance and reflectance of generic clear 3&nbsp;mm glass (NFRC ID 102), a pyrolytic low-e (NFRC ID 9923) and a sputtered low-e (NFRC ID 1042) from LBNL&rsquo;s glazing database, the ASTM G197 spectrum for a vertical surface and a generic silicon quantum-efficiency curve, from which balco.nyc computed the visible, solar and PV-weighted transmittances."
+    },
+    {
+      "url": "https://github.com/NatLabRockies/EnergyPlus/blob/develop/datasets/Window5DataFile.dat",
+      "title": "EnergyPlus &mdash; Window5DataFile.dat (LBNL WINDOW 5 output, DoubleClear)",
+      "note": "solar transmittance of a clear double-glazed unit (two 3&nbsp;mm panes, 12.7&nbsp;mm air gap) by angle of incidence: 0.727 at 0&deg;, 0.703 at 40&deg;, 0.601 at 60&deg;, 0.458 at 70&deg;, 0.220 at 80&deg;, and 0.624 hemispherical."
+    },
+    {
+      "url": "https://github.com/NatLabRockies/EnergyPlus/blob/develop/datasets/WindowScreenMaterials.idf",
+      "title": "EnergyPlus &mdash; WindowScreenMaterials.idf",
+      "note": "strand diameter and spacing of the reference fiberglass insect screens, from which their 55&ndash;60% open area at normal incidence follows."
+    },
+    {
+      "url": "https://eta-publications.lbl.gov/sites/default/files/femp-spec-sel-low-e.pdf",
+      "title": "U.S. Department of Energy, Federal Energy Management Program &mdash; Federal Technology Alert: Spectrally Selective Glazings (LBNL, 1998)",
+      "note": "the definition of spectrally selective glazing as cutting off transmission beyond the visible range, that selective coatings reflect infrared while transmitting daylight, and that pyrolytic low-e coatings transmit fairly evenly across the solar spectrum."
+    },
+    {
+      "url": "https://bies.lbl.gov/news/energy-efficient-windows-save",
+      "title": "Lawrence Berkeley National Laboratory &mdash; Energy-Efficient Windows Save Billions (April 2017)",
+      "note": "that 80% of residential window sales in the US incorporate low-e coatings."
+    },
+    {
+      "url": "https://www.energystar.gov/sites/default/files/ES_Residential_WDS_V7_Final%20Specification%202022.pdf",
+      "title": "ENERGY STAR &mdash; Residential Windows, Doors and Skylights, Version 7.0 specification",
+      "note": "the SHGC limits of 0.40 (North-Central) and 0.23 (South-Central and Southern), and the definition of SHGC as the solar heat gain entering the space relative to incident solar radiation."
+    },
+    {
+      "url": "https://www.pveducation.org/pvcdrom/solar-cell-operation/spectral-response",
+      "title": "PVEducation &mdash; Spectral response",
+      "note": "how a silicon cell&rsquo;s response falls away at long wavelengths near its 1.12&nbsp;eV band gap."
+    },
+    {
+      "url": "https://www.pveducation.org/pvcdrom/modules-and-arrays/mismatch-for-cells-connected-in-series",
+      "title": "PVEducation &mdash; Mismatch for cells connected in series",
+      "note": "that the current of series-connected cells cannot exceed that of the poorest cell, which is why a thin frame shadow costs more than its area."
+    },
+    {
+      "url": "https://docs.nlr.gov/docs/fy18osti/68407.pdf",
+      "title": "Wheeler et al., Switchable photovoltaic windows enabled by reversible photothermal complex dissociation from methylammonium lead iodide, <em>Nature Communications</em> (2017), NLR",
+      "note": "11.3% efficiency in the tinted state, 68% visible transmittance in the clear state, and about 20 switching cycles."
+    },
+    {
+      "url": "https://www.energy.gov/cmei/buildings/articles/switchable-photovoltaic-windows",
+      "title": "U.S. Department of Energy &mdash; Switchable Photovoltaic Windows",
+      "note": "that the switchable PV window is a research project and that unproven durability is the greatest barrier to deployment."
+    },
+    {
+      "url": "https://dps.ny.gov/distributed-generation-information",
+      "title": "New York State Department of Public Service &mdash; Standardized Interconnection Requirements",
+      "note": "that New York&rsquo;s interconnection requirements cover distributed generators and storage connected in parallel with utility distribution systems."
+    },
+    {
+      "url": "https://www.usfa.fema.gov/prevention/home-fires/prevent-fires/batteries/",
+      "title": "U.S. Fire Administration &mdash; Battery fire safety",
+      "note": "not to put lithium-ion batteries in direct sunlight, and not to charge them below 32&deg;F or above 105&deg;F (40&deg;C)."
+    },
+    {
+      "url": "https://glassed.vitroglazings.com/topics/managing-thermal-stress-breakage",
+      "title": "Vitro Architectural Glass &mdash; Managing thermal stress breakage",
+      "note": "that indoor shading close to the glass raises its temperature, and that tinted and spectrally selective glass is more susceptible to thermal stress breakage than clear."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia861m/",
+      "title": "U.S. Energy Information Administration &mdash; Form EIA-861M monthly sales and revenue",
+      "note": "average residential prices for the 12 months to June 2026: New York 27.96&cent;, Illinois 18.54&cent;, California 32.89&cent;, Texas 15.90&cent; per kWh."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. Production figures are modeled from NREL&rsquo;s PVWatts and LBNL glazing data, not metered, and assume an unshaded south-facing window. It is not legal advice."
+}

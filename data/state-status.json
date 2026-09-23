@@ -1,0 +1,2184 @@
+{
+ "schema_version": 1,
+ "updated": "2026-09-23",
+ "status_enum": [
+  "in_force",
+  "enacted_not_yet_effective",
+  "passed_awaiting_signature",
+  "pending",
+  "no_specific_law",
+  "failed_or_vetoed",
+  "unknown"
+ ],
+ "note": "Plug-in (balcony) solar law by state. Every entry is researched from the legislature's own bill pages where possible and carries its sources and the date it was checked. An unreviewed state is 'unknown' and is never shown as permitted.",
+ "states": {
+  "AL": {
+   "name": "Alabama",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill found in Alabama's 2025 or 2026 sessions; 2026 solar bills targeted utility-scale solar farms only.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "Searched the legislature's ALISON instrument full-text search (GraphQL) for 2025RS, 2026RS and 2026SS1 using 'solar', 'plug-in solar', 'portable solar', 'balcony' and 'electrical outlet'; the only solar bills were utility-scale moratorium/zoning/decommissioning bills (SB 354, HB 617, HB 618, SB 358, SB 372, HB 623), none about plug-in devices. ALISON returned only one 'solar' hit for 2025RS, so its 2025 full-text coverage may be incomplete (hence medium confidence). Web searches for Alabama plug-in/balcony/portable solar legislation found nothing; Bright Saver and PlugInSolarMap list no activity. The 2026 regular session has adjourned.",
+   "sources": [
+    {
+     "url": "https://alison.legislature.state.al.us/",
+     "title": "ALISON (Alabama Legislature) instrument full-text search, 2025RS/2026RS/2026SS1",
+     "primary": true
+    },
+    {
+     "url": "https://insideclimatenews.org/news/10042026/alabama-legislature-adjourns/",
+     "title": "Inside Climate News: As the Alabama Legislature Adjourns (Apr 10 2026) — solar-farm moratorium bills failed; no plug-in bill",
+     "primary": false
+    },
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker (lists state as no activity)",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "AK": {
+   "name": "Alaska",
+   "status": "failed_or_vetoed",
+   "summary": "HB 257 (1,200 W portable solar, no utility approval or fees) was heard and held in House Energy. It died when the 34th Legislature adjourned on May 20, 2026.",
+   "bills": [
+    {
+     "id": "HB 257",
+     "session": "34th Legislature (2025-2026), 2nd session",
+     "url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20257"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Proposed only: UL or equivalent NRTL certification plus current NEC",
+   "export_compensation": "unknown",
+   "grants_right_to_install": false,
+   "notes": "HB 257 (Eischeid) would have exempted devices up to 1,200 W from utility interconnection and net-metering requirements and barred utility approval, fees or extra equipment. It had no landlord or HOA provisions. The official page shows it was referred to House Energy and CRA on 1/20/2026 and heard and held on 2/10, 2/19 and 2/26/2026. The last entry is a cosponsor added on 5/6/2026. The regular session adjourned on May 20, 2026, which ended the 34th Legislature, and the gasline special session that followed did not take the bill up. It would need reintroduction in the 35th Legislature (2027). Conflict: pluginsolarmap says 'no bill filed yet', but the legislature site shows HB 257 was filed. BrightSaver's 'deferring until 2027' means the bill died. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20257",
+     "title": "Alaska Legislature - HB 257 bill detail (34th Legislature)",
+     "primary": true
+    },
+    {
+     "url": "https://www.akleg.gov/PDF/34/Bills/HB0257A.PDF",
+     "title": "HB 257 Version A bill text",
+     "primary": true
+    },
+    {
+     "url": "https://alaskabeacon.com/2026/05/21/alaska-legislature-adjourns-regular-session-with-special-gasline-session-set-for-thursday/",
+     "title": "Alaska Beacon - Legislature adjourns regular session (May 20, 2026)",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "AZ": {
+   "name": "Arizona",
+   "status": "failed_or_vetoed",
+   "summary": "Two plug-in bills (SB 1606, HB 2843; 1,200 W) were held in committee and died when the 2026 session adjourned. Arizona has no plug-in solar law.",
+   "bills": [
+    {
+     "id": "SB 1606",
+     "session": "2026 (57th Legislature, 2nd Regular)",
+     "url": "https://apps.azleg.gov/BillStatus/BillOverview/85238?SessionId=130"
+    },
+    {
+     "id": "HB 2843",
+     "session": "2026 (57th Legislature, 2nd Regular)",
+     "url": "https://apps.azleg.gov/BillStatus/BillOverview/84677?SessionId=130"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Proposed only: NRTL certification + NEC (SB 1606 also required a listing/label; HB 2843 required a listing to an ACC-approved national standard)",
+   "export_compensation": "unknown",
+   "grants_right_to_install": false,
+   "notes": "SB 1606 (Sen. Kuby et al.) was assigned to Senate Natural Resources and Rules on 2/3/2026 and never heard. HB 2843 (Rep. Contreras et al.) was discussed and held in House Natural Resources, Energy & Water on 2/17/2026. The legislature's API gives the final disposition of both as 'Held in Committees'. The bills would have barred utility approval or fees and excluded the devices from net metering and DG definitions. HB 2843 would also have stopped cities and counties requiring permits. Neither bill gave tenants or HOA members a right to install. The session adjourned sine die on June 13, 2026 (secondary source), and Arizona has no carryover. Conflicts: pluginsolarmap says 'no known activity', which is wrong because two bills were filed. One secondary tracker names Sen. Wendy Rogers as sponsor, but the official bill text names Sen. Kuby. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://apps.azleg.gov/api/Bill/?billNumber=SB1606&sessionId=130&legislativeBody=S",
+     "title": "Arizona Legislature bill status API - SB 1606 (FinalDisposition: Held in Committees)",
+     "primary": true
+    },
+    {
+     "url": "https://www.azleg.gov/legtext/57leg/2r/bills/sb1606p.htm",
+     "title": "SB 1606 introduced text",
+     "primary": true
+    },
+    {
+     "url": "https://apps.azleg.gov/api/Bill/?billNumber=HB2843&sessionId=130&legislativeBody=H",
+     "title": "Arizona Legislature bill status API - HB 2843 (DISC/HELD in NREW 2/17/2026)",
+     "primary": true
+    },
+    {
+     "url": "https://www.azleg.gov/legtext/57leg/2R/bills/hb2843p.pdf",
+     "title": "HB 2843 introduced text",
+     "primary": true
+    },
+    {
+     "url": "https://www.ascpa.com/news/0a685e0b-edaa-4a10-8f3f-84ded30ac01e:ascpa-advocate-2026-legislature-adjourns-sine-die",
+     "title": "ASCPA - 2026 Legislature adjourns sine die (June 13, 2026)",
+     "primary": false
+    },
+    {
+     "url": "https://azmirror.com/briefs/utility-concerns-kill-bill-to-allow-plug-in-solar-panels-on-balconies-and-in-backyards/",
+     "title": "Arizona Mirror - Utility concerns kill plug-in solar bill",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "AR": {
+   "name": "Arkansas",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill found; Arkansas's last regular session was 2025 and 2026 was a fiscal session.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "Web searches for Arkansas plug-in/balcony/portable solar legislation and a site-restricted search of arkleg.state.ar.us found no plug-in bill (only older net-metering material). The legislature's advanced bill search could not be queried programmatically (results load via script), so its keyword search was not used — medium confidence. Bright Saver and PlugInSolarMap list no activity; ExactSolar (Jun 2026) lists Arkansas among 16 'holdout' states. Next regular session January 2027.",
+   "sources": [
+    {
+     "url": "https://arkleg.state.ar.us/Bills/Search?ddBienniumSession=2025%2F2025R",
+     "title": "Arkansas State Legislature bill search, 2025 Regular Session (opened; keyword results not retrievable)",
+     "primary": true
+    },
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker (lists state as no activity)",
+     "primary": false
+    },
+    {
+     "url": "https://exactsolar.substack.com/p/your-state-by-state-plug-in-solar",
+     "title": "ExactSolar state-by-state plug-in solar update (Jun 12 2026) — Arkansas listed as no legislation",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "CA": {
+   "name": "California",
+   "status": "passed_awaiting_signature",
+   "summary": "SB 868 (1,200 W AC per dwelling, no utility approval or fees) passed both houses; presented to Gov. Newsom Aug 31, 2026. No action as of Sep 23; deadline Sep 30, 2026.",
+   "bills": [
+    {
+     "id": "SB 868",
+     "session": "2025-2026",
+     "url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB868"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Certified as a plug-in PV system by UL or equivalent NRTL; UL/NRTL-certified anti-backfeed isolation feature; NEC + California Electrical Code",
+   "export_compensation": "unknown",
+   "grants_right_to_install": false,
+   "notes": "Official history (fetched 2026-09-23): Senate 35-1 (5/19/26), Assembly 73-0 (8/25/26), Senate concurred 36-4 (8/26/26), enrolled 8/28, presented to Governor 8/31/26; no chapter or veto recorded, and SB 868 is absent from governor releases through 9/22/26. Under Cal. Const. art. IV §10(b)(2) the Governor must act by Sept 30, 2026 or it becomes law without signature; if enacted it takes effect Jan 1, 2027 (art. IV §8(c)(1); no urgency clause). The enrolled text exempts qualifying devices from all interconnection requirements, bars utility approval/fees/extra equipment, allows a simple online registration, sunsets the exemption (PUC §8531) on Jan 1, 2030, and from Jan 1, 2030 bans sale of non-compliant plug-in PV devices (§8532). It has no landlord/tenant/HOA provisions and is silent on export compensation.",
+   "sources": [
+    {
+     "url": "https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202520260SB868",
+     "title": "SB-868 Bill History (leginfo, fetched 2026-09-23)",
+     "primary": true
+    },
+    {
+     "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB868",
+     "title": "SB-868 Enrolled text (08/28/26)",
+     "primary": true
+    },
+    {
+     "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CONS&sectionNum=SEC.%2010.&article=IV",
+     "title": "Cal. Const. art. IV §10 (Governor action deadlines)",
+     "primary": true
+    },
+    {
+     "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CONS&sectionNum=SEC.%208.&article=IV",
+     "title": "Cal. Const. art. IV §8(c)(1) (Jan 1 effective date)",
+     "primary": true
+    },
+    {
+     "url": "https://www.gov.ca.gov/2026/09/20/governor-newsom-issues-legislative-update-9-20-2026/",
+     "title": "Governor Newsom legislative update 9.20.2026 (SB 868 not listed)",
+     "primary": true
+    },
+    {
+     "url": "https://pv-magazine-usa.com/2026/08/26/california-plug-in-solar-bill-sb-868-earns-approval-of-both-legislative-houses-nears-governors-desk/",
+     "title": "pv magazine USA: SB 868 passes both houses",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "CO": {
+   "name": "Colorado",
+   "status": "in_force",
+   "summary": "HB26-1007: utilities cannot require approval or fees for plug-in solar up to 1,920 W (in force Aug 12, 2026). Ban on unreasonable landlord/HOA/covenant limits starts Jan 1, 2027.",
+   "bills": [
+    {
+     "id": "HB26-1007",
+     "session": "2026 Regular Session",
+     "url": "https://leg.colorado.gov/bills/hb26-1007"
+    }
+   ],
+   "signed_date": "2026-05-07",
+   "effective_date": "2026-08-12",
+   "ac_limit_watts": 1920,
+   "certification": "Labeled and listed by an NRTL. From Jan 1, 2027, devices over 391 W may not be sold, leased or rented unless UL labeled and listed. Must have anti-islanding.",
+   "export_compensation": "unknown",
+   "grants_right_to_install": true,
+   "notes": "The law adds C.R.S. 40-2-140. A device is a single PV system per address supplying no more than 1,920 W to the grid. The text states this as output to the grid and does not explicitly say inverter AC rating. It is limited to one device per wall outlet per address. Utilities may not require approval, fees or extra equipment, but may require notice of the device's presence and size. Devices of 391 W or less are exempt from 40-2-128 installer requirements and from code or listing provisions requiring wiring changes. The act does not address net metering or export credit. On the effective date, trackers said Aug 12, 2026 or Jan 1, 2027. Section 6 of the signed act sets 90 days after sine die (Aug 12, 2026; the 2026 session ended May 13), and the bill page lists Session Law ch. 127 effective 08/12/2026. However, §40-2-140(6)-(7) apply only 'on and after January 1, 2027': the UL sales rule, the ban on unreasonable prohibitions (void covenants, HOA energy-efficiency-measure treatment including limited common element balconies) and reasonable owner restrictions. So the tenant and HOA right to install is enacted but not yet operative.",
+   "sources": [
+    {
+     "url": "https://leg.colorado.gov/bills/hb26-1007",
+     "title": "Colorado General Assembly - HB26-1007 Improve Customer Use Distributed Energy Resources (Governor Signed 05/07/2026; Session Law ch. 127, effective 08/12/2026)",
+     "primary": true
+    },
+    {
+     "url": "https://leg.colorado.gov/bill_files/116074/download",
+     "title": "HB26-1007 Signed Act PDF (Section 6 effective-date clause; 40-2-140)",
+     "primary": true
+    },
+    {
+     "url": "https://leg.colorado.gov/bills/SJR26-026",
+     "title": "SJR26-026 Adjourn Sine Die (Senate adopted 05/13/2026)",
+     "primary": true
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "CT": {
+   "name": "Connecticut",
+   "status": "enacted_not_yet_effective",
+   "summary": "Public Act 26-127 (HB 5340) sec. 9 exempts one plug-in solar device of up to 1,200 W per meter from interconnection, utility approval and fees. Takes effect Oct 1, 2026.",
+   "bills": [
+    {
+     "id": "HB 5340 (Public Act 26-127)",
+     "session": "2026",
+     "url": "https://www.cga.ct.gov/asp/cgabillstatus/cgabillstatus.asp?selBillType=Bill&which_year=2026&bill_num=5340"
+    }
+   ],
+   "signed_date": "2026-06-04",
+   "effective_date": "2026-10-01",
+   "ac_limit_watts": 1200,
+   "certification": "Certified by UL or an equivalent NRTL and meets UL 1741; meets IEEE 1547, NEC (NFPA 70) and State Building Code; must have anti-islanding",
+   "export_compensation": "none",
+   "grants_right_to_install": false,
+   "notes": "Sec. 9 of PA 26-127 (marked 'Effective October 1, 2026') covers a 'portable solar generation device': not permanently affixed, max power output of 1,200 W or less, plugs into a 120 V outlet behind the meter. It is exempt from PURA interconnection requirements, but only one device is allowed behind each meter, and utilities cannot require approval, fees or extra equipment. The device must carry a warning that generation beyond on-site use is charged to the customer as usage unless the customer has a net-metering meter, so exports are not credited by default. The act gives no landlord, tenant or HOA right. It says the device stays subject to the State Building Code, Fire Safety Code and local ordinances. Sec. 10 asks code officials to consider plug-in provisions in their next updates. The statute says 'maximum power output', not specifically AC inverter output. The 2026 regular session ended May 6, 2026. The Oct 1, 2026 date and June 4, 2026 signing in trackers match the act; no conflicts found.",
+   "sources": [
+    {
+     "url": "https://www.cga.ct.gov/asp/cgabillstatus/cgabillstatus.asp?selBillType=Bill&which_year=2026&bill_num=5340",
+     "title": "CGA Bill Status: HB 5340 (2026), history shows Signed by the Governor 6/4/2026, Public Act 26-127",
+     "primary": true
+    },
+    {
+     "url": "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00127-R00HB-05340-PA.PDF",
+     "title": "Public Act No. 26-127 (enrolled text), secs. 9-10; Approved June 4, 2026",
+     "primary": true
+    },
+    {
+     "url": "https://www.cga.ct.gov/2026/SUM/PDF/2026SUM00127-R02HB-05340-SUM.PDF",
+     "title": "OLR Public Act Summary PA 26-127 (secs. 9 & 10, effective October 1, 2026)",
+     "primary": true
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "DE": {
+   "name": "Delaware",
+   "status": "failed_or_vetoed",
+   "summary": "SB 270 (800 W per meter, exempt from interconnection, utility registration) was introduced Mar 26, 2026 and never left Senate committee before the session ended Jun 30, 2026.",
+   "bills": [
+    {
+     "id": "SB 270",
+     "session": "153rd General Assembly (2025-2026)",
+     "url": "https://legis.delaware.gov/BillDetail/143022"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 800,
+   "certification": "UL or equivalent NRTL; anti-backfeed feature certified to UL 1741; operate per IEEE 1547; NEC as adopted by State Fire Marshal",
+   "export_compensation": "unknown",
+   "grants_right_to_install": false,
+   "notes": "The official bill page shows only introduction on 3/26/26 and 'Awaiting consideration in Committee' (Senate Environment, Energy & Transportation). Delaware's regular session cannot run past June 30 unless recalled into special session (Del. Const. art. II §4), and the 153rd GA ends at the Nov 3, 2026 general election. Bills do not carry over, so tracker language saying it was 'deferred to 2027' is inaccurate: it would need reintroduction. Text: 800 W total per utility meter; exempt from interconnection unless the customer net-meters; mandatory utility online registration by Jan 15, 2027; utilities may require net metering (fee capped at $75) if excess generation occurs more than 3 times a year. No landlord provision. Trackers name Sen. Pinkney as sponsor, but the legislature lists Sen. Hansen as primary sponsor and Pinkney as a co-sponsor.",
+   "sources": [
+    {
+     "url": "https://legis.delaware.gov/BillDetail/143022",
+     "title": "Delaware General Assembly: SB 270 bill detail",
+     "primary": true
+    },
+    {
+     "url": "https://legis.delaware.gov/json/BillDetail/GenerateHtmlDocument?legislationId=143022&legislationTypeId=1&docTypeId=2&legislationName=SB270",
+     "title": "SB 270 bill text",
+     "primary": true
+    },
+    {
+     "url": "https://www.legis.delaware.gov/docs/default-source/publications/faqdocuments/lengthofageneralassemblyandalegislator%27stermofoffice.pdf?sfvrsn=77808d38_3",
+     "title": "DE Legislative Council FAQ: length of a General Assembly",
+     "primary": true
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "DC": {
+   "name": "District of Columbia",
+   "status": "pending",
+   "summary": "GRID Amendment Act (B26-0602) would exempt plug-in solar from interconnection/net metering; public hearing Mar 26, 2026, no markup since. Council Period 26 ends Jan 2027.",
+   "bills": [
+    {
+     "id": "B26-0602",
+     "session": "Council Period 26 (2025-2026)",
+     "url": "https://lims.dccouncil.gov/Legislation/B26-0602"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": "NEC + UL or equivalent NRTL; must prevent energizing building during outage",
+   "export_compensation": "unknown",
+   "grants_right_to_install": false,
+   "notes": "LIMS history (viewed 2026-09-23): introduced 2/24/26 (Allen + 6 co-introducers), referred to Committee on Transportation and the Environment 3/3/26, public hearing 3/26/26; no markup or vote since. The introduced text says a 'portable solar generation device' is not subject to interconnection or net metering unless the owner opts in, and bars Pepco from requiring approval, fees or extra equipment. It sets NO wattage cap (the term is not defined by wattage) and has no landlord/tenant right. The intro memo's renter language refers to the utility approval process only. To become law it needs two Council readings, the Mayor's signature, 30-day congressional review and publication (bill §6). Unpassed bills lapse when Council Period 26 ends.",
+   "sources": [
+    {
+     "url": "https://lims.dccouncil.gov/Legislation/B26-0602",
+     "title": "DC LIMS: B26-0602 GRID Amendment Act of 2026",
+     "primary": true
+    },
+    {
+     "url": "https://lims.dccouncil.gov/downloads/LIMS/61310/Introduction/B26-0602-Introduction.pdf?Id=233077",
+     "title": "B26-0602 introduced text",
+     "primary": true
+    },
+    {
+     "url": "https://www.charlesallenward6.com/gridact",
+     "title": "Councilmember Allen: GRID Act",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "FL": {
+   "name": "Florida",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill filed in Florida's 2025 or 2026 sessions (incl. special sessions); trackers list advocacy only.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "Full-text search of the Florida Senate bill database (all versions and amendments) for 2025, 2026, special sessions 2025A–C and 2026D–F: zero hits for 'plug-in solar', 'balcony solar', 'portable solar', 'balcony', 'electrical outlet'; 'plug' matched only unrelated bills (tobacco, EV charging tax). 2026 solar-related bills (HB 193/SB 200 utility-scale solar facilities; SB 968 home backup power permitting) did not address plug-in devices and died when the regular session ended March 13, 2026. PlugInSolarMap lists Florida as 'Active advocacy — no bill filed yet'; Bright Saver lists N/A. Next regular session is 2027.",
+   "sources": [
+    {
+     "url": "https://www.flsenate.gov/Session/Bills/2026?chamber=both&searchQuery=balcony&searchOnlyCurrentVersion=False&isIncludeAmendments=True&isFirstReference=True",
+     "title": "Florida Senate bill full-text search, 2026 (also run for 2025, 2025A-C, 2026D-F, 2027)",
+     "primary": true
+    },
+    {
+     "url": "https://www.flsenate.gov/Session/Bill/2026/193",
+     "title": "FL HB 193 (2026) Utilities — utility-scale solar; died in subcommittee 3/13/2026",
+     "primary": true
+    },
+    {
+     "url": "https://www.flsenate.gov/Session/Bill/2026/968",
+     "title": "FL SB 968 (2026) Home Backup Power Systems — not solar-specific; died 3/13/2026",
+     "primary": true
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker ('Active advocacy — no bill filed yet')",
+     "primary": false
+    },
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "GA": {
+   "name": "Georgia",
+   "status": "failed_or_vetoed",
+   "summary": "HB 1304 (portable solar up to 1,200 W, no credit for exports) never got past House committee. It died when the 2025-26 biennium ended at sine die on April 2-3, 2026.",
+   "bills": [
+    {
+     "id": "HB 1304",
+     "session": "2025-2026 Regular Session",
+     "url": "https://www.legis.ga.gov/legislation/73191"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Proposed only: UL or equivalent NRTL certification plus current NEC",
+   "export_compensation": "none",
+   "grants_right_to_install": false,
+   "notes": "The official status history reads: House Hopper 2/12/2026, First Readers 2/17/2026, Second Readers 2/18/2026 (last action), referred to House Energy, Utilities & Telecommunications. Press reports say the committee heard it on 2/25/2026 without a vote. The bill would have exempted devices up to 1,200 W from written interconnection agreements, fees and bidirectional meters. It also said providers need not buy or credit exported energy, which is why export compensation is 'none'. It had no landlord or HOA provisions. The 2026 session adjourned sine die on April 2-3, 2026, ending the two-year session. A search of the legislature site for 'portable solar' in the 2025-26 session found no other plug-in bill. Conflict: pluginsolarmap says 'no bill filed yet', which is wrong. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://www.legis.ga.gov/legislation/73191",
+     "title": "Georgia General Assembly - HB 1304 (2025-2026) status history",
+     "primary": true
+    },
+    {
+     "url": "https://www.legis.ga.gov/api/legislation/document/20252026/242584",
+     "title": "HB 1304 bill text (LC 56 0565)",
+     "primary": true
+    },
+    {
+     "url": "https://thecurrentga.org/2026/02/27/georgia-balcony-solar-bill-sidelined/",
+     "title": "The Current GA - Georgia balcony solar bill sidelined",
+     "primary": false
+    },
+    {
+     "url": "https://www.gpb.org/news/2026/04/03/2026-legislative-session-ends-concerns-of-possible-special-session",
+     "title": "GPB - 2026 legislative session ends (Sine Die)",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "HI": {
+   "name": "Hawaii",
+   "status": "failed_or_vetoed",
+   "summary": "SB 2902 (1.2 kW, condo units only) passed the Senate and reached HD1 in the House but was never enacted. HB 2435 also died. The session adjourned on May 8, 2026.",
+   "bills": [
+    {
+     "id": "SB 2902",
+     "session": "2026 Regular Session (33rd Legislature)",
+     "url": "https://www.capitol.hawaii.gov/session/measure_indiv.aspx?billtype=SB&billnumber=2902&year=2026"
+    },
+    {
+     "id": "HB 2435",
+     "session": "2026 Regular Session (33rd Legislature)",
+     "url": "https://www.capitol.hawaii.gov/session/measure_indiv.aspx?billtype=HB&billnumber=2435&year=2026"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Proposed only: intro required UL or equivalent NRTL; HD1 left the certification standard for the PUC to set by 12/30/2026",
+   "export_compensation": "unknown",
+   "grants_right_to_install": false,
+   "notes": "The official SD1 and HD1 texts exist on data.capitol.hawaii.gov, but no CD1 does. HD1 carried the defective effective date 'July 1, 3000' and limited devices to condominium units, owned or rented. It exempted them from NEM and interconnection and required free PUC registration. It did not override condo association rules. Secondary trackers report that SB 2902 died in House Consumer Protection & Commerce and that HB 2435 (voiding agreements that bar plug-in devices) was deferred on 2/10/2026. The bill-status pages (capitol.hawaii.gov) block automated access, so the last action comes from secondary sources. The session adjourned sine die on May 8, 2026, which ended the 2025-26 biennium. Conflict: pluginsolarmap says 'no bill filed yet', which is wrong. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://data.capitol.hawaii.gov/sessions/session2026/bills/SB2902_HD1_.pdf",
+     "title": "SB 2902 HD1 text (effective 7/1/3000; condo-only)",
+     "primary": true
+    },
+    {
+     "url": "https://data.capitol.hawaii.gov/sessions/session2026/bills/SB2902_SD1_.pdf",
+     "title": "SB 2902 SD1 text",
+     "primary": true
+    },
+    {
+     "url": "https://data.capitol.hawaii.gov/sessions/session2026/bills/HB2435_.pdf",
+     "title": "HB 2435 introduced text",
+     "primary": true
+    },
+    {
+     "url": "https://www.pluginsolarmap.com/hawaii",
+     "title": "PlugInSolarMap - Hawaii (tracker)",
+     "primary": false
+    },
+    {
+     "url": "https://www.nraila.org/articles/20260509/hawaii-legislature-adjourns-sine-die-marking-defeat-of-several-anti-gun-bills",
+     "title": "Hawaii Legislature adjourns sine die May 8, 2026 (secondary)",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "ID": {
+   "name": "Idaho",
+   "status": "failed_or_vetoed",
+   "summary": "H 612 (portable solar exemption from utility rules) was referred to House State Affairs and never heard. It died when the legislature adjourned sine die on April 2, 2026.",
+   "bills": [
+    {
+     "id": "H 612",
+     "session": "2026 Regular Session (68th Legislature)",
+     "url": "https://legislature.idaho.gov/sessioninfo/2026/legislation/H0612/"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Proposed only: UL or equivalent NRTL certification plus current NEC (per secondary summaries of the bill text)",
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "An archived copy (2026-03-13) of the official bill page shows H 612 (by the State Affairs Committee) introduced on 2/10/2026 and referred to State Affairs on 2/11/2026. Nothing further happened; secondary trackers say it was never heard. The legislature adjourned sine die on April 2, 2026, and Idaho has no carryover. legislature.idaho.gov refused connections from this environment, so I could not read the bill PDF. The 1,200 W cap, UL/NRTL certification, and exemption from interconnection and net metering come from search summaries of the official PDF. Whether it had landlord or HOA provisions is unverified. Conflict: pluginsolarmap says 'no bill filed yet', which is wrong. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://legislature.idaho.gov/sessioninfo/2026/legislation/H0612/",
+     "title": "Idaho Legislature - H0612 bill page (Wayback snapshot of official page, 2026-03-13)",
+     "primary": true
+    },
+    {
+     "url": "https://fastdemocracy.com/bill-search/id/2026/bills/IDB00008675/",
+     "title": "FastDemocracy - H 612 actions",
+     "primary": false
+    },
+    {
+     "url": "https://idahocapitalsun.com/2026/04/02/after-divisive-session-marked-by-budget-cuts-idaho-legislature-adjourns-2026-session/",
+     "title": "Idaho Capital Sun - Legislature adjourns 2026 session (April 2, 2026)",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "IL": {
+   "name": "Illinois",
+   "status": "pending",
+   "summary": "SB 3104 passed Senate committee but was re-referred to Assignments on May 22, 2026. The 104th GA runs until January 2027, so it could technically still move, but it has stalled.",
+   "bills": [
+    {
+     "id": "SB 3104",
+     "session": "104th General Assembly (2025-2026)",
+     "url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=3104&GAID=18&DocTypeID=SB&SessionID=114&GA=104"
+    },
+    {
+     "id": "HB 4524",
+     "session": "104th General Assembly (2025-2026)",
+     "url": "https://ilga.gov/Legislation/BillStatus?GAID=18&DocNum=4524&DocTypeID=HB&LegId=165349&SessionID=114"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 391,
+   "certification": "Proposed: UL or equivalent NRTL certification (SB 3104 as amended)",
+   "export_compensation": "none",
+   "grants_right_to_install": true,
+   "notes": "The official status page (Wayback snapshot of ILGA, 2026-06-15) shows Senate Committee Amendments 2 and 3 adopted and 'Do Pass as Amended' out of Energy and Public Utilities (9-4) on 3/12/2026. The bill then reached 2nd reading but never got a floor vote. Its last action on 5/22/2026 was 'Rule 3-9(a) / Re-referred to Assignments'. As amended, SB 3104 makes devices not eligible for net metering or DG rebates and requires owners to notify their utility within 30 days. It bars HOAs and landlords from unreasonably restricting installation. It exempts systems of 391 W or less from code or listing rules that would require wiring or panel alterations, and it prohibits systems over 391 W until the NEC adopts a standard, so the working cap is 391 W. House companion HB 4524 (1,200 W export cap, landlord/HOA protections) was re-referred to Rules on 3/27/2026. The 104th GA lasts until the 105th is seated in January 2027, and fall veto or lame-duck days remain. Moving the bill would need Assignments to release it and both chambers to pass it. The sponsor said she will pursue it in 2027 (NPR Illinois), and trackers already call it dead or deferred. ILGA was unreachable from this environment, so statuses rely on June 2026 Wayback snapshots of the official pages. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=3104&GAID=18&DocTypeID=SB&SessionID=114&GA=104",
+     "title": "ILGA - SB 3104 bill status (Wayback snapshot of official page, 2026-06-15)",
+     "primary": true
+    },
+    {
+     "url": "https://ilga.gov/legislation/BillStatus?DocTypeID=HB&DocNum=4524&GAID=18&SessionID=114&LegID=165349",
+     "title": "ILGA - HB 4524 bill status (Wayback snapshot of official page, 2026-06-11)",
+     "primary": true
+    },
+    {
+     "url": "https://www.nprillinois.org/illinois/2026-05-29/why-illinois-may-revisit-plug-in-solar",
+     "title": "NPR Illinois - Why Illinois may revisit plug-in solar",
+     "primary": false
+    },
+    {
+     "url": "https://www.brightsaver.org/state-tracker",
+     "title": "BrightSaver state tracker ('deferring until 2027')",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "IN": {
+   "name": "Indiana",
+   "status": "failed_or_vetoed",
+   "summary": "SB 74 and HB 1084 (1,200 W plug-in solar, no utility approval) got no committee action. They died at the 2026 sine die (Feb 27, 2026).",
+   "bills": [
+    {
+     "id": "SB 74",
+     "session": "2026 (124th General Assembly, 2nd Regular)",
+     "url": "https://iga.in.gov/legislative/2026/bills/senate/74/details"
+    },
+    {
+     "id": "HB 1084",
+     "session": "2026 (124th General Assembly, 2nd Regular)",
+     "url": "https://iga.in.gov/legislative/2026/bills/house/1084/details"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Proposed only: UL or equivalent NRTL certification plus NEC; outage disconnect",
+   "export_compensation": "unknown",
+   "grants_right_to_install": false,
+   "notes": "The official IGA pages show SB 74 (Ford, Deery, Qaddoura) referred to Senate Utilities on 12/8/2025, with the last action a coauthor added on 1/22/2026. HB 1084 (Hamilton) was referred to House Utilities, Energy and Telecommunications on 1/5/2026, with the last action a coauthor added on 1/8/2026. Neither got a hearing. Both would have taken effect July 1, 2026. Both would have excluded devices from Indiana's distributed generation statute (IC 8-1-40) and barred utility approval, fees or modifications. They had no landlord or HOA provisions. The 2026 short session adjourned sine die on Feb 27, 2026 (secondary), and bills do not carry over to the next General Assembly. Conflict: pluginsolarmap says 'no bill filed yet', which is wrong. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://iga.in.gov/legislative/2026/bills/senate/74/details",
+     "title": "Indiana General Assembly - SB 74 (2026)",
+     "primary": true
+    },
+    {
+     "url": "https://iga.in.gov/pdf-documents/124/2026/senate/bills/SB0074/SB0074.01.INTR.pdf",
+     "title": "SB 74 introduced text",
+     "primary": true
+    },
+    {
+     "url": "https://iga.in.gov/legislative/2026/bills/house/1084/details",
+     "title": "Indiana General Assembly - HB 1084 (2026)",
+     "primary": true
+    },
+    {
+     "url": "https://iga.in.gov/pdf-documents/124/2026/house/bills/HB1084/HB1084.01.INTR.pdf",
+     "title": "HB 1084 introduced text",
+     "primary": true
+    },
+    {
+     "url": "https://ballotpedia.org/2026_Indiana_legislative_session",
+     "title": "Ballotpedia - 2026 Indiana legislative session (adjourned Feb 27, 2026)",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "IA": {
+   "name": "Iowa",
+   "status": "failed_or_vetoed",
+   "summary": "HF 2046 (1,200 W portable solar) was introduced on Jan 14, 2026 and never moved past referral to House Commerce. It died when the 91st General Assembly adjourned on May 3, 2026.",
+   "bills": [
+    {
+     "id": "HF 2046",
+     "session": "91st General Assembly (2025-2026)",
+     "url": "https://www.legis.iowa.gov/legislation/BillBook?ga=91&ba=HF2046"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Proposed only: UL or equivalent NRTL certification plus NEC; outage anti-backfeed feature",
+   "export_compensation": "unknown",
+   "grants_right_to_install": false,
+   "notes": "The official bill history shows one action: introduced and referred to Commerce on 1/14/2026 (H.J. 76). It missed the funnel. The bill would have exempted devices up to 1,200 W from interconnection and from net-metering requirements under Iowa Code 476.49, and barred utility approval, fees or extra equipment. It had no landlord or HOA provisions. The 91st GA adjourned sine die on May 3, 2026, and bills do not carry into the 92nd GA. Conflicts: pluginsolarmap says 'no bill filed yet', which is wrong. A secondary summary called SF 2056 a Senate companion, but the official history shows SF 2056 is an unrelated bill on DG billing methods. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=HF2046&ga=91",
+     "title": "Iowa Legislature - HF 2046 bill history",
+     "primary": true
+    },
+    {
+     "url": "https://www.legis.iowa.gov/docs/publications/LGI/91/HF2046.pdf",
+     "title": "HF 2046 introduced text",
+     "primary": true
+    },
+    {
+     "url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SF2056&ga=91",
+     "title": "Iowa Legislature - SF 2056 history (DG billing; not a plug-in bill)",
+     "primary": true
+    },
+    {
+     "url": "https://www.thegazette.com/news/state/marathon-2-day-session-finishes-iowa-lawmakers-2026-work/article_09e64cdc-aae8-4f44-9a02-307942442fad.html",
+     "title": "The Gazette - 2026 session ends (May 3, 2026)",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "KS": {
+   "name": "Kansas",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill in Kansas's 2025–26 biennium; solar bills addressed leases, HOA rooftop solar, facility taxes and net billing.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "Full-text search of kslegislature.gov for the 2025–26 biennium (legislation and committee documents) returned no matches for 'plug-in solar', 'balcony solar' or 'portable solar'; 'balcony' hits were unrelated landlord testimony and 'plug-in' hits were EV bills. Solar bills found concerned wind/solar land transactions (HB 2300), HOA rooftop solar (HB 2669), solar/wind facility taxes (SB 534) and parallel-generation compensation (HB 2149) — none plug-in-specific. Bright Saver and PlugInSolarMap list no activity. The legislature is in its 2026 interim; next session January 2027.",
+   "sources": [
+    {
+     "url": "https://kslegislature.gov/b2025_26/search/?q=%22plug-in+solar%22",
+     "title": "Kansas Legislature full-text search, 2025–26 biennium",
+     "primary": true
+    },
+    {
+     "url": "https://kslegislature.gov/b2025_26/search/?q=solar&type=legislation",
+     "title": "Kansas Legislature full-text search for solar, 2025–26 (21 legislation hits, none plug-in)",
+     "primary": true
+    },
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker (lists state as no activity)",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "KY": {
+   "name": "Kentucky",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill in Kentucky's 2025 or 2026 regular sessions; 2026 ended April 15.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "Searched Kentucky LRC 2025 and 2026 Regular Session index headings (Energy, Public Utilities, Consumer Protection, Electricians, Landlord and Tenant, Housing) for solar/plug-in/portable/balcony: solar entries were utility-scale siting/setbacks (e.g., SB 107, SB 108, HB 790), a solar-farm excise tax (HB 785) and solar-contractor consumer protection (HB 828), none plug-in. This was an index search, not a full-text search (medium confidence). Web searches and trackers show no plug-in bill. The 2026 Regular Session adjourned sine die April 15, 2026.",
+   "sources": [
+    {
+     "url": "https://apps.legislature.ky.gov/record/26RS/3540.html",
+     "title": "KY LRC 2026 RS index heading: Energy",
+     "primary": true
+    },
+    {
+     "url": "https://apps.legislature.ky.gov/record/26RS/7040.html",
+     "title": "KY LRC 2026 RS index heading: Public Utilities",
+     "primary": true
+    },
+    {
+     "url": "https://apps.legislature.ky.gov/record/26rs/hb828.html",
+     "title": "KY HB 828 (2026) solar contractor consumer protection — not plug-in",
+     "primary": true
+    },
+    {
+     "url": "https://kyrc.org/2026-general-assembly-legislative-update-the-sine-die-edition/",
+     "title": "Kentucky Resources Council: sine die April 15 2026",
+     "primary": false
+    },
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker (lists state as no activity)",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "LA": {
+   "name": "Louisiana",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill in Louisiana's 2025 or 2026 regular sessions.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "Louisiana Legislature 'Search Bill Text' (any version) for the 2025 and 2026 Regular Sessions: no relevant hits for 'plug-in', 'balcony', 'balcony solar', 'portable solar' or 'electrical outlet' (a 'plug-in solar' query returned only unrelated CO2/gas-well items). 2026 solar-related instruments were HB 621 (renewable-infrastructure recycling, Act 658) and HR 197 (urges PSC to study distributed generation and storage), neither addressing plug-in devices. Bright Saver and PlugInSolarMap list no activity. The 2026 regular session has ended.",
+   "sources": [
+    {
+     "url": "https://www.legis.la.gov/legis/BillSearch.aspx?sid=26RS",
+     "title": "Louisiana Legislature bill text search, 2026 RS (also run for 2025 RS)",
+     "primary": true
+    },
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker (lists state as no activity)",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "ME": {
+   "name": "Maine",
+   "status": "in_force",
+   "summary": "LD 1730 (Public Law ch. 644) allows plug-in solar up to 420 W DIY, or up to 1,200 W with a licensed electrician and utility notice. No interconnection; no net energy billing. In force July 29, 2026.",
+   "bills": [
+    {
+     "id": "LD 1730 (SP 676)",
+     "session": "132nd Legislature, 2nd Regular Session (2026)",
+     "url": "https://legislature.maine.gov/legis/bills/display_ps.asp?LD=1730&snum=132"
+    }
+   ],
+   "signed_date": "2026-04-06",
+   "effective_date": "2026-07-29",
+   "ac_limit_watts": 1200,
+   "certification": "Listed or certified to UL 3700, or a comparable NRTL standard, or configured per the NEC adopted by the Electricians' Examining Board. Inverters must shut off within 0.2 s of a power disruption.",
+   "export_compensation": "none",
+   "grants_right_to_install": false,
+   "notes": "The law enacts 35-A MRSA §3475, which covers plug-in PV and battery systems. Up to 420 W (combined inverter AC output per service address) needs no electrician and no utility notice. From 420 W to 1,200 W, each system must be installed by a Maine-licensed electrician on a dedicated single-outlet circuit, and the customer must notify the utility within 30 days. Utilities may not require approval, an interconnection application or agreement, fees or extra equipment. Eligible systems 'may not be used for net energy billing'. The law creates no landlord or HOA right to install: subsection 8 only requires a customer on a structure they do not own to protect its integrity, follow building, fire and zoning codes, and restore it on removal. On the effective date, trackers said July 14 or 15, 2026. The chapter law has no emergency clause, and the Legislature's site states the general effective date for non-emergency 2nd Regular Session laws is July 29, 2026 (90 days after the April 29, 2026 sine die, Me. Const. art. IV, pt. 3, §16), so we used July 29. The bill's original title was 'An Act Regarding the Beneficial Electrification Policy of the State' before it was retitled.",
+   "sources": [
+    {
+     "url": "https://legislature.maine.gov/legis/bills/display_ps.asp?LD=1730&snum=132",
+     "title": "Maine Legislature - LD 1730/SP 676 text and status (Enacted; signed Apr 6, 2026; Chapter 644)",
+     "primary": true
+    },
+    {
+     "url": "https://legislature.maine.gov/LawMakerWeb/summary.asp?LD=1730&SessionID=16",
+     "title": "Maine LawMakerWeb summary of LD 1730 (Signed by Governor, Public Law ch. 644, 4/6/2026)",
+     "primary": true
+    },
+    {
+     "url": "https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132",
+     "title": "Chaptered law PDF: Public Law ch. 644, enacting 35-A MRSA §3475",
+     "primary": true
+    },
+    {
+     "url": "https://legislature.maine.gov/",
+     "title": "Maine Legislature home page - 132nd 2nd Regular Session adjourned sine die Apr 29, 2026; general effective date Jul 29, 2026",
+     "primary": true
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "MD": {
+   "name": "Maryland",
+   "status": "in_force",
+   "summary": "Utility RELIEF Act (HB 1532, Ch. 353) adds PUA §7-321: one plug-in system up to 1,200 W per meter, no utility approval or fee, notice before install. Effective July 1, 2026.",
+   "bills": [
+    {
+     "id": "HB 1532 (Chapter 353)",
+     "session": "2026 Regular Session",
+     "url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb1532?ys=2026RS"
+    }
+   ],
+   "signed_date": "2026-05-12",
+   "effective_date": "2026-07-01",
+   "ac_limit_watts": 1200,
+   "certification": "Certified by UL or an equivalent NRTL. Devices of 391 W or less are exempt from listing provisions that would require premises, wiring or panel alterations.",
+   "export_compensation": "none",
+   "grants_right_to_install": false,
+   "notes": "Plug-in solar is one section of a 244-page omnibus energy act; there is no separate cross-filed plug-in bill. It sits in Section 4 of the act as new Public Utilities Art. §7-321. The device must be moveable, plug into a standard outlet and supply no more than 1,200 W back to the building's electric system, limited to one per meter for residential use only. Utilities may not require approval, feed-in fees or extra equipment. The customer must notify the utility before installing, provide a certification of safety features and capacity, and pay for an automatic locking disconnect if one is required. Devices are not subject to §7-306 (net metering) or §7-306.1 (interconnection agreements), do not count toward the RPS and may not generate RECs. The act has no landlord, tenant or HOA provision. On the effective date, trackers said May 12, 2026 (immediately) or Oct 1, 2026. The act is an emergency measure effective on enactment (May 12, 2026) except the sections listed in its Section 22, which include Section 4 and take effect July 1, 2026. The DLS Fiscal and Policy Note (Enrolled-Revised) confirms 'Effective Date: July 1, 2026' for this provision, so both tracker dates are wrong for plug-in solar. The standalone 'Affordable Solar Act' bills (HB 345/SB 341), which also had portable-solar language, got committee hearings only and died when the session ended.",
+   "sources": [
+    {
+     "url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb1532?ys=2026RS",
+     "title": "Maryland General Assembly - HB1532 Utility RELIEF Act (Approved by the Governor - Chapter 353, 5/12/2026)",
+     "primary": true
+    },
+    {
+     "url": "https://mgaleg.maryland.gov/2026RS/Chapters_noln/CH_353_hb1532e.pdf",
+     "title": "Chapter 353, 2026 Laws of Maryland (PUA §7-321; Sections 22-23 effective dates)",
+     "primary": true
+    },
+    {
+     "url": "https://mgaleg.maryland.gov/2026RS/fnotes/bil_0002/hb1532.pdf",
+     "title": "DLS Fiscal and Policy Note, HB 1532 Enrolled-Revised (Portable Solar: Effective Date July 1, 2026)",
+     "primary": true
+    },
+    {
+     "url": "https://psc.maryland.gov/regulated-utilities/electricity/renewable-energy/balcony-solar/",
+     "title": "Maryland PSC - Balcony Solar guidance page",
+     "primary": true
+    },
+    {
+     "url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb0345?ys=2026RS",
+     "title": "HB0345 (2026) Affordable Solar Act - hearing only, not enacted",
+     "primary": true
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "MA": {
+   "name": "Massachusetts",
+   "status": "pending",
+   "summary": "Plug-in solar (1,200 W) is inside the omnibus energy bill H.5175; House and Senate passed different versions and it has sat in conference committee since Jul 16, 2026. No deal yet.",
+   "bills": [
+    {
+     "id": "H.5175",
+     "session": "194th General Court (2025-2026)",
+     "url": "https://malegislature.gov/Bills/194/H5175"
+    },
+    {
+     "id": "S.3143 / S.3166 (Senate substitute text)",
+     "session": "194th General Court (2025-2026)",
+     "url": "https://malegislature.gov/Bills/194/S3166"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "UL or equivalent NRTL; NEC; must prevent energizing building during outage (House text)",
+   "export_compensation": "unknown",
+   "grants_right_to_install": false,
+   "notes": "Official bill history (archived malegislature.gov page, snapshot 2026-09-21): House engrossed H.5175 128-27 on 2/26/26; Senate substituted S.3143 text (reprinted as S.3166) and passed 32-8 on 7/1/26; on 7/16/26 the House non-concurred and a conference committee was appointed (Cusack-Michlewitz-Jones / Barrett-Creem-Tarr). No later action; press on 9/21-9/22/26 reports talks still stalled. The 2025-26 joint rules let conference reports from committees formed by July 31 be taken up in formal session after July 31, so it can still pass before the 194th General Court ends in early Jan 2027. House text (§19 definition, §53 new G.L. c.164 §143A) exempts devices of 1,200 W max output from interconnection and net-metering program requirements and bars utility approval/fees; it contains NO landlord/tenant right (a tracker claim that landlords cannot prohibit tenants is not in the House text); the bill carries an emergency preamble. Senate plug-in text not verified. malegislature.gov was unreachable from this network, so it was read via archive.org snapshots. News reports cite H.5151 (House W&M version later engrossed as H.5175) and S.3166 (reprint of the Senate text).",
+   "sources": [
+    {
+     "url": "https://malegislature.gov/Bills/194/H5175",
+     "title": "Bill H.5175 history, malegislature.gov (Wayback snapshot 2026-09-21)",
+     "primary": true
+    },
+    {
+     "url": "https://malegislature.gov/Bills/194/H5175.pdf",
+     "title": "H.5175 text as passed by House (Wayback snapshot)",
+     "primary": true
+    },
+    {
+     "url": "https://gazettenet.com/2026/09/21/healey-eyes-winter-energy-relief-as-affordability-bill-remains-stalled/",
+     "title": "Daily Hampshire Gazette 9/21/26: affordability bill remains stalled in conference",
+     "primary": false
+    },
+    {
+     "url": "https://malegislature.gov/PressRoom/Detail?pressReleaseId=212",
+     "title": "Fact Sheet: Joint Rules of the 194th General Court (formal sessions after July 31 for conference reports)",
+     "primary": true
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "MI": {
+   "name": "Michigan",
+   "status": "pending",
+   "summary": "HB 5764 (1,200 W, no utility approval or fees, 30-day notice) was referred to House Energy Committee Mar 19, 2026 with no committee action reported since. Session runs through Dec 2026.",
+   "bills": [
+    {
+     "id": "HB 5764",
+     "session": "2025-2026 (103rd Legislature)",
+     "url": "https://www.legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-5764"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "UL or equivalent NRTL; NEC; must prevent energizing building during outage",
+   "export_compensation": "unknown",
+   "grants_right_to_install": false,
+   "notes": "Official history (archived legislature.mi.gov page): introduced 3/19/26 by Rep. Will Snyder with bipartisan co-sponsors and referred to the Committee on Energy, then electronically reproduced 4/14/26. BillTrack50 and an 8/8/26 Thumbwind report show no later action. The text exempts systems up to 1,200 W from the distributed generation program and interconnection, bars utility approval, fees and extra equipment, and requires notice to the utility within 30 days on an MPSC form. A customer installing on a meter or panel they do not own must avoid damage and restore it, but the bill does not bar landlords from prohibiting installs. legislature.mi.gov blocked this network (WAF), so the status is from an archived snapshot plus secondary trackers; a later committee action cannot be ruled out.",
+   "sources": [
+    {
+     "url": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-5764",
+     "title": "Michigan Legislature: HB 5764 of 2026 (Wayback snapshot)",
+     "primary": true
+    },
+    {
+     "url": "https://legislature.mi.gov/documents/2025-2026/billintroduced/House/htm/2026-HIB-5764.htm",
+     "title": "HB 5764 introduced text (Wayback snapshot)",
+     "primary": true
+    },
+    {
+     "url": "https://www.billtrack50.com/billdetail/1991690",
+     "title": "BillTrack50: MI HB5764",
+     "primary": false
+    },
+    {
+     "url": "https://thumbwind.com/2026/08/08/michigan-plug-in-solar-hb-5764/",
+     "title": "Thumbwind 8/8/26: HB 5764 still in committee",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "MN": {
+   "name": "Minnesota",
+   "status": "failed_or_vetoed",
+   "summary": "Plug-in solar (1,200 W, UL 3700) was added to omnibus SF 4504, which passed the Senate 35-32 but was never taken up by the House. It died when the session ended on May 18, 2026.",
+   "bills": [
+    {
+     "id": "SF 4504",
+     "session": "94th Legislature (2025-2026), 2026 session",
+     "url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4504/"
+    },
+    {
+     "id": "HF 3555",
+     "session": "94th Legislature (2025-2026), 2026 session",
+     "url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3555/"
+    },
+    {
+     "id": "SF 3873",
+     "session": "94th Legislature (2025-2026), 2026 session",
+     "url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/3873/"
+    },
+    {
+     "id": "SF 4774",
+     "session": "94th Legislature (2025-2026), 2026 session",
+     "url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4774/"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Proposed only: listed/certified to UL 3700",
+   "export_compensation": "unknown",
+   "grants_right_to_install": false,
+   "notes": "The SF 4504 3rd engrossment would have added a new section 216B.2413 covering 1,200 W devices listed to UL 3700. It exempted them from interconnection agreements, from net metering under 216B.164, and from utility fees or approvals. It let utilities require registration and had no landlord or HOA right. The Senate passed it 35-32 on 5/12/2026, and it was referred to House Energy Finance and Policy the same day, its last action. Standalone bills HF 3555 and SF 3873 (Kraft/Kupec) and SF 4774 (Putnam) never left committee. The legislature cannot meet in regular session after May 18, 2026 (Minn. Const. art. IV, sec. 12), so only a special session called by the governor could revive it. None of the 2026 session-law chapters listed on the revisor's site (chapters 40-131) contains plug-in provisions, and statute 216B.2413 does not exist. Conflict: pluginsolarmap says 'no bill filed yet', which is wrong. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4504/",
+     "title": "MN Revisor - SF 4504 status (passed Senate 5/12/2026; in House committee)",
+     "primary": true
+    },
+    {
+     "url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4504/versions/3/",
+     "title": "SF 4504 3rd engrossment text (sec. 216B.2413)",
+     "primary": true
+    },
+    {
+     "url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3555/",
+     "title": "MN Revisor - HF 3555 status",
+     "primary": true
+    },
+    {
+     "url": "https://www.revisor.mn.gov/laws/2026/0/",
+     "title": "MN Revisor - 2026 Session Laws chapter list",
+     "primary": true
+    },
+    {
+     "url": "https://www.mprnews.org/story/2026/05/08/lawmakers-considering-whether-to-allow-plug-in-balcony-solar-power",
+     "title": "MPR News - lawmakers considering plug-in solar",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "MS": {
+   "name": "Mississippi",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill in Mississippi's 2025 or 2026 sessions; solar bills concerned utility-scale siting and decommissioning.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "Searched the Mississippi Legislature's official 'Report of All Measures' (titles) for the 2025 and 2026 regular sessions for solar/portable/plug/balcony/net metering/distributed: only utility-scale solar bills appeared (e.g., HB 1492 and SB 2527 decommissioning, SB 2021 MDEQ siting, SB 2785 solar farms). Title search only, not full text (medium confidence). Web searches and trackers show no plug-in bill. The 2026 regular session has concluded.",
+   "sources": [
+    {
+     "url": "https://billstatus.ls.state.ms.us/2026/pdf/all_measures/allmsrs.xml",
+     "title": "Mississippi Legislature 2026 Regular Session — Report of All Measures",
+     "primary": true
+    },
+    {
+     "url": "https://billstatus.ls.state.ms.us/2025/pdf/all_measures/allmsrs.xml",
+     "title": "Mississippi Legislature 2025 Regular Session — Report of All Measures",
+     "primary": true
+    },
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker (lists state as no activity)",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "MO": {
+   "name": "Missouri",
+   "status": "failed_or_vetoed",
+   "summary": "HB 2528 and HB 2444 (1,200 W portable solar exempt from PSC net-metering rules) were referred to committee on the session's last day. Both died when the session ended on May 15, 2026.",
+   "bills": [
+    {
+     "id": "HB 2528",
+     "session": "2026 (103rd General Assembly, 2nd Regular)",
+     "url": "https://house.mo.gov/Bill.aspx?bill=HB2528&year=2026&code=R"
+    },
+    {
+     "id": "HB 2444",
+     "session": "2026 (103rd General Assembly, 2nd Regular)",
+     "url": "https://house.mo.gov/Bill.aspx?bill=HB2444&year=2026&code=R"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Proposed only: UL or equivalent NRTL certification plus current NEC",
+   "export_compensation": "unknown",
+   "grants_right_to_install": false,
+   "notes": "Both bills (Matthiesen; Boyko) would have amended RSMo 386.890, the Net Metering and Easy Connection Act, so that 1,200 W devices are exempt from that section. They also barred supplier approval, fees or extra equipment and required an outage anti-energizing feature. Neither had landlord or HOA provisions. For both, the official Missouri House page gives the last action as 05/15/2026, 'Referred: Emerging Issues (H)', with no hearing scheduled. The regular session constitutionally ended on May 15, 2026, and bills do not carry over. No Senate plug-in bill was found. Conflict: pluginsolarmap says 'no bill filed yet', which is wrong. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://house.mo.gov/BillContent.aspx?bill=HB2528&year=2026&code=R&style=new",
+     "title": "Missouri House - HB 2528 bill content/status",
+     "primary": true
+    },
+    {
+     "url": "https://documents.house.mo.gov/billtracking/bills261/hlrbillspdf/4677H.01I.pdf",
+     "title": "HB 2528 introduced text",
+     "primary": true
+    },
+    {
+     "url": "https://house.mo.gov/BillContent.aspx?bill=HB2444&year=2026&code=R&style=new",
+     "title": "Missouri House - HB 2444 bill content/status",
+     "primary": true
+    },
+    {
+     "url": "https://documents.house.mo.gov/billtracking/bills261/hlrbillspdf/6224H.01I.pdf",
+     "title": "HB 2444 introduced text",
+     "primary": true
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "MT": {
+   "name": "Montana",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill in Montana's 2025 session; the legislature does not meet again until January 2027.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "Montana meets in odd years: the 2025 (69th) session adjourned sine die April 30, 2025 and the next session starts January 4, 2027 (LAWS API). Title/draft search of all 2025 bills and drafts via the LAWS system found solar bills only on community solar (SB 188, reported vetoed June 2025), decommissioning (HB 31) and solar consumer protection (HB 760), none plug-in. LAWS offers title search, not full text (medium confidence). Bright Saver and PlugInSolarMap list no activity.",
+   "sources": [
+    {
+     "url": "https://bills.legmt.gov/",
+     "title": "Montana Legislature LAWS bill search (2025 session titles)",
+     "primary": true
+    },
+    {
+     "url": "https://bearbeta.legmt.gov/legislators/v1/sessions",
+     "title": "Montana LAWS API session list (2025 sine die 2025-04-30; 2027 session starts 2027-01-04)",
+     "primary": true
+    },
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker (lists state as no activity)",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "NE": {
+   "name": "Nebraska",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill found in Nebraska's 2025–26 (109th) Legislature; 2026 session ended April 17.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "Nebraska Legislature website refused connections from this research environment, so its own search could not be used (medium confidence). Web searches for Nebraska plug-in/balcony/portable solar legislation found no bill; Bright Saver and PlugInSolarMap list no activity and ExactSolar (Jun 2026) lists Nebraska as a holdout. The 2026 session adjourned sine die April 17, 2026; the 110th Legislature convenes January 2027.",
+   "sources": [
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker (lists state as no activity)",
+     "primary": false
+    },
+    {
+     "url": "https://www.nraila.org/articles/20260420/nebraska-legislature-adjourns-sine-die",
+     "title": "NRA-ILA: Nebraska Legislature adjourned sine die April 17 2026",
+     "primary": false
+    },
+    {
+     "url": "https://exactsolar.substack.com/p/your-state-by-state-plug-in-solar",
+     "title": "ExactSolar state-by-state plug-in solar update (Jun 12 2026)",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "NV": {
+   "name": "Nevada",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill in Nevada's 2025 session; the legislature next meets in February 2027.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "Nevada meets in odd years; the 83rd session adjourned just after 12:30 a.m. June 3, 2025 (special sessions followed in November 2025). NELIS (leg.state.nv.us) returned HTTP 403 (Cloudflare) to both curl and WebFetch, so the legislature's search could not be used (medium confidence). Web searches for Nevada plug-in/balcony/portable solar legislation found no bill; Bright Saver and PlugInSolarMap list no activity.",
+   "sources": [
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker (lists state as no activity)",
+     "primary": false
+    },
+    {
+     "url": "https://www.kunr.org/politics-and-policy/2025-06-03/2025-nevada-legislative-session-adjourns",
+     "title": "KUNR: 2025 Nevada legislative session adjourns (June 3 2025)",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "NH": {
+   "name": "New Hampshire",
+   "status": "enacted_not_yet_effective",
+   "summary": "SB 540 (Chapter 262, signed July 2, 2026) lets each metered customer run one plug-in solar system up to 1,200 W AC without utility approval or interconnection. Takes effect Jan 1, 2027.",
+   "bills": [
+    {
+     "id": "SB 540-FN (Chapter 262, Laws of 2026)",
+     "session": "2026",
+     "url": "https://gc.nh.gov/bill_status/legacy/bs2016/billText.aspx?sy=2026&id=1317&txtFormat=html"
+    }
+   ],
+   "signed_date": "2026-07-02",
+   "effective_date": "2027-01-01",
+   "ac_limit_watts": 1200,
+   "certification": "Certified by an NRTL to nationally recognized safety standards for DER and plug-in systems; must meet national interconnection and interoperability standards (IEEE 1547 implied, not named)",
+   "export_compensation": "unknown",
+   "grants_right_to_install": false,
+   "notes": "Chaptered text (Ch. 262, 'Approved: July 02, 2026') sec. 262:7 makes everything except sec. 3 effective January 1, 2027. Sec. 3, the building-code provision (RSA 155-A:16), takes effect only once the Dept. of Energy commissioner certifies that a nationally recognized plug-in standard exists. This settles the tracker conflicts: 'effective Jul 27, 2026' and 'remainder took effect July 2, 2026' are wrong, and so are 'Chapter 89' and a July 9 signing date. RSA 362-A:10 allows one system of up to 1,200 W AC per metered customer. Utilities cannot require approval, interconnection review or agreement, fees or extra equipment, and may only ask for notification of the wattage. The law does not say whether exports are credited. RSA 374:1-b says utilities are not liable for 'compensation or charges arising from' a plug-in system, which suggests no credit but does not say so outright. There are no landlord, HOA or local-government provisions. The 2026 session has ended.",
+   "sources": [
+    {
+     "url": "https://gc.nh.gov/bill_status/legacy/bs2016/billText.aspx?sy=2026&id=1317&txtFormat=html",
+     "title": "NH General Court: SB 540-FN Final Version, Chapter 262 (full text incl. sec. 262:7 effective date; Approved July 02, 2026)",
+     "primary": true
+    },
+    {
+     "url": "https://www.governor.nh.gov/news/governor-signs-74-bills-law",
+     "title": "Governor Kelly Ayotte press release, July 2, 2026: Governor Signs 74 Bills into Law (lists SB 540)",
+     "primary": true
+    },
+    {
+     "url": "https://www.concordmonitor.com/2026/07/03/ayotte-signs-balcony-solar-bill/",
+     "title": "Concord Monitor: Ayotte signs 'balcony solar' bill",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "NJ": {
+   "name": "New Jersey",
+   "status": "enacted_not_yet_effective",
+   "summary": "Garden State Balcony Solar Act (P.L.2026, c.82): plug-in solar up to 1,200 W, no interconnection; landlords, HOAs and towns can't ban it. Signed Sept 1, 2026; effective Mar 1, 2027.",
+   "bills": [
+    {
+     "id": "S2368",
+     "session": "2026-2027",
+     "url": "https://www.njleg.state.nj.us/bill-search/2026/S2368"
+    },
+    {
+     "id": "A4836",
+     "session": "2026-2027",
+     "url": "https://www.njleg.state.nj.us/bill-search/2026/A4836"
+    }
+   ],
+   "signed_date": "2026-09-01",
+   "effective_date": "2027-03-01",
+   "ac_limit_watts": 1200,
+   "certification": "Listed or certified by an NRTL to UL 3700 or a comparable standard or combination of standards; anti-islanding; installed per product listing, NEC and UCC",
+   "export_compensation": "unknown",
+   "grants_right_to_install": true,
+   "notes": "P.L.2026, c.82 (approved 9/1/2026) takes effect 'six months after the date of enactment', i.e. March 1, 2027; the BPU may act in advance. This matches trackers. Devices of up to 1,200 W (combined per service address, or per dwelling unit in multifamily housing) are exempt from interconnection agreements and net-metering program requirements. Utilities cannot require approval, fees or extra equipment. The act does not say whether exported energy is compensated. Devices of 400 W or less are exempt from listing and code provisions that would require wiring or panel alterations. Landlords cannot bar tenants who pay their own electric bill from using a device within their leased premises, including a balcony or patio; reasonable size and placement limits are allowed and tenants must give 14 days' written notice. HOAs and condos cannot enforce bans on exterior placement. Municipalities cannot prohibit the devices or require permits.",
+   "sources": [
+    {
+     "url": "https://www.njleg.state.nj.us/bill-search/2026/S2368",
+     "title": "NJ Legislature bill page S2368: history shows 6/30/2026 passed both houses; 9/1/2026 Approved P.L.2026, c.82",
+     "primary": true
+    },
+    {
+     "url": "https://pub.njleg.gov/Bills/2026/S2500/2368_R3.HTM",
+     "title": "S2368 [Third Reprint], final text as reported by Assembly Budget Committee 6/28/2026 (sec. 5 effective date)",
+     "primary": true
+    },
+    {
+     "url": "https://pub.njleg.state.nj.us/Bills/2026/S2500/2368_S4.PDF",
+     "title": "Assembly Budget Committee Statement to S2368 (2R), June 28, 2026",
+     "primary": true
+    },
+    {
+     "url": "https://www.nj.gov/governor/news/2026/approved/20260901a.shtml",
+     "title": "Governor Sherrill press release, 9/1/2026: signs Garden State Balcony Solar Act (S2368/A4836)",
+     "primary": true
+    },
+    {
+     "url": "https://pv-magazine-usa.com/2026/07/01/new-jersey-legislature-unanimously-passes-plug-in-solar-bill/",
+     "title": "pv magazine USA: New Jersey legislature unanimously passes plug-in solar bill",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "NM": {
+   "name": "New Mexico",
+   "status": "failed_or_vetoed",
+   "summary": "SB 157 (portable solar up to 1,920 W, exports uncompensated) did not pass in the 30-day session that ended on Feb 19, 2026. SM 10 only asked for a pilot working group.",
+   "bills": [
+    {
+     "id": "SB 157",
+     "session": "2026 Regular (57th Legislature, 2nd Session)",
+     "url": "https://www.nmlegis.gov/Legislation/Legislation?chamber=S&legType=B&legNo=157&year=26"
+    },
+    {
+     "id": "SM 10",
+     "session": "2026 Regular (57th Legislature, 2nd Session)",
+     "url": "https://www.nmlegis.gov/Sessions/26%20Regular/memorials/senate/SM010.HTML"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1920,
+   "certification": "Proposed only: NRTL certification plus the NM electrical code; outage anti-backfeed",
+   "export_compensation": "none",
+   "grants_right_to_install": true,
+   "notes": "The official SB 157 text (Pope, Steinborn; read via a Wayback copy) would have exempted devices up to 1,920 W from interconnection and net metering. It classed exports as 'non-compensated energy' and barred utility approval, notification, registration or fees. It would also have voided real-property covenants that effectively prohibit devices, citing NMSA 3-18-32. It did not address leases. SM 10 (Pope) is a non-binding memorial asking EMNRD to design a low-income pilot; its final status was not verified. nmlegis.gov blocked automated access, so SB 157's action history is unverified from primary sources. The session ended on Feb 19, 2026, and the bill was not enacted. Conflicts: pluginsolarmap says 'no bill filed yet', which is wrong. One secondary source names Sen. Sedillo Lopez as sponsor, but the official text names Pope and Steinborn. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://www.nmlegis.gov/Sessions/26%20Regular/bills/senate/SB0157.pdf",
+     "title": "SB 157 introduced text (Wayback copy of official PDF)",
+     "primary": true
+    },
+    {
+     "url": "https://www.nmlegis.gov/Sessions/26%20Regular/memorials/senate/SM010.html",
+     "title": "SM 10 text (Wayback copy of official page)",
+     "primary": true
+    },
+    {
+     "url": "https://sourcenm.com/2026/02/19/nm-legislature-final-day-recap-sine-die-for-the-governors-final-regular-session/",
+     "title": "Source NM - session ends Feb 19, 2026",
+     "primary": false
+    },
+    {
+     "url": "https://www.brightsaver.org/state-tracker",
+     "title": "BrightSaver state tracker ('deferring until 2027')",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "NY": {
+   "name": "New York",
+   "status": "passed_awaiting_signature",
+   "summary": "SUNNY Act (S8512C/A9111C) passed both houses May 28, 2026 but has not been delivered to Gov. Hochul. Would exempt plug-in solar up to 1,200 W AC from interconnection.",
+   "bills": [
+    {
+     "id": "S8512C",
+     "session": "2025-2026",
+     "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C"
+    },
+    {
+     "id": "A9111C",
+     "session": "2025-2026",
+     "url": "https://nyassembly.gov/leg/?default_fld=&bn=A09111&term=2025&Summary=Y&Actions=Y&Text=Y&Memo=Y"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Listed or certified by an accredited NRTL as a complete plug-in PV system to a standard (no specific UL standard named); anti-islanding",
+   "export_compensation": "none",
+   "grants_right_to_install": false,
+   "notes": "A9111C passed the Assembly 89-47 on 5/28/2026 and the Senate the same day (substituted for S8512C). As of 2026-09-23, neither chamber's action list shows delivery to the governor; the last action is 5/28/2026 'returned to Assembly'. That means the governor's decision clock has not started. The bill stays alive only through the end of the 2025-2026 term (Dec 31, 2026). If signed, it takes effect on the 90th day after becoming law (bill sec. 5). The sponsor memo says 'effective immediately', which conflicts with the text; the text governs. Devices of up to 1,200 W aggregate AC inverter nameplate would be exempt from interconnection and net-metering requirements. Exports would be uncompensated unless the customer voluntarily signs a net-metering or other compensation agreement. Utilities could not require approval, fees or extra equipment. Owners would have to notify their utility within 30 days via an online form. The bill has no landlord, HOA or local-government provisions.",
+   "sources": [
+    {
+     "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+     "title": "NY Senate: S8512C (2025-2026), actions through 5/28/2026 and bill text",
+     "primary": true
+    },
+    {
+     "url": "https://nyassembly.gov/leg/?default_fld=&bn=A09111&term=2025&Summary=Y&Actions=Y&Text=Y&Memo=Y",
+     "title": "NY Assembly: A09111C actions, floor vote (89/47), memo and text",
+     "primary": true
+    },
+    {
+     "url": "https://www.canarymedia.com/articles/solar/new-york-gov-sign-balcony-solar-bill",
+     "title": "Canary Media: Will New York Gov. Kathy Hochul sign a balcony solar bill? (June 2026)",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "NC": {
+   "name": "North Carolina",
+   "status": "pending",
+   "summary": "HB 1129 'Balcony Solar' (1.2 kW, tenant right to install) went to House Rules Apr 30, 2026, no action since. The adjournment resolution bars it from reconvened sessions: effectively stalled.",
+   "bills": [
+    {
+     "id": "HB 1129",
+     "session": "2025-2026 Session",
+     "url": "https://www.ncleg.gov/BillLookUp/2025/H1129"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "State Electrical Code + 'properly certified' device with anti-backfeed protection (exact certification wording not verified)",
+   "export_compensation": "unknown",
+   "grants_right_to_install": true,
+   "notes": "Official bill page (archived 5/18/26): filed 4/29/26, passed 1st reading and referred to Committee on Rules, Calendar, and Operations of the House 4/30/26 (last action). The 2025 Regular Session has not adjourned sine die, but Res. 2026-5 (HJR 1244, adjourning July 2, 2026) limits reconvened sessions to budget bills, vetoes and other listed matters. HB 1129 is not eligible unless a new resolution is adopted. The biennium ends before the 2027 session convenes. Per the UNC School of Government bill summary: 1.2 kW cap, 15-day advance notice to the utility, no utility approval/fee/extra equipment, $10,000 appropriation to NCUC. New G.S. 42-42.4 bars landlords with more than 4 rental units from prohibiting tenant installation (reasonable placement limits allowed). Bill text was not opened directly (ncleg.gov Cloudflare block).",
+   "sources": [
+    {
+     "url": "https://ncleg.gov/BillLookUp/2025/H1129",
+     "title": "NCGA: House Bill 1129 Balcony Solar (Wayback snapshot 2026-05-18)",
+     "primary": true
+    },
+    {
+     "url": "https://lrs.sog.unc.edu/lrs-subscr-view/bills_summaries/576826/H%201129",
+     "title": "UNC SOG Legislative Reporting Service: H 1129 summary",
+     "primary": false
+    },
+    {
+     "url": "https://ncleg.gov/EnactedLegislation/Resolutions/HTML/2025-2026/Res2026-5.html",
+     "title": "Res. 2026-5 (HJR 1244) adjournment resolution (seen via search excerpt only)",
+     "primary": true
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "ND": {
+   "name": "North Dakota",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill in North Dakota's 2025 session or 2026 special sessions; next regular session January 2027.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "North Dakota meets in odd years. The 2025 (69th) regular session Energy and Public Utilities subject indexes list no plug-in/portable solar bill (energy items covered renewable credits, backup generators, siting, CO2 pipelines). Special sessions held in January and September 2026 had no energy/solar topics in their indexes. Index search, not full text (medium confidence); Bright Saver and PlugInSolarMap list no activity.",
+   "sources": [
+    {
+     "url": "https://ndlegis.gov/assembly/69-2025/regular/subject-index/energy.html",
+     "title": "ND Legislative Branch 2025 subject index: Energy",
+     "primary": true
+    },
+    {
+     "url": "https://ndlegis.gov/assembly/69-2025/regular/subject-index/public+utilities.html",
+     "title": "ND Legislative Branch 2025 subject index: Public Utilities",
+     "primary": true
+    },
+    {
+     "url": "https://ndlegis.gov/assembly/69-2025/special-2/subject-index/major-topic.html",
+     "title": "ND Sep 2026 special session major topic index",
+     "primary": true
+    },
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker (lists state as no activity)",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "OH": {
+   "name": "Ohio",
+   "status": "pending",
+   "summary": "HB 755 and companion SB 383 (portable solar up to 1,200 W, exempt from interconnection) are in House and Senate Energy committees with no votes. The 136th GA runs through Dec 2026.",
+   "bills": [
+    {
+     "id": "HB 755",
+     "session": "136th General Assembly (2025-2026)",
+     "url": "https://www.legislature.ohio.gov/legislation/136/hb755"
+    },
+    {
+     "id": "SB 383",
+     "session": "136th General Assembly (2025-2026)",
+     "url": "https://www.legislature.ohio.gov/legislation/136/sb383"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Certified by a nationally recognized testing laboratory (per secondary summaries; text not directly verified)",
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "The official page (archived 5/12/26) shows HB 755 (Reps. Rader and Glassburn; would enact R.C. 4928.74-.742) 'In House Committee' (House Energy). FastDemocracy lists introduction 3/11/26 and referral 3/18/26 with no votes. SB 383 was introduced 3/19/26 and referred to Senate Energy. An LSC analysis dated July 14, 2026 appears in search results but could not be opened. Per secondary summaries, the bill exempts devices up to 1,200 W from interconnection, utility approval and fees. The bill text could not be retrieved (legislature.ohio.gov refused connections), so certification, compensation and any landlord terms are unverified. One site (keepinglawsimple.org) wrongly lists it as 'Passed Legislature', which contradicts the official page and all other trackers.",
+   "sources": [
+    {
+     "url": "https://www.legislature.ohio.gov/legislation/136/hb755",
+     "title": "Ohio Legislature: HB 755 (Wayback snapshot 2026-05-12)",
+     "primary": true
+    },
+    {
+     "url": "https://fastdemocracy.com/bill-search/oh/136/bills/OHB00015732/",
+     "title": "FastDemocracy: OH HB 755 action history",
+     "primary": false
+    },
+    {
+     "url": "https://pluginsolarguide.com/ohio",
+     "title": "pluginsolarguide: Ohio HB 755 / SB 383",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "OK": {
+   "name": "Oklahoma",
+   "status": "failed_or_vetoed",
+   "summary": "HB 4060 (1,200 W AC, no net metering or export pay) passed the House 88-4 but stalled in Senate Energy. It died at the 2026 sine die.",
+   "bills": [
+    {
+     "id": "HB 4060",
+     "session": "2026 Regular Session (60th Legislature, 2nd Session)",
+     "url": "https://www.oklegislature.gov/BillInfo.aspx?Bill=HB4060&Session=2600"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Proposed only: nationally recognized electrical safety standards incl. anti-islanding (no specific UL standard named)",
+   "export_compensation": "none",
+   "grants_right_to_install": false,
+   "notes": "The official history: Utilities committee do-pass as a committee substitute on 2/11/2026, and House passage 88-4 on 3/24/2026. It then went to the Senate, was referred to Senate Energy on 4/1/2026, and its last action was a coauthor added on 4/16/2026. The engrossed text caps devices at 1,200 W AC in aggregate. They would not count as an interconnection and would be exempt from net metering. Utilities could not require approval, fees, metering or insurance, and the bill said it does not authorize compensation for exports. It had no landlord or HOA provisions and would have taken effect Nov 1, 2026. The Legislature adjourned early on May 14, and the constitutional sine die deadline was May 29, 2026. Carryover ends with the 60th Legislature's second session. Conflicts: a search-engine summary claimed HB 4060 'passed the Senate and became law', but the official record contradicts that. Pluginsolarmap's 'no bill filed yet' is also wrong. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://www.oklegislature.gov/BillInfo.aspx?Bill=HB4060&Session=2600",
+     "title": "Oklahoma Legislature - HB 4060 bill information/history",
+     "primary": true
+    },
+    {
+     "url": "https://www.oklegislature.gov/cf_pdf/2025-26%20ENGR/hB/HB4060%20ENGR.PDF",
+     "title": "HB 4060 engrossed text",
+     "primary": true
+    },
+    {
+     "url": "https://www.nraila.org/articles/20260519/oklahoma-legislature-adjourns-2026-session",
+     "title": "Oklahoma Legislature adjourns 2026 session (secondary)",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "OR": {
+   "name": "Oregon",
+   "status": "failed_or_vetoed",
+   "summary": "HB 4080 (1,200 W; landlord/HOA limits; declaration to utility) got a hearing but stayed in House committee. It died when the short session adjourned on March 6, 2026.",
+   "bills": [
+    {
+     "id": "HB 4080",
+     "session": "2026 Regular Session (83rd Legislative Assembly)",
+     "url": "https://olis.oregonlegislature.gov/liz/2026R1/Measures/Overview/HB4080"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Proposed only: listed by UL or another NRTL; outage anti-energizing feature",
+   "export_compensation": "credited",
+   "grants_right_to_install": true,
+   "notes": "An archived copy (2026-06-10) of the official OLIS overview lists the current location as 'In House Committee', namely House Climate, Energy, and Environment, with no chapter number. The measure text was never amended past introduction (the 2026-03-03 archive of the latest version is identical to the introduced version). The short session adjourned sine die on March 6, 2026. The bill would have let customers use up to 1,200 W total after filing a declaration with the utility, with no utility approval or interconnection agreement. It also barred landlords, HOAs and condo associations from prohibiting devices except on listed safety grounds. It would have let a device qualify as a net-metering facility under ORS 757.300, which is why export compensation is 'credited' (conditional). It would have been operative on Jan 1, 2027. OLIS refused connections from this environment. Conflict: pluginsolarmap says Oregon has 'no known activity', but HB 4080 was filed and heard. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://olis.oregonlegislature.gov/liz/2026R1/Measures/Overview/HB4080",
+     "title": "OLIS - HB 4080 overview (Wayback snapshot of official page, 2026-06-10)",
+     "primary": true
+    },
+    {
+     "url": "https://olis.oregonlegislature.gov/liz/2026R1/Downloads/MeasureDocument/HB4080",
+     "title": "HB 4080 introduced text (Wayback copy of official PDF)",
+     "primary": true
+    },
+    {
+     "url": "https://www.opb.org/article/2026/02/09/oregon-lawmakers-seek-to-shine-light-on-balcony-solar-but-safety-issue-linger/",
+     "title": "OPB - Oregon lawmakers seek to shine a light on balcony solar",
+     "primary": false
+    },
+    {
+     "url": "https://ktvz.com/news/government-politics/2026/03/06/oregon-legislative-leaders-react-to-the-end-of-busy-short-session/",
+     "title": "KTVZ - end of 2026 short session (March 6, 2026)",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "PA": {
+   "name": "Pennsylvania",
+   "status": "pending",
+   "summary": "HB 1971 (1,200 W, no interconnection or utility fees, no net metering) sits in House Energy Committee with no action since Oct 28, 2025. Session ends Nov 30, 2026.",
+   "bills": [
+    {
+     "id": "HB 1971",
+     "session": "2025-2026 Regular Session",
+     "url": "https://www.palegis.us/legislation/bills/2025/hb1971"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "UL or equivalent NRTL",
+   "export_compensation": "none",
+   "grants_right_to_install": false,
+   "notes": "The official bill page (generated 9/23/2026) shows only 'Referred to ENERGY, Oct. 28, 2025' (PN 2530), with no committee vote. Text caps output at 1,200 W 'back to the electric utility grid', exempts systems from interconnection applications/agreements, inspection and fees, and says they are not eligible for net metering and will not be credited for exported energy. It has no landlord, tenant or HOA provision; tracker claims about UL 3700 and landlord/HOA protection are not in the bill text. The 2025-26 session ends Nov 30, 2026, when bills that have not passed die.",
+   "sources": [
+    {
+     "url": "https://www.palegis.us/legislation/bills/2025/hb1971",
+     "title": "PA General Assembly: HB 1971 (2025-2026)",
+     "primary": true
+    },
+    {
+     "url": "https://www.palegis.us/legislation/bills/text/HTM/2025/0/HB1971/PN2530",
+     "title": "HB 1971 PN 2530 bill text",
+     "primary": true
+    },
+    {
+     "url": "https://schneiderdowns.com/our-thoughts-on/2026-pa-legislative-session-schedule/",
+     "title": "2026 PA legislative session schedule",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "RI": {
+   "name": "Rhode Island",
+   "status": "failed_or_vetoed",
+   "summary": "H 7269 (1,200 W, exempt from interconnection, excluded from net metering) passed the House 70-0 on Jun 9, 2026 but never got a Senate vote; the 2026 session ended Jun 11-12.",
+   "bills": [
+    {
+     "id": "H 7269 (Sub A)",
+     "session": "2026",
+     "url": "https://webserver.rilegislature.gov/BillText/BillText26/HouseText26/H7269.pdf"
+    },
+    {
+     "id": "S 2359",
+     "session": "2026",
+     "url": "https://webserver.rilegislature.gov/BillText/BillText26/SenateText26/S2359.pdf"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "UL or equivalent NRTL; NEC; must prevent energizing building during outage (as introduced)",
+   "export_compensation": "none",
+   "grants_right_to_install": false,
+   "notes": "As introduced (LC003246), H 7269 defines a portable solar generation device as up to 1,200 W on a 120 V outlet, UL/NRTL certified. It removes such devices from 'eligible net-metering system', exempts them from interconnection and bars utility approval/fees, and has no landlord provision. Per trackers: House Corporations held it for study 3/19/26, then recommended Substitute A 6/8/26; the House passed it 70-0 on 6/9/26 and it went to Senate Environment & Agriculture. Senate companion S 2359 was held for further study. The General Assembly ended its 2026 session on the night of June 11-12 and RI bills do not carry over, so it needs reintroduction in 2027. Substitute A text and the vote were not verified on official pages: rilegislature.gov and status.rilegislature.gov were unreachable from this network, so the original text was read via an archive.org snapshot.",
+   "sources": [
+    {
+     "url": "https://webserver.rilegislature.gov/BillText/BillText26/HouseText26/H7269.pdf",
+     "title": "2026-H 7269 as introduced (RI legislature PDF, Wayback snapshot)",
+     "primary": true
+    },
+    {
+     "url": "https://fastdemocracy.com/bill-search/ri/2026/bills/RIB00034100/?report-bill-view=1",
+     "title": "FastDemocracy: RI HB 7269 action history",
+     "primary": false
+    },
+    {
+     "url": "https://rhodeislandcurrent.com/2026/06/11/rhode-island-lawmakers-move-at-lightning-speed-on-last-night-of-session/",
+     "title": "Rhode Island Current: last night of 2026 session (June 11)",
+     "primary": false
+    },
+    {
+     "url": "https://pluginsolarguide.com/rhode-island",
+     "title": "pluginsolarguide: RI H 7269 status",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "SC": {
+   "name": "South Carolina",
+   "status": "failed_or_vetoed",
+   "summary": "H 4579 would bar HOA, deed and lease bans on balcony solar panels (no watt cap, no utility terms). It stayed in House committee; the 2026 regular session ended May 14.",
+   "bills": [
+    {
+     "id": "H 4579",
+     "session": "126th General Assembly (2025-2026)",
+     "url": "https://www.scstatehouse.gov/sess126_2025-2026/bills/4579.htm"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": true,
+   "notes": "Official history: prefiled 12/16/25, introduced and referred to House Labor, Commerce and Industry 1/13/26, no further action. H 4579 would add S.C. Code §27-1-65 (deeds, contracts, leases, rental agreements and HOA documents may not prohibit a balcony solar panel; HOAs may require reasonable design accommodations) and §58-41-60 (state and political subdivisions may not restrict them). It does NOT address interconnection, wattage, certification or net metering. Under S.C. Code §2-1-180 the regular session ended 5 p.m. May 14, 2026; after that only appropriations and matters named in a two-thirds sine die resolution may be considered. The pending resolution (S.883) covers budget, vetoes and redistricting, so this second-year bill is dead.",
+   "sources": [
+    {
+     "url": "https://www.scstatehouse.gov/sess126_2025-2026/bills/4579.htm",
+     "title": "SC Legislature: H 4579 Balcony Solar Panels (status and text)",
+     "primary": true
+    },
+    {
+     "url": "https://www.scstatehouse.gov/code/t02c001.php",
+     "title": "S.C. Code §2-1-180 (sine die adjournment)",
+     "primary": true
+    },
+    {
+     "url": "https://www.scstatehouse.gov/sess126_2025-2026/bills/883.htm",
+     "title": "S.883 Sine Die 2026 concurrent resolution",
+     "primary": true
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "SD": {
+   "name": "South Dakota",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill in South Dakota's 2025, 2025 special or 2026 sessions.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "Searched titles and keywords of every bill in the 2025 (571 bills), 2025 First Special (2) and 2026 (666) sessions via the SD Legislature API: none mention solar, plug-in, portable or balcony; energy bills addressed data centers, facility siting and a 'backup electric generation' definition (2026 SB 193, siting law). Title/keyword search, not full text (medium confidence). Bright Saver and PlugInSolarMap list no activity.",
+   "sources": [
+    {
+     "url": "https://sdlegislature.gov/api/Bills/Session/71",
+     "title": "SD Legislature API — all 2026 bills (also sessions 70 and 173)",
+     "primary": true
+    },
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker (lists state as no activity)",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "TN": {
+   "name": "Tennessee",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill found in Tennessee's 114th General Assembly (2025–26); 2026 session ended April 23.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "Tennessee General Assembly website refused connections from this research environment, so its own search could not be used; a site-restricted web search of capitol.tn.gov returned no relevant bill (medium confidence). Web searches for Tennessee plug-in/balcony/portable solar legislation found none; Bright Saver and PlugInSolarMap list no activity. The 2026 session adjourned April 23, 2026; next session January 2027.",
+   "sources": [
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker (lists state as no activity)",
+     "primary": false
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/114th_Tennessee_General_Assembly",
+     "title": "114th Tennessee General Assembly (session dates)",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "TX": {
+   "name": "Texas",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill filed in the 89th Legislature (2025 regular + two special sessions); no 2026 session. Advocacy only.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "Texas Legislature Online full-text search of 89(R), 89(1) and 89(2) (introduced/engrossed/enrolled texts) returned zero documents for 'plug-in solar', 'balcony solar', 'portable solar' and for solar combined with plug/balcony/portable/outlet. Closest bill: HB 3905 (Dorazio), general distributed-solar protections (no utility size caps, 21-day interconnection decisions), not plug-in-specific; it died in House State Affairs (last action 3/27/2025). PlugInSolarMap lists 'Active advocacy — no bill filed yet'; Bright Saver lists N/A. The legislature next meets in January 2027.",
+   "sources": [
+    {
+     "url": "https://capitol.texas.gov/Search/TextSearch.aspx",
+     "title": "Texas Legislature Online full-text search (89R, 89(1), 89(2))",
+     "primary": true
+    },
+    {
+     "url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=HB3905",
+     "title": "TX HB 3905 (89R) history — referred to State Affairs, no further action",
+     "primary": true
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker ('Active advocacy — no bill filed yet')",
+     "primary": false
+    },
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "UT": {
+   "name": "Utah",
+   "status": "in_force",
+   "summary": "HB 340 (2025) exempts plug-in solar up to 1,200 W from utility interconnection, approval and fees. In force since May 7, 2025. Not part of net metering; no tenant or HOA rights.",
+   "bills": [
+    {
+     "id": "HB 340",
+     "session": "2025 General Session",
+     "url": "https://le.utah.gov/~2025/bills/static/HB0340.html"
+    }
+   ],
+   "signed_date": "2025-03-25",
+   "effective_date": "2025-05-07",
+   "ac_limit_watts": 1200,
+   "certification": "Certified by UL or an equivalent NRTL, must meet the current NEC, and must have anti-islanding (cannot energize the building during an outage)",
+   "export_compensation": "none",
+   "grants_right_to_install": false,
+   "notes": "The official title is 'Solar Power Amendments', not 'Consumer Electricity Amendments' as the lead said. It enacts Utah Code 54-15-601 and amends 54-15-102. A 'portable solar generation device' is a moveable PV device with maximum power output of 1,200 W or less that plugs into a standard 120 V outlet. The statute does not say whether that figure is AC or DC. The device is exempt from interconnection requirements and interconnection agreements and 'is not subject to the net metering program requirements'. It is also excluded from the definition of a customer generation system, so exports earn no net-metering credit. Utilities may not require approval, fees or extra equipment, and they are not liable for damage. There is no landlord, tenant, HOA or local-government provision. The enrolled text sets the effective date as May 7, 2025, matching the trackers. The 2026 General Session has ended, and le.utah.gov still lists the 2025 version of 54-15-601 as the only current version, so nothing amended it in 2026.",
+   "sources": [
+    {
+     "url": "https://le.utah.gov/~2025/bills/static/HB0340.html",
+     "title": "Utah Legislature - H.B. 340 Solar Power Amendments (2025 GS) bill page",
+     "primary": true
+    },
+    {
+     "url": "https://le.utah.gov/data/2025GS/HB0340.json",
+     "title": "Utah Legislature bill-status data for HB0340 (Governor Signed 3/25/2025)",
+     "primary": true
+    },
+    {
+     "url": "https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf",
+     "title": "H.B. 340 Enrolled Copy (Section 3: takes effect May 7, 2025)",
+     "primary": true
+    },
+    {
+     "url": "https://le.utah.gov/xcode/Title54/Chapter15/54-15-S601.html",
+     "title": "Utah Code 54-15-601 Portable solar generation device (current version eff. 2025-05-07)",
+     "primary": true
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "VT": {
+   "name": "Vermont",
+   "status": "in_force",
+   "summary": "Act 149 (S.202), in force July 1, 2026: plug-in PV up to 1,200 W combined per meter, UL 3700, smart meter required, no interconnection, no export credit; renter, HOA and zoning protections.",
+   "bills": [
+    {
+     "id": "S.202 (Act 149)",
+     "session": "2025-2026",
+     "url": "https://legislature.vermont.gov/bill/status/2026/S.202"
+    }
+   ],
+   "signed_date": "2026-06-16",
+   "effective_date": "2026-07-01",
+   "ac_limit_watts": 1200,
+   "certification": "UL 3700 (or equivalent NRTL certification); installed and operated per IEEE 1547-2018 with default regional profiles; anti-islanding; smart meter required",
+   "export_compensation": "none",
+   "grants_right_to_install": true,
+   "notes": "Under 30 V.S.A. sec. 256, a customer may install one or more plug-in devices per meter, up to 1,200 W combined inverter capacity. Devices may only connect to smart-metered systems and must be temporarily but securely attached. They are exempt from sec. 248 CPG, interconnection agreements and PUC jurisdiction. Utilities cannot require approval, installation fees or extra equipment, but may recover costs if the device overloads the service. Net-metering customers cannot also install one, the device is not eligible for net metering, and exports are expressly uncompensated. Tenants must give the landlord 10 days' notice. The landlord may impose reasonable restrictions (e.g. a licensed electrician at the tenant's cost); if the landlord does not respond, the tenant may proceed. Deed restrictions and covenants (including condo patio-railing rules) cannot prohibit plug-in devices, and zoning bylaws may not regulate them. No source conflicts found.",
+   "sources": [
+    {
+     "url": "https://legislature.vermont.gov/bill/status/2026/S.202",
+     "title": "Vermont Legislature Bill Status S.202 (Act 149): Signed by Governor June 16, 2026",
+     "primary": true
+    },
+    {
+     "url": "https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf",
+     "title": "Act No. 149 As Enacted (Sec. 6: effective July 1, 2026)",
+     "primary": true
+    },
+    {
+     "url": "https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20Act%20Summary.pdf",
+     "title": "Act 149 Act Summary (Office of Legislative Counsel)",
+     "primary": true
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "VA": {
+   "name": "Virginia",
+   "status": "enacted_not_yet_effective",
+   "summary": "HB 395/SB 250 (Chs. 1052/998): plug-in solar up to 1,200 W is exempt from interconnection; utility notice before install; tenant and locality protections. Takes effect Jan 1, 2027.",
+   "bills": [
+    {
+     "id": "HB 395",
+     "session": "2026 Regular Session",
+     "url": "https://lis.virginia.gov/bill-details/20261/HB395"
+    },
+    {
+     "id": "SB 250",
+     "session": "2026 Regular Session",
+     "url": "https://lis.virginia.gov/bill-details/20261/SB250"
+    }
+   ],
+   "signed_date": "2026-04-22",
+   "effective_date": "2027-01-01",
+   "ac_limit_watts": 1200,
+   "certification": "Certified by an NRTL (29 CFR 1910.7) or equivalent, must meet the current NEC, and must have anti-islanding. Devices of 391 W or less are exempt from listing provisions that would require wiring or panel alterations.",
+   "export_compensation": "none",
+   "grants_right_to_install": true,
+   "notes": "The identical chaptered acts (HB 395 = Ch. 1052, SB 250 = Ch. 998, both approved Apr 22, 2026 at the reconvened session) add Va. Code §56-596.8 (numbered §56-596.7 in the chaptered acts) and §55.1-1212.1 and amend §15.2-2288.7, §56-594 and related sections. Devices are excluded from net energy metering and from the definition of eligible customer-generator. Utilities may not require approval or fees, but the customer must file an SCC notification form before installing. The utility has 15 days to respond, and utilities may install a locking disconnect in some cases. Landlords owning more than 4 units may not prohibit tenants from installing on the exterior of the tenant's premises (reasonable size, place and manner limits allowed; 7 days' notice required; excludes RUBS-billed units). Localities may not prohibit devices on residential structures. HOA, condo and POA covenants are expressly NOT overridden. On the effective date, trackers said July 1, 2026 or Jan 1, 2027. Enactment clause 4 makes the first enactment (all Code changes) effective Jan 1, 2027. Enactments 2-3 (the SCC form due Sept 1, 2026 and a safety work group) take the default July 1, 2026 date (Va. Const. art. IV §13). So both tracker dates are partly right, but the device rights do not start until Jan 1, 2027.",
+   "sources": [
+    {
+     "url": "https://lis.virginia.gov/bill-details/20261/HB395",
+     "title": "Virginia LIS - HB395 2026 Regular Session (versions incl. CHAP1052)",
+     "primary": true
+    },
+    {
+     "url": "https://lis.virginia.gov/bill-details/20261/SB250",
+     "title": "Virginia LIS - SB250 2026 Regular Session (versions incl. CHAP0998)",
+     "primary": true
+    },
+    {
+     "url": "https://lis.blob.core.windows.net/files/1225204.PDF",
+     "title": "Acts of Assembly 2026 Reconvened Session, Chapter 1052 [H 395], Approved April 22, 2026",
+     "primary": true
+    },
+    {
+     "url": "https://lis.blob.core.windows.net/files/1225038.PDF",
+     "title": "Acts of Assembly 2026, Chapter 998 [S 250]",
+     "primary": true
+    },
+    {
+     "url": "https://law.lis.virginia.gov/constitution/article4/section13/",
+     "title": "Constitution of Virginia Art. IV §13 - Effective date of laws (default July 1)",
+     "primary": true
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "WA": {
+   "name": "Washington",
+   "status": "failed_or_vetoed",
+   "summary": "SSB 6050 (1,200 W, UL 3700) died in Senate Rules. Companion HB 2296 became law (ch. 136, 2026) but only after its plug-in solar provisions were removed.",
+   "bills": [
+    {
+     "id": "SB 6050",
+     "session": "2025-26 biennium (2026 Regular Session)",
+     "url": "https://app.leg.wa.gov/billsummary?BillNumber=6050&Year=2025&Initiative=false"
+    },
+    {
+     "id": "HB 2296",
+     "session": "2025-26 biennium (2026 Regular Session)",
+     "url": "https://app.leg.wa.gov/billsummary?BillNumber=2296&Year=2025&Initiative=false"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Proposed only (SSB 6050): UL 3700; UL 1741 or IEEE 1547 anti-islanding; UL 3141 if paired with storage",
+   "export_compensation": "unknown",
+   "grants_right_to_install": true,
+   "notes": "SSB 6050 got a do-pass from Senate ENET on 1/30/2026 and was sent to Rules on 2/2. It went to the Senate Rules 'X' file on 2/26/2026, its last action. The session ended on March 12, 2026, which closed the 2025-26 biennium. The bill would have exempted devices from interconnection and net metering after the customer notified the utility, and barred utilities, cities, counties and landlords from requiring approval or fees. It would have stopped HOA and condo documents from prohibiting devices, but utilities with fewer than 25,000 customers could ban them. HB 2296 as introduced had a balcony-solar part, but the House substitute that passed 56-38 covered only meter-mounted devices. The Senate then rewrote it into rental energy-efficiency financing, enacted as ch. 136, Laws of 2026 (signed 3/23/2026, effective 6/11/2026), with no plug-in provisions. Conflict: one secondary source says the House passed HB 2296 with plug-in provisions, but the official substitute text contradicts that. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://app.leg.wa.gov/billsummary?BillNumber=6050&Year=2025&Initiative=false",
+     "title": "WA Legislature - SB 6050 bill summary/history",
+     "primary": true
+    },
+    {
+     "url": "https://lawfilesext.leg.wa.gov/biennium/2025-26/Pdf/Bills/Senate%20Bills/6050-S.pdf",
+     "title": "SSB 6050 text",
+     "primary": true
+    },
+    {
+     "url": "https://app.leg.wa.gov/billsummary?BillNumber=2296&Year=2025&Initiative=false",
+     "title": "WA Legislature - HB 2296 bill summary/history",
+     "primary": true
+    },
+    {
+     "url": "https://lawfilesext.leg.wa.gov/biennium/2025-26/Pdf/Bills/Session%20Laws/House/2296-S.SL.pdf",
+     "title": "SHB 2296 session law, ch. 136, Laws of 2026 (no plug-in provisions)",
+     "primary": true
+    },
+    {
+     "url": "https://lawfilesext.leg.wa.gov/biennium/2025-26/Pdf/Bills/House%20Bills/2296-S.pdf",
+     "title": "SHB 2296 House substitute text (meter-mounted devices only)",
+     "primary": true
+    },
+    {
+     "url": "https://thirdact.org/washington/2026/03/03/grid-connected-residential-battery-storage/",
+     "title": "Third Act WA - plug-in solar stalls",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "WV": {
+   "name": "West Virginia",
+   "status": "failed_or_vetoed",
+   "summary": "HB 5648 (2026) would have exempted ≤1,200 W certified portable solar from interconnection (no net metering); it died in committee when the session ended March 14, 2026.",
+   "bills": [
+    {
+     "id": "HB 5648",
+     "session": "2026 Regular",
+     "url": "https://www.wvlegislature.gov/Bill_Status/Bills_history.cfm?input=5648&year=2026&sessiontype=RS&btype=bill"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "UL or other nationally recognized testing laboratory (as proposed)",
+   "export_compensation": "none",
+   "grants_right_to_install": false,
+   "notes": "HB 5648 (Del. Eldridge) was an omnibus utility-consumer bill whose proposed §24-2F-1 defined a 'portable solar generation device' (outlet-connected, max output 1,200 W — introduced text literally reads '1.200 watts'), exempted it from interconnection agreements, made it ineligible for net metering, and barred utilities from requiring approval, fees or extra equipment; it had no landlord/HOA/tenant provisions. It was referred to House Energy and Public Works, a motion to discharge was tabled 3/2/2026 (Roll 230), and it died when the Legislature adjourned sine die March 14, 2026. Conflict: Bright Saver, PlugInSolarMap and a June 2026 guide say WV has no plug-in bill — they missed this generically titled bill; resolved from the legislature's bill text and history. No plug-in law is in force; any successor must be filed in the 2027 session.",
+   "sources": [
+    {
+     "url": "https://www.wvlegislature.gov/Bill_Status/Bills_history.cfm?input=5648&year=2026&sessiontype=RS&btype=bill",
+     "title": "WV Legislature — HB 5648 (2026 RS) bill history",
+     "primary": true
+    },
+    {
+     "url": "https://www.wvlegislature.gov/Bill_Status/bills_text.cfm?billdoc=hb5648%20intr.htm&yr=2026&sesstype=RS&i=5648",
+     "title": "WV Legislature — HB 5648 introduced text (§24-2F-1 Portable solar generation devices)",
+     "primary": true
+    },
+    {
+     "url": "https://blog.wvlegislature.gov/senate-floor-session/2026/03/14/senate-updates-on-final-day-of-2026-legislative-session/",
+     "title": "WV Legislature blog — Senate adjourned sine die, March 14 2026",
+     "primary": true
+    },
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker (lists state as no activity)",
+     "primary": false
+    },
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  },
+  "WI": {
+   "name": "Wisconsin",
+   "status": "no_specific_law",
+   "summary": "No plug-in/balcony solar bill introduced in Wisconsin's 2025–26 session; advocates say a proposal is being prepared for 2027.",
+   "bills": [],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": null,
+   "certification": null,
+   "export_compensation": "unknown",
+   "grants_right_to_install": null,
+   "notes": "Wisconsin Legislature sites (docs.legis.wisconsin.gov, legis.wisconsin.gov) refused connections from this research environment, so their search could not be used; a site-restricted web search of docs.legis.wisconsin.gov returned only administrative code on PV systems (medium confidence). PlugInSolarMap lists 'Active advocacy — no bill filed yet'; Bright Saver lists N/A; RENEW Wisconsin (Jul 14 2026) says 'A Wisconsin proposal is in the works' for the session starting in January. The 2025–26 session's last general-business floor period ended March 19, 2026, so nothing can move before 2027.",
+   "sources": [
+    {
+     "url": "https://pluginsolarmap.com/tracker",
+     "title": "PlugInSolarMap state tracker ('Active advocacy — no bill filed yet')",
+     "primary": false
+    },
+    {
+     "url": "https://brightsaver.org/state-tracker",
+     "title": "Bright Saver state tracker (bill: N/A)",
+     "primary": false
+    },
+    {
+     "url": "https://www.renewwisconsin.org/expanding-access-to-solar-power/",
+     "title": "RENEW Wisconsin: Expanding Access to Solar Power (Jul 14 2026) — proposal 'in the works'",
+     "primary": false
+    }
+   ],
+   "confidence": "medium",
+   "reviewed": "2026-09-23"
+  },
+  "WY": {
+   "name": "Wyoming",
+   "status": "failed_or_vetoed",
+   "summary": "HB 146 ('Affordable electricity act', 1,200 W per meter) died in House committee on Mar 3, 2026, during the budget session.",
+   "bills": [
+    {
+     "id": "HB 146",
+     "session": "2026 Budget Session",
+     "url": "https://wyoleg.gov/Legislation/2026/HB0146"
+    }
+   ],
+   "signed_date": null,
+   "effective_date": null,
+   "ac_limit_watts": 1200,
+   "certification": "Proposed only: UL or equivalent NRTL certification plus current NEC; outage anti-backfeed",
+   "export_compensation": "unknown",
+   "grants_right_to_install": false,
+   "notes": "The official LSO record shows HB 146 (Rep. Storer et al.) introduced on 2/11/2026 on a 55-5 vote and referred to House committee H08. It got 'No report prior to CoW Cutoff' on 2/20/2026 and 'Died in Committee Returned Bill Pursuant to HR 5-4' on 3/3/2026; the record's status is 'inactive'. The bill would have exempted 1,200 W-per-meter devices from interconnection and net-metering requirements and barred utility approval or fees. It would have let utilities offer bidirectional meters and would have taken effect July 1, 2026. It had no landlord or HOA provisions. The budget session adjourned sine die on March 11, 2026. Conflict: pluginsolarmap says 'no bill filed yet', which is wrong. Cap/certification/right fields describe the bill's last version, not law.",
+   "sources": [
+    {
+     "url": "https://web.wyoleg.gov/LsoService/api/BillInformation/2026/HB0146",
+     "title": "Wyoming LSO bill information API - HB0146 (2026)",
+     "primary": true
+    },
+    {
+     "url": "https://wyoleg.gov/2026/Introduced/HB0146.pdf",
+     "title": "HB 146 introduced text",
+     "primary": true
+    },
+    {
+     "url": "https://www.wyomingpublicmedia.org/politics-government/2026-03-11/legislature-fails-to-override-three-of-the-governors-vetoes-on-last-day-of-session",
+     "title": "Wyoming Public Media - last day of 2026 session (March 11, 2026)",
+     "primary": false
+    }
+   ],
+   "confidence": "high",
+   "reviewed": "2026-09-23"
+  }
+ }
+}

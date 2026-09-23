@@ -37,6 +37,19 @@
   function status(v) { window.__balcoAnalytics = v; }
   status('off');
 
+  // The calculator's link parameters (see js/calc-params.js). Any of them
+  // can identify where someone lives, so none may leave the browser.
+  var PRIVATE_PARAMS = ['address', 'floor', 'facing', 'across', 'distance', 'lat', 'lon'];
+  function scrubUrl(url) {
+    try {
+      var u = new URL(url);
+      PRIVATE_PARAMS.forEach(function (k) { u.searchParams.delete(k); });
+      return u.toString();
+    } catch (e) {
+      return url;
+    }
+  }
+
   // Project 593517, US cloud. This token is public by design: it ships in
   // the JavaScript every visitor downloads. It identifies where events go,
   // it does not grant access to anything.
@@ -78,6 +91,24 @@
       session_recording: {
         maskAllInputs: true,                  // never record a typed value
         maskTextSelector: '[data-private]'    // and mask anything marked private
+      },
+
+      // A prefilled calculator link carries a street address in its query
+      // string. The page strips it on load, but PostHog may read the URL
+      // first, so every URL property is scrubbed of the calculator's own
+      // parameters here too. utm_* and everything else is left alone.
+      before_send: function (event) {
+        var props = event && event.properties;
+        if (!props) return event;
+        ['$current_url', '$referrer', '$initial_current_url', '$initial_referrer'].forEach(function (k) {
+          if (typeof props[k] === 'string') props[k] = scrubUrl(props[k]);
+        });
+        if (event.$set_once) {
+          ['$initial_current_url', '$initial_referrer'].forEach(function (k) {
+            if (typeof event.$set_once[k] === 'string') event.$set_once[k] = scrubUrl(event.$set_once[k]);
+          });
+        }
+        return event;
       }
     });
 

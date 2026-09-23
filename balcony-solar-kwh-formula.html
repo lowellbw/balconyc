@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A hand formula for balcony solar output, tested against PVWatts in all 51 states: 3.5% median error. The rooftop sun-hours formula overstates a railing by 61%.">
+  <title>The balcony solar kWh formula &middot; balco.nyc</title>
+  <link rel="icon" type="image/webp" href="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp">
+  <link rel="canonical" href="https://balco.nyc/balcony-solar-kwh-formula">
+  <meta name="theme-color" content="#7F1D1D">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="balco.nyc">
+  <meta property="og:url" content="https://balco.nyc/balcony-solar-kwh-formula">
+  <meta property="og:title" content="The balcony solar kWh formula: estimate output by hand, and how wrong it is">
+  <meta property="og:description" content="A hand formula for balcony solar output, tested against PVWatts in all 51 states: 3.5% median error. The rooftop sun-hours formula overstates a railing by 61%.">
+  <meta property="og:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
+  <meta property="article:modified_time" content="2026-09-23">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The balcony solar kWh formula: estimate output by hand, and how wrong it is">
+  <meta name="twitter:description" content="A hand formula for balcony solar output, tested against PVWatts in all 51 states: 3.5% median error. The rooftop sun-hours formula overstates a railing by 61%.">
+  <meta name="twitter:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://balco.nyc/balcony-solar-kwh-formula#article",
+        "headline": "The balcony solar kWh formula: estimate output by hand, and how wrong it is",
+        "description": "A hand formula for balcony solar output, tested against PVWatts in all 51 states: 3.5% median error. The rooftop sun-hours formula overstates a railing by 61%.",
+        "url": "https://balco.nyc/balcony-solar-kwh-formula",
+        "mainEntityOfPage": "https://balco.nyc/balcony-solar-kwh-formula",
+        "inLanguage": "en-US",
+        "datePublished": "2026-09-23",
+        "dateModified": "2026-09-23",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg",
+          "width": 1920,
+          "height": 1047
+        },
+        "author": {
+          "@id": "https://balco.nyc/#org"
+        },
+        "publisher": {
+          "@id": "https://balco.nyc/#org"
+        },
+        "isPartOf": {
+          "@id": "https://balco.nyc/#app"
+        },
+        "citation": [
+          {
+            "@type": "CreativeWork",
+            "name": "NREL — PVWatts V8 API documentation",
+            "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "NREL — Solar Resource Data API documentation",
+            "url": "https://developer.nlr.gov/docs/solar/solar-resource-v1/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "NREL — PVWatts Version 5 Manual (Dobos, 2014)",
+            "url": "https://pvwatts.nlr.gov/downloads/pvwattsv5.pdf"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "U.S. DOE OSTI — Performance Parameters for Grid-Connected PV Systems (Marion et al., 2005)",
+            "url": "https://www.osti.gov/biblio/15016389"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "SolarReviews — Peak sun hours explained",
+            "url": "https://www.solarreviews.com/blog/peak-sun-hours-explained"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "NREL — PVWatts Calculator",
+            "url": "https://pvwatts.nlr.gov/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "U.S. Census Bureau — Vintage 2025 subcounty population estimates",
+            "url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://balco.nyc/balcony-solar-kwh-formula#faq",
+        "dateModified": "2026-09-23",
+        "inLanguage": "en-US",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the formula for balcony solar panel output?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "balco.nyc's hand formula for a railing-mounted panel is: kWh a year ≈ watts × Y × F × 0.95 × S. Y is the vertical-south yield for your state (0.67 to 1.08 kWh per watt a year across the largest city in each state, median 0.87), F is the direction factor (1.00 south, about 0.95 south-east or south-west, 0.74 east or west, 0.29 north), 0.95 is the railing loss and S is the shade factor (1.00 for an open view). Tested against PVWatts in all 51 places, it came within 3.5% in the median case."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use peak sun hours to estimate a balcony panel's output?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not directly. Peak sun hour figures describe sunlight on a horizontal or latitude-tilted surface, and a vertical railing panel receives much less. Using NREL's latitude-tilt figures and a 0.75 performance ratio, the standard formula (kW × peak sun hours × 365 × performance ratio) overstated a south-facing railing by a median 61% in balco.nyc's comparison across 50 states, and an east- or west-facing one by more than double."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does an 800 W balcony solar system produce a year?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mounted vertically on a south-facing railing with an open view, balco.nyc's PVWatts runs put it at 510 to 819 kWh a year after a 5% railing loss, from Honolulu to Albuquerque, with a median of about 658 kWh across the largest city in each state. Facing east or west, multiply by about 0.74; facing north, by about 0.29; then multiply by a shade factor if taller buildings stand opposite."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does a vertical solar panel produce less than a tilted one?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A vertical panel faces the horizon, so the high summer sun strikes it at a glancing angle, it sees only half of the sky's diffuse light, and more of its direct light arrives at steep angles where the glass reflects it. Across the largest city in each state, a vertical south-facing panel with a 5% railing loss produced a median 63% of what the same panel tilted at 35 degrees produced, from 44% in Honolulu to 75% in Anchorage."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does an east- or west-facing balcony work for solar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It produces about three-quarters of what a south-facing one does: a median factor of 0.74 for east and 0.73 for west across the largest city in every state, in balco.nyc's PVWatts runs. Near the tropics east and west do relatively better, because the sun spends much of the year high overhead: in Houston and New Orleans east is about 0.88 of south, and in Honolulu east and west both out-produce south."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How accurate is a hand calculation of balcony solar output?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Accurate enough to tell a 600 kWh balcony from a 200 kWh one. Against PVWatts, balco.nyc's balcony formula errs by 3.5% in the median case and by more than 10% about one time in eight, mostly in Hawaii, Alaska and the Gulf states. PVWatts is itself a model rather than a meter, so a hand result is best rounded to the nearest 25 kWh."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://balco.nyc/#org",
+        "name": "balco.nyc",
+        "url": "https://balco.nyc/",
+        "logo": "https://balco.nyc/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp",
+        "description": "balco.nyc is an independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings.",
+        "sameAs": [
+          "https://github.com/lowellbw/balconyc"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "balco.nyc",
+            "item": "https://balco.nyc/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Guides",
+            "item": "https://balco.nyc/guides"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "The kWh formula",
+            "item": "https://balco.nyc/balcony-solar-kwh-formula"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #FFFFFF; --text: #171717; --text-sub: #596580; --text-muted: #8896AB;
+      --accent: #7F1D1D; --accent-hover: #5C1212;
+      --border: #E2E8F0; --border-soft: #EEF0F3;
+      --code-bg: #F7F7F8; --callout-bg: #FAF7F4;
+      --radius: 12px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1360px; margin: 0 auto; padding: 0 40px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    /* NAV (matches index.html scrolled style, but always solid on doc pages) */
+    nav.doc-nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-soft); }
+    nav.doc-nav .container { display: flex; justify-content: space-between; align-items: center; padding-top: 6px; padding-bottom: 6px; }
+    .logo { display: inline-block; text-decoration: none; line-height: 0; }
+    .logo img { height: 64px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
+    .nav-links a:hover { opacity: 0.7; text-decoration: none; }
+
+    /* DOC LAYOUT */
+    main { padding: 56px 0 96px; }
+    .doc-header { max-width: 760px; margin: 0 0 48px; }
+    .doc-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .doc-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .doc-header h1 { font-size: clamp(2rem, 3.6vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; text-wrap: balance; }
+    .doc-header .lede { font-size: 1.15rem; color: var(--text-sub); max-width: 65ch; }
+    .doc-meta-row { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; margin-top: 20px; font-size: 0.88rem; color: var(--text-muted); }
+    .doc-meta-row strong { color: var(--text-sub); font-weight: 600; }
+    .doc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .doc-tag { font-size: 0.78rem; padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--text-sub); }
+
+    /* TWO-COLUMN LAYOUT */
+    .doc-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 64px; align-items: start; }
+    .doc-toc { position: sticky; top: 88px; max-height: calc(100vh - 120px); overflow-y: auto; padding-right: 16px; }
+    .doc-toc h2 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .doc-toc ol { list-style: none; padding: 0; counter-reset: tocsec; }
+    .doc-toc li { counter-increment: tocsec; margin: 0; }
+    .doc-toc a { display: block; padding: 6px 0 6px 28px; position: relative; font-size: 0.92rem; color: var(--text-sub); border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; text-decoration: none; }
+    .doc-toc a::before { content: counter(tocsec) "."; position: absolute; left: 8px; top: 6px; font-variant-numeric: tabular-nums; color: var(--text-muted); font-size: 0.85rem; }
+    .doc-toc a:hover, .doc-toc a.active { color: var(--text); border-left-color: var(--accent); }
+
+    /* DOC CONTENT */
+    .doc-content { max-width: 760px; min-width: 0; }
+    .doc-content section { padding-top: 24px; margin-bottom: 48px; scroll-margin-top: 80px; }
+    .doc-content section + section { border-top: 1px solid var(--border-soft); }
+    .doc-content h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; margin: 0 0 20px; }
+    .doc-content h2 .sec-num { color: var(--text-muted); font-weight: 500; margin-right: 12px; font-variant-numeric: tabular-nums; }
+    .doc-content h3 { font-size: 1.18rem; font-weight: 700; letter-spacing: -0.01em; margin: 36px 0 14px; }
+    .doc-content h4 { font-size: 1rem; font-weight: 700; margin: 24px 0 10px; }
+    .doc-content p { margin-bottom: 16px; color: var(--text); }
+    .doc-content p + p { margin-top: -4px; }
+    .doc-content ul, .doc-content ol { padding-left: 24px; margin-bottom: 18px; }
+    .doc-content li { margin-bottom: 6px; }
+    .doc-content li > ul, .doc-content li > ol { margin: 8px 0; }
+    .doc-content strong { font-weight: 700; }
+    .doc-content em { font-style: italic; color: var(--text-sub); }
+
+    /* CODE */
+    code, pre { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em; }
+    p code, li code, td code { background: var(--code-bg); padding: 1px 6px; border-radius: 4px; color: var(--text); font-size: 0.86em; }
+    pre { background: var(--code-bg); border: 1px solid var(--border-soft); border-radius: 8px; padding: 16px 20px; overflow-x: auto; margin: 12px 0 20px; line-height: 1.55; }
+    pre code { background: none; padding: 0; font-size: 0.86em; }
+
+    /* TABLES */
+    .table-wrap { margin: 8px 0 24px; overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    table th, table td { padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+    table th { background: #FAFAFB; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.02em; text-transform: uppercase; color: var(--text-sub); }
+    table tr:last-child td { border-bottom: none; }
+    table td code { font-size: 0.84em; }
+
+    /* CALLOUT */
+    .callout { background: var(--callout-bg); border-left: 3px solid var(--accent); padding: 14px 18px; border-radius: 4px; margin: 12px 0 22px; font-size: 0.95rem; }
+    .callout p:last-child { margin-bottom: 0; }
+    .callout strong { color: var(--accent); }
+
+    /* SOURCES LIST */
+    .sources-list a { font-weight: 500; }
+    .sources-list .src-host { color: var(--text-muted); font-size: 0.85em; font-family: 'JetBrains Mono', monospace; }
+
+    /* BACK TO TOP / DOC FOOTER */
+    .doc-foot { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-soft); display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.9rem; }
+    .btn-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--accent); color: #fff; border-radius: 999px; font-weight: 700; font-size: 0.92rem; text-decoration: none; }
+    .btn-cta:hover { background: var(--accent-hover); text-decoration: none; }
+
+    /* FOOTER */
+    footer { padding: 48px 0 32px; border-top: 1px solid var(--border-soft); margin-top: 48px; }
+    footer .container { display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; }
+    .footer-logo img { height: 56px; width: auto; opacity: 0.85; }
+    .footer-disclaimer { font-size: 0.84rem; color: var(--text-muted); max-width: 64ch; line-height: 1.6; }
+    .footer-meta { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* MOBILE */
+    @media (max-width: 960px) {
+      .container { padding: 0 24px; }
+      .doc-layout { grid-template-columns: 1fr; gap: 24px; }
+      .doc-toc { position: static; max-height: none; padding: 16px; border: 1px solid var(--border-soft); border-radius: 8px; }
+      .doc-toc a { padding-left: 24px; }
+      main { padding: 32px 0 64px; }
+      .doc-header { margin-bottom: 28px; }
+      .doc-content section { margin-bottom: 36px; }
+      .doc-content h2 { font-size: 1.4rem; }
+      .doc-content h3 { font-size: 1.08rem; }
+      .logo img { height: 52px; }
+    }
+
+    /* --- Shared blocks (tools/sitelib.py) --- */
+    .crumbs { margin: 20px 0 -8px; }
+    .crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; font-size: 0.8rem; color: var(--text-muted); }
+    .crumbs li + li::before { content: "\203A"; margin-right: 6px; color: var(--text-muted); }
+    .crumbs a { color: var(--text-sub); text-decoration: none; }
+    .crumbs a[aria-current="page"] { color: var(--text-muted); }
+    .cta-block { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin: 8px 0 40px; padding: 18px 20px; border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 4px; background: #FCFBF7; }
+    .cta-block p { margin: 0; max-width: 56ch; }
+    .cta-button { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 4px; background: var(--accent); color: #fff !important; font-weight: 700; text-decoration: none !important; }
+    .cta-button:hover { background: var(--accent-hover); }
+    .related { margin: 40px 0 0; padding-top: 24px; border-top: 1px solid var(--border); }
+    .related h2 { font-size: 1.1rem; margin-bottom: 12px; }
+    .related ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .related li a { font-weight: 700; }
+    .related li span { display: block; color: var(--text-sub); font-size: 0.88rem; }
+    .footer-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; width: 100%; max-width: 860px; text-align: left; }
+    .footer-links h2 { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+    .footer-links a { display: block; padding: 4px 0; font-size: 0.88rem; color: var(--text-sub); }
+    @media (max-width: 720px) { .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .hub-content { max-width: 760px; padding-bottom: 24px; }
+    .hub-content section { margin-bottom: 36px; }
+    .hub-content h2 { font-size: 1.35rem; margin-bottom: 12px; }
+    .hub-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .hub-list li a { font-weight: 700; }
+    .hub-list li span { display: block; color: var(--text-sub); font-size: 0.92rem; }
+    .table-note { font-size: 0.85rem; color: var(--text-sub); }
+    .tile-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 4px; margin: 8px 0 12px; }
+    .tile { display: flex; align-items: center; justify-content: center; height: 40px; border-radius: 3px; font-size: 0.78rem; font-weight: 700; text-decoration: none !important; color: #1B1A18; background: #EEF0F3; }
+    .tile.s-in_force { background: #7F1D1D; color: #fff; }
+    .tile.s-enacted_not_yet_effective { background: #C2452A; color: #fff; }
+    .tile.s-passed_awaiting_signature { background: #E46740; color: #fff; }
+    .tile.s-pending { background: #F2C9B8; }
+    .tile.s-failed_or_vetoed { background: #D8D2C8; }
+    .tile.s-no_specific_law { background: #EEF0F3; }
+    .tile.s-unknown { background: #fff; border: 1px dashed #C8C2B8; color: #8896AB; }
+    .tile-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 0.82rem; color: var(--text-sub); }
+    .tile-key::before { content: ""; display: inline-block; width: 12px; height: 12px; margin-right: 6px; border-radius: 2px; vertical-align: -1px; background: #EEF0F3; }
+    .tile-key.s-in_force::before { background: #7F1D1D; }
+    .tile-key.s-enacted_not_yet_effective::before { background: #C2452A; }
+    .tile-key.s-passed_awaiting_signature::before { background: #E46740; }
+    .tile-key.s-pending::before { background: #F2C9B8; }
+    .tile-key.s-failed_or_vetoed::before { background: #D8D2C8; }
+    .tile-key.s-unknown::before { background: #fff; border: 1px dashed #C8C2B8; }
+    .state-table td:nth-child(n+3), .state-table th:nth-child(n+3) { text-align: right; white-space: nowrap; }
+    .doc-content dl { margin: 0 0 24px; }
+    .doc-content dt { font-weight: 700; margin-top: 16px; scroll-margin-top: 90px; }
+    .doc-content dd { margin: 4px 0 0; color: var(--text); }
+  </style>
+</head>
+<body>
+
+<nav class="doc-nav">
+  <div class="container">
+    <a href="/" class="logo"><img src="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco.nyc" width="400" height="218" decoding="async"></a>
+    <div class="nav-links">
+      <a href="/">Calculator</a>
+      <a href="/guides">Guides</a>
+      <a href="/states">States</a>
+      <a href="/nyc">NYC</a>
+      <a href="/methodology">Methodology</a>
+      <a href="/about">About</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <!--shared:start-->
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">balco.nyc</a></li><li><a href="/guides">Guides</a></li><li><a href="/balcony-solar-kwh-formula" aria-current="page">The kWh formula</a></li></ol></nav>
+    <!--shared:end-->
+    <header class="doc-header">
+      <div class="doc-eyebrow"><span class="dot"></span> Estimate by hand</div>
+      <h1>The balcony solar kWh formula: estimate output by hand</h1>
+      <p class="lede">For a panel on a balcony railing, multiply its watts by your state&rsquo;s vertical-south yield (0.67 to 1.08&nbsp;kWh per watt a year), a direction factor (0.74 for east, 0.29 for north), 0.95 for the railing and a shade factor. Tested against balco.nyc&rsquo;s PVWatts runs for the largest city in every state, that formula lands within <strong>3.5%</strong> of the full simulation in the median case. The familiar rooftop formula, kW &times; peak sun hours &times; 365 &times; performance ratio, overstates a south-facing railing by about 60% and an east- or west-facing one more than twofold.</p>
+      <div class="doc-meta-row">
+        <div><strong>Last reviewed:</strong> <time datetime="2026-09-23">September 23, 2026</time></div>
+        <div><strong>Reading time:</strong> ~10 minutes</div>
+        <div class="doc-tags">
+          <span class="doc-tag">0.67&ndash;1.08&nbsp;kWh per watt</span>
+          <span class="doc-tag">Rooftop formula +61%</span>
+          <span class="doc-tag">3.5% median error</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="doc-layout">
+      <aside class="doc-toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#rooftop-formula">Why the rooftop formula fails</a></li>
+          <li><a href="#balcony-formula">The balcony formula</a></li>
+          <li><a href="#state-yield">Y: where you live</a></li>
+          <li><a href="#direction-factor">F: which way it faces</a></li>
+          <li><a href="#shade-factor">S: what stands opposite</a></li>
+          <li><a href="#how-wrong">How wrong each version is</a></li>
+          <li><a href="#limits">What it leaves out</a></li>
+          <li><a href="#questions">Common questions</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ol>
+      </aside>
+
+      <article class="doc-content">
+
+        <section id="rooftop-formula">
+  <h2><span class="sec-num">1</span>The rooftop formula, and why it overstates a railing</h2>
+<p>The formula that circulates for estimating solar output by hand is <strong>kWh a year = system kW &times; peak sun hours &times; 365 &times; performance ratio</strong>. A peak sun hour is one kilowatt-hour of sunlight per square meter, so a place receiving 4.5&nbsp;kWh/m&sup2; a day has 4.5 peak sun hours. The performance ratio covers inverter, wiring, heat and dirt losses; consumer guides quote 0.75 to 0.85, and the original PVWatts used an overall derate of 0.77.</p>
+  <p>On a roof, the formula works. balco.nyc took NREL&rsquo;s latitude-tilt solar resource for the largest city in each state (the Solar Resource API, which returns no data for Anchorage, so 50 places) and set the formula against its own PVWatts runs for an 800&nbsp;W panel tilted 35&deg; to the south. With a performance ratio of 0.75 the formula came within <strong>2.4%</strong> of PVWatts in the median city; at 0.80 it ran 6.6% high.</p>
+  <p>On a railing, it does not. In Chicago NREL gives 4.50 peak sun hours at latitude tilt, so 0.8&nbsp;kW &times; 4.50 &times; 365 &times; 0.75 = <strong>986&nbsp;kWh</strong>. PVWatts puts the same panel on a 35&deg; south roof at 1,010&nbsp;kWh: close. Hung vertically on a south-facing railing, with the 5% railing loss the site applies to every vertical estimate, it makes <strong>616&nbsp;kWh</strong>. The formula is 60% high. Across the 50 places the median overstatement for a south-facing railing is <strong>61%</strong>, and it grows as the railing turns away from south: the formula gives about 2.2 times the real output facing east or west, and about 5.5 times facing north. It has no term for direction at all.</p>
+  <p>The arithmetic is fine; the input is wrong. A peak-sun-hour figure describes sunlight on a horizontal or latitude-tilted surface, and many published tables do not say which. A railing panel is neither. It faces the horizon, so the high summer sun strikes it at a glancing angle; it sees half of the sky&rsquo;s diffuse light, where a 35&deg; panel sees about nine-tenths; and more of its direct light arrives at steep angles, where the glass reflects it away, a loss PVWatts models explicitly. In balco.nyc&rsquo;s runs a vertical south panel, after the railing loss, makes a median <strong>63%</strong> of what the same panel makes at 35&deg;, from 44% in Honolulu to 75% in Anchorage. Using horizontal peak sun hours instead does not rescue the formula: at the same 0.75 performance ratio it still overstates a south railing by a median 39%.</p>
+</section>
+
+        <section id="balcony-formula">
+  <h2><span class="sec-num">2</span>A formula built for a railing</h2>
+<p>balco.nyc&rsquo;s balcony formula keeps the shape of the rooftop one, but every input describes a vertical panel:</p>
+  <div class="callout"><p><strong>kWh a year &asymp; W &times; Y<sub>state</sub> &times; F<sub>dir</sub> &times; (1 &minus; 0.05) &times; S<sub>shade</sub></strong></p></div>
+  <div class="table-wrap"><table><thead><tr><th>Term</th><th>What it is</th><th>Typical value</th><th>Where it comes from</th></tr></thead><tbody>
+    <tr><td><strong>W</strong></td><td>The panels&rsquo; rated power in watts</td><td>400 or 800</td><td>The label</td></tr>
+    <tr><td><strong>Y<sub>state</sub></strong></td><td>kWh a year per watt from a vertical, south-facing panel with an open view, before the railing loss</td><td>0.67 to 1.08; median 0.87</td><td>balco.nyc&rsquo;s PVWatts run for the state&rsquo;s largest city (section 3)</td></tr>
+    <tr><td><strong>F<sub>dir</sub></strong></td><td>Output in your direction as a fraction of south</td><td>1.00 S, 0.93&ndash;0.96 SE/SW, 0.73&ndash;0.74 E/W, 0.29 N</td><td>Median across 51 cities (section 4)</td></tr>
+    <tr><td><strong>1 &minus; 0.05</strong></td><td>Railing loss: the rail, brackets and the slab above clip the panel&rsquo;s lower edge</td><td>0.95</td><td>The factor the calculator applies to every vertical panel (<a href="/methodology">methodology</a>)</td></tr>
+    <tr><td><strong>S<sub>shade</sub></strong></td><td>The share of that light the buildings opposite let through</td><td>1.00 for an open view; 0.18&ndash;0.94 in a street canyon</td><td>balco.nyc&rsquo;s street-canyon model (section 5)</td></tr>
+  </tbody></table></div>
+  <p>A worked example: an 800&nbsp;W system on an east-facing 10th-floor balcony in Chicago, looking across the street at a building of six to ten stories. That building is lower than the balcony, so nothing is blocked and S is 1.00.</p>
+  <p><strong>800 &times; 0.81 &times; 0.74 &times; 0.95 &times; 1.00 &asymp; 456&nbsp;kWh a year.</strong></p>
+  <p>PVWatts, run for an east-facing vertical panel in Chicago and given the same railing loss, says 444&nbsp;kWh. The hand calculation is 2.5% high. Now move the same system to a south-facing 2nd-floor balcony, 20 meters from that same building. Direction improves, to 1.00; shade collapses, to 0.31:</p>
+  <p><strong>800 &times; 0.81 &times; 1.00 &times; 0.95 &times; 0.31 &asymp; 191&nbsp;kWh a year.</strong></p>
+  <p>The better-facing balcony makes less than half as much. In a city, your floor and what stands opposite usually move the answer more than the compass does.</p>
+</section>
+
+        <!--shared:start-->
+        <aside class="cta-block">
+          <p><strong>Estimate your own balcony.</strong> Enter any US address to see what a panel on your balcony would produce and save, month by month.</p>
+          <a class="cta-button" href="/">Open the calculator &rarr;</a>
+        </aside>
+        <!--shared:end-->
+
+        <section id="state-yield">
+  <h2><span class="sec-num">3</span>Y<sub>state</sub>: the number that depends on where you live</h2>
+<p>Y is the input that depends on where you live. balco.nyc ran NREL&rsquo;s PVWatts V8 for an 800&nbsp;W vertical south-facing panel at the largest city in every state and DC, with the calculator&rsquo;s own parameters, and divided the annual output by 800. Half the states fall between 0.81 and 0.94&nbsp;kWh per watt a year. A selection:</p>
+  <div class="table-wrap"><table><thead><tr><th>Largest city</th><th>Y<sub>state</sub> (kWh per W a year, before railing loss)</th><th>800&nbsp;W, vertical south, open view, after railing loss</th></tr></thead><tbody>
+    <tr><td>Albuquerque</td><td>1.08</td><td>819&nbsp;kWh</td></tr>
+    <tr><td>Denver</td><td>1.06</td><td>805&nbsp;kWh</td></tr>
+    <tr><td>Phoenix</td><td>1.02</td><td>778&nbsp;kWh</td></tr>
+    <tr><td>Minneapolis</td><td>0.96</td><td>730&nbsp;kWh</td></tr>
+    <tr><td>Los Angeles</td><td>0.95</td><td>720&nbsp;kWh</td></tr>
+    <tr><td>Boston</td><td>0.89</td><td>673&nbsp;kWh</td></tr>
+    <tr><td><em>Median of 51</em></td><td><em>0.87</em></td><td><em>658&nbsp;kWh</em></td></tr>
+    <tr><td>Chicago</td><td>0.81</td><td>616&nbsp;kWh</td></tr>
+    <tr><td>Jacksonville</td><td>0.80</td><td>612&nbsp;kWh</td></tr>
+    <tr><td>New York City</td><td>0.79</td><td>604&nbsp;kWh</td></tr>
+    <tr><td>Houston</td><td>0.76</td><td>576&nbsp;kWh</td></tr>
+    <tr><td>Seattle</td><td>0.69</td><td>524&nbsp;kWh</td></tr>
+    <tr><td>Honolulu</td><td>0.67</td><td>510&nbsp;kWh</td></tr>
+  </tbody></table></div>
+  <p>Every state is on <a href="/states">the state pages</a>, which carry the same runs. The order is not the order of a rooftop sunshine map, and that is the second reason the rooftop formula misleads. Ranked by what a 35&deg; roof panel produces, Minneapolis is 31st of the 51 cities; ranked by what a vertical railing produces, it is 8th. Jacksonville falls from 13th to 40th, Houston from 24th to 47th, and Honolulu from 9th to last. A wall-mounted panel likes a low sun, which strikes it nearly square on in a northern winter, while near the tropics the sun spends much of the year high overhead and passes over the panel&rsquo;s face. Across the 51 cities, the ratio of vertical to 35&deg; output rises steadily with latitude (a correlation of 0.90).</p>
+  <p>Each Y comes from one city. The runs do not measure variation inside a state, which in a large or mountainous state can be substantial; the <a href="/">calculator</a> runs PVWatts for your exact address.</p>
+</section>
+
+        <section id="direction-factor">
+  <h2><span class="sec-num">4</span>F<sub>dir</sub>: which way the railing faces</h2>
+<p>F is output in a given direction divided by output facing south, from the same PVWatts runs. The medians across the 51 cities, and how far individual cities stray from them:</p>
+  <div class="table-wrap"><table><thead><tr><th>Railing faces</th><th>F<sub>dir</sub> (median)</th><th>Middle half of cities</th><th>Full range</th></tr></thead><tbody>
+    <tr><td>South</td><td>1.00</td><td>&mdash;</td><td>&mdash;</td></tr>
+    <tr><td>South-west</td><td>0.96</td><td>0.93&ndash;0.98</td><td>0.91 (Billings) to 1.13 (Honolulu)</td></tr>
+    <tr><td>South-east</td><td>0.93</td><td>0.92&ndash;0.96</td><td>0.87 (Anchorage) to 1.11 (Honolulu)</td></tr>
+    <tr><td>East</td><td>0.74</td><td>0.72&ndash;0.79</td><td>0.61 (Anchorage) to 1.07 (Honolulu)</td></tr>
+    <tr><td>West</td><td>0.73</td><td>0.70&ndash;0.77</td><td>0.66 (Billings) to 1.05 (Honolulu)</td></tr>
+    <tr><td>North-east</td><td>0.46</td><td>0.44&ndash;0.49</td><td>0.41 (Anchorage) to 0.73 (Honolulu)</td></tr>
+    <tr><td>North-west</td><td>0.44</td><td>0.42&ndash;0.47</td><td>0.39 (Denver) to 0.70 (Honolulu)</td></tr>
+    <tr><td>North</td><td>0.29</td><td>0.29&ndash;0.32</td><td>0.25 (Albuquerque) to 0.42 (Honolulu)</td></tr>
+  </tbody></table></div>
+  <p>The pairs are close enough to share a number (about 0.95, 0.74 and 0.45); pairing them moves the test results in section 6 by a few tenths of a point. The medians also sit close to the fixed factors in the calculator&rsquo;s New York fallback model (0.92, 0.72, 0.45, 0.32), which were set independently.</p>
+  <p>The factors drift with latitude in the same way Y does. Near the Gulf, where the summer sun is high, a south wall loses more and east and west lose less: east is 0.88 of south in Houston and New Orleans and 0.86 in Jacksonville, well above the 0.74 median. In Honolulu the order inverts, and east and west both out-produce south. In Anchorage east is only 0.61. If you are in Hawaii, skip the direction factor and use <a href="/states/hawaii">the Hawaii page</a>, which has the run for each direction.</p>
+</section>
+
+        <section id="shade-factor">
+  <h2><span class="sec-num">5</span>S<sub>shade</sub>: what stands across the street</h2>
+<p>With an open view (a park, water, or buildings lower than your floor) S is 1.00, at every orientation, because PVWatts has already priced direction. Otherwise S depends on how tall the obstruction is, how far away, and how high you are.</p>
+  <p>balco.nyc&rsquo;s street-canyon model treats the building opposite as a continuous wall parallel to your facade and traces the sun against it through the year. These figures come from the calculator&rsquo;s own code, run for a south-facing balcony in Chicago (41.88&deg;N), 20&nbsp;meters across a street, with a balcony height of (floor &minus; 1) &times; 3.05&nbsp;m + 1.0&nbsp;m:</p>
+  <div class="table-wrap"><table><thead><tr><th>Across the street (20&nbsp;m away)</th><th>2nd floor</th><th>5th floor</th><th>10th floor</th></tr></thead><tbody>
+    <tr><td>Nothing, an open view</td><td>1.00</td><td>1.00</td><td>1.00</td></tr>
+    <tr><td>1 to 2 floors, or trees (7&nbsp;m)</td><td>0.94</td><td>1.00</td><td>1.00</td></tr>
+    <tr><td>3 to 5 floors (13&nbsp;m)</td><td>0.75</td><td>1.00</td><td>1.00</td></tr>
+    <tr><td>6 to 10 floors (25&nbsp;m)</td><td><strong>0.31</strong></td><td>0.58</td><td>1.00</td></tr>
+    <tr><td>11 floors or more (43&nbsp;m)</td><td>0.18</td><td>0.24</td><td>0.47</td></tr>
+  </tbody></table></div>
+  <p>These are the factors as the calculator applies them: monthly, to monthly output, here weighted by Chicago&rsquo;s vertical-south PVWatts months. The model&rsquo;s one-line annual summary, weighted by New York&rsquo;s monthly sunshine, reads higher under heavy shade: 0.40 rather than 0.31 on the 2nd floor opposite six to ten stories, 0.63 rather than 0.58 on the 5th, 0.55 rather than 0.47 on the 10th opposite a tower. The gap is seasonal. A south railing does its best work in winter (in Chicago, about 62&nbsp;kWh in January against 33 in June after the railing loss), exactly when the low sun sits behind the building opposite. Use the lower figures.</p>
+  <p>Three cautions. An east- or west-facing balcony loses more to the same building, because its direct sun arrives low: 0.64 rather than 0.75 on the 2nd floor opposite three to five stories. The same street blocks more sun further north, less further south. And a continuous wall has no gaps, so it errs toward too much shade. What it cannot see at all (a tree, an air-conditioner, the slab overhead) is covered in <a href="/balcony-sunlight">how much sun a balcony gets</a>.</p>
+</section>
+
+        <section id="how-wrong">
+  <h2><span class="sec-num">6</span>How wrong the formula is</h2>
+<p>balco.nyc tested each version against the PVWatts run it tries to predict, both with the 5% railing loss applied. The state-yield test leaves out south, since Y is built from the south run and would score zero by construction: seven directions in 51 places, 357 predictions. The national-yield test keeps all eight directions (408), and the rooftop tests use a south railing in the 50 places with NREL sun-hour data, or all 51 for the calibrated version.</p>
+  <div class="table-wrap"><table><thead><tr><th>Version</th><th>Median error</th><th>1 prediction in 10 is off by more than</th><th>Worst case</th></tr></thead><tbody>
+    <tr><td>Rooftop formula, NREL peak sun hours, performance ratio 0.75, south railing</td><td>+61%</td><td>+88%</td><td>+157% (Honolulu)</td></tr>
+    <tr><td>Rooftop formula calibrated exactly to each city&rsquo;s 35&deg; roof, south railing</td><td>+61%</td><td>+82%</td><td>+132% (Honolulu)</td></tr>
+    <tr><td>Balcony formula with one national Y (0.87), all 8 directions</td><td>5.5%</td><td>19%</td><td>+50% (Anchorage, east)</td></tr>
+    <tr><td><strong>Balcony formula with each state&rsquo;s Y</strong>, 7 non-south directions</td><td><strong>3.5%</strong></td><td>12%</td><td>&minus;37% (Honolulu, north-east)</td></tr>
+    <tr><td>The same, leaving out Honolulu</td><td>3.4%</td><td>10%</td><td>+22% (Anchorage, east)</td></tr>
+  </tbody></table></div>
+  <p>The rooftop formula overstated every railing it was tested on. Even calibrated perfectly to each city&rsquo;s own roof, with peak sun hours times performance ratio taken straight from the 35&deg; PVWatts run, it is 61% high. That isolates the cost of going vertical: no choice of derate fixes it.</p>
+  <p>The balcony formula with state yields lands within 10% of PVWatts in 87% of cases. Its large misses cluster where section 4 says they will. Every Honolulu direction is under-predicted, by 15% to 37%; the Gulf-state cities (Houston, New Orleans, Jackson and Jacksonville) are under-predicted in most directions away from south, by up to 21%; and Anchorage facing east is over-predicted by 22%. Those five states and Alaska account for 28 of the 46 predictions that miss by more than 10%. Using one national Y instead roughly doubles the share of predictions off by more than 10%, from one in eight to one in four; for a south railing it overstates Seattle and Portland, Oregon, by 25% and understates Albuquerque by 20%. That is what location is worth.</p>
+  <p>These are errors against a model, not a meter. PVWatts has its own uncertainty, and balco.nyc&rsquo;s stated accuracy for its fullest New York estimates is a modeled band of about 15%, not a field-validated one. A hand result is no better than PVWatts; round it to the nearest 25&nbsp;kWh.</p>
+</section>
+
+        <section id="limits">
+  <h2><span class="sec-num">7</span>What a hand formula cannot see</h2>
+<p>Five multiplications cannot carry everything a year of simulation does:</p>
+  <ul>
+    <li><strong>The seasons.</strong> One annual number hides that a south railing is winter-heavy and an east or west one summer-heavy, which matters on a seasonal rate.</li>
+    <li><strong>The interactions.</strong> The terms are multiplied as if independent; in fact shade depends on direction and season, and direction factors on latitude.</li>
+    <li><strong>Your street.</strong> Y is one city per state; S assumes one uniform building opposite.</li>
+    <li><strong>Money and permission.</strong> kWh is not savings: value it at <a href="/electricity-rate">your marginal rate</a>, remembering that the state averages used outside New York City include fixed charges. Whether you may install a plug-in system varies by state and building; nothing here is legal advice.</li>
+  </ul>
+  <p>Used for what it is, the formula answers the first question well: is this a 600&nbsp;kWh balcony or a 200&nbsp;kWh one? For a figure to act on, the <a href="/">calculator</a> runs PVWatts for your exact address, applies shade month by month, and in New York City uses the real buildings around you.</p>
+</section>
+
+        <section id="questions">
+          <h2><span class="sec-num">8</span>Common questions</h2>
+        <details>
+          <summary>What is the formula for balcony solar panel output?</summary>
+          <p>balco.nyc's hand formula for a railing-mounted panel is: kWh a year ≈ watts × Y × F × 0.95 × S. Y is the vertical-south yield for your state (0.67 to 1.08 kWh per watt a year across the largest city in each state, median 0.87), F is the direction factor (1.00 south, about 0.95 south-east or south-west, 0.74 east or west, 0.29 north), 0.95 is the railing loss and S is the shade factor (1.00 for an open view). Tested against PVWatts in all 51 places, it came within 3.5% in the median case.</p>
+        </details>
+        <details>
+          <summary>Can I use peak sun hours to estimate a balcony panel's output?</summary>
+          <p>Not directly. Peak sun hour figures describe sunlight on a horizontal or latitude-tilted surface, and a vertical railing panel receives much less. Using NREL's latitude-tilt figures and a 0.75 performance ratio, the standard formula (kW × peak sun hours × 365 × performance ratio) overstated a south-facing railing by a median 61% in balco.nyc's comparison across 50 states, and an east- or west-facing one by more than double.</p>
+        </details>
+        <details>
+          <summary>How much does an 800 W balcony solar system produce a year?</summary>
+          <p>Mounted vertically on a south-facing railing with an open view, balco.nyc's PVWatts runs put it at 510 to 819 kWh a year after a 5% railing loss, from Honolulu to Albuquerque, with a median of about 658 kWh across the largest city in each state. Facing east or west, multiply by about 0.74; facing north, by about 0.29; then multiply by a shade factor if taller buildings stand opposite.</p>
+        </details>
+        <details>
+          <summary>Why does a vertical solar panel produce less than a tilted one?</summary>
+          <p>A vertical panel faces the horizon, so the high summer sun strikes it at a glancing angle, it sees only half of the sky's diffuse light, and more of its direct light arrives at steep angles where the glass reflects it. Across the largest city in each state, a vertical south-facing panel with a 5% railing loss produced a median 63% of what the same panel tilted at 35 degrees produced, from 44% in Honolulu to 75% in Anchorage.</p>
+        </details>
+        <details>
+          <summary>Does an east- or west-facing balcony work for solar?</summary>
+          <p>It produces about three-quarters of what a south-facing one does: a median factor of 0.74 for east and 0.73 for west across the largest city in every state, in balco.nyc's PVWatts runs. Near the tropics east and west do relatively better, because the sun spends much of the year high overhead: in Houston and New Orleans east is about 0.88 of south, and in Honolulu east and west both out-produce south.</p>
+        </details>
+        <details>
+          <summary>How accurate is a hand calculation of balcony solar output?</summary>
+          <p>Accurate enough to tell a 600 kWh balcony from a 200 kWh one. Against PVWatts, balco.nyc's balcony formula errs by 3.5% in the median case and by more than 10% about one time in eight, mostly in Hawaii, Alaska and the Gulf states. PVWatts is itself a model rather than a meter, so a hand result is best rounded to the nearest 25 kWh.</p>
+        </details>
+        </section>
+
+        <section id="sources">
+          <h2><span class="sec-num">9</span>Sources</h2>
+          <ul>
+            <li><a href="https://developer.nlr.gov/docs/solar/pvwatts/v8/" target="_blank" rel="noopener">NREL &mdash; PVWatts V8 API documentation</a> <span class="src-host">developer.nlr.gov</span> &mdash; the model behind every run on this page: NSRDB typical-year weather, tilt and azimuth inputs (180&deg; = south), and ac_annual / ac_monthly as annual and monthly AC output in kWh.</li>
+            <li><a href="https://developer.nlr.gov/docs/solar/solar-resource-v1/" target="_blank" rel="noopener">NREL &mdash; Solar Resource Data API documentation</a> <span class="src-host">developer.nlr.gov</span> &mdash; the latitude-tilt and horizontal daily solar resource (kWh/m&sup2;/day, i.e. peak sun hours) used for the rooftop-formula test; the API returned no data for Anchorage.</li>
+            <li><a href="https://pvwatts.nlr.gov/downloads/pvwattsv5.pdf" target="_blank" rel="noopener">NREL &mdash; PVWatts Version 5 Manual (Dobos, 2014)</a> <span class="src-host">pvwatts.nlr.gov</span> &mdash; the Perez plane-of-array model, the angle-of-incidence reflection correction, the 14% default system losses, and the 0.77 overall derate of the original PVWatts.</li>
+            <li><a href="https://www.osti.gov/biblio/15016389" target="_blank" rel="noopener">U.S. DOE OSTI &mdash; Performance Parameters for Grid-Connected PV Systems (Marion et al., 2005)</a> <span class="src-host">osti.gov</span> &mdash; performance ratio and reference yield as the standard parameters relating PV output to the solar resource.</li>
+            <li><a href="https://www.solarreviews.com/blog/peak-sun-hours-explained" target="_blank" rel="noopener">SolarReviews &mdash; Peak sun hours explained</a> <span class="src-host">solarreviews.com</span> &mdash; the definition of a peak sun hour as an hour at 1,000&nbsp;W/m&sup2;, and an example of a state table that does not say which surface it describes.</li>
+            <li><a href="https://pvwatts.nlr.gov/" target="_blank" rel="noopener">NREL &mdash; PVWatts Calculator</a> <span class="src-host">pvwatts.nlr.gov</span> &mdash; where any figure on this page can be re-run for a specific address, tilt and azimuth.</li>
+            <li><a href="https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv" target="_blank" rel="noopener">U.S. Census Bureau &mdash; Vintage 2025 subcounty population estimates</a> <span class="src-host">www2.census.gov</span> &mdash; the source for the largest city in each state, which is the reference point for every state run.</li>
+          </ul>
+          <p>This page is maintained by <a href="/">balco.nyc</a>, an independent balcony-solar calculator. Production figures are modeled with NREL&rsquo;s PVWatts, not metered. The formula tests compare a hand calculation with PVWatts, not with measured output.</p>
+        </section>
+
+        <!--shared:start-->
+        <aside class="related" aria-labelledby="relatedHeading">
+          <h2 id="relatedHeading">Related guides</h2>
+          <ul>
+          <li><a href="/calculate-balcony-solar-output">How do I calculate my balcony’s solar output and savings?</a><span>The six-step chain behind every estimate, worked for Phoenix, Chicago and New York City.</span></li>
+          <li><a href="/800w-balcony-solar-output">How much does an 800 W balcony system produce?</a><span>Unshaded kWh a year for every state&#x27;s largest city, by direction and tilt.</span></li>
+          <li><a href="/balcony-sunlight">Does my balcony get enough sun?</a><span>How direction, floor height, and nearby buildings affect output.</span></li>
+          <li><a href="/balcony-solar-panel-angle">What angle should a balcony solar panel be?</a><span>What 70°, 60° and 35° add over vertical by state, what it is worth, and why shade changes it.</span></li>
+          </ul>
+        </aside>
+        <!--shared:end-->
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <a href="/" class="footer-logo"><img src="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
+    <nav class="footer-links" aria-label="Site">
+      <div>
+        <h2>Calculator</h2>
+        <a href="/">Estimate your balcony</a>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <a href="/balcony-solar-laws-compared">Which states allow plug-in solar, and on what terms?</a>
+        <a href="/calculate-balcony-solar-output">How do I calculate my balcony’s solar output and savings?</a>
+        <a href="/is-balcony-solar-worth-it">Is balcony solar worth it?</a>
+        <a href="/sunny-act">Is plug-in solar legal in New York?</a>
+        <a href="/what-is-balcony-solar">What is balcony solar?</a>
+        <a href="/guides">All guides</a>
+      </div>
+      <div>
+        <h2>By place</h2>
+        <a href="/states">Plug-in solar by state</a>
+        <a href="/nyc">New York City</a>
+        <a href="/sunny-act">New York&rsquo;s SUNNY Act</a>
+      </div>
+      <div>
+        <h2>About</h2>
+        <a href="/about">About balco.nyc</a>
+        <a href="/methodology">Methodology</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </nav>
+    <p class="footer-disclaimer">balco.nyc is an independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings. Not affiliated with the City of New York, Con Edison, NYSERDA, NREL, the EIA, the EPA, or any seller of solar equipment. NYC results carry a modeled uncertainty range of about 15%. Plug-in solar rules vary by state; in New York the <a href="/sunny-act">SUNNY Act</a> has passed both chambers and awaits the Governor&#x27;s signature.</p>
+    <p class="footer-meta">&copy; 2026</p>
+  </div>
+</footer>
+
+<script src="/js/analytics.js?v=61ea8fc9"></script>
+
+<script>
+  // Highlight the TOC entry corresponding to the visible section.
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.doc-toc a'));
+    var sections = links.map(function (a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    }).filter(Boolean);
+
+    if (!('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          links.forEach(function (a) {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(function (s) { observer.observe(s); });
+  }());
+</script>
+
+</body>
+</html>

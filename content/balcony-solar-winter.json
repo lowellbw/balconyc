@@ -1,0 +1,156 @@
+{
+  "slug": "balcony-solar-winter",
+  "title": "Balcony solar in winter: output month by month &middot; balco.nyc",
+  "og_title": "Balcony solar in winter: what a railing panel makes, month by month",
+  "breadcrumb": "Winter output",
+  "cluster": "calculate",
+  "pillar": false,
+  "card_title": "Does balcony solar work in winter?",
+  "card": "A south railing peaks in winter; east, west and north do not. Months, cold, snow and shade.",
+  "llms": "balco.nyc's PVWatts runs for every state's largest city: an unshaded vertical south railing makes a median 31% of its year from December to February (21% at a 35-degree tilt), east, west and north railings are summer panels, cold adds only about 5-7% in January, snow is likelier to shed from a vertical face (unmeasured on railings), and a building across the street can remove about 90% of a low floor's winter output.",
+  "related": [
+    "800w-balcony-solar-output",
+    "balcony-solar-panel-angle",
+    "balcony-sunlight"
+  ],
+  "description": "A south balcony railing makes more in winter than summer in most US cities. Month-by-month output by direction, plus cold, snow, short days and shade.",
+  "eyebrow": "Winter output",
+  "h1": "Balcony solar in winter: what a railing panel makes, month by month",
+  "lede": "Yes, balcony solar works in winter, and a panel hung on a south-facing railing usually makes more then than in summer. balco.nyc&rsquo;s PVWatts runs for the largest city in every state put an unshaded 800&nbsp;W vertical south panel at a median <strong>31% of its year from December to February</strong>, about 64&nbsp;kWh in December alone, against 21% for the same panel tilted to a rooftop 35&deg;. Two things undo it: a railing facing east, west or north, which follows the summer like a roof, and a building across the street, which on a third floor in New York takes about 90% of the winter.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~10 minutes",
+  "tags": [
+    "31% of the year in Dec&ndash;Feb",
+    "~2&nbsp;kWh a day in December",
+    "Shade takes winter first"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "winter-by-direction",
+      "toc": "Only a south railing favors winter",
+      "html": "        <section id=\"winter-by-direction\">\n  <h2><span class=\"sec-num\">1</span>Only a south-facing railing is a winter panel</h2>\n  <p>A vertical south railing makes more from December to February than from June to August in 48 of the 51 cities balco.nyc modeled (<a href=\"/800w-balcony-solar-output\">what an 800&nbsp;W system produces</a>). That is one direction. For the rest, balco.nyc took its PVWatts&nbsp;V8 runs for the largest city in every state and DC, applied the site&rsquo;s railing factor to each (0.95 vertical, 0.98 at 60&deg;, 0.99 at 35&deg;) and measured how much of each panel&rsquo;s year falls in winter. Spread evenly, December through February would carry 24.7%.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>800&nbsp;W panel, unshaded</th><th>Share of year, Dec&ndash;Feb</th><th>Share of year, Oct&ndash;Mar</th><th>Dec&ndash;Feb &divide; Jun&ndash;Aug</th><th>Most often the best month</th><th>Most often the worst month</th></tr></thead><tbody>\n    <tr><td><strong>South, vertical</strong></td><td><strong>31.2%</strong></td><td>61.7%</td><td>1.84</td><td>January (15 cities)</td><td>June (48)</td></tr>\n    <tr><td>South-east or south-west, vertical</td><td>24.5%</td><td>51.2%</td><td>0.98 / 1.08</td><td>March (22 / 19)</td><td>December or June</td></tr>\n    <tr><td>East or west, vertical</td><td>17.3%</td><td>39.3%</td><td>0.56 / 0.53</td><td>July (26 / 22)</td><td>December (43 / 36)</td></tr>\n    <tr><td>North, vertical</td><td>16.0%</td><td>35.1%</td><td>0.45</td><td>June (43)</td><td>December (24) or November (23)</td></tr>\n    <tr><td>South, 60&deg; bracket</td><td>24.6%</td><td>51.5%</td><td>1.03</td><td>March (21)</td><td>December or June (21 each)</td></tr>\n    <tr><td>South, 35&deg;</td><td>20.7%</td><td>45.1%</td><td>0.74</td><td>July (19)</td><td>December (41)</td></tr>\n  </tbody></table></div>\n  <p>Shares and ratios are medians of the 51 cities; paired rows give each direction&rsquo;s figure. <strong>Only a railing facing close to due south leans toward winter.</strong> Turn it 45&deg; to the south-east or south-west and the year spreads almost evenly, 24.5% in December&ndash;February, usually peaking in March. East, west and north railings are summer panels, as seasonal as a roof or more so: in none of the 51 cities does one make more in winter than in summer. A north railing&rsquo;s winter output is nearly all diffuse light, since between the equinoxes the sun rises and sets south of due east and west (<a href=\"/balcony-sunlight\">does my balcony get enough sun?</a>).</p>\n  <p>In December a south railing draws level with a roof-angle panel: the median unshaded railing makes <strong>64&nbsp;kWh</strong>, about 2.1&nbsp;kWh a day, and the same panel at 35&deg; makes 65. The railing wins December outright in 24 cities, all at or north of Louisville&rsquo;s 38&deg;N. Tilting pays in summer, the subject of <a href=\"/balcony-solar-panel-angle\">what angle a balcony panel should be</a>.</p>\n</section>"
+    },
+    {
+      "id": "six-cities",
+      "toc": "Month by month in six cities",
+      "html": "        <section id=\"six-cities\">\n  <h2><span class=\"sec-num\">2</span>Month by month in six cities</h2>\n  <p>Six cities from 30&deg; to 61&deg;N show how latitude and weather bend the shape. balco.nyc&rsquo;s PVWatts output for an unshaded 800&nbsp;W vertical south railing, in kWh, after the 0.95 railing factor:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>kWh, south railing</th><th><a href=\"/states/florida\">Jacksonville</a></th><th><a href=\"/states/arizona\">Phoenix</a></th><th><a href=\"/states/new-york\">New York City</a></th><th><a href=\"/states/illinois\">Chicago</a></th><th><a href=\"/states/washington\">Seattle</a></th><th><a href=\"/states/alaska\">Anchorage</a></th></tr></thead><tbody>\n    <tr><td>Jan</td><td>79</td><td>95</td><td>69</td><td>61</td><td>36</td><td>14</td></tr>\n    <tr><td>Feb</td><td>62</td><td>84</td><td>66</td><td>66</td><td>42</td><td>32</td></tr>\n    <tr><td>Mar</td><td>62</td><td>76</td><td>62</td><td>59</td><td>48</td><td>76</td></tr>\n    <tr><td>Apr</td><td>40</td><td>53</td><td>45</td><td>49</td><td>50</td><td>67</td></tr>\n    <tr><td>May</td><td>28</td><td>35</td><td>36</td><td>36</td><td>45</td><td>64</td></tr>\n    <tr><td>Jun</td><td>23</td><td>25</td><td>30</td><td>33</td><td>37</td><td>57</td></tr>\n    <tr><td>Jul</td><td>25</td><td>28</td><td>34</td><td>38</td><td>42</td><td>54</td></tr>\n    <tr><td>Aug</td><td>34</td><td>41</td><td>39</td><td>46</td><td>56</td><td>58</td></tr>\n    <tr><td>Sep</td><td>47</td><td>63</td><td>53</td><td>57</td><td>56</td><td>52</td></tr>\n    <tr><td>Oct</td><td>66</td><td>86</td><td>59</td><td>61</td><td>48</td><td>35</td></tr>\n    <tr><td>Nov</td><td>76</td><td>95</td><td>55</td><td>57</td><td>32</td><td>16</td></tr>\n    <tr><td>Dec</td><td>71</td><td>99</td><td>55</td><td>52</td><td>30</td><td>9</td></tr>\n    <tr><td><strong>Year</strong></td><td><strong>612</strong></td><td><strong>778</strong></td><td><strong>604</strong></td><td><strong>616</strong></td><td><strong>524</strong></td><td><strong>535</strong></td></tr>\n  </tbody></table></div>\n  <p>Four of the six peak between December and February and bottom out in June: Phoenix in December, at 99&nbsp;kWh, Jacksonville and New York in January, Chicago in February. Seattle and Anchorage are the exceptions. Seattle&rsquo;s winter weather leaves September its best month, narrowly, and December its worst; in Anchorage the December sun barely clears the horizon and March is best. Per day, December gives 3.2&nbsp;kWh in Phoenix, 2.3 in Jacksonville, 1.8 in New York, 1.7 in Chicago, 1.0 in Seattle and 0.3 in Anchorage.</p>\n  <p>Direction reshapes the year again. Winter (December&ndash;February) against summer (June&ndash;August) output, in kWh, for the same six cities:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Winter / summer kWh</th><th>South, vertical</th><th>East, vertical</th><th>West, vertical</th><th>North, vertical</th><th>South at 35&deg;</th></tr></thead><tbody>\n    <tr><td>Jacksonville</td><td><strong>213</strong> / 81</td><td>92 / 157</td><td>91 / 128</td><td>31 / 70</td><td>258 / 266</td></tr>\n    <tr><td>Phoenix</td><td><strong>278</strong> / 94</td><td>118 / 173</td><td>106 / 184</td><td>32 / 71</td><td>314 / 332</td></tr>\n    <tr><td>New York City</td><td><strong>191</strong> / 104</td><td>76 / 142</td><td>68 / 143</td><td>23 / 61</td><td>205 / 283</td></tr>\n    <tr><td>Chicago</td><td><strong>180</strong> / 117</td><td>76 / 151</td><td>71 / 158</td><td>33 / 63</td><td>183 / 309</td></tr>\n    <tr><td>Seattle</td><td>108 / 135</td><td>40 / 141</td><td>39 / 165</td><td>15 / 63</td><td>113 / 300</td></tr>\n    <tr><td>Anchorage</td><td>55 / 170</td><td>14 / 130</td><td>16 / 160</td><td>7 / 78</td><td>50 / 273</td></tr>\n  </tbody></table></div>\n  <p>In New York the south railing makes 191&nbsp;kWh over the winter months, two and a half times an east railing and eight times a north one; in summer the east railing out-produces it, 142 to 104. The 35&deg; panel is nearly flat across the seasons in Jacksonville and Phoenix and summer-heavy everywhere else.</p>\n</section>"
+    },
+    {
+      "id": "roof-claims",
+      "toc": "Why winter figures describe a roof",
+      "html": "        <section id=\"roof-claims\">\n  <h2><span class=\"sec-num\">3</span>Short days, low sun, and why most winter figures describe a roof</h2>\n  <p>Winter days are short, and the U.S. Naval Observatory&rsquo;s rise and set times for the 2026 solstices put numbers on it. The noon sun&rsquo;s height is 90&deg; minus the latitude, minus or plus the sun&rsquo;s 23.44&deg; declination:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>City</th><th>Daylight, 21 Dec</th><th>Daylight, 21 Jun</th><th>Noon sun, 21 Dec</th><th>Noon sun, 21 Jun</th></tr></thead><tbody>\n    <tr><td>Jacksonville</td><td>10h 12m</td><td>14h 07m</td><td>36&deg;</td><td>83&deg;</td></tr>\n    <tr><td>Phoenix</td><td>9h 57m</td><td>14h 22m</td><td>33&deg;</td><td>80&deg;</td></tr>\n    <tr><td>New York City</td><td>9h 15m</td><td>15h 06m</td><td>26&deg;</td><td>73&deg;</td></tr>\n    <tr><td>Chicago</td><td>9h 08m</td><td>15h 13m</td><td>25&deg;</td><td>72&deg;</td></tr>\n    <tr><td>Seattle</td><td>8h 25m</td><td>15h 59m</td><td>19&deg;</td><td>66&deg;</td></tr>\n    <tr><td>Anchorage</td><td>5h 27m</td><td>19h 23m</td><td>5&deg;</td><td>52&deg;</td></tr>\n  </tbody></table></div>\n  <p>A rooftop panel faces most of the sky, so a long day and a high sun are simply more energy, and the familiar line that panels make about half as much in winter describes roofs fairly. The Energy Information Administration estimates monthly output from the country&rsquo;s small-scale solar, systems under 1&nbsp;MW sited mostly on homes and businesses: in 2025 December was <strong>59% of June</strong>, and January, February and December together made 18% of the year (capacity grows through the year, flattering December slightly). balco.nyc&rsquo;s 35&deg; runs agree: December is a median 69% of June.</p>\n  <p>A vertical railing turns the same inputs around. In New York the sun is up 39% fewer hours on 21 December than on 21 June, yet the unshaded south railing makes 55.5&nbsp;kWh in December against 30.3 in June, 1.8 times as much. The low sun, 26&deg; up at noon, meets the upright panel nearly square on; the June sun at 73&deg; passes over it at a glancing angle (the cosine arithmetic is on <a href=\"/800w-balcony-solar-output\">the 800&nbsp;W output page</a>). Geometry beats day length except where the day nearly disappears: Anchorage&rsquo;s 5&nbsp;hours 27&nbsp;minutes, with the sun 5&deg; up at noon, leave a south railing 9&nbsp;kWh for all of December. When a page says solar panels make less in winter, check what it describes. It is usually a roof.</p>\n</section>"
+    },
+    {
+      "id": "cold",
+      "toc": "Cold helps a little, already counted",
+      "html": "        <section id=\"cold\">\n  <h2><span class=\"sec-num\">4</span>Cold helps a little, and the figures already include it</h2>\n  <p>Solar cells convert light more efficiently when they are cold. The Department of Energy puts the turning point at 77&deg;F, or 25&deg;C, the cell temperature panels are rated at, and the PVWatts manual models the effect as a straight line: DC power is multiplied by 1 + &gamma; &times; (cell temperature &minus; 25&deg;C). PVWatts&rsquo; module-type page gives the coefficient &gamma; as &minus;0.37% per &deg;C for a standard module, &minus;0.32% for thin film and &minus;0.35% for the premium module balco.nyc models.</p>\n  <p>What counts is the cell, not the air, and a sunlit cell runs warmer than the air around it. PVWatts computes an hourly cell temperature (for an open rack it assumes an installed nominal operating temperature of 45&deg;C), and its API returns it. balco.nyc pulled those hours for the unshaded vertical south panel in three cities and averaged them, weighting each hour by the sunlight reaching the panel:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Vertical south panel</th><th>January air</th><th>January cells</th><th>Effect on output</th><th>July air</th><th>July cells</th><th>Effect on output</th></tr></thead><tbody>\n    <tr><td>New York City</td><td>0.5&deg;C</td><td>10.5&deg;C</td><td><strong>+5.1%</strong></td><td>26.8&deg;C</td><td>32.1&deg;C</td><td>&minus;2.5%</td></tr>\n    <tr><td>Chicago</td><td>&minus;3.1&deg;C</td><td>5.5&deg;C</td><td><strong>+6.8%</strong></td><td>23.7&deg;C</td><td>29.1&deg;C</td><td>&minus;1.5%</td></tr>\n    <tr><td>Phoenix</td><td>18.7&deg;C</td><td>35.4&deg;C</td><td>&minus;3.6%</td><td>39.8&deg;C</td><td>44.2&deg;C</td><td>&minus;6.7%</td></tr>\n  </tbody></table></div>\n  <p>In New York, January&rsquo;s cells at 10.5&deg;C give 1 &minus; 0.0035 &times; (10.5 &minus; 25) = 1.051, about 5% more per unit of light than the rating; July&rsquo;s 32.1&deg;C costs 2.5%. The gap between the two months is about 8% in both New York and Chicago. In Phoenix even January&rsquo;s cells average above the rating point, so heat still costs 3.6% in January, against 6.7% in July.</p>\n  <p>So the cold bonus is real but in single digits, small beside the near-doubling geometry gives a south railing in winter. And it is already inside every PVWatts figure here and in the <a href=\"/\">calculator</a>, which applies no separate temperature adjustment. Do not add it on top.</p>\n</section>"
+    },
+    {
+      "id": "snow",
+      "toc": "Snow on a vertical panel",
+      "html": "        <section id=\"snow\">\n  <h2><span class=\"sec-num\">5</span>Snow: a vertical face gives it little to hold</h2>\n  <p>Snow is the winter loss the cold-is-good story leaves out, and on roofs it is not small. Modeling fixed panels at 20&deg; and at latitude tilt, the National Laboratory of the Rockies (then NREL) put average annual snow losses at <strong>0% to 16%</strong> across the continental US, and near 40% at one Alaska site, heaviest from the Northeast through the Great Lakes and Midwest to the northern Rockies.</p>\n  <p>A railing panel should fare much better, though we found no published measurement of one. The Department of Energy&rsquo;s winter guidance says vertical installations are less likely than tilted ones to collect snow or ice, and more likely to shed what sticks. The snow model NLR uses, from Marion and colleagues, treats sliding as the main way snow leaves a panel and ties its speed to tilt: in an hour bright and warm enough, 1.97 &times; sin(tilt) tenths of the panel&rsquo;s height is uncovered, about 20% of a vertical panel against 11% at 35&deg;. Take that as a direction, not a number: the model was built for tilts of 10&deg; to 45&deg; and ignores melting and snow frozen to the glass.</p>\n  <p>Two balcony details cut the other way. Snow drifting onto the balcony floor can bury a panel&rsquo;s lower edge: in Sandia National Laboratories&rsquo; Vermont tests, snow piled beneath the modules stopped further sliding for five days, and module frames held snow back. balco.nyc&rsquo;s runs allow 1% for snow within their 14% losses and hold ground reflectance at 0.20, so they neither charge for a buried panel nor credit the light snowy ground reflects onto a panel that faces half the ground (early PVWatts raised reflectance to 0.6 whenever snow lay on the ground). In snowy cities, read the winter months as approximate in both directions.</p>\n</section>"
+    },
+    {
+      "id": "shade",
+      "toc": "The building opposite takes winter first",
+      "html": "        <section id=\"shade\">\n  <h2><span class=\"sec-num\">6</span>The building across the street takes the winter first</h2>\n  <p>Every figure so far assumes an open view, and the low sun that suits a railing is the easiest to block. balco.nyc ran its own shade code at New York&rsquo;s latitude for a south-facing third-floor balcony, 7.1&nbsp;m up, facing a six-to-ten-story building (25&nbsp;m) across a 20&nbsp;m street. This is the calculator&rsquo;s described-surroundings model, a continuous wall; for a New York address the live calculator uses real building footprints. Straight out, the wall rises 41.8&deg;. On the 15th of each month from October to February the sun never climbs that high, so the panel gets no direct sun and its monthly shade factor falls to 0.10&ndash;0.12, against 0.54 in June and 0.73 in March. (The model floors each factor at 0.10; unfloored, December and January would be 0.097 and 0.099.) The full monthly working is on <a href=\"/calculate-balcony-solar-output\">how to calculate your balcony&rsquo;s output</a>.</p>\n  <p>The effect on the seasons is total. The panel keeps <strong>10% of its December&ndash;February output</strong>, 20&nbsp;kWh of 191, but 58% of June&ndash;August&rsquo;s, and of everything the building takes over the year, 72% goes between October and February. The winter panel becomes a summer one: its best month is March, at 45&nbsp;kWh, and December is its worst, at 5.5.</p>\n  <p>Height brings the winter back, and quickly. The same wall and street, floor by floor, with the balcony&rsquo;s height taken as (floor &minus; 1) &times; 3.05&nbsp;m + 1&nbsp;m:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Floor</th><th>Balcony height</th><th>Dec&ndash;Feb kWh</th><th>Share of open-view winter</th><th>Year kWh</th><th>Best month</th></tr></thead><tbody>\n    <tr><td>2nd</td><td>4.1&nbsp;m</td><td>19</td><td>10%</td><td>211</td><td>March</td></tr>\n    <tr><td>3rd</td><td>7.1&nbsp;m</td><td>20</td><td>10%</td><td>227</td><td>March</td></tr>\n    <tr><td>4th</td><td>10.2&nbsp;m</td><td>31</td><td>16%</td><td>284</td><td>March</td></tr>\n    <tr><td>5th</td><td>13.2&nbsp;m</td><td>67</td><td>35%</td><td>349</td><td>March</td></tr>\n    <tr><td>6th</td><td>16.3&nbsp;m</td><td>135</td><td>71%</td><td>463</td><td>February</td></tr>\n    <tr><td>7th</td><td>19.3&nbsp;m</td><td>167</td><td>87%</td><td>524</td><td>January</td></tr>\n    <tr><td>8th</td><td>22.4&nbsp;m</td><td>181</td><td>95%</td><td>569</td><td>January</td></tr>\n    <tr><td>9th, above the roofline</td><td>25.4&nbsp;m</td><td>191</td><td>100%</td><td>604</td><td>January</td></tr>\n  </tbody></table></div>\n  <p>Distance does the same work: with the building 40&nbsp;m away the third floor keeps 69% of its open-view winter, and at 80&nbsp;m 91%; a three-to-five-story building (13&nbsp;m) across the same street leaves it 87%. The code samples the 15th of each month, so the switch from a dark February to a sunlit March is sharper here than on a real balcony, where it takes a few weeks.</p>\n</section>"
+    },
+    {
+      "id": "value",
+      "toc": "What winter kWh are worth",
+      "html": "        <section id=\"value\">\n  <h2><span class=\"sec-num\">7</span>What the winter kilowatt-hours are worth</h2>\n  <p>Priced at each state&rsquo;s EIA average residential rate for the 12 months to June 2026 &mdash; an average that includes fixed charges, so it can overstate what a saved kWh is worth &mdash; an unshaded south railing&rsquo;s December&ndash;February output is worth a median <strong>$33</strong> across the 51 cities, from $15 in Anchorage to $88 in Honolulu. In New York City, where balco.nyc uses Con&nbsp;Edison&rsquo;s marginal rate instead (<a href=\"/electricity-rate\">why</a>), the arithmetic is 191&nbsp;kWh &times; ${{coned.rate_dollars}} = $65 for the winter quarter.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Unshaded 800&nbsp;W south railing</th><th>Dec&ndash;Feb kWh</th><th>Price (&cent;/kWh)</th><th>Worth, Dec&ndash;Feb</th><th>Worth, full year</th></tr></thead><tbody>\n    <tr><td>Jacksonville</td><td>213</td><td>15.40 (Florida avg.)</td><td>$33</td><td>$94</td></tr>\n    <tr><td>Phoenix</td><td>278</td><td>15.40 (Arizona avg.)</td><td>$43</td><td>$120</td></tr>\n    <tr><td>New York City</td><td>191</td><td>{{coned.rate_cents}} (Con&nbsp;Edison marginal)</td><td><strong>$65</strong></td><td>$205</td></tr>\n    <tr><td>New York City</td><td>191</td><td>27.96 (New York avg.)</td><td>$53</td><td>$169</td></tr>\n    <tr><td>Chicago</td><td>180</td><td>18.54 (Illinois avg.)</td><td>$33</td><td>$114</td></tr>\n    <tr><td>Seattle</td><td>108</td><td>14.02 (Washington avg.)</td><td>$15</td><td>$73</td></tr>\n    <tr><td>Anchorage</td><td>55</td><td>26.74 (Alaska avg.)</td><td>$15</td><td>$143</td></tr>\n  </tbody></table></div>\n  <p>At a flat price the winter quarter is worth exactly its share of the kWh, about 31% of the year for a south railing. Three things change that. A seasonal tariff does: where summer power costs more, as it does under Con&nbsp;Edison&rsquo;s delivery charges from June through September (<a href=\"/electricity-rate\">what a kWh costs</a>), a winter-heavy panel&rsquo;s kWh are worth a little less than the average suggests. Surplus does: a south railing&rsquo;s highest midday output comes in the colder months &mdash; in New York&rsquo;s hourly run it tops out near 730&nbsp;W in January and March, against about 200&nbsp;W in June &mdash; and any of it your home is not using is assumed to earn nothing unless a state law or utility credits it (<a href=\"/balcony-solar-net-metering\">net metering and self-consumption</a> covers how much that is). And shade does, most of all: the shaded third-floor balcony in section&nbsp;6 makes 20&nbsp;kWh from December to February, about $7 at Con&nbsp;Edison&rsquo;s rate.</p>\n  <p>Which of these describes your balcony depends on its direction and what stands opposite, which is what the <a href=\"/\">calculator</a> runs for any US address. Whether the whole year pays back a kit is on <a href=\"/is-balcony-solar-worth-it\">whether balcony solar is worth it</a>.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Do balcony solar panels work in winter?",
+      "Yes. In balco.nyc's PVWatts runs for the largest city in every state, an unshaded 800 W panel hung vertically on a south-facing railing makes a median 31% of its annual output from December to February, against about 25% if output were spread evenly, and more in those months than from June to August in 48 of the 51 cities, because the low winter sun strikes an upright panel nearly head-on. East-, west- and north-facing railings, and any balcony with a taller building close across the street, make much less in winter."
+    ],
+    [
+      "Do solar panels produce more in winter or summer?",
+      "A rooftop panel produces more in summer: EIA estimates put 2025 December output from US small-scale solar at 59% of June's. A vertical south-facing balcony panel is the reverse. In 48 of the 51 cities balco.nyc modeled it makes more from December to February than from June to August, a median 1.84 times as much. Railings facing east, west or north follow the summer like a roof."
+    ],
+    [
+      "How much does an 800 W balcony solar panel produce in December?",
+      "Unshaded and hung vertically facing south, a median 64 kWh in December across the largest city in every state, about 2 kWh a day, in balco.nyc's PVWatts runs: 99 kWh in Phoenix, 55 in New York City, 52 in Chicago, 30 in Seattle and 9 in Anchorage. Facing east or west the median is about 23 to 25 kWh, and facing north about 9."
+    ],
+    [
+      "Does cold weather make solar panels more efficient?",
+      "Yes, but only by a few percent. PVWatts lowers output by 0.35% for each degree Celsius a premium module's cells run above 25°C and raises it by the same amount below. For a vertical south panel in New York, sunlit cells average about 10.5°C in January and 32°C in July, worth roughly 5% more and 2.5% less than the rating. PVWatts-based estimates already include this, so it should not be added again."
+    ],
+    [
+      "What happens to a balcony solar panel when it snows?",
+      "A vertical panel gives snow little to rest on. The Department of Energy says vertical installations are less likely than tilted ones to accumulate snow or ice and more likely to shed it, and the snow model NLR uses makes sliding faster as tilt increases. That model was built for tilts of 10 to 45 degrees, and balco.nyc found no published measurement of snow losses on a balcony railing. Snow drifting onto the balcony floor can still cover a panel's lower edge."
+    ],
+    [
+      "Why does my balcony panel make so little in winter?",
+      "Usually because of what stands opposite. The winter sun is low, so a building across the street blocks it first. In balco.nyc's shade model, a south-facing third-floor balcony in New York facing a six-to-ten-story building 20 meters away keeps only about 10% of its unshaded December-to-February output, and its best month moves to March. The same balcony on the 7th floor keeps 87%."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "National Laboratory of the Rockies &mdash; PVWatts V8 API documentation",
+      "note": "the model behind balco.nyc&rsquo;s runs, its monthly output, and the hourly ambient and module temperature outputs (tamb, tcell) used for the cold-weather table."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/docs/en/help_module_type.php",
+      "title": "PVWatts &mdash; Module type help",
+      "note": "temperature coefficients of &minus;0.37%/&deg;C (standard), &minus;0.35%/&deg;C (premium) and &minus;0.32%/&deg;C (thin film)."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/downloads/pvwattsv5.pdf",
+      "title": "Dobos, PVWatts Version 5 Manual (NREL, 2014)",
+      "note": "DC power scaled by 1 + &gamma;(T<sub>cell</sub> &minus; 25&deg;C), the Fuentes cell-temperature model, the premium module&rsquo;s &minus;0.35%/&deg;C, and that PVWatts V1 raised albedo to 0.6 when snow lay on the ground."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/docs/en/help_system_array_type.php",
+      "title": "PVWatts &mdash; Array type help",
+      "note": "the installed nominal operating cell temperature of 45&deg;C assumed for an open rack."
+    },
+    {
+      "url": "https://www.energy.gov/cmei/femp/solar-photovoltaic-hardening-resilience-winter-weather",
+      "title": "U.S. Department of Energy, FEMP &mdash; Solar Photovoltaic Hardening for Resilience: Winter Weather",
+      "note": "that modules lose voltage above 77&deg;F, and that vertical installations are less likely to accumulate snow or ice and more likely to shed it."
+    },
+    {
+      "url": "https://docs.nlr.gov/docs/fy17osti/68705.pdf",
+      "title": "Ryberg and Freeman &mdash; Integration, Validation, and Application of a PV Snow Coverage Model in SAM (NREL/TP-6A20-68705, 2017)",
+      "note": "the Marion snow model&rsquo;s sliding term of 1.97 &times; sin(tilt) tenths of row height per hour, its design range of 10&ndash;45&deg; tilt, that it ignores melting and frozen snow, and national fixed-tilt snow losses of 0&ndash;16% (near 40% at one Alaska site)."
+    },
+    {
+      "url": "https://www.osti.gov/servlets/purl/1640734",
+      "title": "Riley et al. (Sandia National Laboratories) &mdash; Differences in Snow Shedding in Photovoltaic Systems with Framed and Frameless Modules",
+      "note": "Vermont measurements in which snow accumulating beneath the modules prevented sliding for five days, and frames impeded shedding."
+    },
+    {
+      "url": "https://aa.usno.navy.mil/data/RS_OneDay",
+      "title": "U.S. Naval Observatory &mdash; Sun and Moon rise/set times for one day",
+      "note": "sunrise and sunset on 21 December and 21 June 2026 for the six cities, from which the day lengths are computed."
+    },
+    {
+      "url": "https://www.pveducation.org/pvcdrom/properties-of-sunlight/elevation-angle",
+      "title": "PVEducation &mdash; Elevation angle",
+      "note": "the noon sun elevation as 90&deg; minus latitude plus the solar declination, behind the solstice noon angles."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_1_01_a",
+      "title": "EIA &mdash; Electric Power Monthly, Table 1.1.A: Net generation from renewable sources",
+      "note": "estimated small-scale solar generation by month; 2025 December (5,569 thousand MWh) was 59% of June (9,423), and December&ndash;February 18% of the year."
+    },
+    {
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=23972",
+      "title": "EIA &mdash; Electricity data now include estimated small-scale solar PV capacity and generation (2015)",
+      "note": "that small-scale means under 1&nbsp;MW, usually at the customer&rsquo;s site, and that its output is higher in summer and lower in winter."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia861m/",
+      "title": "EIA &mdash; Form EIA-861M monthly sales and revenue",
+      "note": "the state average residential prices for the 12 months to June 2026 used to value winter output (balco.nyc&rsquo;s data/state-energy.json)."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. Production figures are modeled with NLR&rsquo;s PVWatts, not metered, and are unshaded unless a section says otherwise. Each state is represented by its largest city; your own address is what the calculator simulates."
+}

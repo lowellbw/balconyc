@@ -1,0 +1,26 @@
+{
+ "intro_html": "<p>Maine splits plug-in solar into two tiers, and the 800&nbsp;W system balco.nyc models falls in the stricter one. Up to 420&nbsp;W of combined inverter output per service address, a customer can install eligible equipment with no electrician and no notice. Above 420&nbsp;W and up to 1,200&nbsp;W, each system must be installed by a Maine-licensed electrician on a dedicated circuit with a single outlet, and the customer must notify the utility within 30 days of installing, on the form the Public Utilities Commission prescribes. In Portland that utility is Central Maine Power; the commission&rsquo;s plug-in solar page links the form and gives CMP&rsquo;s email and postal address for it. The utility may not deny a compliant installation, require an interconnection application or charge a fee.</p>\n  <p>Eligible equipment must be listed or certified to UL&nbsp;3700 or a comparable standard from a nationally recognized testing laboratory, or be configured in line with the National Electrical Code as adopted in Maine, and its inverters must shut off 0.2 seconds after power is disrupted. Eligible systems cannot be used for net energy billing, so exported power earns nothing.</p>\n  <p>For renters and condo owners the dedicated circuit is the practical hurdle: it is new wiring in a building they do not own. The law gives no right to install. It only requires anyone installing on a structure they do not own to protect its integrity, follow building, fire and zoning codes, and restore it on removal.</p>",
+ "sources": [
+  {
+   "url": "https://www.maine.gov/mpuc/regulated-utilities/electricity/plug-in-solar",
+   "title": "Maine Public Utilities Commission &mdash; Plug-In Solar",
+   "note": "the notification form for systems over 420 W, due within 30 days of installation, and where to send it for Central Maine Power and Versant Power."
+  },
+  {
+   "url": "https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132",
+   "title": "Maine Legislature &mdash; Public Law 2026, chapter 644 (LD 1730), enacting 35-A MRSA &sect;3475",
+   "note": "the 420 W and 1,200 W tiers, licensed electrician and dedicated single-outlet circuit, 30-day notice, eligibility standards, 0.2-second shutoff, no net energy billing, and duties when installing on a structure the customer does not own."
+  },
+  {
+   "url": "https://www.versantpower.com/energy-solutions/clean-energy/balcony-solar",
+   "title": "Versant Power &mdash; Balcony Solar",
+   "note": "a Maine utility&rsquo;s own statement that plug-in customers should not expect bill credits or net energy billing."
+  }
+ ],
+ "faq": [
+  [
+   "Do I need an electrician for balcony solar in Maine?",
+   "Only above 420 W. Up to 420 W of combined inverter output per service address needs no electrician and no utility notice. From 420 W to 1,200 W, each system must be installed by a Maine-licensed electrician on a dedicated circuit with a single outlet, and the customer must notify the utility within 30 days on the Public Utilities Commission's form."
+  ]
+ ]
+}

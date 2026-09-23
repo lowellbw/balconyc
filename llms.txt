@@ -59,7 +59,9 @@
 ## Guides: basics
 
 - [What is balcony solar?](https://balco.nyc/what-is-balcony-solar): how a plug-in system works, why it produces nothing in a blackout, where the savings come from, and what it is bad at.
+- [How many US homes could use balcony solar?](https://balco.nyc/us-balcony-solar-potential): balco.nyc's estimate from the Census Bureau's ACS 2024 and AHS 2023 that 34.7 million US households live in buildings of two or more units, 22.5 million have a porch, deck, balcony or patio, and 8.0 to 14.1 million have outdoor space plausible for a railing panel facing a usable direction; an unshaded 800 W panel there makes about 579 kWh a year, 5% adoption would produce 232 to 407 million kWh, and 5.0% of apartment households live where a plug-in law is in force.
 - [What do the balcony solar terms mean?](https://balco.nyc/balcony-solar-glossary): defines 38 balcony solar terms (hardware, standards, law, the energy model, money, grid emissions), each tied to the parameter or result balco.nyc uses, such as the 0.95 railing factor, the 2-second anti-islanding limit and an 8.6% capacity factor for a vertical NYC panel.
+- [What does Germany's balcony solar boom tell the US?](https://balco.nyc/germany-balcony-solar): balco.nyc's compilation of Germany's Marktstammdatenregister on 23 September 2026: 1,512,855 plug-in solar systems in operation (36.8 per 1,000 households, 1.07 GW of inverters, 1.65 GW of panels), registrations flat at about 450,000 in 2024 and 2025 and 11% lower in 2026, the 2024 Solarpaket I and tenant-right changes checked against the statutes, and why 800 VA at 230 V is not 1,200 W at 120 V.
 
 ## By state
 

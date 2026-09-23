@@ -3264,6 +3264,162 @@ No. Customer, meter and base services charges are the same whether you use 50 kW
 
 ---
 
+# What Germany's balcony solar boom tells the US, in registry data
+
+URL: https://balco.nyc/germany-balcony-solar  
+Last reviewed: 2026-09-23
+
+Germany’s official register listed 1,512,855 plug-in solar systems in operation on 23 September 2026, about 37 for every 1,000 households. balco.nyc’s compilation of that register shows the boom has leveled off, with about 450,000 registrations in each of 2024 and 2025 and 2026 running 11% behind, while the systems themselves grew: panels on a new system average about 1,390 W this year, against 775 W in 2023. At Germany’s rate the US would have about 4.9 million, but the wiring, prices and law it would take to get there differ in ways that matter.
+
+## The count: 1.5 million, and no longer growing
+
+Germany keeps the record the United States lacks. German law requires every plug-in solar system, down to a single panel on a railing, to be entered in the *Marktstammdatenregister* (MaStR, “market master data register”), run by the *Bundesnetzagentur* (BNetzA, the Federal Network Agency). The register has its own category for *steckerfertige Solaranlagen*, “plug-in solar systems”, which it glosses as the so-called *Balkonkraftwerk*, or “balcony power plant”.
+
+balco.nyc queried the register’s public unit search on 23 September 2026 and compiled the category by the date each system started running and the date it was registered. Capacity is not totaled in the public search, so we summed it by counting systems in narrow size bands, which pins the totals to within about 1%; the few entries above the legal limits are included as entered. The result, rounded:
+
+| Started running | Systems | Inverter capacity | Panel capacity | Average inverter | Average panels |
+|---|---|---|---|---|---|
+| 2022 and earlier | 83,454 | 48 MW | 57 MW | 570 W | 685 W |
+| 2023 | 287,558 | 172 MW | 222 MW | 600 W | 775 W |
+| 2024 | 446,315 | 316 MW | 439 MW | 710 W | 985 W |
+| 2025 | 437,901 | 332 MW | 541 MW | 755 W | 1,235 W |
+| 2026, to 22 Sep | 314,853 | 241 MW | 438 MW | 765 W | 1,390 W |
+| In operation now | 1,512,855 | 1,071 MW | 1,647 MW | 710 W | 1,090 W |
+
+The yearly rows include systems since taken out of service. Of 1,598,054 entries in the category, 1,512,855 are marked in operation, 51,637 permanently decommissioned, 5,589 temporarily shut down and 27,973 still planned. Counting only systems still running, by the year they were registered, gives 431,688 for 2024 and 434,505 for 2025, close to the “about 435,000” and “about 430,000” the BNetzA announced each January.
+
+Those two years are the story: growth stopped. Registration dates avoid the lag between switching a system on and entering it, so they give the cleanest trend. From January through August, owners registered 338,366 systems in 2024, 344,486 in 2025 and 307,391 in 2026, **11% fewer than a year earlier**. By capacity the fleet is still small beside the country’s rooftops: the systems now running that started before 2026 carry roughly 1.2 GW of panels, about 1% of the 117 GW of solar the BNetzA counted in Germany at the end of 2025.
+
+## What the 2024 rules changed
+
+The rule changes usually summarized as “Germany legalized balcony solar in 2024” were several steps, and it helps to date each one. balco.nyc checked each against the statute or the regulator’s own announcement:
+
+| In force | Change | Source |
+|---|---|---|
+| 1 Apr 2024 | Registering a balcony system in the MaStR takes five facts about the device instead of about 20, and the BNetzA passes the entry to the local grid operator itself. | BNetzA announcement, 28 Mar 2024 |
+| 16 May 2024 | The Solarpaket I (“solar package I”) amends the Renewable Energy Sources Act (EEG). A Steckersolargerät (“plug-in solar device”) of up to 2 kW of panels and 800 VA of inverter output in total, behind a household’s meter and giving its surplus to the grid without payment (unentgeltliche Abnahme), may be connected; the grid operator may not demand any notice beyond the register entry. EEG § 8(5a) | Law of 8 May 2024, BGBl. 2024 I Nr. 151 |
+| 16 May 2024 | Such a device may run on whatever meter is already installed, even an older one without a reverse lock, and that meter’s readings are presumed correct until the meter operator fits a two-way meter (Zweirichtungszähler), which it must do promptly once the register entry is passed on for checking. EEG § 10a | Same law |
+| 16 May 2024 | The 600 VA limit for simplified connection in the grid-connection rule VDE-AR-N 4105 falls away. | VDE FNN |
+| 17 Oct 2024 | Tenants and condominium owners gain a claim to permission (section 4). | Law of 10 Oct 2024, BGBl. 2024 I Nr. 306 |
+| Dec 2025 (scheduled) | First product standard, DIN VDE V 0126-95: 800 VA; up to 960 W of panels on an ordinary household plug, up to 2,000 W with a special energy plug. | VDE / DKE |
+
+Two points get lost in translation. The 800 VA figure defines which devices get the simplified route; a larger system is not banned, but it goes through the ordinary connection process with the grid operator. And the surplus is given away by default, as under the signed US laws, none of which pays for exports; the BNetzA notes that an owner may instead claim the regular feed-in payment, but the simplified route in § 8(5a) applies only to devices whose surplus is unpaid. The safety side of the German rules, including the plug requirements, is covered in [is plug-in solar safe?](https://balco.nyc/is-plug-in-solar-safe) This is a summary of statutes, not legal advice.
+
+## What the register shows the rules did: bigger systems, not more of them
+
+If the 2024 rules had a clear effect in the register, it is on size rather than numbers. balco.nyc’s count of new systems by the inverter and panel capacity their owners entered:
+
+| Started running | 600 W inverter | 800 W inverter | Panels over 960 W | Panels at 2,000 W |
+|---|---|---|---|---|
+| 2023 | 81.6% | 8.0% | 7.8% | 0.5% |
+| 1 Jan – 15 May 2024 | 52.5% | 36.9% | 21.9% | 2.0% |
+| 16 May – 31 Dec 2024 | 17.2% | 72.3% | 30.3% | 4.2% |
+| 2025 | 6.5% | 84.9% | 51.2% | 20.4% |
+| 2026, to 22 Sep | 3.8% | 88.7% | 65.9% | 34.3% |
+
+The inverter switch was under way before the law took effect. The share of new entries listing 800 W rose from 3% in January 2023 to 37% in April 2024, then jumped to 57% in May 2024, the month the new limit applied, and 67% in June. The register records what owners typed in; it cannot show whether an earlier 800 W unit was set to deliver only 600.
+
+Panels grew more steadily and further. In 2026, 2,000 W is the most common panel size entered, and the average new system carries about 1,390 W of panels behind a 765 W inverter, a ratio of 1.8. The inverter clips the midday peak, and the extra panel raises output in the mornings, evenings, winter and shade. Two-thirds of 2026 systems have more than the 960 W the product standard allows on an ordinary plug; the register does not record plug type, so it cannot say how many use a special plug or were bought before the standard.
+
+The count moved less clearly. Registrations from January to May 2024 were 48% above the same months of 2023; from June to December 2024, after the new limits, they were 68% higher. Then, from June to December 2025, they fell 12% below the same months of 2024. The acceleration coincides with the rules, but also with the April registration change and the summer season, and we cannot separate them. Nor is there a visible step after the tenant right arrived in October 2024: 2025 finished 1% below 2024.
+
+## The tenant right: BGB § 554, and the condo rule beside it
+
+Since 17 October 2024, section 554 of the German Civil Code (*Bürgerliches Gesetzbuch*, BGB) has read, in our translation: “The tenant may demand that the landlord permit structural alterations of the rented property that serve use by people with disabilities, the charging of electric vehicles, protection against burglary or **the generation of electricity by plug-in solar devices**.” The last clause was added by a law of 10 October 2024, which took effect the day after its publication on 16 October.
+
+It is a right to permission, not a right to install without asking. The claim does not exist where the alteration “cannot reasonably be expected” of the landlord, even weighing the tenant’s interests; the tenant may offer an extra security deposit; and any lease term that takes the right away is void. The same law added plug-in solar to the alterations every condominium owner can demand under § 20(2) of the Condominium Act (WEG), which must be “appropriate”, with the owners’ association deciding by resolution how the work is done.
+
+A tenant right reaches more people in Germany than it would in the US. Fewer than 42% of German households live in a home they own (Destatis, 2022). In the US, 34.7% of households rent: 46.1 million of 132.7 million in the Census Bureau’s 2024 American Community Survey.
+
+The US equivalent is thin. Of the nine signed state plug-in laws, four give tenants or owners some right to install, and only Vermont’s is in force; New York’s SUNNY Act has passed both chambers and awaits the Governor's signature, and grants no such right. The details are in [the US laws compared](https://balco.nyc/balcony-solar-laws-compared), [balcony solar for renters](https://balco.nyc/balcony-solar-renters) and [condos, co-ops and HOAs](https://balco.nyc/balcony-solar-condo-hoa). The German register cannot tell us what the right achieved, because it does not record whether an owner rents. This is not legal advice in either country.
+
+## Per household, and the systems nobody registered
+
+Destatis, the federal statistics office, counted 41,126,000 households in Germany in 2025 (first results). On that base, balco.nyc’s compilation gives **36.8 registered systems in operation per 1,000 households**, one for every 27 households. Using systems still running today, by the date they were registered, the rate has climbed like this:
+
+| Date | Registered and still running | Per 1,000 households |
+|---|---|---|
+| 1 Jan 2023 | 63,751 | 1.6 |
+| 1 Jan 2024 | 321,510 | 7.8 |
+| 1 Jan 2025 | 753,198 | 18.3 |
+| 1 Jan 2026 | 1,187,703 | 28.9 |
+| 23 Sep 2026 | 1,512,853 | 36.8 |
+
+The table holds households at the 2025 count throughout and leaves out systems registered and later decommissioned, so earlier rates are slight underestimates. The plausible US equivalent is arithmetic, not a forecast: at 36.8 per 1,000, the 132.7 million US households would have about **4.9 million** systems. How many US households have a balcony or other outdoor space that could hold one is a separate question, answered in [how many US households could use balcony solar](https://balco.nyc/us-balcony-solar-potential).
+
+Every German figure here is a floor. HTW Berlin, a university of applied sciences that researches plug-in solar, estimated in February 2025 that 1.5 to 4 million devices were on the grid, when the register held a little over 862,000. It is a wide range, derived from HTW’s 2022 market research rather than a count; that 2022 study, based on a survey of sellers, found only 10 to 20% of devices registered at the time, when owners also had to notify the grid operator. We found no measurement of the gap since registration was simplified, so we used registered figures only.
+
+The US has no national register to measure against. State laws require notice to the utility in some cases (Maryland and Virginia before installing, Maine within 30 days above 420 W) and none in others, so an American count, if anyone compiles one, will be assembled from utility notices, state by state.
+
+## What carries over to the US, and what does not
+
+Germany shows what happens when the paperwork is removed and electricity is expensive: registered systems reached one for every 27 households within four years, then the count leveled off while the systems grew. It does not show the same thing would happen under American wiring, prices and law. The differences, side by side:
+
+|  | Germany | United States |
+|---|---|---|
+| Household voltage | 230 V | 120 V |
+| Inverter limit, as current | 800 VA ≈ 3.5 A, 22% of a 16 A circuit | 1,200 W in eight of nine signed laws = 10 A, 67% of a 15 A circuit |
+| Registration | One national register, five facts | No register; utility notice in some states |
+| Surplus power | Unpaid by default | Unpaid under every signed law that addresses it |
+| Right to install | Tenants and condo owners may demand permission, nationwide since Oct 2024 | Four states; in force only in Vermont |
+| Average household price | 40.55 euro cents/kWh (second half of 2025) | 17.9 ¢/kWh (12 months to June 2026) |
+
+The current is the difference that matters most for safety. The same wattage draws about twice the current at 120 V: an 800 W system is 6.7 A in the US against 3.5 A in Germany, and the common US cap of 1,200 W puts nearly three times Germany’s current onto a smaller circuit. German experience with 800 VA therefore describes a smaller load than the one US laws allow; the circuit arithmetic is in [is plug-in solar safe?](https://balco.nyc/is-plug-in-solar-safe)
+
+Price is the difference that matters most for demand. Both price figures are averages that include fixed charges. At the European Central Bank’s reference rate on 23 September 2026, $1.1411 per euro, Germany’s figure is about 46 US cents: roughly 2.6 times the US average, above the average in every US state (Hawaii’s 42.75¢ included, in balco.nyc’s state data), and above the 34¢ Con Edison marginal rate balco.nyc uses for New York City ([why that rate](https://balco.nyc/electricity-rate)). The German boom happened at prices few American households pay; the closest parallels are the high-price states, not the average. What an 800 W system would produce and save at your address is what [the calculator](https://balco.nyc/) estimates.
+
+## Common questions
+
+**How many balcony solar systems are there in Germany?**
+
+Germany's official register, the Marktstammdatenregister, listed 1,512,855 plug-in solar systems in operation on 23 September 2026, with about 1.07 GW of inverter capacity and 1.65 GW of panels, by balco.nyc's compilation. That is about 37 for every 1,000 households. It is a floor: HTW Berlin estimated in February 2025 that 1.5 to 4 million devices were on the grid when about 862,000 were registered.
+
+**Is balcony solar still growing in Germany?**
+
+The number of new systems has leveled off. About 450,000 were registered in each of 2024 and 2025, and registrations from January to August 2026 were 11% below the same months of 2025. The systems are getting bigger instead: new systems in 2026 average about 1,390 W of panels, against 775 W in 2023.
+
+**What is Germany's balcony solar law?**
+
+Since 16 May 2024, section 8(5a) of Germany's Renewable Energy Sources Act lets a plug-in solar device of up to 2 kW of panels and 800 VA of inverter output, giving its surplus to the grid unpaid, be connected without any notice to the grid operator beyond an entry in the national register. It may run on the existing meter until a two-way meter is fitted. Since 17 October 2024, tenants and condominium owners have a claim to permission to install one. This is a summary, not legal advice.
+
+**Can German renters install balcony solar without their landlord's permission?**
+
+No. Section 554 of the German Civil Code, amended in October 2024, gives tenants a right to demand the landlord's permission, which the landlord can refuse only where the installation cannot reasonably be expected of them after weighing the tenant's interests. Lease terms that take the right away are void. The US has nothing comparable nationally; among the states only Vermont's right to install is in force as of September 2026.
+
+**Why is the German limit 800 W when US laws allow 1,200 W?**
+
+The numbers are not comparable in watts alone. German homes run at 230 V, so 800 VA is about 3.5 A, 22% of a typical 16 A circuit. US outlets run at 120 V, so 1,200 W is 10 A, two-thirds of a 15 A circuit: nearly three times the current on a smaller circuit, which is why German safety experience does not transfer directly.
+
+**If the US matched Germany, how many plug-in solar systems would it have?**
+
+At Germany's rate of 36.8 registered systems per 1,000 households, the 132.7 million US households counted by the Census Bureau in 2024 would have about 4.9 million systems. That is a scale marker, not a forecast: the US has cheaper electricity on average, more owner-occupied houses and, in most states, no plug-in law in force.
+
+## Sources
+
+- [Bundesnetzagentur — Marktstammdatenregister, public unit search (in German)](https://www.marktstammdatenregister.de/MaStR/Einheit/Einheiten/ErweiterteOeffentlicheEinheitenuebersicht): the source of balco.nyc’s compilation, queried 23 September 2026: entries in the category “Steckerfertige Solaranlage (sog. Balkonkraftwerk)” counted by operating status, commissioning date, registration date, inverter capacity and panel capacity.
+- [Bundesnetzagentur — Ausbau Erneuerbarer Energien 2025 (8 January 2026, in German)](https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2026/20260108_EEG.html): about 430,000 balcony systems registered in 2025; 16.4 GW of solar added and 117 GW installed at the end of 2025.
+- [Bundesnetzagentur — Ausbau Erneuerbarer Energien 2024 (8 January 2025, in German)](https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2025/20250108_EE.html): about 435,000 balcony systems registered in 2024.
+- [Bundesnetzagentur — Bundesnetzagentur vereinfacht die Registrierung von Balkonkraftwerken (28 March 2024, in German)](https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2024/20240328_MaStR_Reg.html): from 1 April 2024, five facts about the device instead of about 20; the agency informs the grid operator.
+- [Bundesnetzagentur — Balkon-Solaranlagen (in German)](https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/ErneuerbareEnergien/Solaranlagen/Balkon_table.html): 2,000 W of panels and 800 VA of inverter output; register entry instead of notice to the grid operator; two-way meters; surplus normally unpaid, regular feed-in payment still possible.
+- [Bundesgesetzblatt 2024 I Nr. 151 — law of 8 May 2024 (Solarpaket I, in German)](https://www.recht.bund.de/bgbl/1/2024/151/VO.html): published 15 May 2024 and in force the following day, except for provisions not used here.
+- [Federal Ministry of Justice — EEG 2023 § 8 (in German)](https://www.gesetze-im-internet.de/eeg_2014/__8.html): § 8(5a): up to 2 kW and 800 VA in total, behind the consumer’s meter, unpaid surplus; no notices beyond the register may be demanded.
+- [Federal Ministry of Justice — EEG 2023 § 10a (in German)](https://www.gesetze-im-internet.de/eeg_2014/__10a.html): operation on the existing meter until a two-way meter or smart meter is fitted, with its readings presumed correct.
+- [Federal Ministry of Justice — BGB § 554 (in German)](https://www.gesetze-im-internet.de/bgb/__554.html): the tenant’s claim to permission for plug-in solar, its reasonableness limit, the security deposit and the bar on contrary lease terms.
+- [Federal Ministry of Justice — WEG § 20 (in German)](https://www.gesetze-im-internet.de/woeigg/__20.html): § 20(2) no. 5: each condominium owner may demand appropriate alterations for plug-in solar; the association decides how.
+- [Bundesgesetzblatt 2024 I Nr. 306 — law of 10 October 2024 (in German)](https://www.recht.bund.de/bgbl/1/2024/306/VO.html): adds plug-in solar to BGB § 554 and WEG § 20; published 16 October 2024 and in force the day after.
+- [VDE FNN — Plug-in PV (in German)](https://www.vde.com/fnn-pv-stecker): the 2024 law removed the 600 VA limit for simplified commissioning in VDE-AR-N 4105:2018-11.
+- [VDE / DKE — First product standard for plug-in solar devices](https://www.vde.com/en/press/press-releases/first-product-standard-for-plug-in-solar-devices): DIN VDE V 0126-95, scheduled for December 2025: 800 VA; 960 Wp on a household plug, 2,000 Wp with a special energy plug.
+- [HTW Berlin — Kurzbericht: Steckersolar 800 W (Bergner, February 2025, in German)](https://solar.htw-berlin.de/publikationen/kurzbericht-steckersolar-800-w/): more than 862,000 registered devices with more than 540 MW in early 2025; an estimated 1.5 to 4 million devices and 1 to 2.6 GW on the grid.
+- [HTW Berlin and Verbraucherzentrale NRW — market study (February 2022, in German)](https://solar.htw-berlin.de/publikationen/pressemitteilung-marktstudie-steckersolar/): up to 190,000 devices in use and only 10 to 20% registered, from a survey of sellers.
+- [Destatis — Private households, Mikrozensus 2025 first results (in German)](https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Haushalte-Familien/Tabellen/1-1-privathaushalte-haushaltsmitglieder.html): 41,126,000 households, the denominator for the per-1,000 rates.
+- [Destatis — Eigentumsquote (in German)](https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Wohnen/Tabellen/tabelle-eigentumsquote.html): 41.9% of households lived in an owner-occupied home in 2022.
+- [Destatis — household electricity prices, second half of 2025 (31 March 2026, in German)](https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/03/PD26_111_61243.html): 40.55 euro cents per kWh on average, including fixed charges, network fees, taxes and levies.
+- [US Census Bureau — American Community Survey 2024, table B25003 (tenure)](https://data.census.gov/table/ACSDT1Y2024.B25003): 132,737,146 occupied housing units (households), 46,101,640 of them renter-occupied.
+- [EIA — Form EIA-861M monthly sales and revenue](https://www.eia.gov/electricity/data/eia861m/): the US average residential price of 17.9¢/kWh over the 12 months to June 2026, as compiled in balco.nyc’s state data; an average that includes fixed charges.
+- [European Central Bank — euro reference rate, US dollar](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html): $1.1411 per euro on 23 September 2026, used to convert the German price.
+
+---
+
 # How much does the building across the street cost a balcony panel?
 
 URL: https://balco.nyc/how-balcony-shading-is-modeled  
@@ -4969,6 +5125,182 @@ Find the certification mark and file number on the nameplate of each part, then 
 - [California Legislative Information — SB 868, enrolled text](https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB868): certification “as a plug-in photovoltaic system”, the certified anti-backfeed feature, and the 2030 sales ban.
 - [California Legislative Information — SB 868 history](https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202520260SB868): presented to the Governor 31 August 2026, no action recorded as of 23 September.
 - [US Census Bureau — Vintage 2025 population estimates (SUB-EST2025)](https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv): state populations behind the 0.6%, 5.0%, 18.0% and 61% shares.
+
+---
+
+# How many US homes could use balcony solar, and how much could they make?
+
+URL: https://balco.nyc/us-balcony-solar-potential  
+Last reviewed: 2026-09-23
+
+About 34.7 million US households, 68 million people, live in buildings of two or more units. balco.nyc’s estimate from Census Bureau surveys puts 22.5 million of them with a porch, deck, balcony or patio, and 8 million to 14 million with outdoor space where a railing panel is plausible, facing a usable direction. An unshaded 800 W panel there makes about 580 kWh a year; if 5% installed one, the total would be 230 to 410 million kWh, under 0.03% of what American homes use.
+
+## The estimate in five steps
+
+No US survey counts balconies, so balco.nyc built the number from two Census Bureau surveys and its own solar runs. The American Community Survey (ACS) counts households by building size. The American Housing Survey (AHS), run for the Department of Housing and Urban Development, reports which homes have outdoor space and how tall their buildings are. balco.nyc’s PVWatts runs for the largest city in every state give what a panel there would make. Each step narrows the count:
+
+| Step | US households | Where the number comes from |
+|---|---|---|
+| All occupied homes, 2024 | 132.7 million | ACS 2024 1-year, table B25032 |
+| …in a building with two or more units | 34.7 million (26.2%) | ACS B25032 |
+| …with a porch, deck, balcony or patio | 22.5 million | AHS 2023 share by building size, applied to the ACS counts |
+| …of which above the ground floor | 12.8 million | AHS 2023 stories in structure, units spread evenly over the floors |
+| …facing south, south-east, south-west, east or west | 8.0 to 14.1 million | 5 of the 8 compass directions, assuming facades face every way equally |
+
+balco.nyc’s computation, state by state. The low end of the last row starts from the above-ground count; the high end from every porch, deck, balcony or patio.
+
+So the answer is **roughly 8 million to 14 million households**, 23% to 40% of those in apartment buildings. It is a ceiling on what is physically possible, not a forecast. It does not ask whether the household may install a panel (86% of them rent), whether there is an outdoor outlet, whether a plug-in law applies, or whether the building across the street blocks the sun. Each of those removes more.
+
+## How many Americans live in apartments
+
+The ACS 2024 1-year estimates, the newest released, count 132,737,146 occupied homes in the United States; **34,742,315 (26.2%)** are in buildings of two or more units, from a two-family house to a tower. In people (table B25033), that is 68.3 million Americans, 20.6% of the 331.7 million living in households, and 46.5 million of them are in buildings of five or more units. Counting vacant units too (table B25024), there are 39.6 million homes in multi-unit buildings.
+
+| Building size | Households, 2024 | Renting |
+|---|---|---|
+| 2 to 4 units | 9,689,275 | 81.9% |
+| 5 to 9 units | 5,725,714 | 87.9% |
+| 10 to 19 units | 5,484,624 | 89.7% |
+| 20 to 49 units | 4,920,407 | 86.9% |
+| 50 or more units | 8,922,295 | 87.1% |
+| All buildings of 2+ units | 34,742,315 | 86.2% |
+
+US Census Bureau, ACS 2024 1-year, table B25032. Margins of error on these national counts are under 1%.
+
+Two things follow. Apartment households are overwhelmingly renters: 29.9 million of 34.7 million, and 65% of all US renter households. For them a panel is the landlord’s decision first ([can renters install balcony solar?](https://balco.nyc/balcony-solar-renters)). And the biggest group lives in the smallest buildings: 9.7 million households in duplexes, triple-deckers and small walk-ups, more than the 8.9 million in buildings of 50 or more units.
+
+## How many apartments have a balcony
+
+No federal survey counts balconies on their own. The AHS asks about a “porch, deck, balcony, or patio” as one item, in its 2023 table *Rooms, Size, and Amenities*, and counts one if it is attached to the unit or free-standing, open or enclosed, and at least 4 by 4 feet. That makes it an upper bound: a ground-floor patio or an enclosed porch counts, and neither is a railing facing open sky.
+
+| Building size | Porch, deck, balcony or patio: US | New York State | Above the ground floor (US, estimated) |
+|---|---|---|---|
+| 2 to 4 units | 73% | 55% | 44% |
+| 5 to 9 units | 70% | 34% | 52% |
+| 10 to 19 units | 69% | 35% | 59% |
+| 20 to 49 units | 59% | 15% | 64% |
+| 50 or more units | 51% | 21% | 75% |
+
+Shares of occupied units, AHS 2023 Table Creator. The last column is balco.nyc’s estimate from the AHS count of stories per building. Margins of error at 90% confidence: about ±2 points for the US shares, ±4 to ±10 for New York’s.
+
+The share falls as buildings get taller, and owners report outdoor space more often than renters (61% against 49% in buildings of 50+ units). Place matters even more. New York is the outlier among the states the AHS reports: about a third of its apartment households have any outdoor space, against two-thirds nationally. Where the AHS publishes a state figure for a building size (all five sizes for New York, Illinois and Massachusetts; four for Ohio and Pennsylvania), balco.nyc used it; elsewhere, the national rate with those five states removed, 62% to 76% by building size. The survey withholds this detail for California, Texas and Florida, so their counts rest on that rate. The result is **22.5 million households**, 65% of apartment households, the same share the AHS reports nationally.
+
+The AHS does not record which floor a unit is on, only how many stories its building has. If units are spread evenly across floors (buildings of four to six stories counted as five, seven or more as ten), 44% of homes in two- to four-unit buildings are above the ground floor, rising to 75% in buildings of 50+ units. Assuming outdoor space is as common upstairs as down, that leaves **12.8 million**. This is the least certain step (section 7).
+
+## What one balcony could make
+
+Nothing records which way American balconies face, so balco.nyc assumed facades face every way equally and counted five of eight compass directions as usable: south, south-east, south-west, east and west. That is the 5/8. The three left out earn it: a vertical north-facing railing makes about 29% of a south-facing one in the median state, north-east or north-west about 45% ([output by direction](https://balco.nyc/800w-balcony-solar-output)).
+
+For output, balco.nyc averaged its PVWatts runs for those five directions in each state’s largest city, for an 800 W system hung vertically, and multiplied by 0.95, the site’s allowance for the railing shading the bottom of the panel. Weighted by where the balconies are, one panel makes **579 kWh a year**, from 441 kWh in Anchorage to 725 kWh in Las Vegas; in New York City, 520 kWh (604 facing south, 421 facing west).
+
+That is about 9% of an apartment’s electricity: the EIA’s 2020 Residential Energy Consumption Survey puts average use at 6,093 kWh a year in buildings of five or more units and 6,665 kWh in two- to four-unit buildings. At each state’s EIA average residential price (20.4¢ weighted by where the balconies are), it is worth about **$119 a year** if every kWh is used at home. Those averages include fixed charges, so they somewhat overstate what a kWh not bought is worth, and exported surplus earns nothing under most plug-in laws ([self-consumption](https://balco.nyc/balcony-solar-net-metering)).
+
+All of this assumes an open view. balco.nyc’s shade model keeps only 38% to 43% of a south railing’s output on a third floor facing a six- to ten-story building 20 m away ([is balcony solar worth it?](https://balco.nyc/is-balcony-solar-worth-it)). A national count cannot see what stands opposite each balcony; the calculator can, given an address.
+
+## If 1% or 5% took it up
+
+Take-up cannot be measured yet, so here are two round scenarios applied to the 8.0 to 14.1 million households, each with one 800 W panel, unshaded and fully used at home:
+
+| Households adopting | Households | Panels | Electricity a year | Worth, at state-average prices |
+|---|---|---|---|---|
+| 1% | 80,000 – 141,000 | 64 – 113 MW | 46 – 81 million kWh | $10 – $17 million |
+| 5% | 401,000 – 703,000 | 321 – 563 MW | 232 – 407 million kWh | $48 – $84 million |
+
+balco.nyc’s computation: households × each state’s five-direction PVWatts output × 0.95 × the state’s EIA average price. Shade would lower the last two columns.
+
+Nationally these are small numbers. The top of the 5% range is under 0.03% of the 1,483 billion kWh American homes bought in 2024 (EIA: 143.1 million residential customers averaging 863 kWh a month), or the annual use of 38,000 to 67,000 apartments. The case for balcony solar is made household by household, not on the grid. As a market, 5% adoption at the site’s $1,200 mid-range kit price is $0.5 billion to $0.8 billion of kits, bought once: arithmetic on these assumptions, not a forecast.
+
+The obvious benchmark is Germany. Its register of generators, the Marktstammdatenregister kept by the Bundesnetzagentur, listed **1,512,855** plug-in systems in operation when balco.nyc queried it on 23 September 2026, and the Bundesnetzagentur says about 430,000 were registered in 2025 alone. The US 5% scenario is 0.9 to 1.6 years of German registrations at that pace, and Germany’s registered total equals 11% to 19% of the whole US pool above. The comparison is of scale only: German systems also sit on houses and gardens, German rules allow up to 2,000 W of panels behind an 800 VA inverter, and the register counts only what owners register. [What Germany’s numbers show](https://balco.nyc/germany-balcony-solar).
+
+## Where the potential is, and where it is legal
+
+Five states hold 44% of apartment households and ten hold just over 60%. New York has the highest share of any state, 51.2% of its households (only the District of Columbia is higher, at 67.7%), but its low rate of outdoor space puts California, Texas and Florida ahead of it in plausible balconies:
+
+| State | Apartment households | Share of state’s households | Plausible for a railing panel | kWh/yr per panel | Plug-in law, 23 Sep 2026 |
+|---|---|---|---|---|---|
+| California | 4,369,726 | 31.7% | 1.12 – 1.92 million | 653 | Passed, awaiting the Governor |
+| New York | 4,007,157 | 51.2% | 0.45 – 0.83 million | 520 | Passed, awaiting the Governor |
+| Texas | 2,908,158 | 25.4% | 0.76 – 1.27 million | 551 | No bill found |
+| Florida | 2,510,189 | 27.5% | 0.65 – 1.10 million | 567 | No bill found |
+| Illinois | 1,646,905 | 32.3% | 0.34 – 0.62 million | 535 | Bill pending |
+| New Jersey | 1,299,775 | 36.7% | 0.32 – 0.58 million | 549 | Signed; in force 1 Mar 2027 |
+| Massachusetts | 1,198,494 | 42.4% | 0.22 – 0.44 million | 574 | Bill pending |
+| Pennsylvania | 1,113,895 | 20.8% | 0.22 – 0.41 million | 567 | Bill pending |
+| Ohio | 1,056,109 | 21.4% | 0.23 – 0.43 million | 552 | Bill pending |
+| Washington | 903,714 | 28.5% | 0.24 – 0.39 million | 453 | Bill died |
+
+balco.nyc’s computation. Apartment households: buildings of 2+ units (ACS 2024, B25032). Output: average of five railing directions for the state’s largest city, unshaded, after the 0.95 railing factor. Law status: balco.nyc’s state tracker.
+
+Where it is legal is a much smaller map:
+
+| Plug-in law, 23 Sep 2026 | Where | Apartment households | Share of US | Plausible for a railing panel |
+|---|---|---|---|---|
+| In force | Colorado, Maine, Maryland, Utah, Vermont | 1,726,863 | 5.0% | 445,000 – 760,000 |
+| Signed, not yet in force | Connecticut (1 Oct 2026), New Hampshire and Virginia (1 Jan 2027), New Jersey (1 Mar 2027) | 2,727,857 | 7.9% | 683,000 – 1,211,000 |
+| Passed, awaiting a governor | California, New York | 8,376,883 | 24.1% | 1,565,000 – 2,746,000 |
+| Bill pending, bill died, or none found | 39 other states and DC | 21,910,712 | 63.1% | 5,327,000 – 9,351,000 |
+
+About one apartment household in twenty lives where a plug-in law is in force; nearly one in four lives in the two states waiting on a governor. California’s SB 868 was presented to Governor Newsom on 31 August and, as of 23 September 2026, awaits his decision, due by 30 September; New York’s SUNNY Act has passed both chambers and awaits the Governor's signature, and it grants no right to install. A law is not permission either: most of these households rent, and of the five in-force states only Vermont limits a landlord’s power to refuse today (Colorado’s limit starts on 1 January 2027). See the [provision-by-provision comparison](https://balco.nyc/balcony-solar-laws-compared) and each [state page](https://balco.nyc/states). This is a summary of statutes, not legal advice.
+
+## Every assumption, and which way it cuts
+
+The estimate rests on assumptions that can be stated, and most of them push it up rather than down:
+
+- **Outdoor space is a combined item.** The AHS does not separate balconies from porches, decks and patios, so 22.5 million overstates balconies.
+
+- **The ground-floor step is a model.** Ground-floor units probably have patios more often than upper floors have balconies, and the AHS counts a basement as a story, so 12.8 million is likely high. Against that, some ground-floor patios have a fence or railing a panel could hang on. Assuming different heights for the tallest buildings moves the count by about 2%.
+
+- **Direction is assumed uniform.** If balconies favor the sunny side, more than 5/8 are usable; if they face the street, it depends on the grid.
+
+- **State detail is thin.** Forty-five states and DC, including California, Texas and Florida, use the national rate without New York, Illinois, Massachusetts, Ohio and Pennsylvania. AHS shares from 2023 are applied to ACS counts from 2024.
+
+- **Output is a ceiling.** One city per state, an 800 W panel hung vertically, no shade, every kWh used at home.
+
+- **Not counted:** landlord, condo or co-op permission; an outdoor outlet; state law; a certified kit (as of September 2026 no complete plug-in system is certified to UL 3700, although components are). Houses and townhouses are left out; most have a roof or yard instead.
+
+The honest reading: the US has several million apartment balconies where a plug-in panel is physically plausible, each able to make roughly 440 to 725 kWh a year on an open view, worth $63 (Washington) to $233 (Hawaii) at state-average prices, $96 in the median state. How many get one depends on law, landlords and shade, not on the count of balconies. For a single balcony, the calculator replaces every assumption here with your address, your direction and what stands across the street.
+
+## Common questions
+
+**How many Americans live in apartments?**
+
+The Census Bureau's 2024 American Community Survey counts 34.7 million households, 26.2% of the 132.7 million in the US, in buildings with two or more units. That is 68.3 million people, 20.6% of Americans living in households, and 46.5 million of them live in buildings with five or more units. About 86% of these apartment households rent.
+
+**How many US apartments have a balcony?**
+
+No federal survey counts balconies separately. The 2023 American Housing Survey asks about a 'porch, deck, balcony, or patio' as one item, and about 65% of households in multi-unit buildings report one, falling from 73% in two- to four-unit buildings to 51% in buildings of 50 or more units. balco.nyc's estimate is 22.5 million households, an upper bound on balconies because ground-floor patios count too. New York is far lower: about a third of its apartment households report any outdoor space.
+
+**How many US homes could use balcony solar?**
+
+balco.nyc estimates 8.0 to 14.1 million apartment households have outdoor space where a railing panel is physically plausible and that faces south, south-east, south-west, east or west. The low end counts only outdoor space above the ground floor; the high end counts every porch, deck, balcony or patio. The figure ignores permission, outlets, shade and state law, each of which lowers it.
+
+**How much electricity could balcony solar produce in the US?**
+
+An unshaded 800 W panel hung on a railing facing a usable direction makes about 579 kWh a year on average, by balco.nyc's PVWatts runs weighted by where the balconies are, or about 9% of what an apartment uses. If 5% of the plausible 8 to 14 million households installed one, the total would be 232 to 407 million kWh a year, under 0.03% of US residential electricity use. Shade would lower it.
+
+**How many apartment households live in states where plug-in solar is legal?**
+
+As of 23 September 2026, 1.73 million, or 5.0% of US apartment households, live in the five states with a plug-in solar law in force: Colorado, Maine, Maryland, Utah and Vermont. Another 7.9% live in Connecticut, New Hampshire, New Jersey and Virginia, whose laws are signed but not yet in force, and 24.1% in California and New York, where bills have passed and await the governor. A law in force is not a right to install for renters in most of these states.
+
+**How does the US compare with Germany on balcony solar?**
+
+Germany's national generator register, the Marktstammdatenregister, listed 1,512,855 plug-in solar systems in operation on 23 September 2026, and the Bundesnetzagentur says about 430,000 were registered in 2025 alone. If 5% of plausible US apartment balconies got a panel, that would be 401,000 to 703,000 systems, about 0.9 to 1.6 years of German registrations at the 2025 pace. The comparison is of scale only, since German systems also sit on houses and gardens.
+
+## Sources
+
+- [US Census Bureau — ACS 2024 1-year, table B25032 (Tenure by Units in Structure)](https://data.census.gov/table/ACSDT1Y2024.B25032): occupied homes by building size and tenure, national and by state: the 34.7 million households in buildings of 2+ units, the renter shares, and every state count on this page.
+- [US Census Bureau — ACS 2024 1-year, table B25033 (Population in Occupied Housing Units by Tenure by Units in Structure)](https://data.census.gov/table/ACSDT1Y2024.B25033): the 68.3 million people living in buildings of 2+ units, and 46.5 million in buildings of 5+.
+- [US Census Bureau — ACS 2024 1-year, table B25024 (Units in Structure)](https://data.census.gov/table/ACSDT1Y2024.B25024): all housing units including vacant ones: 39.6 million in buildings of 2+ units.
+- [US Census Bureau — American Housing Survey 2023, Table Creator: Rooms, Size, and Amenities by units in structure and tenure](https://www.census.gov/programs-surveys/ahs/data/interactive/ahstablecreator.html?year=2023&tablename=TABLE2&bygroup1=COL_STRUC_TYP&bygroup2=COL_TENURE): the national “Porch, deck, balcony, or patio” row by building size and tenure (for example 3,728,000 of 7,299,000 occupied units in buildings of 50+ units), with margins of error.
+- [US Census Bureau — American Housing Survey 2023, Table Creator: Rooms, Size, and Amenities, New York State](https://www.census.gov/programs-surveys/ahs/data/interactive/ahstablecreator.html?year=2023&areas=00036&tablename=TABLE2&bygroup1=COL_STRUC_TYP): New York’s shares by building size; the same table with the area set to Illinois, Massachusetts, Ohio or Pennsylvania gives theirs, and California, Texas, Florida, Colorado, Maryland and Virginia withhold the building-size detail.
+- [US Census Bureau — American Housing Survey 2023, Table Creator: General Housing by units in structure](https://www.census.gov/programs-surveys/ahs/data/interactive/ahstablecreator.html?year=2023&tablename=TABLE1&bygroup1=COL_STRUC_TYP): stories in structure by building size, the basis of balco.nyc’s above-ground-floor estimate.
+- [US Census Bureau — American Housing Survey 2023, Definitions](https://www2.census.gov/programs-surveys/ahs/2023/2023%20AHS%20Definitions.pdf): a porch, deck, balcony or patio counts if attached to the unit or free-standing, open or enclosed, and at least 4 feet by 4 feet; stories in structure include any basement.
+- [NLR — PVWatts V8 API documentation](https://developer.nlr.gov/docs/solar/pvwatts/v8/): the production model behind balco.nyc’s runs for each state’s largest city, eight railing directions per city, before the site’s 0.95 railing factor.
+- [U.S. EIA — Form EIA-861M monthly sales and revenue by state](https://www.eia.gov/electricity/data/eia861m/): state average residential prices over the twelve months to June 2026 (revenue divided by sales, so they include fixed charges).
+- [U.S. EIA — 2024 average monthly bill, residential (Table 5A)](https://www.eia.gov/electricity/sales_revenue_price/pdf/table_5A.pdf): 143.1 million US residential customers averaging 863 kWh a month in 2024, about 1,483 billion kWh a year.
+- [U.S. EIA — 2020 Residential Energy Consumption Survey, Table CE2.1](https://www.eia.gov/consumption/residential/data/2020/c&e/pdf/ce2.1.pdf): average household electricity use: 6,093 kWh in buildings of 5+ units, 6,665 kWh in 2–4 unit buildings, 10,566 kWh for all homes.
+- [Bundesnetzagentur — Ausbau Erneuerbarer Energien 2025 (press release, 8 January 2026)](https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2026/20260108_EEG.html): about 430,000 plug-in solar systems registered in the Marktstammdatenregister in 2025, 0.5 GW and 3.2% of German solar additions.
+- [Bundesnetzagentur — Marktstammdatenregister, public unit overview](https://www.marktstammdatenregister.de/MaStR/Einheit/Einheiten/ErweiterteOeffentlicheEinheitenuebersicht): filtered to “Steckerfertige Solaranlage (sog. Balkonkraftwerk)” and status “In Betrieb”, it returned 1,512,855 units when balco.nyc queried it on 23 September 2026.
+- [Bundesnetzagentur — Balkon-Solaranlagen](https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/ErneuerbareEnergien/Solaranlagen/Balkon_table.html): German plug-in systems may have up to 2,000 W of panels and 800 VA of inverter output.
 
 ---
 

@@ -93,6 +93,10 @@
 - [Balcony solar in Washington](https://balco.nyc/states/washington): bill did not pass; an 800 W south-facing balcony panel in Seattle makes about 524 kWh and saves about $73 a year at 14.0¢/kWh.
 - [Balcony solar in West Virginia](https://balco.nyc/states/west-virginia): bill did not pass; an 800 W south-facing balcony panel in Charleston makes about 579 kWh and saves about $89 a year at 15.4¢/kWh.
 
+## New York City
+
+- [New York City by borough](https://balco.nyc/nyc)
+
 ## Send someone straight to an estimate
 
 If a person asks how much a solar panel on their balcony would produce or save, you can give them a link that opens the calculator already filled in:

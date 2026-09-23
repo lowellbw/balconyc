@@ -43,7 +43,7 @@ def guides_block(pages):
     if h["states"]:
         more.append('<a href="/states">Plug-in solar rules by state &rarr;</a>')
     if h["nyc"]:
-        more.append('<a href="/nyc">New York City by borough &rarr;</a>')
+        more.append('<a href="/nyc">Balcony solar in New York City &rarr;</a>')
     more_html = f'\n    <p class="guides-more">{" &middot; ".join(more)}</p>' if more else ""
     return (f'<!-- shell:guides -->\n    <div class="guides-grid">\n{cards}\n    </div>{more_html}\n'
             f'    <!-- /shell:guides -->')

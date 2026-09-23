@@ -108,7 +108,7 @@ def guides(pages):
     if S.hubs()["states"]:
         places.append('<li><a href="/states">Plug-in solar rules and savings in every state</a></li>')
     if S.hubs()["nyc"]:
-        places.append('<li><a href="/nyc">New York City, borough by borough</a></li>')
+        places.append('<li><a href="/nyc">Balcony solar in New York City</a></li>')
     if places:
         groups.append('      <section id="places">\n        <h2>By place</h2>\n        <ul class="hub-list">\n          '
                       + "\n          ".join(places) + "\n        </ul>\n      </section>")
@@ -173,6 +173,55 @@ def about(pages):
         reviewed=reviewed, pages=pages)
 
 
+def nyc(pages):
+    site, facts = S.load_site(), S.load_facts()
+    nyc_pages = [p for p in pages if p.get("cluster") == "nyc" and p.get("indexable", True)]
+    also = [p for p in pages if p["url_path"] in ("/sunny-act", "/electricity-rate", "/install-balcony-solar")]
+    reviewed = max(p["reviewed"] for p in nyc_pages + also)
+    li = "\n".join(f'          <li><a href="{p["url_path"]}">{S.esc(p["card_title"])}</a><span>{S.esc(p["card"])}</span></li>'
+                   for p in also + sorted(nyc_pages, key=lambda p: p["card_title"]))
+    rate = facts["coned"]["rate_cents"]
+    body = f'''      <section id="short">
+        <h2>The short answer</h2>
+        <p>Plug-in solar is not yet legal in New York: the SUNNY Act has passed both chambers and {S.esc(facts["sunny"]["phrase"])}, and even once signed it gives no right to install, so a renter still needs the landlord and a co-op or condo owner the board. What a panel would make depends mostly on the building across the street. With an open view, an 800&nbsp;W panel on a south-facing railing makes about 604&nbsp;kWh a year in balco.nyc&rsquo;s PVWatts model, worth about $205 at Con&nbsp;Edison&rsquo;s {rate}&cent; marginal rate; facing a six-to-ten-story building across a 20&nbsp;m street from the third floor, about 227&nbsp;kWh. <a href="/">The calculator</a> builds a 3D model of your block from city building data and gives the figure for your floor and wall.</p>
+      </section>
+
+      <section id="numbers">
+        <h2>New York City in numbers</h2>
+        <div class="table-wrap"><table><tbody>
+          <tr><th>Homes in co-ops or owner-held condos, where a board must approve</th><td>19.4% (724,425)</td></tr>
+          <tr><th>Homes in a historic district or individual landmark (LPC)</th><td>6.8% (253,715)</td></tr>
+          <tr><th>Homes in buildings over six stories, under facade inspection</th><td>30.8% (1,150,311)</td></tr>
+          <tr><th>Rent-stabilized households that pay their own electricity</th><td>84.5%</td></tr>
+          <tr><th>Public-housing households that pay their own electricity</th><td>10.5%</td></tr>
+          <tr><th>Con Edison all-in marginal rate used for savings</th><td>{rate}&cent;/kWh</td></tr>
+          <tr><th>NYC rank for south-facing railing output among the 51 largest state cities</th><td>43rd</td></tr>
+        </tbody></table></div>
+        <p>Each figure is balco.nyc&rsquo;s own count from NYC PLUTO, the Landmarks Preservation Commission&rsquo;s records, the Department of Buildings&rsquo; filings and the 2023 Housing and Vacancy Survey, explained with its method in the guides below.</p>
+      </section>
+
+      <section id="guides">
+        <h2>Guides for New York City</h2>
+        <ul class="hub-list">
+{li}
+        </ul>
+        <p>For the rest of New York State, see <a href="/states/new-york">balcony solar in New York</a>.</p>
+      </section>'''
+    node = {"@type": "CollectionPage", "@id": site["host"] + "/nyc#page", "url": site["host"] + "/nyc",
+            "name": "Balcony solar in New York City", "inLanguage": "en-US", "dateModified": reviewed,
+            "about": {"@type": "City", "name": "New York City"},
+            "mainEntity": {"@type": "ItemList", "numberOfItems": len(also) + len(nyc_pages),
+                           "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": site["host"] + p["url_path"],
+                                                "name": p["card_title"]} for i, p in enumerate(also + nyc_pages)]}}
+    return shell(
+        url_path="/nyc", title="Balcony solar in New York City: rules, boards and savings &middot; balco.nyc",
+        description="Balcony solar in New York City: the SUNNY Act, co-op boards, landmarks, rent stabilization, fire escapes, Con Edison, and what a panel would save.",
+        og_title="Balcony solar in New York City", h1="Balcony solar in New York City", eyebrow="New York City",
+        lede=("What a plug-in panel on a New York City balcony would make and save, and who has to say yes first. "
+              "balco.nyc started here: for a city address the <a href=\"/\">calculator</a> models your block in 3D."),
+        body=body, graph_nodes=[node], crumbs=[("balco.nyc", "/"), ("NYC", "/nyc")], reviewed=reviewed, pages=pages)
+
+
 def main():
     pages = S.manifest()
     # Two passes: the nav and footer link only to hubs that exist, so the
@@ -180,7 +229,8 @@ def main():
     for _ in range(2):
         (ROOT / "guides.html").write_text(guides(pages), encoding="utf-8")
         (ROOT / "about.html").write_text(about(pages), encoding="utf-8")
-    print("guides.html, about.html")
+        (ROOT / "nyc.html").write_text(nyc(pages), encoding="utf-8")
+    print("guides.html, about.html, nyc.html")
 
 
 if __name__ == "__main__":

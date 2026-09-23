@@ -81,7 +81,7 @@
   "reviewed": "2026-09-23",
   "indexable": true,
   "related": [],
-  "unique_words": 193
+  "unique_words": 438
  },
  {
   "url_path": "/states/connecticut",
@@ -95,7 +95,7 @@
   "reviewed": "2026-09-23",
   "indexable": true,
   "related": [],
-  "unique_words": 169
+  "unique_words": 404
  },
  {
   "url_path": "/states/delaware",
@@ -135,9 +135,9 @@
   "card": "No plug-in solar law; about 612 kWh and $94 a year for a south-facing 800 W panel in Jacksonville.",
   "llms": "no plug-in solar law; an 800 W south-facing balcony panel in Jacksonville makes about 612 kWh and saves about $94 a year at 15.4\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 91
+  "unique_words": 313
  },
  {
   "url_path": "/states/georgia",
@@ -277,7 +277,7 @@
   "reviewed": "2026-09-23",
   "indexable": true,
   "related": [],
-  "unique_words": 200
+  "unique_words": 445
  },
  {
   "url_path": "/states/maryland",
@@ -291,7 +291,7 @@
   "reviewed": "2026-09-23",
   "indexable": true,
   "related": [],
-  "unique_words": 226
+  "unique_words": 459
  },
  {
   "url_path": "/states/massachusetts",
@@ -417,7 +417,7 @@
   "reviewed": "2026-09-23",
   "indexable": true,
   "related": [],
-  "unique_words": 155
+  "unique_words": 374
  },
  {
   "url_path": "/states/new-jersey",
@@ -429,9 +429,9 @@
   "card": "Signed, not yet in effect; about 643 kWh and $153 a year for a south-facing 800 W panel in Newark.",
   "llms": "signed, not yet in effect; an 800 W south-facing balcony panel in Newark makes about 643 kWh and saves about $153 a year at 23.8\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 145
+  "unique_words": 367
  },
  {
   "url_path": "/states/new-mexico",
@@ -459,7 +459,7 @@
   "reviewed": "2026-09-23",
   "indexable": true,
   "related": [],
-  "unique_words": 154
+  "unique_words": 382
  },
  {
   "url_path": "/states/north-carolina",
@@ -611,9 +611,9 @@
   "card": "No plug-in solar law; about 576 kWh and $92 a year for a south-facing 800 W panel in Houston.",
   "llms": "no plug-in solar law; an 800 W south-facing balcony panel in Houston makes about 576 kWh and saves about $92 a year at 15.9\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 74
+  "unique_words": 310
  },
  {
   "url_path": "/states/utah",
@@ -627,7 +627,7 @@
   "reviewed": "2026-09-23",
   "indexable": true,
   "related": [],
-  "unique_words": 165
+  "unique_words": 406
  },
  {
   "url_path": "/states/vermont",
@@ -639,9 +639,9 @@
   "card": "Law in effect; about 658 kWh and $156 a year for a south-facing 800 W panel in Burlington.",
   "llms": "law in effect; an 800 W south-facing balcony panel in Burlington makes about 658 kWh and saves about $156 a year at 23.6\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 142
+  "unique_words": 397
  },
  {
   "url_path": "/states/virginia",
@@ -655,7 +655,7 @@
   "reviewed": "2026-09-23",
   "indexable": true,
   "related": [],
-  "unique_words": 206
+  "unique_words": 464
  },
  {
   "url_path": "/states/washington",
@@ -681,9 +681,9 @@
   "card": "Bill did not pass; about 579 kWh and $89 a year for a south-facing 800 W panel in Charleston.",
   "llms": "bill did not pass; an 800 W south-facing balcony panel in Charleston makes about 579 kWh and saves about $89 a year at 15.4\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 131
+  "unique_words": 360
  },
  {
   "url_path": "/states/wisconsin",

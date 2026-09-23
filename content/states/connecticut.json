@@ -1,0 +1,21 @@
+{
+ "intro_html": "<p>Connecticut&rsquo;s law takes effect on 1 October 2026 and asks the customer to file nothing: it has no notice requirement, and neither United Illuminating, Bridgeport&rsquo;s utility, nor Eversource may require approval, a fee or extra equipment. It allows one device behind each meter, with a maximum output of 1,200&nbsp;W, plugged into a standard 120&nbsp;V outlet and not permanently fixed to the structure. The equipment list is long: certified by UL or an equivalent laboratory, meeting UL&nbsp;1741, IEEE&nbsp;1547, the National Electrical Code and the State Building Code, with protection against energizing the building in an outage.</p>\n  <p>The detail that matters most for savings is a required warning. Every device must tell the buyer that generation beyond what the home is using will be charged to the customer as usage, unless the customer has a meter that allows net metering. In testimony reported in March 2026, an Eversource vice president told legislators that the company&rsquo;s meters have anti-tampering features that would not recognize excess power from unregistered panels. balco.nyc&rsquo;s savings figures below assume every kWh is used at home; in Connecticut that assumption is also the condition for not paying for your own exports.</p>\n  <p>The act gives renters and condo owners nothing new. It keeps the State Building Code, the Fire Safety Code and local ordinances in force for these devices, and asks code officials to consider plug-in provisions in their next updates.</p>",
+ "sources": [
+  {
+   "url": "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00127-R00HB-05340-PA.PDF",
+   "title": "Connecticut General Assembly &mdash; Public Act 26-127, sections 9 and 10",
+   "note": "the device definition and required warning on excess generation, one device per meter, the utility prohibitions, continued building, fire and local code coverage, and the code-update direction."
+  },
+  {
+   "url": "https://ctmirror.org/2026/03/24/plugin-solar-panels-legal-ct/",
+   "title": "CT Mirror &mdash; Plug-in solar can help reduce electric bills. Will CT make it legal? (March 2026)",
+   "note": "Eversource testimony that its meters would not recognize excess power from unregistered panels, and United Illuminating declining to comment."
+  }
+ ],
+ "faq": [
+  [
+   "What happens to surplus balcony solar power in Connecticut?",
+   "Unless your meter allows net metering, it can cost you. Public Act 26-127 requires every plug-in device to carry a warning that generation beyond the home's consumption will be charged to the customer as usage unless the customer has a net-metering meter. A system sized below the home's daytime use avoids paying for exports."
+  ]
+ ]
+}

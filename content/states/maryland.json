@@ -1,0 +1,21 @@
+{
+ "intro_html": "<p>In Maryland the customer tells the utility before installing, not after. Under the Utility RELIEF Act you notify the utility first and give it a certification describing the device&rsquo;s safety features and maximum generating capacity. The utility cannot make you wait for its approval or charge a fee tied to the device feeding power back, but if the device needs an automatic locking disconnect switch, the customer pays to have it installed. In Baltimore the utility is BGE, and the Public Service Commission&rsquo;s balcony-solar page tells BGE customers to notify it through its customer call center; it lists no BGE form, while Potomac Edison, Easton Utilities and others publish forms of their own.</p>\n  <p>The law allows one device per meter, for residential use only, supplying no more than 1,200&nbsp;W and certified by UL or another nationally recognized testing laboratory; it names a kind of laboratory, not a product standard. Devices sit outside net metering. The commission adds a practical warning: depending on the meter, power fed back to the grid may be treated as zero or wrongly added to your consumption, so it is worth asking BGE how your meter records it before choosing a system&rsquo;s size.</p>\n  <p>The act has no landlord, tenant or condominium provision. balco.nyc&rsquo;s savings figures below assume every kWh is used at home, which in Maryland is also the condition under which the meter question does not arise.</p>",
+ "sources": [
+  {
+   "url": "https://psc.maryland.gov/regulated-utilities/electricity/renewable-energy/balcony-solar/",
+   "title": "Maryland Public Service Commission &mdash; Balcony Solar",
+   "note": "notice before installation with a safety and capacity certification, the customer paying for any locking disconnect, the meter warning, and each utility&rsquo;s notification route, including BGE&rsquo;s call center."
+  },
+  {
+   "url": "https://mgaleg.maryland.gov/2026RS/Chapters_noln/CH_353_hb1532e.pdf",
+   "title": "Maryland General Assembly &mdash; Chapter 353 of 2026 (HB 1532), Public Utilities &sect;7-321",
+   "note": "notice before installation, one device per meter for residential use, 1,200 W, UL or equivalent NRTL certification, the narrow fee bar, exclusion from net metering; no landlord or association provision."
+  }
+ ],
+ "faq": [
+  [
+   "Do I have to tell BGE before plugging in balcony solar in Maryland?",
+   "Yes. Maryland's Public Utilities Article 7-321 requires notice to the utility before installation, with a certification of the device's safety features and maximum generating capacity. BGE cannot require approval or charge a fee for the device's ability to feed power back. The Public Service Commission's balcony solar page says BGE customers should notify the utility through its customer call center."
+  ]
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "intro_html": "<p>Virginia&rsquo;s device rights start on 1 January 2027, and the law spells out the order of steps. Before installing, the customer sends the utility a State Corporation Commission notification form, online or by mail, giving name, address, account and meter numbers, the device&rsquo;s model and the laboratory that certified it; in Virginia Beach that utility is Dominion Energy. The utility has 15 days to raise any inaccuracy or gap; if it does not respond, the notice counts and the device can go in. It cannot require approval or a fee, but it may install an automatic locking disconnect where a property has more than one device or the circuit requires it. Devices are outside net metering.</p>\n  <p>Renters get a qualified right. A landlord who owns more than four rental units may not prohibit a tenant from installing a device on the exterior of the tenant&rsquo;s premises, but may set reasonable limits on size, place and manner. The tenant gives at least seven days&rsquo; notice with documentation and the proposed location, is responsible for any damage, and needs the landlord&rsquo;s written approval for anything that alters wiring. Tenants of smaller landlords get no such right, and tenants billed through a ratio utility billing system may not install one at all. The law leaves condominium, cooperative and homeowners&rsquo; association instruments intact.</p>\n  <p>Only devices of 391&nbsp;W or less are exempt from product listing provisions that would require changes to a building&rsquo;s wiring or panel; the 800&nbsp;W system balco.nyc models gets no such exemption.</p>",
+ "sources": [
+  {
+   "url": "https://law.lis.virginia.gov/vacode/title56/chapter23/section56-596.8/",
+   "title": "Code of Virginia &mdash; &sect;56-596.8 Small portable solar generation devices; exempt from interconnection (effective January 1, 2027)",
+   "note": "the definition, the notice before installation on the Commission&rsquo;s form, the utility&rsquo;s 15-day response window, the locking disconnect, and exclusion from net metering."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/title55.1/chapter12/section55.1-1212.1/",
+   "title": "Code of Virginia &mdash; &sect;55.1-1212.1 Installation of small portable solar generation devices (effective January 1, 2027)",
+   "note": "landlords with more than four units, reasonable size, place and manner limits, seven days&rsquo; notice, tenant liability, and the ratio-billing and wiring exclusions."
+  },
+  {
+   "url": "https://lis.blob.core.windows.net/files/1225204.PDF",
+   "title": "Virginia Acts of Assembly 2026 &mdash; Chapter 1052 (HB 395)",
+   "note": "the contents of the SCC notification form, the January 1, 2027 effective date, the 391 W exemption, and the clause preserving condominium, cooperative and association instruments."
+  }
+ ],
+ "faq": [
+  [
+   "Do I have to tell Dominion Energy before installing balcony solar in Virginia?",
+   "Yes, once the law takes effect on January 1, 2027. Virginia Code 56-596.8 requires the customer to submit the State Corporation Commission's notification form to the utility, online or by mail, before installation. The utility has 15 days to respond about deficiencies; if it does not, the customer may install. It cannot require approval or charge a fee."
+  ],
+  [
+   "Can a Virginia landlord ban balcony solar?",
+   "A landlord who owns more than four rental units cannot prohibit a tenant from installing a small portable solar device on the exterior of the tenant's premises from January 1, 2027, but may set reasonable restrictions on size, place and manner. The tenant must give seven days' notice with documentation and the proposed location. Smaller landlords are not covered, and tenants in units billed through a ratio utility billing system may not install one."
+  ]
+ ]
+}

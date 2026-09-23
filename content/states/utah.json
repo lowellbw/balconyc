@@ -1,0 +1,26 @@
+{
+ "intro_html": "<p>Utah&rsquo;s law asks nothing of the customer: there is no form to file and no one to notify. Rocky Mountain Power, the state&rsquo;s largest utility, may not require approval, a fee or extra equipment for a qualifying device, and is not liable for any damage one causes. The work is in what counts as qualifying. The device must be moveable, plug into a standard 120&nbsp;V outlet, meet the most recent National Electrical Code, be certified by UL or an equivalent nationally recognized testing laboratory, and stop energizing the building in an outage. The statute names no product standard. In April 2026 Grist reported that Rocky Mountain Power remained concerned that some products entering the market might not meet the law&rsquo;s requirements, and that no plug-in system had yet been certified by UL.</p>\n  <p>What the law leaves alone matters more in an apartment. It has no landlord, tenant or HOA provision, so a lease or condo rules that forbid fixing things to a railing still apply, and nothing in it exempts a device from building or fire codes. It also takes these devices out of net metering, so exported power earns nothing. The 1,200&nbsp;W cap is written as &ldquo;maximum power output&rdquo;, without saying whether that means AC or DC.</p>\n  <p>balco.nyc&rsquo;s savings figures below assume every kWh is used at home. In Utah, where exports are unpaid, that makes them a ceiling for any system larger than the home&rsquo;s daytime use.</p>",
+ "sources": [
+  {
+   "url": "https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf",
+   "title": "Utah Legislature &mdash; H.B. 340 Solar Power Amendments, enrolled copy",
+   "note": "the definition of a portable solar generation device (1,200 W, 120 V outlet, NEC, UL or equivalent NRTL), anti-islanding, the utility prohibitions and liability shield, and exclusion from net metering; no notice requirement."
+  },
+  {
+   "url": "https://grist.org/energy/utah-portable-plug-in-solar-law/",
+   "title": "Grist &mdash; How deep-red Utah helped launch a portable plug-in solar movement (April 2026)",
+   "note": "Rocky Mountain Power as Utah&rsquo;s largest utility, its concern that some products may not meet the law, and that no plug-in system had been certified by UL at the time."
+  },
+  {
+   "url": "https://www.rockymountainpower.net/savings-energy-choices/customer-generation.html",
+   "title": "Rocky Mountain Power &mdash; Customer generation",
+   "note": "the application, review and meter process for customer generators; the page does not address plug-in devices."
+  }
+ ],
+ "faq": [
+  [
+   "Do I have to tell Rocky Mountain Power before using a balcony solar panel in Utah?",
+   "No. Utah's HB 340 has no notice requirement, and a utility may not require approval, a fee or extra equipment for a device that meets the law: a moveable system of up to 1,200 W that plugs into a standard 120 V outlet, meets the current National Electrical Code, is certified by UL or an equivalent testing laboratory and cannot energize the building during an outage. A landlord or condo association can still refuse."
+  ]
+ ]
+}

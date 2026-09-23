@@ -1,0 +1,31 @@
+{
+ "intro_html": "<p>Florida has no plug-in solar law, and its well-known solar rights statute stops short of the balcony. Section 163.04 of the Florida Statutes bars ordinances, deed restrictions, covenants and similar agreements that prohibit &ldquo;solar collectors, clotheslines, or other energy devices based on renewable resources&rdquo;, and says a property owner may not be denied permission to install one within the boundaries of a condominium unit. Its final sentence then reads: &ldquo;This section shall not apply to patio railings in condominiums, cooperatives, or apartments.&rdquo; A panel on a condo, co-op or apartment railing is the case it expressly leaves out. Vermont&rsquo;s statute carried the same sentence until 2026, when it was amended to except plug-in devices; Florida&rsquo;s has not been. The statute also protects property owners, not tenants.</p>\n  <p>Grid connection is the other gate. State law requires investor-owned utilities such as FPL, under Public Service Commission rules, and municipal utilities and cooperatives, under their own boards, to offer a standardized interconnection agreement for customer-owned renewable generation. Jacksonville&rsquo;s utility, JEA, is municipal: customers who want to connect a renewable generation system to its grid must apply to its Distributed Generation Program, and JEA asks them to review its interconnection requirements before installing. Nothing in Florida law exempts a small plug-in device from that process, and balco.nyc&rsquo;s figures below assume none of its output is sold.</p>",
+ "sources": [
+  {
+   "url": "https://www.flsenate.gov/Laws/Statutes/2026/163.04",
+   "title": "The Florida Senate &mdash; 2026 Florida Statutes &sect;163.04, Energy devices based on renewable resources",
+   "note": "the protection for solar collectors and other renewable energy devices, the condominium-unit language, and the exclusion of patio railings in condominiums, cooperatives or apartments."
+  },
+  {
+   "url": "https://www.flsenate.gov/Laws/Statutes/2026/366.91",
+   "title": "The Florida Senate &mdash; 2026 Florida Statutes &sect;366.91, Renewable energy",
+   "note": "the requirement that public utilities, municipal utilities and cooperatives offer standardized interconnection agreements and net metering for customer-owned renewable generation."
+  },
+  {
+   "url": "https://www.jea.com/environment/solar_options/distributed_generation/apply_for_distributed_generation/",
+   "title": "JEA &mdash; Apply for Distributed Generation",
+   "note": "JEA&rsquo;s requirement that customers connecting renewable generation to its grid apply to its Distributed Generation Program."
+  },
+  {
+   "url": "https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf",
+   "title": "Vermont Legislature &mdash; Act 149 (S.202) as enacted, amending 27 V.S.A. &sect;544",
+   "note": "Vermont&rsquo;s identical patio-railing exclusion, amended in 2026 to except plug-in photovoltaic devices."
+  }
+ ],
+ "faq": [
+  [
+   "Does Florida's Solar Rights Act protect a balcony solar panel in a condo?",
+   "No. Section 163.04 of the Florida Statutes protects solar collectors and other renewable energy devices from deed restrictions and association bans, including within the boundaries of a condominium unit, but states that it does not apply to patio railings in condominiums, cooperatives, or apartments."
+  ]
+ ]
+}

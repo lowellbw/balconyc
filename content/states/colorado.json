@@ -1,0 +1,21 @@
+{
+ "intro_html": "<p>Colorado&rsquo;s law has two start dates, and which one matters depends on whether you own the wall you plug into. Since 12 August 2026, Xcel Energy and every other provider has been barred from requiring approval, a fee or extra equipment for a portable-scale solar device supplying up to 1,920&nbsp;W to the grid, one device per address and no more than one per wall outlet. A provider may require notice of the device&rsquo;s presence and size in kilowatts; balco.nyc found no Xcel notice form or plug-in page as of September 2026. The law does not address credit for exported power.</p>\n  <p>Protections for renters and condo owners start on 1 January 2027. From then, no one may unreasonably prohibit a device, covenants that do are void, and a condo owner may install one on a limited common element such as a balcony serving only their unit. Owners and associations keep real powers: a property owner may require prior notice and reasonable restrictions on location and on fire and electrical-overload risks, and an association may require the device to be secured and the owner to bear its costs and liability. The same date bars selling or renting a device over 391&nbsp;W that is not UL labeled and listed.</p>\n  <p>Size matters before then too. Only devices of 391&nbsp;W or less are exempt from the state&rsquo;s solar-installer rules and from code provisions requiring rewiring, and every installation must follow the fire code and local building codes.</p>",
+ "sources": [
+  {
+   "url": "https://leg.colorado.gov/bill_files/116074/download",
+   "title": "Colorado General Assembly &mdash; HB26-1007 signed act (C.R.S. 40-2-140)",
+   "note": "the 1,920 W definition, one device per outlet, the utility prohibitions and optional notice, the 391 W exemptions, the January 1, 2027 rules on sales, unreasonable prohibitions, limited common elements and owner restrictions, and fire and building code compliance."
+  },
+  {
+   "url": "https://www.rmpbs.org/news/science-environment/plug-in-balcony-solar-colorado",
+   "title": "Rocky Mountain PBS &mdash; Plug-in solar panels, coming to an apartment balcony near you (March 2026)",
+   "note": "Xcel Energy&rsquo;s statement that it was monitoring the bill and meeting its proponents."
+  }
+ ],
+ "faq": [
+  [
+   "Can a landlord or HOA in Colorado stop me installing balcony solar?",
+   "Until January 1, 2027, yes: HB26-1007's ban on unreasonable prohibitions only applies from that date. After it, a landlord or association may not unreasonably prohibit a portable-scale solar device, but may require prior notice and reasonable restrictions on location and safety, and a condo association may require the device to be secured and the owner to bear its liability and costs."
+  ]
+ ]
+}

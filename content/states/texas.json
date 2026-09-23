@@ -1,0 +1,31 @@
+{
+ "intro_html": "<p>Texas has no plug-in solar law, so a balcony panel that feeds a household circuit is a distributed generator like a rooftop array. In Houston that means CenterPoint Energy, which manages solar interconnections on its grid through an application and review process. It does not buy power or offer net metering; any credit for exports depends on the customer&rsquo;s retail electricity provider. State rules require a utility to interconnect a facility with pre-certified equipment within four weeks of a completed application.</p>\n  <p>Texas does have a solar-access law, and it is narrower than it looks. Property Code &sect;202.010 bars a property owners&rsquo; association, a term the chapter defines to include a condominium regime, from prohibiting a &ldquo;solar energy device&rdquo;, which the Tax Code defines broadly enough (&ldquo;a system or series of mechanisms designed primarily to &hellip; produce electrical or mechanical power&rdquo;) to take in a plug-in panel. But the association may still prohibit a device on property owned in common, or anywhere other than the roof or a fenced yard or patio the owner owns and maintains, and may require prior approval. Where a condo balcony is common property, the statute lets the association rule a panel out.</p>\n  <p>The statute protects property owners, not tenants. A renter needs the landlord&rsquo;s permission and, for anything that feeds the home&rsquo;s wiring, CenterPoint&rsquo;s interconnection approval. balco.nyc&rsquo;s savings figures below assume every kWh is used at home and none is sold.</p>",
+ "sources": [
+  {
+   "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.202.htm",
+   "title": "Texas Property Code &mdash; Chapter 202, &sect;202.001 and &sect;202.010 (Regulation of solar energy devices)",
+   "note": "the definition of a property owners&rsquo; association including condominium regimes, the bar on prohibiting solar energy devices, and the exceptions for common property, locations other than the roof or an owner&rsquo;s fenced yard or patio, and prior approval."
+  },
+  {
+   "url": "https://statutes.capitol.texas.gov/Docs/TX/htm/TX.171.htm",
+   "title": "Texas Tax Code &mdash; &sect;171.107 (definition of solar energy device)",
+   "note": "the definition that &sect;202.010 borrows."
+  },
+  {
+   "url": "https://www.puc.texas.gov/agency/rulesnlaws/subrules/electric/25.211/25.211.pdf",
+   "title": "Public Utility Commission of Texas &mdash; Substantive Rule &sect;25.211, Interconnection of On-Site Distributed Generation",
+   "note": "the interconnection application and the four-week timeline for facilities with pre-certified equipment."
+  },
+  {
+   "url": "https://www.centerpointenergy.com/en-us/our-services/electric-utility/technology",
+   "title": "CenterPoint Energy &mdash; Technology and smart meter resources",
+   "note": "CenterPoint&rsquo;s solar interconnection application and review, no net metering, and retail providers&rsquo; buy-back programs."
+  }
+ ],
+ "faq": [
+  [
+   "Does Texas's HOA solar law protect a balcony solar panel?",
+   "Only partly. Texas Property Code 202.010 stops a property owners' association, including a condominium association, from banning solar energy devices outright, but lets it prohibit one on commonly owned property or anywhere other than the roof or a fenced yard or patio the owner owns and maintains, and lets it require prior approval. It does not protect renters."
+  ]
+ ]
+}

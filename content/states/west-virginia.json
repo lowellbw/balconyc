@@ -1,0 +1,21 @@
+{
+ "intro_html": "<p>West Virginia came close in 2026. HB&nbsp;5648, introduced in February, would have exempted a certified portable solar device of up to 1,200&nbsp;W from interconnection agreements and barred utilities from requiring approval, fees or extra equipment, while making the devices ineligible for net metering. It never left committee and died when the session ended on 14 March 2026, so any successor has to start again in 2027.</p>\n  <p>For a renter in Charleston today, the route that exists for a panel feeding a household circuit is Appalachian Power&rsquo;s net-metering interconnection process, and it is built for rooftop systems. The utility&rsquo;s 2026 guide says its approval is required before a generator is connected, and asks customers to leave the generator off until its final review is done and the meter has been exchanged or reprogrammed. An application needs an inverter shown to comply with UL&nbsp;1741SB, a one-line diagram and a site diagram, proof of at least $100,000 of general liability insurance and, for systems of 25&nbsp;kW or less, a $30 fee, followed by an electrical inspection by the local authority or a state-licensed inspector. A tenant would also need the landlord&rsquo;s consent.</p>\n  <p>That route has one thing the failed bill lacked: net metering, which credits exported power. Whether the paperwork, insurance and inspection are worth it for one balcony panel is the question balco.nyc&rsquo;s figures below help answer.</p>",
+ "sources": [
+  {
+   "url": "https://www.wvlegislature.gov/Bill_Status/bills_text.cfm?billdoc=hb5648%20intr.htm&yr=2026&sesstype=RS&i=5648",
+   "title": "West Virginia Legislature &mdash; HB 5648 (2026), introduced text",
+   "note": "the proposed portable solar device definition, interconnection exemption, net-metering ineligibility and utility prohibitions."
+  },
+  {
+   "url": "https://www.appalachianpower.com/lib/docs/business/builders/WVNetMeteringGuide-2026.pdf",
+   "title": "Appalachian Power &mdash; West Virginia Net Metering Customer Information Guide (effective February 1, 2026)",
+   "note": "approval required before connecting, keeping the generator off until final review, the UL 1741SB, insurance, diagram, $30 Level 1 fee and inspection requirements."
+  }
+ ],
+ "faq": [
+  [
+   "What happened to West Virginia's plug-in solar bill?",
+   "HB 5648, introduced in the 2026 regular session, would have exempted certified portable solar devices of up to 1,200 W from interconnection agreements and barred utilities from requiring approval or fees. It was referred to the House Energy and Public Works Committee, a motion to discharge it was tabled, and it died when the Legislature adjourned on March 14, 2026."
+  ]
+ ]
+}

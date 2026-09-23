@@ -38,18 +38,23 @@
 - [Plug-in solar in every state](https://balco.nyc/states): each state's plug-in solar law with its bill, dates and sources, average residential electricity price, and what an 800W balcony system would produce and save there. Also as a CSV: https://balco.nyc/data/states.csv
 - [Balcony solar in Colorado](https://balco.nyc/states/colorado): law in effect; an 800 W south-facing balcony panel in Denver makes about 805 kWh and saves about $132 a year at 16.4¢/kWh.
 - [Balcony solar in Connecticut](https://balco.nyc/states/connecticut): signed, not yet in effect; an 800 W south-facing balcony panel in Bridgeport makes about 631 kWh and saves about $179 a year at 28.4¢/kWh.
+- [Balcony solar in Florida](https://balco.nyc/states/florida): no plug-in solar law; an 800 W south-facing balcony panel in Jacksonville makes about 612 kWh and saves about $94 a year at 15.4¢/kWh.
 - [Balcony solar in Illinois](https://balco.nyc/states/illinois): bill pending; an 800 W south-facing balcony panel in Chicago makes about 616 kWh and saves about $114 a year at 18.5¢/kWh.
 - [Balcony solar in Maine](https://balco.nyc/states/maine): law in effect; an 800 W south-facing balcony panel in Portland makes about 692 kWh and saves about $201 a year at 29.0¢/kWh.
 - [Balcony solar in Maryland](https://balco.nyc/states/maryland): law in effect; an 800 W south-facing balcony panel in Baltimore makes about 673 kWh and saves about $140 a year at 20.8¢/kWh.
 - [Balcony solar in Massachusetts](https://balco.nyc/states/massachusetts): bill pending; an 800 W south-facing balcony panel in Boston makes about 673 kWh and saves about $204 a year at 30.4¢/kWh.
 - [Balcony solar in Minnesota](https://balco.nyc/states/minnesota): bill did not pass; an 800 W south-facing balcony panel in Minneapolis makes about 730 kWh and saves about $118 a year at 16.1¢/kWh.
 - [Balcony solar in New Hampshire](https://balco.nyc/states/new-hampshire): signed, not yet in effect; an 800 W south-facing balcony panel in Manchester makes about 697 kWh and saves about $183 a year at 26.3¢/kWh.
+- [Balcony solar in New Jersey](https://balco.nyc/states/new-jersey): signed, not yet in effect; an 800 W south-facing balcony panel in Newark makes about 643 kWh and saves about $153 a year at 23.8¢/kWh.
 - [Balcony solar in New York](https://balco.nyc/states/new-york): passed, awaiting signature; an 800 W south-facing balcony panel in New York City makes about 604 kWh and saves about $169 a year at 28.0¢/kWh.
 - [Balcony solar in Oklahoma](https://balco.nyc/states/oklahoma): bill did not pass; an 800 W south-facing balcony panel in Oklahoma City makes about 711 kWh and saves about $97 a year at 13.6¢/kWh.
 - [Balcony solar in Oregon](https://balco.nyc/states/oregon): bill did not pass; an 800 W south-facing balcony panel in Portland makes about 526 kWh and saves about $81 a year at 15.5¢/kWh.
+- [Balcony solar in Texas](https://balco.nyc/states/texas): no plug-in solar law; an 800 W south-facing balcony panel in Houston makes about 576 kWh and saves about $92 a year at 15.9¢/kWh.
 - [Balcony solar in Utah](https://balco.nyc/states/utah): law in effect; an 800 W south-facing balcony panel in Salt Lake City makes about 724 kWh and saves about $97 a year at 13.4¢/kWh.
+- [Balcony solar in Vermont](https://balco.nyc/states/vermont): law in effect; an 800 W south-facing balcony panel in Burlington makes about 658 kWh and saves about $156 a year at 23.6¢/kWh.
 - [Balcony solar in Virginia](https://balco.nyc/states/virginia): signed, not yet in effect; an 800 W south-facing balcony panel in Virginia Beach makes about 654 kWh and saves about $107 a year at 16.3¢/kWh.
 - [Balcony solar in Washington](https://balco.nyc/states/washington): bill did not pass; an 800 W south-facing balcony panel in Seattle makes about 524 kWh and saves about $73 a year at 14.0¢/kWh.
+- [Balcony solar in West Virginia](https://balco.nyc/states/west-virginia): bill did not pass; an 800 W south-facing balcony panel in Charleston makes about 579 kWh and saves about $89 a year at 15.4¢/kWh.
 
 ## Send someone straight to an estimate
 

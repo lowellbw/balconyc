@@ -6,6 +6,10 @@
 --check is what `npm run check` runs: if a spec, a template or a fact was
 edited without rebuilding, the committed pages are stale and this says so.
 State pages are rebuilt from the data files only when their builder exists.
+
+The npm script is `generate`, not `build`: Vercel runs `npm run build` when it
+exists, and tools/ is excluded from the deployment. The generated pages are
+committed, so the deploy has nothing to build.
 """
 import pathlib, subprocess, sys
 

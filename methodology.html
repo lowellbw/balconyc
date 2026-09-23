@@ -230,7 +230,7 @@
           {
             "@type": "CreativeWork",
             "name": "NYC Building Footprints",
-            "url": "https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh"
+            "url": "https://data.cityofnewyork.us/d/5zhs-2jue"
           },
           {
             "@type": "CreativeWork",
@@ -244,8 +244,8 @@
           },
           {
             "@type": "CreativeWork",
-            "name": "NREL 2024 PV Degradation Review",
-            "url": "https://www.nlr.gov/docs/fy24osti/87524.pdf"
+            "name": "Jordan and Kurtz, Photovoltaic Degradation Rates: An Analytical Review (NREL)",
+            "url": "https://docs.nlr.gov/docs/fy12osti/51664.pdf"
           },
           {
             "@type": "CreativeWork",
@@ -394,7 +394,7 @@ Jul: 11.4%, Aug: 10.3%, Sep: 8.8%, Oct:  7.3%, Nov:  5.6%, Dec:  5.1%</code></pr
           <p>PVWatts assumes an unobstructed installation. NYC balconies face building-level shading that PVWatts cannot see. We apply a <strong>post-PVWatts shade multiplier</strong> computed either from a 3D model of the surrounding buildings (when available) or from a static lookup as a fallback.</p>
 
           <h3>2.1 3D shadow model (when 3D scene is loaded)</h3>
-          <p>For addresses with <a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank" rel="noopener">NYC Building Footprints</a> data, we build a local 3D scene of all buildings within 200m and compute how much of the balcony's plane-of-array irradiance those buildings block.</p>
+          <p>For addresses with <a href="https://data.cityofnewyork.us/d/5zhs-2jue" target="_blank" rel="noopener">NYC Building Footprints</a> data, we build a local 3D scene of all buildings within 200m and compute how much of the balcony's plane-of-array irradiance those buildings block.</p>
 
           <div class="callout">
             <p><strong>What this factor must and must not measure.</strong> PVWatts is given the panel's real tilt and azimuth, so it already prices orientation: it knows a north-facing vertical panel yields a fraction of a south-facing one. The shade factor is a <em>second</em> multiplier on that output, so it must answer only "how much of what PVWatts assumed actually reaches this balcony". Anything else is counted twice.</p>
@@ -454,7 +454,7 @@ shade_factor = range.min + base_exposure × (range.max − range.min)</code></pr
           <p>The tanh sigmoid is centred at the 45th-percentile floor and is steepest in the middle of the building, so the floor-tier transition zones are smooth rather than step-functions.</p>
 
           <h3>2.3 Neighbor building query</h3>
-          <p>When address data is available, we query <a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank" rel="noopener">NYC Building Footprints</a> within a 200-meter radius. These footprints feed the 3D scene and the polygon-edge shadow projection. Without them, the calculator falls back to the static shade factor above.</p>
+          <p>When address data is available, we query <a href="https://data.cityofnewyork.us/d/5zhs-2jue" target="_blank" rel="noopener">NYC Building Footprints</a> within a 200-meter radius. These footprints feed the 3D scene and the polygon-edge shadow projection. Without them, the calculator falls back to the static shade factor above.</p>
 
           <h3>2.4 Final energy formula</h3>
           <pre><code>final_kwh = pvwatts_ac_annual × shade_factor       (uniform shade case)
@@ -464,7 +464,7 @@ final_kwh = Σ(pvwatts_ac_monthly[i] × monthly_shade_factor[i])   (3D case)</co
 
         <section id="orientation">
           <h2><span class="sec-num">3</span>Building orientation detection</h2>
-          <p>When the user enters an address, we query <a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank" rel="noopener">NYC Building Footprints</a> for the polygon geometry and detect facade directions.</p>
+          <p>When the user enters an address, we query <a href="https://data.cityofnewyork.us/d/5zhs-2jue" target="_blank" rel="noopener">NYC Building Footprints</a> for the polygon geometry and detect facade directions.</p>
           <p><strong>Algorithm:</strong></p>
           <ol>
             <li>Extract exterior ring coordinates from the building footprint polygon.</li>
@@ -510,7 +510,7 @@ bill_offset_%   = annual_kwh / (billable / 0.34 × 12) × 100</code></pre>
           <pre><code>lifetime_savings = Σ(annual_kwh × (1 − degradation)^i × 0.34 × (1 + escalation)^i,  i=0..24)</code></pre>
           <p>Where:</p>
           <ul>
-            <li><strong>degradation</strong> is tier-aware (default mid-tier 0.5%/yr), per the <a href="https://www.nlr.gov/docs/fy24osti/87524.pdf" target="_blank" rel="noopener">NREL 2024 PV degradation review</a>:
+            <li><strong>degradation</strong> is tier-aware (default mid-tier 0.5%/yr), per NREL&rsquo;s <a href="https://docs.nlr.gov/docs/fy12osti/51664.pdf" target="_blank" rel="noopener">analytical review of PV degradation rates</a> (Jordan and Kurtz), which found a median of 0.5%/yr across nearly 2,000 measured rates. The budget and premium figures are balco.nyc&rsquo;s own assumptions either side of that median:
               <ul>
                 <li>Premium: 0.4%/yr → 90.5% of original output at year 25</li>
                 <li>Mid: 0.5%/yr → 88.7%</li>
@@ -672,7 +672,7 @@ bill_offset_%   = annual_kwh / (billable / 0.34 × 12) × 100</code></pre>
                 <tr><td><a href="https://developer.nlr.gov/docs/solar/solar-resource-v1/" target="_blank" rel="noopener">NREL Solar Resource</a><br><span class="src-host">developer.nlr.gov</span></td><td>Monthly GHI irradiance</td></tr>
                 <tr><td><a href="https://www.nysolarmap.com/about/map-assumptions/" target="_blank" rel="noopener">NYSERDA NY Solar Map</a><br><span class="src-host">nysolarmap.com</span></td><td>Yield baseline cross-check (1,238 kWh/kW/yr)</td></tr>
                 <tr><td><a href="https://www.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" target="_blank" rel="noopener">NYC PLUTO</a><br><span class="src-host">data.cityofnewyork.us</span></td><td>Building floors, class, year, units</td></tr>
-                <tr><td><a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank" rel="noopener">NYC Building Footprints</a><br><span class="src-host">data.cityofnewyork.us</span></td><td>Polygon, height, elevation, neighbor query</td></tr>
+                <tr><td><a href="https://data.cityofnewyork.us/d/5zhs-2jue" target="_blank" rel="noopener">NYC Building Footprints</a><br><span class="src-host">data.cityofnewyork.us</span></td><td>Polygon, height, elevation, neighbor query</td></tr>
                 <tr><td><a href="https://api.nyc.gov/geoclient/v2/address.json" target="_blank" rel="noopener">NYC Geoclient</a><br><span class="src-host">api.nyc.gov</span></td><td>BBL and BIN from address</td></tr>
                 <tr><td><a href="https://developers.google.com/maps/documentation/places/web-service/overview" target="_blank" rel="noopener">Google Places</a><br><span class="src-host">developers.google.com</span></td><td>Address autocomplete and geocoding</td></tr>
                 <tr><td><a href="https://www.coned.com/-/media/files/coned/documents/customer-service/historical-average-full-service-electric-rates.pdf" target="_blank" rel="noopener">Con Edison SC-1 historical bills</a><br><span class="src-host">coned.com</span></td><td>Electricity rate</td></tr>
@@ -681,7 +681,7 @@ bill_offset_%   = annual_kwh / (billable / 0.34 × 12) × 100</code></pre>
                 <tr><td><a href="https://solar.htw-berlin.de/rechner/stecker-solar-simulator/" target="_blank" rel="noopener">HTW Berlin Stecker-Solar Simulator</a><br><span class="src-host">solar.htw-berlin.de</span></td><td>Vertical-mount yield calibration</td></tr>
                 <tr><td><a href="https://www.nysenate.gov/legislation/bills/2025/S8512" target="_blank" rel="noopener">NY SUNNY Act (S8512C/A9111C)</a><br><span class="src-host">nysenate.gov</span></td><td>Plug-in solar regulatory status</td></tr>
                 <tr><td><a href="https://www.brightsaver.org/balcony-solar-kits" target="_blank" rel="noopener">Bright Saver (nonprofit at-cost kits)</a><br><span class="src-host">brightsaver.org</span></td><td>August 2026 kit cost calibration</td></tr>
-                <tr><td><a href="https://www.nlr.gov/docs/fy24osti/87524.pdf" target="_blank" rel="noopener">NREL 2024 PV Degradation Review</a><br><span class="src-host">nlr.gov</span></td><td>Degradation rates by tier</td></tr>
+                <tr><td><a href="https://docs.nlr.gov/docs/fy12osti/51664.pdf" target="_blank" rel="noopener">NREL PV Degradation Rates: An Analytical Review</a><br><span class="src-host">nlr.gov</span></td><td>Degradation rates by tier</td></tr>
               </tbody>
             </table>
           </div>

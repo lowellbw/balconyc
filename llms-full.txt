@@ -472,7 +472,7 @@ On a roof, the formula works. balco.nyc took NREL’s latitude-tilt solar resour
 
 On a railing, it does not. In Chicago NREL gives 4.50 peak sun hours at latitude tilt, so 0.8 kW × 4.50 × 365 × 0.75 = **986 kWh**. PVWatts puts the same panel on a 35° south roof at 1,010 kWh: close. Hung vertically on a south-facing railing, with the 5% railing loss the site applies to every vertical estimate, it makes **616 kWh**. The formula is 60% high. Across the 50 places the median overstatement for a south-facing railing is **61%**, and it grows as the railing turns away from south: the formula gives about 2.2 times the real output facing east or west, and about 5.5 times facing north. It has no term for direction at all.
 
-The arithmetic is fine; the input is wrong. A peak-sun-hour figure describes sunlight on a horizontal or latitude-tilted surface, and many published tables do not say which. A railing panel is neither. It faces the horizon, so the high summer sun strikes it at a glancing angle; it sees half of the sky’s diffuse light, where a 35° panel sees about nine-tenths; and more of its direct light arrives at steep angles, where the glass reflects it away, a loss PVWatts models explicitly. In balco.nyc’s runs a vertical south panel, after the railing loss, makes a median **62%** of what the same panel makes at 35°, from 43% in Honolulu to 74% in Anchorage. Using horizontal peak sun hours instead does not rescue the formula: at the same 0.75 performance ratio it still overstates a south railing by a median 39%.
+The arithmetic is fine; the input is wrong. A peak-sun-hour figure describes sunlight on a horizontal or latitude-tilted surface, and many published tables do not say which. A railing panel is neither. It faces the horizon, so the high summer sun strikes it at a glancing angle; it sees half of the sky’s diffuse light, where a 35° panel sees about nine-tenths; and more of its direct light arrives at steep angles, where the glass reflects it away, a loss PVWatts models explicitly. In balco.nyc’s runs a vertical south panel, after the railing loss, makes a median **63%** of what the same panel makes at 35°, from 44% in Honolulu to 75% in Anchorage. Using horizontal peak sun hours instead does not rescue the formula: at the same 0.75 performance ratio it still overstates a south railing by a median 39%.
 
 ## A formula built for a railing
 
@@ -607,7 +607,7 @@ Mounted vertically on a south-facing railing with an open view, balco.nyc's PVWa
 
 **Why does a vertical solar panel produce less than a tilted one?**
 
-A vertical panel faces the horizon, so the high summer sun strikes it at a glancing angle, it sees only half of the sky's diffuse light, and more of its direct light arrives at steep angles where the glass reflects it. Across the largest city in each state, a vertical south-facing panel with a 5% railing loss produced a median 62% of what the same panel tilted at 35 degrees produced, from 43% in Honolulu to 74% in Anchorage.
+A vertical panel faces the horizon, so the high summer sun strikes it at a glancing angle, it sees only half of the sky's diffuse light, and more of its direct light arrives at steep angles where the glass reflects it. Across the largest city in each state, a vertical south-facing panel with a 5% railing loss produced a median 63% of what the same panel tilted at 35 degrees produced, from 44% in Honolulu to 75% in Anchorage.
 
 **Does an east- or west-facing balcony work for solar?**
 

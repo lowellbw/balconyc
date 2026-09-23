@@ -18,7 +18,7 @@ const SolarConfig = {
   // Used for: Places Autocomplete, Geocoding
   GOOGLE_API_KEY: 'AIzaSyD98VWa0RmHcZjcSUsT7SP5XvD-qvSLh-I',
 
-  // NREL API key — free, client-safe, get from https://developer.nrel.gov/signup/
+  // NREL API key — free, client-safe, get from https://developer.nlr.gov/signup/
   // Rate limit: 1,000 requests/hour
   NREL_API_KEY: '0qnbmiSy2vzn6k9dxl57JK1XQZqTa4khtUBgQd1r',
 
@@ -27,10 +27,12 @@ const SolarConfig = {
   // Get from: https://data.cityofnewyork.us/profile/edit/developer_settings
   SOCRATA_APP_TOKEN: '',
 
-  // Endpoints
+  // Endpoints. NREL became the National Laboratory of the Rockies on
+  // 1 Dec 2025 and developer.nrel.gov stopped resolving; the API, and this
+  // key, live on developer.nlr.gov.
   GEOCLIENT_PROXY_URL: '/api/geoclient',
-  PVWATTS_URL: 'https://developer.nrel.gov/api/pvwatts/v8.json',
-  SOLAR_RESOURCE_URL: 'https://developer.nrel.gov/api/solar/solar_resource/v1.json',
+  PVWATTS_URL: 'https://developer.nlr.gov/api/pvwatts/v8.json',
+  SOLAR_RESOURCE_URL: 'https://developer.nlr.gov/api/solar/solar_resource/v1.json',
   PLUTO_URL: 'https://data.cityofnewyork.us/resource/64uk-42ks.json',
   FOOTPRINTS_URL: 'https://data.cityofnewyork.us/resource/5zhs-2jue.geojson',
   VISUALIZE_V3_URL: '/api/visualize-v3',

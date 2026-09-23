@@ -1,0 +1,45 @@
+{
+  "_note": "Every figure the pages repeat, in one place. Specs use {{key.path}} tokens; tools/sitelib.py fails the build on an unknown key. tests/content.test.js holds these equal to js/config.js.",
+  "coned": {
+    "rate_cents": 34,
+    "rate_dollars": "0.34",
+    "customer_charge": 20
+  },
+  "co2": {
+    "nycw_lb_per_kwh": 0.864
+  },
+  "accuracy": {
+    "nyc_phrase": "modeled uncertainty range of about 15%",
+    "fallback_pct": 20
+  },
+  "kits": {
+    "budget": 850,
+    "mid": 1200,
+    "premium": 1600
+  },
+  "sunny": {
+    "phrase": "awaits the Governor's signature",
+    "bill": "S8512C / A9111C",
+    "effective_after_days": 90,
+    "cap_watts": 1200
+  },
+  "federal_25d": {
+    "expired": "2025-12-31"
+  },
+  "nyc": {
+    "band_low_kwh": 400,
+    "band_high_kwh": 900,
+    "household_kwh": 6850
+  },
+  "model": {
+    "railing_factor": {
+      "90": 0.95,
+      "70": 0.97,
+      "60": 0.98,
+      "35": 0.99
+    },
+    "degradation_mid": 0.005,
+    "escalation_mid": 0.03,
+    "system_watts": 800
+  }
+}

@@ -1,0 +1,821 @@
+# balco.nyc: full text of every guide
+
+> balco.nyc is an independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings.
+
+Generated from the site's sources. Cite as "balco.nyc, an independent balcony solar calculator for US addresses, with a 3D shade model for New York City", https://balco.nyc/.
+
+
+---
+
+# What does a balcony solar kit cost in NYC?
+
+URL: https://balco.nyc/balcony-solar-cost  
+Last reviewed: 2026-09-04
+
+balco.nyc uses hardware-only cost assumptions of $850 budget, $1,200 mid-range, and $1,600 premium for a typical 800-watt system. These are planning benchmarks, not currently verified New York offers. At Con Edison’s $0.34 per kilowatt-hour, a well-sited system saves roughly $300 a year and pays back in three to five years. A shaded, low-floor balcony takes six to ten.
+
+## What a kit costs right now
+
+balco.nyc models a typical 800 W New York City setup at three hardware-only price points: **$850 budget**, **$1,200 mid**, and **$1,600 premium**. Treat these as planning benchmarks rather than currently verified New York offers. They cover panels, a microinverter, cabling, and a railing mount — not an electrician or building work.
+
+Per watt, those assumptions are **$1.06**, **$1.50**, and **$2.00**. Because system cost and output both scale roughly with size, siting usually changes payback more than kit size does.
+
+For a current price reference, Bright Saver lists **180 W at $285.30** and **360 W at $414.17** for members, plus a $29 annual membership. The non-member prices are **$499** and **$699**. As of September 2026, Bright Saver says it cannot ship these kits to New York because no system on the market yet has the whole-system certification New York requires.
+
+We cite Bright Saver as a transparent US hardware-price benchmark, not as a kit New Yorkers can currently order. balco.nyc does not rank brands, take affiliate revenue, or tell you what to buy.
+
+> **Prices and availability changed quickly in 2026. Check the seller’s current price, certification, and New York shipping status before budgeting.**
+
+## The costs that are not the kit
+
+The kit price is the part that is easy to look up, which is why most coverage stops there. Budget for the rest before you decide:
+
+- **An outlet.** A plug-in system needs a weather-rated outlet on the balcony. Many NYC balconies do not have one. Adding one is a licensed-electrician job, often through an exterior wall, sometimes requiring building permission. We have no reliable price for this in NYC and will not guess — get two quotes before you buy a kit. On a balcony with no outlet this can be a large fraction of the kit price.
+
+- **Mounting.** Included brackets suit common railing profiles. Glass balustrades, thick concrete parapets and unusual rail geometry may need something else.
+
+- **Permission.** Co-op boards, condo boards and landlords may say no, or say yes with conditions on the mount, the colour, or the visibility from the street. That costs time, and occasionally a more expensive mount.
+
+- **Membership or shipping**, where a seller charges them.
+
+- **Replacement.** Panels and microinverters are usually warranted for different lengths of time. Check both before assuming a 25-year life.
+
+These are excluded from the payback table below. Add yours to the kit cost column and re-read it.
+
+## What a kilowatt-hour is actually worth to you
+
+balco.nyc values avoided consumption at **$0.34/kWh** — Con Edison SC-1 all-in marginal cost, supply plus delivery plus surcharges. It is the number that changes when you use one less kilowatt-hour, and [why we use it rather than a supply-only figure](https://balco.nyc/electricity-rate) is a page of its own.
+
+Your bill also carries a fixed monthly customer charge. **Solar does not touch it.** It is excluded from the $0.34 marginal rate, and in the worst siting case it is larger than everything the panels save you. Your bill will not go to zero.
+
+The bigger point, and the one most coverage of balcony solar gets wrong: **there is no net metering for these devices.** The SUNNY Act exempts them from interconnection and net-metering requirements, which cuts both ways — no utility approval, and no credit for export. A kilowatt-hour your panels make while your apartment is drawing less than they produce goes to the grid and earns you **nothing**.
+
+So every saving figure below is a *ceiling*: it assumes every kilowatt-hour generated displaces one you would otherwise have bought. Multiply by whatever share you actually self-consume. As arithmetic rather than as a balco.nyc estimate: if a fifth of your generation were exported, a $187 year-one saving becomes about $150, and a 6.0-year payback becomes about 7.4 years.
+
+## The payback arithmetic, worked
+
+An 800 W system in New York City produces roughly **400–900 kWh a year**. The spread across balconies is about **3×** from worst to best — high floor facing south against low floor facing north, with the buildings across the street doing most of the damage.
+
+The table runs four production levels across the band. Savings are year one at $0.34/kWh, at 100% self-consumption. Payback years account for 3%/year rate escalation and 0.5%/year panel degradation, and are the year cumulative savings first exceed the kit price.
+
+| Annual output | Year-1 saving (ceiling) | Payback, $850 kit | Payback, $1,200 kit | Payback, $1,600 kit | 25-yr net, $1,200 kit (nominal) |
+|---|---|---|---|---|---|
+| 400 kWh (poorly sited) | $136 | 5.9 yr | 8.1 yr | 10.4 yr | +$3,435 |
+| 550 kWh | $187 | 4.4 yr | 6.0 yr | 7.9 yr | +$5,175 |
+| 700 kWh | $238 | 3.5 yr | 4.8 yr | 6.3 yr | +$6,915 |
+| 900 kWh (well sited) | $306 | 2.7 yr | 3.8 yr | 5.0 yr | +$9,235 |
+
+Read across a row rather than down a column. Moving from the premium kit to the budget kit at fixed siting saves you about four and a half years in the worst row. Moving from the worst siting to the best at a fixed kit saves you four to five. **Where the panel points matters about as much as what you pay for it, and you can only change one of those after you have signed the lease.**
+
+## How to read the 25-year number
+
+The last column is in **nominal dollars, not discounted to present value**. This matters more than it sounds. Nominal totals are the standard way this gets reported and they systematically flatter the result.
+
+Take the 550 kWh row. Twenty-five years of escalating, degrading output totals about **$6,375** nominal. Discount that stream at 3% a year and it is worth about **$4,277** in today’s money. Net of a $1,200 kit: **+$5,175 nominal, +$3,077 in present value**. Same panels, same sun, a third less money once you account for the fact that a dollar in 2051 is not a dollar now.
+
+Two other assumptions sit inside that number. Rate escalation is set at **3%/year** by default, with 2% and 4% presets — at 2% the totals fall noticeably and paybacks stretch, and this is a forecast, not a measurement. Panel degradation is **0.5%/year** on the mid tier, so year-25 output is about 88% of year one.
+
+And the model itself carries a stated accuracy of **±15%**, widening to ±20% where it falls back to coarser irradiance data. That is a modelled band, *not field-validated* — nobody has yet put instrumented kits on a representative sample of New York balconies. A 6.0-year payback should be read as roughly 5.2 to 7.1 years. See [methodology](https://balco.nyc/methodology) for how the band is derived.
+
+## When the answer is no
+
+If your balcony is on a low floor, faces north, or spends the middle of the day in the shadow of the building opposite, the arithmetic is bad and you should not spend the money on economic grounds.
+
+Work it through. Roughly 400 kWh a year is **$136** of avoided electricity at best. Put that against a $1,600 premium kit and payback is **10.4 years** before you add an electrician, before you subtract exported kilowatt-hours you are not paid for, and before the ±15% band, which could push it past 12. If you may move within five years, and you probably will if you rent, you will not get your money back.
+
+Buy the cheapest kit that is properly certified, or do not buy one. A budget kit on a poor balcony pays back in 5.9 years; a premium kit on the same balcony takes 10.4. Paying more for a system that will never see full sun is the single most expensive mistake available here.
+
+> **None of this is legal in New York yet.** The SUNNY Act passed both chambers in late May 2026 and awaits the Governor’s signature; it takes effect 90 days after signing. Do not buy hardware on the assumption the timeline will hold — see [the SUNNY Act status page](https://balco.nyc/sunny-act).
+
+Run your own floor, orientation and consumption through [the calculator](https://balco.nyc/) rather than reading a row off this table. The table is four points on a wide band; your balcony is one point.
+
+## Common questions
+
+**How much does a balcony solar kit cost in NYC?**
+
+For a typical 800 W setup, balco.nyc uses hardware-only planning assumptions of $850 at the budget end, $1,200 mid-range, and $1,600 premium. As of September 2026, Bright Saver lists a 360 W kit at $414.17 for members, plus a $29 annual membership, and $699 without membership, but says it cannot ship the kit to New York because no system on the market yet has the whole-system certification New York requires. None of these figures include an electrician or building work.
+
+**Is balcony solar worth it in New York?**
+
+It depends almost entirely on your balcony, not on the kit. A high-floor, south-facing, unshaded balcony producing 900 kWh a year saves about $306 and pays back a mid-range kit in 3.8 years. A low-floor, north-facing one producing 400 kWh saves $136 and takes 8.1 years on the same kit — or over 10 on a premium one, which is a bad deal.
+
+**Do I get paid for the electricity I don't use?**
+
+No. The SUNNY Act exempts these devices from net metering, so any kilowatt-hour you generate and do not consume at that moment goes to the grid uncompensated. This is the most important fact about the economics and most coverage gets it wrong. Every saving figure on this page assumes full self-consumption and is therefore a ceiling, not an expectation.
+
+**What is the payback period for balcony solar in NYC?**
+
+Between roughly 2.7 and 10.4 years, depending on siting and kit price, assuming full self-consumption. A mid-range $1,200 kit lands between 3.8 and 8.1 years across the typical 400–900 kWh production band. Those figures include 3%/year rate escalation and 0.5%/year panel degradation, and carry a modelled plus or minus 15% accuracy band.
+
+**Will balcony solar zero out my Con Edison bill?**
+
+No. Con Edison charges a fixed monthly service charge that does not change with how much you generate. On a poorly sited balcony that fixed charge alone can exceed the entire annual saving. Solar only reduces the variable portion of the bill, which balco.nyc values at $0.34 per kilowatt-hour.
+
+**Should I buy the premium kit?**
+
+On a well-sited balcony the difference is about 1.2 years of payback and defensible. On a poorly sited one it is 4.5 years and hard to justify. Since output is set by your floor, orientation and shading rather than by kit quality, paying up for hardware that will never see full sun is the most expensive error available. balco.nyc does not recommend specific products or brands.
+
+## Sources
+
+- [Bright Saver — balcony solar kits](https://www.brightsaver.org/balcony-solar-kits): current member and non-member prices, plus Bright Saver’s notice that it cannot ship to New York because no market system yet has the required whole-system certification.
+- [Bright Saver begins offering plug-in solar kits at wholesale costs nationwide (13 July 2026)](https://pv-magazine-usa.com/2026/07/13/bright-saver-begins-offering-plug-in-solar-kits-at-wholesale-costs-to-customers-nationwide/): reports the July 2026 launch and price pairs; the seller’s current page is the source for present New York availability.
+- [A new deal on balcony solar just dropped in the US (July 2026)](https://www.canarymedia.com/articles/solar/balcony-panel-bright-saver-deal): effective prices of $1.75/W and $1.23/W once the annual membership is included.
+- [SUNNY Act passes the NYS Legislature](https://www.nysenate.gov/newsroom/press-releases/2026/liz-krueger/sunny-act-passes-nys-legislature-bringing-plug-solar-one): passage of S8512C / A9111C through both chambers.
+- [Balcony solar plug-in power awaits Hochul's signature](https://www.newyorkalmanack.com/2026/07/balcony-solar-plug-in-power-hochul/): the bill unsigned as of July 2026, with a year-end deadline and a 90-day commencement.
+- [Will New York Gov. Kathy Hochul sign a balcony solar bill?](https://www.canarymedia.com/articles/solar/new-york-gov-sign-balcony-solar-bill): the exemption from interconnection and net-metering requirements, and what it implies for export credit.
+
+---
+
+# Does my balcony get enough sun for solar?
+
+URL: https://balco.nyc/balcony-sunlight  
+Last reviewed: 2026-09-04
+
+There is no threshold: the honest answer is a kilowatt-hour number, not a yes or no. In a dense city what sets it is mostly how much sky your balcony can see past the building opposite, and how high up you are — which way it faces matters less than the rules of thumb suggest. A typical 800 W New York system produces 400 to 900 kWh a year, and a high-floor south balcony makes roughly three times what a low-floor north one does.
+
+## “Enough sun” is a number, not a threshold
+
+The standard answer to this question is a rule of thumb: three to four hours of direct sunlight a day and you are fine. It is a reasonable rule and it comes from somewhere sensible — it is roughly the line between a balcony that will grow herbs and one that will not. But it treats the question as a gate you either pass or fail, and that is not how a solar system behaves. A panel does not switch on at four hours. It produces a continuously varying amount all year, and the useful output of that arithmetic is a single figure: annual kilowatt-hours.
+
+That figure is what everything downstream depends on. In New York the number to multiply it by is Con Edison’s all-in marginal rate of about **$0.34 per kilowatt-hour** — supply, delivery and surcharges together, which is [the correct rate for electricity you generate and consume yourself](https://balco.nyc/electricity-rate). A typical 800 W system on an NYC balcony lands somewhere between **400 and 900 kWh a year**, so the annual saving runs from roughly $136 to roughly $306. On a $1,200 mid-range kit that is the difference between a [payback of under four years and one of over eight](https://balco.nyc/balcony-solar-cost). Both of those balconies get “enough” sun in the sense that the panels work. Only one of them is a good idea.
+
+This is also where a widely repeated figure needs qualifying. You will often read that an 800 W kit covers 15–25% of an apartment’s electricity. That is a nameplate-ideal number with no shading derate applied. Against the EIA’s New York average household consumption of about 6,850 kWh a year, the real 400–900 kWh band works out at **6% to 13%** — and the lower end of that is not a rounding error, it is what a shaded low-floor balcony actually delivers. The 15–25% figure describes a well-sited system belonging to a light consumer. It is a ceiling, not an expectation.
+
+> **One number, not a verdict.** If someone answers “does my balcony get enough sun” with yes or no, they have skipped the only part of the answer that changes what you should do.
+
+## The four things that decide it, in order
+
+Most solar guidance is written for a detached house, where orientation is the first question because it is very nearly the only one. In a dense city the ranking inverts. Here is the order that actually matters for an NYC balcony:
+
+|  | Variable | What it really is | Why it ranks here |
+|---|---|---|---|
+| 1 | Obstruction | The height of the building across the street relative to yours, and how far away it stands | It sets the floor of the sky you can see. On a low floor in a narrow canyon it can remove the entire middle of the day for months at a time — a bigger swing than every other variable combined. You cannot change it, and it is the one nobody asks about. |
+| 2 | Floor height | How far above the street the panel sits | Every storey you climb drops the skyline. The same balcony, facing the same way, is a materially different proposition on the 3rd floor and the 12th. Published research on vertical facade PV finds incident energy distributed non-uniformly along the height of the wall for exactly this reason. |
+| 3 | Orientation | The compass direction the railing faces | Real, predictable and correctly priced by any decent model — but it only prices sun you can actually see. Orientation decides how you use an open sky; obstruction decides whether you have one. |
+| 4 | Tilt | Flat against the railing (vertical, 90°) or angled out on a bracket | The only variable you get to choose, and the one most often taken away by the railing design or the building’s rules. balco.nyc models four mount angles — 35°, 60°, 70° and vertical — because the gap between them is worth knowing before you argue with a board. |
+
+This ordering is why one particular claim deserves care. You will find it stated as a constant, across many pages, that a north-facing balcony produces **75% less** than a south-facing one. We could not trace that figure to a primary source; it appears without attribution and gets copied forward. The deeper problem is not the number, it is the framing. It presents azimuth as if it were the whole answer, on a page written for someone whose real constraint is the twelve-storey building forty feet away.
+
+In a city the two effects compete, and obstruction usually wins. **An unobstructed high-floor north balcony can out-produce a south-facing balcony boxed in by a taller building across a narrow street.** balco.nyc’s own modelling puts roughly **3×** between the best and worst realistic NYC cases — a high-floor south balcony against a low-floor north one — and that spread is the *combination* of all four variables, not orientation working alone. Attribute the whole gap to which way you face and you will mis-rank two apartments in the same building.
+
+One local wrinkle before you take the listing at its word: most of Manhattan’s grid is rotated about **29° east of true north**, aligned to the axis of the island rather than to the compass. What a broker calls a north-facing apartment is usually facing north-north-east. That rotation is large enough to change the answer, which is why the calculator asks for an address rather than a direction.
+
+## A street canyon is not a suburban lot
+
+The geometry is worth making concrete, because once you see it the rest of the page follows. A panel receives direct sunlight when the sun is above the skyline in that direction. In the suburbs the skyline is a fence and a maple tree, so it sits a few degrees above the horizon and the sun clears it for most of the day. The sun’s path is the story. In a street canyon the skyline is a wall, it can sit thirty or forty degrees up, and the sun’s path is just the thing that does or does not cross it.
+
+Take a standard Manhattan side street. The Commissioners’ Plan of 1811 set cross streets at **60 feet** (about 18 m) building face to building face, and avenues at 100 feet. Put a six-storey building — roughly 18 m — directly opposite, and ask how high the sun has to climb before it reaches your railing:
+
+| Your floor | Panel height above street | Sun must be above | Clears the 21 Dec noon sun (26°)? | Clears the equinox noon sun (49°)? |
+|---|---|---|---|---|
+| 2nd | 4 m | 37° | No | Yes |
+| 4th | 10 m | 24° | Barely | Yes |
+| 6th | 16 m | 6° | Yes | Yes |
+| 8th and up | 22 m+ | Clear | Yes | Yes |
+
+Nothing about that table depends on which way the balcony faces. A second-floor apartment on that street has no direct midday sun for weeks around the winter solstice whether it is south-facing or not, because the sun never gets high enough to clear the parapet opposite. Six floors up, on the same facade, the obstruction has essentially vanished. That is the whole argument for putting address and height ahead of azimuth.
+
+Two things make the real city messier than the table, both in the same direction. Buildings are rarely a uniform wall — a setback, a gap at the corner, a lower neighbour mid-block can open a wedge of sky that changes a balcony’s year. And the obstruction that matters is not only the one across the street: the wing of your own building, the tower on the diagonal, and the balcony slab immediately above you all take a bite. This is why a real answer needs a model of the actual surrounding block rather than a street width and a rule.
+
+## Diffuse light, and why a north balcony is not zero
+
+Sunlight arrives in two forms. **Beam** (or direct) radiation travels in a straight line from the disc of the sun, and it is what casts a shadow. **Diffuse** radiation has been scattered by the atmosphere and by cloud, and it arrives from the whole dome of the sky at once. Panels convert both. Almost every intuition people have about balconies concerns only the first.
+
+The split matters more than the vocabulary suggests. In the northeastern United States roughly **40% of annual global horizontal irradiance is diffuse**, which is the figure balco.nyc’s shadow model uses for its beam/diffuse constants (see [the methodology](https://balco.nyc/methodology)). On a clear day the diffuse share is small; on an overcast day it is essentially everything, and under a fully overcast sky *surface orientation stops being a significant variable at all*. Roughly two-fifths of the year’s energy, then, does not care which way your railing points. It cares how much sky your railing can see.
+
+That is the honest case for a north-facing balcony, and it is a real one. A vertical panel sees half the sky dome no matter which direction it faces. Diffuse light is not free of the city — the building opposite blocks its share of that half-dome exactly as it blocks the beam — but what it takes away is set by obstruction, not by compass direction. A north balcony’s output is not a fraction of a south balcony’s because of some efficiency penalty; it is lower because it has given up most of its beam.
+
+Most, but not all. The sun rises north of due east between the equinoxes: at the June solstice in New York it comes up at an azimuth of about **58°** and sets at about **302°**. A true-north-facing wall therefore has the sun in front of it for around seven hours of a fifteen-hour midsummer day. The catch is that all of those hours are at a glancing angle with the sun low in the sky, so the beam they deliver is modest. And from the September equinox to the March equinox, a true-north vertical panel receives **essentially no direct sunlight at all** — the sun rises and sets south of the east–west line for the entire winter half of the year. Everything it produces in those six months is diffuse.
+
+Here the Manhattan grid rotation earns its keep again. A balcony facing 29° rather than 0° meets the summer morning sun much closer to head-on, and still catches a couple of hours of direct sun around the equinoxes, when a true-north wall catches none. A “north-facing” NYC apartment and a true-north-facing one are not the same object.
+
+## Winter, honestly
+
+Winter is where the two halves of this page collide, and where the standard reassurance is most misleading. The reassurance goes: photovoltaic cells are *more* efficient when cold, so winter is not the problem you think. The first clause is true. Cell efficiency does improve below the 25°C rating temperature, which is why the same panel makes slightly more per unit of sunlight in February than in July. The second clause does not follow from it, and the gap between them is most of the winter story.
+
+What actually costs you output in a New York winter is three things, none of them temperature:
+
+- **Short days.** About **9 hours 15 minutes** of daylight on 21 December, against 15 hours 6 minutes at the June solstice. Roughly 40% fewer hours to work with, before anything else happens.
+
+- **Low sun.** At 40.7°N the sun reaches only about **26°** above the horizon at solar noon on the winter solstice (25.9°, from latitude and the 23.44° solar declination). At the June solstice it reaches 73°.
+
+- **Inter-building shading.** Long shadows down the canyon, all day, at the exact time of year they are hardest to escape.
+
+That third point is the one that gets left out, and it is not an independent penalty — it is caused by the second. Low sun elevation is precisely the condition under which street-canyon shading is worst, because the sun spends the whole day below the parapet opposite instead of above it. Look back at the table in section 3: the second-floor balcony needs the sun above 37° and December offers 26°. A cell-efficiency bonus of a few percent does not touch a balcony that is in shadow from breakfast to dusk.
+
+There is a genuine and rarely mentioned consolation, though, and it applies specifically to balcony systems. A *vertical* panel likes a low sun. A south-facing vertical panel meets the December noon sun almost square on — within about 26° of perpendicular — while in June that same panel watches the noon sun pass 73° overhead and catches very little of it. In pure incidence-angle terms, winter is the season a railing-mounted panel is built for. The reason December is still the worst month in New York is not the panel’s geometry. It is the building across the street.
+
+None of which means winter output is zero. It means winter is the trough, that the depth of the trough is set by your skyline rather than by the thermometer, and that a model which does not simulate your specific block cannot tell you how deep it is.
+
+## Getting the number for your actual address
+
+The usual advice at this point is to go and look: stand on the balcony, note when the sun arrives and leaves, and repeat across the seasons. It is honest advice and it is not wrong — but it asks for a year of your attention to produce an observation, and an observation is still not a kilowatt-hour figure. The winter answer, which is the one that decides whether your worst months are workable, cannot be had before December. A shadow model answers the same question in seconds, because the geometry is entirely known in advance.
+
+That is what balco.nyc does. For any NYC address it assembles three things:
+
+- **The buildings.** NYC PLUTO records and building-footprint data give the heights and shapes of every neighbouring structure **within 200 m**, which are assembled into a 3D scene around your balcony.
+
+- **The sun.** Sun positions are traced against that scene through the year to produce monthly shade factors — how much of the light your balcony would otherwise receive is actually blocked, beam and diffuse separately.
+
+- **The weather.** NREL’s **PVWatts V8** runs an **8,760-hour** simulation over a typical meteorological year for your location, with the panel’s real tilt and azimuth, which is where orientation gets priced properly rather than by rule of thumb.
+
+Stated accuracy is **±15%** on annual production, or ±20% when the client-side fallback is used. That is a *modelled* band and we are explicit about the distinction: it comes from the uncertainty in the inputs and the method, not from comparing predictions against meters. **No metered NYC balcony installation has been compared against this model**, for the straightforward reason that plug-in solar is not yet legal here and so there are very few of them to compare against. The full derivation is on [the methodology page](https://balco.nyc/methodology).
+
+> **Worth knowing before you shop.** Plug-in solar is not yet legal in New York. The SUNNY Act passed both chambers of the Legislature and is awaiting the Governor’s signature; it has not been signed. [What the Act does and does not change](https://balco.nyc/sunny-act) — including that it grants no right to install, so renters and co-op residents still need permission.
+
+## What the model cannot see
+
+A shadow model built from building footprints resolves buildings. Everything smaller than a building is invisible to it, and on a balcony some of those things are two metres from the panel. The honest list:
+
+- **Micro-shading.** A window air-conditioner projecting from the unit above. A street tree at the corner in full leaf from May to October. Your own parapet, or the underside of the balcony slab overhead, which on a deep-set balcony can shade a vertical panel for much of the day. A satellite dish, a laundry rack, a neighbour’s planter. None of these appear in PLUTO.
+
+- **Exactly where the panel goes.** The model assumes the balcony’s facade direction. If you mount at an angle to the railing, hang the panel on the return wall, or shift it to the shadier end to keep the view, your result moves off the modelled figure.
+
+- **Facade detail.** Setbacks, bay windows, cornices and the geometry of your own building’s wings are represented at footprint resolution, which is coarser than the things immediately around a single balcony.
+
+- **Validation against reality.** Stated again because it belongs in this list: the ±15% is modelled, not measured.
+
+This is where a few minutes of your own observation genuinely helps, and it is a different task from watching your balcony for a year. The model has already handled the part that takes a year — the sun’s path, the seasons, the surrounding block. What it needs from you is the part it cannot see: stand at the railing on one clear morning and look for anything within a few metres that casts a shadow onto the spot where the panel would sit. If there is nothing, take the modelled number as it stands. If there is something, treat it as a haircut on that number rather than as a reason to start over.
+
+Then run the address. If you have not read [what a plug-in system actually is](https://balco.nyc/what-is-balcony-solar) or [what one costs in New York](https://balco.nyc/balcony-solar-cost), those are the two pages that turn a kilowatt-hour figure into a decision.
+
+## Common questions
+
+**How many hours of direct sun does a balcony need for solar to be worth it?**
+
+There is no hour threshold that makes solar work or not work — panels produce continuously, so the meaningful output is annual kilowatt-hours rather than a pass/fail. The common "three to four hours" rule comes from gardening advice and gives no method for finding out whether a given balcony clears it. In NYC, a typical 800 W system produces 400–900 kWh a year, worth roughly $136 to $306 at Con Edison's $0.34/kWh marginal rate.
+
+**Do balcony solar panels work in winter in New York?**
+
+Yes, but less. The real winter losses are short days (about 9h15m of daylight on 21 December against 15h06m in June), a sun that reaches only about 26 degrees above the horizon at solar noon, and inter-building shading — which is worst precisely when the sun is lowest. Cold weather does slightly improve cell efficiency, but that is the smallest term in the equation and it does not compensate for a balcony sitting in the shadow of the building opposite all day.
+
+**Is a north-facing balcony worth solar panels?**
+
+Sometimes, and more often than the widely repeated "75% less" figure implies — a claim we could not trace to any primary source. About 40% of the year's light in the Northeast is diffuse and reaches a north-facing panel regardless of orientation, and from late September to late March a north-facing wall gets no direct sun at all, so diffuse is most of what it lives on. In a dense city an unobstructed high-floor north balcony can out-produce a south-facing one boxed in by a taller building across a narrow street.
+
+**Does my floor number really change the answer that much?**
+
+Considerably, and often more than orientation does. With a six-storey building directly across a standard 60-foot Manhattan side street, a 2nd-floor balcony needs the sun above 37 degrees to see it at all — which never happens in December — while a 6th-floor balcony on the same facade needs only 6 degrees. Same building, same direction, very different year.
+
+**Can I just watch my balcony to work out how much sun it gets?**
+
+You can, but it takes a year to do properly and still returns hours rather than kilowatt-hours. The sun's path is known in advance and the surrounding buildings are in public data, so a shadow model answers the seasonal question immediately. Direct observation is best reserved for the things a model genuinely cannot see: a window AC unit above you, a corner tree, a deep parapet.
+
+**Will an 800 W kit really cover 15–25% of my electricity?**
+
+Usually not in New York. That figure is a nameplate-ideal one quoted with no shading derate applied. Against the EIA's New York average household consumption of about 6,850 kWh a year, the realistic 400–900 kWh NYC production band works out at roughly 6–13%, and a shaded low-floor balcony sits at the bottom of it.
+
+## Sources
+
+- [EIA — 2024 Average Monthly Bill, Residential (Table 5A)](https://www.eia.gov/electricity/sales_revenue_price/pdf/table_5A.pdf): New York average residential consumption of 571 kWh/month, about 6,850 kWh a year, which sets the 6–13% share figure.
+- [NREL PVWatts Calculator](https://pvwatts.nlr.gov/): the V8 hourly production model behind the 8,760-hour simulation.
+- [Sandia PV Performance Modeling Collaborative — diffuse horizontal irradiance](https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/irradiance-insolation/diffuse-horizontal-irradiance/): the beam/diffuse decomposition of GHI underlying the model’s 0.60/0.40 constants.
+- [ScienceDirect — diffuse irradiance](https://www.sciencedirect.com/topics/engineering/diffuse-irradiance): definition of diffuse radiation and its distribution across the sky dome.
+- [ScienceDirect — overcast day](https://www.sciencedirect.com/topics/engineering/overcast-day): that under overcast skies, with virtually no direct irradiation, surface orientation is not a significant variable.
+- [Analytical modeling of solar radiation distribution on vertical PV facades in urban settings, Urban Science (2026)](https://www.mdpi.com/2413-8851/10/5/258): non-uniform distribution of incident energy along the height of a facade, and the role of building separation.
+- [A solar-based sustainable urban design, Applied Energy](https://www.sciencedirect.com/science/article/abs/pii/S0306261919303046): street width, aspect ratio and sky view factor as the controls on urban solar access.
+- [Commissioners’ Plan of 1811](https://en.wikipedia.org/wiki/Commissioners%27_Plan_of_1811): Manhattan cross streets at 60 feet building face to building face, avenues at 100 feet.
+- [Manhattanhenge](https://en.wikipedia.org/wiki/Manhattanhenge): the Manhattan street grid’s ~29° rotation east of true north.
+- [New York City day length](https://www.sunrisesunsettime.org/north-america/united-states/new-york-city-day-length.htm): 9h15m of daylight on 21 December and 15h06m on 21 June.
+- [Sun angle calculator](https://www.omnicalculator.com/physics/sun-angle): the solar-noon elevation relation (90° − latitude + declination) and the 23.44° maximum declination, from which the 26°/49°/73° figures are derived for 40.71°N.
+- [SUNNY Act passes NYS Legislature (NY Senate)](https://www.nysenate.gov/newsroom/press-releases/2026/liz-krueger/sunny-act-passes-nys-legislature-bringing-plug-solar-one): passage of S8512C / A9111C through both chambers.
+- [Balcony solar plug-in power awaits Gov. Hochul’s signature (New York Almanack)](https://www.newyorkalmanack.com/2026/07/balcony-solar-plug-in-power-hochul/): that the bill remains unsigned, with a year-end deadline.
+- [2026 guide to balcony and plug-in solar (Solar.com)](https://www.solar.com/learn/guide-to-balcony-plug-in-solar/): an example of the widely repeated claim that 800 W covers 15–25% of an apartment’s electricity, quoted here in order to qualify it.
+- [Do solar panels work in snow and during winter? (EnergySage)](https://www.energysage.com/solar/solar-panels-in-winter-weather-snow-affect-power-production/): the cold-improves-efficiency framing, and the acknowledgement that shorter days offset it.
+
+---
+
+# What does a kilowatt-hour actually cost in NYC?
+
+URL: https://balco.nyc/electricity-rate  
+Last reviewed: 2026-09-04
+
+In New York City, a kWh you don’t buy from Con Edison is worth about 34 cents. That is the all-in marginal rate — supply, delivery, surcharges and the 4.5% city sales tax — from Con Edison’s published SC-1 residential bill history (33.83¢/kWh in 2025) plus the 3.5% delivery increase approved on 22 January 2026. Lower figures near 13–18¢ are supply only: correct for comparing suppliers, too low for valuing solar you consume yourself.
+
+## There is no single “Con Edison rate”
+
+People asking “what does electricity cost in New York City?” are usually asking one of three different questions, and each has a different correct answer.
+
+- **What does the energy itself cost?** Con Edison’s Market Supply Charge, also published as the Price to Compare. Reported figures for 2026 run roughly **13.4¢ to 17.8¢/kWh** — it resets monthly with wholesale prices.
+
+- **What does the average customer pay per kWh?** Total bill divided by kWh, including the fixed monthly charge. Higher than the supply rate, and it moves with how much you use.
+
+- **What does one more — or one fewer — kWh cost me?** The all-in *marginal* rate: supply plus delivery plus surcharges, grossed up for tax, excluding anything fixed. Con Edison’s own bill history puts this at **33.83¢/kWh** for a New York City SC-1 residential customer in 2025.
+
+balco.nyc uses **$0.34/kWh**. Not because the other figures are wrong, but because the third question is the one a balcony solar panel answers. Every kWh a panel produces and you consume is a kWh you do not buy, at the margin, at whatever the margin costs.
+
+## What is actually in 34 cents
+
+Con Edison’s residential bill separates into a supply half and a delivery half, plus surcharges and tax on top. The table uses a New York City residential customer at **350 kWh a month**.
+
+| Component | Approximate value | Scales with usage? | In the 34¢? |
+|---|---|---|---|
+| Supply — Market Supply Charge, merchant function charge, Clean Energy Standard surcharge | 13.4–17.8¢/kWh, resets monthly | Yes | Yes |
+| Delivery — energy delivery charge plus riders and adjustment clauses | Remainder, roughly 14–19¢/kWh | Yes | Yes |
+| Basic service charge (fixed) | A fixed monthly amount, reported around $16–20 | No | No |
+| NYC sales tax at 4.5% — residential energy is exempt from the 4% state tax | Applied to the charges above | Yes | Yes |
+| All-in variable rate (SC-1, NYC, 2025) | 33.83¢/kWh | — | → modelled as $0.34 |
+
+The delivery row is derived by subtraction, not quoted from a tariff sheet: it is what remains once the reported supply rate is taken out of the reported all-in rate. It is shown as a range because the supply side moves every month. The point of the table is the shape, not the third decimal place — *delivery and surcharges are roughly as large as the energy itself*, which is why supply-only figures understate the value of a self-consumed kWh by more than half.
+
+## Why the fixed monthly charge is deliberately left out
+
+Con Edison charges a basic service charge that you pay whether you use 50 kWh or 500. A balcony solar panel does not reduce it. Nothing reduces it except closing the account.
+
+So it does not belong in a rate used to value generation. At 350 kWh a month a fixed charge in the region of $16–20 works out to roughly 5¢/kWh, and including it would inflate the apparent savings from every kWh a panel produces by about that much — a number the customer would never actually see.
+
+> **The rule: value avoided consumption at the marginal rate, not the average rate.** An average rate that spreads a fixed charge across kWh answers “what did I pay per unit last month?” A marginal rate answers “what changes if I use one unit less?” Only the second question is the one solar answers.
+
+This cuts the other way too, and it is worth being explicit about it: excluding the fixed charge makes balco.nyc’s savings figures *smaller* than an average-rate calculation would produce. It is the conservative choice, not the flattering one.
+
+## Supply-only rates are correct — for a different question
+
+Con Edison publishes a Price to Compare precisely so customers can evaluate offers from independent energy suppliers (ESCOs). An ESCO can only sell you the supply component; delivery stays with Con Edison regardless. Comparing an ESCO’s 15¢ offer against a 34¢ all-in rate would be a category error, and the Price to Compare exists to prevent exactly that.
+
+A calculator quoting 17.8¢, or 13.4¢, is not making a mistake about arithmetic. It is answering the ESCO-shopping question. If you are choosing a supplier, that is the number you want, and this page is not an argument against it.
+
+But a panel on your balcony does not compete with a supplier. It sits behind your meter and reduces the metered kWh flowing into your apartment. Every layer of the bill charged per metered kWh — delivery, riders, surcharges, sales tax — falls away with it. That is why self-consumption is valued at the full stack.
+
+New York’s [SUNNY Act](https://balco.nyc/sunny-act) makes this structural rather than incidental: it exempts plug-in solar from interconnection and net-metering requirements, which means there is no export credit at all. Production you don’t consume is worth nothing; production you do consume is worth the full marginal retail rate. There is no middle tier.
+
+## Where $0.34 comes from, and how it is kept current
+
+The starting point is Con Edison’s published average full-service rate for New York City SC-1 residential customers, which covers delivery, commodity and riders and is grossed up for state and local tax, with the fixed customer charge billed separately. That series reads **29.52¢ (2023) → 33.45¢ (2024) → 33.83¢ (2025)**, and 33.83¢ has continued to be reported as the effective rate through mid-2026.
+
+On **22 January 2026** the New York Public Service Commission adopted a three-year Joint Proposal in cases 25-E-0072 and 25-G-0073, raising electric *delivery* charges 3.5% in 2026, 3.2% in 2027 and 3.1% in 2028 — about 2.8% on a total residential bill in year one. Applying that to 33.83¢ gives roughly 34.8¢.
+
+So the defensible band for 2026 runs from about 33.8¢ to about 34.8¢. **balco.nyc uses $0.34**, near the bottom of that band. Rounding down by most of a cent is intentional: on a question where the modeller has an incentive to be generous, the tie should go against the model.
+
+Last reviewed **31 August 2026**. The figure is re-checked each January against Con Edison’s published bill history and the standing rate-case settlement, since the settlement fixes the delivery escalation path through the end of 2028 and removes most of the guesswork from the intervening years.
+
+## What a single number costs you in accuracy
+
+$0.34/kWh is a modelling simplification, and it is worth saying plainly what it papers over.
+
+- **Season.** Con Edison’s residential delivery charges are tiered and materially higher from June through September, above 250 kWh a month. This is the largest single distortion — and it runs in solar’s favour, because peak summer rates coincide with peak summer production. An annual average *understates* the value of a summer kWh.
+
+- **Rate plan.** Time-of-use and standard SC-1 customers face different per-kWh structures. Across plans, reported Con Edison residential rates span roughly 22¢ to 38¢/kWh.
+
+- **Supplier.** If you buy supply from an ESCO, your supply component is whatever your contract says. Your delivery, surcharges and tax are unchanged.
+
+- **Service territory.** Con Edison serves New York City and Westchester on different rate schedules. balco.nyc models the five boroughs.
+
+- **Month-to-month supply.** The supply half resets monthly with wholesale prices. A single annual figure is a smoothing, not a forecast.
+
+Realistically, a household could sit anywhere from the high 20s to the high 30s. If you want the number that applies to you rather than to the median New Yorker, take a recent bill, subtract the basic service charge from the total, and divide by the kWh billed. That is your marginal rate.
+
+## Why this matters more in New York than almost anywhere else
+
+The US average residential electricity price was reported at about **18.3¢/kWh in September 2026**, and New York State averaged **29.5¢**, among the highest in the nation. Con Edison’s New York City residential rate sits above even that, at roughly **1.8 times the national average** — close to double, though not quite.
+
+This is the whole reason balcony solar pencils out in New York City despite mediocre sun. A panel in Phoenix produces considerably more kWh per year than the same panel on a Brooklyn balcony. But each of those Arizona kWh displaces electricity worth well under 20¢, while each New York kWh displaces electricity worth about 34¢. Rate, not irradiance, is doing most of the work.
+
+It also means the choice of rate is the single most consequential input in any NYC balcony solar model. The gap between a supply-only 17.8¢ and an all-in 34¢ is a factor of nearly two on every payback period, every lifetime-savings figure, every break-even date. Which is why it is worth stating exactly which question a given number answers. The [cost and payback page](https://balco.nyc/balcony-solar-cost) shows what that does to the arithmetic.
+
+On escalation, balco.nyc assumes **3% a year** by default, with 2% and 4% presets, and reports results in nominal dollars. That default is anchored to the settlement’s own path — 3.5%, 3.2%, 3.1% on delivery through 2028 — rather than to recent history, which has run hotter: the SC-1 average rose from 29.52¢ to 33.83¢ between 2023 and 2025, about 7% a year compounded. If anything, 3% is the cautious assumption.
+
+## Common questions
+
+**Why do different solar calculators show different Con Edison rates?**
+
+Because they are answering different questions, usually without saying which. A figure near 13 to 18 cents is the supply-only Price to Compare, which is the right basis for comparing energy suppliers; a figure near 34 cents is the all-in marginal rate including delivery, surcharges and tax, which is the right basis for valuing electricity you generate and consume yourself. Figures in the low-to-mid 20s are generally consistent with an older data vintage — Con Edison's own SC-1 average was 29.52 cents as recently as 2023.
+
+**What is the actual all-in cost of a kWh in New York City?**
+
+Con Edison's published average full-service rate for a New York City SC-1 residential customer was 33.83 cents per kWh in 2025, covering delivery, commodity and riders and grossed up for state and local tax. The 3.5% delivery increase approved on 22 January 2026 puts 2026 somewhere around 34 to 35 cents. balco.nyc models $0.34 per kWh, deliberately at the lower end of that band.
+
+**Why doesn't the 34 cent figure include the monthly customer charge?**
+
+Because the basic service charge does not change when you use less electricity. Solar reduces your metered kWh, not your fixed charges, so including it would credit a panel with savings you would never actually receive. Excluding it makes balco.nyc's estimates smaller, not larger.
+
+**Should I use 34 cents if I buy my electricity from an ESCO?**
+
+Not exactly. Your delivery charges, surcharges and sales tax are identical, but your supply component is set by your contract rather than by Con Edison's Market Supply Charge. Take a recent bill, subtract the fixed basic service charge from the total, divide by kWh billed, and use that figure instead.
+
+**Does a balcony solar panel earn credit for power I don't use?**
+
+No. Under New York's SUNNY Act, plug-in solar is exempt from interconnection and net-metering requirements, which also means there is no export compensation — surplus generation is simply given to the grid for nothing. This is why the self-consumption fraction matters so much, and why the value of the kWh you do consume is the full marginal retail rate rather than any wholesale or credit rate.
+
+**How much does the rate vary across New York City households?**
+
+Reported Con Edison residential rates span roughly 22 to 38 cents per kWh depending on rate plan, and delivery charges are tiered and materially higher from June through September. A single annual number is a simplification worth several cents in either direction — though the summer skew works in solar's favour, since peak production coincides with peak rates.
+
+## Sources
+
+- [Con Edison — historical average full-service electric rates](https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf): the published SC-1 series behind 33.83¢ (2025), 33.45¢ (2024) and 29.52¢ (2023).
+- [Con Edison electric rate case summary, January 2026](https://dps.ny.gov/system/files/documents/2026/01/con-edison-electric-rate-case-summary.pdf): the New York DPS summary of the approved 2026–2028 electric rate plan.
+- [Con Ed bills are going up as regulators approve a rate hike](https://gothamist.com/news/con-ed-bills-are-going-up-as-regulators-approve-a-rate-hike): the Public Service Commission approving the increase in January 2026.
+- [About Con Edison's rates](https://www.coned.com/en/accounts-billing/your-bill/about-con-edisons-rates): the supply, delivery and surcharge structure, and the Price to Compare.
+- [EIA — electricity sales, revenue and average price](https://www.eia.gov/electricity/sales_revenue_price/): the primary source for US and state average residential prices.
+- [New York utility tax exemptions](https://www.salesandusetax.com/new-york-sales-tax-exemption-utilities): residential energy is exempt from the 4% state sales tax, leaving the 4.5% city tax.
+
+---
+
+# How do I put a solar panel on my balcony?
+
+URL: https://balco.nyc/install-balcony-solar  
+Last reviewed: 2026-09-23
+
+A balcony solar setup is two or three panels clamped or ballasted on your railing, wired to a small microinverter whose cord plugs into an ordinary 120-volt outlet. The physical work is an afternoon. In New York, hold off: plug-in solar stays outside the rules until the SUNNY Act is signed and takes effect ninety days later. Spend the wait getting written building permission, checking your outlet, circuit and railing, and choosing a certified kit.
+
+## What the installation actually is
+
+A balcony solar system is short and simple compared to a rooftop array. One to three rigid panels are fixed to your railing or stood on the balcony floor. Their DC leads run a metre or so into a microinverter, usually a sealed brick that mounts behind or beneath the panels. The microinverter has a single AC cord ending in a standard plug. That plug goes into an outdoor outlet.
+
+Nothing is drilled into the building. Nothing goes on the roof. Nobody opens your service panel. The whole thing can be taken down and carried out in a lift.
+
+The microinverter is the part that matters. It converts panel DC into AC matched to the grid’s voltage, frequency and phase, so the power it makes flows into your apartment’s wiring and is consumed by whatever is running at that moment — the fridge, the router, the standby loads. It is not stored.
+
+It also does the safety-critical job: **anti-islanding**. When grid power disappears, the inverter detects the loss and stops producing within a fraction of a second. This is why a plug-in system cannot energise wiring that a utility worker or a firefighter believes is dead — and also why, having no battery, it gives you nothing at all during a blackout. People are regularly surprised by that. It is a direct consequence of the safety design, not a defect.
+
+UL 1741 is the long-standing US standard covering grid-interactive inverter behaviour, including anti-islanding. UL 3700, published in December 2025 with certification launched in January 2026, is newer and narrower: it covers the complete plug-in photovoltaic system as a product, not just the inverter inside it.
+
+## Why the installation itself waits
+
+The SUNNY Act (S8512C / A9111C) passed the New York Senate in April 2026 and the Assembly in late May 2026. As of today it has not been signed. Governor Hochul has until the end of 2026 to act, and the bill takes effect on the ninetieth day after it becomes law — so the earliest realistic date on which a compliant device is squarely inside the rules is some months after a signature, not the day of one.
+
+The Act defines a *portable solar generation device* as a photovoltaic system supplying a maximum aggregate continuous AC inverter nameplate output of no more than 1,200 watts to the grid. It must be listed or certified by an accredited nationally recognised testing laboratory as a complete plug-in photovoltaic system, must include a mechanism preventing it from energising the building’s wiring or the grid during an outage, and must be installed in accordance with the New York State fire prevention and building code and the manufacturer’s instructions. Compliant devices are exempted from interconnection and net-metering requirements. Full detail is on the [SUNNY Act page](https://balco.nyc/sunny-act).
+
+> **The SUNNY Act removes the utility barrier. It does not grant you the right to install anything.**
+
+There is a second, practical reason to wait. The Act directs the State Fire Prevention and Building Code Council to update the code for these devices. Those installation rules — the ones a New York City inspector or an insurer would eventually cite — do not exist yet. Installing now means guessing at requirements that are about to be written down, and possibly having to redo the mounting when they are.
+
+None of this stops you preparing. Permission, site checks and product selection are the slow parts anyway, and none of them require a panel on your railing.
+
+## Permission is the long pole, not the wiring
+
+In a New York City apartment building, the electrical work is trivial and the approvals are not. Start here, because a refusal ends the project before you have spent anything.
+
+- **Renters.** You need your landlord’s permission, in writing. The SUNNY Act contains no tenant protections — nothing in it prevents a landlord from saying no. New Jersey’s law, signed on 1 September 2026 and in effect from 1 March 2027, does protect tenants who pay their own electric bill and bars homeowners’ and condo associations from enforcing bans on exterior placement. New York’s bill does not.
+
+- **Co-op and condo residents.** Expect the board, and expect an alteration agreement. Boards commonly ask for a certificate of insurance, a description of the mounting method, and an undertaking to restore the balcony. Some will want a licensed engineer’s letter on the attachment.
+
+- **Landmarked buildings and historic districts.** The Landmarks Preservation Commission reviews exterior work on designated buildings. LPC has broadened the range of solar installations eligible for staff-level review, but visibility from a public thoroughfare remains the deciding factor, and a panel hung on a street-facing railing is about as visible as it gets.
+
+When you ask, ask specifically. A vague request to “put up solar” invites a vague refusal. Name the product, the mounting method, whether anything is drilled, the total weight, how it is removed, and who carries the liability. Offer to place it where it is not visible from the street. Get the answer in writing and keep it.
+
+## Check your balcony before you buy anything
+
+Five things decide whether a given balcony can host a system at all. Work through them before spending money, because two of them are common deal-breakers in New York City apartments.
+
+| Check | What you are looking for | Who can answer |
+|---|---|---|
+| Outdoor outlet | An existing receptacle rated for a wet location, with a proper in-use cover. Many NYC balconies have none at all. | Look. If there is none, a licensed electrician plus building approval. |
+| The circuit behind it | Which breaker feeds that outlet, its rating (usually 15 or 20 amps), and what else is on it. | Map it yourself by switching breakers; an electrician if the panel is unlabelled or old. |
+| Railing structure | A guard solidly anchored to the structure, with a load path that can take an off-centre pull. Glass panels and slender balusters often cannot take a clamp. | Managing agent or super for the construction; an engineer for anything uncertain. |
+| Egress | Panels, brackets and cable entirely clear of any fire escape, egress path, or window used for escape. | NYC Fire Code, Chapter 10. If in doubt, the answer is no. |
+| Sun | Which way the balcony faces, how high you are, and what blocks the sky. | The calculator, and an hour of watching where the shade falls. |
+
+> **A solar panel must never obstruct a fire escape, a means of egress, or access to either. New York City’s Fire Code requires these to be continuously maintained free of obstructions, and that applies to hardware and cables as much as to furniture and plants.**
+
+## The electrical risks, specifically
+
+Plug-in solar is unusual because a cord-and-plug connection bypasses the safeguards that cover a conventional PV installation — no permit review, no inspection, no utility sign-off. The hazards are well understood and they are avoidable, but only if you know what they are.
+
+- **Buy a certified complete system, not assembled parts.** A UL 1741 inverter bolted to panels you bought separately is not a certified plug-in system. The SUNNY Act asks for listing of the complete system, which is what UL 3700 is for. When UL Solutions tested plug-in solar products already on the US market, it reported that none of them met the UL 3700 requirements — so the certification mark is a real filter, not a formality.
+
+- **Anti-islanding is not optional.** Any device you consider must shut down when the grid does. This protects utility crews and firefighters working on what they reasonably believe is a dead circuit.
+
+- **Live prongs.** A panel in sunlight is generating whether or not it is plugged in. UL 3700 requires the plug’s prongs to de-energise in under a second when it is pulled. Without that feature you can unplug a working system and be holding energised metal.
+
+- **Backfeeding masks the breaker.** A breaker measures only the net current flowing through it. If solar is feeding a circuit while appliances draw from it, the breaker sees the difference, not the total. The wiring between the solar and the loads can then carry more current than the breaker ever detects — heating conductors without tripping anything. Overcurrent protection is one of the three risk categories UL identified for these systems, alongside touch safety and ground faults.
+
+- **Never an extension cord, a power strip or a multi-outlet adapter.** These are built to carry power one way to a load. They add cord length and connections on the source side, and their own fuse or breaker cannot see the real current on the circuit either. Use the manufacturer’s cord, straight into a properly rated wall receptacle.
+
+- **One system per circuit, and know what shares it.** A balcony outlet that also feeds a bedroom running a portable air conditioner is not a good host.
+
+Call a licensed electrician if there is no outdoor outlet, if you cannot identify the breaker, if the receptacle has no ground or trips repeatedly, or if your building’s wiring is old enough that you are guessing. This is a small job for an electrician and an expensive one to get wrong yourself.
+
+Note also that NEC Article 705 was written for permanently installed, hard-wired PV and does not cleanly address cord-and-plug systems. That gap is part of why New York’s fire code update matters, and part of why the honest answer to some detailed questions right now is that the rules are not settled.
+
+## Mounting, wind, and things falling off buildings
+
+A solar panel is a flat, rigid sail. On a high floor in New York, wind pressure and the gusting that comes off neighbouring towers are the governing load — not the panel’s weight. This is the part of a balcony install that is genuinely worth being conservative about, because a failure does not hurt you, it hurts whoever is on the sidewalk.
+
+- **Two mounting approaches.** Clamped or hooked to the railing, or ballasted flat on the balcony floor at an angle. Ballasting avoids attaching anything to the guard, but adds concentrated weight — ask the managing agent about the balcony’s live-load capacity rather than estimating it.
+
+- **Use a secondary tether.** A separate cable or strap from the panel frame to a solid anchor, independent of the primary brackets, so a loosened clamp does not become a falling object. Stainless or otherwise corrosion-resistant hardware only.
+
+- **Prefer mounting inside the railing.** Hanging a panel on the outside face puts a hard object over the sidewalk, and many buildings prohibit exterior-face mounting outright.
+
+- **Do not drill the building envelope.** Anything that penetrates a wall, parapet or waterproofing membrane is a different category of work with different approvals, and a water-infiltration claim is the fastest way to lose a board’s goodwill.
+
+- **Route the cable properly.** Not pinched under a door, not through a window that closes on it, not draped where it can chafe. Use the manufacturer’s routing and any supplied strain relief.
+
+- **Re-check it seasonally.** Bracket torque, tether integrity, cable condition, and the state of the connectors. Twice a year is reasonable; after any severe wind event is sensible.
+
+If your railing is glass, if the guard is visibly aged, or if you cannot establish what the brackets would be bearing on, get an engineer to look at it. That cost may well exceed the value of the electricity, which is a legitimate reason to decide against the whole thing.
+
+## Whether it is worth it for your apartment
+
+Preparation is also the point at which to decide honestly whether to proceed. A typical 800 W setup in New York City produces roughly **400 to 900 kWh a year**. That is a wide band because location dominates: a high-floor, south-facing balcony produces about **three times** what a low-floor, north-facing one does. Con Edison’s SC-1 all-in marginal rate is about **$0.34/kWh**, so the value of that output is what you avoid buying, not a credit — the SUNNY Act exempts these devices from net metering.
+
+Kits for a typical 800 W system run about **$850** budget, **$1,200** mid-range and **$1,600** premium. Add anything your building requires on top: an electrician for an outdoor receptacle, an engineer’s letter for the board, a certificate of insurance. The [cost and payback page](https://balco.nyc/balcony-solar-cost) works the arithmetic through.
+
+Run your own numbers on the [calculator](https://balco.nyc/), and read [how we get them](https://balco.nyc/methodology). Then consider the cases where the sensible answer is no. A north-facing balcony on a low floor, hemmed in by an adjacent building, with no outdoor outlet and a board that will require an alteration agreement, is a project where the costs are real and immediate and the savings are small and slow. There is no shame in concluding that this does not work for your apartment. It works very well for some, and poorly for others, and the difference is mostly the direction your balcony faces.
+
+## Common questions
+
+**Can I install a balcony solar panel in New York City right now?**
+
+Not yet. New York's SUNNY Act, which would exempt plug-in solar devices up to 1,200 watts of AC inverter output from interconnection and net-metering requirements, passed both legislative chambers in 2026 but was still awaiting Governor Hochul's signature as of September 2026, and it takes effect on the ninetieth day after it becomes law. Until then, installation should wait. You can usefully spend that time getting written building permission, checking your outlet and railing, and choosing a certified kit.
+
+**Do I need an electrician to install balcony solar?**
+
+A certified plug-in kit is designed to connect to an existing outdoor outlet without an electrician. You do need a licensed electrician if your balcony has no weather-rated receptacle, if you cannot identify which breaker feeds it, or if the outlet trips repeatedly, lacks a ground, or looks damaged. In a New York City apartment building, adding an outdoor receptacle is also usually a building alteration requiring the landlord's or board's approval.
+
+**Will balcony solar power my apartment during a blackout?**
+
+No. Grid-tied microinverters must have anti-islanding protection, which shuts the inverter down within a fraction of a second when grid power disappears. This exists so the system cannot energise wiring that a utility worker or firefighter believes is dead. A standard plug-in solar kit has no battery, so it produces nothing at all during an outage.
+
+**Can I plug a balcony solar panel into an extension cord or power strip?**
+
+No. Cords, strips and adapters are built to carry power one way to a load, and they add connections and a fuse or breaker that cannot measure the true current on a circuit once solar is feeding into it. A certified system should plug directly into a properly rated, weather-protected wall receptacle using the manufacturer's own cord. Anything else risks overheating wiring without tripping any protective device.
+
+**Does the SUNNY Act mean my landlord or co-op board has to allow balcony solar?**
+
+No. The SUNNY Act removes the utility-side barrier by exempting compliant devices from interconnection and net-metering requirements; it does not create a right to install one. New York renters still need their landlord's permission, co-op and condo residents still need board approval, and buildings that are individual landmarks or sit in historic districts may need Landmarks Preservation Commission review.
+
+**Can I put a solar panel on my fire escape?**
+
+No. The New York City Fire Code requires fire escapes, and access to them, to be continuously maintained free of obstructions, and that applies to panels, brackets and cables just as it does to furniture and plants. The same rule covers any required means of egress, including a window used as an escape route. A balcony that doubles as a fire escape balcony is not a viable site for solar.
+
+## Sources
+
+- [NY State Senate Bill 2025-S8512C (SUNNY Act)](https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C): the definition of a portable solar generation device, the 1,200 W AC limit, certification and fire-code conditions, and the ninetieth-day effective date.
+- [New York legislature passes SUNNY Act plug-in solar legislation](https://pv-magazine-usa.com/2026/06/01/new-york-legislature-passes-sunny-act-plug-in-solar-legislation/): the absence of renter and HOA protections in the New York bill, and the contrasting New Jersey bill.
+- [UL Solutions debuts a testing and certification framework for plug-in solar](https://www.ul.com/news/ul-solutions-debuts-testing-and-certification-framework-safer-plug-solar-across-united-states): UL 3700, published December 2025, covering the complete plug-in system rather than the inverter alone.
+- [Safety considerations for plug-in photovoltaic systems](https://www.ul.com/insights/safety-considerations-plug-photovoltaic-pipv-systems): the three risk categories: overcurrent protection, touch safety and ground-fault protection.
+- [UL Solutions flags safety risks in US plug-in solar](https://www.pv-tech.org/us-plug-in-solar-questions-remain-over-safety-certifications-and-regulation/): cord-and-plug connections bypassing code review, and UL's finding that tested products did not meet UL 3700.
+- [Balcony PV enters the code conversation](https://iaeimagazine.org/columns/certification-insights/balcony-pv-enters-the-code-conversation/): NEC Article 705 was written for hard-wired PV and does not cleanly cover cord-and-plug systems.
+- [NYC Fire Code 2022, Chapter 10 — Means of Egress](https://up.codes/viewer/new_york_city/nyc-fire-code-2022/chapter/10/means-of-egress): the requirement that means of egress be continuously maintained free of obstructions.
+- [NYC Landmarks Preservation Commission — technical resources](https://www.nyc.gov/site/lpc/applications/technical-resources.page): LPC review of exterior work on designated buildings and in historic districts.
+
+---
+
+# Is plug-in solar legal in New York?
+
+URL: https://balco.nyc/sunny-act  
+Last reviewed: 2026-09-23
+
+Not yet — but the barrier is one signature away. New York requires utility approval for any device that pushes power back into a household circuit, and no utility currently grants it for plug-in solar. The SUNNY Act removes that requirement for compliant devices up to 1,200 W. It has passed both chambers of the Legislature and is waiting on the Governor. This page tracks where it stands, what it will change, and — the part most coverage skips — what it deliberately will not change.
+
+## Where the bill stands
+
+> **As of September 4, 2026: passed, unsigned.** The Solar Up Now New York Act passed the State Senate unanimously in April 2026 and cleared the Assembly in late May 2026. It now sits with Governor Hochul, who has until the end of 2026 to sign or veto it. It takes effect 90 days after signing.
+
+The bill is S8512C in the Senate and A9111C in the Assembly — the “C” amendment is the version that passed, which matters if you are reading the text rather than the summaries. It was sponsored by Senator Liz Krueger and Assemblymember Emily Gallagher.
+
+Nothing about your legal position changes until it is signed. If you are reading this after the Governor has acted, the date above tells you how stale this page is; we review it whenever the bill's status moves.
+
+## What the Act changes
+
+Today, New York treats a plug-in solar device the same way it treats a rooftop array: it is a generator connected to the grid, so it needs an interconnection agreement with your utility. That process is designed for permanent installations with an electrician, a permit and a meter change. For an appliance you hang on a railing and plug into an outlet, it is a wall.
+
+The SUNNY Act removes that wall for small devices. Specifically, it:
+
+- exempts compliant plug-in solar of up to 1,200 W AC output from interconnection and net-metering requirements;
+
+- bars utilities from requiring you to obtain approval to use one;
+
+- bars utilities from charging a fee tied to using one.
+
+What it does not do is pay you. These devices are not net-metered, so power you generate and do not use is not credited — it simply flows to your neighbours. The economics come entirely from offsetting what you would otherwise buy, which is why the value depends so heavily on Con Edison's rate rather than on any incentive.
+
+## What it does not change
+
+> **The Act removes the utility barrier only. It grants no right to install anything.**
+
+This is the most consistently misreported part of the bill, and for most New Yorkers it is the part that decides whether they can actually do this. Roughly two thirds of New York City households rent, and a large share of the rest are in co-ops or condos. In all of those cases the balcony railing, the facade and the window frame are not yours to modify unilaterally.
+
+After the Act is signed you will still need, depending on your building:
+
+- **Renting:** your landlord's permission, and a lease that does not prohibit attaching things to the railing or facade.
+
+- **Co-op:** board approval, usually under the house rules covering alterations and anything visible from the street.
+
+- **Condo:** board approval, since a balcony is typically a limited common element rather than your own property.
+
+- **Landmarked or historic district buildings:** potentially Landmarks Preservation Commission review for anything that changes the appearance of a facade.
+
+None of that is affected by the SUNNY Act. If you want one of these, the conversation with your building is the real work, and it can start now.
+
+## The limits that apply
+
+| Requirement | What it means in practice |
+|---|---|
+| 1,200 W AC inverter output | The cap is on the inverter, not the panels. A system with more panel wattage is fine so long as the inverter's AC output stays at or under the cap. A typical balcony setup is 400–800 W, comfortably inside it. |
+| Accredited-lab certification | The device must be certified by a laboratory such as UL. Imported kits sold without a recognised certification will not qualify, however cheap they are. |
+| State fire code compliance | Applies to the device and to how it is mounted. Balcony fire-egress rules still apply: a panel must not block a fire escape or an egress path. |
+| 90 days after signing | The Act is not in force the day it is signed. Count 90 days forward from the signature. |
+
+## When you could actually install
+
+Take the two dates together. The Governor has until the end of 2026 to act, and the Act takes effect 90 days after she does. A signature in late 2026 puts the earliest lawful residential installation in **early 2027**. A signature earlier than that pulls the date forward by the same amount; a veto resets the clock to the next legislative session.
+
+That gap is not dead time. Getting building permission, working out which railing actually faces the sun, and choosing a certified kit are all things you can do before the law changes — and the first of those is usually the slowest.
+
+## How New York compares
+
+New York is not first. Utah passed the first plug-in solar law in 2025, carving out an exemption for systems up to 1.2 kW. By September 2026 eight more states had signed comparable laws: Maine, Virginia, Colorado, Maryland, Connecticut, New Hampshire, Vermont and, on 1 September, New Jersey. That makes nine. New York would be the tenth unless California gets there first: its SB 868 has also passed both houses and awaits Governor Newsom’s decision, due by 30 September 2026. Five are already in force (Utah, Maine, Colorado, Maryland and Vermont); Connecticut’s takes effect on 1 October 2026, Virginia’s and New Hampshire’s on 1 January 2027, and New Jersey’s on 1 March 2027. Most use the same 1,200 W threshold New York has chosen; Colorado allows 1,920 W.
+
+Several go further than New York on permission. New Jersey bars landlords from stopping tenants who pay their own electric bill, stops homeowners’ associations enforcing bans on exterior placement, and stops towns banning the devices; Vermont lets tenants proceed after ten days’ notice; Virginia bars larger landlords from prohibiting them. Reporting on which states have *signed* versus merely *passed* a bill, and on when each law takes effect, is inconsistent, so treat any list you read — including this one — as needing a date and a check against the state’s own legislature page. balco.nyc keeps a [sourced, dated table of every state](https://balco.nyc/states).
+
+Germany is the usual reference point for what happens next: *Balkonkraftwerk* installations there are counted in the millions, following rule changes that made registration trivial. Germany also granted tenants a right to install, which is the step New York has explicitly not taken.
+
+The practical consequence of the state-by-state patchwork is that compliance does not travel. A kit sold as legal in one state is not automatically legal here, and the certification requirement is where most imported hardware fails.
+
+## What to do now
+
+If you are trying to work out whether this is worth pursuing for your apartment, the binding constraint is almost never the law — it is whether your balcony gets enough sun. A high-floor south-facing railing can produce roughly three times what a low-floor north-facing one does, and in a city this dense the buildings across the street matter as much as the direction you face — [which is the question worth answering first](https://balco.nyc/balcony-sunlight). If the sun is there, the next two are [what a kit costs and how long it takes to pay back](https://balco.nyc/balcony-solar-cost) and [what installing one actually involves](https://balco.nyc/install-balcony-solar).
+
+[Run your address through the calculator](https://balco.nyc/) to see what an 800 W system would produce where you actually live, modelled against the real shadows of your block. If the answer is small, the legal question is moot for you. If it is large, start the conversation with your landlord or board now, because that is the part with the longest lead time.
+
+## Common questions
+
+**Is plug-in solar legal in New York right now?**
+
+Not yet. New York requires utility approval for any device that pushes power back into a household circuit, and Con Edison does not currently grant it for plug-in solar. The SUNNY Act removes that requirement, but it has not been signed. Until it is, installing a plug-in solar device in New York means operating outside your utility's interconnection rules.
+
+**What is the SUNNY Act?**
+
+The Solar Up Now New York Act (S8512C / A9111C) exempts compliant plug-in solar devices of up to 1,200 watts AC inverter output from New York's interconnection and net-metering requirements, and bars utilities from requiring approval or charging a fee for them. It was sponsored by Senator Liz Krueger and Assemblymember Emily Gallagher.
+
+**Has the Governor signed the SUNNY Act?**
+
+As of September 4, 2026, no. The bill passed the Senate unanimously in April 2026 and the Assembly in late May 2026, and is awaiting Governor Hochul's signature. She has until the end of 2026 to sign or veto it.
+
+**When could I actually install a balcony solar panel in New York?**
+
+The Act takes effect 90 days after it is signed. If it is signed in late 2026, the realistic opening for a legal residential installation is early 2027.
+
+**Does the SUNNY Act give me the right to install a panel on my balcony?**
+
+No. This is the most commonly misunderstood part of the bill. The Act removes the utility barrier only. It does not override a lease, a co-op's house rules, a condo board's bylaws, or a landlord's decision. If you rent, or live in a co-op or condo, you will still need permission from whoever controls the facade or railing.
+
+**What size system does the SUNNY Act allow?**
+
+Up to 1,200 watts of AC inverter output. The device must comply with New York's fire code and be certified by an accredited testing laboratory such as UL. The panel wattage can exceed 1,200W as long as the inverter's AC output does not.
+
+**Is balcony solar legal anywhere else in the US?**
+
+Yes. Utah passed the first plug-in solar law in 2025, and by September 2026 Maine, Virginia, Colorado, Maryland, Connecticut, New Hampshire, Vermont and New Jersey had signed comparable laws, nine states in all; five are already in force. New York and California have each passed a bill that awaits its governor. The rules differ by state, so a device that is compliant in one is not automatically compliant in another.
+
+## Sources
+
+- [NY State Senate — Bill S8512](https://www.nysenate.gov/legislation/bills/2025/S8512): the bill text and its status history — the primary source for anything on this page.
+- [Senate unanimously passes the SUNNY Act](https://www.nysenate.gov/newsroom/press-releases/2026/liz-krueger/senate-unanimously-passes-sunny-act): April 2026 passage.
+- [SUNNY Act passes the NYS Legislature](https://www.nysenate.gov/newsroom/press-releases/2026/liz-krueger/sunny-act-passes-nys-legislature-bringing-plug-solar-one): passage of both chambers.
+- [New York legislature passes SUNNY Act plug-in solar legislation](https://pv-magazine-usa.com/2026/06/01/new-york-legislature-passes-sunny-act-plug-in-solar-legislation/): the 1,200 W cap and certification requirement.
+- [New Yorkers can soon hang solar panels from their windows, if Gov. Hochul approves](https://gothamist.com/news/new-yorkers-can-soon-hang-solar-panels-from-their-windows-if-gov-hochul-approves): NYC context.
+- [Balcony solar plug-in power awaits Hochul's signature](https://www.newyorkalmanack.com/2026/07/balcony-solar-plug-in-power-hochul/): status through July 2026.
+- [Where does balcony solar stand in your state?](https://www.canarymedia.com/articles/solar/states-passing-balcony-solar-laws): state-by-state tracker — which states have signed and which are still pending.
+- [New Jersey Legislature — S2368 (P.L.2026, c.82)](https://www.njleg.state.nj.us/bill-search/2026/S2368): New Jersey’s plug-in solar law: signed 1 September 2026, effective 1 March 2027, with tenant, association and municipal protections.
+- [Vermont Legislature — S.202 (Act 149)](https://legislature.vermont.gov/bill/status/2026/S.202): Vermont’s plug-in solar law, in force from 1 July 2026, including the tenant-notice provision.
+- [Virginia LIS — HB 395 (Chapter 1052)](https://lis.virginia.gov/bill-details/20261/HB395): Virginia’s plug-in solar law, effective 1 January 2027, including the landlord provision.
+- [California Legislative Information — SB 868](https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202520260SB868): California’s plug-in solar bill, passed by both houses and presented to the Governor on 31 August 2026.
+
+---
+
+# What is balcony solar?
+
+URL: https://balco.nyc/what-is-balcony-solar  
+Last reviewed: 2026-09-23
+
+Balcony solar, also called plug-in solar, is a small photovoltaic system — usually one to four panels on a balcony railing, facade or window — connected to a microinverter that plugs into an ordinary wall outlet. The power flows into your apartment’s circuits and is used by whatever is switched on. It is not off-grid: it shuts down in a blackout. Output is typically capped at 800–1,200 watts AC. Several US states allow it; New York does not yet.
+
+## What a balcony solar system actually is
+
+A balcony solar kit is a complete, self-contained generator small enough to be carried up in a lift and installed without an electrician. Four parts, and no more than four:
+
+- **Panels.** Usually one to four rigid or semi-flexible modules, hung from a railing, clamped to a parapet, bolted to a facade or mounted outside a window.
+
+- **A microinverter.** A weatherproof box, roughly the size of a hardback book, that converts the panels’ DC output into grid-frequency AC and limits how much it delivers.
+
+- **A cable and plug.** A single AC lead ending in a standard household plug, or in a locking connector on systems designed for a dedicated socket.
+
+- **Mounting hardware.** Rail hooks, ballasted feet or brackets. Usually the part that decides whether a given balcony is workable at all.
+
+What it is *not* is worth stating as plainly. It is not a rooftop array made small, and it is not a camping power station. Those three things behave very differently:
+
+|  | Balcony solar | Rooftop solar | Portable panel and battery |
+|---|---|---|---|
+| How it connects | A plug into an existing outlet | Hardwired to the electrical panel by a licensed contractor, under a utility interconnection agreement | Not connected to the building at all — it charges a battery you plug appliances into |
+| Who installs it | The resident, in an afternoon | A contractor, over days, with permits and inspection | The resident, in minutes |
+| Scale | Hundreds of watts to about 1.2 kW AC | Several kilowatts | Whatever the battery can hold |
+| Works in a blackout | No — it shuts off automatically | No, unless paired with a battery and transfer switch | Yes; that is the whole point of it |
+| Surplus sold back | Where legal, generally earns nothing | Credited under net metering rules | Nothing to sell — it never touches the grid |
+
+## How the electricity gets into your apartment
+
+The microinverter is the whole trick. It is a *grid-following* device: it reads the voltage and frequency already present at the outlet, locks onto that 60 Hz waveform, and pushes current out in phase with it. It cannot create a supply of its own. It can only add to one that is already there.
+
+Once that current is on the branch circuit, ordinary physics takes over. Electricity flows to the nearest load, so a fridge on the same circuit draws from the inverter before it draws from the street. Your meter simply records less coming in. There is no switching, no controller, and nothing for you to operate.
+
+If the grid goes down, the inverter loses its reference waveform and stops within about two seconds. This is called anti-islanding, and it is a safety requirement, not a defect: it stops your panels from energising a line that a utility crew believes is dead. The practical consequence for you is that **balcony solar gives you no backup power whatsoever**. In a blackout it is inert.
+
+The wattage caps you see in legislation come from the outlet, not the panels. At 120 volts, 1,200 watts is ten amps — a load a normal household branch circuit and its breaker can absorb without anyone recalculating anything. Certification standards for this equipment cover the same ground: anti-islanding behaviour, voltage and frequency trip limits, and the safety of a plug that is energised from both ends.
+
+## Where the savings come from
+
+A balcony system saves money in exactly one way: by displacing electricity you would otherwise have bought. There is no second mechanism.
+
+In Con Edison territory the number that matters is the all-in marginal rate — supply, delivery and surcharges together — which balco.nyc models at **$0.34/kWh**. Every kilowatt-hour your panels produce *and you consume at that moment* is worth that much. Every kilowatt-hour produced while the apartment is empty flows out to the grid and, in the states that have legalised these devices, generally earns nothing at all.
+
+That makes self-consumption the dominant variable, and it is a behavioural one rather than a technical one. A refrigerator, a router, a standby television and a hot-water recirculation pump run through the middle of the day whether or not you are home, and they absorb a real share of a small system’s output. Beyond that baseload, the value depends on who is in the flat at noon.
+
+For sizing, balco.nyc models a typical 800 W NYC system at roughly **400–900 kWh a year**. That is a wide band on purpose. A high-floor, south-facing balcony produces about **three times** what a low-floor, north-facing one does, and the difference between those two cases is far larger than the difference between a budget kit and a premium one.
+
+> **One thing balcony solar can never touch: Con Edison’s fixed monthly customer charge, about $20, is billed whether you use any electricity or not. It is excluded from the $0.34/kWh marginal rate, and no amount of generation reduces it.**
+
+Kit costs for a typical 800 W NYC setup run about **$850 budget, $1,200 mid-range, $1,600 premium**. To see the yield and payback for a specific address, floor and facing direction rather than a typical one, use the [calculator](https://balco.nyc/), or read the [cost and payback breakdown](https://balco.nyc/balcony-solar-cost).
+
+## Whether it is legal where you live
+
+**Plug-in solar is not yet legal in New York.** The obstacle is not a fire code or a building rule — it is that New York requires anyone connecting a generator to the grid to sign an interconnection agreement with their utility, and no tariff recognises a device you plug into a wall socket. There is no compliant path to install one today.
+
+The bill that would change this is the SUNNY Act (S8512C / A9111C). It would exempt compliant devices producing up to **1,200 W of AC inverter output** from interconnection and net-metering requirements, and bar utilities from charging fees for them. It passed the Senate unanimously in April 2026 and the Assembly in late May 2026. It now awaits Governor Hochul’s signature; she has until the end of 2026 to act, and it would take effect 90 days after signing.
+
+What the SUNNY Act does not do is as important as what it does. **It removes the utility barrier only. It grants no right to install anything.** A renter still needs the landlord’s permission, and a co-op or condo resident still needs the board’s. The [SUNNY Act page](https://balco.nyc/sunny-act) covers the text, the timeline and what would still stand in your way.
+
+Elsewhere the picture has moved quickly. Utah passed the first plug-in solar law in 2025, and by September 2026 Maine, Virginia, Colorado, Maryland, Connecticut, New Hampshire, Vermont and New Jersey had signed comparable laws — nine states, most using the same 1,200 W threshold. New York, whose SUNNY Act has passed both chambers and awaits the Governor's signature, and California, whose SB 868 awaits Governor Newsom, could be next. [The rules in every state](https://balco.nyc/states) are listed with their bills and dates.
+
+## Germany, the case everyone points to
+
+Balcony solar is not a new idea being tried out. It is a mature German consumer product, sold in supermarkets, that the United States is now importing along with its regulatory shape.
+
+- German rules cap the inverter’s **AC output at 800 watts** while allowing considerably more panel capacity behind it — the inverter simply clips the peak, which raises output in dim conditions without ever exceeding the limit.
+
+- Since the 2024 Solarpaket I reforms, an owner registers the system in the Bundesnetzagentur’s Marktstammdatenregister online, in minutes. No grid-operator approval is involved.
+
+- More than **1.3 million** systems were recorded as operating in that register by mid-2026, with roughly 430,000 added during 2025 alone.
+
+- Since October 2024, German law treats a balcony system as a privileged modification: landlords and owners’ associations can no longer refuse a reasonable request without documented grounds.
+
+Two cautions before reading German experience across. German households run on 230 V circuits, which changes the current a given wattage draws. And Germany paired legalisation with a tenant’s right to install — the step New York has explicitly not taken.
+
+## What balcony solar is bad at
+
+It is a modest device and it is worth being clear about its ceiling.
+
+- **It is at the mercy of your balcony.** Orientation, floor height and the buildings across the street matter more than any equipment choice. In dense Manhattan and downtown Brooklyn, a neighbouring tower can take most of a winter’s production.
+
+- **It gives you no resilience.** Anti-islanding means it goes dark exactly when you might want it most. Backup requires a battery, which is a separate purchase and a separate decision.
+
+- **Surplus is wasted.** Without export compensation, generation that exceeds what your flat is drawing is simply given away.
+
+- **Mounting is a real engineering question in a tall building.** Wind loading on a panel at the fortieth floor is not the same as on a German ground-floor balcony, and the NYC Building Code requires railing components to be designed for wind where the load is significant. This is the point at which many NYC balconies turn out not to work.
+
+- **There is no federal tax credit.** The residential clean-energy credit under Section 25D expired for systems placed in service after 31 December 2025. Balcony solar is bought at full price.
+
+- **Permission is the usual sticking point.** Even after legalisation, a co-op board that objects to the look of a panel from the street can end the conversation.
+
+## How this site estimates output for a specific balcony
+
+Anything you read about balcony solar in general — including everything above — describes a category. What decides whether it is worth it for you is one particular balcony, on one particular floor, facing one particular direction, with particular buildings in front of it.
+
+balco.nyc estimates that case by running an 8,760-hour annual simulation in **NREL’s PVWatts V8**, positioned using **NYC PLUTO** building data, with a custom 3D shadow model of neighbouring buildings within **200 metres**, and emissions converted using the **EPA eGRID2023 NYCW** factor.
+
+The stated accuracy is **±15%**, or ±20% on the client-side fallback path. That figure describes the modelled band, and nothing more.
+
+> **These estimates are modelled, not metered. No installed NYC system has been measured against them, because none can legally be installed yet. Treat the output as a well-constructed simulation, not as a measurement.**
+
+The full method, its inputs and its known weaknesses are set out on the [methodology page](https://balco.nyc/methodology).
+
+## Common questions
+
+**What is balcony solar?**
+
+Balcony solar, also called plug-in solar, is a small photovoltaic system of roughly one to four panels mounted on a balcony railing, facade or window and connected to a microinverter that plugs into a standard household outlet. The electricity it generates flows into the apartment's circuits and is consumed by whatever appliances are running. Systems are typically limited to between 800 and 1,200 watts of AC output.
+
+**How does balcony solar work?**
+
+The panels feed a microinverter that reads the voltage and frequency already present at the wall outlet and pushes matching AC current onto that circuit. Appliances draw from this nearby source before drawing from the grid, so the meter records less imported electricity. Because the inverter needs an existing grid signal to synchronise with, it shuts down automatically within about two seconds if the power goes out.
+
+**Is balcony solar legal in New York?**
+
+No. As of September 2026, New York still requires an interconnection agreement with the utility for any grid-connected generator, and no tariff covers a device plugged into an outlet. The SUNNY Act (S8512C / A9111C) would exempt compliant systems up to 1,200 W AC; it passed both chambers in 2026 and awaits Governor Hochul's signature, taking effect 90 days after she signs.
+
+**Does balcony solar work during a power outage?**
+
+No. Grid-following microinverters require an existing grid waveform to synchronise with, and safety rules require them to stop energising the circuit within about two seconds of an outage so that utility crews are not exposed to a live line. Balcony solar therefore provides no backup power at all. Blackout resilience requires a separate battery system.
+
+**Will I still need my landlord's or co-op board's permission?**
+
+Yes. The SUNNY Act, if signed, would remove the utility's ability to require an interconnection agreement or charge fees, but it grants no right to install anything on a building. Renters would still need landlord approval and co-op or condo residents would still need board approval. Germany added a tenant's right to install in 2024; New York's bill does not include one.
+
+**How much does a balcony solar kit cost, and how much does it produce in New York City?**
+
+A typical 800 W setup costs roughly $850 for a budget kit, $1,200 mid-range, or $1,600 premium, before mounting complications. balco.nyc models annual production for such a system in New York City at roughly 400 to 900 kWh, with a high-floor south-facing balcony producing about three times what a low-floor north-facing one does. These are modelled estimates with a stated accuracy of plus or minus 15%, not metered results.
+
+## Sources
+
+- [NY Senate Bill 2025-S8512 (SUNNY Act)](https://www.nysenate.gov/legislation/bills/2025/S8512): bill text, the 1,200 W AC definition, and the interconnection and net-metering exemptions.
+- [New York legislature passes SUNNY Act plug-in solar legislation](https://pv-magazine-usa.com/2026/06/01/new-york-legislature-passes-sunny-act-plug-in-solar-legislation/): Assembly passage, certification and fire-code conditions, anti-islanding requirement.
+- [Where does balcony solar stand in your state?](https://www.canarymedia.com/articles/solar/states-passing-balcony-solar-laws): state-by-state tracker for which states have signed and which are pending.
+- [How deep-red Utah helped launch a portable plug-in solar movement](https://grist.org/energy/utah-portable-plug-in-solar-law/): Utah HB 340, the first state law, and its 1,200 W AC threshold.
+- [UL Solutions debuts a testing and certification framework for plug-in solar](https://www.ul.com/news/ul-solutions-debuts-testing-and-certification-framework-safer-plug-solar-across-united-states): the UL 3700 certification framework for complete plug-in PV systems.
+- [Barriers to Balcony Solar and Plug-In Distributed Energy Resources in the United States](https://www.mdpi.com/1996-1073/18/8/2132): peer-reviewed survey of US regulatory and code barriers to plug-in PV.
+- [Balkonkraftwerk Marktreport 2026](https://strom-report.com/balkonkraftwerk/): German registration counts — over 1.3 million systems in the Marktstammdatenregister.
+- [Germany grants renters the right to install solar systems on balconies](https://balkon.solar/news/2024/10/17/germany-grants-renters-the-right-to-install-solar-systems-on-balconies/): the October 2024 tenant right to install, which New York's bill does not include.
+- [Expiration and carryforward rules for the Residential Clean Energy Credit](https://www.congress.gov/crs-product/IN12611): Section 25D expiry for systems placed in service after 31 December 2025.

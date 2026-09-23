@@ -838,7 +838,7 @@
         "dateModified": "2026-09-04",
         "license": "https://github.com/lowellbw/balconyc",
         "citation": [
-          { "@type": "CreativeWork", "name": "NREL PVWatts V8", "url": "https://pvwatts.nrel.gov/" },
+          { "@type": "CreativeWork", "name": "NREL PVWatts V8", "url": "https://pvwatts.nlr.gov/" },
           { "@type": "CreativeWork", "name": "NYC PLUTO / MapPLUTO", "url": "https://www.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" },
           { "@type": "CreativeWork", "name": "Con Edison Schedule for Electricity Service (SC-1)", "url": "https://www.coned.com/en/accounts-billing/your-bill/about-con-edisons-rates" },
           { "@type": "CreativeWork", "name": "EPA eGRID2023", "url": "https://www.epa.gov/egrid" },
@@ -1229,7 +1229,7 @@
           <section class="bd-section" aria-labelledby="productionHeading">
             <div class="bd-section-kicker">02 / Output</div>
             <h3 id="productionHeading">Production through the year <span aria-label="in kilowatt-hours">(kWh)</span></h3>
-            <p class="bd-section-lede">Seasonality for the floor and wall you pinned.</p>
+            <p class="bd-section-lede" id="productionLede">Seasonality for the floor and wall you pinned.</p>
             <div class="bd-chart-wrap">
               <div class="chart-container" id="monthlyChart" role="list" aria-label="Estimated monthly solar production"></div>
               <p class="bd-chart-note">Taller bars mark your strongest solar months.</p>
@@ -1480,7 +1480,8 @@
   <div class="container">
     <span class="section-eyebrow">Guides</span>
     <h2>Sources and practical guides</h2>
-    <p class="guides-lede">Details on New York law, sunlight, installation, kit prices, and the electricity rate used in the estimate.</p>
+    <p class="guides-lede">How balcony solar output is estimated, what it saves, and the rules in New York and every other state.</p>
+    <!-- shell:guides -->
     <div class="guides-grid">
       <a class="guide-card" href="/sunny-act">
         <h3>Is plug-in solar legal in New York?</h3>
@@ -1490,10 +1491,6 @@
         <h3>What is balcony solar?</h3>
         <p>Panels, microinverters, the outlet, and the apartment circuit.</p>
       </a>
-      <a class="guide-card" href="/balcony-sunlight">
-        <h3>Does my balcony get enough sun?</h3>
-        <p>How direction, floor height, and nearby buildings affect output.</p>
-      </a>
       <a class="guide-card" href="/install-balcony-solar">
         <h3>How do I put a solar panel on my balcony?</h3>
         <p>Building permission, outlet safety, mounting, and wind loads.</p>
@@ -1502,11 +1499,17 @@
         <h3>What does a balcony solar kit cost in NYC?</h3>
         <p>Current kit prices and payback at four output levels.</p>
       </a>
+      <a class="guide-card" href="/balcony-sunlight">
+        <h3>Does my balcony get enough sun?</h3>
+        <p>How direction, floor height, and nearby buildings affect output.</p>
+      </a>
       <a class="guide-card" href="/electricity-rate">
         <h3>What does a kilowatt-hour actually cost in NYC?</h3>
-        <p>How supply, delivery, and surcharges add up to about 34&cent;/kWh.</p>
+        <p>How supply, delivery, and surcharges add up to about 34¢/kWh.</p>
       </a>
     </div>
+    <p class="guides-more"><a href="/guides">All guides &rarr;</a> &middot; <a href="/states">Plug-in solar rules by state &rarr;</a></p>
+    <!-- /shell:guides -->
   </div>
 </section>
 
@@ -1525,9 +1528,9 @@
      an address resolves, so it is injected on demand by loadSceneStack(). -->
 <script src="/js/analytics.js?v=61ea8fc9"></script>
 <script src="/js/config.js?v=d7cc43a4"></script>
-<script src="/js/solar-api.js?v=3ad62fb7"></script>
+<script src="/js/solar-api.js?v=bb249f24"></script>
 <script src="/js/sun-position.js?v=4c568613"></script>
-<script src="/js/regions.js?v=ac96a56d"></script>
+<script src="/js/regions.js?v=83d7484e"></script>
 <script src="/js/calc-params.js?v=3b7fa934"></script>
 <script src="/js/city-hero.js?v=0441c4cf" defer></script>
 <script>
@@ -2178,6 +2181,10 @@ async function loadUSAddress() {
     return;
   }
   currentRegion = profile;
+  // Fetched now, used only if PVWatts does not answer.
+  Regions.loadFallback().then(function(fb) {
+    if (currentRegion === profile) profile.fallback = fb.states[state] || null;
+  }).catch(function() {});
   setCustomizeInputs(regionDefaults());
 
   var addrShort = SolarState.address ? SolarState.address.split(',')[0] : '';
@@ -2837,7 +2844,9 @@ function updateEstimateBanner(r) {
   if (!banner || !quality) return;
   const notes = [];
 
-  if (!r.usedPVWatts) {
+  if (!r.usedPVWatts && r.fallbackCity) {
+    notes.push('PVWatts did not answer, so production is scaled from our published PVWatts run for ' + r.fallbackCity + ', the largest city in your state. Treat it as rough, and try again later for your exact location.');
+  } else if (!r.usedPVWatts) {
     notes.push('PVWatts was unavailable, so production uses our fallback model (about ±20%).');
   }
   if (r.mode === 'us') {
@@ -2977,13 +2986,18 @@ function showResults(r, inputs) {
 /** The "Where you are" block and the rate basis line in Adjust assumptions. */
 function renderPlace(r) {
   const region = currentRegion || Regions.nycProfile();
-  const cents = (r.electricityRate * 100).toFixed(r.electricityRate * 100 < 10 ? 1 : 0);
+  const cents = (r.electricityRate * 100).toFixed(1).replace(/\.0$/, '');
   const basis = document.getElementById('custRateBasis');
   const rateInput = document.getElementById('custRate');
   if (rateInput) rateInput.placeholder = (region.electricityRate * 100).toFixed(1).replace(/\.0$/, '');
   if (basis) basis.textContent = region.mode === 'us'
     ? region.stateName.replace(/^the /, '') + '\u2019s average residential electricity price'
     : 'Con Edison SC-1';
+
+  const lede = document.getElementById('productionLede');
+  if (lede) lede.textContent = region.mode === 'us'
+    ? 'Seasonality for the floor and direction you described.'
+    : 'Seasonality for the floor and wall you pinned.';
 
   const place = document.getElementById('bdPlace');
   if (!place) return;

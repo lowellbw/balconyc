@@ -442,13 +442,8 @@ describe('Content pages and crawl surface', () => {
     assert(hostRules.length === 0, `vercel.json must not redirect by host; found ${JSON.stringify(hostRules)}`);
   });
 
-  it('keeps every content page reachable from the homepage', () => {
-    // An orphan page is a page search engines discover late and users never do.
-    for (const spec of specs) {
-      assert(index.includes(`/${spec.slug}"`) || index.includes(`/${spec.slug}#`),
-        `nothing on the homepage links to /${spec.slug}`);
-    }
-  });
+  // Reachability now covers every generated page: see tests/site.test.js
+  // ("puts every indexable page within two clicks of the homepage").
 });
 
 describe('Analytics', () => {

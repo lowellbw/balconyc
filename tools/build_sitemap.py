@@ -16,6 +16,10 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 CORE = [
     ("index.html", "https://balco.nyc/", "weekly", "1.0"),
     ("methodology.html", "https://balco.nyc/methodology", "monthly", "0.8"),
+    ("guides.html", "https://balco.nyc/guides", "weekly", "0.8"),
+    ("states.html", "https://balco.nyc/states", "weekly", "0.9"),
+    ("nyc.html", "https://balco.nyc/nyc", "monthly", "0.8"),
+    ("about.html", "https://balco.nyc/about", "monthly", "0.5"),
 ]
 CONTENT_PRIORITY = "0.8"
 CONTENT_CHANGEFREQ = "monthly"
@@ -41,17 +45,28 @@ def git_date(path):
 def entries():
     out = []
     for f, url, freq, pri in CORE:
+        if not (ROOT / f).exists():
+            continue                       # a hub that has not been built yet
         d = page_reviewed(f) or git_date(f)
         if not d:
             sys.exit(f"{f} has no git history; commit it before building the sitemap")
         out.append((url, d, freq, pri))
     for spec_path in sorted((ROOT / "content").glob("*.json")):
         spec = json.loads(spec_path.read_text(encoding="utf-8"))
+        if spec.get("noindex"):
+            continue
         slug = spec["slug"]
         freq, pri = FREQ_OVERRIDE.get(slug, (CONTENT_CHANGEFREQ, CONTENT_PRIORITY))
         # the reviewed date is the honest lastmod: it is when a person last
         # checked the claims, not when a byte moved
         out.append((f"https://balco.nyc/{slug}", spec["reviewed"], freq, pri))
+    # Generated state pages list themselves (and their review dates) in
+    # data/state-pages.json; noindexed ones are left out.
+    index = ROOT / "data" / "state-pages.json"
+    if index.exists():
+        for page in json.loads(index.read_text(encoding="utf-8")):
+            if page.get("indexable", True):
+                out.append(("https://balco.nyc" + page["url_path"], page["reviewed"], "monthly", "0.7"))
     return out
 
 

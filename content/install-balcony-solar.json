@@ -3,12 +3,21 @@
   "title": "How do I put a solar panel on my balcony? &middot; balco.nyc",
   "og_title": "How do I put a solar panel on my balcony?",
   "breadcrumb": "Installing balcony solar",
+  "cluster": "legal",
+  "card_title": "How do I put a solar panel on my balcony?",
+  "card": "Building permission, outlet safety, mounting, and wind loads.",
+  "llms": "permission, outlet and circuit checks, mounting and wind loading, the electrical risks, and NYC egress rules.",
+  "related": [
+    "sunny-act",
+    "what-is-balcony-solar",
+    "balcony-sunlight"
+  ],
   "description": "What installing balcony solar in an NYC apartment involves: permission, the outlet and circuit, mounting and wind, and why to wait for the SUNNY Act.",
   "eyebrow": "Practical guide",
   "h1": "How do I put a solar panel on my balcony?",
   "lede": "A balcony solar setup is two or three panels clamped or ballasted on your railing, wired to a small microinverter whose cord plugs into an ordinary 120-volt outlet. The physical work is an afternoon. In New York, hold off: plug-in solar stays outside the rules until the SUNNY Act is signed and takes effect ninety days later. Spend the wait getting written building permission, checking your outlet, circuit and railing, and choosing a certified kit.",
   "date_label": "Last reviewed",
-  "reviewed": "2026-09-04",
+  "reviewed": "2026-09-23",
   "reviewed_human": "September 4, 2026",
   "published": "2026-09-04",
   "reading_time": "~9 minutes",
@@ -32,7 +41,7 @@
     {
       "id": "permission",
       "toc": "Permission is the long pole, not the wiring",
-      "html": "        <section id=\"permission\">\n  <h2><span class=\"sec-num\">3</span>Permission is the long pole, not the wiring</h2>\n  <p>In a New York City apartment building, the electrical work is trivial and the approvals are not. Start here, because a refusal ends the project before you have spent anything.</p>\n  <ul>\n    <li><strong>Renters.</strong> You need your landlord&rsquo;s permission, in writing. The SUNNY Act contains no tenant protections &mdash; nothing in it prevents a landlord from saying no. New Jersey&rsquo;s balcony solar bill, which passed its legislature in June 2026 and is also awaiting a governor&rsquo;s signature, does include protections for tenants and for co-op and condo residents. New York&rsquo;s does not.</li>\n    <li><strong>Co-op and condo residents.</strong> Expect the board, and expect an alteration agreement. Boards commonly ask for a certificate of insurance, a description of the mounting method, and an undertaking to restore the balcony. Some will want a licensed engineer&rsquo;s letter on the attachment.</li>\n    <li><strong>Landmarked buildings and historic districts.</strong> The Landmarks Preservation Commission reviews exterior work on designated buildings. LPC has broadened the range of solar installations eligible for staff-level review, but visibility from a public thoroughfare remains the deciding factor, and a panel hung on a street-facing railing is about as visible as it gets.</li>\n  </ul>\n  <p>When you ask, ask specifically. A vague request to &ldquo;put up solar&rdquo; invites a vague refusal. Name the product, the mounting method, whether anything is drilled, the total weight, how it is removed, and who carries the liability. Offer to place it where it is not visible from the street. Get the answer in writing and keep it.</p>\n</section>"
+      "html": "        <section id=\"permission\">\n  <h2><span class=\"sec-num\">3</span>Permission is the long pole, not the wiring</h2>\n  <p>In a New York City apartment building, the electrical work is trivial and the approvals are not. Start here, because a refusal ends the project before you have spent anything.</p>\n  <ul>\n    <li><strong>Renters.</strong> You need your landlord&rsquo;s permission, in writing. The SUNNY Act contains no tenant protections &mdash; nothing in it prevents a landlord from saying no. New Jersey&rsquo;s law, signed on 1 September 2026 and in effect from 1 March 2027, does protect tenants who pay their own electric bill and bars homeowners&rsquo; and condo associations from enforcing bans on exterior placement. New York&rsquo;s bill does not.</li>\n    <li><strong>Co-op and condo residents.</strong> Expect the board, and expect an alteration agreement. Boards commonly ask for a certificate of insurance, a description of the mounting method, and an undertaking to restore the balcony. Some will want a licensed engineer&rsquo;s letter on the attachment.</li>\n    <li><strong>Landmarked buildings and historic districts.</strong> The Landmarks Preservation Commission reviews exterior work on designated buildings. LPC has broadened the range of solar installations eligible for staff-level review, but visibility from a public thoroughfare remains the deciding factor, and a panel hung on a street-facing railing is about as visible as it gets.</li>\n  </ul>\n  <p>When you ask, ask specifically. A vague request to &ldquo;put up solar&rdquo; invites a vague refusal. Name the product, the mounting method, whether anything is drilled, the total weight, how it is removed, and who carries the liability. Offer to place it where it is not visible from the street. Get the answer in writing and keep it.</p>\n</section>"
     },
     {
       "id": "site-check",

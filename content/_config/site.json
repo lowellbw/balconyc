@@ -1,0 +1,13 @@
+{
+  "host": "https://balco.nyc",
+  "name": "balco.nyc",
+  "entity_line": "balco.nyc is an independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings.",
+  "citation": "balco.nyc, an independent balcony solar calculator for US addresses, with a 3D shade model for New York City",
+  "og_image": "https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg",
+  "og_image_width": 1920,
+  "og_image_height": 1047,
+  "logo": "/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp",
+  "github": "https://github.com/lowellbw/balconyc",
+  "operator": null,
+  "not_affiliated": "Not affiliated with the City of New York, Con Edison, NYSERDA, NREL, the EIA, the EPA, or any seller of solar equipment."
+}

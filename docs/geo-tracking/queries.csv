@@ -1,0 +1,27 @@
+query_id,query,wave,intent
+Q01,balcony solar calculator,baseline,calculate
+Q02,how much would a solar panel on my balcony produce in Chicago,baseline,calculate
+Q03,how much would a balcony solar panel produce in Austin Texas,1,calculate
+Q04,how much would a balcony solar panel save in Seattle,1,calculate
+Q05,how much would a balcony solar panel produce in Denver,1,calculate
+Q06,how to calculate balcony solar output,1,calculate
+Q07,how many kWh does an 800W balcony solar system produce per year,1,calculate
+Q08,balcony solar kWh formula,1,calculate
+Q09,is balcony solar worth it,1,economics
+Q10,balcony solar payback period,1,economics
+Q11,balcony solar tax credit 2026,1,economics
+Q12,balcony solar myths,1,economics
+Q13,which states allow plug-in solar,states,legal
+Q14,is balcony solar legal in New Jersey,states,legal
+Q15,is balcony solar legal in California,states,legal
+Q16,is balcony solar legal in Texas,states,legal
+Q17,is plug-in solar legal in New York,baseline,legal
+Q18,SUNNY Act status,baseline,legal
+Q19,UL 3700,2,legal
+Q20,can renters install balcony solar,2,legal
+Q21,does balcony solar get net metering,2,legal
+Q22,north facing balcony solar worth it,3,calculate
+Q23,balcony solar in winter,3,calculate
+Q24,balcony solar NYC,baseline,nyc
+Q25,co-op board balcony solar NYC,4,nyc
+Q26,balcony vs community solar for renters,5,compare

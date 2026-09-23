@@ -3,6 +3,15 @@
   "title": "What does a kWh actually cost in NYC? &middot; balco.nyc",
   "og_title": "What does a kilowatt-hour actually cost in New York City?",
   "breadcrumb": "What a kWh costs",
+  "cluster": "economics",
+  "card_title": "What does a kilowatt-hour actually cost in NYC?",
+  "card": "How supply, delivery, and surcharges add up to about {{coned.rate_cents}}\u00a2/kWh.",
+  "llms": "why we value self-consumed solar at the all-in marginal rate rather than a supply-only figure, and which number applies to whom.",
+  "related": [
+    "balcony-solar-cost",
+    "balcony-sunlight",
+    "sunny-act"
+  ],
   "description": "Con Edison publishes several rates that answer different questions. Why balco.nyc values self-consumed solar at 34 cents per kWh, and which rate applies to you.",
   "eyebrow": "Rates",
   "h1": "What does a kilowatt-hour actually cost in NYC?",

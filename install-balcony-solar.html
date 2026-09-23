@@ -14,7 +14,7 @@
   <meta property="og:title" content="How do I put a solar panel on my balcony?">
   <meta property="og:description" content="What installing balcony solar in an NYC apartment involves: permission, the outlet and circuit, mounting and wind, and why to wait for the SUNNY Act.">
   <meta property="og:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
-  <meta property="article:modified_time" content="2026-09-04">
+  <meta property="article:modified_time" content="2026-09-23">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How do I put a solar panel on my balcony?">
   <meta name="twitter:description" content="What installing balcony solar in an NYC apartment involves: permission, the outlet and circuit, mounting and wind, and why to wait for the SUNNY Act.">
@@ -35,8 +35,13 @@
         "mainEntityOfPage": "https://balco.nyc/install-balcony-solar",
         "inLanguage": "en-US",
         "datePublished": "2026-09-04",
-        "dateModified": "2026-09-04",
-        "image": "https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg",
+        "dateModified": "2026-09-23",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg",
+          "width": 1920,
+          "height": 1047
+        },
         "author": {
           "@id": "https://balco.nyc/#org"
         },
@@ -101,7 +106,7 @@
       {
         "@type": "FAQPage",
         "@id": "https://balco.nyc/install-balcony-solar#faq",
-        "dateModified": "2026-09-04",
+        "dateModified": "2026-09-23",
         "inLanguage": "en-US",
         "mainEntity": [
           {
@@ -159,7 +164,11 @@
         "@id": "https://balco.nyc/#org",
         "name": "balco.nyc",
         "url": "https://balco.nyc/",
-        "logo": "https://balco.nyc/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp"
+        "logo": "https://balco.nyc/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp",
+        "description": "balco.nyc is an independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings.",
+        "sameAs": [
+          "https://github.com/lowellbw/balconyc"
+        ]
       },
       {
         "@type": "BreadcrumbList",
@@ -173,6 +182,12 @@
           {
             "@type": "ListItem",
             "position": 2,
+            "name": "Guides",
+            "item": "https://balco.nyc/guides"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
             "name": "Installing balcony solar",
             "item": "https://balco.nyc/install-balcony-solar"
           }
@@ -291,6 +306,51 @@
       .doc-content h3 { font-size: 1.08rem; }
       .logo img { height: 52px; }
     }
+
+    /* --- Shared blocks (tools/sitelib.py) --- */
+    .crumbs { margin: 20px 0 -8px; }
+    .crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; font-size: 0.8rem; color: var(--text-muted); }
+    .crumbs li + li::before { content: "\203A"; margin-right: 6px; color: var(--text-muted); }
+    .crumbs a { color: var(--text-sub); text-decoration: none; }
+    .crumbs a[aria-current="page"] { color: var(--text-muted); }
+    .cta-block { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin: 8px 0 40px; padding: 18px 20px; border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 4px; background: #FCFBF7; }
+    .cta-block p { margin: 0; max-width: 56ch; }
+    .cta-button { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 4px; background: var(--accent); color: #fff !important; font-weight: 700; text-decoration: none !important; }
+    .cta-button:hover { background: var(--accent-hover); }
+    .related { margin: 40px 0 0; padding-top: 24px; border-top: 1px solid var(--border); }
+    .related h2 { font-size: 1.1rem; margin-bottom: 12px; }
+    .related ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .related li a { font-weight: 700; }
+    .related li span { display: block; color: var(--text-sub); font-size: 0.88rem; }
+    .footer-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; width: 100%; max-width: 860px; text-align: left; }
+    .footer-links h2 { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+    .footer-links a { display: block; padding: 4px 0; font-size: 0.88rem; color: var(--text-sub); }
+    @media (max-width: 720px) { .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .hub-content { max-width: 760px; padding-bottom: 24px; }
+    .hub-content section { margin-bottom: 36px; }
+    .hub-content h2 { font-size: 1.35rem; margin-bottom: 12px; }
+    .hub-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .hub-list li a { font-weight: 700; }
+    .hub-list li span { display: block; color: var(--text-sub); font-size: 0.92rem; }
+    .table-note { font-size: 0.85rem; color: var(--text-sub); }
+    .tile-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 4px; margin: 8px 0 12px; }
+    .tile { display: flex; align-items: center; justify-content: center; height: 40px; border-radius: 3px; font-size: 0.78rem; font-weight: 700; text-decoration: none !important; color: #1B1A18; background: #EEF0F3; }
+    .tile.s-in_force { background: #7F1D1D; color: #fff; }
+    .tile.s-enacted_not_yet_effective { background: #C2452A; color: #fff; }
+    .tile.s-passed_awaiting_signature { background: #E46740; color: #fff; }
+    .tile.s-pending { background: #F2C9B8; }
+    .tile.s-failed_or_vetoed { background: #D8D2C8; }
+    .tile.s-no_specific_law { background: #EEF0F3; }
+    .tile.s-unknown { background: #fff; border: 1px dashed #C8C2B8; color: #8896AB; }
+    .tile-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 0.82rem; color: var(--text-sub); }
+    .tile-key::before { content: ""; display: inline-block; width: 12px; height: 12px; margin-right: 6px; border-radius: 2px; vertical-align: -1px; background: #EEF0F3; }
+    .tile-key.s-in_force::before { background: #7F1D1D; }
+    .tile-key.s-enacted_not_yet_effective::before { background: #C2452A; }
+    .tile-key.s-passed_awaiting_signature::before { background: #E46740; }
+    .tile-key.s-pending::before { background: #F2C9B8; }
+    .tile-key.s-failed_or_vetoed::before { background: #D8D2C8; }
+    .tile-key.s-unknown::before { background: #fff; border: 1px dashed #C8C2B8; }
+    .state-table td:nth-child(n+3), .state-table th:nth-child(n+3) { text-align: right; white-space: nowrap; }
   </style>
 </head>
 <body>
@@ -299,21 +359,26 @@
   <div class="container">
     <a href="/" class="logo"><img src="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco.nyc" width="400" height="218" decoding="async"></a>
     <div class="nav-links">
-      <a href="/#about">About</a>
-      <a href="/#faq">FAQ</a>
       <a href="/">Calculator</a>
+      <a href="/guides">Guides</a>
+      <a href="/states">States</a>
+      <a href="/methodology">Methodology</a>
+      <a href="/about">About</a>
     </div>
   </div>
 </nav>
 
 <main>
   <div class="container">
+    <!--shared:start-->
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">balco.nyc</a></li><li><a href="/guides">Guides</a></li><li><a href="/install-balcony-solar" aria-current="page">Installing balcony solar</a></li></ol></nav>
+    <!--shared:end-->
     <header class="doc-header">
       <div class="doc-eyebrow"><span class="dot"></span> Practical guide</div>
       <h1>How do I put a solar panel on my balcony?</h1>
       <p class="lede">A balcony solar setup is two or three panels clamped or ballasted on your railing, wired to a small microinverter whose cord plugs into an ordinary 120-volt outlet. The physical work is an afternoon. In New York, hold off: plug-in solar stays outside the rules until the SUNNY Act is signed and takes effect ninety days later. Spend the wait getting written building permission, checking your outlet, circuit and railing, and choosing a certified kit.</p>
       <div class="doc-meta-row">
-        <div><strong>Last reviewed:</strong> <time datetime="2026-09-04">September 4, 2026</time></div>
+        <div><strong>Last reviewed:</strong> <time datetime="2026-09-23">September 23, 2026</time></div>
         <div><strong>Reading time:</strong> ~9 minutes</div>
         <div class="doc-tags">
           <span class="doc-tag">Anti-islanding</span>
@@ -359,11 +424,18 @@
   <p>None of this stops you preparing. Permission, site checks and product selection are the slow parts anyway, and none of them require a panel on your railing.</p>
 </section>
 
+        <!--shared:start-->
+        <aside class="cta-block">
+          <p><strong>Estimate your own balcony.</strong> Enter any US address to see what a panel on your balcony would produce and save, month by month.</p>
+          <a class="cta-button" href="/">Open the calculator &rarr;</a>
+        </aside>
+        <!--shared:end-->
+
         <section id="permission">
   <h2><span class="sec-num">3</span>Permission is the long pole, not the wiring</h2>
   <p>In a New York City apartment building, the electrical work is trivial and the approvals are not. Start here, because a refusal ends the project before you have spent anything.</p>
   <ul>
-    <li><strong>Renters.</strong> You need your landlord&rsquo;s permission, in writing. The SUNNY Act contains no tenant protections &mdash; nothing in it prevents a landlord from saying no. New Jersey&rsquo;s balcony solar bill, which passed its legislature in June 2026 and is also awaiting a governor&rsquo;s signature, does include protections for tenants and for co-op and condo residents. New York&rsquo;s does not.</li>
+    <li><strong>Renters.</strong> You need your landlord&rsquo;s permission, in writing. The SUNNY Act contains no tenant protections &mdash; nothing in it prevents a landlord from saying no. New Jersey&rsquo;s law, signed on 1 September 2026 and in effect from 1 March 2027, does protect tenants who pay their own electric bill and bars homeowners&rsquo; and condo associations from enforcing bans on exterior placement. New York&rsquo;s bill does not.</li>
     <li><strong>Co-op and condo residents.</strong> Expect the board, and expect an alteration agreement. Boards commonly ask for a certificate of insurance, a description of the mounting method, and an undertaking to restore the balcony. Some will want a licensed engineer&rsquo;s letter on the attachment.</li>
     <li><strong>Landmarked buildings and historic districts.</strong> The Landmarks Preservation Commission reviews exterior work on designated buildings. LPC has broadened the range of solar installations eligible for staff-level review, but visibility from a public thoroughfare remains the deciding factor, and a panel hung on a street-facing railing is about as visible as it gets.</li>
   </ul>
@@ -462,6 +534,18 @@
           <p>This page is maintained by <a href="/">balco.nyc</a>, an independent balcony-solar calculator. It is not legal, electrical or engineering advice. Where it says to consult a licensed electrician or an engineer, that is the advice.</p>
         </section>
 
+        <!--shared:start-->
+        <aside class="related" aria-labelledby="relatedHeading">
+          <h2 id="relatedHeading">Related guides</h2>
+          <ul>
+          <li><a href="/sunny-act">Is plug-in solar legal in New York?</a><span>Current bill status, utility rules, and building permission.</span></li>
+          <li><a href="/what-is-balcony-solar">What is balcony solar?</a><span>Panels, microinverters, the outlet, and the apartment circuit.</span></li>
+          <li><a href="/balcony-sunlight">Does my balcony get enough sun?</a><span>How direction, floor height, and nearby buildings affect output.</span></li>
+          <li><a href="/balcony-solar-cost">What does a balcony solar kit cost in NYC?</a><span>Current kit prices and payback at four output levels.</span></li>
+          </ul>
+        </aside>
+        <!--shared:end-->
+
       </article>
     </div>
   </div>
@@ -470,11 +554,33 @@
 <footer>
   <div class="container">
     <a href="/" class="footer-logo"><img src="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
-    <p class="footer-disclaimer">balco.nyc is an independent open tool for estimating balcony solar potential in NYC. Not affiliated with the City of New York, Con Edison, NYSERDA, or NREL. Estimates are educational and may vary by about 15% from real-world production. Plug-in solar is not yet legal for residential use in New York: the SUNNY Act has passed both chambers and awaits the Governor's signature.</p>
+    <nav class="footer-links" aria-label="Site">
+      <div>
+        <h2>Calculator</h2>
+        <a href="/">Estimate your balcony</a>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <a href="/sunny-act">Is plug-in solar legal in New York?</a>
+        <a href="/what-is-balcony-solar">What is balcony solar?</a>
+        <a href="/guides">All guides</a>
+      </div>
+      <div>
+        <h2>By place</h2>
+        <a href="/states">Plug-in solar by state</a>
+        <a href="/sunny-act">New York&rsquo;s SUNNY Act</a>
+      </div>
+      <div>
+        <h2>About</h2>
+        <a href="/about">About balco.nyc</a>
+        <a href="/methodology">Methodology</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </nav>
+    <p class="footer-disclaimer">balco.nyc is an independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings. Not affiliated with the City of New York, Con Edison, NYSERDA, NREL, the EIA, the EPA, or any seller of solar equipment. NYC results carry a modeled uncertainty range of about 15%. Plug-in solar rules vary by state; in New York the <a href="/sunny-act">SUNNY Act</a> has passed both chambers and awaits the Governor&#x27;s signature.</p>
     <p class="footer-meta">&copy; 2026</p>
   </div>
 </footer>
-
 
 <script src="/js/analytics.js?v=61ea8fc9"></script>
 

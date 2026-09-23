@@ -3,6 +3,15 @@
   "title": "Does my balcony get enough sun for solar? &middot; balco.nyc",
   "og_title": "Does my balcony get enough sun for solar panels in NYC?",
   "breadcrumb": "Sunlight and shading",
+  "cluster": "calculate",
+  "card_title": "Does my balcony get enough sun?",
+  "card": "How direction, floor height, and nearby buildings affect output.",
+  "llms": "why there is no hours-of-sun threshold, and why in a dense city obstruction and floor height decide the answer more than which way the balcony faces.",
+  "related": [
+    "electricity-rate",
+    "balcony-solar-cost",
+    "what-is-balcony-solar"
+  ],
   "description": "There is no hours-of-sun threshold. In NYC what decides it is obstruction and floor height more than which way you face — and the answer is a kWh number.",
   "eyebrow": "Sunlight and shading",
   "h1": "Does my balcony get enough sun for solar?",
@@ -88,7 +97,7 @@
       "note": "New York average residential consumption of 571&nbsp;kWh/month, about 6,850&nbsp;kWh a year, which sets the 6&ndash;13% share figure."
     },
     {
-      "url": "https://pvwatts.nrel.gov/",
+      "url": "https://pvwatts.nlr.gov/",
       "title": "NREL PVWatts Calculator",
       "note": "the V8 hourly production model behind the 8,760-hour simulation."
     },

@@ -3,6 +3,15 @@
   "title": "What does a balcony solar kit cost in NYC? &middot; balco.nyc",
   "og_title": "What does a balcony solar kit cost in NYC, and does it pay for itself?",
   "breadcrumb": "Cost and payback",
+  "cluster": "economics",
+  "card_title": "What does a balcony solar kit cost in NYC?",
+  "card": "Current kit prices and payback at four output levels.",
+  "llms": "kit prices with dates, the costs that are not the kit, and payback worked at four production levels.",
+  "related": [
+    "electricity-rate",
+    "balcony-sunlight",
+    "sunny-act"
+  ],
   "description": "What a balcony solar kit costs in NYC, the costs that are not the kit, and payback worked at four production levels. Every savings figure is a ceiling.",
   "eyebrow": "Cost and payback",
   "h1": "What does a balcony solar kit cost in NYC?",

@@ -1141,6 +1141,13 @@ const SolarAPI = {
     let annualKwh;
     let monthlyKwh;
     let fallbackCity = null;
+    // The shade factor reported with the result. With monthly factors it is
+    // weighted by this panel's own monthly output, not by NYC's sunlight.
+    let effectiveShade = shadeFactor;
+    const weightedShade = (monthly, factors) => {
+      const total = monthly.reduce((a, b) => a + b, 0);
+      return total > 0 ? monthly.reduce((a, v, i) => a + v * factors[i], 0) / total : shadeFactor;
+    };
     let usedPVWatts = false;
     let pvwattsData = null;
 
@@ -1168,6 +1175,7 @@ const SolarAPI = {
           v * monthlyShadeFactors[i] * SolarConfig.THERMAL_BONUS * railingFactor
         );
         annualKwh = monthlyKwh.reduce((s, v) => s + v, 0);
+        effectiveShade = weightedShade(outputs.ac_monthly, monthlyShadeFactors);
       } else {
         // Uniform shade factor across all months
         const scale = shadeFactor * SolarConfig.THERMAL_BONUS * railingFactor;
@@ -1192,6 +1200,7 @@ const SolarAPI = {
       const shadeMonths = monthlyShadeFactors || new Array(12).fill(shadeFactor);
       monthlyKwh = fb.monthly.map((v, i) => v * shadeMonths[i] * SolarConfig.THERMAL_BONUS * railingFactor);
       annualKwh = monthlyKwh.reduce((s, v) => s + v, 0);
+      effectiveShade = weightedShade(fb.monthly, shadeMonths);
       fallbackCity = fb.city;
       console.log(`[SolarAPI] State fallback (${fb.city}): ${annualKwh.toFixed(0)} kWh`);
     } else {
@@ -1301,7 +1310,7 @@ const SolarAPI = {
       systemKw,
       azimuth,
       tilt,
-      shadeFactor,
+      shadeFactor: effectiveShade,
       railingFactor,
       costTier: tier,
       escalationPreset: escalationPreset || 'mid',

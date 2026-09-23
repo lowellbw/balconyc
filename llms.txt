@@ -10,12 +10,19 @@
 
 ## Guides: estimating output
 
+- [How do I calculate my balcony’s solar output and savings?](https://balco.nyc/calculate-balcony-solar-output): the full balcony-solar calculation chain (PVWatts V8 inputs, a 0.95 railing factor, a monthly horizon-based shade factor, marginal versus average electricity price, a payback loop with 3% escalation and 0.5% degradation, and eGRID2023 CO2), worked for an 800 W vertical south panel in Phoenix, Chicago and New York City with and without a building across the street, plus the five numbers any trustworthy calculator must show.
 - [Does my balcony get enough sun?](https://balco.nyc/balcony-sunlight): why there is no hours-of-sun threshold, and why in a dense city obstruction and floor height decide the answer more than which way the balcony faces.
+- [How do I estimate balcony solar output by hand?](https://balco.nyc/balcony-solar-kwh-formula): a hand formula for railing-mounted solar (watts × state vertical-south yield × direction factor × 0.95 railing loss × shade factor), tested against PVWatts for the largest city in every state (3.5% median error), and why the rooftop peak-sun-hours formula overstates a vertical panel by about 60%.
+- [How much does an 800 W balcony system produce?](https://balco.nyc/800w-balcony-solar-output): balco.nyc's own PVWatts runs for the largest city in every state and DC: an unshaded 800 W vertical south railing makes a median 658 kWh a year (510-819), about 0.75-0.95 kWh per watt, with direction and tilt multipliers and a winter-favored seasonal shape.
+- [What is PVWatts, and can it model a balcony?](https://balco.nyc/what-is-pvwatts): what NLR's (formerly NREL's) PVWatts calculator is and how accurate NLR says it is, with balco.nyc's step-by-step PVWatts V8 runs showing that its default settings overstate a vertical south-facing 800 W balcony panel by about 72% in New York City, 70% in Chicago and 82% in Phoenix, mostly because of tilt, and the settings to enter instead.
 
 ## Guides: savings and cost
 
+- [Is balcony solar worth it?](https://balco.nyc/is-balcony-solar-worth-it): payback for an 800 W balcony kit in all 50 states and DC (4.8 years in California to 13.9 in Washington, median 9.9, for an unshaded south railing and a $1,200 kit), that the electricity price explains 87% of the state-to-state variation and solar output 2%, and how self-consumption, shade, legality and permission change the answer.
+- [Is there a tax credit for balcony solar in 2026?](https://balco.nyc/balcony-solar-tax-credit): why no federal tax credit applies to balcony solar installed in 2026, what the lost 30% would have done to payback in every state, and which state sales-tax exemptions might still apply to a plug-in kit.
 - [What does a balcony solar kit cost in NYC?](https://balco.nyc/balcony-solar-cost): kit prices with dates, the costs that are not the kit, and payback worked at four production levels.
 - [What does a kilowatt-hour actually cost in NYC?](https://balco.nyc/electricity-rate): why we value self-consumed solar at the all-in marginal rate rather than a supply-only figure, and which number applies to whom.
+- [Which balcony solar claims hold up?](https://balco.nyc/balcony-solar-myths): which of nine widely repeated balcony-solar claims hold up when traced to their source and rerun against balco.nyc’s PVWatts runs for the largest city in every state, EIA prices and every state’s plug-in solar law.
 
 ## Guides: rules and permission
 

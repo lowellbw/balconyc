@@ -7,6 +7,189 @@ Generated from the site's sources. Cite as "balco.nyc, an independent balcony so
 
 ---
 
+# How much does an 800 W balcony solar system produce? By state and direction
+
+URL: https://balco.nyc/800w-balcony-solar-output  
+Last reviewed: 2026-09-23
+
+An 800 W balcony system hung vertically on an unshaded, south-facing railing makes about 660 kWh a year in the median state’s largest city, from 510 kWh in Honolulu to 819 kWh in Albuquerque. balco.nyc ran NREL’s PVWatts for the largest city in every state, and DC, with the calculator’s own parameters: facing east or west costs about a quarter of that, facing north about 70%, and tilting the panel to 35° adds about 60%. Every figure is a ceiling for a balcony with an open view — the building across the street can take a large bite out of it.
+
+## The short answer, and where it comes from
+
+There is no single answer to how much an 800 W balcony system produces — only an answer per place, per direction and per mounting angle. So balco.nyc computed them. For the largest city in each of the 50 states and Washington, DC, by the Census Bureau’s 2025 population estimates, we asked NREL’s PVWatts V8 eleven questions: what an 800 W system makes hung vertically on a railing facing each of the eight compass points, and what it makes facing south on a bracket at 35°, 60° and 70°. That is 561 simulations, each an hour-by-hour year of typical weather from the National Solar Radiation Database. (The Department of Energy renamed NREL the National Laboratory of the Rockies in December 2025; PVWatts now lives at nlr.gov.)
+
+The parameters are the calculator’s own, not PVWatts’s defaults: a premium module on an open rack, 14% system losses plus a monthly urban soiling profile of 3–7%, a microinverter at 96.5% efficiency, and ground reflectance of 0.20. PVWatts assumes an unobstructed panel, so every result below is then multiplied by the site’s railing factor, exactly as the calculator does: **0.95** for a vertical panel, whose lower edge the railing and mounting hardware partly clip, 0.97 at 70°, 0.98 at 60° and 0.99 at 35°. All of it is documented on [the methodology page](https://balco.nyc/methodology).
+
+| 800 W system, unshaded | Median of 51 cities | Lowest | Highest |
+|---|---|---|---|
+| Vertical, facing south | 658 kWh/yr | 510 (Honolulu) | 819 (Albuquerque) |
+| Vertical, south-east or south-west | 615 | 483 (Anchorage) | 787 (Las Vegas) |
+| Vertical, east or west | 489 | 351 (Anchorage) | 618 (Las Vegas) |
+| Vertical, north-east or north-west | 304 | 228 (Seattle) | 364 (Honolulu) |
+| Vertical, north | 200 | 149 (Seattle) | 241 (Sioux Falls) |
+| South, on a 60° bracket | 934 | 665 (Anchorage) | 1,226 (Albuquerque) |
+| South, at 35° | 1,053 | 713 (Anchorage) | 1,380 (Albuquerque) |
+
+Paired directions are the average of the two. Each row’s median is taken on its own, so the medians do not all belong to the same city. Set against what households use, the numbers are modest: against the EIA’s 2024 average residential consumption in each state — from 495 kWh a month in Hawaii to 1,202 in Louisiana — the median south railing covers about **6%** of a year’s electricity, from 4% in New Orleans to 12% in Los Angeles.
+
+## A rule of thumb: kWh per watt
+
+Divide the south-facing vertical result by the panel rating and a usable rule falls out. **A vertical, unshaded, south-facing railing makes roughly 0.75 to 0.95 kWh per watt per year across most of the US.** In balco.nyc’s runs, 39 of the 51 cities land in that band and the median is 0.82; widen it to 0.7–1.0 and it covers 43. For an 800 W system that is about 600 to 760 kWh a year. The watts are the panel’s nameplate rating, the number on the box.
+
+The cities outside the band are mostly the ones you would guess. Above it sits the high, dry interior West: Albuquerque, Las Vegas, Cheyenne and Denver all clear 1.0, with Phoenix and Sioux Falls just behind. Below it are Seattle, Portland (Oregon) and Anchorage, whose winters give a railing little to work with; Charleston, West Virginia, and Houston at 0.72; and Honolulu, which finishes last for a reason [section 3](https://balco.nyc#direction) explains.
+
+For other directions and angles, multiply again:
+
+| Panel faces | Share of the south-railing output (median) | Middle 80% of cities | 800 W, median city |
+|---|---|---|---|
+| South, vertical | 100% | — | 658 kWh |
+| South-east or south-west, vertical | 95% | 92–98% | 615 kWh |
+| East or west, vertical | 74% | 70–81% | 489 kWh |
+| North-east or north-west, vertical | 45% | 43–50% | 304 kWh |
+| North, vertical | 29% | 27–33% | 200 kWh |
+| South, 60° bracket | 142% | 133–155% | 934 kWh |
+| South, 35° | 159% | 145–179% | 1,053 kWh |
+
+Worked through: an east-facing 800 W railing in a median city makes about 800 × 0.82 × 0.74 ≈ 490 kWh a year before shade. The shares are medians of ratios taken city by city, so they will not always multiply out exactly to the kWh column. And the rule is built from each state’s largest city; output varies within a state, and the [calculator](https://balco.nyc/) runs PVWatts for your own address rather than a nearby one.
+
+## East, west and north: what the direction costs
+
+**Missing south by 45° costs little.** A railing facing south-east or south-west keeps about 95% of the south figure in the median city (93% for south-east, 96% for south-west). East and west are the real step down, to about 74%, and the two are close to mirror images. The sun’s path is symmetric about noon, so any gap between them comes from each city’s typical weather: when in the day cloud tends to arrive, and the afternoon heat that slightly lowers a panel’s efficiency. West beats east in 13 of the 51 cities, most clearly Anchorage (by 17%), Los Angeles (13%), Portland, Oregon (11%) and Seattle (8%); east beats west by about 10% in Denver and Albuquerque.
+
+North is where rules of thumb exaggerate. A north-facing vertical panel makes about **29%** of the south figure in the median city, roughly 200 kWh a year from 800 W. It is not zero, for two reasons. A vertical panel sees half the sky dome whichever way it faces, and the diffuse light scattered by the atmosphere and by cloud arrives from all of it. And in summer the sun rises and sets north of the east–west line, so a north wall gets some direct light early and late. The clearer the sky, the further north falls behind: it makes 25% of the south figure in Albuquerque and Las Vegas, where direct sun is most of the resource, and 36% in Houston. Across all 51 cities a south railing makes a median **3.4 times** what a north one does — a bigger gap than the 1.6 times between the best and worst city.
+
+Honolulu is the exception that shows the geometry at work. At 21°N it lies south of the Tropic of Cancer, so for part of the summer the noon sun is in the northern half of the sky, and for most of the year it climbs high enough to strike a wall at a glancing angle. It is the only city where east (107% of south) and west (105%) beat south, where north reaches 42%, and where south-west is the best vertical direction. A south railing there ranks last of the 51 — while the same panel tilted to 35° ranks ninth.
+
+## Why a railing makes less than a roof
+
+Tilt the south-facing panel from vertical to 35°, roughly a rooftop angle, and the median city gains **59%**, from 658 to 1,053 kWh. A 60° bracket gains 42% and a 70° bracket 29%. The gain grows toward the equator: 33% in Anchorage, 42–48% across most of the northern tier from Montana to Maine, 81–85% in Jacksonville, New Orleans and Houston, and 129% in Honolulu.
+
+The reason is geometry, and one worked example shows it. At New York’s latitude, 40.7°N, the noon sun stands about 26° above the horizon at the December solstice and about 73° at the June solstice (90° minus the latitude, plus the sun’s declination of ±23.4°). A vertical panel faces the horizon, so in December the noon sun strikes it 26° off square and delivers about 90% of its full strength — the cosine of 26°. In June it strikes 73° off square and delivers about 30%. A panel at 35° faces 55° up the sky, and gets about 87% in December and 95% in June. **At noon on the winter solstice a railing and a roof are nearly level; at the summer solstice the roof wins by a factor of three.**
+
+The sky matters too. A vertical panel sees exactly half the sky dome, against about 91% for a panel at 35°, so it collects half the diffuse light a flat surface would. It also sees half the ground, and at the runs’ 0.20 reflectance that adds light equal to a tenth of what falls on the ground — a real contribution for a railing, under 2% for a panel at 35°. None of this makes a vertical panel a mistake. A railing is often the only surface a renter can use, and whether a bracket is allowed at all is a question for the building, not the model.
+
+## Why a south railing is a winter panel
+
+The same geometry flips the seasons. On a vertical south railing, **48 of the 51 cities make more electricity from December to February than from June to August** — a median of 1.84 times as much — and June is the weakest month of the year in 48 of them. Tilt the same panel to 35° and the pattern reverses: only Honolulu makes more in winter, and December is the weakest month in 41 cities.
+
+New York shows the shape. An unshaded vertical south panel there makes 69 kWh in January and 30 in June. At 35° the same panel makes 97 in July and 57 in December.
+
+The three exceptions are informative. In Anchorage, at 61°N, the December noon sun clears the horizon by barely 5°, so a railing makes about a third as much in winter as in summer. In Seattle and Portland, Oregon, the winter weather does the damage: a vertical south panel makes 101–108 kWh from December to February there, against 226 in Minneapolis and 187 in Billings at about the same latitude.
+
+Two winter effects sit partly outside these runs. They fix ground reflectance at 0.20 all year and allow 1% of losses for snow, so they neither credit the extra light a snow-covered street or roof bounces up nor charge for a heavy fall that sits on the panel. For snowy cities, treat the winter months as approximate in both directions.
+
+## Every state’s largest city, ranked
+
+The table ranks all 51 cities by what an 800 W vertical south railing makes in a year, unshaded, with the railing factor applied. East/west is the average of the two; the 35° column is a south-facing panel on a bracket. Each state links to its own page, which adds the local electricity price, a payback estimate and where plug-in solar law stands.
+
+| # | State | Largest city | South, vertical (kWh/yr) | East/west, vertical | North, vertical | South at 35° |
+|---|---|---|---|---|---|---|
+| 1 | New Mexico | Albuquerque | 819 | 615 | 203 | 1,380 |
+| 2 | Nevada | Las Vegas | 817 | 618 | 205 | 1,360 |
+| 3 | Wyoming | Cheyenne | 809 | 571 | 233 | 1,198 |
+| 4 | Colorado | Denver | 805 | 565 | 211 | 1,245 |
+| 5 | Arizona | Phoenix | 778 | 611 | 203 | 1,355 |
+| 6 | South Dakota | Sioux Falls | 769 | 544 | 241 | 1,099 |
+| 7 | Nebraska | Omaha | 739 | 525 | 221 | 1,106 |
+| 8 | Minnesota | Minneapolis | 730 | 510 | 224 | 1,042 |
+| 9 | Utah | Salt Lake City | 724 | 545 | 212 | 1,150 |
+| 10 | Kansas | Wichita | 722 | 534 | 202 | 1,174 |
+| 11 | California | Los Angeles | 720 | 566 | 185 | 1,286 |
+| 12 | Montana | Billings | 715 | 491 | 195 | 1,052 |
+| 13 | Idaho | Boise | 714 | 532 | 196 | 1,136 |
+| 14 | Oklahoma | Oklahoma City | 711 | 544 | 209 | 1,183 |
+| 15 | Missouri | Kansas City | 700 | 509 | 205 | 1,104 |
+| 16 | North Dakota | Fargo | 700 | 490 | 205 | 1,010 |
+| 17 | New Hampshire | Manchester | 697 | 497 | 223 | 993 |
+| 18 | Iowa | Des Moines | 694 | 494 | 203 | 1,058 |
+| 19 | Maine | Portland | 692 | 476 | 198 | 1,026 |
+| 20 | District of Columbia | Washington | 675 | 477 | 193 | 1,072 |
+| 21 | Massachusetts | Boston | 673 | 476 | 195 | 1,018 |
+| 22 | Maryland | Baltimore | 673 | 479 | 193 | 1,071 |
+| 23 | Rhode Island | Providence | 670 | 473 | 194 | 1,012 |
+| 24 | Wisconsin | Milwaukee | 668 | 489 | 210 | 1,025 |
+| 25 | Pennsylvania | Philadelphia | 663 | 472 | 192 | 1,046 |
+| 26 | Vermont | Burlington | 658 | 478 | 219 | 954 |
+| 27 | Delaware | Wilmington | 658 | 467 | 189 | 1,049 |
+| 28 | Virginia | Virginia Beach | 654 | 487 | 201 | 1,083 |
+| 29 | Indiana | Indianapolis | 647 | 486 | 214 | 1,018 |
+| 30 | New Jersey | Newark | 643 | 455 | 185 | 1,010 |
+| 31 | North Carolina | Charlotte | 640 | 480 | 189 | 1,073 |
+| 32 | Michigan | Detroit | 638 | 484 | 215 | 987 |
+| 33 | Connecticut | Bridgeport | 631 | 448 | 190 | 993 |
+| 34 | Kentucky | Louisville | 626 | 471 | 192 | 1,028 |
+| 35 | Ohio | Columbus | 622 | 474 | 207 | 998 |
+| 36 | Georgia | Atlanta | 618 | 499 | 196 | 1,079 |
+| 37 | Alabama | Huntsville | 618 | 489 | 198 | 1,050 |
+| 38 | Illinois | Chicago | 616 | 447 | 176 | 1,000 |
+| 39 | Arkansas | Little Rock | 613 | 485 | 194 | 1,053 |
+| 40 | Florida | Jacksonville | 612 | 503 | 200 | 1,107 |
+| 41 | South Carolina | Charleston | 611 | 478 | 177 | 1,106 |
+| 42 | Louisiana | New Orleans | 605 | 510 | 201 | 1,110 |
+| 43 | New York | New York | 604 | 434 | 167 | 988 |
+| 44 | Mississippi | Jackson | 602 | 498 | 201 | 1,073 |
+| 45 | Tennessee | Nashville | 602 | 470 | 193 | 1,018 |
+| 46 | West Virginia | Charleston | 579 | 450 | 195 | 947 |
+| 47 | Texas | Houston | 576 | 504 | 208 | 1,065 |
+| 48 | Alaska | Anchorage | 535 | 351 | 178 | 713 |
+| 49 | Oregon | Portland | 526 | 399 | 165 | 856 |
+| 50 | Washington | Seattle | 524 | 376 | 149 | 839 |
+| 51 | Hawaii | Honolulu | 510 | 539 | 214 | 1,169 |
+
+Two things stand out. First, ranking by railing is not the same as ranking by roof: the two orders have a rank correlation of only 0.54, because a vertical panel rewards clear, low-sun winters and a tilted one rewards high summer sun. Minneapolis is 8th for a railing and 31st at 35°; Manchester, New Hampshire, 17th and 44th; Houston 47th and 24th; Honolulu 51st and 9th. A rooftop solar map is a poor guide to a railing. Second, latitude alone predicts little: on a railing Minneapolis, at 45°N, out-produces every city in the Southeast, and Cheyenne outranks Phoenix.
+
+## Ceilings, not expectations: shade, and New York
+
+Every figure on this page assumes the panel sees an open sky. Real balconies rarely do. The building across the street, the balcony slab above, a street tree, a neighbor’s air conditioner: none of them are in these runs, and in a dense city they can remove a large share of the year — most of all in winter, when the low sun that suits a railing is also the sun most easily blocked. [Does my balcony get enough sun?](https://balco.nyc/balcony-sunlight) explains why obstruction and floor height can matter more than direction, and [how to calculate your balcony’s output](https://balco.nyc/calculate-balcony-solar-output) walks through applying them. The [calculator](https://balco.nyc/) takes any US address and a description of what stands opposite, and runs the same model with the shade included. A single year will also differ from these typical-year figures; PVWatts shows an expected range around each result, based on 30 years of weather.
+
+New York City is the useful local check. For a point at City Hall, the unshaded runs put a vertical railing at **604 kWh a year facing south**, 562–567 facing south-west or south-east, 421–446 facing west or east and 167 facing north; a 60° bracket reaches 872 and 35° reaches 988. For a New York address the calculator also builds a 3D model of the surrounding buildings, which takes those ceilings down to what a particular floor and wall actually see.
+
+New York ranks 43rd of 51 for a south railing, which is why the city’s case rests on [the price of a kWh](https://balco.nyc/electricity-rate) rather than on its sun. Whether a few hundred kWh a year justifies a kit where you live is the subject of [whether balcony solar is worth it](https://balco.nyc/is-balcony-solar-worth-it).
+
+## Common questions
+
+**How many kWh does an 800 W balcony solar system produce per year?**
+
+Hung vertically on an unshaded south-facing railing, about 660 kWh a year in the median US state's largest city, according to balco.nyc's PVWatts runs for all 51: from 510 kWh in Honolulu to 819 kWh in Albuquerque. Facing east or west it makes about 74% of that, facing north about 29%, and on a 35-degree bracket about 159%. Shade from nearby buildings reduces all of these figures.
+
+**How much does an east-facing balcony solar panel produce?**
+
+An 800 W panel hung vertically on an unshaded east-facing railing makes about 74% of what a south-facing one would, roughly 490 kWh a year in the median US state's largest city; the middle 80% of cities fall between 70% and 82%. West-facing is almost the same. In balco.nyc's PVWatts runs, west beat east in 13 of the 51 cities and east beat west in the rest, usually by a few percent.
+
+**How much does a north-facing balcony solar panel produce?**
+
+About 29% of a south-facing panel in the median US city, or roughly 200 kWh a year for an 800 W system on an unshaded vertical railing; balco.nyc's runs range from 149 kWh in Seattle to 241 kWh in Sioux Falls. It is not zero because a vertical panel sees half the sky whichever way it faces, and in summer the sun rises and sets north of due east and due west.
+
+**How much more does a tilted balcony panel produce than a vertical one?**
+
+Across balco.nyc's PVWatts runs for the largest city in every state, tilting a south-facing 800 W panel from vertical to 35 degrees raises annual output by a median of 59%; a 60-degree bracket adds 42% and 70 degrees 29%. The gain is smallest far north (33% in Anchorage) and largest near the tropics (85% in Houston, 129% in Honolulu), because a high summer sun strikes a vertical panel at a glancing angle.
+
+**Does a balcony solar panel produce more in winter or summer?**
+
+On a vertical south-facing railing, usually winter. In 48 of the 51 US cities balco.nyc modeled, an unshaded vertical south panel makes more from December to February than from June to August, a median of 1.84 times as much, because the low winter sun meets a vertical panel nearly head-on. The exceptions are Anchorage, Seattle and Portland, Oregon. A panel tilted to 35 degrees does the reverse and produces most in summer.
+
+**Which state gets the most from a balcony solar panel?**
+
+For an unshaded vertical south-facing railing, New Mexico, Nevada, Wyoming and Colorado lead: Albuquerque, Las Vegas, Cheyenne and Denver each make just over 800 kWh a year from 800 W in balco.nyc's PVWatts runs. Seattle, Portland (Oregon), Anchorage and Honolulu come last, at 510 to 535 kWh. Output is only part of the economics: what a kWh costs locally decides what that output is worth.
+
+**How much does an 800 W balcony system produce in New York City?**
+
+Unshaded, a vertical south-facing railing at New York's City Hall makes about 604 kWh a year in balco.nyc's PVWatts run; east or west 421 to 446, north 167, and a south panel on a 35-degree bracket 988. Buildings opposite reduce those figures; for a specific New York address the calculator models them in 3D.
+
+## Sources
+
+- [National Laboratory of the Rockies — PVWatts V8 API documentation](https://developer.nlr.gov/docs/solar/pvwatts/v8/): the model behind all 561 runs: tilt and azimuth inputs, albedo and monthly soiling, ac_annual and ac_monthly outputs in kWh, and 2020 TMY weather from the NSRDB.
+- [PVWatts Calculator](https://pvwatts.nlr.gov/): the public interface to the same model, for reproducing any figure here.
+- [PVWatts Calculator — results and expected range](https://pvwatts.nlr.gov/pvwatts.php): that PVWatts gives an expected range around each result based on 30 years of weather, since a single year differs from the typical year.
+- [U.S. Department of Energy — Energy Department Renames NREL “National Lab of the Rockies” (1 December 2025)](https://www.energy.gov/cmei/articles/energy-department-renames-nrel-national-lab-rockies): the renaming of NREL.
+- [U.S. Census Bureau — Vintage 2025 subcounty population estimates (SUB-EST2025)](https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv): the largest city in each state and DC by July 2025 population, which sets the 51 locations.
+- [EIA — 2024 Average Monthly Bill, Residential (Table 5A)](https://www.eia.gov/electricity/sales_revenue_price/pdf/table_5A.pdf): average residential consumption by state, from 495 kWh a month in Hawaii to 1,202 in Louisiana, behind the 4–12% share figures.
+- [PVEducation — Elevation angle](https://www.pveducation.org/pvcdrom/properties-of-sunlight/elevation-angle): the solar-noon elevation from latitude and declination behind the 26° and 73° figures, and that between the equator and the Tropic of Cancer the summer noon sun comes from the north.
+- [Sandia PV Performance Modeling Collaborative — Isotropic sky diffuse model](https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-sky-diffuse/isotropic-sky-diffuse-model/): the (1 + cos tilt)/2 sky view factor: half the sky dome for a vertical panel, about 91% at 35°.
+- [Sandia PV Performance Modeling Collaborative — Ground-reflected irradiance](https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/): the albedo × (1 − cos tilt)/2 ground term: a vertical panel sees half the ground.
+
+---
+
 # What does a balcony solar kit cost in NYC?
 
 URL: https://balco.nyc/balcony-solar-cost  
@@ -123,6 +306,492 @@ On a well-sited balcony the difference is about 1.2 years of payback and defensi
 - [SUNNY Act passes the NYS Legislature](https://www.nysenate.gov/newsroom/press-releases/2026/liz-krueger/sunny-act-passes-nys-legislature-bringing-plug-solar-one): passage of S8512C / A9111C through both chambers.
 - [Balcony solar plug-in power awaits Hochul's signature](https://www.newyorkalmanack.com/2026/07/balcony-solar-plug-in-power-hochul/): the bill unsigned as of July 2026, with a year-end deadline and a 90-day commencement.
 - [Will New York Gov. Kathy Hochul sign a balcony solar bill?](https://www.canarymedia.com/articles/solar/new-york-gov-sign-balcony-solar-bill): the exemption from interconnection and net-metering requirements, and what it implies for export credit.
+
+---
+
+# The balcony solar kWh formula: estimate output by hand
+
+URL: https://balco.nyc/balcony-solar-kwh-formula  
+Last reviewed: 2026-09-23
+
+For a panel on a balcony railing, multiply its watts by your state’s vertical-south yield (0.67 to 1.08 kWh per watt a year), a direction factor (0.74 for east, 0.29 for north), 0.95 for the railing and a shade factor. Tested against balco.nyc’s PVWatts runs for the largest city in every state, that formula lands within 3.5% of the full simulation in the median case. The familiar rooftop formula, kW × peak sun hours × 365 × performance ratio, overstates a south-facing railing by about 60% and an east- or west-facing one more than twofold.
+
+## The rooftop formula, and why it overstates a railing
+
+The formula that circulates for estimating solar output by hand is **kWh a year = system kW × peak sun hours × 365 × performance ratio**. A peak sun hour is one kilowatt-hour of sunlight per square meter, so a place receiving 4.5 kWh/m² a day has 4.5 peak sun hours. The performance ratio covers inverter, wiring, heat and dirt losses; consumer guides quote 0.75 to 0.85, and the original PVWatts used an overall derate of 0.77.
+
+On a roof, the formula works. balco.nyc took NREL’s latitude-tilt solar resource for the largest city in each state (the Solar Resource API, which returns no data for Anchorage, so 50 places) and set the formula against its own PVWatts runs for an 800 W panel tilted 35° to the south. With a performance ratio of 0.75 the formula came within **2.4%** of PVWatts in the median city; at 0.80 it ran 6.6% high.
+
+On a railing, it does not. In Chicago NREL gives 4.50 peak sun hours at latitude tilt, so 0.8 kW × 4.50 × 365 × 0.75 = **986 kWh**. PVWatts puts the same panel on a 35° south roof at 1,010 kWh: close. Hung vertically on a south-facing railing, with the 5% railing loss the site applies to every vertical estimate, it makes **616 kWh**. The formula is 60% high. Across the 50 places the median overstatement for a south-facing railing is **61%**, and it grows as the railing turns away from south: the formula gives about 2.2 times the real output facing east or west, and about 5.5 times facing north. It has no term for direction at all.
+
+The arithmetic is fine; the input is wrong. A peak-sun-hour figure describes sunlight on a horizontal or latitude-tilted surface, and many published tables do not say which. A railing panel is neither. It faces the horizon, so the high summer sun strikes it at a glancing angle; it sees half of the sky’s diffuse light, where a 35° panel sees about nine-tenths; and more of its direct light arrives at steep angles, where the glass reflects it away, a loss PVWatts models explicitly. In balco.nyc’s runs a vertical south panel, after the railing loss, makes a median **62%** of what the same panel makes at 35°, from 43% in Honolulu to 74% in Anchorage. Using horizontal peak sun hours instead does not rescue the formula: at the same 0.75 performance ratio it still overstates a south railing by a median 39%.
+
+## A formula built for a railing
+
+balco.nyc’s balcony formula keeps the shape of the rooftop one, but every input describes a vertical panel:
+
+> **kWh a year ≈ W × Ystate × Fdir × (1 − 0.05) × Sshade**
+
+| Term | What it is | Typical value | Where it comes from |
+|---|---|---|---|
+| W | The panels’ rated power in watts | 400 or 800 | The label |
+| Ystate | kWh a year per watt from a vertical, south-facing panel with an open view, before the railing loss | 0.67 to 1.08; median 0.87 | balco.nyc’s PVWatts run for the state’s largest city (section 3) |
+| Fdir | Output in your direction as a fraction of south | 1.00 S, 0.93–0.96 SE/SW, 0.73–0.74 E/W, 0.29 N | Median across 51 cities (section 4) |
+| 1 − 0.05 | Railing loss: the rail, brackets and the slab above clip the panel’s lower edge | 0.95 | The factor the calculator applies to every vertical panel (methodology) |
+| Sshade | The share of that light the buildings opposite let through | 1.00 for an open view; 0.18–0.94 in a street canyon | balco.nyc’s street-canyon model (section 5) |
+
+A worked example: an 800 W system on an east-facing 10th-floor balcony in Chicago, looking across the street at a building of six to ten stories. That building is lower than the balcony, so nothing is blocked and S is 1.00.
+
+**800 × 0.81 × 0.74 × 0.95 × 1.00 ≈ 456 kWh a year.**
+
+PVWatts, run for an east-facing vertical panel in Chicago and given the same railing loss, says 444 kWh. The hand calculation is 2.5% high. Now move the same system to a south-facing 2nd-floor balcony, 20 meters from that same building. Direction improves, to 1.00; shade collapses, to 0.31:
+
+**800 × 0.81 × 1.00 × 0.95 × 0.31 ≈ 191 kWh a year.**
+
+The better-facing balcony makes less than half as much. In a city, your floor and what stands opposite usually move the answer more than the compass does.
+
+## Ystate: the number that depends on where you live
+
+Y is the input that depends on where you live. balco.nyc ran NREL’s PVWatts V8 for an 800 W vertical south-facing panel at the largest city in every state and DC, with the calculator’s own parameters, and divided the annual output by 800. Half the states fall between 0.81 and 0.94 kWh per watt a year. A selection:
+
+| Largest city | Ystate (kWh per W a year, before railing loss) | 800 W, vertical south, open view, after railing loss |
+|---|---|---|
+| Albuquerque | 1.08 | 819 kWh |
+| Denver | 1.06 | 805 kWh |
+| Phoenix | 1.02 | 778 kWh |
+| Minneapolis | 0.96 | 730 kWh |
+| Los Angeles | 0.95 | 720 kWh |
+| Boston | 0.89 | 673 kWh |
+| Median of 51 | 0.87 | 658 kWh |
+| Chicago | 0.81 | 616 kWh |
+| Jacksonville | 0.80 | 612 kWh |
+| New York City | 0.79 | 604 kWh |
+| Houston | 0.76 | 576 kWh |
+| Seattle | 0.69 | 524 kWh |
+| Honolulu | 0.67 | 510 kWh |
+
+Every state is on [the state pages](https://balco.nyc/states), which carry the same runs. The order is not the order of a rooftop sunshine map, and that is the second reason the rooftop formula misleads. Ranked by what a 35° roof panel produces, Minneapolis is 31st of the 51 cities; ranked by what a vertical railing produces, it is 8th. Jacksonville falls from 13th to 40th, Houston from 24th to 47th, and Honolulu from 9th to last. A wall-mounted panel likes a low sun, which strikes it nearly square on in a northern winter, while near the tropics the sun spends much of the year high overhead and passes over the panel’s face. Across the 51 cities, the ratio of vertical to 35° output rises steadily with latitude (a correlation of 0.90).
+
+Each Y comes from one city. The runs do not measure variation inside a state, which in a large or mountainous state can be substantial; the [calculator](https://balco.nyc/) runs PVWatts for your exact address.
+
+## Fdir: which way the railing faces
+
+F is output in a given direction divided by output facing south, from the same PVWatts runs. The medians across the 51 cities, and how far individual cities stray from them:
+
+| Railing faces | Fdir (median) | Middle half of cities | Full range |
+|---|---|---|---|
+| South | 1.00 | — | — |
+| South-west | 0.96 | 0.93–0.98 | 0.91 (Billings) to 1.13 (Honolulu) |
+| South-east | 0.93 | 0.92–0.96 | 0.87 (Anchorage) to 1.11 (Honolulu) |
+| East | 0.74 | 0.72–0.79 | 0.61 (Anchorage) to 1.07 (Honolulu) |
+| West | 0.73 | 0.70–0.77 | 0.66 (Billings) to 1.05 (Honolulu) |
+| North-east | 0.46 | 0.44–0.49 | 0.41 (Anchorage) to 0.73 (Honolulu) |
+| North-west | 0.44 | 0.42–0.47 | 0.39 (Denver) to 0.70 (Honolulu) |
+| North | 0.29 | 0.29–0.32 | 0.25 (Albuquerque) to 0.42 (Honolulu) |
+
+The pairs are close enough to share a number (about 0.95, 0.74 and 0.45); pairing them moves the test results in section 6 by a few tenths of a point. The medians also sit close to the fixed factors in the calculator’s New York fallback model (0.92, 0.72, 0.45, 0.32), which were set independently.
+
+The factors drift with latitude in the same way Y does. Near the Gulf, where the summer sun is high, a south wall loses more and east and west lose less: east is 0.88 of south in Houston and New Orleans and 0.86 in Jacksonville, well above the 0.74 median. In Honolulu the order inverts, and east and west both out-produce south. In Anchorage east is only 0.61. If you are in Hawaii, skip the direction factor and use [the Hawaii page](https://balco.nyc/states/hawaii), which has the run for each direction.
+
+## Sshade: what stands across the street
+
+With an open view (a park, water, or buildings lower than your floor) S is 1.00, at every orientation, because PVWatts has already priced direction. Otherwise S depends on how tall the obstruction is, how far away, and how high you are.
+
+balco.nyc’s street-canyon model treats the building opposite as a continuous wall parallel to your facade and traces the sun against it through the year. These figures come from the calculator’s own code, run for a south-facing balcony in Chicago (41.88°N), 20 meters across a street, with a balcony height of (floor − 1) × 3.05 m + 1.0 m:
+
+| Across the street (20 m away) | 2nd floor | 5th floor | 10th floor |
+|---|---|---|---|
+| Nothing, an open view | 1.00 | 1.00 | 1.00 |
+| 1 to 2 floors, or trees (7 m) | 0.94 | 1.00 | 1.00 |
+| 3 to 5 floors (13 m) | 0.75 | 1.00 | 1.00 |
+| 6 to 10 floors (25 m) | 0.31 | 0.58 | 1.00 |
+| 11 floors or more (43 m) | 0.18 | 0.24 | 0.47 |
+
+These are the factors as the calculator applies them: monthly, to monthly output, here weighted by Chicago’s vertical-south PVWatts months. The model’s one-line annual summary, weighted by New York’s monthly sunshine, reads higher under heavy shade: 0.40 rather than 0.31 on the 2nd floor opposite six to ten stories, 0.63 rather than 0.58 on the 5th, 0.55 rather than 0.47 on the 10th opposite a tower. The gap is seasonal. A south railing does its best work in winter (in Chicago, 65 kWh in January against 35 in June), exactly when the low sun sits behind the building opposite. Use the lower figures.
+
+Three cautions. An east- or west-facing balcony loses more to the same building, because its direct sun arrives low: 0.64 rather than 0.75 on the 2nd floor opposite three to five stories. The same street blocks more sun further north, less further south. And a continuous wall has no gaps, so it errs toward too much shade. What it cannot see at all (a tree, an air-conditioner, the slab overhead) is covered in [how much sun a balcony gets](https://balco.nyc/balcony-sunlight).
+
+## How wrong the formula is
+
+balco.nyc tested each version against the PVWatts run it tries to predict, both with the 5% railing loss applied. The state-yield test leaves out south, since Y is built from the south run and would score zero by construction: seven directions in 51 places, 357 predictions. The national-yield test keeps all eight directions (408), and the rooftop tests use a south railing in the 50 places with NREL sun-hour data, or all 51 for the calibrated version.
+
+| Version | Median error | 1 prediction in 10 is off by more than | Worst case |
+|---|---|---|---|
+| Rooftop formula, NREL peak sun hours, performance ratio 0.75, south railing | +61% | +88% | +157% (Honolulu) |
+| Rooftop formula calibrated exactly to each city’s 35° roof, south railing | +61% | +82% | +132% (Honolulu) |
+| Balcony formula with one national Y (0.87), all 8 directions | 5.5% | 19% | +50% (Anchorage, east) |
+| Balcony formula with each state’s Y, 7 non-south directions | 3.5% | 12% | −37% (Honolulu, north-east) |
+| The same, leaving out Honolulu | 3.4% | 10% | +22% (Anchorage, east) |
+
+The rooftop formula overstated every railing it was tested on. Even calibrated perfectly to each city’s own roof, with peak sun hours times performance ratio taken straight from the 35° PVWatts run, it is 61% high. That isolates the cost of going vertical: no choice of derate fixes it.
+
+The balcony formula with state yields lands within 10% of PVWatts in 87% of cases. Its large misses cluster where section 4 says they will. Every Honolulu direction is under-predicted, by 15% to 37%; the Gulf-state cities (Houston, New Orleans, Jackson and Jacksonville) are under-predicted in most directions away from south, by up to 21%; and Anchorage facing east is over-predicted by 22%. Those five states and Alaska account for 28 of the 46 predictions that miss by more than 10%. Using one national Y instead roughly doubles the share of predictions off by more than 10%, from one in eight to one in four; for a south railing it overstates Seattle and Portland, Oregon, by 25% and understates Albuquerque by 20%. That is what location is worth.
+
+These are errors against a model, not a meter. PVWatts has its own uncertainty, and balco.nyc’s stated accuracy for its fullest New York estimates is a modeled band of about 15%, not a field-validated one. A hand result is no better than PVWatts; round it to the nearest 25 kWh.
+
+## What a hand formula cannot see
+
+Five multiplications cannot carry everything a year of simulation does:
+
+- **The seasons.** One annual number hides that a south railing is winter-heavy and an east or west one summer-heavy, which matters on a seasonal rate.
+
+- **The interactions.** The terms are multiplied as if independent; in fact shade depends on direction and season, and direction factors on latitude.
+
+- **Your street.** Y is one city per state; S assumes one uniform building opposite.
+
+- **Money and permission.** kWh is not savings: value it at [your marginal rate](https://balco.nyc/electricity-rate), remembering that the state averages used outside New York City include fixed charges. Whether you may install a plug-in system varies by state and building; nothing here is legal advice.
+
+Used for what it is, the formula answers the first question well: is this a 600 kWh balcony or a 200 kWh one? For a figure to act on, the [calculator](https://balco.nyc/) runs PVWatts for your exact address, applies shade month by month, and in New York City uses the real buildings around you.
+
+## Common questions
+
+**What is the formula for balcony solar panel output?**
+
+balco.nyc's hand formula for a railing-mounted panel is: kWh a year ≈ watts × Y × F × 0.95 × S. Y is the vertical-south yield for your state (0.67 to 1.08 kWh per watt a year across the largest city in each state, median 0.87), F is the direction factor (1.00 south, about 0.95 south-east or south-west, 0.74 east or west, 0.29 north), 0.95 is the railing loss and S is the shade factor (1.00 for an open view). Tested against PVWatts in all 51 places, it came within 3.5% in the median case.
+
+**Can I use peak sun hours to estimate a balcony panel's output?**
+
+Not directly. Peak sun hour figures describe sunlight on a horizontal or latitude-tilted surface, and a vertical railing panel receives much less. Using NREL's latitude-tilt figures and a 0.75 performance ratio, the standard formula (kW × peak sun hours × 365 × performance ratio) overstated a south-facing railing by a median 61% in balco.nyc's comparison across 50 states, and an east- or west-facing one by more than double.
+
+**How much does an 800 W balcony solar system produce a year?**
+
+Mounted vertically on a south-facing railing with an open view, balco.nyc's PVWatts runs put it at 510 to 819 kWh a year after a 5% railing loss, from Honolulu to Albuquerque, with a median of about 658 kWh across the largest city in each state. Facing east or west, multiply by about 0.74; facing north, by about 0.29; then multiply by a shade factor if taller buildings stand opposite.
+
+**Why does a vertical solar panel produce less than a tilted one?**
+
+A vertical panel faces the horizon, so the high summer sun strikes it at a glancing angle, it sees only half of the sky's diffuse light, and more of its direct light arrives at steep angles where the glass reflects it. Across the largest city in each state, a vertical south-facing panel with a 5% railing loss produced a median 62% of what the same panel tilted at 35 degrees produced, from 43% in Honolulu to 74% in Anchorage.
+
+**Does an east- or west-facing balcony work for solar?**
+
+It produces about three-quarters of what a south-facing one does: a median factor of 0.74 for east and 0.73 for west across the largest city in every state, in balco.nyc's PVWatts runs. Near the tropics east and west do relatively better, because the sun spends much of the year high overhead: in Houston and New Orleans east is about 0.88 of south, and in Honolulu east and west both out-produce south.
+
+**How accurate is a hand calculation of balcony solar output?**
+
+Accurate enough to tell a 600 kWh balcony from a 200 kWh one. Against PVWatts, balco.nyc's balcony formula errs by 3.5% in the median case and by more than 10% about one time in eight, mostly in Hawaii, Alaska and the Gulf states. PVWatts is itself a model rather than a meter, so a hand result is best rounded to the nearest 25 kWh.
+
+## Sources
+
+- [NREL — PVWatts V8 API documentation](https://developer.nlr.gov/docs/solar/pvwatts/v8/): the model behind every run on this page: NSRDB typical-year weather, tilt and azimuth inputs (180° = south), and ac_annual / ac_monthly as annual and monthly AC output in kWh.
+- [NREL — Solar Resource Data API documentation](https://developer.nlr.gov/docs/solar/solar-resource-v1/): the latitude-tilt and horizontal daily solar resource (kWh/m²/day, i.e. peak sun hours) used for the rooftop-formula test; the API returned no data for Anchorage.
+- [NREL — PVWatts Version 5 Manual (Dobos, 2014)](https://pvwatts.nlr.gov/downloads/pvwattsv5.pdf): the Perez plane-of-array model, the angle-of-incidence reflection correction, the 14% default system losses, and the 0.77 overall derate of the original PVWatts.
+- [U.S. DOE OSTI — Performance Parameters for Grid-Connected PV Systems (Marion et al., 2005)](https://www.osti.gov/biblio/15016389): performance ratio and reference yield as the standard parameters relating PV output to the solar resource.
+- [SolarReviews — Peak sun hours explained](https://www.solarreviews.com/blog/peak-sun-hours-explained): the definition of a peak sun hour as an hour at 1,000 W/m², and an example of a state table that does not say which surface it describes.
+- [NREL — PVWatts Calculator](https://pvwatts.nlr.gov/): where any figure on this page can be re-run for a specific address, tilt and azimuth.
+- [U.S. Census Bureau — Vintage 2025 subcounty population estimates](https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv): the source for the largest city in each state, which is the reference point for every state run.
+
+---
+
+# Balcony solar claims, checked: nine numbers traced to their source
+
+URL: https://balco.nyc/balcony-solar-myths  
+Last reviewed: 2026-09-23
+
+Of nine claims widely repeated about balcony solar, one holds up roughly as stated, two are best cases presented as typical, and six are wrong or out of date. balco.nyc’s PVWatts runs for the largest city in every state and DC put an unshaded, south-facing 800 W railing system at a median 6.4% of the average home’s electricity (4.2% to 11.9%), not 15–25%, and at a median payback of 9.9 years on a $1,200 kit, with no state under four. The claim that survives is the unexpected one: a north-facing railing really does produce about 70% less than a south-facing one.
+
+## The nine claims and their verdicts
+
+Each claim below is stated as it usually circulates, traced as far back as we could take it, and checked against balco.nyc’s own data: NREL’s PVWatts V8 run with the calculator’s settings for an 800 W system at the **largest city in each of the 50 states and DC**; the EIA’s state prices and household consumption; and every state’s plug-in solar law, researched from legislature pages and checked on 23 September 2026.
+
+|  | The claim | Where it comes from | Verdict |
+|---|---|---|---|
+| 1 | An 800 W kit covers 15–25% of your electricity | Solar.com’s 2026 guide, among others; no derivation given | A ceiling. A south-facing railing panel covers a median 6.4% of the state-average home. No state reaches 15% |
+| 2 | A north-facing balcony produces 75% less | Earliest we found: a 2024 newsletter. It matches a PVGIS run for a vertical panel in Berlin | Roughly right for an unshaded vertical panel: 58% to 75% less in US cities, median 71% |
+| 3 | You need four hours of direct sun a day | Could not be traced | No threshold exists. A north-facing railing gets essentially no direct sun from October to March and still produces a median 70 kWh |
+| 4 | It pays for itself in two years | Bright Saver, for a kit bought at cost in a high-rate state | A special case. A $1,200 kit on a south railing takes 4.8 to 13.9 years, median 9.9 |
+| 5 | You get the 30% federal tax credit | IRC §25D, which was real through 2025 | Out of date. It ended for expenditures after 31 December 2025 |
+| 6 | It keeps your lights on in a blackout | Could not be traced | False. The inverter must shut off within 2 seconds of an outage |
+| 7 | Any outlet will do | Sellers’ shorthand for “it has a plug” | False. It needs a weather-rated outdoor outlet on a circuit with room for it |
+| 8 | It is legal in every state | Seller copy | False. 5 states have a law in effect and 4 more have signed one |
+| 9 | It sells your surplus back to the grid | Carried over from rooftop net metering | False under the signed laws. Six rule it out, three are silent, none provides a credit |
+
+That is one claim that holds up roughly as stated (2), two best cases presented as typical (1 and 4), and six that are wrong or out of date. Every output figure on this page applies the site’s railing-obstruction factor — 0.95 for a vertical panel, 0.99 at 35° — and none includes shade from neighboring buildings, so each is the *unobstructed best case* for its city. Paybacks use the calculator’s own loop: 0.5% a year panel degradation, prices rising 3% a year, and every kilowatt-hour used at home at the state’s EIA average price.
+
+## Output: 15–25%, 75% less, four hours of sun
+
+### 1. “An 800 W kit covers 15–25% of your electricity”
+
+Solar.com’s 2026 guide says a standard 800 W kit can often cover 15% to 25% of a typical apartment’s monthly electricity. It shows no working, and we found none elsewhere. balco.nyc’s runs give this:
+
+| 800 W, facing south, unshaded | kWh a year (median city) | Share of the state’s average home | Share of an average large-building apartment |
+|---|---|---|---|
+| Vertical, on a railing | 658 | 4.2% to 11.9%, median 6.4% | 8.4% to 13.4%, median 10.8% |
+| Tilted to 35° | 1,053 | 7.3% to 21.3%, median 10.3% | 11.7% to 22.6%, median 17.3% |
+
+Against the average home in its own state (EIA, 2024: a median of about 10,600 kWh a year), no state’s railing panel reaches 15%. Thirteen stay under 5%, most of them Southern states where homes use the most electricity; only California, Maine and New Mexico pass 10%. A fairer test of an apartment claim is an apartment: the EIA’s 2020 Residential Energy Consumption Survey puts households in buildings of five or more units at 20.8 million Btu of electricity, about **6,100 kWh a year**. A railing panel still tops out at 13.4% of that. The 15–25% only appears when the panel is tilted to 35°, sits in full sun and serves a smaller-than-average user — then 48 of the 51 land between 15% and 23%, and none reaches 25%. It is a ceiling, not an expectation. In New York City, balco.nyc’s 3D shade model puts real balconies at 400–900 kWh, 6% to 13% of the state-average home.
+
+### 2. “A north-facing balcony produces 75% less”
+
+The earliest instance of this figure we have found is a February 2024 newsletter post that states it, together with “30% less” for east and west, without showing the calculation; its listed sources include the European Commission’s PVGIS tool, run for Berlin. We reran PVGIS for Berlin ourselves with an 800 W vertical panel: **612 kWh facing south, 154 facing north — 74.8% less**. East and west averaged 419 kWh, 31.5% less. Both numbers match, so a Berlin PVGIS run is the likely origin, though we cannot confirm the author used exactly that.
+
+The surprise is that it roughly survives the trip to America. balco.nyc’s PVWatts runs put a vertical north-facing railing **58% to 75% below** a south-facing one, with a median of 71%; 28 of the 51 cities lose 70% or more. The biggest losses are in the clear-skied Southwest — Albuquerque 75%, Las Vegas 75%, Phoenix 74% — because there the south side has the most direct sun to win. The smallest is Honolulu, 58%, where the midsummer sun passes north of overhead. So the verdict is roughly right, for an unobstructed vertical panel. What it leaves out is everything but the compass: in a street canyon a high-floor north balcony can out-produce a boxed-in south one, which is [why balco.nyc models the block rather than the direction](https://balco.nyc/balcony-sunlight).
+
+### 3. “You need four hours of direct sun a day”
+
+The threshold circulates as four hours, four to five, or six to eight, and one guide we read gave two different figures on one page. We could not trace any version to a study or a standard. A panel has no threshold: it produces whatever the light allows, continuously. The cleanest test is a north-facing railing. Between the September and March equinoxes the sun rises and sets south of due east and west everywhere in the United States, so a north-facing vertical panel gets essentially *no* direct sun for half the year — zero hours, not four. balco.nyc’s runs still give it a median **70 kWh from October to March**, all of it from diffuse and reflected light, about 35% of its annual output. Small, and no reason on its own to buy, but proof that output fades with the light rather than switching off at a line. The useful question is how many kilowatt-hours, which [our guide to balcony sunlight](https://balco.nyc/balcony-sunlight) works through.
+
+## Money: the two-year payback and the tax credit
+
+### 4. “It pays for itself in two years”
+
+The most specific source we found is Bright Saver, a nonprofit that sells kits at cost. It says that in a sunny, high-rate state such as California or New York, a kit bought at its at-cost price typically pays back in about two years. Its price is the first condition: 360 W for $414.17 to members, about $1.15 a watt, against $1.50 a watt for balco.nyc’s $1,200 mid-range assumption for 800 W. Rerun on balco.nyc’s assumptions, a $1,200 kit on an unshaded south-facing railing pays back as follows:
+
+| Payback on a $1,200 kit | States (of 51) | Examples |
+|---|---|---|
+| Under 2 years | 0 | — |
+| Under 4 years | 0 | — |
+| 4 to 5 years | 1 | California (Los Angeles), 4.8 |
+| 5 to 8 years | 12 | Hawaii 5.2, Massachusetts 5.5, New York 6.6 |
+| 8 to 10 years | 15 | Pennsylvania 8.1, Colorado 8.3, Illinois 9.4 |
+| 10 years or more | 23 | Florida 11.2, Texas 11.5, Louisiana 13.1; Washington (Seattle) slowest at 13.9 |
+
+The median is **9.9 years**. The arithmetic for the fastest state: 720 kWh a year in Los Angeles at California’s average 32.89¢ is $237 in year one, and rising prices bring $1,200 back in 4.8 years. Even the $850 budget kit gets under five years in only eight states, all high-price ones: California, Hawaii and six in the Northeast. Two years does reproduce, but only when three conditions line up. Take Bright Saver’s 360 W price, tilt the panel to 35° instead of hanging it on a railing, and put it in Los Angeles: about 579 kWh (the 800 W run scaled to 360 W), $190 a year, **2.1 years**, or 2.3 counting the $29 membership. Hang the same panel on a railing and it is 3.8 years. At balco.nyc’s budget price, a tilted 800 W system beats two years in two states, Hawaii and California. A $1,200 kit on a railing does it nowhere. These figures are generous (section 6); the [cost and payback guide](https://balco.nyc/balcony-solar-cost) works the same arithmetic for New York City.
+
+### 5. “You get the 30% federal tax credit”
+
+This one was true. The residential clean energy credit under IRC §25D paid 30% of the cost of solar electric property installed from 2022 through 2025, and pages written in that period still say so. The One Big Beautiful Bill Act (P.L. 119-21, signed 4 July 2025) ended it: the IRS says the credit is not allowed for any expenditure made after 31 December 2025, and that an expenditure counts as made when installation is complete. A kit installed in 2026 earns no federal credit, even one paid for in 2025. balco.nyc’s payback figures net out no credit. The details are in [our tax credit guide](https://balco.nyc/balcony-solar-tax-credit).
+
+## Hardware: blackouts and outlets
+
+### 6. “It keeps your lights on in a blackout”
+
+It does the opposite, by design. Grid-connected inverters are built to IEEE Std 1547-2018 and tested under UL 1741. The standard requires them to detect an outage — an “unintentional island” — and stop energizing the line **within 2 seconds**, then wait, by default, five minutes after the grid returns before starting again. The reason is safety: a line crew must be able to treat a dead line as dead. State plug-in laws write the same rule in. Utah requires a feature that stops the device energizing the building during an outage; Maine requires inverters that shut off 0.2 seconds after power is disrupted. We could not trace the belief to any source. Our guess is that it comes from portable “solar generators”, battery units that do run appliances in an outage because they connect to nothing. Backup power from a balcony means a battery system, a separate product and a separate decision.
+
+### 7. “Any outlet will do”
+
+A plug-in kit does end in an ordinary plug. That is true of the plug, not of every outlet, and three things narrow it:
+
+- **It has to be outdoors and rated for it.** An outlet on a balcony needs to be one rated and covered for a wet location, and many balconies have none. Adding one is work for a licensed electrician, and in an apartment building usually needs the building’s approval too; [the installation guide](https://balco.nyc/install-balcony-solar) lists what to check.
+
+- **The circuit behind it matters.** A standard breaker does not see current that a plug-in panel injects into the circuit, so household load plus solar output can exceed what the wiring was designed for without tripping anything. Protection against overloads is one of the things UL Solutions’ certification program for plug-in systems tests for.
+
+- **Some laws specify the outlet.** Maine lets a household run up to 420 W without an electrician, but anything larger, up to 1,200 W, must be installed by a licensed electrician on a dedicated circuit with a single outlet.
+
+None of this is electrical advice: which outlet and circuit suit a given home is a question for an electrician.
+
+## Law: every state, and selling power back
+
+### 8. “It is legal in every state”
+
+We saw this in the footer of one kit seller’s website in August 2026, on a page whose own article counted ten states with laws. balco.nyc has now reviewed all 50 states and DC from their legislatures’ bill pages. As of 23 September 2026:
+
+| Status | Count | States |
+|---|---|---|
+| Law in effect | 5 | Colorado, Maine, Maryland, Utah, Vermont |
+| Signed, not yet in effect | 4 | Connecticut (1 Oct 2026), New Hampshire (1 Jan 2027), Virginia (1 Jan 2027), New Jersey (1 Mar 2027) |
+| Passed, awaiting signature | 2 | California (SB 868), New York (SUNNY Act) |
+| Bill pending | 7 | DC, Illinois, Massachusetts, Michigan, North Carolina, Ohio, Pennsylvania |
+| Bill failed or vetoed | 18 | Alaska, Arizona, Delaware, Georgia, Hawaii, Idaho, Indiana, Iowa, Minnesota, Missouri, New Mexico, Oklahoma, Oregon, Rhode Island, South Carolina, Washington, West Virginia, Wyoming |
+| No plug-in law found | 15 | Alabama, Arkansas, Florida, Kansas, Kentucky, Louisiana, Mississippi, Montana, Nebraska, Nevada, North Dakota, South Dakota, Tennessee, Texas, Wisconsin |
+
+Where there is no law, plug-in solar is not banned as such, but the utility’s interconnection rules apply, and those usually require approval before anything feeds power into a home circuit. New York’s SUNNY Act has passed both chambers and awaits the Governor's signature; it would grant no right to install. California’s SB 868 was presented to Governor Newsom on 31 August 2026. Even where a law is in effect, most do not stop a landlord or a condo board from saying no: four of the nine signed laws (Colorado, New Jersey, Vermont, Virginia) limit that power in different ways, and the other five give no right to install. This is not legal advice; [every state’s bills, dates and limits](https://balco.nyc/states) are listed with their sources, and [the SUNNY Act page](https://balco.nyc/sunny-act) covers New York.
+
+### 9. “It sells your surplus back to the grid”
+
+Rooftop solar usually earns credit for exported power under net metering, and the assumption carries over. For plug-in systems it mostly does not. Of the nine signed laws, **six rule it out**: Utah and Maryland exempt the devices from net-metering rules, Maine bars them from net energy billing, Virginia excludes them from its definition of an eligible customer-generator, and Vermont says exported generation shall not be compensated. Connecticut goes further: its law requires a warning that surplus is charged to the customer as usage unless the meter allows net metering. Colorado, New Hampshire and New Jersey are silent. New York’s bill would leave exports uncompensated unless the owner signs a separate agreement, and California’s is silent. None provides a credit. balco.nyc therefore assumes surplus earns nothing in every state, which is why the share of output used at home — the fridge, the router, whatever runs in daylight — matters as much as the output itself.
+
+## What these numbers leave out
+
+The figures behind the nine verdicts are generous in some ways and blunt in others. Five limits are worth knowing before quoting them:
+
+- **One city per state.** Each state is represented by its largest city. Buffalo is not New York City, and Flagstaff is not Phoenix. The [state pages](https://balco.nyc/states) name the city behind every number.
+
+- **No shade.** Every output figure assumes nothing blocks the sky. In New York City balco.nyc’s 3D model finds roughly a threefold spread between the best and worst realistic balconies, mostly from the buildings opposite.
+
+- **Average prices.** The EIA’s state averages divide total revenue by total sales, so they include fixed monthly charges a panel cannot touch. That overstates the value of a kilowatt-hour you avoid buying. In New York City the calculator uses Con Edison’s marginal rate of 34¢ instead, and anywhere else the per-kWh rate from your own bill is the better input.
+
+- **Everything used at home.** Savings and paybacks assume every kilowatt-hour displaces one you would have bought. Surplus earns nothing (claim 9), so a home that exports part of its output saves less.
+
+- **Modeled, not metered.** These are PVWatts simulations over a typical weather year, not measurements from installed systems.
+
+The pattern across the nine claims is consistent: the numbers that travel furthest describe a tilted, unshaded panel serving a light user in a high-price state, then get repeated as if they described a railing panel anywhere. For one balcony rather than 51 cities, [run your own address](https://balco.nyc/); the [methodology](https://balco.nyc/methodology) sets out every assumption used here.
+
+## Common questions
+
+**Is balcony solar a scam?**
+
+No. A plug-in panel does generate electricity and cut a bill, but the most repeated numbers oversell it. balco.nyc's PVWatts runs for the largest city in every state put an unshaded, south-facing 800 W railing system at a median 658 kWh a year: about 6.4% of the average home's use, worth about $109 a year at the state's average price. It saves money slowly: balco.nyc's model finds no state where a $1,200 kit on a south-facing railing pays back in under four years.
+
+**Does balcony solar really save money?**
+
+Yes, but slowly in most states. On balco.nyc's $1,200 mid-range kit price, an unshaded south-facing 800 W railing system pays back in 4.8 years in California, the fastest, and 13.9 years in Washington, the slowest, with a median of 9.9 years across the 50 states and DC. Those figures assume every kWh is used at home and prices rise 3% a year; shade or unused surplus makes them longer.
+
+**How much of my electricity will an 800 W balcony kit cover?**
+
+For a south-facing railing panel, usually 4% to 12% of an average home's use, with a median of 6.4%, according to balco.nyc's PVWatts runs for the largest city in every state. The often-quoted 15-25% needs a panel tilted to about 35 degrees, no shading, and an apartment with below-average consumption.
+
+**Does a north-facing balcony really produce 75% less?**
+
+Close, for an unshaded vertical panel. balco.nyc's PVWatts runs put a north-facing railing 58% to 75% below a south-facing one across US cities, with a median of 71%, and the 75% figure matches a PVGIS calculation for a vertical panel in Berlin. In a dense city, the buildings opposite often matter more than the compass direction.
+
+**Does balcony solar work during a power outage?**
+
+No. Grid-connected inverters must detect an outage and stop energizing the line within 2 seconds under IEEE Std 1547-2018, and plug-in laws such as Utah's and Maine's require the same, so that line crews are not put at risk. Power during a blackout needs a battery system, which is a separate product.
+
+**Is plug-in solar legal in every state?**
+
+No. As of 23 September 2026, balco.nyc's review of all 50 states and DC finds a plug-in solar law in effect in 5 states (Colorado, Maine, Maryland, Utah, Vermont), signed but not yet in effect in 4 (Connecticut, New Hampshire, New Jersey, Virginia), and passed and awaiting signature in 2 (California, New York). Elsewhere the utility's interconnection rules apply, which usually means approval is required. This is not legal advice.
+
+**Can I sell surplus balcony solar power back to the utility?**
+
+Generally no. Six of the nine signed plug-in solar laws exclude these devices from net metering or deny any export credit, and the other three are silent; none provides a credit. Connecticut's law requires a warning that surplus is charged to the customer as usage unless the meter allows net metering.
+
+**Can I still claim the 30% federal solar tax credit on a balcony kit?**
+
+Not for a kit installed now. The residential clean energy credit under IRC section 25D ended for expenditures made after 31 December 2025 under the One Big Beautiful Bill Act, and the IRS treats an expenditure as made when installation is complete, so a kit installed in 2026 earns no federal credit.
+
+## Sources
+
+- [NLR — PVWatts V8 API documentation](https://developer.nlr.gov/docs/solar/pvwatts/v8/): the hourly production model behind balco.nyc’s 800 W runs for the largest city in every state and DC (retrieved 23 September 2026).
+- [EIA — Form EIA-861M monthly sales and revenue by state](https://www.eia.gov/electricity/data/eia861m/xls/sales_revenue.xlsx): state average residential prices over the twelve months to June 2026, used for savings and payback; averages that include fixed charges.
+- [EIA — 2024 average monthly bill, residential (Table 5A)](https://www.eia.gov/electricity/sales_revenue_price/pdf/table_5A.pdf): average household consumption by state, the denominator for the coverage figures.
+- [EIA — 2020 Residential Energy Consumption Survey, Table CE2.1](https://www.eia.gov/consumption/residential/data/2020/c&e/pdf/ce2.1.pdf): 20.8 million Btu (about 6,100 kWh) of electricity a year for apartments in buildings of five or more units, against 36.1 million Btu for all homes.
+- [Solar.com — 2026 guide to balcony and plug-in solar](https://www.solar.com/learn/guide-to-balcony-plug-in-solar/): an instance of the claim that an 800 W kit covers 15–25% of an apartment’s electricity, cited in order to check it.
+- [’tings — Balcony solar: tiny panels, big promises (February 2024)](https://tings.substack.com/p/balcony-solar-tiny-panels-big-promises): the earliest instance we found of the 75%-less north-facing figure, with 30% less for east and west, and its listing of a PVGIS run for Berlin among its sources.
+- [European Commission Joint Research Centre — PVGIS](https://re.jrc.ec.europa.eu/pvg_tools/en/): the tool balco.nyc reran for an 800 W vertical panel in Berlin: 612 kWh facing south, 154 facing north, 425 east and 413 west.
+- [Bright Saver — Is plug-in solar worth it?](https://www.brightsaver.org/post/is-plug-in-solar-worth-it): the two-year payback claim, for a kit bought at cost in a high-rate state such as California or New York. Its member price of $414.17 for 360 W plus a $29 annual membership is as recorded in balco.nyc’s cost guide in September 2026.
+- [IRS — FAQs for modification of sections 25C, 25D and others under Public Law 119-21](https://www.irs.gov/newsroom/faqs-for-modification-of-sections-25c-25d-25e-30c-30d-45l-45w-and-179d-under-public-law-119-21-139-stat-72-july-4-2025-commonly-known-as-the-one-big-beautiful-bill-obbb): that the §25D credit is not allowed for expenditures made after 31 December 2025, and that an expenditure is made when installation is complete.
+- [IRS — Residential Clean Energy Credit](https://www.irs.gov/credits-deductions/residential-clean-energy-credit): that the credit equaled 30% of the cost of qualified property installed from 2022 through 31 December 2025.
+- [NLR — A primer on the unintentional islanding protection requirement in IEEE Std 1547-2018 (2022)](https://docs.nlr.gov/docs/fy22osti/77782.pdf): that a DER must detect an island and cease to energize within 2 seconds, the five-minute default return-to-service delay, and UL 1741 testing.
+- [Utah Legislature — H.B. 340 (2025), enrolled copy](https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf): the required feature preventing a device from energizing the building during an outage, and the exemption from net metering program requirements.
+- [Maine Legislature — Public Law 2026, chapter 644 (LD 1730)](https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132): inverters that shut off after 0.2 seconds, a licensed electrician and a dedicated single-outlet circuit above 420 W, and no net energy billing.
+- [Vermont Legislature — Act 149 (S.202) as enacted](https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf): that plug-in devices are not eligible for net metering and their exports shall not be compensated.
+- [Connecticut General Assembly — Public Act 26-127](https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00127-R00HB-05340-PA.PDF): the required warning that surplus generation is charged to the customer as usage unless the meter allows net metering.
+- [Virginia Acts of Assembly, 2026, Chapter 1052 (HB 395)](https://lis.blob.core.windows.net/files/1225204.PDF): the exclusion of small portable solar generation devices from the definition of an eligible customer-generator and from net energy metering provisions.
+- [Maryland General Assembly — 2026 Laws, Chapter 353 (HB 1532)](https://mgaleg.maryland.gov/2026RS/Chapters_noln/CH_353_hb1532e.pdf): that a portable solar energy generating system is not subject to the net metering sections, §§7-306 and 7-306.1.
+- [New York State Senate — S8512C (SUNNY Act)](https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C): passage on 28 May 2026, and that exported energy would be uncompensated unless the customer enters a separate agreement.
+- [California Legislature — SB 868 status](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB868): enrolled and presented to the Governor on 31 August 2026.
+- [UL Solutions — testing and certification framework for plug-in solar (January 2026)](https://www.ul.com/news/ul-solutions-debuts-testing-and-certification-framework-safer-plug-solar-across-united-states): that the program requires features that protect against overloads and prevent current flowing in the wrong direction.
+- [pv magazine — How to design a UL-certified balcony solar kit in the United States](https://www.pv-magazine.com/2026/02/02/how-to-design-a-ul-certified-balcony-solar-kit-in-the-united-states/): that plug-in systems can inject current standard breakers do not detect, so household load plus solar can exceed a circuit’s limit.
+
+---
+
+# Is there a tax credit for balcony solar in 2026?
+
+URL: https://balco.nyc/balcony-solar-tax-credit  
+Last reviewed: 2026-09-23
+
+No. The 30% federal Residential Clean Energy Credit (IRC §25D) does not cover anything installed in 2026: the One Big Beautiful Bill Act ended it for expenditures made after 31 December 2025, and the IRS counts an expenditure as made when installation is completed, not when you pay. On a $1,200 mid-range kit the credit would have been worth $360. balco.nyc’s PVWatts runs for the largest city in every state put the median payback at 9.9 years at full price against 7.1 years at $840, so losing the credit adds a median 2.7 years.
+
+## No federal credit in 2026, and what it would have been worth
+
+The credit solar sellers used to quote was the Residential Clean Energy Credit in section 25D of the Internal Revenue Code: 30% of the cost of qualified solar electric property, with no dollar cap. Section 70506 of Public Law 119-21, the One Big Beautiful Bill Act signed on 4 July 2025, rewrote its termination clause so that the credit “shall not apply with respect to any expenditures made after December 31, 2025.” The same act ended the separate home-improvement credit in section 25C. There is no replacement federal credit for a household buying solar in 2026, plug-in or rooftop.
+
+To put a number on what went away, balco.nyc reran its state-by-state payback with the credit restored. The method is the one behind the [state pages](https://balco.nyc/states): an 800 W kit on an unshaded south-facing railing in each state’s largest city, NREL PVWatts V8 output multiplied by the 0.95 railing factor for a vertical panel, valued at the state’s EIA average residential price for the 12 months to June 2026, with output falling 0.5% a year and prices rising 3% a year. The only thing that changes is the price: $1,200 for a mid-range kit, or $840 after a 30% credit.
+
+| State (reference city) | Output, kWh/yr | Average price | Payback at $1,200 | Payback at $840 | Credit was worth |
+|---|---|---|---|---|---|
+| Maine (Portland) | 692 | 28.99¢ | 5.6 years | 4.0 years | 1.6 years |
+| New York (New York City) | 604 | 27.96¢ | 6.6 years | 4.7 years | 1.9 years |
+| Maryland (Baltimore) | 673 | 20.75¢ | 7.9 years | 5.7 years | 2.2 years |
+| Colorado (Denver) | 805 | 16.45¢ | 8.3 years | 6.0 years | 2.3 years |
+| Utah (Salt Lake City) | 724 | 13.36¢ | 10.9 years | 8.0 years | 3.0 years |
+| Median, 50 states and DC | — | — | 9.9 years | 7.1 years | 2.7 years |
+
+Three things follow from the full 51-row run. The credit was worth most, in years, where electricity is cheapest: 1.6 years in Maine, 3.0 in Utah, and 3.7 in Washington, which has the longest payback of the 51. With the credit, the mid-range kit would pay back inside ten years in 50 of the 51; at full price, 28 do. And a 30% price cut shortens payback by a little less than 30% — a median 28% — because the years it removes are the late ones, when rising prices make each year’s saving larger. Differences in the table are computed before rounding.
+
+Every figure here is a ceiling, not an expectation. It assumes an unshaded railing and that every kilowatt-hour is used in the home, since the model treats surplus power as earning nothing, which is how most of the new plug-in laws work. The EIA figures are averages that include fixed monthly charges a panel does not reduce, which flatters the value of each kWh. New York’s row uses the state average, not the 34¢ Con Edison marginal rate balco.nyc uses for [New York City addresses](https://balco.nyc/electricity-rate).
+
+## When an expenditure counted as “made”
+
+The cut-off is not the day you paid. Section 25D(e)(8)(A) has long said that an expenditure is treated as made “when the original installation of the item is completed.” In its August 2025 questions and answers on the new law (Fact Sheet 2025-05, question 7), the IRS applied that rule to the termination directly: paying on or before 31 December 2025 does not preserve the credit if installation is completed afterwards.
+
+For a plug-in kit the consequence is plain. A kit bought in December 2025 but mounted and switched on in January 2026 is outside the credit on the IRS’s reading. The IRS has not said what “installation completed” means for a device you clamp to a railing and plug in yourself. The natural reading is the day it was mounted and running, but we could not find the point addressed anywhere.
+
+The IRS’s own credit page words the cut-off differently — the credit “is not available for any property placed in service after December 31, 2025” — and tells filers to claim it for the year the property “is installed, not merely purchased.” Both formulations point the same way, and the statute’s test, the one the IRS applied in its FAQ, is completed installation.
+
+What survives is narrow. A system installed in 2025 is claimed on the 2025 return, and the IRS says a taxpayer who missed it can generally amend within three years of filing or two years of paying the tax, whichever is later. Unused credit carries forward to later years. All of that assumes a plug-in kit was eligible in the first place, which is the question in section 4. None of this is tax advice; a preparer can tell you how it applies to your return.
+
+## Why “30% off with the federal tax credit” is now wrong
+
+Kit listings, comparison pages and articles written before the summer of 2025 often advertise a plug-in kit as “30% off with the federal tax credit,” or print a net price with the credit already subtracted. Many are still online and still turn up in search. For any kit installed in 2026 the claim is wrong for the simplest reason: the credit no longer exists for new installations. Web pages are rarely rewritten when a tax law changes, and a price with 30% taken off is the most flattering number a seller can show.
+
+The claim was loose even while the credit existed. Section 25D was never a discount at checkout. It was a nonrefundable credit claimed on IRS Form 5695 when you filed, limited to the tax you owed that year, with any excess carried forward. A household with little federal income tax got little or nothing in the year it installed the kit. And no seller could promise eligibility: that was between the taxpayer and the IRS, and for plug-in kits the IRS never addressed it.
+
+The practical rule for 2026: compare kits on the sticker price. If a page shows a price “after tax credit,” divide it by 0.7 to recover the real one — an $840 net price is a $1,200 kit. balco.nyc’s own [cost and payback figures](https://balco.nyc/balcony-solar-cost) are gross, with no federal credit netted out.
+
+## Did 25D ever clearly cover a plug-in kit?
+
+Plausibly, but nobody with authority said so. The statutory definition is broad: a qualified solar electric property expenditure is one “for property which uses solar energy to generate electricity for use in a dwelling unit” in the United States that the taxpayer uses as a residence (§25D(d)(2)). Nothing in it sets a minimum size or requires a roof, a licensed installer, net metering or the utility’s approval. The IRS’s FAQ adds that the taxpayer may rent the home, which is unusual for a tax break on equipment and mattered for apartment dwellers. For solar, the home did not have to be a main residence either; a second home the taxpayer lived in part-time counted.
+
+What was never settled is how a device built to be moved fits a credit organized around installation. The timing rule keys to “original installation,” the IRS told filers to claim the year the property was installed, and several of the new state laws define plug-in devices as moveable or portable. We found no IRS ruling, FAQ, form instruction or publication that addresses plug-in or portable solar. One edge is clear: a battery bundled with a kit counted as battery storage technology only if its capacity was at least 3 kWh.
+
+There was also a practical wrinkle. On balco.nyc’s state research, Utah was the only state with a plug-in solar law in force during 2025; everywhere else, connecting a kit meant going through the utility’s interconnection rules. The tax code did not make the credit depend on that, but a claim could have rested on an installation the utility had not approved. The honest summary is eligible on the text, untested in practice, and moot for anything installed from 2026.
+
+## State tax breaks in the plug-in states
+
+We checked every state with a plug-in solar law in force or signed — Utah, Maine, Colorado, Maryland, Vermont, Connecticut, Virginia, New Hampshire and New Jersey — plus New York, whose SUNNY Act has passed both chambers and awaits the Governor's signature. None has a state income-tax credit or rebate that plainly covers a self-installed plug-in kit. Five exempt solar equipment from sales tax in wording a kit plausibly fits, though none of the guidance we found mentions plug-in systems.
+
+| State | What exists | Does it fit a plug-in kit? |
+|---|---|---|
+| New York | Solar energy system equipment credit, 25% up to $5,000 (Tax Law §606(g-1)). State sales-tax exemption for residential solar equipment; New York City charges no local tax on it. | Credit: probably not. The IT-255 instructions require a net-metering contract (or compliance with the utility’s net-metering schedule) and a connection to the utility’s system; the SUNNY Act would exempt plug-in devices from net metering. Sales tax: plausibly, if a kit counts as equipment “installed in a residence”. Claimed with Form ST-121. |
+| New Jersey | Sales-tax exemption for solar energy devices that provide electrical power (N.J.S.A. 54:32B-8.33) | Plausibly. Claimed with Form ST-4. |
+| Connecticut | Sales-tax exemption for solar electricity generating systems, defined as systems that convert sunlight directly into electricity, including modules, inverters and mounting hardware | Plausibly. Claimed with Form CERT-140. |
+| Maryland | Sales-tax exemption for solar energy equipment that generates electricity “to be used in a structure or supplied to the electric grid” (Tax-General §11-230). Maryland Solar Access Program rebate of $750 per kW DC. | Exemption: plausibly. Rebate: no. It is for income-qualified homeowners, requires a participating contractor and pays after interconnection. |
+| Colorado | Sales-tax exemption for components that produce alternating-current electricity from a renewable source, including solar modules and inverters | Plausibly, but only for state and some special-district taxes. Most city and county taxes still apply unless adopted locally, and home-rule cities set their own. |
+| Vermont | Renewable-energy equipment is generally taxable; the home exemptions cover off-grid systems and solar water heating | No. A plug-in device is grid-connected and cannot be net metered. |
+| Utah | Renewable Energy Systems Tax Credit | No. Residential solar installed in 2024 or later is not eligible. |
+| New Hampshire | Residential Renewable Electrical Generation Rebate | No. The program is permanently closed. |
+| Maine, Virginia | We found no state credit, rebate or sales-tax exemption that applies | We could not confirm that none exists. |
+
+An exemption is worth the sales tax you would otherwise pay. New York City is the largest case: residential solar equipment is exempt from the 4% state tax and the 0.375% Metropolitan Commuter Transportation District tax, and the city’s own rate on it is zero, so a qualifying $1,200 kit would avoid the full 8.875% combined rate, or **$106.50**. That is under a third of the $360 the federal credit used to be worth, and it depends on a retailer accepting an exemption certificate for a product the rules never contemplated. Ask before you pay: the exemption is normally claimed by giving the seller a certificate at the time of sale. In New York the question is also premature, since until the SUNNY Act is signed and takes effect the utility’s approval is still required to connect a kit.
+
+This is not legal or tax advice. Sales-tax treatment can turn on facts the published guidance does not address, local rates vary, and we found no state agency that has ruled on a plug-in kit. For what each state’s law allows, see the individual [state pages](https://balco.nyc/states); for whether a kit is worth buying at full price, see [is balcony solar worth it](https://balco.nyc/is-balcony-solar-worth-it).
+
+## Common questions
+
+**Is there a federal tax credit for balcony solar in 2026?**
+
+No. The 30% Residential Clean Energy Credit under section 25D of the Internal Revenue Code was ended by the One Big Beautiful Bill Act (Public Law 119-21, signed 4 July 2025) for expenditures made after 31 December 2025. There is no replacement federal credit for household solar, plug-in or rooftop.
+
+**I paid for a balcony solar kit in December 2025 but set it up in January 2026. Can I claim the 30% credit?**
+
+Not on the IRS's reading. Section 25D treats an expenditure as made when the original installation is completed, and the IRS's August 2025 FAQ says that paying on or before 31 December 2025 does not preserve the credit if installation was completed afterwards.
+
+**Did the 30% federal credit ever cover plug-in balcony solar?**
+
+Plausibly, but it was never confirmed. The statute covers property that uses solar energy to generate electricity for use in a home the taxpayer lives in, including a rented one, with no minimum size or interconnection requirement. But the credit is organized around installation, and the IRS never issued guidance on plug-in or portable systems. The question is moot for anything installed from 2026.
+
+**How much longer does balcony solar take to pay back without the tax credit?**
+
+balco.nyc's model of an 800 W kit on a south-facing railing in each state's largest city puts the median payback on a $1,200 kit at 9.9 years, against 7.1 years at the $840 it would have cost after a 30% credit: about 2.7 years longer. The gap ranges from 1.4 years in California to 3.7 years in Washington, and every figure is a ceiling that assumes no shade and full self-consumption.
+
+**Does New York's solar tax credit apply to a plug-in balcony system?**
+
+Probably not. New York's solar energy system equipment credit (25% up to $5,000) requires, for systems that make electricity, a net-metering contract with the utility or compliance with its net-metering schedule, and a connection to the utility's system. The SUNNY Act, which has passed both chambers and awaits the Governor's signature, would exempt plug-in devices from net metering. We could not confirm how the two would interact.
+
+**Is a balcony solar kit exempt from sales tax?**
+
+In some states, plausibly. New York, New Jersey, Connecticut, Maryland and Colorado exempt solar equipment from sales tax in wording a plug-in kit appears to fit, though no guidance we found mentions plug-in systems, and Colorado's exemption covers only state and some special-district taxes. Vermont's does not fit a grid-connected plug-in device. The exemption is normally claimed with a certificate at the time of sale.
+
+**Are there state rebates for balcony solar?**
+
+None that we found for a self-installed plug-in kit in the states with plug-in laws. Maryland's Solar Access Program requires a participating contractor and interconnection, New Hampshire's residential solar rebate is permanently closed, and Utah's residential solar credit ended for systems installed in 2024 or later.
+
+## Sources
+
+- [U.S. Government Publishing Office — Public Law 119-21 (One Big Beautiful Bill Act)](https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm): enacted 4 July 2025; section 70506 (139 Stat. 251) amends §25D(h) so the credit does not apply to expenditures made after 31 December 2025, and section 70505 ends §25C.
+- [Congress.gov — H.R.1, 119th Congress, text](https://www.congress.gov/bill/119th-congress/house-bill/1/text): the same enacted text, including section 70506.
+- [Legal Information Institute — 26 U.S. Code §25D, Residential clean energy credit](https://www.law.cornell.edu/uscode/text/26/25D): the current statutory text: the solar electric definition in (d)(2), the installation timing rule in (e)(8) and the amended termination in (h).
+- [IRS — Fact Sheet 2025-05, FAQs on Public Law 119-21 (21 August 2025)](https://www.irs.gov/newsroom/faqs-for-modification-of-sections-25c-25d-25e-30c-30d-45l-45w-and-179d-under-public-law-119-21-139-stat-72-july-4-2025-commonly-known-as-the-one-big-beautiful-bill-obbb): question 7: paying by 31 December 2025 does not preserve the credit if installation is completed after that date.
+- [IRS — Residential Clean Energy Credit](https://www.irs.gov/credits-deductions/residential-clean-energy-credit): the credit is not available for property placed in service after 31 December 2025; it is nonrefundable, claimed on Form 5695 for the year the property is installed, with unused credit carried forward; battery storage needs at least 3 kWh.
+- [IRS — Residential clean energy property credit FAQ: qualifying residence](https://www.irs.gov/credits-deductions/frequently-asked-questions-about-energy-efficient-home-improvements-and-residential-clean-energy-property-credits-residential-clean-energy-property-credit-qualifying-residence): for solar, the taxpayer may rent the home, and a second home used as a residence can qualify.
+- [IRS — Residential clean energy property credit FAQ: timing of credit](https://www.irs.gov/credits-deductions/frequently-asked-questions-about-energy-efficient-home-improvements-and-residential-clean-energy-property-credits-residential-clean-energy-property-credit-timing-of-credits): a missed credit can generally be claimed on an amended return within three years of filing or two years of paying the tax.
+- [NLR (formerly NREL) — PVWatts V8 API](https://developer.nlr.gov/docs/solar/pvwatts/v8/): the production model behind balco.nyc’s state runs.
+- [EIA — Form EIA-861M monthly sales and revenue](https://www.eia.gov/electricity/data/eia861m/): the state average residential prices (12 months to June 2026, preliminary) used in the payback table.
+- [New York State Department of Taxation and Finance — Instructions for Form IT-255](https://www.tax.ny.gov/pdf/current_forms/it/it255i.pdf): the 25% / $5,000 solar credit, and its requirement of a net-metering contract and utility connection for systems that make electricity.
+- [New York State Department of Taxation and Finance — Residential solar energy systems equipment](https://www.tax.ny.gov/pubs_and_bulls/tg_bulletins/st/solar_energy_equipment.htm): the state and MCTD sales-tax exemption, its definition, and the Form ST-121 claim.
+- [New York State Department of Taxation and Finance — Publication 718-S](https://www.tax.ny.gov/pdf/publications/sales/pub718s.pdf): New York City’s local rate on residential solar equipment is zero.
+- [New York State Department of Taxation and Finance — Publication 718](https://www.tax.ny.gov/pdf/publications/sales/pub718.pdf): the 8⅞% combined sales tax rate in New York City.
+- [New York State Senate — S8512C (SUNNY Act)](https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C): plug-in devices would not be subject to interconnection or net-metering requirements; the bill contains no tax provision.
+- [New Jersey Division of Taxation — Tax Topic Bulletin S&U-6, Sales Tax Exemption Administration](https://www.nj.gov/treasury/taxation/pdf/pubs/sales/su6.pdf): solar energy devices that provide electrical power are exempt, claimed with Form ST-4.
+- [Connecticut Department of Revenue Services — SN 2007(7)](https://portal.ct.gov/drs/publications/special-notices/2007/sn-2007-7): the sales-tax exemption for solar electricity generating systems and the items it covers.
+- [Connecticut Department of Revenue Services — Exemptions from sales and use taxes](https://portal.ct.gov/drs/sales-tax/exemptions-from-sales-and-use-taxes): the current list, which still exempts solar energy electricity generating systems with Form CERT-140.
+- [Maryland General Assembly — Tax-General §11-230](https://mgaleg.maryland.gov/mgawebsite/laws/StatuteText?article=gtg&enactments=false&section=11-230): the sales-tax exemption for solar energy equipment.
+- [Maryland Energy Administration — FY27 Maryland Solar Access Program announcement](https://energy.maryland.gov/residential/SiteAssets/Pages/incentives/Maryland-Solar-Access-Program/FY27%20MSAP%20Funding%20Opportunity%20Announcement%20-%20Issued%207.29.26%20v2.pdf): the $750 per kW DC rebate, income limits, participating-contractor rule and payment after interconnection.
+- [Colorado Department of Revenue — Sales & Use Tax Topics: Renewable Energy Components](https://tax.colorado.gov/sites/tax/files/documents/SUTT_Renewable_Energy_Components_Sep_2021.pdf): the exemption for solar modules and inverters, and its limits for city, county and home-rule taxes.
+- [Vermont Department of Taxes — FS-1182, Sales and Use Tax Applied on Renewable Energy Generation Facilities](https://tax.vermont.gov/sites/tax/files/documents/FS-1182.pdf): renewable-system equipment is generally taxable; the home exemptions cover off-grid systems and solar water heating.
+- [Utah Office of Energy Development — Renewable Energy Systems Tax Credit](https://energy.utah.gov/homepage/tax-credits/renewable-energy-systems-tax-credit/): residential solar PV installed in 2024 and later is not eligible.
+- [New Hampshire Department of Energy — Renewable Energy Rebates](https://www.energy.nh.gov/renewable-energy/renewable-energy-rebates): the residential renewable electrical generation rebate program is permanently closed.
 
 ---
 
@@ -282,6 +951,188 @@ Usually not in New York. That figure is a nameplate-ideal one quoted with no sha
 - [Balcony solar plug-in power awaits Gov. Hochul’s signature (New York Almanack)](https://www.newyorkalmanack.com/2026/07/balcony-solar-plug-in-power-hochul/): that the bill remains unsigned, with a year-end deadline.
 - [2026 guide to balcony and plug-in solar (Solar.com)](https://www.solar.com/learn/guide-to-balcony-plug-in-solar/): an example of the widely repeated claim that 800 W covers 15–25% of an apartment’s electricity, quoted here in order to qualify it.
 - [Do solar panels work in snow and during winter? (EnergySage)](https://www.energysage.com/solar/solar-panels-in-winter-weather-snow-affect-power-production/): the cold-improves-efficiency framing, and the acknowledgement that shorter days offset it.
+
+---
+
+# How to calculate balcony solar output and savings for any US address
+
+URL: https://balco.nyc/calculate-balcony-solar-output  
+Last reviewed: 2026-09-23
+
+Take NREL’s PVWatts output for your location, tilt and direction. Multiply it by 0.95 for the railing and by a month-by-month shade factor for whatever stands opposite, then value each kWh at the price you actually stop paying. Worked through that chain with balco.nyc’s own PVWatts runs, an 800 W south-facing panel on a vertical railing makes 778 kWh a year in Phoenix, 616 in Chicago and 604 in New York City with an open view, and 328, 239 and 227 kWh on a third floor facing a six-to-ten-story building across a 20 m street. Shade changes the kWh more than the city does, and the price of a kWh decides the payback.
+
+## The chain in one line, and what it gives for three cities
+
+Every balcony solar estimate, including the one [the balco.nyc calculator](https://balco.nyc/) gives you, is a few multiplications and one loop:
+
+- **kWh a year** = the sum over twelve months of (PVWatts monthly output × railing factor × that month’s shade factor)
+
+- **Savings a year** = kWh × the price of a kWh you no longer buy
+
+- **Payback** = years until cumulative savings reach the kit cost, with the price rising 3% and output falling 0.5% a year
+
+- **CO₂ avoided** = kWh × your grid region’s emission rate
+
+That is six steps, each with a number and a source, set out below so you can run the chain by hand or check another calculator against it. To show what it does, balco.nyc ran it for an 800 W system on a vertical, south-facing railing in three cities with very different sun and prices, using the site’s own PVWatts runs for each state’s largest city and its own shade code:
+
+- **With an open view** the panel makes about **778 kWh a year in Phoenix, 616 in Chicago and 604 in New York City**. On a railing, Phoenix’s desert sun buys only 29% more than New York’s, against 37% more at a roof-style 35° tilt, because a vertical panel meets the high summer sun at a glancing angle.
+
+- **From a third floor facing a six-to-ten-story building across a 20 m street**, the same panel loses 58% to 62% of that: **328, 239 and 227 kWh**. What stands opposite matters more than which city you are in.
+
+- **Price matters more than sun.** At Con Edison’s 34¢ marginal rate the open New York panel saves $205 a year. At Arizona’s 15.4¢ average the Phoenix panel makes 29% more electricity and saves $120.
+
+These are modeled figures for one reference point per city, not measurements. The full table is in section 5.
+
+## Step 1: the sun and the panel’s geometry (PVWatts V8)
+
+The first number is the one everything else multiplies: what the panel would make at this spot, tilt and direction with nothing in the way. balco.nyc gets it from NREL’s **PVWatts V8**, the Department of Energy’s reference production model, which simulates every hour of a typical meteorological year (TMY) drawn from the satellite-derived National Solar Radiation Database. The calculator sends these inputs:
+
+| PVWatts input | Value | Why |
+|---|---|---|
+| system_capacity | 0.8 kW | Two 400 W panels (the calculator allows 0.4–1.6 kW) |
+| tilt | 90° | Hung flat on a railing; 70°, 60° and 35° model angled brackets |
+| azimuth | 180° | Due south (0 north, 90 east, 270 west) |
+| module_type | 1 (premium) | PVWatts’s higher-efficiency crystalline module |
+| array_type | 0 (fixed, open rack) | Air moves behind a railing panel, so it runs cooler than a roof-flush one |
+| losses | 14% | PVWatts’s default total, which balco.nyc reads as wiring, mismatch, connections, nameplate and availability |
+| soiling | 3, 3, 4, 5, 6, 7, 7, 7, 6, 5, 4, 3% by month | balco.nyc’s urban dust profile, heaviest in summer |
+| dc_ac_ratio / inv_eff | 1.1 / 96.5% | A microinverter matched to one or two modules |
+| albedo | 0.20 | A concrete balcony floor |
+
+One caveat: PVWatts’s own manual builds its 14% default partly from 2% soiling and 3% shading, and balco.nyc applies soiling and shading again separately. Any overlap pushes the estimate down, not up.
+
+For an 800 W vertical south panel PVWatts returns **819.4 kWh a year in Phoenix, 648.8 in Chicago and 635.7 in New York City**, before any railing loss. Tilted to 35° the same panel would make 1,369, 1,010 and 998 kWh, so a vertical railing keeps only **60% to 64%** of a rooftop-style figure. That ratio explains most inflated balcony estimates: they quote a tilted panel’s output for one that will hang straight down.
+
+The monthly shape matters too. A vertical south panel is a winter machine: it meets the low winter sun almost head-on. In Phoenix it peaks at 104.7 kWh in December and bottoms out at 26.5 in June; in New York it runs from 73.0 in January to 31.9 in June. Winter is also when buildings opposite do the most damage. And a TMY is a typical year, not a forecast; any real year will differ.
+
+## Steps 2 and 3: the railing, and the building across the street
+
+**Step 2, the railing.** The railing, the mounting hardware and the slab above clip a rail-mounted panel’s lower edge, and PVWatts cannot see them. balco.nyc multiplies by **0.95 for a vertical panel** (0.97 at 70°, 0.98 at 60°, 0.99 at 35°). It is the site’s own assumption, not a measurement, and it applies to every estimate. Open-view output is therefore 819.4 × 0.95 = **778 kWh** in Phoenix, 616 in Chicago and 604 in New York.
+
+**Step 3, the buildings opposite.** PVWatts assumes an open horizon, so the shade model answers one question: of the light PVWatts assumed, how much reaches this balcony? It starts from a horizon profile, the highest obstruction angle in each of 360 compass directions. In New York City the profile comes from real building footprints and heights within 200 m. Elsewhere it comes from your description, modeled as a continuous wall parallel to your facade:
+
+> β(φ) = atan( (H − h) × cos φ / D ), with h = (floor − 1) × 3.05 m + 1.0 m
+
+H is the height of the building opposite, h your balcony’s height, D the distance and φ the angle away from straight out. In the worked examples a third floor gives h = 7.1 m, “6 to 10 floors” is H = 25 m, and “across a street” is D = 20 m. Straight out, the wall rises to atan(17.9 / 20) = **41.8°** (32.3° at 45° either side). The winter-solstice noon sun reaches only about 33° in Phoenix, 25° in Chicago and 26° in New York. It clears 41.8° at noon only from about early March to early October in Chicago and New York, and early February to early November in Phoenix.
+
+The shade factor comes from a sweep: on the 15th of each month, every 10 minutes from sunrise to sunset, light is split into beam (0.60) and diffuse (0.40). Beam counts only when the sun is above the horizon profile in its direction. Diffuse counts in proportion to the sky the panel can still see, which this wall cuts to 33%:
+
+> shade factor = Σ received / Σ assumed, where received = beam × (sun visible) + diffuse × sky openness, and assumed = beam + diffuse
+
+Hours with the sun behind the facade add almost nothing to either sum, since PVWatts has already priced orientation, so **an open view returns 1.00 at every orientation**, north included. Behind this wall New York’s factor is 0.73 in March, 0.54 in June and 0.72 in September. From October through February it falls to 0.10–0.12, with the sun below the wall all day. Three of those months sit at or just above the model’s floor of 0.10.
+
+Apply the factors month by month, never as one annual average, because the shade is worst when a vertical panel produces most. In Phoenix the panel makes 373 kWh from November to February with an open view and 74 behind this wall: two-thirds of the year’s loss in four months. Multiplying by the plain average of Phoenix’s twelve factors (0.46) would overstate its shaded output by 10%. The month-by-month result is equivalent to 0.42 in Phoenix, 0.39 in Chicago and 0.38 in New York.
+
+## Steps 4 to 6: the price of a kWh, payback and carbon
+
+**Step 4, what a kWh is worth.** balco.nyc assumes every kWh is used at home, replacing one you would have bought. Over a year the volume is small: 604 kWh is under 9% of the average New York household’s 6,854 kWh. But self-consumption is decided hour by hour. When the panel makes more than the apartment is drawing, the surplus goes to the grid and is assumed to earn nothing unless your state or utility credits it, so the savings figure is a ceiling, not an expectation. Whether you may connect a panel at all varies by state and utility (see [the state pages](https://balco.nyc/states)). None of this is legal advice.
+
+The right price is the *marginal* one: what one fewer kWh takes off your bill, meaning supply, delivery, surcharges and tax but not the fixed monthly charge. In New York City balco.nyc knows the tariff, so it uses **Con Edison’s 34¢/kWh** all-in marginal rate. That starts from Con Edison’s own SC-1 bill history (33.83¢ in 2025) and is [carried into 2026 here](https://balco.nyc/electricity-rate). Elsewhere it uses the state’s average residential price, which balco.nyc computes from EIA revenue and sales over the 12 months to June 2026: **15.40¢ in Arizona, 18.54¢ in Illinois, 27.96¢ in New York**. An average spreads fixed charges over every kWh, so it can overstate what an avoided kWh saves, and on tiered or time-of-use tariffs it can miss either way. It also blends utilities: New York’s statewide figure sits about six cents below Con Edison’s marginal rate. The best number is your own: a recent bill’s total minus fixed charges, divided by kWh billed. Enter it under Adjust assumptions, or as rate in a link.
+
+**Step 5, payback.** The cost basis is balco.nyc’s mid-tier planning figure of $1,200 for 800 W ($850 budget, $1,600 premium), hardware only, with no electrical work. No federal credit is netted out: the residential clean energy credit (IRC 25D) ended with 2025. Simple payback is cost over first-year savings. The calculator’s figure comes from a loop, in nominal dollars with no discounting:
+
+- Year 1 savings = kWh × price.
+
+- Each later year, output falls 0.5% (degradation) and the price rises 3% (the default; 2% and 4% are presets).
+
+- Add each year to a running total until it reaches the kit cost, then interpolate within that year.
+
+For the open New York panel, year 1 saves 603.9 × $0.34 = $205.33. The next four years save $210.43, $215.66, $221.02 and $226.51, for $1,078.96 after five. Year 6 adds $232.14, and $1,200 is reached 52% of the way through it: **5.5 years**, against 5.8 simple.
+
+**Step 6, carbon.** CO₂ avoided = kWh × the EPA eGRID2023 total output emission rate for the address’s grid subregion: 0.704 lb per kWh for WECC Southwest (Phoenix), 0.911 for RFC West (Chicago) and 0.864 for NYC/Westchester. eGRID’s non-baseload rates are higher in all three, so this is the conservative choice. Grid mix is why the Chicago panel avoids slightly more CO₂ than the Phoenix one (562 against 548 lb a year) while making 21% fewer kWh.
+
+## Worked examples: Phoenix, Chicago and New York City
+
+The whole chain side by side, for an 800 W vertical south panel at the $1,200 mid-tier cost, open and then from a third floor facing a six-to-ten-story building 20 m away. The shade step is balco.nyc’s own code run at each city’s latitude. In New York City the live calculator would use real footprints rather than a described wall; the wall is used here so the three cities are compared on equal terms. New York appears at Con Edison’s marginal rate, which the calculator uses, and at the EIA state average for comparison.
+
+| Step | Phoenix, AZ | Chicago, IL | New York City | NYC at EIA state average |
+|---|---|---|---|---|
+| 1. PVWatts, 90° south (kWh/yr) | 819.4 | 648.8 | 635.7 | 635.7 |
+| 2. × 0.95 railing = open view (kWh) | 778 | 616 | 604 | 604 |
+| 3. Shade factor, applied monthly (effective) | 0.42 | 0.39 | 0.38 | 0.38 |
+| Shaded output (kWh) | 328 | 239 | 227 | 227 |
+| 4. Price of a kWh | 15.40¢ (EIA avg) | 18.54¢ (EIA avg) | 34¢ (Con Ed marginal) | 27.96¢ (EIA avg) |
+| Year-1 savings, open / shaded | $120 / $50 | $114 / $44 | $205 / $77 | $169 / $63 |
+| 5. Payback, open (loop / simple) | 9.0 / 10.0 yrs | 9.4 / 10.5 yrs | 5.5 / 5.8 yrs | 6.6 / 7.1 yrs |
+| Payback, shaded (loop / simple) | 18.9 / 23.8 yrs | 21.0 / 27.1 yrs | 13.3 / 15.6 yrs | 15.7 / 18.9 yrs |
+| 25-year savings, open / shaded (nominal) | $4,087 / $1,720 | $3,896 / $1,512 | $7,000 / $2,629 | $5,757 / $2,162 |
+| 6. CO₂ avoided, open / shaded (lb/yr) | 548 / 231 | 562 / 218 | 522 / 196 | 522 / 196 |
+
+The shaded New York case month by month (PVWatts output × 0.95 × shade factor), so the sum can be checked:
+
+| Month | PVWatts (kWh) | Shade factor | Result (kWh) | Month | PVWatts (kWh) | Shade factor | Result (kWh) |
+|---|---|---|---|---|---|---|---|
+| Jan | 73.0 | 0.100 | 6.9 | Jul | 36.2 | 0.558 | 19.2 |
+| Feb | 69.2 | 0.109 | 7.2 | Aug | 41.2 | 0.635 | 24.9 |
+| Mar | 64.9 | 0.735 | 45.3 | Sep | 55.7 | 0.716 | 37.9 |
+| Apr | 47.6 | 0.669 | 30.2 | Oct | 61.6 | 0.116 | 6.8 |
+| May | 37.8 | 0.586 | 21.0 | Nov | 58.2 | 0.102 | 5.6 |
+| Jun | 31.9 | 0.536 | 16.3 | Dec | 58.4 | 0.100 | 5.5 |
+
+The total is **226.8 kWh**. Three things follow:
+
+- **New York pays back fastest while making the fewest kWh**: 5.5 years open against Phoenix’s 9.0, and 13.3 shaded against 18.9. Price does that, not sun.
+
+- **The choice of rate is worth a year.** The same New York panel pays back in 5.5 years at Con Edison’s marginal rate and 6.6 at the state average. A calculator that does not say which it used has hidden a result-changing input.
+
+- **Heavy shade in a cheap-power state can eat most of a panel’s life.** Chicago’s shaded case needs 21 years on the loop. That argues for running your own address, not for giving up: a higher floor, a lower building or a wider street changes the answer quickly.
+
+## The five numbers to check in any balcony solar calculator
+
+A trustworthy balcony calculator shows five things. If any is missing, you cannot tell whether its answer is generous, cautious or wrong:
+
+- **Annual kWh, with the tilt and direction behind it.** balco.nyc’s runs put an open 800 W vertical south panel at about 600–780 kWh across three very different cities. Near 1,000 kWh for a railing panel in the Northeast is probably a 35° rooftop number.
+
+- **The electricity rate, and whether it is marginal.** Supply-only, average and all-in marginal rates answer different questions, and move the same New York panel’s payback by a year or more.
+
+- **The shading method.** None, a flat percentage, or a horizon from real or described buildings, ideally applied by month. “No shading” on a low city floor is a best case, not an estimate.
+
+- **The self-consumption assumption.** Whether every kWh is assumed to be used at home, and what surplus earns. Unless your state or utility credits exports, it earns nothing.
+
+- **The cost basis.** Which kit price, whether wiring is included, and whether a tax credit was subtracted. The federal 25D credit ended with 2025.
+
+balco.nyc states each of these with its estimates, and [the methodology](https://balco.nyc/methodology) documents every constant used above. To run your own address, start at [the calculator](https://balco.nyc/). To share an estimate, or have an assistant hand you one, use a prefilled link:
+
+> https://balco.nyc/?address=STREET+ADDRESS,+CITY,+STATE&floor=3&facing=south&across=tall&distance=street
+
+facing takes the eight compass points; across takes none, low, mid, tall or tower; distance takes alley, street, wide or far. Optional tilt, watts, bill and rate (cents per kWh from your bill) also work. Outside New York City, a link with address, floor, facing and across runs at once; in the city you still pin your balcony on the 3D model, because real buildings replace the description. State figures are on the [Arizona](https://balco.nyc/states/arizona), [Illinois](https://balco.nyc/states/illinois) and [New York](https://balco.nyc/states/new-york) pages, and [does my balcony get enough sun?](https://balco.nyc/balcony-sunlight) and [what balcony solar costs](https://balco.nyc/balcony-solar-cost) go deeper on shade and kit prices.
+
+## Common questions
+
+**How much electricity will an 800 W balcony solar panel produce in a year?**
+
+It depends mostly on tilt and shade. balco.nyc's PVWatts runs put an 800 W south-facing panel hung vertically on a railing at about 778 kWh a year in Phoenix, 616 in Chicago and 604 in New York City with an open view, after a 5% railing loss. From a third floor facing a six-to-ten-story building across a 20 m street, the same panel makes about 328, 239 and 227 kWh.
+
+**How do I calculate balcony solar output by hand?**
+
+Take PVWatts' monthly output for your location, tilt and direction, multiply each month by 0.95 for a vertical railing mount and by that month's shade factor for the buildings opposite, and add the twelve months. PVWatts is NREL's free production model. The shade factor is the share of beam and diffuse light that still reaches the panel, and it equals 1.00 for an open view.
+
+**Why are balcony solar estimates lower than rooftop solar estimates?**
+
+Because a railing panel usually hangs vertically. In balco.nyc's PVWatts runs for Phoenix, Chicago and New York City, a vertical south-facing panel makes 60% to 64% of what the same panel tilted to 35 degrees would make, before any shading or railing loss. An estimate near 1,000 kWh a year for an 800 W railing panel in the Northeast is probably a tilted-panel figure.
+
+**What electricity rate should I use to calculate balcony solar savings?**
+
+Use the marginal rate: what one fewer kWh takes off your bill, including supply, delivery, surcharges and tax but excluding fixed monthly charges. To get it, subtract the fixed charges from a recent bill and divide by the kWh billed. In New York City balco.nyc uses Con Edison's all-in marginal rate of 34 cents; elsewhere it uses the EIA state average, which includes fixed charges and can overstate the value of an avoided kWh.
+
+**How much does a building across the street reduce balcony solar output?**
+
+It can more than halve it. In balco.nyc's model, a third-floor south-facing balcony facing a six-to-ten-story building 20 m away loses 58% to 62% of its annual output in Phoenix, Chicago and New York City. Most of the loss comes in winter, when the sun stays below the building opposite all day, and that is also when a vertical panel would produce the most.
+
+**How is balcony solar payback calculated?**
+
+Divide the kit cost by the first year's savings for a simple payback, or run a year-by-year loop in which output falls 0.5% and the electricity price rises 3% each year until cumulative savings reach the kit cost. For an unshaded 800 W vertical south panel in New York City at a $1,200 kit cost and Con Edison's 34-cent rate, balco.nyc gets 5.5 years on the loop and 5.8 years simple.
+
+## Sources
+
+- [NLR (formerly NREL) — PVWatts V8 API](https://developer.nlr.gov/docs/solar/pvwatts/v8/): the request parameters used in step 1 (module_type, array_type 0 “Fixed – Open Rack”, tilt, azimuth, losses, dc_ac_ratio, inv_eff, albedo, the 12-value monthly soiling array) and the ac_monthly and ac_annual outputs.
+- [Dobos, PVWatts Version 5 Manual (NREL, 2014)](https://pvwatts.nlr.gov/downloads/pvwattsv5.pdf): the 14% default total system loss, and its components (including 2% soiling and 3% shading), behind the caveat in step 1.
+- [NLR — National Solar Radiation Database (NSRDB) data](https://developer.nlr.gov/docs/solar/nsrdb/): the satellite-derived irradiance, with typical meteorological year products, that PVWatts simulates from.
+- [EIA — Form EIA-861M monthly sales and revenue by state](https://www.eia.gov/electricity/data/eia861m/): the residential revenue and sales from which balco.nyc computes the 12-month state averages to June 2026: 15.40¢ Arizona, 18.54¢ Illinois, 27.96¢ New York.
+- [EIA — 2024 Average Monthly Bill, Residential (Table 5A)](https://www.eia.gov/electricity/sales_revenue_price/pdf/table_5A.pdf): average New York household consumption of 571 kWh a month (about 6,854 a year), used for the self-consumption comparison in step 4.
+- [Con Edison — historical average full-service electric rates](https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf): the NYC SC-1 residential rate of 33.83¢/kWh in 2025 that the 34¢ marginal rate starts from.
+- [EPA — eGRID2023 Summary Tables (revision 2, June 2025)](https://www.epa.gov/system/files/documents/2025-06/summary_tables_rev2.pdf): subregion total output CO₂ rates of 703.7 (WECC Southwest), 911.4 (RFC West) and 864.5 lb/MWh (NYC/Westchester), and the higher non-baseload rates.
+- [IRS — Residential Clean Energy Credit](https://www.irs.gov/credits-deductions/residential-clean-energy-credit): that the credit is not available for property placed in service after December 31, 2025, so none is netted out of the cost basis.
 
 ---
 
@@ -553,6 +1404,159 @@ No. The New York City Fire Code requires fire escapes, and access to them, to be
 
 ---
 
+# Is balcony solar worth it? Payback in every state
+
+URL: https://balco.nyc/is-balcony-solar-worth-it  
+Last reviewed: 2026-09-23
+
+On an unshaded south-facing railing, usually yes: balco.nyc’s PVWatts runs for the largest city in every state put payback on a $1,200 mid-range 800 W kit between 4.8 years in California and 13.9 in Washington, with the median state at 9.9. In New York City, at Con Edison’s 34¢ marginal rate, it is 5.5 years. The price of electricity explains most of the gap between states, but for your own balcony direction and shade matter more: a north-facing railing, or a low floor facing a taller building across the street, can push payback past 20 years.
+
+## The answer, state by state
+
+balco.nyc ran NREL’s PVWatts model for the largest city in every state and the District of Columbia, with the calculator’s own parameters: an 800 W system hung vertically on a railing, multiplied by 0.95, the site’s allowance for the railing and mounting hardware shading the bottom of the panel. Each city’s output was valued at its state’s average residential electricity price from the U.S. Energy Information Administration, over the twelve months to June 2026, and run through the calculator’s payback loop: electricity prices rising 3% a year, the panels losing 0.5% of their output a year, nominal dollars with no discounting, and a 25-year cap. Two assumptions flatter every figure in this section, and later sections take them away: every kWh is used at home, and nothing across the street casts a shadow.
+
+On those terms, a south-facing railing pays back a $1,200 kit in a median of **9.9 years**. The fastest state is California at 4.8 years and the slowest is Washington at 13.9. Direction matters as much as the state does:
+
+| Railing faces | Median output, kWh/yr | Median payback: $850 / $1,200 / $1,600 kit | States paying back within 10 years: $850 / $1,200 / $1,600 |
+|---|---|---|---|
+| South | 658 | 7.2 / 9.9 / 12.7 yrs | 50 / 28 / 12 of 51 |
+| East or west (average of the two) | 489 | 9.5 / 12.9 / 16.4 yrs | 32 / 11 / 3 of 51 |
+| North | 200 | 20.4 / 25+ / 25+ yrs | 1 / 0 / 0 of 51 |
+
+balco.nyc’s computation from its published PVWatts runs and EIA prices, for 50 states and DC. “25+” means the kit has not paid for itself after 25 years.
+
+As shares: with the mid-range kit, 55% of states pay back a south-facing railing within ten years, 22% an east- or west-facing one, and none a north-facing one. With a north railing and the mid-range kit, 32 states do not pay back within 25 years at all. The kit price moves the answer a long way: at $850 a south railing pays back inside ten years in every state except Washington (10.3 years).
+
+New York City gets its own line because balco.nyc values a kWh there at Con Edison’s all-in marginal rate of 34¢, not the statewide average of 28.0¢, which covers every utility in the state. At that rate the same 604 kWh south railing saves about $205 a year and pays back a $1,200 kit in **5.5 years** (4.0 on the budget kit, 7.2 on the premium). Only California and Hawaii are faster. Facing east or west it takes 7.5 years, and facing north 17.2. [Why New York City uses a different rate](https://balco.nyc/electricity-rate).
+
+## Price explains the spread, not sunshine
+
+The obvious guess is that balcony solar pays best where it is sunniest. The data say otherwise. Across the 51, balco.nyc regressed the logarithm of payback (south railing, mid-range kit) on the logarithm of the electricity price, and separately on the logarithm of output. Price gives an r² of **0.87**; output gives **0.02**. In plain terms, the price of electricity accounts for 87% of the state-to-state variation in payback and the amount of sunshine for 2%. It is the same calculation the [state-by-state table](https://balco.nyc/states) runs.
+
+Two things produce that result. Prices vary far more than sunshine does: from 12.3¢ in North Dakota to 42.8¢ in Hawaii, a factor of 3.5, while south-railing output runs from 510 kWh in Honolulu to 819 kWh in Albuquerque, a factor of 1.6. And the two pull against each other. Sunnier states tend to have cheaper electricity (the correlation between them is −0.25), so Albuquerque’s extra output is worth only 15.3¢ a kWh, and output on its own predicts almost nothing. Honolulu is the extreme case. At 21°N the summer sun passes almost overhead, so a vertical south panel there makes the least of any city, and an east- or west-facing one actually makes more (539 kWh). Hawaii still ranks second because its electricity costs more than twice the US average of 17.9¢.
+
+|  | State (city modeled) | Average price | South railing, kWh/yr | Year-one saving | Payback, $1,200 kit |
+|---|---|---|---|---|---|
+| Fastest | California (Los Angeles) | 32.9¢ | 720 | $237 | 4.8 yrs |
+| Hawaii (Honolulu) | 42.8¢ | 510 | $218 | 5.2 yrs |
+| Massachusetts (Boston) | 30.4¢ | 673 | $204 | 5.5 yrs |
+| Maine (Portland) | 29.0¢ | 692 | $201 | 5.6 yrs |
+| Rhode Island (Providence) | 29.0¢ | 670 | $194 | 5.8 yrs |
+| Slowest | Arkansas (Little Rock) | 13.3¢ | 613 | $82 | 12.7 yrs |
+| Oregon (Portland) | 15.5¢ | 526 | $81 | 12.7 yrs |
+| Tennessee (Nashville) | 13.5¢ | 602 | $81 | 12.7 yrs |
+| Louisiana (New Orleans) | 13.0¢ | 605 | $79 | 13.1 yrs |
+| Washington (Seattle) | 14.0¢ | 524 | $73 | 13.9 yrs |
+
+Run the other way, the same arithmetic gives a rule of thumb. For a railing producing the median 658 kWh, a $1,200 kit pays back in ten years at about **16¢/kWh**, in seven years at about 24¢, and in five years at about 35¢. An east- or west-facing railing needs about 22¢ to reach ten years. A north-facing one would need about 54¢, which no state averages.
+
+## If you cannot use every kWh
+
+Every figure so far assumes the panel’s whole output replaces electricity you would otherwise buy. That holds only while something in the home is drawing at least as much power as the panel is making. Anything beyond that flows out to the grid, and under most plug-in laws it earns nothing. Of the nine signed state plug-in laws and the two bills awaiting a governor (California’s and New York’s), seven exclude these devices from net metering or say outright that exported power is not paid for. Vermont’s act says exports “shall not be compensated”. The other four do not say, and none provides a credit. balco.nyc therefore treats surplus as worth nothing.
+
+How much of a balcony system’s output a US household actually uses has not been measured, as far as we could find. The nearest reference is German. The consumer agency Verbraucherzentrale NRW estimates that a single 400 W module on an unshaded south balcony makes about 280 kWh a year and cuts the household’s purchases by about 200 kWh, so roughly 70% is used at home. An 800 W system doubles the midday output without doubling the midday demand, so in the same household it would use a smaller share. What decides it is what runs in daylight: a refrigerator, a router and standby loads run all day, and air conditioning helps in summer. Treat 80% and 60% as a bracket, not a measurement:
+
+| South railing, $1,200 kit | All output used | 80% used | 60% used |
+|---|---|---|---|
+| California (32.9¢) | $237/yr · 4.8 yrs | $190/yr · 6.0 yrs | $142/yr · 7.8 yrs |
+| Illinois (18.5¢) | $114/yr · 9.4 yrs | $91/yr · 11.5 yrs | $69/yr · 14.7 yrs |
+| Texas (15.9¢) | $92/yr · 11.5 yrs | $73/yr · 13.9 yrs | $55/yr · 17.7 yrs |
+| New York City (34¢) | $205/yr · 5.5 yrs | $164/yr · 6.8 yrs | $123/yr · 8.8 yrs |
+
+The three states are chosen to span the range: a high price, a middling one and a low one. Losing a fifth of the output adds 1.2 years in California and 2.4 in Texas. Losing two-fifths adds 3.0 and 6.2. The longer the payback to begin with, the more years each unused kWh costs. A household that is out all day with little left running should read its answer one row down in the [decision table](https://balco.nyc#decision).
+
+## The building across the street
+
+The state figures are for a balcony with nothing in front of it. To show what an ordinary urban obstruction does, balco.nyc ran the calculator’s shade model on a scenario most city dwellers can picture. The balcony faces south on the 3rd floor, about 7 m above the street. Across a 20 m street stands a building of 6 to 10 floors, which the calculator treats as 25 m tall. From the railing, the top of that building sits about 42° above the horizon straight ahead. The midday sun stays below that line for three months around the winter solstice in Los Angeles and Houston, and for five months in Chicago. Those months carry a large share of a vertical south panel’s year, because it faces the low winter sun almost head-on: 36% of annual output in Los Angeles and Houston comes from November to January, and 48% in Chicago from October to February.
+
+| 3rd floor, 6–10 floors opposite, 20 m away | Open view, kWh/yr | With the building, kWh/yr | Share kept | Payback, $1,200 kit: open → shaded | Shaded, $850 kit |
+|---|---|---|---|---|---|
+| Los Angeles (32.9¢) | 720 | 306 | 42% | 4.8 → 10.6 yrs | 7.8 yrs |
+| Chicago (18.5¢) | 616 | 239 | 39% | 9.4 → 21.0 yrs | 15.9 yrs |
+| Houston (15.9¢) | 576 | 248 | 43% | 11.5 → 23.0 yrs | 17.5 yrs |
+| New York City (34¢) | 604 | 227 | 38% | 5.5 → 13.3 yrs | 9.9 yrs |
+
+balco.nyc’s computation: the calculator’s street-canyon horizon and monthly shade integration, applied to each city’s PVWatts monthly output, then the 0.95 railing factor. In the darkest months the panel gets almost nothing but diffuse light, and the model applies its floor of 10% of unshaded output.
+
+Move the same balcony up to the 5th floor and the model keeps 58% to 72% of the open-view output. On the 8th floor it keeps about 94% in all four cities. Shade on this scale does more damage than any other adjustment in this article except facing north. It roughly doubles payback in all four cities, or worse, and it turns Los Angeles, the fastest city in the table, into one slower than the median state. Combine it with 60% self-consumption and a shaded 3rd-floor balcony does not pay back a mid-range kit within 25 years in Chicago or Houston, and takes 16.4 years in Los Angeles.
+
+Outside New York City, the calculator asks what stands across from your balcony and how far away it is, then builds this kind of horizon. It treats the building opposite as an unbroken wall with no gaps or cross streets, so a described estimate tends to overstate shade, not understate it. In New York City it uses the actual surrounding buildings. [How floor height and obstruction decide output](https://balco.nyc/balcony-sunlight).
+
+## What “worth it” leaves out
+
+A payback period answers one question: if you can install this, and use what it makes, how long until it has paid for itself? Several things come before that question.
+
+- **Whether it is allowed where you live.** As of 23 September 2026, balco.nyc’s state table lists nine states with a signed plug-in solar law. Five are in force (Colorado, Maine, Maryland, Utah and Vermont) and four are not yet in effect (Connecticut, New Hampshire, New Jersey and Virginia). California’s SB 868 has passed both houses and was presented to the Governor on 31 August; it awaits his decision. New York’s SUNNY Act has passed both chambers and awaits the Governor's signature. Of the rest, seven (counting DC) have a bill pending, 18 have seen one fail, and 15 have none that we could find. Without a law in force, the utility’s interconnection rules apply, which usually means getting approval before connecting anything that feeds power into a home circuit. Of the five fastest-payback states above, only Maine has a law in force. This summarizes state laws and is not legal advice. [Each state’s page](https://balco.nyc/states) has its bills, dates and sources.
+
+- **Permission.** Only four of the nine signed laws (Colorado, New Jersey, Vermont and Virginia) limit a landlord’s or association’s power to refuse. New York’s bill grants no right to install. For a renter, the payback clock starts when the landlord says yes.
+
+- **A certified system to buy.** UL 3700, UL’s safety requirements for plug-in PV equipment and complete systems, was published in December 2025, and certification opened in January 2026. The first components certified to it, microinverters, were announced in July 2026. As of September 2026 no complete system has been certified to it. When UL Solutions tested plug-in products already on sale, none of them complied. Several laws, New York’s among them, require listing of the complete system, so in those states a compliant kit may not yet exist at any price.
+
+- **The price you actually pay per kWh.** The EIA figures used here are averages: total residential revenue divided by total kWh sold. They include fixed monthly charges, which a panel cannot reduce, so they overstate what an avoided kWh saves. For example, a $15 fixed charge spread over 900 kWh a month adds about 1.7¢ to the average. Tiered and time-of-use rates can push your real figure either way, and a state average covers every utility in the state. The better number is your own bill: the total, minus fixed charges, divided by the kWh billed. [How to read it](https://balco.nyc/electricity-rate).
+
+- **Costs that are not the kit.** The kit prices are for hardware only. If your balcony has no outdoor outlet, adding one is an electrician’s job, and Maine requires a licensed electrician and a dedicated circuit for any plug-in system over 420 W. There is no federal tax credit to offset the cost, because the residential clean energy credit (IRC 25D) ended for expenditures after 31 December 2025. [What that means for a kit bought now](https://balco.nyc/balcony-solar-tax-credit). All paybacks here are in nominal dollars. Discounting future savings would make every one of them longer. [The full cost picture](https://balco.nyc/balcony-solar-cost).
+
+## The decision in one table
+
+Read your situation from the first column. Paybacks are for an 800 W kit, from balco.nyc’s runs above, and assume every kWh is used at home unless the row says otherwise.
+
+| Your balcony and your electricity | Verdict on the numbers | What the numbers say |
+|---|---|---|
+| South, south-east or south-west; open view or high floor; electricity 24¢/kWh or more (the nine dearest states, and New York City at 34¢) | Worth it | 4.8 to 7.7 years on a $1,200 kit; 3.5 to 5.6 on $850 |
+| Same balcony; electricity 16–24¢ (14 states and DC) | Reasonable, if the kit is cheap | 6.9 to 10.5 years on $1,200; 5.0 to 7.7 on $850 |
+| Same balcony; electricity under 16¢ (27 states) | Marginal | 8.7 to 13.9 years on $1,200; 6.3 to 10.3 on $850 |
+| East- or west-facing, open view | Worth it only where power is dear | Within ten years on $1,200 in 11 states, all above 23¢; median 12.9 years |
+| North-facing | Not on the numbers | Best case Hawaii, 11.5 years on $1,200; more than 25 years in 32 states |
+| Low floor, taller building across the street | Usually not | 3rd floor, 6–10 floors opposite at 20 m: 10.6 years in Los Angeles, 21 in Chicago, 23 in Houston |
+| Home empty in daylight, little left running | One row down | At 60% used, paybacks run roughly 50% to 60% longer |
+| No law in force, no permission, or no certified complete system you can buy | Not yet | Whatever the payback, it starts only when you can install |
+
+The table uses one city per state and a state-average price. Output varies within a state, and so do prices from one utility to the next. [The calculator](https://balco.nyc/) runs your address, your direction, what stands opposite and your own rate. If you want to know which of these widely repeated claims survive the arithmetic, [we checked them](https://balco.nyc/balcony-solar-myths).
+
+## Common questions
+
+**Is balcony solar worth it?**
+
+For an unshaded south-facing railing, usually. balco.nyc's PVWatts runs for the largest city in each state put payback on a $1,200 mid-range 800 W kit between 4.8 years (California) and 13.9 years (Washington), with a median of 9.9 years, assuming all the power is used at home, electricity prices rising 3% a year and 0.5% annual panel degradation. East- or west-facing railings take a median of 12.9 years, north-facing ones more than 25 in most states, and heavy shade from a building across the street can roughly double any of these figures.
+
+**How long does a balcony solar panel take to pay for itself?**
+
+For an 800 W system on an unshaded south-facing railing, the median US state takes 7.2 years on an $850 kit, 9.9 years on a $1,200 kit and 12.7 years on a $1,600 kit, according to balco.nyc's calculations from NREL PVWatts output and EIA average electricity prices. In New York City, valued at Con Edison's 34-cent marginal rate, a $1,200 kit pays back in about 5.5 years.
+
+**Does balcony solar make sense where electricity is cheap?**
+
+Less so. Across the 50 states and DC, the electricity price explains 87% of the variation in balcony solar payback and the amount of sunshine only 2%. Where average residential electricity is under 16 cents per kWh, an unshaded south-facing 800 W system takes about 9 to 14 years to pay back a $1,200 kit, and 6 to 10 years on an $850 one.
+
+**Is a north-facing balcony worth solar panels?**
+
+Not on the numbers alone. An unshaded north-facing vertical 800 W panel makes a median of about 200 kWh a year across US states' largest cities, roughly 30% of a south-facing one. On a $1,200 kit that means more than 25 years to pay back in 32 states; the best case, Hawaii, is 11.5 years, and only because its electricity costs about 43 cents per kWh.
+
+**Do I get paid for balcony solar power I send to the grid?**
+
+Under most state plug-in laws, no. Of the nine signed state plug-in solar laws and the two bills awaiting a governor as of September 2026, seven exclude these devices from net metering or say exported power is not compensated, and the other four do not say. If only 60% of an 800 W system's output is used at home, payback runs roughly 50% to 60% longer, for example from 9.4 to 14.7 years in Illinois on a $1,200 kit.
+
+**How much does shade change balcony solar payback?**
+
+Enough to roughly double it. In balco.nyc's shade model, a south-facing 3rd-floor balcony facing a 6-to-10-floor building across a 20-meter street keeps only about 38% to 43% of its unshaded output, because the building blocks the low winter sun a vertical panel depends on. That stretches payback on a $1,200 kit from 4.8 to 10.6 years in Los Angeles and from 9.4 to 21 years in Chicago. The same balcony on the 8th floor keeps about 94%.
+
+## Sources
+
+- [NREL — PVWatts V8 API documentation](https://developer.nlr.gov/docs/solar/pvwatts/v8/): the production model behind every output figure, run for each state’s largest city with the calculator’s parameters (tilt, azimuth, losses, module and array type; monthly and annual AC output).
+- [U.S. EIA — Form EIA-861M monthly sales and revenue by state](https://www.eia.gov/electricity/data/eia861m/): residential revenue and sales by state; balco.nyc’s average prices are revenue divided by sales over the twelve months to June 2026, so they include fixed charges.
+- [Con Edison — historical average full-service electric rates](https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf): the SC-1 residential series behind the 34¢ marginal rate used for New York City.
+- [Vermont Legislature — Act 149 (S.202) as enacted](https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf): plug-in devices are not eligible for net metering, and exported generation “shall not be compensated”.
+- [Utah Legislature — H.B. 340 Solar Power Amendments, enrolled copy](https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf): a portable solar generation device is exempt from interconnection requirements and not subject to net metering program requirements.
+- [Maine Legislature — LD 1730 (SP 676), enacted text](https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132): systems over 420 W and up to 1,200 W must be installed by a licensed electrician on a dedicated circuit, and may not be used for net energy billing.
+- [New York State Senate — S8512C (SUNNY Act)](https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C): the 1,200 W AC limit, listing as a complete plug-in system, and exemption from interconnection and net-metering requirements.
+- [California Legislative Information — SB 868 bill history](https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202520260SB868): passage by both houses and presentation to the Governor on 31 August 2026.
+- [UL Solutions — testing and certification framework for plug-in solar](https://www.ul.com/news/ul-solutions-debuts-testing-and-certification-framework-safer-plug-solar-across-united-states): UL 3700 for plug-in PV equipment and systems, published December 2025, with certification launched January 2026.
+- [PV Tech — US plug-in solar: questions remain over safety certifications and regulation](https://www.pv-tech.org/us-plug-in-solar-questions-remain-over-safety-certifications-and-regulation/): UL Solutions reporting that none of the plug-in products it tested complied with UL 3700 (August 2026).
+- [Electrek — the first US microinverter certified to UL 3700](https://electrek.co/2026/07/20/us-first-ul-3700-balcony-solar-microinverter-hoymiles/): the first UL 3700 certification of a component, a microinverter, in July 2026, not of a complete system.
+- [Verbraucherzentrale NRW — Steckersolar: Solarstrom vom Balkon direkt in die Steckdose](https://www.verbraucherzentrale.nrw/wissen/energie/erneuerbare-energien/steckersolar-solarstrom-vom-balkon-direkt-in-die-steckdose-44715): a 400 W module mounted vertically on an unshaded south balcony makes about 280 kWh a year and cuts purchases by about 200 kWh (in German).
+- [IRS — Residential Clean Energy Credit](https://www.irs.gov/credits-deductions/residential-clean-energy-credit): the credit is not available for property placed in service after 31 December 2025.
+
+---
+
 # Is plug-in solar legal in New York?
 
 URL: https://balco.nyc/sunny-act  
@@ -819,3 +1823,164 @@ A typical 800 W setup costs roughly $850 for a budget kit, $1,200 mid-range, or 
 - [Balkonkraftwerk Marktreport 2026](https://strom-report.com/balkonkraftwerk/): German registration counts — over 1.3 million systems in the Marktstammdatenregister.
 - [Germany grants renters the right to install solar systems on balconies](https://balkon.solar/news/2024/10/17/germany-grants-renters-the-right-to-install-solar-systems-on-balconies/): the October 2024 tenant right to install, which New York's bill does not include.
 - [Expiration and carryforward rules for the Residential Clean Energy Credit](https://www.congress.gov/crs-product/IN12611): Section 25D expiry for systems placed in service after 31 December 2025.
+
+---
+
+# What is PVWatts, and what do its defaults get wrong for a balcony?
+
+URL: https://balco.nyc/what-is-pvwatts  
+Last reviewed: 2026-09-23
+
+PVWatts is the free solar calculator from the National Laboratory of the Rockies (NLR, the lab formerly called NREL): it simulates a panel hour by hour through a typical weather year. It can model a balcony, but its defaults describe a rooftop array, and balco.nyc’s PVWatts runs show that left at those defaults it overstates a vertical, south-facing 800 W railing panel by about 72% in New York City (1,037 kWh a year against 604), 70% in Chicago and 82% in Phoenix, before any shade from the buildings opposite. Roughly 85% of that gap is a single setting: tilt.
+
+## What PVWatts is, and how accurate NLR says it is
+
+PVWatts is a free web calculator and API published by the National Laboratory of the Rockies (NLR), the Department of Energy lab in Golden, Colorado that was called the National Renewable Energy Laboratory until the Department renamed it on 1 December 2025. Most people still search for it as “NREL PVWatts”. It is the same tool, now at pvwatts.nlr.gov, with its API at developer.nlr.gov; the old nrel.gov addresses no longer resolve.
+
+What it does is narrow and well documented. For a location, it takes a typical meteorological year (TMY) of weather from the National Solar Radiation Database — one year of hourly data chosen to represent a multi-year period — and simulates all 8,760 hours: where the sun is, how much light reaches a panel at the tilt and azimuth you enter, how much reflects off the glass, how hot the cells run, the DC output, the inverter’s conversion, and finally a flat percentage for other losses. Version 8, the current one, reads the NSRDB’s tmy-2020 files.
+
+It asks for six inputs: system size, module type, array type, system losses, tilt and azimuth. Optional ones cover the DC-to-AC ratio, inverter efficiency and ground coverage ratio, and since V8, albedo, bifacial modules and a month-by-month irradiance loss for soiling or snow. Reset to its defaults on 23 September 2026, the calculator reads: 4 kW, standard module, fixed open rack, 20° tilt, due south, 14.08% losses, DC-to-AC ratio 1.2, 96% inverter efficiency, ground coverage ratio 0.4.
+
+On accuracy, NLR is candid. Its Version 5 manual puts the possible error at up to ±10% on annual totals and ±30% on monthly totals for typical weather, and says a particular year can depart from the long-term average by up to ±20% annually and ±40% monthly. The calculator’s current cautions page repeats those bands and calls its results accurate to within 10 to 12% of long-term performance. No Version 8 manual exists yet; the API documentation says one is forthcoming, so the 2014 manual remains the most detailed reference.
+
+> **Those bands assume the inputs describe the system.** The same cautions page warns that results can be overly optimistic with the default losses when nearby buildings or trees shade the modules. On a balcony the inputs are the problem, not the model.
+
+## From PVWatts’ defaults to a balcony, one setting at a time
+
+To measure how far the defaults sit from a balcony, balco.nyc ran PVWatts V8 through its public API on 23 September 2026 for an 800 W (0.8 kW), due-south system in New York City, Chicago and Phoenix. Each run starts from the calculator’s defaults and changes only what its row names, until it reaches the parameters balco.nyc’s own calculator sends. The last step is balco.nyc’s 5% railing loss, which PVWatts has no input for. Figures are kWh a year, with the change from the row above.
+
+| Step | New York City | Chicago | Phoenix |
+|---|---|---|---|
+| PVWatts defaults: open rack, 20° tilt, standard module, DC/AC 1.2 | 1,037 | 1,050 | 1,416 |
+| Tilt 90°, vertical on a railing | 669 (−35.4%) | 684 (−34.8%) | 857 (−39.5%) |
+| Premium module instead of standard | 663 (−0.9%) | 678 (−1.0%) | 853 (−0.5%) |
+| Micro-inverter: DC/AC 1.1, 96.5% efficiency | 667 (+0.5%) | 681 (+0.5%) | 856 (+0.4%) |
+| Monthly urban soiling, 3% in winter to 7% in summer | 635 (−4.7%) | 648 (−4.8%) | 819 (−4.4%) |
+| Albedo fixed at 0.20 and losses at 14% (balco.nyc’s PVWatts parameters) | 636 (+0.1%) | 649 (+0.1%) | 819 (+0.1%) |
+| Railing loss ×0.95, applied by balco.nyc outside PVWatts | 604 (−5.0%) | 616 (−5.0%) | 778 (−5.0%) |
+| Defaults overstate the balcony panel by | 72% | 70% | 82% |
+
+The New York arithmetic: 1,036.8 kWh at the defaults against 635.7 × 0.95 = 603.9 kWh for the balcony, a ratio of 1.72. Put the other way, a vertical south-facing panel makes about 58% of the default estimate in New York and Chicago and 55% in Phoenix. In yield terms, the defaults imply 1,296 kWh per kW in New York; the balcony gets 755 (the [kWh formula](https://balco.nyc/balcony-solar-kwh-formula) shows how that per-kW figure is used).
+
+Tilt is nearly the whole story. Moving the panel from 20° to vertical removes 367 of the 433 kWh gap in New York, 85% of it; the share is 84% in Chicago and 88% in Phoenix, where the summer sun stands higher and meets a vertical face at a more glancing angle. Soiling and the railing account for about 7% each. Everything else nets to about 1%.
+
+None of this means PVWatts is wrong. Told the panel is vertical, it models a vertical panel; its defaults simply describe a tilted rooftop array. The final PVWatts figures in the table are the same runs behind balco.nyc’s [state pages](https://balco.nyc/states), which publish them for the largest city in every state.
+
+## The settings that barely move a vertical panel, and not the way you would expect
+
+Two steps that a reader might expect to help do not, and it is worth being exact about what PVWatts’ documentation does and does not explain.
+
+**Premium module.** PVWatts’ module-type help lists the premium module at about 21% efficiency and −0.35%/°C, against 19% and −0.37%/°C for standard, both behind anti-reflective glass. The slightly better temperature coefficient should, if anything, add output. Instead the premium setting produced 0.9% less for the vertical New York panel, and 0.5% less at 20°. The documentation does not say why, and it is not fully consistent: its technical-reference page still quotes the Version 5 coefficient of −0.47%/°C for standard modules. We report the result as measured and have not traced its cause. The calculator itself cautions that it does not distinguish better-performing modules from worse ones; module type is a modeling label, not a quality dial.
+
+**Open rack versus roof mount.** The documented difference is temperature: PVWatts assumes an open-rack array runs cooler (installed nominal operating cell temperature 45 °C, against 50 °C for roof mount), which should favor open rack. At 20° the two land within 0.1% in New York. At 90°, open rack was 1.0% *lower*, and its plane-of-array irradiance was 1.6% lower too, which a temperature model cannot cause. balco.nyc re-ran the vertical New York panel with the ground coverage ratio at its minimum, 0.01: the irradiance matched roof mount again and open rack came out 0.5% *ahead* (680 against 677 kWh); at 0.9 it fell to 616 kWh. So in V8 the ratio affects fixed open-rack arrays, although the help page says it applies only to one-axis tracking. PVWatts defines the ratio by the spacing between rows of modules; a balcony has one row. The effect is small and runs against the balcony, so balco.nyc, which leaves the ratio at its default, errs low by about 1.6% here.
+
+**Inverter and soiling.** The micro-inverter step adds about 0.5%, which is what the efficiency change alone predicts (96.5 ÷ 96 = 1.005), so the lower DC-to-AC ratio does almost nothing for a vertical panel. The monthly soiling profile, averaging 5% across the year, costs 4.4 to 4.8%. Replacing the weather file’s albedo with a fixed 0.20 changes almost nothing.
+
+## A vertical panel is a winter panel
+
+The annual total hides a change of shape. The table compares New York City at the defaults (20° tilt) with the same 800 W system at 90°: only the tilt differs, and both are before soiling and railing losses. From balco.nyc’s PVWatts V8 runs, kWh per month.
+
+| Month | 20° tilt | Vertical | Vertical as % of 20° |
+|---|---|---|---|
+| Jan | 63.1 | 75.2 | 119% |
+| Feb | 72.9 | 71.6 | 98% |
+| Mar | 89.2 | 67.5 | 76% |
+| Apr | 100.3 | 50.5 | 50% |
+| May | 109.4 | 40.7 | 37% |
+| Jun | 110.7 | 34.7 | 31% |
+| Jul | 113.6 | 39.3 | 35% |
+| Aug | 104.1 | 44.6 | 43% |
+| Sep | 92.3 | 59.4 | 64% |
+| Oct | 74.5 | 64.9 | 87% |
+| Nov | 55.8 | 60.8 | 109% |
+| Dec | 50.8 | 60.4 | 119% |
+| Year | 1,037 | 669 | 65% |
+
+From November through January the vertical panel makes more than the tilted one, 19% more in December and January, because the low winter sun meets a vertical face closer to head-on. In June it makes 31% as much. Over the six months from October to March the two are almost level, 400 against 406 kWh; the whole annual gap opens in spring and summer. December to February is **31% of the vertical panel’s year** and 18% of the tilted panel’s. Chicago and Phoenix show the same pattern, with the vertical panel ahead in November, December and January in both.
+
+This matters for any monthly figure: a bill offset, a comparison with winter usage, or a July check on whether the panel is working. A vertical panel producing a third of a rooftop array’s output in June is behaving as modeled.
+
+## What PVWatts does not model on a balcony
+
+PVWatts simulates an unobstructed array and values its output simply. On a balcony, five things it leaves out can matter as much as every setting above.
+
+- **The buildings opposite.** PVWatts does not model shading by nearby objects, and its default 14% loss includes just 3% for shading. In a street canyon obstruction is often the [largest single variable](https://balco.nyc/balcony-sunlight). balco.nyc adds a horizon model: from 3D building footprints for a New York balcony, and elsewhere from a description of what stands opposite and how far away. In balco.nyc’s fallback table, a low floor in a dense canyon keeps 45% of the unshaded output and a top floor with an open view keeps 97%.
+
+- **The railing and hardware.** Rails, clamps and the balcony edge can clip the bottom of a panel. PVWatts assumes nothing does. balco.nyc applies a flat 5% at 90° (3% at 70°, 2% at 60°, 1% at 35°), an assumption rather than a measurement.
+
+- **The balcony above.** A slab overhead cuts off part of the sky a vertical panel would otherwise see and, depending on how far it projects, some direct sun. Neither PVWatts nor balco.nyc models it; the [methodology](https://balco.nyc/methodology) lists it as a known limitation.
+
+- **Self-consumption.** PVWatts values output at an annual average retail rate and, by its own description, effectively assumes net metering. Surplus from a plug-in panel is usually uncompensated unless a specific state law or utility credits it. balco.nyc assumes every kWh is used in the home and that surplus earns nothing. If your daytime base load is below the panel’s midday output, some production goes unpaid, and neither tool can see your load.
+
+- **What a kWh is worth.** One average rate is not the number a panel displaces. In New York City balco.nyc uses Con Edison’s all-in marginal rate of about 34¢/kWh ([why that rate](https://balco.nyc/electricity-rate)); elsewhere it uses the EIA state average, which includes fixed charges and can overstate what a saved kWh is worth, and lets you enter your own rate.
+
+## How to use PVWatts for a balcony yourself
+
+PVWatts is free and needs no account. These are the settings balco.nyc sends it for a railing panel:
+
+| Input | Enter | Why |
+|---|---|---|
+| DC system size | 0.8 for 800 W of panels | The panels’ combined nameplate rating, in kW |
+| Module type | Premium | balco.nyc’s setting; Standard gave about 1% more in these runs |
+| Array type | Fixed (open rack) | Air on both faces of the panel |
+| System losses | 14% | PVWatts’ default; see the note below |
+| Tilt | 90 | Vertical; 60 or 70 for an angled bracket |
+| Azimuth | The direction your facade faces, clockwise from true north | S 180, SW 225, W 270, E 90. A Manhattan building facing the avenue faces about 209° or 29°, not 180° |
+| DC to AC size ratio | 1.1 | A micro-inverter matched to one or two panels |
+| Inverter efficiency | 96.5 | Micro-inverter |
+| Ground coverage ratio | 0.4 (default), or 0.01 | 0.01 removes rows of panels a balcony does not have: +1.6% in the New York run |
+| Albedo | 0.20, or leave “from weather file” | About 0.1% either way |
+| Monthly irradiance loss (soiling) | 3, 3, 4, 5, 6, 7, 7, 7, 6, 5, 4, 3 | January to December; an urban profile averaging 5% |
+
+Then multiply the annual kWh by 0.95 for the railing, and by your own estimate of what the buildings opposite take away. Facing direction matters about as much as tilt: with these settings, balco.nyc’s New York runs give 604 kWh a year facing south, 446 facing east, 421 facing west and 167 facing north, after the railing loss and before shade.
+
+One note on losses. PVWatts builds its 14% from ten categories that include 2% for soiling and 3% for shading, and its soiling help suggests adjusting the total if you also enter monthly soiling. balco.nyc keeps 14% and treats the bundle as covering longer wiring runs and availability instead. If you prefer PVWatts’ suggestion, set soiling to zero in its loss calculator: the total drops to 12.3% and output rises about 2%.
+
+balco.nyc does all of this for any US address, and adds the two things PVWatts cannot: shade and price. It calls PVWatts V8 for your exact coordinates with these parameters, applies the railing factor, builds a horizon from the buildings around a New York balcony (or from your description elsewhere), and values the output at a rate for your location. [Run it for your balcony](https://balco.nyc/), or read [how the calculation works](https://balco.nyc/calculate-balcony-solar-output) and [what an 800 W kit produces](https://balco.nyc/800w-balcony-solar-output).
+
+## Common questions
+
+**What is PVWatts?**
+
+PVWatts is a free solar production calculator and API from the National Laboratory of the Rockies, formerly the National Renewable Energy Laboratory (NREL). It simulates a photovoltaic system hour by hour through a typical meteorological year of weather data from the National Solar Radiation Database, using six basic inputs: system size, module type, array type, system losses, tilt and azimuth.
+
+**Is PVWatts accurate?**
+
+For the system you describe, NLR's PVWatts documentation puts the possible error at up to ±10% on annual totals and ±30% on monthly totals for typical weather, and says a particular year can depart from the long-term average by up to ±20%. Those bands assume the inputs are right. PVWatts does not model shade from nearby buildings, and its default settings describe a tilted rooftop array, not a vertical balcony panel.
+
+**How much do PVWatts' defaults overstate a balcony solar panel?**
+
+In balco.nyc's PVWatts V8 runs for a south-facing 800 W system, the default settings overstate a vertical railing panel by about 72% in New York City, 70% in Chicago and 82% in Phoenix. That compares the defaults with balco.nyc's balcony parameters plus a 5% railing loss, before any shade from nearby buildings. The tilt setting accounts for roughly 85% of the gap.
+
+**Can PVWatts model a vertical balcony panel?**
+
+Yes. Enter a tilt of 90 degrees and the azimuth your facade faces, measured clockwise from true north. For an 800 W south-facing panel in New York City, balco.nyc's runs show this cuts the annual estimate from about 1,037 kWh at the defaults to about 669 kWh, before soiling, railing and shade losses.
+
+**Is NREL PVWatts the same as NLR PVWatts?**
+
+Yes. The Department of Energy renamed the National Renewable Energy Laboratory the National Laboratory of the Rockies on 1 December 2025. PVWatts is the same tool, now at pvwatts.nlr.gov, with its API at developer.nlr.gov; the old nrel.gov addresses no longer resolve.
+
+**Does PVWatts account for shade from nearby buildings?**
+
+No. PVWatts does not model shading by nearby objects; its default 14% system loss includes only 3% for shading, and NLR warns that results can be overly optimistic when buildings or trees shade the array. On a city balcony shade is often the largest factor, so it has to be estimated separately. balco.nyc adds a horizon model for this.
+
+**Why does a vertical balcony panel produce so much less than PVWatts' default?**
+
+Mostly because of tilt. PVWatts' default is a panel tilted 20 degrees, which faces the high summer sun; a vertical panel meets it at a glancing angle. In balco.nyc's New York runs the vertical panel makes 31% as much as the 20-degree panel in June but 19% more in December and January, and the two are almost level from October to March.
+
+## Sources
+
+- [NLR — Energy Department renames NREL ‘National Laboratory of the Rockies’](https://www.nlr.gov/news/detail/press/2025/news-release-energy-department-renames-nrel-national-laboratory-of-the-rockies): the renaming of the National Renewable Energy Laboratory on 1 December 2025.
+- [U.S. Department of Energy — Energy Department renames NREL “National Lab of the Rockies”](https://www.energy.gov/cmei/articles/energy-department-renames-nrel-national-lab-rockies): the Department’s own announcement of the rename.
+- [NLR — PVWatts Calculator (Version 8)](https://pvwatts.nlr.gov/): the web calculator; its default inputs were read from the calculator’s reset-to-defaults response on 23 September 2026 (4 kW, standard, open rack, 20°, 180°, 14.08%, DC/AC 1.2, 96%, GCR 0.4).
+- [NLR Developer Network — PVWatts V8 API](https://developer.nlr.gov/docs/solar/pvwatts/v8/): the API and parameters used for balco.nyc’s runs, the NSRDB tmy-2020 weather data, and the statement that a technical report on Version 8 is forthcoming.
+- [Dobos, PVWatts Version 5 Manual, NREL/TP-6A20-62641 (2014)](https://pvwatts.nlr.gov/downloads/pvwattsv5.pdf): error of up to ±10% annual and ±30% monthly for typical weather, and up to ±20%/±40% for a particular year; the hourly simulation sequence.
+- [PVWatts help — Cautions for Interpreting the Results](https://pvwatts.nlr.gov/docs/en/help_results_interpret.php): the 10–12% accuracy statement, the warning that default losses are optimistic when nearby buildings shade the array, and that PVWatts effectively assumes net metering.
+- [PVWatts help — Get Started](https://pvwatts.nlr.gov/docs/en/help_start.php): the six required inputs, the optional advanced inputs, and valuation at an annual average retail electricity rate.
+- [PVWatts help — Solar Resource Data](https://pvwatts.nlr.gov/docs/en/help_resource.php): hourly typical meteorological year data from the NSRDB, representing a multi-year period.
+- [PVWatts help — System Losses](https://pvwatts.nlr.gov/docs/en/help_system_sysloss.php): the ten categories behind the default 14%, including 2% soiling and 3% shading.
+- [PVWatts help — Module Type](https://pvwatts.nlr.gov/docs/en/help_module_type.php): standard (19%, −0.37%/°C) and premium (21%, −0.35%/°C) modules, both with anti-reflective glass.
+- [PVWatts help — Technical Reference](https://pvwatts.nlr.gov/docs/en/help_reference.php): the calculation sequence, and the older −0.47%/°C standard-module coefficient that conflicts with the module-type page.
+- [PVWatts help — Array Type](https://pvwatts.nlr.gov/docs/en/help_system_array_type.php): cell-temperature assumptions (INOCT 45 °C open rack, 50 °C roof mount) and that PVWatts does not model shading by nearby objects.
+- [PVWatts help — Ground Coverage Ratio](https://pvwatts.nlr.gov/docs/en/help_system_gcr.php): the ratio’s definition by row spacing, its 0.4 default, and the statement that it applies only to one-axis tracking.
+- [PVWatts help — Monthly Irradiance Loss](https://pvwatts.nlr.gov/docs/en/help_system_soiling.php): monthly soiling input, and the suggestion to adjust system losses if soiling is entered monthly.

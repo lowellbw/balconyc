@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PVWatts is NLR&#x27;s free solar simulator. At its rooftop defaults it overstates a vertical balcony panel by about 72% in NYC. What to enter instead.">
+  <title>What is PVWatts, and what do its defaults get wrong for a balcony? &middot; balco.nyc</title>
+  <link rel="icon" type="image/webp" href="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp">
+  <link rel="canonical" href="https://balco.nyc/what-is-pvwatts">
+  <meta name="theme-color" content="#7F1D1D">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="balco.nyc">
+  <meta property="og:url" content="https://balco.nyc/what-is-pvwatts">
+  <meta property="og:title" content="What is PVWatts? Its defaults overstate a vertical balcony panel by about 72% in NYC">
+  <meta property="og:description" content="PVWatts is NLR&#x27;s free solar simulator. At its rooftop defaults it overstates a vertical balcony panel by about 72% in NYC. What to enter instead.">
+  <meta property="og:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
+  <meta property="article:modified_time" content="2026-09-23">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What is PVWatts? Its defaults overstate a vertical balcony panel by about 72% in NYC">
+  <meta name="twitter:description" content="PVWatts is NLR&#x27;s free solar simulator. At its rooftop defaults it overstates a vertical balcony panel by about 72% in NYC. What to enter instead.">
+  <meta name="twitter:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://balco.nyc/what-is-pvwatts#article",
+        "headline": "What is PVWatts? Its defaults overstate a vertical balcony panel by about 72% in NYC",
+        "description": "PVWatts is NLR's free solar simulator. At its rooftop defaults it overstates a vertical balcony panel by about 72% in NYC. What to enter instead.",
+        "url": "https://balco.nyc/what-is-pvwatts",
+        "mainEntityOfPage": "https://balco.nyc/what-is-pvwatts",
+        "inLanguage": "en-US",
+        "datePublished": "2026-09-23",
+        "dateModified": "2026-09-23",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg",
+          "width": 1920,
+          "height": 1047
+        },
+        "author": {
+          "@id": "https://balco.nyc/#org"
+        },
+        "publisher": {
+          "@id": "https://balco.nyc/#org"
+        },
+        "isPartOf": {
+          "@id": "https://balco.nyc/#app"
+        },
+        "citation": [
+          {
+            "@type": "CreativeWork",
+            "name": "NLR — Energy Department renames NREL ‘National Laboratory of the Rockies’",
+            "url": "https://www.nlr.gov/news/detail/press/2025/news-release-energy-department-renames-nrel-national-laboratory-of-the-rockies"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "U.S. Department of Energy — Energy Department renames NREL “National Lab of the Rockies”",
+            "url": "https://www.energy.gov/cmei/articles/energy-department-renames-nrel-national-lab-rockies"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "NLR — PVWatts Calculator (Version 8)",
+            "url": "https://pvwatts.nlr.gov/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "NLR Developer Network — PVWatts V8 API",
+            "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "Dobos, PVWatts Version 5 Manual, NREL/TP-6A20-62641 (2014)",
+            "url": "https://pvwatts.nlr.gov/downloads/pvwattsv5.pdf"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "PVWatts help — Cautions for Interpreting the Results",
+            "url": "https://pvwatts.nlr.gov/docs/en/help_results_interpret.php"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "PVWatts help — Get Started",
+            "url": "https://pvwatts.nlr.gov/docs/en/help_start.php"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "PVWatts help — Solar Resource Data",
+            "url": "https://pvwatts.nlr.gov/docs/en/help_resource.php"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "PVWatts help — System Losses",
+            "url": "https://pvwatts.nlr.gov/docs/en/help_system_sysloss.php"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "PVWatts help — Module Type",
+            "url": "https://pvwatts.nlr.gov/docs/en/help_module_type.php"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "PVWatts help — Technical Reference",
+            "url": "https://pvwatts.nlr.gov/docs/en/help_reference.php"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "PVWatts help — Array Type",
+            "url": "https://pvwatts.nlr.gov/docs/en/help_system_array_type.php"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "PVWatts help — Ground Coverage Ratio",
+            "url": "https://pvwatts.nlr.gov/docs/en/help_system_gcr.php"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "PVWatts help — Monthly Irradiance Loss",
+            "url": "https://pvwatts.nlr.gov/docs/en/help_system_soiling.php"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://balco.nyc/what-is-pvwatts#faq",
+        "dateModified": "2026-09-23",
+        "inLanguage": "en-US",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is PVWatts?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PVWatts is a free solar production calculator and API from the National Laboratory of the Rockies, formerly the National Renewable Energy Laboratory (NREL). It simulates a photovoltaic system hour by hour through a typical meteorological year of weather data from the National Solar Radiation Database, using six basic inputs: system size, module type, array type, system losses, tilt and azimuth."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is PVWatts accurate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For the system you describe, NLR's PVWatts documentation puts the possible error at up to ±10% on annual totals and ±30% on monthly totals for typical weather, and says a particular year can depart from the long-term average by up to ±20%. Those bands assume the inputs are right. PVWatts does not model shade from nearby buildings, and its default settings describe a tilted rooftop array, not a vertical balcony panel."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much do PVWatts' defaults overstate a balcony solar panel?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In balco.nyc's PVWatts V8 runs for a south-facing 800 W system, the default settings overstate a vertical railing panel by about 72% in New York City, 70% in Chicago and 82% in Phoenix. That compares the defaults with balco.nyc's balcony parameters plus a 5% railing loss, before any shade from nearby buildings. The tilt setting accounts for roughly 85% of the gap."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can PVWatts model a vertical balcony panel?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Enter a tilt of 90 degrees and the azimuth your facade faces, measured clockwise from true north. For an 800 W south-facing panel in New York City, balco.nyc's runs show this cuts the annual estimate from about 1,037 kWh at the defaults to about 669 kWh, before soiling, railing and shade losses."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is NREL PVWatts the same as NLR PVWatts?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The Department of Energy renamed the National Renewable Energy Laboratory the National Laboratory of the Rockies on 1 December 2025. PVWatts is the same tool, now at pvwatts.nlr.gov, with its API at developer.nlr.gov; the old nrel.gov addresses no longer resolve."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does PVWatts account for shade from nearby buildings?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. PVWatts does not model shading by nearby objects; its default 14% system loss includes only 3% for shading, and NLR warns that results can be overly optimistic when buildings or trees shade the array. On a city balcony shade is often the largest factor, so it has to be estimated separately. balco.nyc adds a horizon model for this."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does a vertical balcony panel produce so much less than PVWatts' default?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mostly because of tilt. PVWatts' default is a panel tilted 20 degrees, which faces the high summer sun; a vertical panel meets it at a glancing angle. In balco.nyc's New York runs the vertical panel makes 31% as much as the 20-degree panel in June but 19% more in December and January, and the two are almost level from October to March."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://balco.nyc/#org",
+        "name": "balco.nyc",
+        "url": "https://balco.nyc/",
+        "logo": "https://balco.nyc/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp",
+        "description": "balco.nyc is an independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings.",
+        "sameAs": [
+          "https://github.com/lowellbw/balconyc"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "balco.nyc",
+            "item": "https://balco.nyc/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Guides",
+            "item": "https://balco.nyc/guides"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "What is PVWatts",
+            "item": "https://balco.nyc/what-is-pvwatts"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #FFFFFF; --text: #171717; --text-sub: #596580; --text-muted: #8896AB;
+      --accent: #7F1D1D; --accent-hover: #5C1212;
+      --border: #E2E8F0; --border-soft: #EEF0F3;
+      --code-bg: #F7F7F8; --callout-bg: #FAF7F4;
+      --radius: 12px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1360px; margin: 0 auto; padding: 0 40px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    /* NAV (matches index.html scrolled style, but always solid on doc pages) */
+    nav.doc-nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-soft); }
+    nav.doc-nav .container { display: flex; justify-content: space-between; align-items: center; padding-top: 6px; padding-bottom: 6px; }
+    .logo { display: inline-block; text-decoration: none; line-height: 0; }
+    .logo img { height: 64px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
+    .nav-links a:hover { opacity: 0.7; text-decoration: none; }
+
+    /* DOC LAYOUT */
+    main { padding: 56px 0 96px; }
+    .doc-header { max-width: 760px; margin: 0 0 48px; }
+    .doc-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .doc-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .doc-header h1 { font-size: clamp(2rem, 3.6vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; text-wrap: balance; }
+    .doc-header .lede { font-size: 1.15rem; color: var(--text-sub); max-width: 65ch; }
+    .doc-meta-row { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; margin-top: 20px; font-size: 0.88rem; color: var(--text-muted); }
+    .doc-meta-row strong { color: var(--text-sub); font-weight: 600; }
+    .doc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .doc-tag { font-size: 0.78rem; padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--text-sub); }
+
+    /* TWO-COLUMN LAYOUT */
+    .doc-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 64px; align-items: start; }
+    .doc-toc { position: sticky; top: 88px; max-height: calc(100vh - 120px); overflow-y: auto; padding-right: 16px; }
+    .doc-toc h2 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .doc-toc ol { list-style: none; padding: 0; counter-reset: tocsec; }
+    .doc-toc li { counter-increment: tocsec; margin: 0; }
+    .doc-toc a { display: block; padding: 6px 0 6px 28px; position: relative; font-size: 0.92rem; color: var(--text-sub); border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; text-decoration: none; }
+    .doc-toc a::before { content: counter(tocsec) "."; position: absolute; left: 8px; top: 6px; font-variant-numeric: tabular-nums; color: var(--text-muted); font-size: 0.85rem; }
+    .doc-toc a:hover, .doc-toc a.active { color: var(--text); border-left-color: var(--accent); }
+
+    /* DOC CONTENT */
+    .doc-content { max-width: 760px; min-width: 0; }
+    .doc-content section { padding-top: 24px; margin-bottom: 48px; scroll-margin-top: 80px; }
+    .doc-content section + section { border-top: 1px solid var(--border-soft); }
+    .doc-content h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; margin: 0 0 20px; }
+    .doc-content h2 .sec-num { color: var(--text-muted); font-weight: 500; margin-right: 12px; font-variant-numeric: tabular-nums; }
+    .doc-content h3 { font-size: 1.18rem; font-weight: 700; letter-spacing: -0.01em; margin: 36px 0 14px; }
+    .doc-content h4 { font-size: 1rem; font-weight: 700; margin: 24px 0 10px; }
+    .doc-content p { margin-bottom: 16px; color: var(--text); }
+    .doc-content p + p { margin-top: -4px; }
+    .doc-content ul, .doc-content ol { padding-left: 24px; margin-bottom: 18px; }
+    .doc-content li { margin-bottom: 6px; }
+    .doc-content li > ul, .doc-content li > ol { margin: 8px 0; }
+    .doc-content strong { font-weight: 700; }
+    .doc-content em { font-style: italic; color: var(--text-sub); }
+
+    /* CODE */
+    code, pre { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em; }
+    p code, li code, td code { background: var(--code-bg); padding: 1px 6px; border-radius: 4px; color: var(--text); font-size: 0.86em; }
+    pre { background: var(--code-bg); border: 1px solid var(--border-soft); border-radius: 8px; padding: 16px 20px; overflow-x: auto; margin: 12px 0 20px; line-height: 1.55; }
+    pre code { background: none; padding: 0; font-size: 0.86em; }
+
+    /* TABLES */
+    .table-wrap { margin: 8px 0 24px; overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    table th, table td { padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+    table th { background: #FAFAFB; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.02em; text-transform: uppercase; color: var(--text-sub); }
+    table tr:last-child td { border-bottom: none; }
+    table td code { font-size: 0.84em; }
+
+    /* CALLOUT */
+    .callout { background: var(--callout-bg); border-left: 3px solid var(--accent); padding: 14px 18px; border-radius: 4px; margin: 12px 0 22px; font-size: 0.95rem; }
+    .callout p:last-child { margin-bottom: 0; }
+    .callout strong { color: var(--accent); }
+
+    /* SOURCES LIST */
+    .sources-list a { font-weight: 500; }
+    .sources-list .src-host { color: var(--text-muted); font-size: 0.85em; font-family: 'JetBrains Mono', monospace; }
+
+    /* BACK TO TOP / DOC FOOTER */
+    .doc-foot { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-soft); display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.9rem; }
+    .btn-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--accent); color: #fff; border-radius: 999px; font-weight: 700; font-size: 0.92rem; text-decoration: none; }
+    .btn-cta:hover { background: var(--accent-hover); text-decoration: none; }
+
+    /* FOOTER */
+    footer { padding: 48px 0 32px; border-top: 1px solid var(--border-soft); margin-top: 48px; }
+    footer .container { display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; }
+    .footer-logo img { height: 56px; width: auto; opacity: 0.85; }
+    .footer-disclaimer { font-size: 0.84rem; color: var(--text-muted); max-width: 64ch; line-height: 1.6; }
+    .footer-meta { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* MOBILE */
+    @media (max-width: 960px) {
+      .container { padding: 0 24px; }
+      .doc-layout { grid-template-columns: 1fr; gap: 24px; }
+      .doc-toc { position: static; max-height: none; padding: 16px; border: 1px solid var(--border-soft); border-radius: 8px; }
+      .doc-toc a { padding-left: 24px; }
+      main { padding: 32px 0 64px; }
+      .doc-header { margin-bottom: 28px; }
+      .doc-content section { margin-bottom: 36px; }
+      .doc-content h2 { font-size: 1.4rem; }
+      .doc-content h3 { font-size: 1.08rem; }
+      .logo img { height: 52px; }
+    }
+
+    /* --- Shared blocks (tools/sitelib.py) --- */
+    .crumbs { margin: 20px 0 -8px; }
+    .crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; font-size: 0.8rem; color: var(--text-muted); }
+    .crumbs li + li::before { content: "\203A"; margin-right: 6px; color: var(--text-muted); }
+    .crumbs a { color: var(--text-sub); text-decoration: none; }
+    .crumbs a[aria-current="page"] { color: var(--text-muted); }
+    .cta-block { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin: 8px 0 40px; padding: 18px 20px; border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 4px; background: #FCFBF7; }
+    .cta-block p { margin: 0; max-width: 56ch; }
+    .cta-button { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 4px; background: var(--accent); color: #fff !important; font-weight: 700; text-decoration: none !important; }
+    .cta-button:hover { background: var(--accent-hover); }
+    .related { margin: 40px 0 0; padding-top: 24px; border-top: 1px solid var(--border); }
+    .related h2 { font-size: 1.1rem; margin-bottom: 12px; }
+    .related ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .related li a { font-weight: 700; }
+    .related li span { display: block; color: var(--text-sub); font-size: 0.88rem; }
+    .footer-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; width: 100%; max-width: 860px; text-align: left; }
+    .footer-links h2 { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+    .footer-links a { display: block; padding: 4px 0; font-size: 0.88rem; color: var(--text-sub); }
+    @media (max-width: 720px) { .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .hub-content { max-width: 760px; padding-bottom: 24px; }
+    .hub-content section { margin-bottom: 36px; }
+    .hub-content h2 { font-size: 1.35rem; margin-bottom: 12px; }
+    .hub-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .hub-list li a { font-weight: 700; }
+    .hub-list li span { display: block; color: var(--text-sub); font-size: 0.92rem; }
+    .table-note { font-size: 0.85rem; color: var(--text-sub); }
+    .tile-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 4px; margin: 8px 0 12px; }
+    .tile { display: flex; align-items: center; justify-content: center; height: 40px; border-radius: 3px; font-size: 0.78rem; font-weight: 700; text-decoration: none !important; color: #1B1A18; background: #EEF0F3; }
+    .tile.s-in_force { background: #7F1D1D; color: #fff; }
+    .tile.s-enacted_not_yet_effective { background: #C2452A; color: #fff; }
+    .tile.s-passed_awaiting_signature { background: #E46740; color: #fff; }
+    .tile.s-pending { background: #F2C9B8; }
+    .tile.s-failed_or_vetoed { background: #D8D2C8; }
+    .tile.s-no_specific_law { background: #EEF0F3; }
+    .tile.s-unknown { background: #fff; border: 1px dashed #C8C2B8; color: #8896AB; }
+    .tile-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 0.82rem; color: var(--text-sub); }
+    .tile-key::before { content: ""; display: inline-block; width: 12px; height: 12px; margin-right: 6px; border-radius: 2px; vertical-align: -1px; background: #EEF0F3; }
+    .tile-key.s-in_force::before { background: #7F1D1D; }
+    .tile-key.s-enacted_not_yet_effective::before { background: #C2452A; }
+    .tile-key.s-passed_awaiting_signature::before { background: #E46740; }
+    .tile-key.s-pending::before { background: #F2C9B8; }
+    .tile-key.s-failed_or_vetoed::before { background: #D8D2C8; }
+    .tile-key.s-unknown::before { background: #fff; border: 1px dashed #C8C2B8; }
+    .state-table td:nth-child(n+3), .state-table th:nth-child(n+3) { text-align: right; white-space: nowrap; }
+  </style>
+</head>
+<body>
+
+<nav class="doc-nav">
+  <div class="container">
+    <a href="/" class="logo"><img src="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco.nyc" width="400" height="218" decoding="async"></a>
+    <div class="nav-links">
+      <a href="/">Calculator</a>
+      <a href="/guides">Guides</a>
+      <a href="/states">States</a>
+      <a href="/methodology">Methodology</a>
+      <a href="/about">About</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <!--shared:start-->
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">balco.nyc</a></li><li><a href="/guides">Guides</a></li><li><a href="/what-is-pvwatts" aria-current="page">What is PVWatts</a></li></ol></nav>
+    <!--shared:end-->
+    <header class="doc-header">
+      <div class="doc-eyebrow"><span class="dot"></span> Calculating output</div>
+      <h1>What is PVWatts, and what do its defaults get wrong for a balcony?</h1>
+      <p class="lede">PVWatts is the free solar calculator from the National Laboratory of the Rockies (NLR, the lab formerly called NREL): it simulates a panel hour by hour through a typical weather year. It can model a balcony, but its defaults describe a rooftop array, and balco.nyc&rsquo;s PVWatts runs show that left at those defaults it overstates a vertical, south-facing 800&nbsp;W railing panel by <strong>about 72% in New York City</strong> (1,037&nbsp;kWh a year against 604), 70% in Chicago and 82% in Phoenix, before any shade from the buildings opposite. Roughly 85% of that gap is a single setting: tilt.</p>
+      <div class="doc-meta-row">
+        <div><strong>Last reviewed:</strong> <time datetime="2026-09-23">September 23, 2026</time></div>
+        <div><strong>Reading time:</strong> ~9 minutes</div>
+        <div class="doc-tags">
+          <span class="doc-tag">Defaults +72% (NYC)</span>
+          <span class="doc-tag">Tilt = 85% of the gap</span>
+          <span class="doc-tag">PVWatts V8</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="doc-layout">
+      <aside class="doc-toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#what-pvwatts-is">What PVWatts is, and how accurate it is</a></li>
+          <li><a href="#defaults-vs-balcony">Defaults vs a balcony, step by step</a></li>
+          <li><a href="#small-settings">Settings that barely matter</a></li>
+          <li><a href="#seasons">A vertical panel is a winter panel</a></li>
+          <li><a href="#what-pvwatts-misses">What PVWatts does not model</a></li>
+          <li><a href="#run-it-yourself">Using PVWatts for a balcony</a></li>
+          <li><a href="#questions">Common questions</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ol>
+      </aside>
+
+      <article class="doc-content">
+
+        <section id="what-pvwatts-is">
+  <h2><span class="sec-num">1</span>What PVWatts is, and how accurate NLR says it is</h2>
+  <p>PVWatts is a free web calculator and API published by the National Laboratory of the Rockies (NLR), the Department of Energy lab in Golden, Colorado that was called the National Renewable Energy Laboratory until the Department renamed it on 1&nbsp;December 2025. Most people still search for it as &ldquo;NREL PVWatts&rdquo;. It is the same tool, now at pvwatts.nlr.gov, with its API at developer.nlr.gov; the old nrel.gov addresses no longer resolve.</p>
+  <p>What it does is narrow and well documented. For a location, it takes a typical meteorological year (TMY) of weather from the National Solar Radiation Database &mdash; one year of hourly data chosen to represent a multi-year period &mdash; and simulates all 8,760 hours: where the sun is, how much light reaches a panel at the tilt and azimuth you enter, how much reflects off the glass, how hot the cells run, the DC output, the inverter&rsquo;s conversion, and finally a flat percentage for other losses. Version 8, the current one, reads the NSRDB&rsquo;s tmy-2020 files.</p>
+  <p>It asks for six inputs: system size, module type, array type, system losses, tilt and azimuth. Optional ones cover the DC-to-AC ratio, inverter efficiency and ground coverage ratio, and since V8, albedo, bifacial modules and a month-by-month irradiance loss for soiling or snow. Reset to its defaults on 23&nbsp;September 2026, the calculator reads: 4&nbsp;kW, standard module, fixed open rack, 20&deg; tilt, due south, 14.08% losses, DC-to-AC ratio 1.2, 96% inverter efficiency, ground coverage ratio 0.4.</p>
+  <p>On accuracy, NLR is candid. Its Version&nbsp;5 manual puts the possible error at up to &plusmn;10% on annual totals and &plusmn;30% on monthly totals for typical weather, and says a particular year can depart from the long-term average by up to &plusmn;20% annually and &plusmn;40% monthly. The calculator&rsquo;s current cautions page repeats those bands and calls its results accurate to within 10 to 12% of long-term performance. No Version&nbsp;8 manual exists yet; the API documentation says one is forthcoming, so the 2014 manual remains the most detailed reference.</p>
+  <div class="callout"><p><strong>Those bands assume the inputs describe the system.</strong> The same cautions page warns that results can be overly optimistic with the default losses when nearby buildings or trees shade the modules. On a balcony the inputs are the problem, not the model.</p></div>
+</section>
+
+        <section id="defaults-vs-balcony">
+  <h2><span class="sec-num">2</span>From PVWatts&rsquo; defaults to a balcony, one setting at a time</h2>
+  <p>To measure how far the defaults sit from a balcony, balco.nyc ran PVWatts V8 through its public API on 23&nbsp;September 2026 for an 800&nbsp;W (0.8&nbsp;kW), due-south system in New York City, Chicago and Phoenix. Each run starts from the calculator&rsquo;s defaults and changes only what its row names, until it reaches the parameters balco.nyc&rsquo;s own calculator sends. The last step is balco.nyc&rsquo;s 5% railing loss, which PVWatts has no input for. Figures are kWh a year, with the change from the row above.</p>
+  <div class="table-wrap"><table><thead><tr><th>Step</th><th>New York City</th><th>Chicago</th><th>Phoenix</th></tr></thead><tbody>
+    <tr><td>PVWatts defaults: open rack, 20&deg; tilt, standard module, DC/AC 1.2</td><td>1,037</td><td>1,050</td><td>1,416</td></tr>
+    <tr><td><strong>Tilt 90&deg;, vertical on a railing</strong></td><td><strong>669 (&minus;35.4%)</strong></td><td><strong>684 (&minus;34.8%)</strong></td><td><strong>857 (&minus;39.5%)</strong></td></tr>
+    <tr><td>Premium module instead of standard</td><td>663 (&minus;0.9%)</td><td>678 (&minus;1.0%)</td><td>853 (&minus;0.5%)</td></tr>
+    <tr><td>Micro-inverter: DC/AC 1.1, 96.5% efficiency</td><td>667 (+0.5%)</td><td>681 (+0.5%)</td><td>856 (+0.4%)</td></tr>
+    <tr><td>Monthly urban soiling, 3% in winter to 7% in summer</td><td>635 (&minus;4.7%)</td><td>648 (&minus;4.8%)</td><td>819 (&minus;4.4%)</td></tr>
+    <tr><td>Albedo fixed at 0.20 and losses at 14% (balco.nyc&rsquo;s PVWatts parameters)</td><td>636 (+0.1%)</td><td>649 (+0.1%)</td><td>819 (+0.1%)</td></tr>
+    <tr><td>Railing loss &times;0.95, applied by balco.nyc outside PVWatts</td><td>604 (&minus;5.0%)</td><td>616 (&minus;5.0%)</td><td>778 (&minus;5.0%)</td></tr>
+    <tr><td><strong>Defaults overstate the balcony panel by</strong></td><td><strong>72%</strong></td><td><strong>70%</strong></td><td><strong>82%</strong></td></tr>
+  </tbody></table></div>
+  <p>The New York arithmetic: 1,036.8&nbsp;kWh at the defaults against 635.7&nbsp;&times;&nbsp;0.95&nbsp;=&nbsp;603.9&nbsp;kWh for the balcony, a ratio of 1.72. Put the other way, a vertical south-facing panel makes about 58% of the default estimate in New York and Chicago and 55% in Phoenix. In yield terms, the defaults imply 1,296&nbsp;kWh per kW in New York; the balcony gets 755 (the <a href="/balcony-solar-kwh-formula">kWh formula</a> shows how that per-kW figure is used).</p>
+  <p>Tilt is nearly the whole story. Moving the panel from 20&deg; to vertical removes 367 of the 433&nbsp;kWh gap in New York, 85% of it; the share is 84% in Chicago and 88% in Phoenix, where the summer sun stands higher and meets a vertical face at a more glancing angle. Soiling and the railing account for about 7% each. Everything else nets to about 1%.</p>
+  <p>None of this means PVWatts is wrong. Told the panel is vertical, it models a vertical panel; its defaults simply describe a tilted rooftop array. The final PVWatts figures in the table are the same runs behind balco.nyc&rsquo;s <a href="/states">state pages</a>, which publish them for the largest city in every state.</p>
+</section>
+
+        <!--shared:start-->
+        <aside class="cta-block">
+          <p><strong>Estimate your own balcony.</strong> Enter any US address to see what a panel on your balcony would produce and save, month by month.</p>
+          <a class="cta-button" href="/">Open the calculator &rarr;</a>
+        </aside>
+        <!--shared:end-->
+
+        <section id="small-settings">
+  <h2><span class="sec-num">3</span>The settings that barely move a vertical panel, and not the way you would expect</h2>
+  <p>Two steps that a reader might expect to help do not, and it is worth being exact about what PVWatts&rsquo; documentation does and does not explain.</p>
+  <p><strong>Premium module.</strong> PVWatts&rsquo; module-type help lists the premium module at about 21% efficiency and &minus;0.35%/&deg;C, against 19% and &minus;0.37%/&deg;C for standard, both behind anti-reflective glass. The slightly better temperature coefficient should, if anything, add output. Instead the premium setting produced 0.9% less for the vertical New York panel, and 0.5% less at 20&deg;. The documentation does not say why, and it is not fully consistent: its technical-reference page still quotes the Version&nbsp;5 coefficient of &minus;0.47%/&deg;C for standard modules. We report the result as measured and have not traced its cause. The calculator itself cautions that it does not distinguish better-performing modules from worse ones; module type is a modeling label, not a quality dial.</p>
+  <p><strong>Open rack versus roof mount.</strong> The documented difference is temperature: PVWatts assumes an open-rack array runs cooler (installed nominal operating cell temperature 45&nbsp;&deg;C, against 50&nbsp;&deg;C for roof mount), which should favor open rack. At 20&deg; the two land within 0.1% in New York. At 90&deg;, open rack was 1.0% <em>lower</em>, and its plane-of-array irradiance was 1.6% lower too, which a temperature model cannot cause. balco.nyc re-ran the vertical New York panel with the ground coverage ratio at its minimum, 0.01: the irradiance matched roof mount again and open rack came out 0.5% <em>ahead</em> (680 against 677&nbsp;kWh); at 0.9 it fell to 616&nbsp;kWh. So in V8 the ratio affects fixed open-rack arrays, although the help page says it applies only to one-axis tracking. PVWatts defines the ratio by the spacing between rows of modules; a balcony has one row. The effect is small and runs against the balcony, so balco.nyc, which leaves the ratio at its default, errs low by about 1.6% here.</p>
+  <p><strong>Inverter and soiling.</strong> The micro-inverter step adds about 0.5%, which is what the efficiency change alone predicts (96.5&nbsp;&divide;&nbsp;96&nbsp;=&nbsp;1.005), so the lower DC-to-AC ratio does almost nothing for a vertical panel. The monthly soiling profile, averaging 5% across the year, costs 4.4 to 4.8%. Replacing the weather file&rsquo;s albedo with a fixed 0.20 changes almost nothing.</p>
+</section>
+
+        <section id="seasons">
+  <h2><span class="sec-num">4</span>A vertical panel is a winter panel</h2>
+  <p>The annual total hides a change of shape. The table compares New York City at the defaults (20&deg; tilt) with the same 800&nbsp;W system at 90&deg;: only the tilt differs, and both are before soiling and railing losses. From balco.nyc&rsquo;s PVWatts V8 runs, kWh per month.</p>
+  <div class="table-wrap"><table><thead><tr><th>Month</th><th>20&deg; tilt</th><th>Vertical</th><th>Vertical as % of 20&deg;</th></tr></thead><tbody>
+    <tr><td>Jan</td><td>63.1</td><td>75.2</td><td>119%</td></tr>
+    <tr><td>Feb</td><td>72.9</td><td>71.6</td><td>98%</td></tr>
+    <tr><td>Mar</td><td>89.2</td><td>67.5</td><td>76%</td></tr>
+    <tr><td>Apr</td><td>100.3</td><td>50.5</td><td>50%</td></tr>
+    <tr><td>May</td><td>109.4</td><td>40.7</td><td>37%</td></tr>
+    <tr><td>Jun</td><td>110.7</td><td>34.7</td><td>31%</td></tr>
+    <tr><td>Jul</td><td>113.6</td><td>39.3</td><td>35%</td></tr>
+    <tr><td>Aug</td><td>104.1</td><td>44.6</td><td>43%</td></tr>
+    <tr><td>Sep</td><td>92.3</td><td>59.4</td><td>64%</td></tr>
+    <tr><td>Oct</td><td>74.5</td><td>64.9</td><td>87%</td></tr>
+    <tr><td>Nov</td><td>55.8</td><td>60.8</td><td>109%</td></tr>
+    <tr><td>Dec</td><td>50.8</td><td>60.4</td><td>119%</td></tr>
+    <tr><td><strong>Year</strong></td><td><strong>1,037</strong></td><td><strong>669</strong></td><td><strong>65%</strong></td></tr>
+  </tbody></table></div>
+  <p>From November through January the vertical panel makes more than the tilted one, 19% more in December and January, because the low winter sun meets a vertical face closer to head-on. In June it makes 31% as much. Over the six months from October to March the two are almost level, 400 against 406&nbsp;kWh; the whole annual gap opens in spring and summer. December to February is <strong>31% of the vertical panel&rsquo;s year</strong> and 18% of the tilted panel&rsquo;s. Chicago and Phoenix show the same pattern, with the vertical panel ahead in November, December and January in both.</p>
+  <p>This matters for any monthly figure: a bill offset, a comparison with winter usage, or a July check on whether the panel is working. A vertical panel producing a third of a rooftop array&rsquo;s output in June is behaving as modeled.</p>
+</section>
+
+        <section id="what-pvwatts-misses">
+  <h2><span class="sec-num">5</span>What PVWatts does not model on a balcony</h2>
+  <p>PVWatts simulates an unobstructed array and values its output simply. On a balcony, five things it leaves out can matter as much as every setting above.</p>
+  <ul>
+    <li><strong>The buildings opposite.</strong> PVWatts does not model shading by nearby objects, and its default 14% loss includes just 3% for shading. In a street canyon obstruction is often the <a href="/balcony-sunlight">largest single variable</a>. balco.nyc adds a horizon model: from 3D building footprints for a New York balcony, and elsewhere from a description of what stands opposite and how far away. In balco.nyc&rsquo;s fallback table, a low floor in a dense canyon keeps 45% of the unshaded output and a top floor with an open view keeps 97%.</li>
+    <li><strong>The railing and hardware.</strong> Rails, clamps and the balcony edge can clip the bottom of a panel. PVWatts assumes nothing does. balco.nyc applies a flat 5% at 90&deg; (3% at 70&deg;, 2% at 60&deg;, 1% at 35&deg;), an assumption rather than a measurement.</li>
+    <li><strong>The balcony above.</strong> A slab overhead cuts off part of the sky a vertical panel would otherwise see and, depending on how far it projects, some direct sun. Neither PVWatts nor balco.nyc models it; the <a href="/methodology">methodology</a> lists it as a known limitation.</li>
+    <li><strong>Self-consumption.</strong> PVWatts values output at an annual average retail rate and, by its own description, effectively assumes net metering. Surplus from a plug-in panel is usually uncompensated unless a specific state law or utility credits it. balco.nyc assumes every kWh is used in the home and that surplus earns nothing. If your daytime base load is below the panel&rsquo;s midday output, some production goes unpaid, and neither tool can see your load.</li>
+    <li><strong>What a kWh is worth.</strong> One average rate is not the number a panel displaces. In New York City balco.nyc uses Con Edison&rsquo;s all-in marginal rate of about 34&cent;/kWh (<a href="/electricity-rate">why that rate</a>); elsewhere it uses the EIA state average, which includes fixed charges and can overstate what a saved kWh is worth, and lets you enter your own rate.</li>
+  </ul>
+</section>
+
+        <section id="run-it-yourself">
+  <h2><span class="sec-num">6</span>How to use PVWatts for a balcony yourself</h2>
+  <p>PVWatts is free and needs no account. These are the settings balco.nyc sends it for a railing panel:</p>
+  <div class="table-wrap"><table><thead><tr><th>Input</th><th>Enter</th><th>Why</th></tr></thead><tbody>
+    <tr><td>DC system size</td><td>0.8 for 800&nbsp;W of panels</td><td>The panels&rsquo; combined nameplate rating, in kW</td></tr>
+    <tr><td>Module type</td><td>Premium</td><td>balco.nyc&rsquo;s setting; Standard gave about 1% more in these runs</td></tr>
+    <tr><td>Array type</td><td>Fixed (open rack)</td><td>Air on both faces of the panel</td></tr>
+    <tr><td>System losses</td><td>14%</td><td>PVWatts&rsquo; default; see the note below</td></tr>
+    <tr><td>Tilt</td><td>90</td><td>Vertical; 60 or 70 for an angled bracket</td></tr>
+    <tr><td>Azimuth</td><td>The direction your facade faces, clockwise from true north</td><td>S&nbsp;180, SW&nbsp;225, W&nbsp;270, E&nbsp;90. A Manhattan building facing the avenue faces about 209&deg; or 29&deg;, not 180&deg;</td></tr>
+    <tr><td>DC to AC size ratio</td><td>1.1</td><td>A micro-inverter matched to one or two panels</td></tr>
+    <tr><td>Inverter efficiency</td><td>96.5</td><td>Micro-inverter</td></tr>
+    <tr><td>Ground coverage ratio</td><td>0.4 (default), or 0.01</td><td>0.01 removes rows of panels a balcony does not have: +1.6% in the New York run</td></tr>
+    <tr><td>Albedo</td><td>0.20, or leave &ldquo;from weather file&rdquo;</td><td>About 0.1% either way</td></tr>
+    <tr><td>Monthly irradiance loss (soiling)</td><td>3, 3, 4, 5, 6, 7, 7, 7, 6, 5, 4, 3</td><td>January to December; an urban profile averaging 5%</td></tr>
+  </tbody></table></div>
+  <p>Then multiply the annual kWh by 0.95 for the railing, and by your own estimate of what the buildings opposite take away. Facing direction matters about as much as tilt: with these settings, balco.nyc&rsquo;s New York runs give 604&nbsp;kWh a year facing south, 446 facing east, 421 facing west and 167 facing north, after the railing loss and before shade.</p>
+  <p>One note on losses. PVWatts builds its 14% from ten categories that include 2% for soiling and 3% for shading, and its soiling help suggests adjusting the total if you also enter monthly soiling. balco.nyc keeps 14% and treats the bundle as covering longer wiring runs and availability instead. If you prefer PVWatts&rsquo; suggestion, set soiling to zero in its loss calculator: the total drops to 12.3% and output rises about 2%.</p>
+  <p>balco.nyc does all of this for any US address, and adds the two things PVWatts cannot: shade and price. It calls PVWatts V8 for your exact coordinates with these parameters, applies the railing factor, builds a horizon from the buildings around a New York balcony (or from your description elsewhere), and values the output at a rate for your location. <a href="/">Run it for your balcony</a>, or read <a href="/calculate-balcony-solar-output">how the calculation works</a> and <a href="/800w-balcony-solar-output">what an 800&nbsp;W kit produces</a>.</p>
+</section>
+
+        <section id="questions">
+          <h2><span class="sec-num">7</span>Common questions</h2>
+        <details>
+          <summary>What is PVWatts?</summary>
+          <p>PVWatts is a free solar production calculator and API from the National Laboratory of the Rockies, formerly the National Renewable Energy Laboratory (NREL). It simulates a photovoltaic system hour by hour through a typical meteorological year of weather data from the National Solar Radiation Database, using six basic inputs: system size, module type, array type, system losses, tilt and azimuth.</p>
+        </details>
+        <details>
+          <summary>Is PVWatts accurate?</summary>
+          <p>For the system you describe, NLR's PVWatts documentation puts the possible error at up to ±10% on annual totals and ±30% on monthly totals for typical weather, and says a particular year can depart from the long-term average by up to ±20%. Those bands assume the inputs are right. PVWatts does not model shade from nearby buildings, and its default settings describe a tilted rooftop array, not a vertical balcony panel.</p>
+        </details>
+        <details>
+          <summary>How much do PVWatts' defaults overstate a balcony solar panel?</summary>
+          <p>In balco.nyc's PVWatts V8 runs for a south-facing 800 W system, the default settings overstate a vertical railing panel by about 72% in New York City, 70% in Chicago and 82% in Phoenix. That compares the defaults with balco.nyc's balcony parameters plus a 5% railing loss, before any shade from nearby buildings. The tilt setting accounts for roughly 85% of the gap.</p>
+        </details>
+        <details>
+          <summary>Can PVWatts model a vertical balcony panel?</summary>
+          <p>Yes. Enter a tilt of 90 degrees and the azimuth your facade faces, measured clockwise from true north. For an 800 W south-facing panel in New York City, balco.nyc's runs show this cuts the annual estimate from about 1,037 kWh at the defaults to about 669 kWh, before soiling, railing and shade losses.</p>
+        </details>
+        <details>
+          <summary>Is NREL PVWatts the same as NLR PVWatts?</summary>
+          <p>Yes. The Department of Energy renamed the National Renewable Energy Laboratory the National Laboratory of the Rockies on 1 December 2025. PVWatts is the same tool, now at pvwatts.nlr.gov, with its API at developer.nlr.gov; the old nrel.gov addresses no longer resolve.</p>
+        </details>
+        <details>
+          <summary>Does PVWatts account for shade from nearby buildings?</summary>
+          <p>No. PVWatts does not model shading by nearby objects; its default 14% system loss includes only 3% for shading, and NLR warns that results can be overly optimistic when buildings or trees shade the array. On a city balcony shade is often the largest factor, so it has to be estimated separately. balco.nyc adds a horizon model for this.</p>
+        </details>
+        <details>
+          <summary>Why does a vertical balcony panel produce so much less than PVWatts' default?</summary>
+          <p>Mostly because of tilt. PVWatts' default is a panel tilted 20 degrees, which faces the high summer sun; a vertical panel meets it at a glancing angle. In balco.nyc's New York runs the vertical panel makes 31% as much as the 20-degree panel in June but 19% more in December and January, and the two are almost level from October to March.</p>
+        </details>
+        </section>
+
+        <section id="sources">
+          <h2><span class="sec-num">8</span>Sources</h2>
+          <ul>
+            <li><a href="https://www.nlr.gov/news/detail/press/2025/news-release-energy-department-renames-nrel-national-laboratory-of-the-rockies" target="_blank" rel="noopener">NLR &mdash; Energy Department renames NREL &lsquo;National Laboratory of the Rockies&rsquo;</a> <span class="src-host">nlr.gov</span> &mdash; the renaming of the National Renewable Energy Laboratory on 1&nbsp;December 2025.</li>
+            <li><a href="https://www.energy.gov/cmei/articles/energy-department-renames-nrel-national-lab-rockies" target="_blank" rel="noopener">U.S. Department of Energy &mdash; Energy Department renames NREL &ldquo;National Lab of the Rockies&rdquo;</a> <span class="src-host">energy.gov</span> &mdash; the Department&rsquo;s own announcement of the rename.</li>
+            <li><a href="https://pvwatts.nlr.gov/" target="_blank" rel="noopener">NLR &mdash; PVWatts Calculator (Version 8)</a> <span class="src-host">pvwatts.nlr.gov</span> &mdash; the web calculator; its default inputs were read from the calculator&rsquo;s reset-to-defaults response on 23&nbsp;September 2026 (4&nbsp;kW, standard, open rack, 20&deg;, 180&deg;, 14.08%, DC/AC 1.2, 96%, GCR 0.4).</li>
+            <li><a href="https://developer.nlr.gov/docs/solar/pvwatts/v8/" target="_blank" rel="noopener">NLR Developer Network &mdash; PVWatts V8 API</a> <span class="src-host">developer.nlr.gov</span> &mdash; the API and parameters used for balco.nyc&rsquo;s runs, the NSRDB tmy-2020 weather data, and the statement that a technical report on Version&nbsp;8 is forthcoming.</li>
+            <li><a href="https://pvwatts.nlr.gov/downloads/pvwattsv5.pdf" target="_blank" rel="noopener">Dobos, <em>PVWatts Version 5 Manual</em>, NREL/TP-6A20-62641 (2014)</a> <span class="src-host">pvwatts.nlr.gov</span> &mdash; error of up to &plusmn;10% annual and &plusmn;30% monthly for typical weather, and up to &plusmn;20%/&plusmn;40% for a particular year; the hourly simulation sequence.</li>
+            <li><a href="https://pvwatts.nlr.gov/docs/en/help_results_interpret.php" target="_blank" rel="noopener">PVWatts help &mdash; Cautions for Interpreting the Results</a> <span class="src-host">pvwatts.nlr.gov</span> &mdash; the 10&ndash;12% accuracy statement, the warning that default losses are optimistic when nearby buildings shade the array, and that PVWatts effectively assumes net metering.</li>
+            <li><a href="https://pvwatts.nlr.gov/docs/en/help_start.php" target="_blank" rel="noopener">PVWatts help &mdash; Get Started</a> <span class="src-host">pvwatts.nlr.gov</span> &mdash; the six required inputs, the optional advanced inputs, and valuation at an annual average retail electricity rate.</li>
+            <li><a href="https://pvwatts.nlr.gov/docs/en/help_resource.php" target="_blank" rel="noopener">PVWatts help &mdash; Solar Resource Data</a> <span class="src-host">pvwatts.nlr.gov</span> &mdash; hourly typical meteorological year data from the NSRDB, representing a multi-year period.</li>
+            <li><a href="https://pvwatts.nlr.gov/docs/en/help_system_sysloss.php" target="_blank" rel="noopener">PVWatts help &mdash; System Losses</a> <span class="src-host">pvwatts.nlr.gov</span> &mdash; the ten categories behind the default 14%, including 2% soiling and 3% shading.</li>
+            <li><a href="https://pvwatts.nlr.gov/docs/en/help_module_type.php" target="_blank" rel="noopener">PVWatts help &mdash; Module Type</a> <span class="src-host">pvwatts.nlr.gov</span> &mdash; standard (19%, &minus;0.37%/&deg;C) and premium (21%, &minus;0.35%/&deg;C) modules, both with anti-reflective glass.</li>
+            <li><a href="https://pvwatts.nlr.gov/docs/en/help_reference.php" target="_blank" rel="noopener">PVWatts help &mdash; Technical Reference</a> <span class="src-host">pvwatts.nlr.gov</span> &mdash; the calculation sequence, and the older &minus;0.47%/&deg;C standard-module coefficient that conflicts with the module-type page.</li>
+            <li><a href="https://pvwatts.nlr.gov/docs/en/help_system_array_type.php" target="_blank" rel="noopener">PVWatts help &mdash; Array Type</a> <span class="src-host">pvwatts.nlr.gov</span> &mdash; cell-temperature assumptions (INOCT 45&nbsp;&deg;C open rack, 50&nbsp;&deg;C roof mount) and that PVWatts does not model shading by nearby objects.</li>
+            <li><a href="https://pvwatts.nlr.gov/docs/en/help_system_gcr.php" target="_blank" rel="noopener">PVWatts help &mdash; Ground Coverage Ratio</a> <span class="src-host">pvwatts.nlr.gov</span> &mdash; the ratio&rsquo;s definition by row spacing, its 0.4 default, and the statement that it applies only to one-axis tracking.</li>
+            <li><a href="https://pvwatts.nlr.gov/docs/en/help_system_soiling.php" target="_blank" rel="noopener">PVWatts help &mdash; Monthly Irradiance Loss</a> <span class="src-host">pvwatts.nlr.gov</span> &mdash; monthly soiling input, and the suggestion to adjust system losses if soiling is entered monthly.</li>
+          </ul>
+          <p>This page is maintained by <a href="/">balco.nyc</a>, an independent balcony-solar calculator, and is not affiliated with NLR or the Department of Energy. Production figures are modeled, not metered. The PVWatts runs were made on 23 September 2026 and can change when NLR updates the model or its weather data.</p>
+        </section>
+
+        <!--shared:start-->
+        <aside class="related" aria-labelledby="relatedHeading">
+          <h2 id="relatedHeading">Related guides</h2>
+          <ul>
+          <li><a href="/calculate-balcony-solar-output">How do I calculate my balcony’s solar output and savings?</a><span>The six-step chain behind every estimate, worked for Phoenix, Chicago and New York City.</span></li>
+          <li><a href="/balcony-solar-kwh-formula">How do I estimate balcony solar output by hand?</a><span>A five-term formula tested in every state, and why the rooftop one overstates a railing by 60%.</span></li>
+          <li><a href="/800w-balcony-solar-output">How much does an 800 W balcony system produce?</a><span>Unshaded kWh a year for every state&#x27;s largest city, by direction and tilt.</span></li>
+          <li><a href="/balcony-sunlight">Does my balcony get enough sun?</a><span>How direction, floor height, and nearby buildings affect output.</span></li>
+          </ul>
+        </aside>
+        <!--shared:end-->
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <a href="/" class="footer-logo"><img src="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
+    <nav class="footer-links" aria-label="Site">
+      <div>
+        <h2>Calculator</h2>
+        <a href="/">Estimate your balcony</a>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <a href="/calculate-balcony-solar-output">How do I calculate my balcony’s solar output and savings?</a>
+        <a href="/is-balcony-solar-worth-it">Is balcony solar worth it?</a>
+        <a href="/sunny-act">Is plug-in solar legal in New York?</a>
+        <a href="/what-is-balcony-solar">What is balcony solar?</a>
+        <a href="/guides">All guides</a>
+      </div>
+      <div>
+        <h2>By place</h2>
+        <a href="/states">Plug-in solar by state</a>
+        <a href="/sunny-act">New York&rsquo;s SUNNY Act</a>
+      </div>
+      <div>
+        <h2>About</h2>
+        <a href="/about">About balco.nyc</a>
+        <a href="/methodology">Methodology</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </nav>
+    <p class="footer-disclaimer">balco.nyc is an independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings. Not affiliated with the City of New York, Con Edison, NYSERDA, NREL, the EIA, the EPA, or any seller of solar equipment. NYC results carry a modeled uncertainty range of about 15%. Plug-in solar rules vary by state; in New York the <a href="/sunny-act">SUNNY Act</a> has passed both chambers and awaits the Governor&#x27;s signature.</p>
+    <p class="footer-meta">&copy; 2026</p>
+  </div>
+</footer>
+
+<script src="/js/analytics.js?v=61ea8fc9"></script>
+
+<script>
+  // Highlight the TOC entry corresponding to the visible section.
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.doc-toc a'));
+    var sections = links.map(function (a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    }).filter(Boolean);
+
+    if (!('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          links.forEach(function (a) {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(function (s) { observer.observe(s); });
+  }());
+</script>
+
+</body>
+</html>

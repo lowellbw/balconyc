@@ -1,0 +1,131 @@
+{
+  "slug": "balcony-solar-kwh-formula",
+  "title": "The balcony solar kWh formula &middot; balco.nyc",
+  "og_title": "The balcony solar kWh formula: estimate output by hand, and how wrong it is",
+  "breadcrumb": "The kWh formula",
+  "cluster": "calculate",
+  "pillar": false,
+  "card_title": "How do I estimate balcony solar output by hand?",
+  "card": "A five-term formula tested in every state, and why the rooftop one overstates a railing by 60%.",
+  "llms": "a hand formula for railing-mounted solar (watts × state vertical-south yield × direction factor × 0.95 railing loss × shade factor), tested against PVWatts for the largest city in every state (3.5% median error), and why the rooftop peak-sun-hours formula overstates a vertical panel by about 60%.",
+  "related": [
+    "calculate-balcony-solar-output",
+    "800w-balcony-solar-output",
+    "balcony-sunlight"
+  ],
+  "description": "A hand formula for balcony solar output, tested against PVWatts in all 51 states: 3.5% median error. The rooftop sun-hours formula overstates a railing by 61%.",
+  "eyebrow": "Estimate by hand",
+  "h1": "The balcony solar kWh formula: estimate output by hand",
+  "lede": "For a panel on a balcony railing, multiply its watts by your state&rsquo;s vertical-south yield (0.67 to 1.08&nbsp;kWh per watt a year), a direction factor (0.74 for east, 0.29 for north), 0.95 for the railing and a shade factor. Tested against balco.nyc&rsquo;s PVWatts runs for the largest city in every state, that formula lands within <strong>3.5%</strong> of the full simulation in the median case. The familiar rooftop formula, kW &times; peak sun hours &times; 365 &times; performance ratio, overstates a south-facing railing by about 60% and an east- or west-facing one more than twofold.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~10 minutes",
+  "tags": [
+    "0.67&ndash;1.08&nbsp;kWh per watt",
+    "Rooftop formula +61%",
+    "3.5% median error"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "rooftop-formula",
+      "toc": "Why the rooftop formula fails",
+      "html": "        <section id=\"rooftop-formula\">\n  <h2><span class=\"sec-num\">1</span>The rooftop formula, and why it overstates a railing</h2>\n<p>The formula that circulates for estimating solar output by hand is <strong>kWh a year = system kW &times; peak sun hours &times; 365 &times; performance ratio</strong>. A peak sun hour is one kilowatt-hour of sunlight per square meter, so a place receiving 4.5&nbsp;kWh/m&sup2; a day has 4.5 peak sun hours. The performance ratio covers inverter, wiring, heat and dirt losses; consumer guides quote 0.75 to 0.85, and the original PVWatts used an overall derate of 0.77.</p>\n  <p>On a roof, the formula works. balco.nyc took NREL&rsquo;s latitude-tilt solar resource for the largest city in each state (the Solar Resource API, which returns no data for Anchorage, so 50 places) and set the formula against its own PVWatts runs for an 800&nbsp;W panel tilted 35&deg; to the south. With a performance ratio of 0.75 the formula came within <strong>2.4%</strong> of PVWatts in the median city; at 0.80 it ran 6.6% high.</p>\n  <p>On a railing, it does not. In Chicago NREL gives 4.50 peak sun hours at latitude tilt, so 0.8&nbsp;kW &times; 4.50 &times; 365 &times; 0.75 = <strong>986&nbsp;kWh</strong>. PVWatts puts the same panel on a 35&deg; south roof at 1,010&nbsp;kWh: close. Hung vertically on a south-facing railing, with the 5% railing loss the site applies to every vertical estimate, it makes <strong>616&nbsp;kWh</strong>. The formula is 60% high. Across the 50 places the median overstatement for a south-facing railing is <strong>61%</strong>, and it grows as the railing turns away from south: the formula gives about 2.2 times the real output facing east or west, and about 5.5 times facing north. It has no term for direction at all.</p>\n  <p>The arithmetic is fine; the input is wrong. A peak-sun-hour figure describes sunlight on a horizontal or latitude-tilted surface, and many published tables do not say which. A railing panel is neither. It faces the horizon, so the high summer sun strikes it at a glancing angle; it sees half of the sky&rsquo;s diffuse light, where a 35&deg; panel sees about nine-tenths; and more of its direct light arrives at steep angles, where the glass reflects it away, a loss PVWatts models explicitly. In balco.nyc&rsquo;s runs a vertical south panel, after the railing loss, makes a median <strong>62%</strong> of what the same panel makes at 35&deg;, from 43% in Honolulu to 74% in Anchorage. Using horizontal peak sun hours instead does not rescue the formula: at the same 0.75 performance ratio it still overstates a south railing by a median 39%.</p>\n</section>"
+    },
+    {
+      "id": "balcony-formula",
+      "toc": "The balcony formula",
+      "html": "        <section id=\"balcony-formula\">\n  <h2><span class=\"sec-num\">2</span>A formula built for a railing</h2>\n<p>balco.nyc&rsquo;s balcony formula keeps the shape of the rooftop one, but every input describes a vertical panel:</p>\n  <div class=\"callout\"><p><strong>kWh a year &asymp; W &times; Y<sub>state</sub> &times; F<sub>dir</sub> &times; (1 &minus; 0.05) &times; S<sub>shade</sub></strong></p></div>\n  <div class=\"table-wrap\"><table><thead><tr><th>Term</th><th>What it is</th><th>Typical value</th><th>Where it comes from</th></tr></thead><tbody>\n    <tr><td><strong>W</strong></td><td>The panels&rsquo; rated power in watts</td><td>400 or 800</td><td>The label</td></tr>\n    <tr><td><strong>Y<sub>state</sub></strong></td><td>kWh a year per watt from a vertical, south-facing panel with an open view, before the railing loss</td><td>0.67 to 1.08; median 0.87</td><td>balco.nyc&rsquo;s PVWatts run for the state&rsquo;s largest city (section 3)</td></tr>\n    <tr><td><strong>F<sub>dir</sub></strong></td><td>Output in your direction as a fraction of south</td><td>1.00 S, 0.93&ndash;0.96 SE/SW, 0.73&ndash;0.74 E/W, 0.29 N</td><td>Median across 51 cities (section 4)</td></tr>\n    <tr><td><strong>1 &minus; 0.05</strong></td><td>Railing loss: the rail, brackets and the slab above clip the panel&rsquo;s lower edge</td><td>0.95</td><td>The factor the calculator applies to every vertical panel (<a href=\"/methodology\">methodology</a>)</td></tr>\n    <tr><td><strong>S<sub>shade</sub></strong></td><td>The share of that light the buildings opposite let through</td><td>1.00 for an open view; 0.18&ndash;0.94 in a street canyon</td><td>balco.nyc&rsquo;s street-canyon model (section 5)</td></tr>\n  </tbody></table></div>\n  <p>A worked example: an 800&nbsp;W system on an east-facing 10th-floor balcony in Chicago, looking across the street at a building of six to ten stories. That building is lower than the balcony, so nothing is blocked and S is 1.00.</p>\n  <p><strong>800 &times; 0.81 &times; 0.74 &times; 0.95 &times; 1.00 &asymp; 456&nbsp;kWh a year.</strong></p>\n  <p>PVWatts, run for an east-facing vertical panel in Chicago and given the same railing loss, says 444&nbsp;kWh. The hand calculation is 2.5% high. Now move the same system to a south-facing 2nd-floor balcony, 20 meters from that same building. Direction improves, to 1.00; shade collapses, to 0.31:</p>\n  <p><strong>800 &times; 0.81 &times; 1.00 &times; 0.95 &times; 0.31 &asymp; 191&nbsp;kWh a year.</strong></p>\n  <p>The better-facing balcony makes less than half as much. In a city, your floor and what stands opposite usually move the answer more than the compass does.</p>\n</section>"
+    },
+    {
+      "id": "state-yield",
+      "toc": "Y: where you live",
+      "html": "        <section id=\"state-yield\">\n  <h2><span class=\"sec-num\">3</span>Y<sub>state</sub>: the number that depends on where you live</h2>\n<p>Y is the input that depends on where you live. balco.nyc ran NREL&rsquo;s PVWatts V8 for an 800&nbsp;W vertical south-facing panel at the largest city in every state and DC, with the calculator&rsquo;s own parameters, and divided the annual output by 800. Half the states fall between 0.81 and 0.94&nbsp;kWh per watt a year. A selection:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Largest city</th><th>Y<sub>state</sub> (kWh per W a year, before railing loss)</th><th>800&nbsp;W, vertical south, open view, after railing loss</th></tr></thead><tbody>\n    <tr><td>Albuquerque</td><td>1.08</td><td>819&nbsp;kWh</td></tr>\n    <tr><td>Denver</td><td>1.06</td><td>805&nbsp;kWh</td></tr>\n    <tr><td>Phoenix</td><td>1.02</td><td>778&nbsp;kWh</td></tr>\n    <tr><td>Minneapolis</td><td>0.96</td><td>730&nbsp;kWh</td></tr>\n    <tr><td>Los Angeles</td><td>0.95</td><td>720&nbsp;kWh</td></tr>\n    <tr><td>Boston</td><td>0.89</td><td>673&nbsp;kWh</td></tr>\n    <tr><td><em>Median of 51</em></td><td><em>0.87</em></td><td><em>658&nbsp;kWh</em></td></tr>\n    <tr><td>Chicago</td><td>0.81</td><td>616&nbsp;kWh</td></tr>\n    <tr><td>Jacksonville</td><td>0.80</td><td>612&nbsp;kWh</td></tr>\n    <tr><td>New York City</td><td>0.79</td><td>604&nbsp;kWh</td></tr>\n    <tr><td>Houston</td><td>0.76</td><td>576&nbsp;kWh</td></tr>\n    <tr><td>Seattle</td><td>0.69</td><td>524&nbsp;kWh</td></tr>\n    <tr><td>Honolulu</td><td>0.67</td><td>510&nbsp;kWh</td></tr>\n  </tbody></table></div>\n  <p>Every state is on <a href=\"/states\">the state pages</a>, which carry the same runs. The order is not the order of a rooftop sunshine map, and that is the second reason the rooftop formula misleads. Ranked by what a 35&deg; roof panel produces, Minneapolis is 31st of the 51 cities; ranked by what a vertical railing produces, it is 8th. Jacksonville falls from 13th to 40th, Houston from 24th to 47th, and Honolulu from 9th to last. A wall-mounted panel likes a low sun, which strikes it nearly square on in a northern winter, while near the tropics the sun spends much of the year high overhead and passes over the panel&rsquo;s face. Across the 51 cities, the ratio of vertical to 35&deg; output rises steadily with latitude (a correlation of 0.90).</p>\n  <p>Each Y comes from one city. The runs do not measure variation inside a state, which in a large or mountainous state can be substantial; the <a href=\"/\">calculator</a> runs PVWatts for your exact address.</p>\n</section>"
+    },
+    {
+      "id": "direction-factor",
+      "toc": "F: which way it faces",
+      "html": "        <section id=\"direction-factor\">\n  <h2><span class=\"sec-num\">4</span>F<sub>dir</sub>: which way the railing faces</h2>\n<p>F is output in a given direction divided by output facing south, from the same PVWatts runs. The medians across the 51 cities, and how far individual cities stray from them:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Railing faces</th><th>F<sub>dir</sub> (median)</th><th>Middle half of cities</th><th>Full range</th></tr></thead><tbody>\n    <tr><td>South</td><td>1.00</td><td>&mdash;</td><td>&mdash;</td></tr>\n    <tr><td>South-west</td><td>0.96</td><td>0.93&ndash;0.98</td><td>0.91 (Billings) to 1.13 (Honolulu)</td></tr>\n    <tr><td>South-east</td><td>0.93</td><td>0.92&ndash;0.96</td><td>0.87 (Anchorage) to 1.11 (Honolulu)</td></tr>\n    <tr><td>East</td><td>0.74</td><td>0.72&ndash;0.79</td><td>0.61 (Anchorage) to 1.07 (Honolulu)</td></tr>\n    <tr><td>West</td><td>0.73</td><td>0.70&ndash;0.77</td><td>0.66 (Billings) to 1.05 (Honolulu)</td></tr>\n    <tr><td>North-east</td><td>0.46</td><td>0.44&ndash;0.49</td><td>0.41 (Anchorage) to 0.73 (Honolulu)</td></tr>\n    <tr><td>North-west</td><td>0.44</td><td>0.42&ndash;0.47</td><td>0.39 (Denver) to 0.70 (Honolulu)</td></tr>\n    <tr><td>North</td><td>0.29</td><td>0.29&ndash;0.32</td><td>0.25 (Albuquerque) to 0.42 (Honolulu)</td></tr>\n  </tbody></table></div>\n  <p>The pairs are close enough to share a number (about 0.95, 0.74 and 0.45); pairing them moves the test results in section 6 by a few tenths of a point. The medians also sit close to the fixed factors in the calculator&rsquo;s New York fallback model (0.92, 0.72, 0.45, 0.32), which were set independently.</p>\n  <p>The factors drift with latitude in the same way Y does. Near the Gulf, where the summer sun is high, a south wall loses more and east and west lose less: east is 0.88 of south in Houston and New Orleans and 0.86 in Jacksonville, well above the 0.74 median. In Honolulu the order inverts, and east and west both out-produce south. In Anchorage east is only 0.61. If you are in Hawaii, skip the direction factor and use <a href=\"/states/hawaii\">the Hawaii page</a>, which has the run for each direction.</p>\n</section>"
+    },
+    {
+      "id": "shade-factor",
+      "toc": "S: what stands opposite",
+      "html": "        <section id=\"shade-factor\">\n  <h2><span class=\"sec-num\">5</span>S<sub>shade</sub>: what stands across the street</h2>\n<p>With an open view (a park, water, or buildings lower than your floor) S is 1.00, at every orientation, because PVWatts has already priced direction. Otherwise S depends on how tall the obstruction is, how far away, and how high you are.</p>\n  <p>balco.nyc&rsquo;s street-canyon model treats the building opposite as a continuous wall parallel to your facade and traces the sun against it through the year. These figures come from the calculator&rsquo;s own code, run for a south-facing balcony in Chicago (41.88&deg;N), 20&nbsp;meters across a street, with a balcony height of (floor &minus; 1) &times; 3.05&nbsp;m + 1.0&nbsp;m:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Across the street (20&nbsp;m away)</th><th>2nd floor</th><th>5th floor</th><th>10th floor</th></tr></thead><tbody>\n    <tr><td>Nothing, an open view</td><td>1.00</td><td>1.00</td><td>1.00</td></tr>\n    <tr><td>1 to 2 floors, or trees (7&nbsp;m)</td><td>0.94</td><td>1.00</td><td>1.00</td></tr>\n    <tr><td>3 to 5 floors (13&nbsp;m)</td><td>0.75</td><td>1.00</td><td>1.00</td></tr>\n    <tr><td>6 to 10 floors (25&nbsp;m)</td><td><strong>0.31</strong></td><td>0.58</td><td>1.00</td></tr>\n    <tr><td>11 floors or more (43&nbsp;m)</td><td>0.18</td><td>0.24</td><td>0.47</td></tr>\n  </tbody></table></div>\n  <p>These are the factors as the calculator applies them: monthly, to monthly output, here weighted by Chicago&rsquo;s vertical-south PVWatts months. The model&rsquo;s one-line annual summary, weighted by New York&rsquo;s monthly sunshine, reads higher under heavy shade: 0.40 rather than 0.31 on the 2nd floor opposite six to ten stories, 0.63 rather than 0.58 on the 5th, 0.55 rather than 0.47 on the 10th opposite a tower. The gap is seasonal. A south railing does its best work in winter (in Chicago, 65&nbsp;kWh in January against 35 in June), exactly when the low sun sits behind the building opposite. Use the lower figures.</p>\n  <p>Three cautions. An east- or west-facing balcony loses more to the same building, because its direct sun arrives low: 0.64 rather than 0.75 on the 2nd floor opposite three to five stories. The same street blocks more sun further north, less further south. And a continuous wall has no gaps, so it errs toward too much shade. What it cannot see at all (a tree, an air-conditioner, the slab overhead) is covered in <a href=\"/balcony-sunlight\">how much sun a balcony gets</a>.</p>\n</section>"
+    },
+    {
+      "id": "how-wrong",
+      "toc": "How wrong each version is",
+      "html": "        <section id=\"how-wrong\">\n  <h2><span class=\"sec-num\">6</span>How wrong the formula is</h2>\n<p>balco.nyc tested each version against the PVWatts run it tries to predict, both with the 5% railing loss applied. The state-yield test leaves out south, since Y is built from the south run and would score zero by construction: seven directions in 51 places, 357 predictions. The national-yield test keeps all eight directions (408), and the rooftop tests use a south railing in the 50 places with NREL sun-hour data, or all 51 for the calibrated version.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Version</th><th>Median error</th><th>1 prediction in 10 is off by more than</th><th>Worst case</th></tr></thead><tbody>\n    <tr><td>Rooftop formula, NREL peak sun hours, performance ratio 0.75, south railing</td><td>+61%</td><td>+88%</td><td>+157% (Honolulu)</td></tr>\n    <tr><td>Rooftop formula calibrated exactly to each city&rsquo;s 35&deg; roof, south railing</td><td>+61%</td><td>+82%</td><td>+132% (Honolulu)</td></tr>\n    <tr><td>Balcony formula with one national Y (0.87), all 8 directions</td><td>5.5%</td><td>19%</td><td>+50% (Anchorage, east)</td></tr>\n    <tr><td><strong>Balcony formula with each state&rsquo;s Y</strong>, 7 non-south directions</td><td><strong>3.5%</strong></td><td>12%</td><td>&minus;37% (Honolulu, north-east)</td></tr>\n    <tr><td>The same, leaving out Honolulu</td><td>3.4%</td><td>10%</td><td>+22% (Anchorage, east)</td></tr>\n  </tbody></table></div>\n  <p>The rooftop formula overstated every railing it was tested on. Even calibrated perfectly to each city&rsquo;s own roof, with peak sun hours times performance ratio taken straight from the 35&deg; PVWatts run, it is 61% high. That isolates the cost of going vertical: no choice of derate fixes it.</p>\n  <p>The balcony formula with state yields lands within 10% of PVWatts in 87% of cases. Its large misses cluster where section 4 says they will. Every Honolulu direction is under-predicted, by 15% to 37%; the Gulf-state cities (Houston, New Orleans, Jackson and Jacksonville) are under-predicted in most directions away from south, by up to 21%; and Anchorage facing east is over-predicted by 22%. Those five states and Alaska account for 28 of the 46 predictions that miss by more than 10%. Using one national Y instead roughly doubles the share of predictions off by more than 10%, from one in eight to one in four; for a south railing it overstates Seattle and Portland, Oregon, by 25% and understates Albuquerque by 20%. That is what location is worth.</p>\n  <p>These are errors against a model, not a meter. PVWatts has its own uncertainty, and balco.nyc&rsquo;s stated accuracy for its fullest New York estimates is a modeled band of about 15%, not a field-validated one. A hand result is no better than PVWatts; round it to the nearest 25&nbsp;kWh.</p>\n</section>"
+    },
+    {
+      "id": "limits",
+      "toc": "What it leaves out",
+      "html": "        <section id=\"limits\">\n  <h2><span class=\"sec-num\">7</span>What a hand formula cannot see</h2>\n<p>Five multiplications cannot carry everything a year of simulation does:</p>\n  <ul>\n    <li><strong>The seasons.</strong> One annual number hides that a south railing is winter-heavy and an east or west one summer-heavy, which matters on a seasonal rate.</li>\n    <li><strong>The interactions.</strong> The terms are multiplied as if independent; in fact shade depends on direction and season, and direction factors on latitude.</li>\n    <li><strong>Your street.</strong> Y is one city per state; S assumes one uniform building opposite.</li>\n    <li><strong>Money and permission.</strong> kWh is not savings: value it at <a href=\"/electricity-rate\">your marginal rate</a>, remembering that the state averages used outside New York City include fixed charges. Whether you may install a plug-in system varies by state and building; nothing here is legal advice.</li>\n  </ul>\n  <p>Used for what it is, the formula answers the first question well: is this a 600&nbsp;kWh balcony or a 200&nbsp;kWh one? For a figure to act on, the <a href=\"/\">calculator</a> runs PVWatts for your exact address, applies shade month by month, and in New York City uses the real buildings around you.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "What is the formula for balcony solar panel output?",
+      "balco.nyc's hand formula for a railing-mounted panel is: kWh a year ≈ watts × Y × F × 0.95 × S. Y is the vertical-south yield for your state (0.67 to 1.08 kWh per watt a year across the largest city in each state, median 0.87), F is the direction factor (1.00 south, about 0.95 south-east or south-west, 0.74 east or west, 0.29 north), 0.95 is the railing loss and S is the shade factor (1.00 for an open view). Tested against PVWatts in all 51 places, it came within 3.5% in the median case."
+    ],
+    [
+      "Can I use peak sun hours to estimate a balcony panel's output?",
+      "Not directly. Peak sun hour figures describe sunlight on a horizontal or latitude-tilted surface, and a vertical railing panel receives much less. Using NREL's latitude-tilt figures and a 0.75 performance ratio, the standard formula (kW × peak sun hours × 365 × performance ratio) overstated a south-facing railing by a median 61% in balco.nyc's comparison across 50 states, and an east- or west-facing one by more than double."
+    ],
+    [
+      "How much does an 800 W balcony solar system produce a year?",
+      "Mounted vertically on a south-facing railing with an open view, balco.nyc's PVWatts runs put it at 510 to 819 kWh a year after a 5% railing loss, from Honolulu to Albuquerque, with a median of about 658 kWh across the largest city in each state. Facing east or west, multiply by about 0.74; facing north, by about 0.29; then multiply by a shade factor if taller buildings stand opposite."
+    ],
+    [
+      "Why does a vertical solar panel produce less than a tilted one?",
+      "A vertical panel faces the horizon, so the high summer sun strikes it at a glancing angle, it sees only half of the sky's diffuse light, and more of its direct light arrives at steep angles where the glass reflects it. Across the largest city in each state, a vertical south-facing panel with a 5% railing loss produced a median 62% of what the same panel tilted at 35 degrees produced, from 43% in Honolulu to 74% in Anchorage."
+    ],
+    [
+      "Does an east- or west-facing balcony work for solar?",
+      "It produces about three-quarters of what a south-facing one does: a median factor of 0.74 for east and 0.73 for west across the largest city in every state, in balco.nyc's PVWatts runs. Near the tropics east and west do relatively better, because the sun spends much of the year high overhead: in Houston and New Orleans east is about 0.88 of south, and in Honolulu east and west both out-produce south."
+    ],
+    [
+      "How accurate is a hand calculation of balcony solar output?",
+      "Accurate enough to tell a 600 kWh balcony from a 200 kWh one. Against PVWatts, balco.nyc's balcony formula errs by 3.5% in the median case and by more than 10% about one time in eight, mostly in Hawaii, Alaska and the Gulf states. PVWatts is itself a model rather than a meter, so a hand result is best rounded to the nearest 25 kWh."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "NREL &mdash; PVWatts V8 API documentation",
+      "note": "the model behind every run on this page: NSRDB typical-year weather, tilt and azimuth inputs (180&deg; = south), and ac_annual / ac_monthly as annual and monthly AC output in kWh."
+    },
+    {
+      "url": "https://developer.nlr.gov/docs/solar/solar-resource-v1/",
+      "title": "NREL &mdash; Solar Resource Data API documentation",
+      "note": "the latitude-tilt and horizontal daily solar resource (kWh/m&sup2;/day, i.e. peak sun hours) used for the rooftop-formula test; the API returned no data for Anchorage."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/downloads/pvwattsv5.pdf",
+      "title": "NREL &mdash; PVWatts Version 5 Manual (Dobos, 2014)",
+      "note": "the Perez plane-of-array model, the angle-of-incidence reflection correction, the 14% default system losses, and the 0.77 overall derate of the original PVWatts."
+    },
+    {
+      "url": "https://www.osti.gov/biblio/15016389",
+      "title": "U.S. DOE OSTI &mdash; Performance Parameters for Grid-Connected PV Systems (Marion et al., 2005)",
+      "note": "performance ratio and reference yield as the standard parameters relating PV output to the solar resource."
+    },
+    {
+      "url": "https://www.solarreviews.com/blog/peak-sun-hours-explained",
+      "title": "SolarReviews &mdash; Peak sun hours explained",
+      "note": "the definition of a peak sun hour as an hour at 1,000&nbsp;W/m&sup2;, and an example of a state table that does not say which surface it describes."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/",
+      "title": "NREL &mdash; PVWatts Calculator",
+      "note": "where any figure on this page can be re-run for a specific address, tilt and azimuth."
+    },
+    {
+      "url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv",
+      "title": "U.S. Census Bureau &mdash; Vintage 2025 subcounty population estimates",
+      "note": "the source for the largest city in each state, which is the reference point for every state run."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. Production figures are modeled with NREL&rsquo;s PVWatts, not metered. The formula tests compare a hand calculation with PVWatts, not with measured output."
+}

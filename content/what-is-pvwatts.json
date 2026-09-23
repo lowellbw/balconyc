@@ -1,0 +1,165 @@
+{
+  "slug": "what-is-pvwatts",
+  "title": "What is PVWatts, and what do its defaults get wrong for a balcony? &middot; balco.nyc",
+  "og_title": "What is PVWatts? Its defaults overstate a vertical balcony panel by about 72% in NYC",
+  "breadcrumb": "What is PVWatts",
+  "cluster": "calculate",
+  "pillar": false,
+  "card_title": "What is PVWatts, and can it model a balcony?",
+  "card": "NLR&rsquo;s free solar simulator, and why its rooftop defaults overstate a railing panel by 70% or more.",
+  "llms": "what NLR's (formerly NREL's) PVWatts calculator is and how accurate NLR says it is, with balco.nyc's step-by-step PVWatts V8 runs showing that its default settings overstate a vertical south-facing 800 W balcony panel by about 72% in New York City, 70% in Chicago and 82% in Phoenix, mostly because of tilt, and the settings to enter instead.",
+  "related": [
+    "calculate-balcony-solar-output",
+    "balcony-solar-kwh-formula",
+    "800w-balcony-solar-output"
+  ],
+  "description": "PVWatts is NLR's free solar simulator. At its rooftop defaults it overstates a vertical balcony panel by about 72% in NYC. What to enter instead.",
+  "eyebrow": "Calculating output",
+  "h1": "What is PVWatts, and what do its defaults get wrong for a balcony?",
+  "lede": "PVWatts is the free solar calculator from the National Laboratory of the Rockies (NLR, the lab formerly called NREL): it simulates a panel hour by hour through a typical weather year. It can model a balcony, but its defaults describe a rooftop array, and balco.nyc&rsquo;s PVWatts runs show that left at those defaults it overstates a vertical, south-facing 800&nbsp;W railing panel by <strong>about 72% in New York City</strong> (1,037&nbsp;kWh a year against 604), 70% in Chicago and 82% in Phoenix, before any shade from the buildings opposite. Roughly 85% of that gap is a single setting: tilt.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~9 minutes",
+  "tags": [
+    "Defaults +72% (NYC)",
+    "Tilt = 85% of the gap",
+    "PVWatts V8"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "what-pvwatts-is",
+      "toc": "What PVWatts is, and how accurate it is",
+      "html": "        <section id=\"what-pvwatts-is\">\n  <h2><span class=\"sec-num\">1</span>What PVWatts is, and how accurate NLR says it is</h2>\n  <p>PVWatts is a free web calculator and API published by the National Laboratory of the Rockies (NLR), the Department of Energy lab in Golden, Colorado that was called the National Renewable Energy Laboratory until the Department renamed it on 1&nbsp;December 2025. Most people still search for it as &ldquo;NREL PVWatts&rdquo;. It is the same tool, now at pvwatts.nlr.gov, with its API at developer.nlr.gov; the old nrel.gov addresses no longer resolve.</p>\n  <p>What it does is narrow and well documented. For a location, it takes a typical meteorological year (TMY) of weather from the National Solar Radiation Database &mdash; one year of hourly data chosen to represent a multi-year period &mdash; and simulates all 8,760 hours: where the sun is, how much light reaches a panel at the tilt and azimuth you enter, how much reflects off the glass, how hot the cells run, the DC output, the inverter&rsquo;s conversion, and finally a flat percentage for other losses. Version 8, the current one, reads the NSRDB&rsquo;s tmy-2020 files.</p>\n  <p>It asks for six inputs: system size, module type, array type, system losses, tilt and azimuth. Optional ones cover the DC-to-AC ratio, inverter efficiency and ground coverage ratio, and since V8, albedo, bifacial modules and a month-by-month irradiance loss for soiling or snow. Reset to its defaults on 23&nbsp;September 2026, the calculator reads: 4&nbsp;kW, standard module, fixed open rack, 20&deg; tilt, due south, 14.08% losses, DC-to-AC ratio 1.2, 96% inverter efficiency, ground coverage ratio 0.4.</p>\n  <p>On accuracy, NLR is candid. Its Version&nbsp;5 manual puts the possible error at up to &plusmn;10% on annual totals and &plusmn;30% on monthly totals for typical weather, and says a particular year can depart from the long-term average by up to &plusmn;20% annually and &plusmn;40% monthly. The calculator&rsquo;s current cautions page repeats those bands and calls its results accurate to within 10 to 12% of long-term performance. No Version&nbsp;8 manual exists yet; the API documentation says one is forthcoming, so the 2014 manual remains the most detailed reference.</p>\n  <div class=\"callout\"><p><strong>Those bands assume the inputs describe the system.</strong> The same cautions page warns that results can be overly optimistic with the default losses when nearby buildings or trees shade the modules. On a balcony the inputs are the problem, not the model.</p></div>\n</section>"
+    },
+    {
+      "id": "defaults-vs-balcony",
+      "toc": "Defaults vs a balcony, step by step",
+      "html": "        <section id=\"defaults-vs-balcony\">\n  <h2><span class=\"sec-num\">2</span>From PVWatts&rsquo; defaults to a balcony, one setting at a time</h2>\n  <p>To measure how far the defaults sit from a balcony, balco.nyc ran PVWatts V8 through its public API on 23&nbsp;September 2026 for an 800&nbsp;W (0.8&nbsp;kW), due-south system in New York City, Chicago and Phoenix. Each run starts from the calculator&rsquo;s defaults and changes only what its row names, until it reaches the parameters balco.nyc&rsquo;s own calculator sends. The last step is balco.nyc&rsquo;s 5% railing loss, which PVWatts has no input for. Figures are kWh a year, with the change from the row above.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Step</th><th>New York City</th><th>Chicago</th><th>Phoenix</th></tr></thead><tbody>\n    <tr><td>PVWatts defaults: open rack, 20&deg; tilt, standard module, DC/AC 1.2</td><td>1,037</td><td>1,050</td><td>1,416</td></tr>\n    <tr><td><strong>Tilt 90&deg;, vertical on a railing</strong></td><td><strong>669 (&minus;35.4%)</strong></td><td><strong>684 (&minus;34.8%)</strong></td><td><strong>857 (&minus;39.5%)</strong></td></tr>\n    <tr><td>Premium module instead of standard</td><td>663 (&minus;0.9%)</td><td>678 (&minus;1.0%)</td><td>853 (&minus;0.5%)</td></tr>\n    <tr><td>Micro-inverter: DC/AC 1.1, 96.5% efficiency</td><td>667 (+0.5%)</td><td>681 (+0.5%)</td><td>856 (+0.4%)</td></tr>\n    <tr><td>Monthly urban soiling, 3% in winter to 7% in summer</td><td>635 (&minus;4.7%)</td><td>648 (&minus;4.8%)</td><td>819 (&minus;4.4%)</td></tr>\n    <tr><td>Albedo fixed at 0.20 and losses at 14% (balco.nyc&rsquo;s PVWatts parameters)</td><td>636 (+0.1%)</td><td>649 (+0.1%)</td><td>819 (+0.1%)</td></tr>\n    <tr><td>Railing loss &times;0.95, applied by balco.nyc outside PVWatts</td><td>604 (&minus;5.0%)</td><td>616 (&minus;5.0%)</td><td>778 (&minus;5.0%)</td></tr>\n    <tr><td><strong>Defaults overstate the balcony panel by</strong></td><td><strong>72%</strong></td><td><strong>70%</strong></td><td><strong>82%</strong></td></tr>\n  </tbody></table></div>\n  <p>The New York arithmetic: 1,036.8&nbsp;kWh at the defaults against 635.7&nbsp;&times;&nbsp;0.95&nbsp;=&nbsp;603.9&nbsp;kWh for the balcony, a ratio of 1.72. Put the other way, a vertical south-facing panel makes about 58% of the default estimate in New York and Chicago and 55% in Phoenix. In yield terms, the defaults imply 1,296&nbsp;kWh per kW in New York; the balcony gets 755 (the <a href=\"/balcony-solar-kwh-formula\">kWh formula</a> shows how that per-kW figure is used).</p>\n  <p>Tilt is nearly the whole story. Moving the panel from 20&deg; to vertical removes 367 of the 433&nbsp;kWh gap in New York, 85% of it; the share is 84% in Chicago and 88% in Phoenix, where the summer sun stands higher and meets a vertical face at a more glancing angle. Soiling and the railing account for about 7% each. Everything else nets to about 1%.</p>\n  <p>None of this means PVWatts is wrong. Told the panel is vertical, it models a vertical panel; its defaults simply describe a tilted rooftop array. The final PVWatts figures in the table are the same runs behind balco.nyc&rsquo;s <a href=\"/states\">state pages</a>, which publish them for the largest city in every state.</p>\n</section>"
+    },
+    {
+      "id": "small-settings",
+      "toc": "Settings that barely matter",
+      "html": "        <section id=\"small-settings\">\n  <h2><span class=\"sec-num\">3</span>The settings that barely move a vertical panel, and not the way you would expect</h2>\n  <p>Two steps that a reader might expect to help do not, and it is worth being exact about what PVWatts&rsquo; documentation does and does not explain.</p>\n  <p><strong>Premium module.</strong> PVWatts&rsquo; module-type help lists the premium module at about 21% efficiency and &minus;0.35%/&deg;C, against 19% and &minus;0.37%/&deg;C for standard, both behind anti-reflective glass. The slightly better temperature coefficient should, if anything, add output. Instead the premium setting produced 0.9% less for the vertical New York panel, and 0.5% less at 20&deg;. The documentation does not say why, and it is not fully consistent: its technical-reference page still quotes the Version&nbsp;5 coefficient of &minus;0.47%/&deg;C for standard modules. We report the result as measured and have not traced its cause. The calculator itself cautions that it does not distinguish better-performing modules from worse ones; module type is a modeling label, not a quality dial.</p>\n  <p><strong>Open rack versus roof mount.</strong> The documented difference is temperature: PVWatts assumes an open-rack array runs cooler (installed nominal operating cell temperature 45&nbsp;&deg;C, against 50&nbsp;&deg;C for roof mount), which should favor open rack. At 20&deg; the two land within 0.1% in New York. At 90&deg;, open rack was 1.0% <em>lower</em>, and its plane-of-array irradiance was 1.6% lower too, which a temperature model cannot cause. balco.nyc re-ran the vertical New York panel with the ground coverage ratio at its minimum, 0.01: the irradiance matched roof mount again and open rack came out 0.5% <em>ahead</em> (680 against 677&nbsp;kWh); at 0.9 it fell to 616&nbsp;kWh. So in V8 the ratio affects fixed open-rack arrays, although the help page says it applies only to one-axis tracking. PVWatts defines the ratio by the spacing between rows of modules; a balcony has one row. The effect is small and runs against the balcony, so balco.nyc, which leaves the ratio at its default, errs low by about 1.6% here.</p>\n  <p><strong>Inverter and soiling.</strong> The micro-inverter step adds about 0.5%, which is what the efficiency change alone predicts (96.5&nbsp;&divide;&nbsp;96&nbsp;=&nbsp;1.005), so the lower DC-to-AC ratio does almost nothing for a vertical panel. The monthly soiling profile, averaging 5% across the year, costs 4.4 to 4.8%. Replacing the weather file&rsquo;s albedo with a fixed 0.20 changes almost nothing.</p>\n</section>"
+    },
+    {
+      "id": "seasons",
+      "toc": "A vertical panel is a winter panel",
+      "html": "        <section id=\"seasons\">\n  <h2><span class=\"sec-num\">4</span>A vertical panel is a winter panel</h2>\n  <p>The annual total hides a change of shape. The table compares New York City at the defaults (20&deg; tilt) with the same 800&nbsp;W system at 90&deg;: only the tilt differs, and both are before soiling and railing losses. From balco.nyc&rsquo;s PVWatts V8 runs, kWh per month.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Month</th><th>20&deg; tilt</th><th>Vertical</th><th>Vertical as % of 20&deg;</th></tr></thead><tbody>\n    <tr><td>Jan</td><td>63.1</td><td>75.2</td><td>119%</td></tr>\n    <tr><td>Feb</td><td>72.9</td><td>71.6</td><td>98%</td></tr>\n    <tr><td>Mar</td><td>89.2</td><td>67.5</td><td>76%</td></tr>\n    <tr><td>Apr</td><td>100.3</td><td>50.5</td><td>50%</td></tr>\n    <tr><td>May</td><td>109.4</td><td>40.7</td><td>37%</td></tr>\n    <tr><td>Jun</td><td>110.7</td><td>34.7</td><td>31%</td></tr>\n    <tr><td>Jul</td><td>113.6</td><td>39.3</td><td>35%</td></tr>\n    <tr><td>Aug</td><td>104.1</td><td>44.6</td><td>43%</td></tr>\n    <tr><td>Sep</td><td>92.3</td><td>59.4</td><td>64%</td></tr>\n    <tr><td>Oct</td><td>74.5</td><td>64.9</td><td>87%</td></tr>\n    <tr><td>Nov</td><td>55.8</td><td>60.8</td><td>109%</td></tr>\n    <tr><td>Dec</td><td>50.8</td><td>60.4</td><td>119%</td></tr>\n    <tr><td><strong>Year</strong></td><td><strong>1,037</strong></td><td><strong>669</strong></td><td><strong>65%</strong></td></tr>\n  </tbody></table></div>\n  <p>From November through January the vertical panel makes more than the tilted one, 19% more in December and January, because the low winter sun meets a vertical face closer to head-on. In June it makes 31% as much. Over the six months from October to March the two are almost level, 400 against 406&nbsp;kWh; the whole annual gap opens in spring and summer. December to February is <strong>31% of the vertical panel&rsquo;s year</strong> and 18% of the tilted panel&rsquo;s. Chicago and Phoenix show the same pattern, with the vertical panel ahead in November, December and January in both.</p>\n  <p>This matters for any monthly figure: a bill offset, a comparison with winter usage, or a July check on whether the panel is working. A vertical panel producing a third of a rooftop array&rsquo;s output in June is behaving as modeled.</p>\n</section>"
+    },
+    {
+      "id": "what-pvwatts-misses",
+      "toc": "What PVWatts does not model",
+      "html": "        <section id=\"what-pvwatts-misses\">\n  <h2><span class=\"sec-num\">5</span>What PVWatts does not model on a balcony</h2>\n  <p>PVWatts simulates an unobstructed array and values its output simply. On a balcony, five things it leaves out can matter as much as every setting above.</p>\n  <ul>\n    <li><strong>The buildings opposite.</strong> PVWatts does not model shading by nearby objects, and its default 14% loss includes just 3% for shading. In a street canyon obstruction is often the <a href=\"/balcony-sunlight\">largest single variable</a>. balco.nyc adds a horizon model: from 3D building footprints for a New York balcony, and elsewhere from a description of what stands opposite and how far away. In balco.nyc&rsquo;s fallback table, a low floor in a dense canyon keeps 45% of the unshaded output and a top floor with an open view keeps 97%.</li>\n    <li><strong>The railing and hardware.</strong> Rails, clamps and the balcony edge can clip the bottom of a panel. PVWatts assumes nothing does. balco.nyc applies a flat 5% at 90&deg; (3% at 70&deg;, 2% at 60&deg;, 1% at 35&deg;), an assumption rather than a measurement.</li>\n    <li><strong>The balcony above.</strong> A slab overhead cuts off part of the sky a vertical panel would otherwise see and, depending on how far it projects, some direct sun. Neither PVWatts nor balco.nyc models it; the <a href=\"/methodology\">methodology</a> lists it as a known limitation.</li>\n    <li><strong>Self-consumption.</strong> PVWatts values output at an annual average retail rate and, by its own description, effectively assumes net metering. Surplus from a plug-in panel is usually uncompensated unless a specific state law or utility credits it. balco.nyc assumes every kWh is used in the home and that surplus earns nothing. If your daytime base load is below the panel&rsquo;s midday output, some production goes unpaid, and neither tool can see your load.</li>\n    <li><strong>What a kWh is worth.</strong> One average rate is not the number a panel displaces. In New York City balco.nyc uses Con Edison&rsquo;s all-in marginal rate of about {{coned.rate_cents}}&cent;/kWh (<a href=\"/electricity-rate\">why that rate</a>); elsewhere it uses the EIA state average, which includes fixed charges and can overstate what a saved kWh is worth, and lets you enter your own rate.</li>\n  </ul>\n</section>"
+    },
+    {
+      "id": "run-it-yourself",
+      "toc": "Using PVWatts for a balcony",
+      "html": "        <section id=\"run-it-yourself\">\n  <h2><span class=\"sec-num\">6</span>How to use PVWatts for a balcony yourself</h2>\n  <p>PVWatts is free and needs no account. These are the settings balco.nyc sends it for a railing panel:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Input</th><th>Enter</th><th>Why</th></tr></thead><tbody>\n    <tr><td>DC system size</td><td>0.8 for 800&nbsp;W of panels</td><td>The panels&rsquo; combined nameplate rating, in kW</td></tr>\n    <tr><td>Module type</td><td>Premium</td><td>balco.nyc&rsquo;s setting; Standard gave about 1% more in these runs</td></tr>\n    <tr><td>Array type</td><td>Fixed (open rack)</td><td>Air on both faces of the panel</td></tr>\n    <tr><td>System losses</td><td>14%</td><td>PVWatts&rsquo; default; see the note below</td></tr>\n    <tr><td>Tilt</td><td>90</td><td>Vertical; 60 or 70 for an angled bracket</td></tr>\n    <tr><td>Azimuth</td><td>The direction your facade faces, clockwise from true north</td><td>S&nbsp;180, SW&nbsp;225, W&nbsp;270, E&nbsp;90. A Manhattan building facing the avenue faces about 209&deg; or 29&deg;, not 180&deg;</td></tr>\n    <tr><td>DC to AC size ratio</td><td>1.1</td><td>A micro-inverter matched to one or two panels</td></tr>\n    <tr><td>Inverter efficiency</td><td>96.5</td><td>Micro-inverter</td></tr>\n    <tr><td>Ground coverage ratio</td><td>0.4 (default), or 0.01</td><td>0.01 removes rows of panels a balcony does not have: +1.6% in the New York run</td></tr>\n    <tr><td>Albedo</td><td>0.20, or leave &ldquo;from weather file&rdquo;</td><td>About 0.1% either way</td></tr>\n    <tr><td>Monthly irradiance loss (soiling)</td><td>3, 3, 4, 5, 6, 7, 7, 7, 6, 5, 4, 3</td><td>January to December; an urban profile averaging 5%</td></tr>\n  </tbody></table></div>\n  <p>Then multiply the annual kWh by 0.95 for the railing, and by your own estimate of what the buildings opposite take away. Facing direction matters about as much as tilt: with these settings, balco.nyc&rsquo;s New York runs give 604&nbsp;kWh a year facing south, 446 facing east, 421 facing west and 167 facing north, after the railing loss and before shade.</p>\n  <p>One note on losses. PVWatts builds its 14% from ten categories that include 2% for soiling and 3% for shading, and its soiling help suggests adjusting the total if you also enter monthly soiling. balco.nyc keeps 14% and treats the bundle as covering longer wiring runs and availability instead. If you prefer PVWatts&rsquo; suggestion, set soiling to zero in its loss calculator: the total drops to 12.3% and output rises about 2%.</p>\n  <p>balco.nyc does all of this for any US address, and adds the two things PVWatts cannot: shade and price. It calls PVWatts V8 for your exact coordinates with these parameters, applies the railing factor, builds a horizon from the buildings around a New York balcony (or from your description elsewhere), and values the output at a rate for your location. <a href=\"/\">Run it for your balcony</a>, or read <a href=\"/calculate-balcony-solar-output\">how the calculation works</a> and <a href=\"/800w-balcony-solar-output\">what an 800&nbsp;W kit produces</a>.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "What is PVWatts?",
+      "PVWatts is a free solar production calculator and API from the National Laboratory of the Rockies, formerly the National Renewable Energy Laboratory (NREL). It simulates a photovoltaic system hour by hour through a typical meteorological year of weather data from the National Solar Radiation Database, using six basic inputs: system size, module type, array type, system losses, tilt and azimuth."
+    ],
+    [
+      "Is PVWatts accurate?",
+      "For the system you describe, NLR's PVWatts documentation puts the possible error at up to ±10% on annual totals and ±30% on monthly totals for typical weather, and says a particular year can depart from the long-term average by up to ±20%. Those bands assume the inputs are right. PVWatts does not model shade from nearby buildings, and its default settings describe a tilted rooftop array, not a vertical balcony panel."
+    ],
+    [
+      "How much do PVWatts' defaults overstate a balcony solar panel?",
+      "In balco.nyc's PVWatts V8 runs for a south-facing 800 W system, the default settings overstate a vertical railing panel by about 72% in New York City, 70% in Chicago and 82% in Phoenix. That compares the defaults with balco.nyc's balcony parameters plus a 5% railing loss, before any shade from nearby buildings. The tilt setting accounts for roughly 85% of the gap."
+    ],
+    [
+      "Can PVWatts model a vertical balcony panel?",
+      "Yes. Enter a tilt of 90 degrees and the azimuth your facade faces, measured clockwise from true north. For an 800 W south-facing panel in New York City, balco.nyc's runs show this cuts the annual estimate from about 1,037 kWh at the defaults to about 669 kWh, before soiling, railing and shade losses."
+    ],
+    [
+      "Is NREL PVWatts the same as NLR PVWatts?",
+      "Yes. The Department of Energy renamed the National Renewable Energy Laboratory the National Laboratory of the Rockies on 1 December 2025. PVWatts is the same tool, now at pvwatts.nlr.gov, with its API at developer.nlr.gov; the old nrel.gov addresses no longer resolve."
+    ],
+    [
+      "Does PVWatts account for shade from nearby buildings?",
+      "No. PVWatts does not model shading by nearby objects; its default 14% system loss includes only 3% for shading, and NLR warns that results can be overly optimistic when buildings or trees shade the array. On a city balcony shade is often the largest factor, so it has to be estimated separately. balco.nyc adds a horizon model for this."
+    ],
+    [
+      "Why does a vertical balcony panel produce so much less than PVWatts' default?",
+      "Mostly because of tilt. PVWatts' default is a panel tilted 20 degrees, which faces the high summer sun; a vertical panel meets it at a glancing angle. In balco.nyc's New York runs the vertical panel makes 31% as much as the 20-degree panel in June but 19% more in December and January, and the two are almost level from October to March."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://www.nlr.gov/news/detail/press/2025/news-release-energy-department-renames-nrel-national-laboratory-of-the-rockies",
+      "title": "NLR &mdash; Energy Department renames NREL &lsquo;National Laboratory of the Rockies&rsquo;",
+      "note": "the renaming of the National Renewable Energy Laboratory on 1&nbsp;December 2025."
+    },
+    {
+      "url": "https://www.energy.gov/cmei/articles/energy-department-renames-nrel-national-lab-rockies",
+      "title": "U.S. Department of Energy &mdash; Energy Department renames NREL &ldquo;National Lab of the Rockies&rdquo;",
+      "note": "the Department&rsquo;s own announcement of the rename."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/",
+      "title": "NLR &mdash; PVWatts Calculator (Version 8)",
+      "note": "the web calculator; its default inputs were read from the calculator&rsquo;s reset-to-defaults response on 23&nbsp;September 2026 (4&nbsp;kW, standard, open rack, 20&deg;, 180&deg;, 14.08%, DC/AC 1.2, 96%, GCR 0.4)."
+    },
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "NLR Developer Network &mdash; PVWatts V8 API",
+      "note": "the API and parameters used for balco.nyc&rsquo;s runs, the NSRDB tmy-2020 weather data, and the statement that a technical report on Version&nbsp;8 is forthcoming."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/downloads/pvwattsv5.pdf",
+      "title": "Dobos, <em>PVWatts Version 5 Manual</em>, NREL/TP-6A20-62641 (2014)",
+      "note": "error of up to &plusmn;10% annual and &plusmn;30% monthly for typical weather, and up to &plusmn;20%/&plusmn;40% for a particular year; the hourly simulation sequence."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/docs/en/help_results_interpret.php",
+      "title": "PVWatts help &mdash; Cautions for Interpreting the Results",
+      "note": "the 10&ndash;12% accuracy statement, the warning that default losses are optimistic when nearby buildings shade the array, and that PVWatts effectively assumes net metering."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/docs/en/help_start.php",
+      "title": "PVWatts help &mdash; Get Started",
+      "note": "the six required inputs, the optional advanced inputs, and valuation at an annual average retail electricity rate."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/docs/en/help_resource.php",
+      "title": "PVWatts help &mdash; Solar Resource Data",
+      "note": "hourly typical meteorological year data from the NSRDB, representing a multi-year period."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/docs/en/help_system_sysloss.php",
+      "title": "PVWatts help &mdash; System Losses",
+      "note": "the ten categories behind the default 14%, including 2% soiling and 3% shading."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/docs/en/help_module_type.php",
+      "title": "PVWatts help &mdash; Module Type",
+      "note": "standard (19%, &minus;0.37%/&deg;C) and premium (21%, &minus;0.35%/&deg;C) modules, both with anti-reflective glass."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/docs/en/help_reference.php",
+      "title": "PVWatts help &mdash; Technical Reference",
+      "note": "the calculation sequence, and the older &minus;0.47%/&deg;C standard-module coefficient that conflicts with the module-type page."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/docs/en/help_system_array_type.php",
+      "title": "PVWatts help &mdash; Array Type",
+      "note": "cell-temperature assumptions (INOCT 45&nbsp;&deg;C open rack, 50&nbsp;&deg;C roof mount) and that PVWatts does not model shading by nearby objects."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/docs/en/help_system_gcr.php",
+      "title": "PVWatts help &mdash; Ground Coverage Ratio",
+      "note": "the ratio&rsquo;s definition by row spacing, its 0.4 default, and the statement that it applies only to one-axis tracking."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/docs/en/help_system_soiling.php",
+      "title": "PVWatts help &mdash; Monthly Irradiance Loss",
+      "note": "monthly soiling input, and the suggestion to adjust system losses if soiling is entered monthly."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator, and is not affiliated with NLR or the Department of Energy. Production figures are modeled, not metered. The PVWatts runs were made on 23 September 2026 and can change when NLR updates the model or its weather data."
+}

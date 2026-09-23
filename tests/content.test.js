@@ -68,7 +68,10 @@ describe('CO2 factor is stated consistently', () => {
     for (const [name, text] of Object.entries(ALL_PUBLIC)) {
       assert(!text.includes('0.65 lbs'), `${name} still quotes the retired 0.65 lbs/kWh factor`);
     }
-    assert(methodologyHtml.includes('0.89'), 'methodology.html should state the eGRID2023 factor');
+    assert(methodologyHtml.includes('0.864 lbs CO₂/kWh'), 'methodology.html should state the eGRID2023 NYCW factor');
+    for (const [name, text] of Object.entries(ALL_PUBLIC)) {
+      assert(!/0\.89 lbs? CO/.test(text), `${name} still quotes the eGRID2022 0.89 lb/kWh factor`);
+    }
   });
 });
 
@@ -538,6 +541,54 @@ describe('Analytics', () => {
   });
 });
 
+describe('Any US address', () => {
+  const { CalcParams } = loadModules();
+  const analytics = read('js/analytics.js');
+  const vercel = JSON.parse(read('vercel.json'));
+
+  it('says on the homepage and in llms.txt that any US address works', () => {
+    assert(/any US address/i.test(index), 'index.html should say it works for any US address');
+    assert(/any US address/i.test(llms), 'llms.txt should say it works for any US address');
+    assert(/placeholder="Enter a US address"/.test(index), 'the address field should not ask for an NYC address');
+  });
+
+  it('declares the whole country as the area served', () => {
+    const ld = JSON.parse(index.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+    const app = ld['@graph'].find(n => n['@type'] === 'WebApplication');
+    const areas = [].concat(app.areaServed || []);
+    assert(areas.some(a => a['@type'] === 'Country' && a.name === 'United States'),
+      'WebApplication.areaServed should include the United States');
+  });
+
+  it('documents every link parameter the calculator reads, in llms.txt', () => {
+    for (const key of CalcParams.KEYS) {
+      assert(llms.includes('`' + key + '`'), `llms.txt does not document the ${key} parameter`);
+    }
+    const example = llms.match(/Example: (https:\/\/balco\.nyc\/\?\S+)/);
+    assert(example, 'llms.txt should give an example link');
+    const parsed = CalcParams.parse(new URL(example[1]).search);
+    assert(CalcParams.isComplete(parsed), `the llms.txt example link would not run: ${JSON.stringify(parsed)}`);
+  });
+
+  it('keeps addresses from prefilled links out of analytics', () => {
+    assert(/before_send:/.test(analytics), 'analytics.js should scrub URLs before sending');
+    assert(/PRIVATE_PARAMS = \[[^\]]*'address'/.test(analytics), 'the scrubber must remove the address parameter');
+    assert(/history\.replaceState/.test(index), 'the page should strip calculator parameters from the address bar');
+  });
+
+  it('keeps prefilled links out of search indexes', () => {
+    const rule = vercel.headers.find(h => h.source === '/' &&
+      JSON.stringify(h.has || []).includes('"address"'));
+    assert(rule && rule.headers.some(x => x.key === 'X-Robots-Tag' && /noindex/.test(x.value)),
+      'vercel.json should send X-Robots-Tag: noindex for /?address= links');
+  });
+
+  it('does not let crawlers spend the API quotas on prefilled links', () => {
+    assert(/navigator\.webdriver/.test(index) && /bot\|crawl\|spider/.test(index),
+      'prefilled links should not auto-run for bots');
+  });
+});
+
 describe('Deployment configuration', () => {
   const vercel = JSON.parse(read('vercel.json'));
 
@@ -593,6 +644,26 @@ describe('Deployment configuration', () => {
       `expected the five boroughs, got ${boroughs}`);
   });
 
+  it('stamps every local script with a hash of its current contents', () => {
+    // js/ is cached for ten minutes and file names never change. Without a
+    // matching ?v= stamp a fresh page can run against an older cached module
+    // (the new page calling a function the old file lacks). Re-stamp with
+    // tools/stamp_scripts.py, then rebuild the content pages.
+    const crypto = require('crypto');
+    const specsHere = fs.readdirSync(path.join(ROOT, 'content')).filter(f => f.endsWith('.json'))
+      .map(f => JSON.parse(read(path.join('content', f))).slug + '.html');
+    for (const page of ['index.html', 'methodology.html', ...specsHere]) {
+      const refs = [...read(page).matchAll(/["']\/js\/([a-z0-9-]+\.js)(\?v=([0-9a-f]+))?["']/g)];
+      assert(refs.length > 0, `${page} loads no local scripts`);
+      for (const [, file, , stamp] of refs) {
+        assert(stamp, `${page} loads /js/${file} without a ?v= stamp`);
+        const want = crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, 'js', file)))
+          .digest('hex').slice(0, stamp.length);
+        assert(stamp === want, `${page}: /js/${file}?v=${stamp} is stale (file hashes to ${want}); run tools/stamp_scripts.py`);
+      }
+    }
+  });
+
   it('busts the hero map cache when the map changes', () => {
     // js/ is cached for 10 minutes and city-hero.js never changes name, while
     // the HTML is max-age=0. Without a fingerprint, for ten minutes after a
@@ -617,7 +688,7 @@ describe('Deployment configuration', () => {
 describe('index.html wiring', () => {
   it('actually sends the estimate log rather than building a lazy query', () => {
     // supabase-js v2 builders are lazy; without a .then() nothing is sent.
-    assert(/\.insert\(\{[\s\S]*?\}\)\.then\(/.test(index),
+    assert(/\.insert\((?:\{[\s\S]*?\}|\w+)\)\.then\(/.test(index),
       'the estimates insert must be subscribed to with .then() or it never fires');
   });
 

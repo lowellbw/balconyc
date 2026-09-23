@@ -1,0 +1,415 @@
+{
+ "source": "Largest incorporated place (or CDP for Hawaii) per state by July 1, 2025 population, U.S. Census Bureau Vintage 2025 Subcounty Resident Population Estimates (SUB-EST2025, released May 2026): https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv . Coordinates: 'lat'/'lon' = city hall (primary); 'intpt_lat'/'intpt_lon' = Census 2025 Gazetteer place internal point (https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_Gaz_place_national.zip).",
+ "retrieved": "2026-09-23",
+ "note": "Largest city per state by 2025 Census estimate; coordinates are city hall. Used as the reference point for each state page's PVWatts runs.",
+ "states": {
+  "AK": {
+   "state": "Alaska",
+   "city": "Anchorage",
+   "lat": 61.21653,
+   "lon": -149.89419,
+   "pop_2025": 287155,
+   "zip": "99501"
+  },
+  "AL": {
+   "state": "Alabama",
+   "city": "Huntsville",
+   "lat": 34.72867,
+   "lon": -86.58595,
+   "pop_2025": 233627,
+   "zip": "35801"
+  },
+  "AR": {
+   "state": "Arkansas",
+   "city": "Little Rock",
+   "lat": 34.74881,
+   "lon": -92.27516,
+   "pop_2025": 206427,
+   "zip": "72201"
+  },
+  "AZ": {
+   "state": "Arizona",
+   "city": "Phoenix",
+   "lat": 33.4483,
+   "lon": -112.0764,
+   "pop_2025": 1665481,
+   "zip": "85003"
+  },
+  "CA": {
+   "state": "California",
+   "city": "Los Angeles",
+   "lat": 34.0536,
+   "lon": -118.243,
+   "pop_2025": 3869089,
+   "zip": "90012"
+  },
+  "CO": {
+   "state": "Colorado",
+   "city": "Denver",
+   "lat": 39.73904,
+   "lon": -104.99031,
+   "pop_2025": 740613,
+   "zip": "80202"
+  },
+  "CT": {
+   "state": "Connecticut",
+   "city": "Bridgeport",
+   "lat": 41.17725,
+   "lon": -73.1907,
+   "pop_2025": 152273,
+   "zip": "06604"
+  },
+  "DC": {
+   "state": "District of Columbia",
+   "city": "Washington",
+   "lat": 38.89545,
+   "lon": -77.03021,
+   "pop_2025": 693645,
+   "zip": "20004"
+  },
+  "DE": {
+   "state": "Delaware",
+   "city": "Wilmington",
+   "lat": 39.7427,
+   "lon": -75.54741,
+   "pop_2025": 73512,
+   "zip": "19801"
+  },
+  "FL": {
+   "state": "Florida",
+   "city": "Jacksonville",
+   "lat": 30.32968,
+   "lon": -81.6588,
+   "pop_2025": 1017689,
+   "zip": "32202"
+  },
+  "GA": {
+   "state": "Georgia",
+   "city": "Atlanta",
+   "lat": 33.74792,
+   "lon": -84.39028,
+   "pop_2025": 529110,
+   "zip": "30303"
+  },
+  "HI": {
+   "state": "Hawaii",
+   "city": "Honolulu",
+   "lat": 21.30419,
+   "lon": -157.85642,
+   "pop_2025": 341868,
+   "zip": "96813"
+  },
+  "IA": {
+   "state": "Iowa",
+   "city": "Des Moines",
+   "lat": 41.58872,
+   "lon": -93.61615,
+   "pop_2025": 212086,
+   "zip": "50309"
+  },
+  "ID": {
+   "state": "Idaho",
+   "city": "Boise",
+   "lat": 43.61539,
+   "lon": -116.20187,
+   "pop_2025": 238429,
+   "zip": "83702"
+  },
+  "IL": {
+   "state": "Illinois",
+   "city": "Chicago",
+   "lat": 41.88338,
+   "lon": -87.63233,
+   "pop_2025": 2731585,
+   "zip": "60602"
+  },
+  "IN": {
+   "state": "Indiana",
+   "city": "Indianapolis",
+   "lat": 39.76705,
+   "lon": -86.15439,
+   "pop_2025": 901116,
+   "zip": "46204"
+  },
+  "KS": {
+   "state": "Kansas",
+   "city": "Wichita",
+   "lat": 37.69262,
+   "lon": -97.33828,
+   "pop_2025": 400987,
+   "zip": "67202"
+  },
+  "KY": {
+   "state": "Kentucky",
+   "city": "Louisville",
+   "lat": 38.25412,
+   "lon": -85.75913,
+   "pop_2025": 641962,
+   "zip": "40202"
+  },
+  "LA": {
+   "state": "Louisiana",
+   "city": "New Orleans",
+   "lat": 29.95244,
+   "lon": -90.07657,
+   "pop_2025": 362154,
+   "zip": "70112"
+  },
+  "MA": {
+   "state": "Massachusetts",
+   "city": "Boston",
+   "lat": 42.36028,
+   "lon": -71.05806,
+   "pop_2025": 672973,
+   "zip": "02201"
+  },
+  "MD": {
+   "state": "Maryland",
+   "city": "Baltimore",
+   "lat": 39.29056,
+   "lon": -76.61035,
+   "pop_2025": 569997,
+   "zip": "21202"
+  },
+  "ME": {
+   "state": "Maine",
+   "city": "Portland",
+   "lat": 43.6593,
+   "lon": -70.2573,
+   "pop_2025": 69911,
+   "zip": "04101"
+  },
+  "MI": {
+   "state": "Michigan",
+   "city": "Detroit",
+   "lat": 42.32893,
+   "lon": -83.04451,
+   "pop_2025": 649095,
+   "zip": "48226"
+  },
+  "MN": {
+   "state": "Minnesota",
+   "city": "Minneapolis",
+   "lat": 44.97683,
+   "lon": -93.26579,
+   "pop_2025": 430324,
+   "zip": "55415"
+  },
+  "MO": {
+   "state": "Missouri",
+   "city": "Kansas City",
+   "lat": 39.09981,
+   "lon": -94.57832,
+   "pop_2025": 521220,
+   "zip": "64106"
+  },
+  "MS": {
+   "state": "Mississippi",
+   "city": "Jackson",
+   "lat": 32.29814,
+   "lon": -90.1821,
+   "pop_2025": 141196,
+   "zip": "39201"
+  },
+  "MT": {
+   "state": "Montana",
+   "city": "Billings",
+   "lat": 45.7852,
+   "lon": -108.5058,
+   "pop_2025": 121239,
+   "zip": "59101"
+  },
+  "NC": {
+   "state": "North Carolina",
+   "city": "Charlotte",
+   "lat": 35.22202,
+   "lon": -80.83921,
+   "pop_2025": 964784,
+   "zip": "28202"
+  },
+  "ND": {
+   "state": "North Dakota",
+   "city": "Fargo",
+   "lat": 46.87868,
+   "lon": -96.78455,
+   "pop_2025": 136275,
+   "zip": "58102"
+  },
+  "NE": {
+   "state": "Nebraska",
+   "city": "Omaha",
+   "lat": 41.25756,
+   "lon": -95.94013,
+   "pop_2025": 488797,
+   "zip": "68183"
+  },
+  "NH": {
+   "state": "New Hampshire",
+   "city": "Manchester",
+   "lat": 42.99077,
+   "lon": -71.46313,
+   "pop_2025": 116818,
+   "zip": "03101"
+  },
+  "NJ": {
+   "state": "New Jersey",
+   "city": "Newark",
+   "lat": 40.7318,
+   "lon": -74.17421,
+   "pop_2025": 323808,
+   "zip": "07102"
+  },
+  "NM": {
+   "state": "New Mexico",
+   "city": "Albuquerque",
+   "lat": 35.08815,
+   "lon": -106.65101,
+   "pop_2025": 556588,
+   "zip": "87102"
+  },
+  "NV": {
+   "state": "Nevada",
+   "city": "Las Vegas",
+   "lat": 36.1671,
+   "lon": -115.14927,
+   "pop_2025": 679817,
+   "zip": "89101"
+  },
+  "NY": {
+   "state": "New York",
+   "city": "New York City",
+   "lat": 40.7127,
+   "lon": -74.0059,
+   "pop_2025": 8584629,
+   "zip": "10007"
+  },
+  "OH": {
+   "state": "Ohio",
+   "city": "Columbus",
+   "lat": 39.96207,
+   "lon": -83.00249,
+   "pop_2025": 938396,
+   "zip": "43215"
+  },
+  "OK": {
+   "state": "Oklahoma",
+   "city": "Oklahoma City",
+   "lat": 35.46862,
+   "lon": -97.5212,
+   "pop_2025": 719849,
+   "zip": "73102"
+  },
+  "OR": {
+   "state": "Oregon",
+   "city": "Portland",
+   "lat": 45.51505,
+   "lon": -122.67855,
+   "pop_2025": 635109,
+   "zip": "97204"
+  },
+  "PA": {
+   "state": "Pennsylvania",
+   "city": "Philadelphia",
+   "lat": 39.95331,
+   "lon": -75.16341,
+   "pop_2025": 1574281,
+   "zip": "19107"
+  },
+  "RI": {
+   "state": "Rhode Island",
+   "city": "Providence",
+   "lat": 41.82427,
+   "lon": -71.41265,
+   "pop_2025": 195310,
+   "zip": "02903"
+  },
+  "SC": {
+   "state": "South Carolina",
+   "city": "Charleston",
+   "lat": 32.77654,
+   "lon": -79.93086,
+   "pop_2025": 159423,
+   "zip": "29401"
+  },
+  "SD": {
+   "state": "South Dakota",
+   "city": "Sioux Falls",
+   "lat": 43.54738,
+   "lon": -96.72871,
+   "pop_2025": 213748,
+   "zip": "57104"
+  },
+  "TN": {
+   "state": "Tennessee",
+   "city": "Nashville",
+   "lat": 36.16722,
+   "lon": -86.77861,
+   "pop_2025": 721074,
+   "zip": "37201"
+  },
+  "TX": {
+   "state": "Texas",
+   "city": "Houston",
+   "lat": 29.76073,
+   "lon": -95.36948,
+   "pop_2025": 2397315,
+   "zip": "77002"
+  },
+  "UT": {
+   "state": "Utah",
+   "city": "Salt Lake City",
+   "lat": 40.75955,
+   "lon": -111.88815,
+   "pop_2025": 218428,
+   "zip": "84111"
+  },
+  "VA": {
+   "state": "Virginia",
+   "city": "Virginia Beach",
+   "lat": 36.75016,
+   "lon": -76.05489,
+   "pop_2025": 453737,
+   "zip": "23456"
+  },
+  "VT": {
+   "state": "Vermont",
+   "city": "Burlington",
+   "lat": 44.47601,
+   "lon": -73.21257,
+   "pop_2025": 44019,
+   "zip": "05401"
+  },
+  "WA": {
+   "state": "Washington",
+   "city": "Seattle",
+   "lat": 47.60331,
+   "lon": -122.33027,
+   "pop_2025": 784777,
+   "zip": "98104"
+  },
+  "WI": {
+   "state": "Wisconsin",
+   "city": "Milwaukee",
+   "lat": 43.04112,
+   "lon": -87.90968,
+   "pop_2025": 562407,
+   "zip": "53202"
+  },
+  "WV": {
+   "state": "West Virginia",
+   "city": "Charleston",
+   "lat": 38.35112,
+   "lon": -81.63837,
+   "pop_2025": 46117,
+   "zip": "25301"
+  },
+  "WY": {
+   "state": "Wyoming",
+   "city": "Cheyenne",
+   "lat": 41.13471,
+   "lon": -104.82206,
+   "pop_2025": 66507,
+   "zip": "82001"
+  }
+ }
+}

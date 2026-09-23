@@ -243,7 +243,7 @@
     <header class="doc-header">
       <div class="doc-eyebrow"><span class="dot"></span> Methodology</div>
       <h1>How balco.nyc calculates balcony solar production in NYC</h1>
-      <p class="lede">balco.nyc estimates how much electricity, money, and CO₂ a plug-in solar panel could produce on any NYC balcony. The model combines NREL's PVWatts hourly simulation, a custom 3D shadow model of the surrounding block, NYC building data, and Con Edison residential rates. Expected accuracy is about ±15% of real-world annual output (±20% on the fallback path), a modeled band rather than a field-validated one. This page documents every assumption, source, and formula, and is the single canonical description of the model &mdash; there is no separate internal version.</p>
+      <p class="lede">balco.nyc estimates how much electricity, money, and CO₂ a plug-in solar panel could produce on any NYC balcony, and, with a simpler shading model, at any other US address (<a href="#outside-nyc">section 10</a>). The model combines NREL's PVWatts hourly simulation, a custom 3D shadow model of the surrounding block, NYC building data, and Con Edison residential rates. Expected accuracy is about ±15% of real-world annual output (±20% on the fallback path), a modeled band rather than a field-validated one. This page documents every assumption, source, and formula, and is the single canonical description of the model &mdash; there is no separate internal version.</p>
       <div class="doc-meta-row">
         <div><strong>Last reviewed against the code:</strong> <time datetime="2026-08-31">August 31, 2026</time></div>
         <div><strong>Reading time:</strong> ~15 minutes</div>
@@ -269,6 +269,7 @@
           <li><a href="#data-pipeline">Data pipeline</a></li>
           <li><a href="#sources">Data sources</a></li>
           <li><a href="#accuracy">Accuracy &amp; limitations</a></li>
+          <li><a href="#outside-nyc">Outside New York City</a></li>
         </ol>
       </aside>
 
@@ -517,8 +518,8 @@ bill_offset_%   = annual_kwh / (billable / 0.34 × 12) × 100</code></pre>
         <section id="environmental">
           <h2><span class="sec-num">6</span>Environmental impact</h2>
           <h3>CO₂ offset</h3>
-          <pre><code>co2_lbs = annual_kwh × 0.89</code></pre>
-          <p>0.89 lbs CO₂/kWh, from the <a href="https://www.epa.gov/egrid/summary-data" target="_blank" rel="noopener">EPA eGRID2023</a> output emission rate for the <strong>NYCW subregion</strong> (released 2025, latest available). This is the "average grid" number, conservative relative to the eGRID non-baseload rate (~0.97 lbs/kWh).</p>
+          <pre><code>co2_lbs = annual_kwh × 0.864</code></pre>
+          <p>0.864 lbs CO₂/kWh, the <a href="https://www.epa.gov/egrid/summary-data" target="_blank" rel="noopener">EPA eGRID2023</a> total output emission rate for the <strong>NYCW subregion</strong> (864.469 lb/MWh; revision 2, June 2025, the latest release). This is the "average grid" number, conservative relative to the eGRID non-baseload rate (~0.98 lbs/kWh). Until September 2026 this page and the calculator used 0.89, which was the eGRID2022 figure (885 lb/MWh) under an eGRID2023 label. Outside New York City the same eGRID2023 table supplies the rate for the address's own grid subregion (<a href="#outside-nyc">section 10</a>).</p>
           <h3>Equivalencies</h3>
           <ul>
             <li><strong>Trees:</strong> <code>co2_lbs / 48</code>, the <a href="https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator" target="_blank" rel="noopener">EPA's averaged-across-all-trees figure</a> for annual sequestration.</li>
@@ -684,6 +685,48 @@ bill_offset_%   = annual_kwh / (billable / 0.34 × 12) × 100</code></pre>
           </ul>
         </section>
 
+        <section id="outside-nyc">
+          <h2><span class="sec-num">10</span>Outside New York City</h2>
+          <p>Since September 2026 the calculator accepts any address in the 50 states and DC. Everything above still applies inside the five boroughs. Everywhere else three inputs change, because the data behind them exists only for New York City: the buildings around the balcony, the price of a kWh, and the grid's emissions. The energy model itself does not change.</p>
+
+          <h3>Which model an address gets</h3>
+          <p>An address is routed to the NYC model when Google's geocoder places it in New York State and in one of the five borough counties (New York, Kings, Queens, Bronx, Richmond). The earlier rule was a bounding box around the city, which also contained Jersey City, Hoboken and Newark; those now correctly get the US model.</p>
+
+          <h3>Solar resource</h3>
+          <p>PVWatts V8 is called for the exact latitude and longitude with the same parameters as in NYC (section 1): premium module, open rack, <code>dc_ac_ratio</code> 1.1, the urban soiling profile and 96.5% inverter efficiency. The sun-position model switches from New York clock time to local solar time, which is all the shade integration needs. There is no client-side fallback outside NYC: the fallback constants describe New York's sun and would be wrong by up to a third in Phoenix or Seattle, so if PVWatts does not answer, the calculator asks the visitor to retry rather than show a guess.</p>
+
+          <h3>Shading from a described view</h3>
+          <p>There is no national equivalent of PLUTO and the NYC building footprints, so the visitor describes what stands across from the balcony and how far away it is. That description becomes a horizon profile, and the same shade integration used for a pinned NYC balcony runs on it unchanged. The obstruction is modelled as a continuous wall parallel to the facade. Looking out at an angle &phi; from straight ahead, the wall is <code>D / cos &phi;</code> away, so it rises to</p>
+          <pre><code>&beta;(&phi;) = atan( max(0, H &minus; h) &times; cos &phi; / D )    for |&phi;| &lt; 90&deg;
+h = (floor &minus; 1) &times; 3.05 m + 1.0 m                  balcony height</code></pre>
+          <div class="table-wrap"><table>
+            <thead><tr><th>What stands opposite</th><th>Height H</th><th>How far</th><th>Distance D</th></tr></thead>
+            <tbody>
+              <tr><td>Nothing, an open view</td><td>0 m</td><td>Alley, courtyard or light well</td><td>8 m</td></tr>
+              <tr><td>1 to 2 floors, or trees</td><td>7 m</td><td>Across a street</td><td>20 m</td></tr>
+              <tr><td>3 to 5 floors</td><td>13 m</td><td>Across a wide road or parking lot</td><td>40 m</td></tr>
+              <tr><td>6 to 10 floors</td><td>25 m</td><td>Far away</td><td>80 m</td></tr>
+              <tr><td>11 floors or more</td><td>43 m</td><td></td><td></td></tr>
+            </tbody>
+          </table></div>
+          <p>A continuous wall has no cross streets or gaps between buildings, so it overstates obstruction slightly: a described estimate errs low rather than high. An open view returns a shade factor of 1.00 at every orientation, the same invariant the 3D model keeps. The description cannot capture a building on the diagonal, the wing of the visitor's own building, or trees beside the balcony.</p>
+
+          <h3>Electricity price</h3>
+          <p>Savings are valued at the state's average residential price of electricity from the U.S. Energy Information Administration's <a href="https://www.eia.gov/electricity/monthly/" target="_blank" rel="noopener">Electric Power Monthly</a>, over the most recent twelve months published. This is an average: total residential revenue divided by total residential sales, so it spreads fixed monthly charges across every kWh. In NYC the calculator deliberately uses a marginal rate that excludes the fixed charge (section 4), and the two are not the same thing. An average can overstate what a kWh you no longer buy saves, and on tiered or time-of-use rates it can be wrong in either direction. For that reason no customer charge is subtracted from the visitor's bill outside NYC (it is already inside the average), and the <em>Adjust assumptions</em> panel accepts the per-kWh rate from the visitor's own bill, which replaces the state figure in every calculation.</p>
+
+          <h3>Emissions</h3>
+          <p>CO&#8322; avoided uses the EPA eGRID2023 total output emission rate of the grid subregion that serves the address, looked up from the first three digits of its ZIP code using the majority subregion in EPA's Power Profiler ZIP table. Where no subregion is known, the CO&#8322; figures are left blank rather than borrowed from New York's grid.</p>
+
+          <h3>Plug-in solar law</h3>
+          <p>Each state's status comes from a table kept with the site's data: whether a plug-in solar law is in force, signed but not yet effective, passed and awaiting signature, pending, or absent, with the bill numbers, dates, size limit and sources, and the date the entry was last checked. Entries are researched from the legislature's own bill pages where possible. A state that has not been reviewed says so; it is never shown as permitted by default. Like the NYC figures, the legal line is not legal advice.</p>
+
+          <h3>Surplus power</h3>
+          <p>The model assumes every kWh the panel produces is used in the home and that surplus earns nothing, in every state. That is exactly true under New York's SUNNY Act and several other plug-in laws, which exempt these devices from net metering. Where a state or utility does credit exports, the estimate is conservative.</p>
+
+          <h3>Accuracy</h3>
+          <p>No uncertainty band is claimed outside NYC. The solar resource is as good as it is in New York, but the shading rests on a four-word description rather than surveyed buildings, and the price is a state average rather than the visitor's tariff. Both widen the range. The visitor's own rate and a careful description narrow it.</p>
+        </section>
+
         <div class="doc-foot">
           <div>Questions about the methodology? <a href="/#faq">See the FAQ</a> or open an issue on GitHub.<br>
 Or read the guides this model feeds: <a href="/balcony-sunlight">whether your balcony gets enough sun</a>, <a href="/electricity-rate">what a kWh really costs in NYC</a>, <a href="/balcony-solar-cost">what a kit costs and when it pays back</a>, and <a href="/sunny-act">where the law stands</a>.</div>
@@ -703,7 +746,7 @@ Or read the guides this model feeds: <a href="/balcony-sunlight">whether your ba
   </div>
 </footer>
 
-<script src="/js/analytics.js"></script>
+<script src="/js/analytics.js?v=61ea8fc9"></script>
 
 <script>
   // Highlight the TOC entry corresponding to the visible section.

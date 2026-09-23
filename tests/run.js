@@ -6,6 +6,8 @@ const harness = require('./harness');
 require('./sun-position.test.js');
 require('./shadow-model.test.js');
 require('./model.test.js');
+require('./us-mode.test.js');
+require('./data.test.js');
 require('./content.test.js');
 
 // Async assertions inside model.test.js resolve on the microtask/immediate

@@ -32,6 +32,7 @@ const THREE = {
  * Load the calculator's browser modules into one shared sandbox.
  * @param {object} [opts]
  * @param {object[]} [opts.buildingMeshes] - Scene3D.buildingMeshes contents
+ * @param {Function} [opts.fetch] - stand-in for fetch(); the network is off by default
  * @returns {object} the loaded globals
  */
 function loadModules(opts = {}) {
@@ -46,6 +47,8 @@ function loadModules(opts = {}) {
     'js/sun-position.js',
     'js/3d-shadow-model.js',
     'js/solar-api.js',
+    'js/regions.js',
+    'js/calc-params.js',
   ];
   const src = files.map(f => fs.readFileSync(path.join(ROOT, f), 'utf8')).join('\n;\n');
 
@@ -55,7 +58,7 @@ function loadModules(opts = {}) {
     console: { log() {}, warn() {}, error() {} },
     document: { getElementById: () => null },
     performance: { now: () => 0 },
-    fetch: async () => { throw new Error('network disabled in tests'); },
+    fetch: opts.fetch || (async () => { throw new Error('network disabled in tests'); }),
     AbortController,
     setTimeout,
     clearTimeout,
@@ -69,7 +72,7 @@ function loadModules(opts = {}) {
       SolarConfig, SunPosition, ShadowModel, SolarAPI,
       TILT_FACTORS, AZIMUTH_FACTORS, DEFAULT_MONTHLY_DISTRIBUTION,
       getShadeFactor, getBoroughFromZip, soqlEscape,
-      SolarState,
+      SolarState, Regions, CalcParams,
     };`;
 
   const fn = new Function(...Object.keys(ctx), src + exported);
@@ -80,7 +83,10 @@ function loadModules(opts = {}) {
 }
 
 // --- Tiny assertion runner ---------------------------------------------
-const state = { passed: 0, failed: 0, current: '' };
+// Async tests are awaited: their promises are collected and report() waits
+// for all of them, so a failing async assertion is reported as a FAIL
+// rather than surfacing as an unhandled rejection that kills the run.
+const state = { passed: 0, failed: 0, current: '', pending: [] };
 
 function describe(name, fn) {
   state.current = name;
@@ -88,15 +94,30 @@ function describe(name, fn) {
   fn();
 }
 
+function pass(name) {
+  state.passed++;
+  console.log(`  [32mPASS[0m ${name}`);
+}
+
+function fail(name, err) {
+  state.failed++;
+  console.log(`  [31mFAIL[0m ${name}`);
+  console.log(`       ${err && err.message}`);
+}
+
 function it(name, fn) {
+  let result;
   try {
-    fn();
-    state.passed++;
-    console.log(`  [32mPASS[0m ${name}`);
+    result = fn();
   } catch (err) {
-    state.failed++;
-    console.log(`  [31mFAIL[0m ${name}`);
-    console.log(`       ${err.message}`);
+    fail(name, err);
+    return;
+  }
+  if (result && typeof result.then === 'function') {
+    const label = `${state.current} › ${name}`;
+    state.pending.push(result.then(() => pass(label), err => fail(label, err)));
+  } else {
+    pass(name);
   }
 }
 
@@ -123,7 +144,8 @@ function angleDiffDeg(a, b) {
   return d > 180 ? 360 - d : d;
 }
 
-function report() {
+async function report() {
+  await Promise.all(state.pending);
   console.log(`\n${'-'.repeat(52)}`);
   console.log(`${state.passed} passed, ${state.failed} failed`);
   if (state.failed > 0) process.exitCode = 1;

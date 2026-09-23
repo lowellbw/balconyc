@@ -1,16 +1,40 @@
 // ============================================================
 // balco.nyc — Solar Position Algorithm (Simplified NOAA)
 // ============================================================
-// Computes sun altitude and azimuth for NYC at any time/date.
-// Used by the 3D visualization to position the DirectionalLight
-// and animate shadows through the day.
+// Computes sun altitude and azimuth at any time/date. Defaults to NYC on
+// Eastern clock time, which the 3D visualization labels and animates.
+// setLocation() moves it anywhere else in local SOLAR time, which is all
+// the shade model needs: it integrates over whole days and never shows a
+// clock time outside NYC.
 // ============================================================
 
 const SunPosition = {
-  // NYC coordinates (fixed — this is a NYC-only app)
+  // NYC by default. setLocation() overrides these for other places.
   LAT: 40.7128,
   LON: -73.9960,
   LAT_RAD: 40.7128 * Math.PI / 180,
+  // When true, minuteOfDay is local apparent solar time (noon = sun due
+  // south or north) instead of NYC clock time.
+  useSolarTime: false,
+
+  /**
+   * Point the model at another location, or back at NYC with null.
+   * Outside NYC there is no timezone or DST table to consult, so minutes
+   * are solar time; integrations over a day are unaffected by the choice.
+   * @param {{lat: number, lon: number}|null} loc
+   */
+  setLocation(loc) {
+    if (loc && Number.isFinite(loc.lat) && Number.isFinite(loc.lon)) {
+      this.LAT = loc.lat;
+      this.LON = loc.lon;
+      this.useSolarTime = true;
+    } else {
+      this.LAT = 40.7128;
+      this.LON = -73.9960;
+      this.useSolarTime = false;
+    }
+    this.LAT_RAD = this.LAT * Math.PI / 180;
+  },
 
   // Day-of-year for the 15th of each month (matches calculate's representative day)
   DOY_TABLE: [15, 46, 74, 105, 135, 166, 196, 227, 258, 288, 319, 349],
@@ -65,10 +89,15 @@ const SunPosition = {
     const EoT = 9.87 * Math.sin(2 * B) - 7.53 * Math.cos(B) - 1.50 * Math.sin(B);
 
     // --- Solar Time ---
-    const tzOffset = this._tzOffset(month);
-    const standardMeridian = tzOffset * 15; // degrees
-    const longitudeCorrection = 4 * (this.LON - standardMeridian); // minutes
-    const solarTime = minuteOfDay + EoT + longitudeCorrection;
+    let solarTime;
+    if (this.useSolarTime) {
+      solarTime = minuteOfDay;
+    } else {
+      const tzOffset = this._tzOffset(month);
+      const standardMeridian = tzOffset * 15; // degrees
+      const longitudeCorrection = 4 * (this.LON - standardMeridian); // minutes
+      solarTime = minuteOfDay + EoT + longitudeCorrection;
+    }
 
     // --- Hour Angle ---
     const hourAngle = ((solarTime / 4) - 180) * DEG; // degrees to radians
@@ -121,13 +150,14 @@ const SunPosition = {
    * @returns {{ sunrise: number, sunset: number }} minutes since midnight
    */
   getDayBounds(month) {
-    // Search for altitude crossing zero
+    // Search for altitude crossing zero. The window spans the whole day so
+    // an Alaskan June, where the sun sets near solar midnight, is not clipped.
     let sunrise = 330, sunset = 1170; // defaults: 5:30AM, 7:30PM
-    for (let m = 240; m < 720; m += 3) {
+    for (let m = 0; m < 720; m += 3) {
       const pos = this.calculate(month, m);
       if (pos.altitude > 0) { sunrise = m; break; }
     }
-    for (let m = 1260; m > 720; m -= 3) {
+    for (let m = 1440; m > 720; m -= 3) {
       const pos = this.calculate(month, m);
       if (pos.altitude > 0) { sunset = m; break; }
     }
@@ -147,3 +177,8 @@ const SunPosition = {
     return `${h12}:${m.toString().padStart(2, '0')} ${ampm}`;
   },
 };
+
+// Node/test harness support — harmless in the browser.
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { SunPosition };
+}

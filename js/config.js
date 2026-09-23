@@ -84,8 +84,11 @@ const SolarConfig = {
   // Field reports for vertical balcony mounts put the loss at 5-8%.
   RAILING_OBSTRUCTION_BY_TILT: { 90: 0.95, 70: 0.97, 60: 0.98, 35: 0.99 },
 
-  // EPA eGRID2023 NYCW subregion output emission rate (released 2025)
-  CO2_FACTOR: 0.89, // lbs CO2 per kWh (NYC grid)
+  // EPA eGRID2023 (rev2, June 2025) NYCW subregion total output CO2 rate,
+  // 864.469 lb/MWh. The 0.89 used until September 2026 was eGRID2022's
+  // 885.233 under an eGRID2023 label. data/grid-emissions.json carries the
+  // same figure for NYCW and a test holds the two equal.
+  CO2_FACTOR: 0.864, // lbs CO2 per kWh (NYC grid)
 
   // PVWatts reference: annual kWh per kW DC for NYC at optimal tilt (~40°)
   // Aligned with NYSERDA NY Solar Map (1,238) split with calc's prior 1,400.

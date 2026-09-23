@@ -507,14 +507,9 @@ const SolarAPI = {
       return false;
     }
 
-    const bounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(SolarConfig.NYC_BOUNDS.south, SolarConfig.NYC_BOUNDS.west),
-      new google.maps.LatLng(SolarConfig.NYC_BOUNDS.north, SolarConfig.NYC_BOUNDS.east)
-    );
-
+    // Any US address. NYC is routed to the 3D model after selection by
+    // Regions.isNYC(), not by restricting what can be typed.
     this.autocompleteInstance = new google.maps.places.Autocomplete(inputElement, {
-      bounds: bounds,
-      strictBounds: true,
       componentRestrictions: { country: 'us' },
       types: ['address'],
       fields: ['geometry', 'formatted_address', 'address_components'],
@@ -921,11 +916,30 @@ const SolarAPI = {
    * client-side fallback while the UI still claimed an hourly simulation.
    * So we degrade explicitly: pipe -> bracket -> fold soiling into `losses`.
    */
+  // One PVWatts answer per location and panel geometry. The client key's
+  // 1,000 requests an hour are shared by every visitor, so "Update estimate"
+  // with an unchanged tilt, or a second look at the same address, must not
+  // spend another call.
+  _pvwattsCache: new Map(),
+
+  _pvwattsKey(params) {
+    return [Number(SolarState.lat).toFixed(4), Number(SolarState.lon).toFixed(4),
+      params.tilt, params.azimuth, params.systemCapacity].join('|');
+  },
+
   async fetchPVWatts(params) {
     if (!SolarState.lat || !SolarState.lon) return null;
     if (!SolarConfig.NREL_API_KEY) {
       console.warn('[SolarAPI] No NREL API key, skipping PVWatts');
       return null;
+    }
+    const cacheKey = this._pvwattsKey(params);
+    const cached = this._pvwattsCache.get(cacheKey);
+    if (cached) {
+      SolarState.pvwattsResult = cached.data;
+      SolarState.pvwattsVariant = cached.variant;
+      SolarState.dataSources.pvwatts = true;
+      return cached.data;
     }
 
     const soiling = this.SOILING_MONTHLY;
@@ -959,6 +973,7 @@ const SolarAPI = {
         SolarState.pvwattsResult = data;
         SolarState.pvwattsVariant = variant.label;
         SolarState.dataSources.pvwatts = true;
+        this._pvwattsCache.set(cacheKey, { data, variant: variant.label });
         console.log(`[SolarAPI] PVWatts: ac_annual=${data.outputs.ac_annual} kWh`);
         return data;
       } catch (err) {
@@ -1082,8 +1097,21 @@ const SolarAPI = {
     const {
       azimuth, tilt, systemWatts, floor, totalFloors,
       shading, monthlyBill, systemCost, shadeProfile,
-      costTier, escalationPreset,
+      costTier, escalationPreset, region, rateCents,
     } = formInputs;
+
+    // What a kWh is worth, and what the grid emits, depend on where the
+    // balcony is. With no region given this is exactly the NYC model.
+    const place = region || {
+      mode: 'nyc',
+      electricityRate: SolarConfig.ELECTRICITY_RATE,
+      monthlyCustomerCharge: SolarConfig.MONTHLY_CUSTOMER_CHARGE,
+      co2Factor: SolarConfig.CO2_FACTOR,
+    };
+    const overrideRate = Number(rateCents) > 0 ? Number(rateCents) / 100 : null;
+    const electricityRate = overrideRate || place.electricityRate;
+    const customerCharge = overrideRate ? 0 : (place.monthlyCustomerCharge || 0);
+    const co2Factor = Number.isFinite(place.co2Factor) ? place.co2Factor : null;
 
     const systemKw = systemWatts / 1000;
     // Resolve tier-aware system cost when no explicit override provided
@@ -1112,6 +1140,7 @@ const SolarAPI = {
 
     let annualKwh;
     let monthlyKwh;
+    let fallbackCity = null;
     let usedPVWatts = false;
     let pvwattsData = null;
 
@@ -1148,6 +1177,23 @@ const SolarAPI = {
       usedPVWatts = true;
 
       console.log(`[SolarAPI] PVWatts: raw=${rawAnnual.toFixed(0)} kWh, after shade+railing=${annualKwh.toFixed(0)} kWh`);
+    } else if (place.mode === 'us') {
+      // The fallback constants below describe New York's sun; applied to
+      // Phoenix or Seattle they would be off by a third. Outside NYC the
+      // fallback is instead the published PVWatts run for the state's largest
+      // city (data/solar-fallback.json), and without that there is no number.
+      const fb = typeof Regions !== 'undefined' && place.fallback
+        ? Regions.fallbackMonthly(place.fallback, tilt, azimuth, systemWatts, 800) : null;
+      if (!fb) {
+        const err = new Error('PVWatts is unavailable for this location right now');
+        err.code = 'PVWATTS_UNAVAILABLE';
+        throw err;
+      }
+      const shadeMonths = monthlyShadeFactors || new Array(12).fill(shadeFactor);
+      monthlyKwh = fb.monthly.map((v, i) => v * shadeMonths[i] * SolarConfig.THERMAL_BONUS * railingFactor);
+      annualKwh = monthlyKwh.reduce((s, v) => s + v, 0);
+      fallbackCity = fb.city;
+      console.log(`[SolarAPI] State fallback (${fb.city}): ${annualKwh.toFixed(0)} kWh`);
     } else {
       // Fallback: client-side formula (used when PVWatts API unavailable)
       const tiltFactor = TILT_FACTORS[tilt] || 0.60;
@@ -1179,15 +1225,17 @@ const SolarAPI = {
     }
 
     // Financial model
-    const annualSavings = annualKwh * SolarConfig.ELECTRICITY_RATE;
+    const annualSavings = annualKwh * electricityRate;
     const monthlySavings = annualSavings / 12;
 
     // Infer consumption from the bill at the MARGINAL rate, after removing the
     // fixed Customer Charge. The charge is part of what the user pays but is
     // not part of what a kWh costs, so leaving it in would inflate their
-    // implied usage and understate the offset percentage.
-    const billableAmount = Math.max(0, monthlyBill - SolarConfig.MONTHLY_CUSTOMER_CHARGE);
-    const monthlyConsumption = billableAmount / SolarConfig.ELECTRICITY_RATE;
+    // implied usage and understate the offset percentage. Outside NYC the
+    // rate is an average that already includes fixed charges, so nothing is
+    // subtracted there.
+    const billableAmount = Math.max(0, monthlyBill - customerCharge);
+    const monthlyConsumption = billableAmount / electricityRate;
     const annualConsumption = Math.max(1, monthlyConsumption * 12);
     const billOffsetPct = Math.min(100, (annualKwh / annualConsumption) * 100);
 
@@ -1202,7 +1250,7 @@ const SolarAPI = {
     for (let i = 0; i < 25; i++) {
       const yearSavings = annualKwh
         * Math.pow(1 - panelDegradation, i)
-        * SolarConfig.ELECTRICITY_RATE
+        * electricityRate
         * Math.pow(1 + rateEscalation, i);
       lifetimeSavings += yearSavings;
       cumSavings += yearSavings;
@@ -1212,10 +1260,13 @@ const SolarAPI = {
       }
     }
 
-    // Environmental impact
-    const co2Lbs = annualKwh * SolarConfig.CO2_FACTOR;
-    const treesEquiv = co2Lbs / 48; // EPA average lb CO2/yr per mature tree
-    const milesOffset = co2Lbs / 0.89;
+    // Environmental impact. Where no grid factor is known the figures are
+    // null rather than borrowed from New York's grid.
+    // milesOffset divides by 0.89 lb CO2 per passenger-car mile (EPA). That
+    // it equals the NYC grid factor is a coincidence; it is not a grid rate.
+    const co2Lbs = co2Factor != null ? annualKwh * co2Factor : null;
+    const treesEquiv = co2Lbs != null ? co2Lbs / 48 : null; // EPA average lb CO2/yr per mature tree
+    const milesOffset = co2Lbs != null ? co2Lbs / 0.89 : null;
     const phonesCharged = annualKwh * 1000 / 12;
 
     const capacityFactor = (annualKwh / (systemKw * 8760)) * 100;
@@ -1256,6 +1307,10 @@ const SolarAPI = {
       escalationPreset: escalationPreset || 'mid',
       panelDegradation,
       rateEscalation,
+      electricityRate,
+      rateSource: overrideRate ? 'user' : (place.rateSource || 'coned_marginal'),
+      mode: place.mode || 'nyc',
+      fallbackCity,
 
       // Data quality
       dataSources: { ...SolarState.dataSources },

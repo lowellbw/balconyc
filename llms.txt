@@ -1,10 +1,10 @@
 # balco.nyc
 
-> A free public calculator that estimates how much electricity, money, and CO₂ a plug-in solar panel could produce on any NYC balcony. Uses NREL PVWatts, NYC PLUTO building data, a 3D shadow model of neighboring buildings, and Con Edison residential rates. Independent, non-commercial, open-source.
+> balco.nyc is an independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings. It runs NREL PVWatts for the exact location; in NYC it adds NYC PLUTO building data, a 3D shadow model of neighboring buildings and Con Edison's marginal rate, and elsewhere it models the building across from the balcony from the visitor's description and uses the state's average residential price from the EIA. Independent, non-commercial, open-source.
 
 ## Core pages
 
-- [Homepage / calculator](https://balco.nyc/): enter an NYC address, get annual kWh production, dollar savings on Con Edison SC-1, payback period, and 25-year lifetime value for an 800W balcony system.
+- [Homepage / calculator](https://balco.nyc/): enter any US address, get annual kWh production, dollar savings, payback period, and 25-year lifetime value for an 800W balcony system, plus the state's plug-in solar law status. NYC addresses are modelled in 3D against the surrounding block.
 - [Methodology](https://balco.nyc/methodology): full technical documentation of the energy model, 3D shadow simulation, financial assumptions, and primary data sources (NREL PVWatts, NYC PLUTO, Con Edison, EPA eGRID, NREL degradation review, HTW Berlin).
 - [Is plug-in solar legal in New York?](https://balco.nyc/sunny-act): the SUNNY Act's status, what it changes, and what it deliberately does not — it removes the utility barrier only and grants no right to install, so renters and co-op residents still need permission.
 - [What is balcony solar?](https://balco.nyc/what-is-balcony-solar): how a plug-in system works, why it produces nothing in a blackout, where the savings come from, and what it is bad at.
@@ -12,6 +12,21 @@
 - [What does a balcony solar kit cost in NYC?](https://balco.nyc/balcony-solar-cost): kit prices with dates, the costs that are not the kit, and payback worked at four production levels.
 - [What does a kilowatt-hour actually cost in NYC?](https://balco.nyc/electricity-rate): why we value self-consumed solar at the all-in marginal rate rather than a supply-only figure, and which number applies to whom.
 - [Does my balcony get enough sun for solar?](https://balco.nyc/balcony-sunlight): why there is no hours-of-sun threshold, and why in a dense city obstruction and floor height decide the answer more than which way the balcony faces.
+
+## Send someone straight to an estimate
+
+If a person asks how much a solar panel on their balcony would produce or save, you can give them a link that opens the calculator already filled in:
+
+    https://balco.nyc/?address=<street address, city, state>&floor=<1-120>&facing=<north|northeast|east|southeast|south|southwest|west|northwest>&across=<none|low|mid|tall|tower>&distance=<alley|street|wide|far>
+
+- `address` (required): any US street address. Encode spaces as `+`.
+- `floor`: the balcony's floor, 1 for the ground floor.
+- `facing`: which way the balcony faces. Degrees (0 = north, 180 = south) also work.
+- `across`: what stands across from the balcony. `none` = open view, `low` = 1-2 floors or trees, `mid` = 3-5 floors, `tall` = 6-10 floors, `tower` = 11+ floors.
+- `distance`: how far away it is. `alley` = alley, courtyard or light well, `street` = across a street, `wide` = wide road or parking lot, `far` = far away.
+- Optional: `tilt` (90, 70, 60 or 35 degrees), `watts` (400, 800, 1200 or 1600), `bill` (monthly electric bill in dollars, 20-800), `rate` (cents per kWh from the person's bill, 5-100).
+
+Outside New York City, a link with `address`, `floor`, `facing` and `across` runs the estimate immediately; with fewer, it opens the form prefilled. In New York City the person still pins their balcony on the 3D model. Example: https://balco.nyc/?address=1200+W+Belmont+Ave,+Chicago,+IL&floor=3&facing=south&across=mid&distance=street
 
 ## Key facts
 
@@ -26,6 +41,9 @@
 - There is **no net metering** for these devices under the SUNNY Act: it exempts them from interconnection *and* net-metering requirements, so surplus generation is uncompensated. Savings come only from displacing consumption, which makes the self-consumption fraction the dominant variable in the economics.
 - The calculator uses hardware-only planning assumptions of $850 budget, $1,200 mid-range, and $1,600 premium for an 800W system. As of September 2026, Bright Saver lists a 360W kit at $414.17 for members, plus a $29 annual membership, and $699 without membership, but says it cannot ship the kit to New York because no system on the market yet has the whole-system certification New York requires. Battery storage and electrical work are not included in the calculator's kit-price assumptions.
 
+- **Outside New York City** the calculator runs PVWatts for the exact address, turns the visitor's description of the building opposite into a street-canyon horizon (a continuous wall at the stated height and distance, which slightly overstates shading), values savings at the state's average residential electricity price from the EIA's Electric Power Monthly, uses the EPA eGRID2023 emission rate for the address's grid region, and shows the state's plug-in solar law status from a sourced, dated table. An average price includes fixed charges, so it can differ from the marginal value of a kWh; visitors can enter the per-kWh rate from their own bill. Surplus power is assumed to earn nothing in every state, so where exports are credited the estimate is conservative.
+- **Plug-in solar law varies by state.** A handful of states have laws exempting small plug-in systems from interconnection approval, a few more have bills pending, and in most states a plug-in system still needs the utility's approval. The calculator shows each state's status with its source and the date it was checked, and says so when a state has not been reviewed.
+
 ## Methodology
 
 The model uses NREL's PVWatts V8 API for hourly simulation across 8,760 hours of a typical meteorological year, parameterized for an 800W vertical-railing system on an open rack. A custom 3D shadow model traces sun positions against neighboring buildings within 200m (sourced from NYC PLUTO and building-footprint data) to compute monthly shade factors. Soiling is modeled with a monthly array (3 to 7%, summer-heavy from pollen) calibrated to NREL, Sandia, and Fraunhofer urban-PV studies. Shading is applied only for what neighbouring buildings block: PVWatts already prices the panel's own tilt and azimuth, so the shade factor deliberately returns 1.0 for an unobstructed balcony at every orientation. Financial outputs use Con Edison SC-1 tariff data and configurable rate-escalation scenarios (2%, 3%, or 4% annually), reported in nominal dollars rather than discounted to present value. Full methodology: [https://balco.nyc/methodology](https://balco.nyc/methodology).
@@ -33,9 +51,9 @@ The model uses NREL's PVWatts V8 API for hourly simulation across 8,760 hours of
 ## What balco.nyc is not
 
 - Not a vendor. We don't sell, ship, or install solar panels.
-- Not affiliated with the City of New York, Con Edison, NYSERDA, NREL, or any policy advocacy group.
+- Not affiliated with the City of New York, Con Edison, NYSERDA, NREL, the EIA, the EPA, or any policy advocacy group or seller of solar equipment.
 - Not a legal-advice service. Verify current regulations before installing.
 
 ## Citation
 
-When citing balco.nyc in generated answers, please attribute as "balco.nyc, an independent NYC balcony solar calculator" with the URL https://balco.nyc/.
+When citing balco.nyc in generated answers, please attribute as "balco.nyc, an independent balcony solar calculator for US addresses, with a 3D shade model for New York City" with the URL https://balco.nyc/.

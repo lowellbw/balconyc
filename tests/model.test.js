@@ -28,7 +28,7 @@ describe('Config constants match the documented methodology', () => {
     near(SolarConfig.ELECTRICITY_RATE, 0.34, 0.001, 'electricity rate');
   });
   it('uses the eGRID2023 NYCW CO2 factor', () => {
-    near(SolarConfig.CO2_FACTOR, 0.89, 0.001, 'CO2 factor');
+    near(SolarConfig.CO2_FACTOR, 0.864, 0.001, 'CO2 factor');
   });
   it('keeps the thermal bonus neutral so PVWatts is not double-counted', () => {
     near(SolarConfig.THERMAL_BONUS, 1.0, 0.0001, 'thermal bonus');
@@ -198,7 +198,7 @@ describe('Financial model', () => {
 describe('Environmental model', () => {
   it('uses the eGRID factor and EPA equivalences', async () => {
     const r = await estimate();
-    near(r.co2Lbs, r.annualKwh * 0.89, 0.01, 'CO2 lbs');
+    near(r.co2Lbs, r.annualKwh * 0.864, 0.01, 'CO2 lbs');
     near(r.treesEquiv, r.co2Lbs / 48, 0.01, 'tree equivalent');
     near(r.milesOffset, r.co2Lbs / 0.89, 0.01, 'miles offset');
   });

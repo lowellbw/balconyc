@@ -22,6 +22,7 @@ BANNED = [
     (r"best balcony solar kits?", "product ranking"), (r"[?&](ref|tag|aff)=|amzn\.to", "affiliate link"),
     (r"legal in all 50 states", "false legality claim"), (r"\bBalco\b(?!\.nyc)|\bBalco\.nyc\b", "name not written balco.nyc"),
     (r"developer\.nrel\.gov|www\.nrel\.gov|pvwatts\.nrel\.gov", "retired nrel.gov host (use nlr.gov)"),
+    (r"400\s*(to|&ndash;|–|-)\s*900\s*(&nbsp;|\s)*kWh|\$136 to (roughly )?\$306", "retired 400-900 kWh NYC band"),
 ]
 PRIMARY = re.compile(r"\.gov$|\.gov\.|legislature|legis|coned\.com|\.ul\.com$|ulse\.org|bundesnetzagentur\.de|nyserda|sandia")
 REQUIRED = ["slug", "title", "og_title", "breadcrumb", "description", "eyebrow", "h1", "lede", "reviewed",

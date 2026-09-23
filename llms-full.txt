@@ -400,7 +400,7 @@ Where a statute does not decide it, which is most places, the board does. A vagu
 
 - **Offer the paperwork.** Offer an alteration agreement with an indemnity, and a certificate of insurance. California’s rule for systems on a shared condo roof is a usable model: liability coverage kept in force, with a certificate within 14 days of approval and every year after (§4746). Commit to removal and restoration at your own cost on sale, on request, and for facade inspections or repairs.
 
-- **An engineer’s letter if asked.** The install guide recommends one anyway for glass or aged railings. Weigh its cost against the money at stake. balco.nyc’s New York City band is 400 to 900 kWh a year for an 800 W system, roughly $136 to $306 at Con Edison’s 34¢ marginal rate. Conditions costing more than a year or two of that change the decision. [The calculator](https://balco.nyc/) gives the figure for your own balcony.
+- **An engineer’s letter if asked.** The install guide recommends one anyway for glass or aged railings. Weigh its cost against the money at stake. In New York City an 800 W panel on an open south-facing railing makes at most about 604 kWh a year, about $205 at Con Edison’s 34¢ marginal rate, and a shaded low floor far less. Conditions costing more than a year or two of that change the decision. [The calculator](https://balco.nyc/) gives the figure for your own balcony.
 
 - **Time the request.** In New York you can ask for approval conditional on the SUNNY Act taking effect, since the utility barrier stays until it does. In Colorado and New Jersey, the dates in section 3 change what a board is allowed to refuse.
 
@@ -471,9 +471,9 @@ A one-page description of the product and its certification, its size and weight
 # What does a balcony solar kit cost in NYC?
 
 URL: https://balco.nyc/balcony-solar-cost  
-Last reviewed: 2026-09-04
+Last reviewed: 2026-09-23
 
-balco.nyc uses hardware-only cost assumptions of $850 budget, $1,200 mid-range, and $1,600 premium for a typical 800-watt system. These are planning benchmarks, not currently verified New York offers. At Con Edison’s $0.34 per kilowatt-hour, a well-sited system saves roughly $300 a year and pays back in three to five years. A shaded, low-floor balcony takes six to ten.
+balco.nyc uses hardware-only cost assumptions of $850 budget, $1,200 mid-range, and $1,600 premium for a typical 800-watt system. These are planning benchmarks, not currently verified New York offers. At Con Edison’s $0.34 per kilowatt-hour, an open south-facing railing saves up to about $205 a year and pays back a mid-range kit in about five and a half years. East or west takes about seven and a half; a shaded low floor or a north-facing balcony takes thirteen or more.
 
 ## What a kit costs right now
 
@@ -515,18 +515,19 @@ So every saving figure below is a *ceiling*: it assumes every kilowatt-hour gene
 
 ## The payback arithmetic, worked
 
-An 800 W system in New York City produces roughly **400–900 kWh a year**. The spread across balconies is about **3×** from worst to best — high floor facing south against low floor facing north, with the buildings across the street doing most of the damage.
+In balco.nyc’s PVWatts runs for a point at City Hall, with a 5% loss for the railing, an 800 W panel on an NYC railing makes at most about **604 kWh a year** facing south with an open view. East or west it makes about 434, north about 167. The building across the street does the rest of the damage: from the third floor, a six-to-ten-story building across a 20 m street cuts a south panel to about 227 kWh. An angled bracket works the other way; a south panel at 35° makes about 988.
 
-The table runs four production levels across the band. Savings are year one at $0.34/kWh, at 100% self-consumption. Payback years account for 3%/year rate escalation and 0.5%/year panel degradation, and are the year cumulative savings first exceed the kit price.
+The table runs those five situations. Savings are year one at $0.34/kWh, at 100% self-consumption. Payback years account for 3%/year rate escalation and 0.5%/year panel degradation, and are the year cumulative savings first exceed the kit price.
 
-| Annual output | Year-1 saving (ceiling) | Payback, $850 kit | Payback, $1,200 kit | Payback, $1,600 kit | 25-yr net, $1,200 kit (nominal) |
-|---|---|---|---|---|---|
-| 400 kWh (poorly sited) | $136 | 5.9 yr | 8.1 yr | 10.4 yr | +$3,435 |
-| 550 kWh | $187 | 4.4 yr | 6.0 yr | 7.9 yr | +$5,175 |
-| 700 kWh | $238 | 3.5 yr | 4.8 yr | 6.3 yr | +$6,915 |
-| 900 kWh (well sited) | $306 | 2.7 yr | 3.8 yr | 5.0 yr | +$9,235 |
+| Balcony | Annual output | Year-1 saving (ceiling) | Payback, $850 kit | Payback, $1,200 kit | Payback, $1,600 kit | 25-yr net, $1,200 kit (nominal) |
+|---|---|---|---|---|---|---|
+| South, open view, 35° bracket | 988 kWh | $336 | 2.5 yr | 3.5 yr | 4.6 yr | +$10,252 |
+| South, open view, on the railing | 604 kWh | $205 | 4.0 yr | 5.5 yr | 7.2 yr | +$5,801 |
+| East or west, open view | 434 kWh | $147 | 5.4 yr | 7.5 yr | 9.7 yr | +$3,831 |
+| South, 3rd floor, 6–10 floors opposite | 227 kWh | $77 | 9.9 yr | 13.3 yr | 16.9 yr | +$1,431 |
+| North, open view | 167 kWh | $57 | 12.9 yr | 17.2 yr | 21.6 yr | +$736 |
 
-Read across a row rather than down a column. Moving from the premium kit to the budget kit at fixed siting saves you about four and a half years in the worst row. Moving from the worst siting to the best at a fixed kit saves you four to five. **Where the panel points matters about as much as what you pay for it, and you can only change one of those after you have signed the lease.**
+Read across a row rather than down a column. Moving from the premium kit to the budget kit at fixed siting saves you three to nine years. Moving from a shaded or north-facing balcony to an open south-facing one at a fixed kit saves you eight to twelve. **Where the panel points, and what stands in front of it, matters more than what you pay for it, and you can only change one of those after you have signed the lease.**
 
 ## How to read the 25-year number
 
@@ -542,13 +543,13 @@ And the model itself carries a stated accuracy of **±15%**, widening to ±20% w
 
 If your balcony is on a low floor, faces north, or spends the middle of the day in the shadow of the building opposite, the arithmetic is bad and you should not spend the money on economic grounds.
 
-Work it through. Roughly 400 kWh a year is **$136** of avoided electricity at best. Put that against a $1,600 premium kit and payback is **10.4 years** before you add an electrician, before you subtract exported kilowatt-hours you are not paid for, and before the ±15% band, which could push it past 12. If you may move within five years, and you probably will if you rent, you will not get your money back.
+Work it through. A south panel on a third floor facing a six-to-ten-story building across the street makes about 227 kWh a year, **$77** of avoided electricity at best. Put that against a $1,600 premium kit and payback is **16.9 years** before you add an electrician, before you subtract exported kilowatt-hours you are not paid for, and before the ±15% band. If you may move within five years, and you probably will if you rent, you will not get your money back.
 
-Buy the cheapest kit that is properly certified, or do not buy one. A budget kit on a poor balcony pays back in 5.9 years; a premium kit on the same balcony takes 10.4. Paying more for a system that will never see full sun is the single most expensive mistake available here.
+Buy the cheapest kit that is properly certified, or do not buy one. A budget kit on that balcony pays back in 9.9 years; a premium kit on the same balcony takes 16.9. Paying more for a system that will never see full sun is the single most expensive mistake available here.
 
 > **None of this is legal in New York yet.** The SUNNY Act passed both chambers in late May 2026 and awaits the Governor’s signature; it takes effect 90 days after signing. Do not buy hardware on the assumption the timeline will hold — see [the SUNNY Act status page](https://balco.nyc/sunny-act).
 
-Run your own floor, orientation and consumption through [the calculator](https://balco.nyc/) rather than reading a row off this table. The table is four points on a wide band; your balcony is one point.
+Run your own floor, orientation and consumption through [the calculator](https://balco.nyc/) rather than reading a row off this table. The table is five points on a wide range; your balcony is one point.
 
 ## Common questions
 
@@ -558,7 +559,7 @@ For a typical 800 W setup, balco.nyc uses hardware-only planning assumptions of 
 
 **Is balcony solar worth it in New York?**
 
-It depends almost entirely on your balcony, not on the kit. A high-floor, south-facing, unshaded balcony producing 900 kWh a year saves about $306 and pays back a mid-range kit in 3.8 years. A low-floor, north-facing one producing 400 kWh saves $136 and takes 8.1 years on the same kit — or over 10 on a premium one, which is a bad deal.
+It depends almost entirely on your balcony, not on the kit. An open, south-facing railing makes about 604 kWh a year, saves about $205 and pays back a mid-range kit in about 5.5 years. A north-facing one makes about 167 kWh, saves $57 and takes about 17 years on the same kit, and a low floor facing a tall building across the street does little better; those are bad deals.
 
 **Do I get paid for the electricity I don't use?**
 
@@ -566,7 +567,7 @@ No. The SUNNY Act exempts these devices from net metering, so any kilowatt-hour 
 
 **What is the payback period for balcony solar in NYC?**
 
-Between roughly 2.7 and 10.4 years, depending on siting and kit price, assuming full self-consumption. A mid-range $1,200 kit lands between 3.8 and 8.1 years across the typical 400–900 kWh production band. Those figures include 3%/year rate escalation and 0.5%/year panel degradation, and carry a modelled plus or minus 15% accuracy band.
+Between roughly 2.5 and more than 20 years, depending on siting and kit price, assuming full self-consumption. A mid-range $1,200 kit pays back in about 5.5 years on an open south-facing railing, 7.5 facing east or west, and 13 or more on a shaded low floor or a north-facing balcony. Those figures include 3%/year rate escalation and 0.5%/year panel degradation.
 
 **Will balcony solar zero out my Con Edison bill?**
 
@@ -678,8 +679,8 @@ The share of output used in the home as it is produced; with exports unpaid, onl
 The marginal rate is what one kWh more or less costs, excluding fixed charges; the average price divides the whole bill, fixed charges included, by kWh. Solar saves at the margin. balco.nyc uses Con Edison’s 34¢ in New York City and EIA state averages elsewhere; New York State’s, 27.96¢, blends in lower-priced utilities outside the city. See [what a kWh costs](https://balco.nyc/electricity-rate).
 **Price to compare** · supply only, about 13–18¢
 The utility’s supply-only price per kWh, published for comparing independent suppliers (ESCOs in New York). Reported Con Edison figures for 2026 run about 13–18¢: right for choosing a supplier, too low for valuing solar you use, which also avoids delivery charges, surcharges and tax. See [supply-only rates](https://balco.nyc/electricity-rate#supply-only).
-**Fixed customer charge** · $20 a month set aside (NYC)
-A charge billed every month regardless of use, for costs such as billing and meter reading. Solar cannot reduce it, so balco.nyc subtracts $20 from a New York City bill before converting it to kWh. Elsewhere the EIA average spreads fixed charges over every kWh, which can overstate savings. See [why it is left out](https://balco.nyc/electricity-rate#fixed-charge).
+**Fixed customer charge** · $21 a month set aside (NYC)
+A charge billed every month regardless of use, for costs such as billing and meter reading. Solar cannot reduce it, so balco.nyc subtracts $21 from a New York City bill before converting it to kWh. Elsewhere the EIA average spreads fixed charges over every kWh, which can overstate savings. See [why it is left out](https://balco.nyc/electricity-rate#fixed-charge).
 **Payback (nominal)** · 5.5 years in NYC; 9.9 in the median state
 Years until cumulative savings equal the kit’s cost. balco.nyc’s figure compounds rate escalation and degradation with no discount rate, so it is nominal. On a $1,200 kit an unshaded south-facing railing pays back in 5.5 years in New York City (5.8 simple) and 9.9 in the median state’s largest city. See [payback in every state](https://balco.nyc/is-balcony-solar-worth-it).
 **Degradation** · 0.5% a year; 88.7% left in year 25
@@ -1126,7 +1127,7 @@ Solar.com’s 2026 guide says a standard 800 W kit can often cover 15% to 25% o
 | Vertical, on a railing | 658 | 4.2% to 11.9%, median 6.4% | 8.4% to 13.4%, median 10.8% |
 | Tilted to 35° | 1,053 | 7.3% to 21.3%, median 10.3% | 11.7% to 22.6%, median 17.3% |
 
-Against the average home in its own state (EIA, 2024: a median of about 10,600 kWh a year), no state’s railing panel reaches 15%. Thirteen stay under 5%, most of them Southern states where homes use the most electricity; only California, Maine and New Mexico pass 10%. A fairer test of an apartment claim is an apartment: the EIA’s 2020 Residential Energy Consumption Survey puts households in buildings of five or more units at 20.8 million Btu of electricity, about **6,100 kWh a year**. A railing panel still tops out at 13.4% of that. The 15–25% only appears when the panel is tilted to 35°, sits in full sun and serves a smaller-than-average user — then 48 of the 51 land between 15% and 23%, and none reaches 25%. It is a ceiling, not an expectation. In New York City, balco.nyc’s 3D shade model puts real balconies at 400–900 kWh, 6% to 13% of the state-average home.
+Against the average home in its own state (EIA, 2024: a median of about 10,600 kWh a year), no state’s railing panel reaches 15%. Thirteen stay under 5%, most of them Southern states where homes use the most electricity; only California, Maine and New Mexico pass 10%. A fairer test of an apartment claim is an apartment: the EIA’s 2020 Residential Energy Consumption Survey puts households in buildings of five or more units at 20.8 million Btu of electricity, about **6,100 kWh a year**. A railing panel still tops out at 13.4% of that. The 15–25% only appears when the panel is tilted to 35°, sits in full sun and serves a smaller-than-average user — then 48 of the 51 land between 15% and 23%, and none reaches 25%. It is a ceiling, not an expectation. In New York City an open south-facing railing makes about 604 kWh, about 9% of the state-average home, and balco.nyc’s 3D shade model takes real balconies well below that.
 
 ### 2. “A north-facing balcony produces 75% less”
 
@@ -2182,17 +2183,17 @@ Usually because of what stands opposite. The winter sun is low, so a building ac
 # Does my balcony get enough sun for solar?
 
 URL: https://balco.nyc/balcony-sunlight  
-Last reviewed: 2026-09-04
+Last reviewed: 2026-09-23
 
-There is no threshold: the honest answer is a kilowatt-hour number, not a yes or no. In a dense city what sets it is mostly how much sky your balcony can see past the building opposite, and how high up you are — which way it faces matters less than the rules of thumb suggest. A typical 800 W New York system produces 400 to 900 kWh a year, and a high-floor south balcony makes roughly three times what a low-floor north one does.
+There is no threshold: the honest answer is a kilowatt-hour number, not a yes or no. In a dense city what sets it is mostly how much sky your balcony can see past the building opposite, and how high up you are — which way it faces matters less than the rules of thumb suggest. In balco.nyc’s model an 800 W panel on an open south-facing New York railing makes about 604 kWh a year and an open north-facing one about 167, and the building opposite can take more than half of either.
 
 ## “Enough sun” is a number, not a threshold
 
 The standard answer to this question is a rule of thumb: three to four hours of direct sunlight a day and you are fine. It is a reasonable rule and it comes from somewhere sensible — it is roughly the line between a balcony that will grow herbs and one that will not. But it treats the question as a gate you either pass or fail, and that is not how a solar system behaves. A panel does not switch on at four hours. It produces a continuously varying amount all year, and the useful output of that arithmetic is a single figure: annual kilowatt-hours.
 
-That figure is what everything downstream depends on. In New York the number to multiply it by is Con Edison’s all-in marginal rate of about **$0.34 per kilowatt-hour** — supply, delivery and surcharges together, which is [the correct rate for electricity you generate and consume yourself](https://balco.nyc/electricity-rate). A typical 800 W system on an NYC balcony lands somewhere between **400 and 900 kWh a year**, so the annual saving runs from roughly $136 to roughly $306. On a $1,200 mid-range kit that is the difference between a [payback of under four years and one of over eight](https://balco.nyc/balcony-solar-cost). Both of those balconies get “enough” sun in the sense that the panels work. Only one of them is a good idea.
+That figure is what everything downstream depends on. In New York the number to multiply it by is Con Edison’s all-in marginal rate of about **$0.34 per kilowatt-hour** — supply, delivery and surcharges together, which is [the correct rate for electricity you generate and consume yourself](https://balco.nyc/electricity-rate). An 800 W panel on an NYC railing makes at most about **604 kWh a year** facing south with an open view, worth about $205; from the third floor, facing a six-to-ten-story building across the street, the same panel makes about 227 kWh, worth $77. On a $1,200 mid-range kit that is the difference between a [payback of about five and a half years and one of over thirteen](https://balco.nyc/balcony-solar-cost). Both of those balconies get “enough” sun in the sense that the panels work. Only one of them is a good idea.
 
-This is also where a widely repeated figure needs qualifying. You will often read that an 800 W kit covers 15–25% of an apartment’s electricity. That is a nameplate-ideal number with no shading derate applied. Against the EIA’s New York average household consumption of about 6,850 kWh a year, the real 400–900 kWh band works out at **6% to 13%** — and the lower end of that is not a rounding error, it is what a shaded low-floor balcony actually delivers. The 15–25% figure describes a well-sited system belonging to a light consumer. It is a ceiling, not an expectation.
+This is also where a widely repeated figure needs qualifying. You will often read that an 800 W kit covers 15–25% of an apartment’s electricity. That is a nameplate-ideal number with no shading derate applied. Against the EIA’s New York average household consumption of about 6,850 kWh a year, an open south-facing NYC railing covers about **9%**, an east- or west-facing one about 6%, and a shaded low-floor one about 3% — and that last figure is not a rounding error, it is what a shaded low-floor balcony actually delivers. The 15–25% figure describes a well-sited system belonging to a light consumer. It is a ceiling, not an expectation.
 
 > **One number, not a verdict.** If someone answers “does my balcony get enough sun” with yes or no, they have skipped the only part of the answer that changes what you should do.
 
@@ -2207,9 +2208,9 @@ Most solar guidance is written for a detached house, where orientation is the fi
 | 3 | Orientation | The compass direction the railing faces | Real, predictable and correctly priced by any decent model — but it only prices sun you can actually see. Orientation decides how you use an open sky; obstruction decides whether you have one. |
 | 4 | Tilt | Flat against the railing (vertical, 90°) or angled out on a bracket | The only variable you get to choose, and the one most often taken away by the railing design or the building’s rules. balco.nyc models four mount angles — 35°, 60°, 70° and vertical — because the gap between them is worth knowing before you argue with a board. |
 
-This ordering is why one particular claim deserves care. You will find it stated as a constant, across many pages, that a north-facing balcony produces **75% less** than a south-facing one. We could not trace that figure to a primary source; it appears without attribution and gets copied forward. The deeper problem is not the number, it is the framing. It presents azimuth as if it were the whole answer, on a page written for someone whose real constraint is the twelve-storey building forty feet away.
+This ordering is why one particular claim deserves care. You will find it stated as a constant, across many pages, that a north-facing balcony produces **75% less** than a south-facing one. It appears without attribution and gets copied forward; the closest match we found is an unshaded vertical panel in Berlin run through the EU’s PVGIS tool, and balco.nyc’s own runs put the US median at 71% less, so for an open view it is about right ([the claim traced](https://balco.nyc/balcony-solar-myths)). The deeper problem is not the number, it is the framing. It presents azimuth as if it were the whole answer, on a page written for someone whose real constraint is the twelve-storey building forty feet away.
 
-In a city the two effects compete, and obstruction usually wins. **An unobstructed high-floor north balcony can out-produce a south-facing balcony boxed in by a taller building across a narrow street.** balco.nyc’s own modelling puts roughly **3×** between the best and worst realistic NYC cases — a high-floor south balcony against a low-floor north one — and that spread is the *combination* of all four variables, not orientation working alone. Attribute the whole gap to which way you face and you will mis-rank two apartments in the same building.
+In a city the two effects compete, and obstruction usually wins. **In a tight enough canyon, an unobstructed high-floor north balcony can out-produce a south-facing balcony boxed in by a much taller building across a narrow street**; in balco.nyc’s model that happens once the top of the building opposite stands more than about 53° above the south balcony ([how the shade is modeled](https://balco.nyc/how-balcony-shading-is-modeled)). An open south railing makes more than three times what an open north one does (604 against 167 kWh), and a shaded low floor can lose more than half of either, so the spread between the best and worst realistic NYC balconies is closer to tenfold — the *combination* of all four variables, not orientation working alone. Attribute the whole gap to which way you face and you will mis-rank two apartments in the same building.
 
 One local wrinkle before you take the listing at its word: most of Manhattan’s grid is rotated about **29° east of true north**, aligned to the axis of the island rather than to the compass. What a broker calls a north-facing apartment is usually facing north-north-east. That rotation is large enough to change the answer, which is why the calculator asks for an address rather than a direction.
 
@@ -2296,7 +2297,7 @@ Then run the address. If you have not read [what a plug-in system actually is](h
 
 **How many hours of direct sun does a balcony need for solar to be worth it?**
 
-There is no hour threshold that makes solar work or not work — panels produce continuously, so the meaningful output is annual kilowatt-hours rather than a pass/fail. The common "three to four hours" rule comes from gardening advice and gives no method for finding out whether a given balcony clears it. In NYC, a typical 800 W system produces 400–900 kWh a year, worth roughly $136 to $306 at Con Edison's $0.34/kWh marginal rate.
+There is no hour threshold that makes solar work or not work — panels produce continuously, so the meaningful output is annual kilowatt-hours rather than a pass/fail. The common "three to four hours" rule comes from gardening advice and gives no method for finding out whether a given balcony clears it. In NYC, an 800 W panel on an open south-facing railing makes about 604 kWh a year, worth about $205 at Con Edison's $0.34/kWh marginal rate; shade from the building opposite can cut that by more than half.
 
 **Do balcony solar panels work in winter in New York?**
 
@@ -2304,7 +2305,7 @@ Yes, but less. The real winter losses are short days (about 9h15m of daylight on
 
 **Is a north-facing balcony worth solar panels?**
 
-Sometimes, and more often than the widely repeated "75% less" figure implies — a claim we could not trace to any primary source. About 40% of the year's light in the Northeast is diffuse and reaches a north-facing panel regardless of orientation, and from late September to late March a north-facing wall gets no direct sun at all, so diffuse is most of what it lives on. In a dense city an unobstructed high-floor north balcony can out-produce a south-facing one boxed in by a taller building across a narrow street.
+Sometimes. For an open view the widely repeated "75% less" figure is about right: balco.nyc's runs put the US median at 71% less. About 40% of the year's light in the Northeast is diffuse and reaches a north-facing panel regardless of orientation, and from late September to late March a north-facing wall gets no direct sun at all, so diffuse is most of what it lives on. In a tight enough canyon, where the top of the building opposite stands more than about 53 degrees above a south balcony, an unobstructed high-floor north balcony can out-produce it.
 
 **Does my floor number really change the answer that much?**
 
@@ -2316,7 +2317,7 @@ You can, but it takes a year to do properly and still returns hours rather than 
 
 **Will an 800 W kit really cover 15–25% of my electricity?**
 
-Usually not in New York. That figure is a nameplate-ideal one quoted with no shading derate applied. Against the EIA's New York average household consumption of about 6,850 kWh a year, the realistic 400–900 kWh NYC production band works out at roughly 6–13%, and a shaded low-floor balcony sits at the bottom of it.
+Usually not in New York. That figure is a nameplate-ideal one quoted with no shading derate applied. Against the EIA's New York average household consumption of about 6,850 kWh a year, an open south-facing NYC railing (about 604 kWh) covers about 9%, and a shaded low-floor balcony 3% or less.
 
 ## Sources
 
@@ -2968,7 +2969,7 @@ On standard residential SC-1 service, yes for kWh above the first 250 in a month
 URL: https://balco.nyc/electricity-rate  
 Last reviewed: 2026-09-04
 
-In New York City, a kWh you don’t buy from Con Edison is worth about 34 cents. That is the all-in marginal rate — supply, delivery, surcharges and the 4.5% city sales tax — from Con Edison’s published SC-1 residential bill history (33.83¢/kWh in 2025) plus the 3.5% delivery increase approved on 22 January 2026. Lower figures near 13–18¢ are supply only: correct for comparing suppliers, too low for valuing solar you consume yourself.
+In New York City, a kWh you don’t buy from Con Edison is worth about 34 cents. That is the all-in marginal rate — supply, delivery, surcharges and the 4.5% city sales tax — from Con Edison’s published SC-1 residential bill history (33.83¢/kWh in 2025) plus the rate plan approved on 22 January 2026, which raises a typical residential bill about 3.4–3.9% in 2026. Lower figures near 13–18¢ are supply only: correct for comparing suppliers, too low for valuing solar you consume yourself.
 
 ## There is no single “Con Edison rate”
 
@@ -2990,7 +2991,7 @@ Con Edison’s residential bill separates into a supply half and a delivery half
 |---|---|---|---|
 | Supply — Market Supply Charge, merchant function charge, Clean Energy Standard surcharge | 13.4–17.8¢/kWh, resets monthly | Yes | Yes |
 | Delivery — energy delivery charge plus riders and adjustment clauses | Remainder, roughly 14–19¢/kWh | Yes | Yes |
-| Basic service charge (fixed) | A fixed monthly amount, reported around $16–20 | No | No |
+| Basic service charge (fixed) | $21.00 a month from 1 February 2026, rising $1 a year through 2028 | No | No |
 | NYC sales tax at 4.5% — residential energy is exempt from the 4% state tax | Applied to the charges above | Yes | Yes |
 | All-in variable rate (SC-1, NYC, 2025) | 33.83¢/kWh | — | → modelled as $0.34 |
 
@@ -3000,7 +3001,7 @@ The delivery row is derived by subtraction, not quoted from a tariff sheet: it i
 
 Con Edison charges a basic service charge that you pay whether you use 50 kWh or 500. A balcony solar panel does not reduce it. Nothing reduces it except closing the account.
 
-So it does not belong in a rate used to value generation. At 350 kWh a month a fixed charge in the region of $16–20 works out to roughly 5¢/kWh, and including it would inflate the apparent savings from every kWh a panel produces by about that much — a number the customer would never actually see.
+So it does not belong in a rate used to value generation. At 350 kWh a month the $21 fixed charge works out to roughly 6¢/kWh, and including it would inflate the apparent savings from every kWh a panel produces by about that much — a number the customer would never actually see.
 
 > **The rule: value avoided consumption at the marginal rate, not the average rate.** An average rate that spreads a fixed charge across kWh answers “what did I pay per unit last month?” A marginal rate answers “what changes if I use one unit less?” Only the second question is the one solar answers.
 
@@ -3020,7 +3021,7 @@ New York’s [SUNNY Act](https://balco.nyc/sunny-act) makes this structural rath
 
 The starting point is Con Edison’s published average full-service rate for New York City SC-1 residential customers, which covers delivery, commodity and riders and is grossed up for state and local tax, with the fixed customer charge billed separately. That series reads **29.52¢ (2023) → 33.45¢ (2024) → 33.83¢ (2025)**, and 33.83¢ has continued to be reported as the effective rate through mid-2026.
 
-On **22 January 2026** the New York Public Service Commission adopted a three-year Joint Proposal in cases 25-E-0072 and 25-G-0073, raising electric *delivery* charges 3.5% in 2026, 3.2% in 2027 and 3.1% in 2028 — about 2.8% on a total residential bill in year one. Applying that to 33.83¢ gives roughly 34.8¢.
+On **22 January 2026** the New York Public Service Commission adopted a three-year Joint Proposal in cases 25-E-0072 and 25-G-0073, raising Con Edison’s electric *delivery* revenues 4.4% in 2026, 4.4% in 2027 and 4.3% in 2028, and total revenues 2.8% a year. The Department of Public Service puts the effect on a typical residential bill at about 3.4–3.9% in 2026 and 3.1–3.3% in each of the next two years, and the fixed customer charge rises by $1 a year, to $21 in 2026. Applying the 2026 bill increase to 33.83¢ gives roughly 35¢.
 
 So the defensible band for 2026 runs from about 33.8¢ to about 34.8¢. **balco.nyc uses $0.34**, near the bottom of that band. Rounding down by most of a cent is intentional: on a question where the modeller has an incentive to be generous, the tie should go against the model.
 
@@ -3030,7 +3031,7 @@ Last reviewed **31 August 2026**. The figure is re-checked each January against 
 
 $0.34/kWh is a modelling simplification, and it is worth saying plainly what it papers over.
 
-- **Season.** Con Edison’s residential delivery charges are tiered and materially higher from June through September, above 250 kWh a month. This is the largest single distortion — and it runs in solar’s favour, because peak summer rates coincide with peak summer production. An annual average *understates* the value of a summer kWh.
+- **Season.** From June through September Con Edison charges 18.858¢ rather than 16.402¢ for delivery above 250 kWh a month. On a roof that would run in solar’s favor, because summer is when a roof produces most. On a vertical railing it barely matters: June to September produce only about a quarter of a south railing’s output, so the summer tier is worth about $4 a year (worked here). For a roof, an annual average *understates* the value of a summer kWh; for a railing the difference is small.
 
 - **Rate plan.** Time-of-use and standard SC-1 customers face different per-kWh structures. Across plans, reported Con Edison residential rates span roughly 22¢ to 38¢/kWh.
 
@@ -3050,7 +3051,7 @@ This is the whole reason balcony solar pencils out in New York City despite medi
 
 It also means the choice of rate is the single most consequential input in any NYC balcony solar model. The gap between a supply-only 17.8¢ and an all-in 34¢ is a factor of nearly two on every payback period, every lifetime-savings figure, every break-even date. Which is why it is worth stating exactly which question a given number answers. The [cost and payback page](https://balco.nyc/balcony-solar-cost) shows what that does to the arithmetic.
 
-On escalation, balco.nyc assumes **3% a year** by default, with 2% and 4% presets, and reports results in nominal dollars. That default is anchored to the settlement’s own path — 3.5%, 3.2%, 3.1% on delivery through 2028 — rather than to recent history, which has run hotter: the SC-1 average rose from 29.52¢ to 33.83¢ between 2023 and 2025, about 7% a year compounded. If anything, 3% is the cautious assumption.
+On escalation, balco.nyc assumes **3% a year** by default, with 2% and 4% presets, and reports results in nominal dollars. That default is anchored to the settlement’s own path — typical residential bills up about 3.1–3.9% a year through 2028 — rather than to recent history, which has run hotter: the SC-1 average rose from 29.52¢ to 33.83¢ between 2023 and 2025, about 7% a year compounded. If anything, 3% is the cautious assumption.
 
 ## Common questions
 
@@ -3060,7 +3061,7 @@ Because they are answering different questions, usually without saying which. A 
 
 **What is the actual all-in cost of a kWh in New York City?**
 
-Con Edison's published average full-service rate for a New York City SC-1 residential customer was 33.83 cents per kWh in 2025, covering delivery, commodity and riders and grossed up for state and local tax. The 3.5% delivery increase approved on 22 January 2026 puts 2026 somewhere around 34 to 35 cents. balco.nyc models $0.34 per kWh, deliberately at the lower end of that band.
+Con Edison's published average full-service rate for a New York City SC-1 residential customer was 33.83 cents per kWh in 2025, covering delivery, commodity and riders and grossed up for state and local tax. The rate plan approved on 22 January 2026 raises a typical residential bill about 3.4 to 3.9% in 2026, which puts 2026 somewhere around 34 to 35 cents. balco.nyc models $0.34 per kWh, deliberately at the lower end of that band.
 
 **Why doesn't the 34 cent figure include the monthly customer charge?**
 
@@ -3076,7 +3077,7 @@ No. Under New York's SUNNY Act, plug-in solar is exempt from interconnection and
 
 **How much does the rate vary across New York City households?**
 
-Reported Con Edison residential rates span roughly 22 to 38 cents per kWh depending on rate plan, and delivery charges are tiered and materially higher from June through September. A single annual number is a simplification worth several cents in either direction — though the summer skew works in solar's favour, since peak production coincides with peak rates.
+Reported Con Edison residential rates span roughly 22 to 38 cents per kWh depending on rate plan, and from June through September delivery above 250 kWh a month costs 18.858 cents rather than 16.402. A single annual number is a simplification worth several cents in either direction. For a vertical south-facing balcony panel the summer tier matters little, about $4 a year, because such a panel produces most of its energy outside the summer.
 
 ## Sources
 
@@ -3711,11 +3712,11 @@ If your railing is glass, if the guard is visibly aged, or if you cannot establi
 
 ## Whether it is worth it for your apartment
 
-Preparation is also the point at which to decide honestly whether to proceed. A typical 800 W setup in New York City produces roughly **400 to 900 kWh a year**. That is a wide band because location dominates: a high-floor, south-facing balcony produces about **three times** what a low-floor, north-facing one does. Con Edison’s SC-1 all-in marginal rate is about **$0.34/kWh**, so the value of that output is what you avoid buying, not a credit — the SUNNY Act exempts these devices from net metering.
+Preparation is also the point at which to decide honestly whether to proceed. In balco.nyc’s model an 800 W panel on a New York City railing makes at most about **604 kWh a year** facing south with an open view, about 434 facing east or west and about 167 facing north. Location dominates: from the third floor, a six-to-ten-story building across the street cuts a south panel to about 227 kWh. Con Edison’s SC-1 all-in marginal rate is about **$0.34/kWh**, so the value of that output is what you avoid buying, not a credit — the SUNNY Act exempts these devices from net metering.
 
 Kits for a typical 800 W system run about **$850** budget, **$1,200** mid-range and **$1,600** premium. Add anything your building requires on top: an electrician for an outdoor receptacle, an engineer’s letter for the board, a certificate of insurance. The [cost and payback page](https://balco.nyc/balcony-solar-cost) works the arithmetic through.
 
-Run your own numbers on the [calculator](https://balco.nyc/), and read [how we get them](https://balco.nyc/methodology). Then consider the cases where the sensible answer is no. A north-facing balcony on a low floor, hemmed in by an adjacent building, with no outdoor outlet and a board that will require an alteration agreement, is a project where the costs are real and immediate and the savings are small and slow. There is no shame in concluding that this does not work for your apartment. It works very well for some, and poorly for others, and the difference is mostly the direction your balcony faces.
+Run your own numbers on the [calculator](https://balco.nyc/), and read [how we get them](https://balco.nyc/methodology). Then consider the cases where the sensible answer is no. A north-facing balcony on a low floor, hemmed in by an adjacent building, with no outdoor outlet and a board that will require an alteration agreement, is a project where the costs are real and immediate and the savings are small and slow. There is no shame in concluding that this does not work for your apartment. It works very well for some, and poorly for others, and the difference is mostly what stands across the street and which way your balcony faces.
 
 ## Common questions
 
@@ -4909,7 +4910,7 @@ The practical consequence of the state-by-state patchwork is that compliance doe
 
 ## What to do now
 
-If you are trying to work out whether this is worth pursuing for your apartment, the binding constraint is almost never the law — it is whether your balcony gets enough sun. A high-floor south-facing railing can produce roughly three times what a low-floor north-facing one does, and in a city this dense the buildings across the street matter as much as the direction you face — [which is the question worth answering first](https://balco.nyc/balcony-sunlight). If the sun is there, the next two are [what a kit costs and how long it takes to pay back](https://balco.nyc/balcony-solar-cost) and [what installing one actually involves](https://balco.nyc/install-balcony-solar).
+If you are trying to work out whether this is worth pursuing for your apartment, the binding constraint is almost never the law — it is whether your balcony gets enough sun. An open south-facing railing produces more than three times what an open north-facing one does, and in a city this dense the buildings across the street matter as much as the direction you face — [which is the question worth answering first](https://balco.nyc/balcony-sunlight). If the sun is there, the next two are [what a kit costs and how long it takes to pay back](https://balco.nyc/balcony-solar-cost) and [what installing one actually involves](https://balco.nyc/install-balcony-solar).
 
 [Run your address through the calculator](https://balco.nyc/) to see what an 800 W system would produce where you actually live, modelled against the real shadows of your block. If the answer is small, the legal question is moot for you. If it is large, start the conversation with your landlord or board now, because that is the part with the longest lead time.
 
@@ -5351,7 +5352,7 @@ In Con Edison territory the number that matters is the all-in marginal rate — 
 
 That makes self-consumption the dominant variable, and it is a behavioral one rather than a technical one. A refrigerator, a router, a standby television and a hot-water recirculation pump run through the middle of the day whether or not you are home, and they absorb a real share of a small system’s output. Beyond that baseload, the value depends on who is in the flat at noon.
 
-For sizing, balco.nyc models a typical 800 W NYC system at roughly **400–900 kWh a year**. That is a wide band on purpose. A high-floor, south-facing balcony produces about **three times** what a low-floor, north-facing one does, and the difference between those two cases is far larger than the difference between a budget kit and a premium one.
+For sizing, balco.nyc’s model puts an 800 W NYC panel at up to about **604 kWh a year** on an open south-facing railing, about 434 facing east or west and about 167 facing north, and the building across the street can take more than half of any of them. The difference between those cases is far larger than the difference between a budget kit and a premium one.
 
 > **One thing balcony solar can never touch: Con Edison’s fixed monthly customer charge, about $20, is billed whether you use any electricity or not. It is excluded from the $0.34/kWh marginal rate, and no amount of generation reduces it.**
 
@@ -5433,7 +5434,7 @@ Yes. The SUNNY Act, if signed, would remove the utility's ability to require an 
 
 **How much does a balcony solar kit cost, and how much does it produce in New York City?**
 
-A typical 800 W setup costs roughly $850 for a budget kit, $1,200 mid-range, or $1,600 premium, before mounting complications. balco.nyc models annual production for such a system in New York City at roughly 400 to 900 kWh, with a high-floor south-facing balcony producing about three times what a low-floor north-facing one does. These are modelled estimates with a stated accuracy of plus or minus 15%, not metered results.
+A typical 800 W setup costs roughly $850 for a budget kit, $1,200 mid-range, or $1,600 premium, before mounting complications. balco.nyc's model puts annual production for such a system in New York City at up to about 604 kWh on an open south-facing railing, about 434 facing east or west and 167 facing north, before shade from the buildings opposite. These are modelled estimates with a stated accuracy of plus or minus 15%, not metered results.
 
 ## Sources
 

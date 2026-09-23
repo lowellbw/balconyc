@@ -145,6 +145,7 @@ describe('Repeated figures agree everywhere', () => {
       [/best balcony solar kits?/i, 'product rankings (not a vendor, not a reviewer)'],
       [/[?&](ref|tag|aff)=|amzn\.to/i, 'affiliate links'],
       [/legal in all 50 states/i, 'a false national legality claim'],
+      [/400\s*(to|&ndash;|–|-)\s*900\s*(&nbsp;|\s)*kWh|\$136 to (roughly )?\$306/i, 'the retired 400-900 kWh NYC band (the model tops out near 604 kWh on a railing)'],
     ];
     for (const page of [...allPages, { file: 'llms.txt' }]) {
       const text = read(page.file);

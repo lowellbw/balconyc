@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Run PVWatts once per state, with exactly the calculator's parameters.
 //
-//   NREL_API_KEY=... PVWATTS_URL=https://developer.nlr.gov/api/pvwatts/v8.json \
+//   NREL_API_KEY=... \
 //     node tools/fetch_state_pvwatts.js            # fetch what is missing
 //   node tools/fetch_state_pvwatts.js --refresh     # fetch everything again
 //

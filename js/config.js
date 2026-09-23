@@ -51,13 +51,15 @@ const SolarConfig = {
 
   // Con Edison SC-1 residential all-in marginal rate (supply + delivery +
   // GRT + sales tax), 2026. Source: Con Ed historical bill table 2023-2025
-  // (2025 avg 33.83 c/kWh) + 2026 rate case settlement approved 2026-01-22 (+3.5%).
+  // (2025 avg 33.83 c/kWh) + the rate plan adopted 2026-01-22 in Case
+  // 25-E-0072 (typical residential bill +3.4-3.9% in 2026, per the DPS summary).
   ELECTRICITY_RATE: 0.34,
 
   // Fixed monthly Customer Charge, excluded from the marginal rate above
   // because solar cannot offset it. Subtracted from the user's stated bill
-  // before inferring their consumption.
-  MONTHLY_CUSTOMER_CHARGE: 20,
+  // before inferring their consumption. PSC No. 10, SC-1 Rate I: $21.00 from
+  // 2026-02-01, rising $1 a year through 2028 under Case 25-E-0072.
+  MONTHLY_CUSTOMER_CHARGE: 21,
 
   RATE_ESCALATION: 0.03,
   RATE_ESCALATION_PRESETS: { low: 0.02, mid: 0.03, high: 0.04 },

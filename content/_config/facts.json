@@ -3,7 +3,7 @@
   "coned": {
     "rate_cents": 34,
     "rate_dollars": "0.34",
-    "customer_charge": 20
+    "customer_charge": 21
   },
   "co2": {
     "nycw_lb_per_kwh": 0.864
@@ -27,9 +27,12 @@
     "expired": "2025-12-31"
   },
   "nyc": {
-    "band_low_kwh": 400,
-    "band_high_kwh": 900,
-    "household_kwh": 6850
+    "household_kwh": 6850,
+    "south_open_kwh": 604,
+    "east_west_open_kwh": 434,
+    "north_open_kwh": 167,
+    "south_35_kwh": 988,
+    "south_open_usd": 205
   },
   "model": {
     "railing_factor": {

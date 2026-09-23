@@ -471,13 +471,18 @@ def hub(rows, energy, status, pages):
         for r in sorted(rows.values(), key=lambda r: r["code"]))
     legend = "\n".join(f'      <span class="tile-key s-{s}">{STATUS_LABEL[s]} ({counts[s]})</span>'
                        for s in STATUS_ORDER if counts[s])
+    awaiting = sorted(r["name"] for r in rows.values() if r["status"]["status"] == "passed_awaiting_signature")
+    awaiting_text = (f" Bills awaiting a governor&rsquo;s signature: {' and '.join(awaiting)}."
+                     if awaiting else "")
+    unknown_text = (f" {counts['unknown']} states have not yet been reviewed for this table."
+                    if counts["unknown"] else "")
     best = sorted(rows.values(), key=lambda r: r["payback"]["mid"] or 99)[:5]
     worst = sorted(rows.values(), key=lambda r: r["payback"]["mid"] or 99)[-5:]
     sunniest = max(rows.values(), key=lambda r: r["kwh"][180])
     dullest = min(rows.values(), key=lambda r: r["kwh"][180])
     body = f'''      <section id="summary">
         <h2>The short answer</h2>
-        <p>As of {fmt_date(reviewed)}, <strong>{len(signed)} states</strong> have signed a plug-in solar law: {", ".join(sorted(r["name"] for r in signed))}. {counts["in_force"]} of them are already in force. New York&rsquo;s SUNNY Act has passed both chambers and awaits the Governor&rsquo;s signature. Everywhere else, a device that feeds power into a home circuit still needs the utility&rsquo;s approval, and {counts["unknown"]} states have not yet been reviewed for this table.</p>
+        <p>As of {fmt_date(reviewed)}, <strong>{len(signed)} states</strong> have signed a plug-in solar law: {", ".join(sorted(r["name"] for r in signed))}. {counts["in_force"]} of them are already in force.{awaiting_text} Everywhere else, a device that feeds power into a home circuit still needs the utility&rsquo;s approval.{unknown_text}</p>
         <p>What a balcony panel is worth depends far more on the price of electricity than on the sunshine. Across the 51 states and DC, the electricity price explains <strong>{r2_rate:.0%}</strong> of the variation in payback time; how much a south-facing panel produces explains <strong>{r2_kwh:.0%}</strong>. {sunniest["city"]} gets the most from a south-facing railing ({sunniest["kwh"][180]:,.0f}&nbsp;kWh a year) and {dullest["city"]} the least ({dullest["kwh"][180]:,.0f}), but payback is fastest in {", ".join(r["name"] for r in best[:3])}, where electricity is dearest.</p>
       </section>
 

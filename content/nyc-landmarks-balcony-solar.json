@@ -1,0 +1,165 @@
+{
+  "slug": "nyc-landmarks-balcony-solar",
+  "title": "Balcony solar in an NYC landmark or historic district &middot; balco.nyc",
+  "og_title": "Balcony solar in an NYC landmark or historic district: does LPC approval apply?",
+  "breadcrumb": "Landmarks and LPC",
+  "cluster": "nyc",
+  "pillar": false,
+  "card_title": "Does LPC approval apply to balcony solar in a historic district?",
+  "card": "LPC&rsquo;s solar rules cover roofs only. 6.8% of NYC homes are regulated; how a railing panel fares.",
+  "llms": "that a panel attached to a designated New York City building needs a Landmarks Preservation Commission permit, that LPC's solar rules (63 RCNY 2-21) cover only roofs so a street-facing balcony has no staff-level route, and that balco.nyc's PLUTO count puts 253,715 homes (6.8% of the city's residential units, 17.2% in Manhattan) in historic districts or on landmark lots.",
+  "related": [
+    "nyc-coop-condo-board-balcony-solar",
+    "install-balcony-solar",
+    "sunny-act"
+  ],
+  "description": "Usually yes, if the panel attaches. LPC's solar rules cover only roofs, and 6.8% of NYC homes (17% in Manhattan) are regulated. How to ask, and how long.",
+  "eyebrow": "Landmarks and LPC",
+  "h1": "Balcony solar in an NYC landmark or historic district: does LPC approval apply?",
+  "lede": "Almost certainly yes, if the panel attaches to the building: the Landmarks Law requires a Landmarks Preservation Commission permit for any addition to a designated building&rsquo;s exterior, even work that needs no Buildings Department permit. LPC has written no rule for balcony panels &mdash; its solar criteria cover only roofs &mdash; so a street-facing railing panel would go to a public hearing. balco.nyc&rsquo;s count of the city&rsquo;s PLUTO tax-lot data puts <strong>253,715 homes, 6.8% of New York City&rsquo;s residential units</strong>, in historic districts or on individual landmark lots, and 17.2% of Manhattan&rsquo;s.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~9 minutes",
+  "tags": [
+    "253,715 homes (6.8%)",
+    "17.2% of Manhattan",
+    "Roof-only solar rules"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "short-answer",
+      "toc": "The short answer, and who it reaches",
+      "html": "        <section id=\"short-answer\">\n  <h2><span class=\"sec-num\">1</span>The short answer, and how many homes it reaches</h2>\n<p>If the panel attaches to the outside of a designated building &mdash; clamped, strapped or bolted to a balcony railing &mdash; the Landmarks Law almost certainly requires a Landmarks Preservation Commission (LPC) permit before it goes up. The law defines &ldquo;minor work&rdquo; as any &ldquo;addition to&rdquo; the parts of a building that needs no Buildings Department permit, and makes it unlawful to do such work without an LPC permit (Administrative Code &sect;&sect;25-302 and 25-310). LPC&rsquo;s own permit page says the same in plain terms: exterior work needs its permit even when the Buildings Department requires none.</p>\n  <p>LPC has written nothing about balcony or plug-in panels. Its solar criteria (&sect;2-21 of its rules, Title 63 of the Rules of the City of New York) cover roofs and rooftop structures, and no staff-level rule covers equipment on a street-facing facade. On the rules as written, a front-balcony panel goes to the full Commission at a public hearing.</p>\n  <p>balco.nyc counted who this affects, using the city&rsquo;s PLUTO tax-lot data (release 26v2, August 2026). <strong>253,715 homes on 30,344 tax lots &mdash; 6.8% of New York City&rsquo;s 3,736,645 residential units &mdash; are in a historic district or on an individual landmark lot.</strong> In Manhattan it is 17.2%, about one home in six, and a third of the borough&rsquo;s residential lots.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Borough</th><th>Residential lots regulated</th><th>Homes regulated</th><th>Share of the borough&rsquo;s homes</th><th>Share of its residential lots</th></tr></thead><tbody>\n    <tr><td>Manhattan</td><td>10,777</td><td>164,582</td><td><strong>17.2%</strong></td><td>33.2%</td></tr>\n    <tr><td>Brooklyn</td><td>14,930</td><td>62,688</td><td>5.6%</td><td>6.0%</td></tr>\n    <tr><td>Queens</td><td>3,555</td><td>15,592</td><td>1.8%</td><td>1.2%</td></tr>\n    <tr><td>Bronx</td><td>813</td><td>10,173</td><td>1.7%</td><td>1.1%</td></tr>\n    <tr><td>Staten Island</td><td>269</td><td>680</td><td>0.4%</td><td>0.2%</td></tr>\n    <tr><td><strong>New York City</strong></td><td><strong>30,344</strong></td><td><strong>253,715</strong></td><td><strong>6.8%</strong></td><td><strong>4.0%</strong></td></tr>\n  </tbody></table></div>\n  <p>How balco.nyc counted: a lot is included if PLUTO&rsquo;s <code>histdist</code> field names a historic district or its <code>landmark</code> field records an individual landmark; &ldquo;homes&rdquo; is PLUTO&rsquo;s <code>unitsres</code>. Lots with only an interior landmark (26 lots, 364 units) are excluded, since that designation does not reach the facade. So are two Roosevelt Island lots (8,383 units) that PLUTO flags because the Octagon and the Chapel of the Good Shepherd stand on them; the apartment towers around them are not designated. Historic districts hold 90% of the total.</p>\n</section>"
+    },
+    {
+      "id": "districts",
+      "toc": "The five districts with the most homes",
+      "html": "        <section id=\"districts\">\n  <h2><span class=\"sec-num\">2</span>The five historic districts with the most homes</h2>\n<p>From the same count, these are the five historic districts, as PLUTO names them, with the most residential units:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th></th><th>Historic district</th><th>Borough</th><th>Homes</th><th>Residential lots</th></tr></thead><tbody>\n    <tr><td>1</td><td>Upper West Side/Central Park West</td><td>Manhattan</td><td>28,602</td><td>1,675</td></tr>\n    <tr><td>2</td><td>Greenwich Village</td><td>Manhattan</td><td>21,219</td><td>1,709</td></tr>\n    <tr><td>3</td><td>Upper East Side</td><td>Manhattan</td><td>10,117</td><td>814</td></tr>\n    <tr><td>4</td><td>Brooklyn Heights</td><td>Brooklyn</td><td>9,519</td><td>1,179</td></tr>\n    <tr><td>5</td><td>Riverside&ndash;West End Extension&nbsp;II</td><td>Manhattan</td><td>8,652</td><td>290</td></tr>\n  </tbody></table></div>\n  <p>LPC designated Riverside&ndash;West End in three parts. Taken together, the district and its two extensions hold 18,772 homes and would rank third. Next on the list are Jackson Heights in Queens (8,062) and Park Slope in Brooklyn (7,356).</p>\n  <p>Most regulated homes are in apartment buildings, not rowhouses. Three in four regulated residential lots (73%) hold one to five homes, but <strong>81% of regulated homes are in buildings of six or more units</strong>, where a board or landlord stands between the resident and LPC. The individual landmarks include two public-housing developments, Williamsburg Houses and Harlem River Houses; NYCHA residents face their own rules, covered in <a href=\"/nyc-rent-stabilized-nycha-balcony-solar\">the rent-stabilized and NYCHA guide</a>.</p>\n</section>"
+    },
+    {
+      "id": "the-rules",
+      "toc": "What LPC&rsquo;s solar rules cover",
+      "html": "        <section id=\"the-rules\">\n  <h2><span class=\"sec-num\">3</span>What LPC&rsquo;s solar rules cover, and what they leave out</h2>\n<p>LPC&rsquo;s rules define &ldquo;mechanical equipment&rdquo; to include &ldquo;solar and wind power equipment&rdquo; (63 RCNY &sect;2-21(b)), so a solar panel is regulated like a condenser or a generator. Amendments adopted on 11 July 2023, in effect since August 2023, widened what staff can approve without a hearing. The criteria in &sect;2-21(g)(3), unchanged in the current compilation (effective 25 July 2024), allow:</p>\n  <ul>\n    <li><strong>Flat roofs:</strong> arrays that are &ldquo;minimally visible&rdquo; over any facade if placed to minimize visibility, and more visible over a rear or side facade only when seen through a gap of 25 feet or less between buildings.</li>\n    <li><strong>Pergolas, bulkheads and other rooftop structures:</strong> panels parallel and close to the surface, black-on-black if visible.</li>\n    <li><strong>Sloped roofs:</strong> panels visible over the street front only where other locations lack sun, in a small black-on-black footprint, off slate or tile, and not on an individual landmark.</li>\n  </ul>\n  <p>&ldquo;Minimally visible&rdquo; is defined by numbers. Seen from any public thoroughfare, the equipment may project no more than 12 inches into the line of sight if it is under 60 feet up, rising to 36 inches above 100 feet, or it must not &ldquo;call attention to itself.&rdquo; A panel on the outside of a street-facing railing is in full view, so it cannot meet the first test.</p>\n  <p>The words balcony and railing do not appear in any of those criteria. The nearest rule is &sect;2-21(e), for wall-mounted HVAC &ldquo;and other mechanical equipment&rdquo; on <em>secondary</em> facades, meaning rear or side walls that do not face a street. Staff will approve such equipment if it is minimally visible, or more visible when it is seen next to utilitarian features such as fire escapes, sits in the least visible spot, attaches reversibly and has a neutral finish. Apart from window and through-wall air conditioners, there is no matching provision for a primary facade, meaning one that faces a street. LPC&rsquo;s April 2024 solar fact sheet encourages proposals outside the rules to seek a public hearing.</p>\n  <p>Nothing pending changes this. The amendments LPC calendared in July 2026 would add a rule for new metal balconies on rear facades and touch &sect;2-21 only for louvers. balco.nyc also checked LPC&rsquo;s permit-application dataset (351,502 records, updated 21&nbsp;September 2026). Of 524 solar applications since the current work-type categories began in April 2023, 424 were tagged &ldquo;flat roof&rdquo;, 102 &ldquo;sloped roof&rdquo; and 2 &ldquo;other&rdquo;. <strong>No record in the dataset carries a work type naming a balcony or a railing.</strong></p>\n</section>"
+    },
+    {
+      "id": "alteration",
+      "toc": "Is a removable panel an alteration?",
+      "html": "        <section id=\"alteration\">\n  <h2><span class=\"sec-num\">4</span>Is a removable railing panel an &ldquo;alteration&rdquo;?</h2>\n<p>Removability does not take it outside LPC&rsquo;s reach. LPC&rsquo;s solar fact sheet itself calls mechanical equipment temporary and reversible in nature, and regulates it anyway; its rules even provide permits for temporary signs and artwork that stay up a year or less (&sect;2-05). Reversibility is a criterion for approval, not an exemption. The law&rsquo;s test is whether something is added to the building, and a clamp on the railing adds something.</p>\n  <p>Which permit applies depends on the Buildings Department. If the installation needs no DOB permit, it is minor work and needs a Permit for Minor Work (&sect;25-310). If it does need one, LPC issues a Certificate of No Effect when the work does not harm protected features (&sect;25-306), or the full Commission decides on a Certificate of Appropriateness (&sect;25-307). Whether DOB wants its own permit is a separate question, covered in <a href=\"/nyc-fire-escape-facade-rules\">the facade and fire-escape guide</a>.</p>\n  <p>Only two LPC exemptions come close. Seasonal window air conditioners that sit within the window frame need none (&sect;2-21(c)(1)), and its Permit Guidebook exempts temporary signs that do not physically attach to the building or can easily be moved. Neither mentions solar. A panel standing on the balcony floor, attached to nothing, falls in a gap LPC has not addressed. Ask LPC before buying (its permits page gives 212-669-7817) and get the answer in writing.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Where the panel goes</th><th>Nearest LPC rule</th><th>Likely route</th></tr></thead><tbody>\n    <tr><td>Street-facing balcony railing</td><td>None: no staff rule for equipment on a primary facade</td><td>Public hearing; Certificate of Appropriateness if approved</td></tr>\n    <tr><td>Rear balcony, not visible from a street or park</td><td>&sect;2-21(e), by analogy</td><td>Probably staff level (PMW or CNE); LPC&rsquo;s call</td></tr>\n    <tr><td>Rear balcony seen through a gap or beside a fire escape</td><td>&sect;2-21(e)(1)</td><td>Possibly staff level, if in the least visible spot with a neutral finish</td></tr>\n    <tr><td>Roof or setback terrace</td><td>&sect;2-21(g)(3), flat-roof criteria</td><td>Staff level if minimally visible</td></tr>\n    <tr><td>Freestanding on the balcony floor, attached to nothing</td><td>None</td><td>Unaddressed; ask LPC in writing</td></tr>\n  </tbody></table></div>\n  <p>The easy route and the sunny side are not always the same wall. Manhattan&rsquo;s grid is rotated about 29&deg; from true north (see <a href=\"/balcony-sunlight\">does my balcony get enough sun</a>), so buildings on a cross street face roughly 29&deg; or 209&deg;. balco.nyc&rsquo;s PVWatts runs for an 800&nbsp;W vertical railing system in New York City, after the 5% railing loss, give 604&nbsp;kWh a year facing 180&deg;, 562 facing 225&deg;, 265 facing 45&deg; and 167 facing 0&deg;. So the rear wall of a building on the south side of a cross street, facing about 209&deg;, sits between 562 and 604&nbsp;kWh: roughly $191&ndash;$205 a year at Con Edison&rsquo;s {{coned.rate_cents}}&cent; marginal rate. On the north side the rear faces about 29&deg; and sits between 167 and 265&nbsp;kWh, $57&ndash;$90, and the sunny wall is the street front LPC protects most. These are unshaded ceilings.</p>\n</section>"
+    },
+    {
+      "id": "applying",
+      "toc": "How to apply, and how long it takes",
+      "html": "        <section id=\"applying\">\n  <h2><span class=\"sec-num\">5</span>How to ask LPC, and how long it takes</h2>\n<p>Every application goes through Portico, LPC&rsquo;s online permit portal (<a href=\"https://portico.lpc.nyc.gov/\">portico.lpc.nyc.gov</a>). There is no fee to submit an application. The owner must sign it, and LPC&rsquo;s rules spell out who counts as the owner (63 RCNY &sect;2-01):</p>\n  <ul>\n    <li><strong>Co-op:</strong> the president or another appropriate officer of the co-op board. The managing agent&rsquo;s signature is not sufficient.</li>\n    <li><strong>Condo:</strong> an officer of the condominium association for common areas, which often include balconies. A unit owner signs only for work on their own unit (see <a href=\"/balcony-solar-condo-hoa\">condo and co-op rules</a>).</li>\n    <li><strong>Rental:</strong> the landlord (see <a href=\"/balcony-solar-renters\">renters and landlords</a>).</li>\n  </ul>\n  <p>LPC has published no checklist for a balcony panel. Adapted from its rooftop solar fact sheet, a complete application would include photographs of the facade, balcony and street; the panel&rsquo;s product cut sheet; a dimensioned drawing of how the panel, clamps and safety tether attach and where the cable runs; a mock-up photographed from the sidewalk at LPC&rsquo;s 6-foot eye level; and a statement of how the panel comes off without damaging the railing.</p>\n  <p>A building expecting several requests can apply for a master plan (&sect;2-02). It sets one approved design, and each later installation that conforms to it gets a staff-level permit.</p>\n  <p>By law, LPC must act within 20 working days for a Permit for Minor Work, 30 for a Certificate of No Effect and 90 for a Certificate of Appropriateness, counted from when the application is complete. Actual times are shorter. balco.nyc measured the gap between the received and issue dates LPC records for applications received in 2024 and 2025:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Outcome</th><th>Applications</th><th>Median days, received to issued</th></tr></thead><tbody>\n    <tr><td>Permit for Minor Work (staff)</td><td>3,663</td><td>15</td></tr>\n    <tr><td>Certificate of No Effect (staff)</td><td>7,955</td><td>17</td></tr>\n    <tr><td>Approved at a public hearing (status update letter)</td><td>428</td><td>109</td></tr>\n    <tr><td>Solar-only applications, April 2023 to September 2026 (CNE)</td><td>438</td><td>8</td></tr>\n  </tbody></table></div>\n  <p>Solar has become routine on roofs. Of 470 applications since April 2023 whose only listed work was solar, 438 (93%) ended in a staff-level Certificate of No Effect. Brooklyn filed 372 of the 524 solar applications, Manhattan 62. None of that predicts how a railing panel would fare; the dataset has no category for one.</p>\n</section>"
+    },
+    {
+      "id": "board",
+      "toc": "What LPC approval means for the board",
+      "html": "        <section id=\"board\">\n  <h2><span class=\"sec-num\">6</span>What LPC approval means for the board, and what it doesn&rsquo;t</h2>\n<p>The order is fixed: <strong>the board or landlord comes first</strong>, because LPC will not take an application without the owner&rsquo;s signature. An LPC permit is then necessary but not sufficient. It says the work is acceptable for the landmark. It does not oblige the building to allow it. In New York a board&rsquo;s decision made in good faith, within its authority and for the building&rsquo;s purposes will generally stand, as <a href=\"/nyc-coop-condo-board-balcony-solar\">the co-op and condo board guide</a> explains. The reverse also holds: board consent without an LPC permit still leaves a Landmarks Law violation.</p>\n  <p>That is why boards in historic districts ask about LPC early. LPC&rsquo;s enforcement is aimed at the property owner, and it holds the current owner responsible even for work a prior owner did without permits. The usual sequence is a warning letter, then a summons heard at the Office of Administrative Trials and Hearings. An unpermitted panel is the building&rsquo;s violation to cure, and a permit removes that risk: often the most useful thing a resident can bring to a skeptical board.</p>\n  <p>LPC approval also does not make plug-in solar legal to connect. New York&rsquo;s <a href=\"/sunny-act\">SUNNY Act</a> has passed both chambers and {{sunny.phrase}}. Its text does not mention landmarks, historic districts, landlords or boards, so it neither overrides LPC nor gives anyone a right to install. See <a href=\"/con-edison-plug-in-solar\">Con Edison and plug-in solar</a> for the utility side and <a href=\"/install-balcony-solar\">how to install balcony solar</a> for the physical checks.</p>\n  <div class=\"callout\"><p><strong>Not legal advice.</strong> This page reads the Landmarks Law, LPC&rsquo;s rules and its published data as of 23 September 2026. LPC has not ruled on a plug-in balcony panel, so how it would treat yours is a judgment its staff or Commission makes case by case. Check your building&rsquo;s status on LPC&rsquo;s <a href=\"https://experience.arcgis.com/experience/fa1bcaad31374a88839da3f0166e640a/\">Discover NYC Landmarks map</a> and ask LPC before you buy.</p></div>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Do I need LPC approval to put a solar panel on my balcony in an NYC historic district?",
+      "If the panel attaches to the building, almost certainly yes. The Landmarks Law requires an LPC permit for any addition to the exterior of a designated building, including work that needs no Buildings Department permit (Administrative Code sections 25-302 and 25-310). LPC has not ruled on plug-in balcony panels specifically, so ask it in writing before buying. This is not legal advice."
+    ],
+    [
+      "Does the Landmarks Preservation Commission have rules for balcony or plug-in solar panels?",
+      "No. As of September 2026, LPC's staff-level solar criteria (63 RCNY section 2-21(g)(3)) cover flat roofs, sloped roofs and rooftop structures only. The closest provision is section 2-21(e), for wall-mounted mechanical equipment on rear and side facades. No rule lets staff approve equipment on a street-facing facade, so a front-balcony panel would go to a public hearing."
+    ],
+    [
+      "How many New York City homes are in historic districts or landmarks?",
+      "balco.nyc's count of the city's PLUTO tax-lot data (release 26v2) puts 253,715 residential units on 30,344 tax lots in historic districts or on individual landmark lots: 6.8% of the city's 3,736,645 units. Manhattan has 164,582 of them, 17.2% of its homes. Historic districts account for 90% of the total."
+    ],
+    [
+      "How long does LPC take to approve solar panels?",
+      "For rooftop solar, usually days. In LPC's permit data, applications since April 2023 whose only work was solar got a staff-level Certificate of No Effect in 93% of cases, with a median of 8 days from receipt to issue. Proposals that go to a public hearing took a median of 109 days to approval in 2024-2025. The legal limits, counted from a complete application, are 20, 30 and 90 working days for the three permit types."
+    ],
+    [
+      "Can I apply to LPC myself if I live in a co-op or a rental?",
+      "No. LPC's rules (63 RCNY section 2-01) require the owner's signature: an officer of the co-op board (a managing agent's signature is not enough), an officer of the condo association for common areas, which often include balconies, or the landlord for a rental. A condo owner signs only for work on their own unit. In practice the board or landlord has to agree before LPC will review the application."
+    ],
+    [
+      "Does the SUNNY Act override landmark rules in New York?",
+      "No. The SUNNY Act has passed both chambers and awaits the Governor's signature. Its text does not mention landmarks, historic districts, landlords or boards. It deals with utility interconnection for compliant plug-in devices, not with building permission, so LPC permits and the building's consent would still be required."
+    ],
+    [
+      "Can I avoid LPC review with a freestanding panel that is not attached to anything?",
+      "Possibly, but LPC has not said. The law covers additions to a building, and LPC exempts seasonal window air conditioners and unattached, movable signs, but no exemption mentions solar. A panel standing on a balcony floor falls in an unaddressed gap. Call LPC (212-669-7817), describe it exactly, and get the answer in writing."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCadmin/0-0-0-133896",
+      "title": "NYC Administrative Code &mdash; Title 25, Chapter 3: Landmarks Preservation and Historic Districts",
+      "note": "the Landmarks Law: definitions of &ldquo;minor work&rdquo;, &ldquo;exterior architectural feature&rdquo; and &ldquo;ordinary repairs and maintenance&rdquo; (&sect;25-302); Certificate of No Effect (&sect;25-306), Certificate of Appropriateness (&sect;25-307) and Permit for Minor Work (&sect;25-310). LPC&rsquo;s own site links to this edition."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/lpc/downloads/pdf/Rules/Rules_of_the_NYC_Landmarks_Preservation_Commission.pdf",
+      "title": "NYC Landmarks Preservation Commission &mdash; Rules (63 RCNY), compilation effective 25 July 2024",
+      "note": "&sect;2-01 (who must sign), &sect;2-02 (master plans), &sect;2-05 (temporary installations), &sect;2-21(b) (&ldquo;mechanical equipment&rdquo; includes solar; &ldquo;minimally visible&rdquo;), &sect;2-21(c)(1) (window air conditioners), &sect;2-21(e) (wall-mounted equipment on secondary facades) and &sect;2-21(g)(3) (solar panels)."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/lpc/downloads/pdf/pubs/Solar%20Panels.pdf",
+      "title": "LPC &mdash; Fact Sheet: Installing Solar Panels (April 2024)",
+      "note": "solar treated as mechanical equipment and described as temporary and reversible; application materials (photos, drawings, cut sheets, mock-ups at 6-foot eye level); proposals outside the rules encouraged to seek a public hearing."
+    },
+    {
+      "url": "https://www.nyc.gov/site/lpc/applications/permit-types.page",
+      "title": "LPC &mdash; Permit Types",
+      "note": "a permit is required for exterior work even where no DOB permit is needed; 95% of approvals are staff-level; work outside the rules goes to a public hearing; no fee to submit an application."
+    },
+    {
+      "url": "https://www.nyc.gov/site/lpc/about/permits-and-making-alterations.page",
+      "title": "LPC &mdash; Permits and Making Alterations",
+      "note": "most exterior changes to front and rear facades in historic districts need LPC review; ordinary repairs do not; the Commission&rsquo;s number for questions about whether a permit is needed."
+    },
+    {
+      "url": "https://www.nyc.gov/site/lpc/applications/apply.page",
+      "title": "LPC &mdash; Apply on Portico",
+      "note": "Portico as the only filing route; statutory deadlines of 30, 20 and 90 working days for CNE, PMW and CofA."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/lpc/downloads/pdf/LPC-Permit-Guidebook.pdf",
+      "title": "LPC &mdash; Permit Guidebook (2025 edition)",
+      "note": "owner attestation in co-op and condo buildings; review times; the signage exemption for signs not physically attached and easily moved."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/lpc/downloads/pdf/Rules/LPC_Proposed_Rules_Amendments_07132026.pdf",
+      "title": "LPC &mdash; Proposed Amendments to LPC Rules, calendared July 2026",
+      "note": "the pending package: a new rule for rear metal balconies and a &sect;2-21 change limited to louvers; nothing on solar at balconies."
+    },
+    {
+      "url": "https://www.nyc.gov/site/lpc/about/pr2023/lpc-approves-new-rules-streamlining-procedures.page",
+      "title": "LPC &mdash; LPC Approves New Rules Streamlining Procedures (11 July 2023)",
+      "note": "the 2023 amendments broadening the solar installations eligible for staff-level review."
+    },
+    {
+      "url": "https://www.nyc.gov/site/lpc/violations/violations.page",
+      "title": "LPC &mdash; Violations",
+      "note": "enforcement against owners, including for work by prior owners; warning letter, summons and OATH hearing."
+    },
+    {
+      "url": "https://data.cityofnewyork.us/City-Government/Primary-Land-Use-Tax-Lot-Output-PLUTO-/64uk-42ks",
+      "title": "NYC Open Data &mdash; Primary Land Use Tax Lot Output (PLUTO), release 26v2",
+      "note": "the histdist, landmark and unitsres fields behind balco.nyc&rsquo;s count of regulated homes by borough and district (queried 23 September 2026)."
+    },
+    {
+      "url": "https://data.cityofnewyork.us/Housing-Development/LPC-Permit-Application-Information/dpm2-m9mq",
+      "title": "NYC Open Data &mdash; LPC Permit Application Information",
+      "note": "351,502 LPC permit records (updated 21 September 2026) behind balco.nyc&rsquo;s counts of solar applications, work types and review times."
+    },
+    {
+      "url": "https://data.cityofnewyork.us/Housing-Development/Designated-and-Calendared-Buildings-and-Sites/ncre-qhxs",
+      "title": "NYC Open Data &mdash; LPC Designated and Calendared Buildings and Sites",
+      "note": "used to confirm which structures on the two Roosevelt Island lots are designated, and to identify large landmark lots such as Williamsburg Houses and Harlem River Houses."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "New York State Senate &mdash; S8512C (SUNNY Act)",
+      "note": "the bill text, which does not mention landmarks, historic districts, landlords or boards."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not legal advice. LPC&rsquo;s rules and practice change; check your building&rsquo;s status and ask the Commission before relying on this page."
+}

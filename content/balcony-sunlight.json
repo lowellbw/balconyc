@@ -8,6 +8,7 @@
   "card": "How direction, floor height, and nearby buildings affect output.",
   "llms": "why there is no hours-of-sun threshold, and why in a dense city obstruction and floor height decide the answer more than which way the balcony faces.",
   "related": [
+    "how-balcony-shading-is-modeled",
     "electricity-rate",
     "balcony-solar-cost",
     "what-is-balcony-solar"

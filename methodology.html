@@ -178,6 +178,9 @@
     .tile-key.s-failed_or_vetoed::before { background: #D8D2C8; }
     .tile-key.s-unknown::before { background: #fff; border: 1px dashed #C8C2B8; }
     .state-table td:nth-child(n+3), .state-table th:nth-child(n+3) { text-align: right; white-space: nowrap; }
+    .doc-content dl { margin: 0 0 24px; }
+    .doc-content dt { font-weight: 700; margin-top: 16px; scroll-margin-top: 90px; }
+    .doc-content dd { margin: 4px 0 0; color: var(--text); }
   </style>
   <script type="application/ld+json">
   {
@@ -431,7 +434,7 @@ shade_factor = Σ(received) / Σ(assumed)</code></pre>
 
           <p><strong>Direct sun hours.</strong> The "hours of direct sun" figure in the info panel is derived from the same horizon profile as the energy model, so the number shown and the number used can no longer disagree.</p>
 
-          <p><strong>Railing obstruction.</strong> The railing, mounting hardware and the balcony floor above clip the bottom edge of a rail-mounted panel. Footprints cannot see any of it and PVWatts assumes an unobstructed module, so it is applied as a separate tilt-dependent factor: 0.95 at 90°, 0.97 at 70°, 0.98 at 60°, 0.99 at 35°. Field reports for vertical mounts put the loss at 5–8%; we take the conservative end. It applies to the fallback model too.</p>
+          <p><strong>Railing obstruction.</strong> The railing, mounting hardware and the balcony floor above clip the bottom edge of a rail-mounted panel. Footprints cannot see any of it and PVWatts assumes an unobstructed module, so it is applied as a separate tilt-dependent factor: 0.95 at 90°, 0.97 at 70°, 0.98 at 60°, 0.99 at 35°. The factor is balco.nyc&rsquo;s own assumption, not a measurement; no metered comparison of rail-mounted panels has been run. It applies to the fallback model too.</p>
 
           <h3>2.2 Static shade factor (fallback)</h3>
           <p>When the 3D scene isn't loaded (no footprint data, mobile path, or in-page calculator without WebGL), shade is interpolated from a continuous function:</p>

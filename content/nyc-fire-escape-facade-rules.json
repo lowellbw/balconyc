@@ -1,0 +1,172 @@
+{
+  "slug": "nyc-fire-escape-facade-rules",
+  "title": "Fire escapes, egress and fa&ccedil;ade rules for balcony solar in NYC &middot; balco.nyc",
+  "og_title": "Can a solar panel go on an NYC fire escape? Egress rules, Local Law 11 and balcony railings",
+  "breadcrumb": "Fire escapes and fa&ccedil;ades",
+  "cluster": "nyc",
+  "pillar": false,
+  "card_title": "Can a solar panel go on a fire escape or balcony railing in NYC?",
+  "card": "Never on a fire escape. Above six floors, the railing is inspected every five years.",
+  "llms": "why a solar panel may never go on a New York City fire escape (FC 1027.7, HMC 27-2007, MDL 53) with balco.nyc's count of six HPD citations for panels on fire escapes and 5,503 fire-escape encumbrance violations in 2025, and balco.nyc's PLUTO count that 30.8% of NYC homes (1.15 million) are in buildings over six floors, where the Facade Inspection & Safety Program (Local Law 11) inspects balcony railings every five years.",
+  "related": [
+    "install-balcony-solar",
+    "is-plug-in-solar-safe",
+    "nyc-coop-condo-board-balcony-solar"
+  ],
+  "description": "A panel on an NYC fire escape is an illegal obstruction; HPD has cited six. Above six floors, façade inspectors check the balcony railing it would hang on.",
+  "eyebrow": "NYC building rules",
+  "h1": "Fire escapes, egress and fa&ccedil;ade rules for balcony solar in NYC",
+  "lede": "A fire escape is not a balcony, and nothing may be mounted on it: the Fire Code, the Housing Maintenance Code and the Multiple Dwelling Law all forbid obstructing one, and balco.nyc&rsquo;s search of HPD&rsquo;s violation records finds <strong>six citations for solar panels on fire escapes</strong>, half of them since January 2025. A true balcony is a different question. balco.nyc&rsquo;s count of the city&rsquo;s PLUTO tax-lot data puts <strong>1.15 million homes, 30.8% of New York City&rsquo;s 3.74 million</strong>, in buildings over six floors, where the Fa&ccedil;ade Inspection &amp; Safety Program (Local Law&nbsp;11) has every balcony railing examined every five years.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "reviewed_human": "September 23, 2026",
+  "published": "2026-09-23",
+  "reading_time": "~9 minutes",
+  "tags": [
+    "6 HPD citations for panels on fire escapes",
+    "30.8% of NYC homes above six floors",
+    "Not legal advice"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "fire-escape-is-not-a-balcony",
+      "toc": "A fire escape is not a balcony",
+      "html": "        <section id=\"fire-escape-is-not-a-balcony\">\n  <h2><span class=\"sec-num\">1</span>A fire escape is not a balcony</h2>\n<p>New Yorkers call the platform outside a fire-escape window a balcony, and so does the law. The Housing Maintenance Code defines a fire escape as &ldquo;a combination of outside balconies and stairs providing an unobstructed means of egress&rdquo; (&sect;27-2004). The last three words are the point: a fire escape is an exit that happens to be outdoors. Three separate laws say nothing may be placed on it.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Rule</th><th>What it requires</th><th>Applies to</th></tr></thead><tbody>\n    <tr><td>NYC Fire Code FC&nbsp;1027.7 (2022 edition)</td><td>Fire escapes, &ldquo;and access thereto&rdquo;, kept in operational condition and &ldquo;continuously maintained free from obstructions and impediments&rdquo;</td><td>All buildings; enforced by the FDNY</td></tr>\n    <tr><td>Housing Maintenance Code &sect;27-2007(c)</td><td>No tenant &ldquo;or any other person&rdquo; may place any encumbrance before or upon a fire escape, or obstruct access to it</td><td>Dwellings; enforced by HPD</td></tr>\n    <tr><td>Multiple Dwelling Law &sect;53(8)(c)</td><td>No person may place &ldquo;any encumbrance of any kind&rdquo; before or upon any fire escape</td><td>Multiple dwellings (state law)</td></tr>\n  </tbody></table></div>\n  <p>HPD&rsquo;s inspectors already apply those words to solar panels. balco.nyc searched the free-text description of every violation in HPD&rsquo;s open Housing Maintenance Code Violations dataset for &ldquo;solar&rdquo; and found <strong>six citations for panels on fire escapes</strong>. Five were written as class&nbsp;B orders to &ldquo;remove the encumbrance obstructing egress from fire escapes&rdquo; (the Bronx in 2015, Brooklyn in 2019, the Bronx in 2022 and May 2026, Brooklyn in July 2026). The sixth, in the Bronx in January 2025, was class&nbsp;C, immediately hazardous, for solar panels &ldquo;attached to 3rd sty balcony of fire escape&rdquo;. Half of the six date from 2025 or later, and the two from 2026 were still open on 23&nbsp;September. HPD has also written four class&nbsp;C violations since 2015 for rooftop arrays blocking the route from the roof bulkhead to a fire escape or the gooseneck ladder. A text search misses any panel an inspector described in other words, so six is a floor, not a count.</p>\n  <p>Nothing in the <a href=\"/sunny-act\">SUNNY Act</a> changes this. The bill has passed both chambers and {{sunny.phrase}}. Its text requires a device to be installed in accordance with the state fire prevention and building code and never mentions fire escapes or egress. The caption under the illustration on balco.nyc&rsquo;s home page, &ldquo;never mount panels on a fire escape or block another exit route&rdquo;, describes the law as it stands.</p>\n</section>"
+    },
+    {
+      "id": "what-counts",
+      "toc": "What counts as an obstruction",
+      "html": "        <section id=\"what-counts\">\n  <h2><span class=\"sec-num\">2</span>What counts as an obstruction</h2>\n<p>None of the three texts sets a size, a weight or a time limit, and &ldquo;any encumbrance of any kind&rdquo; includes a flowerpot. Flowerpots are in fact much of the enforcement. balco.nyc pulled all <strong>5,503</strong> fire-escape encumbrance violations (HPD order&nbsp;539) issued in 2025, at 2,892 buildings, and counted what the inspectors wrote down. One violation often names several things, so the rows overlap:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>What the 2025 violation names</th><th>Violations</th><th>Share of 5,503</th></tr></thead><tbody>\n    <tr><td>Household items or storage</td><td>2,073</td><td>38%</td></tr>\n    <tr><td>Plants or flowerpots</td><td>2,015</td><td>37%</td></tr>\n    <tr><td>Air conditioners (680 of them described as protruding)</td><td>1,060</td><td>19%</td></tr>\n    <tr><td>Bicycles, grills, furniture, wires, antennas or dishes</td><td>149</td><td>3%</td></tr>\n    <tr><td>None of the above named</td><td>555</td><td>10%</td></tr>\n  </tbody></table></div>\n  <p>All 5,503 were class&nbsp;B, which HPD gives an owner 30 days to correct. Brooklyn had 1,999 of them, the Bronx 1,659, Manhattan 1,034, Queens 656 and Staten Island 155. The counts are keyword matches on HPD&rsquo;s own wording, done by balco.nyc, not an HPD classification.</p>\n  <p>The Fire Code adds detail that maps directly onto a solar install:</p>\n  <ul>\n    <li><strong>The window is part of the fire escape.</strong> The code protects the access as well as the platform. FC&nbsp;1027.7.3 bars an air conditioner from a window that gives access to a fire escape unless another window in the same room also does, and HPD writes up units that stick out onto the platform. A panel hung outside that window, or a cord that stops it opening fully, raises the same objection.</li>\n    <li><strong>The drop ladder needs its path.</strong> FC&nbsp;1027.7.4 says a drop ladder&rsquo;s operation may not be obstructed by awnings, furniture, heaters, parked cars &ldquo;or other obstructions&rdquo;. Nothing may sit where the ladder comes down, in a yard or on a lower terrace.</li>\n    <li><strong>The roof route counts.</strong> The four rooftop class&nbsp;C citations were for arrays in the way of the path from the bulkhead to fire escapes or the gooseneck ladder.</li>\n    <li><strong>A balcony can be egress without looking like a fire escape.</strong> The Housing Maintenance Code describes fire towers entered through a &ldquo;communicating balcony&rdquo;, and some balconies connect to a stair, a neighbor&rsquo;s balcony or a drop ladder. If yours does, treat it as a fire escape and ask the managing agent before anything else.</li>\n  </ul>\n</section>"
+    },
+    {
+      "id": "two-building-stocks",
+      "toc": "Walk-ups and the six-story line",
+      "html": "        <section id=\"two-building-stocks\">\n  <h2><span class=\"sec-num\">3</span>Two rulebooks, two sets of buildings</h2>\n<p>The fire-escape rules apply to any building that has one. The Fa&ccedil;ade Inspection &amp; Safety Program (FISP) applies only above six stories. To see how the city&rsquo;s housing splits across that line, balco.nyc counted every tax lot with residential units and more than six floors in the city&rsquo;s PLUTO file (version 26v2), and set the result beside DOB&rsquo;s own fa&ccedil;ade filings for Cycle&nbsp;9, the last complete cycle (February 2020 to February 2025). The FISP columns include commercial buildings; the PLUTO columns are residential only.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Borough</th><th>Residential lots over six floors</th><th>Homes in them</th><th>Share of the borough&rsquo;s homes</th><th>Buildings filing a Cycle&nbsp;9 FISP report</th><th>First report &ldquo;unsafe&rdquo;</th></tr></thead><tbody>\n    <tr><td>Manhattan</td><td>5,254</td><td>589,987</td><td>61.5%</td><td>7,969</td><td>23.9%</td></tr>\n    <tr><td>Bronx</td><td>1,160</td><td>187,251</td><td>31.7%</td><td>1,680</td><td>27.3%</td></tr>\n    <tr><td>Brooklyn</td><td>1,827</td><td>224,471</td><td>20.1%</td><td>1,893</td><td>29.5%</td></tr>\n    <tr><td>Queens</td><td>998</td><td>141,837</td><td>15.9%</td><td>1,769</td><td>21.9%</td></tr>\n    <tr><td>Staten Island</td><td>34</td><td>6,765</td><td>3.8%</td><td>94</td><td>34.0%</td></tr>\n    <tr><td><strong>New York City</strong></td><td><strong>9,273</strong></td><td><strong>1,150,311</strong></td><td><strong>30.8%</strong></td><td><strong>13,405</strong></td><td><strong>24.9%</strong></td></tr>\n  </tbody></table></div>\n  <p>So <strong>30.8% of the city&rsquo;s 3,736,645 homes</strong> are in buildings whose fa&ccedil;ades, balcony railings included, a licensed inspector must examine every five years. In Manhattan it is 61.5%. Another 917,711 homes (24.6%) are in five- and six-floor buildings just under the line.</p>\n  <p>In practice the two rulebooks barely overlap. Matching the 2,862 tax lots HPD cited for fire-escape encumbrances in 2025 against PLUTO, balco.nyc finds that <strong>2,816 (98.4%) have six floors or fewer</strong>, 1,837 of them five or six. Only 41 are over six floors. HPD inspects mostly in response to complaints, so this shows where citations land, not where every fire escape is. The practical reading holds anyway: in a walk-up the fire escape is the constraint, and above six floors the fa&ccedil;ade program is.</p>\n  <p>The count has known gaps. PLUTO gives one floor count per tax lot, for its tallest building, and leaves out above-ground basements, while the rule also reaches six stories over a cellar that stands more than halfway out of the ground. Another 1,867 residential lots have no floor count at all. DOB describes the program as overseeing about 16,000 buildings in Cycle&nbsp;9; its filings list 16,538 building records.</p>\n</section>"
+    },
+    {
+      "id": "facade-inspection",
+      "toc": "What a Local Law 11 inspector checks",
+      "html": "        <section id=\"facade-inspection\">\n  <h2><span class=\"sec-num\">4</span>What a Local Law&nbsp;11 fa&ccedil;ade inspector checks on a balcony</h2>\n<p>The program began as Local Law&nbsp;10 of 1980, after falling terra cotta killed a Barnard student on West 115th Street in 1979, and was widened by Local Law&nbsp;11 of 1998, the name most people still use. Under 1&nbsp;RCNY &sect;103-04, the owner of a building over six stories must have a Qualified Exterior Wall Inspector (QEWI), an architect or engineer qualified by DOB, examine every exterior wall and appurtenance once in each five-year cycle. Cycle&nbsp;10 began on 21 February 2025. The deadline depends on the last digit of the tax block: 4, 5, 6 or 9 by February 2027; 0, 7 or 8 by February 2028; 1, 2 or 3 by February 2029.</p>\n  <p>Three parts of the rule decide what an attached panel means:</p>\n  <ul>\n    <li><strong>What gets inspected.</strong> The rule&rsquo;s list of appurtenances names railings, guard rails, balcony enclosures, window air conditioners, flower boxes and satellite dishes, and ends with &ldquo;any equipment attached to or protruding from the facade&rdquo;. It does not mention solar panels, and balco.nyc found no DOB guidance on plug-in panels. A panel clamped to a balcony railing is at least hardware on an inspected appurtenance. Whether the QEWI records it as an appurtenance in its own right is the inspector&rsquo;s judgment.</li>\n    <li><strong>The railing standard.</strong> Guards and railings, balconies included, must be checked to confirm that balusters, intermediate rails and panel fillers are &ldquo;positively secured against movement&rdquo;, and any that is not is classified unsafe. A panel&rsquo;s wind load runs through exactly those connections.</li>\n    <li><strong>One condition is enough.</strong> A single unsafe condition classifies the whole building as unsafe until an amended report certifies the repair. The owner must start repairs at once, put up sidewalk sheds, fences or netting where needed to protect the public, and correct the condition within 90 days unless DOB allows longer.</li>\n  </ul>\n  <p>That is the background a board hears a solar request against. Of the 13,405 buildings that filed in Cycle&nbsp;9, <strong>24.9%</strong> filed their first report as unsafe and another 42.7% as SWARMP (safe with a repair and maintenance program). Two in three needed work before anyone clamped anything to a railing. The filings do not say which conditions were railings.</p>\n  <p>Whether a clamp-on panel needs a DOB permit is also unsettled. DOB&rsquo;s rule on work that can skip a permit (1&nbsp;RCNY &sect;101-14, Table&nbsp;3) says installing appurtenances such as satellite dishes, awnings, flagpoles and larger signs &ldquo;to the exterior wall or at perimeters of balconies, terraces, or rooftops&rdquo; does need one, except at one- and two-family homes. Solar panels are not on that list, and balco.nyc found no DOB statement either way. The closest listed item needs a permit, which is a reason to ask the building&rsquo;s architect or engineer rather than assume. What to put in front of a board is on <a href=\"/nyc-coop-condo-board-balcony-solar\">the co-op and condo board guide</a>.</p>\n</section>"
+    },
+    {
+      "id": "wind",
+      "toc": "Wind and falling objects",
+      "html": "        <section id=\"wind\">\n  <h2><span class=\"sec-num\">5</span>Wind and falling objects: what the rules do and do not say</h2>\n<p>balco.nyc found no New York City rule that says how an object on an occupied balcony must be fastened. The code&rsquo;s explicit wind rule, Building Code &sect;3303.4.5.1, requires material on an exposed floor or roof to be &ldquo;secured or otherwise safeguarded to prevent dislodgement by wind&rdquo;. But it sits in Chapter&nbsp;33, which governs construction and demolition operations, not a finished balcony, and citing it for a balcony panel would overstate the law.</p>\n  <p>What does apply is broader. The owner must keep the building and every part of it in a safe condition (Administrative Code &sect;28-301), which is why a board carries the risk and not only the resident. And DOB&rsquo;s weather advisories spell out what it expects before a storm. The one issued on 29 December 2025, with wind gusts forecast up to 45&nbsp;mph, told property owners to bring in potted plants and lawn furniture, anchor grills, and &ldquo;remove aerial antennas and satellite television dishes&rdquo;.</p>\n  <p>A satellite dish is the nearest household analogue to a railing panel, and DOB&rsquo;s storm advice for it is removal. A panel you will not take down for every advisory has to be mounted so that it never needs to be: inside the railing, on the manufacturer&rsquo;s brackets, with a tether independent of them. The mounting detail is in <a href=\"/install-balcony-solar\">how to install balcony solar</a>, and the electrical risks are in <a href=\"/is-plug-in-solar-safe\">is plug-in solar safe</a>.</p>\n</section>"
+    },
+    {
+      "id": "before-you-ask",
+      "toc": "Four questions before you ask",
+      "html": "        <section id=\"before-you-ask\">\n  <h2><span class=\"sec-num\">6</span>Four questions before you ask the building</h2>\n<ol>\n    <li><strong>Is it a fire escape, or part of one?</strong> A stair, a ladder, an opening in the floor, a drop ladder below or a link to other platforms means yes. The answer is then no, and the rest of this list does not matter.</li>\n    <li><strong>Does the plan touch a fire-escape window?</strong> The panel, its bracket and its cord must stay clear of any window that gives access to a fire escape, including a neighbor&rsquo;s.</li>\n    <li><strong>Is the building over six floors?</strong> Then the railing is on a five-year inspection cycle. Offer to mount inside the railing without drilling, give the board the product&rsquo;s weight and mounting instructions, and commit to removing the panel for the inspection and for any fa&ccedil;ade work.</li>\n    <li><strong>Who else has a say?</strong> Landmarked buildings add the Landmarks Preservation Commission (<a href=\"/nyc-landmarks-balcony-solar\">landmarks and balcony solar</a>). Rent-stabilized tenants and NYCHA residents have their own constraints (<a href=\"/nyc-rent-stabilized-nycha-balcony-solar\">rent stabilization and NYCHA</a>). The utility side is on <a href=\"/con-edison-plug-in-solar\">Con Edison and plug-in solar</a>.</li>\n  </ol>\n  <p>This page summarizes city and state rules as written on 23&nbsp;September 2026. It is not legal advice, and the building&rsquo;s own architect or engineer, and the agencies named here, decide individual cases.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Can I put a solar panel on my fire escape in New York City?",
+      "No. The NYC Fire Code (FC 1027.7) requires fire escapes and access to them to be kept free of obstructions, and the Housing Maintenance Code (section 27-2007) and the Multiple Dwelling Law (section 53) forbid placing any encumbrance on one. HPD enforces this against solar panels: balco.nyc found six HPD violations since 2015 citing solar panels on fire escapes, including one in the Bronx in January 2025 classed as immediately hazardous. The platform of a fire escape is legally a balcony, but it is an exit route, not usable space."
+    ],
+    [
+      "What counts as obstructing a fire escape in NYC?",
+      "Anything placed on the platform, stairs or ladder, or in front of the window that gives access to it; the laws set no minimum size. In 2025 HPD issued 5,503 fire-escape encumbrance violations at 2,892 buildings. By balco.nyc's keyword count, 37% named plants or flowerpots, 38% household items or storage and 19% air conditioners, mostly units protruding onto the platform. The Fire Code also bars anything that stops a drop ladder from reaching the ground."
+    ],
+    [
+      "Does Local Law 11 (FISP) apply to a solar panel on a balcony railing?",
+      "It applies to the railing, in any building over six stories. The Facade Inspection & Safety Program rule, 1 RCNY 103-04, requires a Qualified Exterior Wall Inspector to examine every appurtenance every five years, lists railings and 'any equipment attached to or protruding from the facade', and classes any railing whose parts are not positively secured against movement as unsafe. Solar panels are not named in the rule and DOB has issued no guidance on plug-in panels, so how an inspector records one is a judgment call."
+    ],
+    [
+      "How many New York City homes are in buildings subject to facade inspections?",
+      "About 1.15 million, or 30.8% of the city's 3.74 million homes, by balco.nyc's count of residential tax lots with more than six floors in the city's PLUTO data (version 26v2). The share is 61.5% in Manhattan, 31.7% in the Bronx, 20.1% in Brooklyn, 15.9% in Queens and 3.8% on Staten Island. The count slightly understates coverage, because the rule also reaches some six-story buildings over a raised cellar."
+    ],
+    [
+      "Do I need a Department of Buildings permit to attach a solar panel to a balcony railing?",
+      "It is not settled. DOB's rule on permit-exempt work, 1 RCNY 101-14, says installing appurtenances such as satellite dishes, awnings and flagpoles at the perimeter of a balcony requires a permit in buildings other than one- and two-family homes, but it does not mention solar panels, and balco.nyc found no DOB statement on clamp-on plug-in panels. Ask the building's architect or engineer before assuming no permit is needed."
+    ],
+    [
+      "Does the SUNNY Act allow solar panels on fire escapes?",
+      "No. New York's SUNNY Act (S8512C / A9111C) has passed both chambers and {{sunny.phrase}}. It would exempt small plug-in systems from utility interconnection rules and requires them to be installed in accordance with the fire prevention and building code. It says nothing about fire escapes or egress and gives no right to install, so the Fire Code and Housing Maintenance Code prohibitions still apply."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://www.nyc.gov/assets/fdny/downloads/pdf/about/chapter-10-2022.pdf",
+      "title": "FDNY &mdash; 2022 New York City Fire Code, Chapter 10: Means of Egress",
+      "note": "FC&nbsp;1027.2, 1027.3 and 1027.7: fire escapes and access to them kept free of obstructions; 1027.7.3 air conditioners in fire-escape windows; 1027.7.4 drop ladders."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/buildings/pdf/HousingMaintenanceCode.pdf",
+      "title": "NYC &mdash; Housing Maintenance Code (Admin. Code Title&nbsp;27, Chapter&nbsp;2)",
+      "note": "&sect;27-2004 definitions of fire escape and fire tower (&ldquo;communicating balcony&rdquo;); &sect;27-2007(c), no encumbrance before or upon a fire escape."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/laws/MDW/53",
+      "title": "New York State Senate &mdash; Multiple Dwelling Law &sect;53, Fire-escapes",
+      "note": "subdivision 8(c): no person may place any encumbrance of any kind before or upon a fire escape."
+    },
+    {
+      "url": "https://data.cityofnewyork.us/Housing-Development/Housing-Maintenance-Code-Violations/wvxf-dwi5",
+      "title": "NYC Open Data &mdash; HPD Housing Maintenance Code Violations",
+      "note": "the records behind balco.nyc&rsquo;s count of six solar-panel fire-escape citations and the 5,503 order-539 violations of 2025 (queried 23 September 2026)."
+    },
+    {
+      "url": "https://www.nyc.gov/site/hpd/services-and-information/clear-violations.page",
+      "title": "NYC HPD &mdash; Clear violations",
+      "note": "class&nbsp;B (hazardous) violations have 30 days to correct; class&nbsp;C (immediately hazardous) generally 24 hours."
+    },
+    {
+      "url": "https://data.cityofnewyork.us/City-Government/Primary-Land-Use-Tax-Lot-Output-PLUTO-/64uk-42ks",
+      "title": "NYC Department of City Planning &mdash; PLUTO (version 26v2) on NYC Open Data",
+      "note": "numfloors (tallest building on the lot, above-ground basements excluded) and unitsres, the fields behind balco.nyc&rsquo;s count of homes above six floors."
+    },
+    {
+      "url": "https://data.cityofnewyork.us/Housing-Development/DOB-NOW-Safety-Facades-Compliance-Filings/xubg-57si",
+      "title": "NYC Open Data &mdash; DOB NOW: Safety &ndash; Facades Compliance Filings",
+      "note": "Cycle&nbsp;9 filings behind balco.nyc&rsquo;s count of 13,405 buildings filing and 24.9% first reported unsafe (filings through 21 September 2026)."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/buildings/rules/1_RCNY_103-04.pdf",
+      "title": "NYC Department of Buildings &mdash; 1 RCNY &sect;103-04, Periodic inspection of exterior walls and appurtenances",
+      "note": "the appurtenance definition, the six-story threshold and cellar rule, railings &ldquo;positively secured against movement&rdquo;, one unsafe condition making the building unsafe, and the 90-day repair requirement."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/buildings/pdf/facadecycle-sn.pdf",
+      "title": "NYC Department of Buildings &mdash; Service Notice: FISP Cycle&nbsp;10",
+      "note": "Cycle&nbsp;10 from 21 February 2025 and the three filing windows by tax-block digit."
+    },
+    {
+      "url": "https://www.nyc.gov/site/buildings/safety/facade-inspection-safety-program-fisp-filing-instructions.page",
+      "title": "NYC Department of Buildings &mdash; Fa&ccedil;ade Inspection &amp; Safety Program filing instructions",
+      "note": "buildings higher than six stories inspected every five years; QEWI qualification."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/buildings/pdf/presentations/fisp.pdf",
+      "title": "NYC Department of Buildings &mdash; Fa&ccedil;ade Inspection Safety Program (2021 conference presentation)",
+      "note": "about 16,000 buildings in Cycle&nbsp;9; the 1979 death that led to Local Law&nbsp;10 of 1980; Local Law&nbsp;11 of 1998."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/buildings/pdf/code_notes_facade.pdf",
+      "title": "NYC Department of Buildings &mdash; Code Notes: Fa&ccedil;ade &amp; Balcony Inspections",
+      "note": "balconies and their enclosures inspected under FISP; the owner&rsquo;s duty under Administrative Code &sect;28-301 to keep the building safe."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/buildings/rules/1_RCNY_101-14.pdf",
+      "title": "NYC Department of Buildings &mdash; 1 RCNY &sect;101-14, Categories of work that may or may not require a permit",
+      "note": "Table&nbsp;3: installing appurtenances such as satellite dishes and awnings at the perimeter of balconies requires a permit, except at one- and two-family homes."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/buildings/codes-pdf/cons_codes_2022/2022BC_Chapter33_Con_DemoSafetyWBwm.pdf",
+      "title": "NYC Department of Buildings &mdash; 2022 Building Code, Chapter&nbsp;33: Safeguards during construction or demolition",
+      "note": "&sect;3301.1 scope (construction and demolition operations) and &sect;3303.4.5.1, material secured against dislodgement by wind."
+    },
+    {
+      "url": "https://www.nyc.gov/site/buildings/dob/pr-weather-advisory-122925.page",
+      "title": "NYC Department of Buildings &mdash; Weather advisory, 29 December 2025",
+      "note": "gusts forecast to 45&nbsp;mph; bring in loose objects, anchor grills, remove antennas and satellite dishes."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "New York State Senate &mdash; S8512C (SUNNY Act)",
+      "note": "installation in accordance with the state fire prevention and building code; no provision on fire escapes or egress."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It summarizes New York City and New York State rules as written on 23&nbsp;September 2026 and is not legal, engineering or fire-safety advice. Violation and filing counts are balco.nyc&rsquo;s own queries of NYC Open Data and may change as agencies update the records."
+}

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="From nothing to over 80% of a panel&#x27;s output, and one angle decides it. A lookup table from balco.nyc&#x27;s own shade code, run over 1,152 street geometries.">
+  <title>How much does the building across the street cost a balcony panel? &middot; balco.nyc</title>
+  <link rel="icon" type="image/webp" href="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp">
+  <link rel="canonical" href="https://balco.nyc/how-balcony-shading-is-modeled">
+  <meta name="theme-color" content="#7F1D1D">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="balco.nyc">
+  <meta property="og:url" content="https://balco.nyc/how-balcony-shading-is-modeled">
+  <meta property="og:title" content="How much does the building across the street cost a balcony solar panel? A lookup table">
+  <meta property="og:description" content="From nothing to over 80% of a panel&#x27;s output, and one angle decides it. A lookup table from balco.nyc&#x27;s own shade code, run over 1,152 street geometries.">
+  <meta property="og:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
+  <meta property="article:modified_time" content="2026-09-23">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How much does the building across the street cost a balcony solar panel? A lookup table">
+  <meta name="twitter:description" content="From nothing to over 80% of a panel&#x27;s output, and one angle decides it. A lookup table from balco.nyc&#x27;s own shade code, run over 1,152 street geometries.">
+  <meta name="twitter:image" content="https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://balco.nyc/how-balcony-shading-is-modeled#article",
+        "headline": "How much does the building across the street cost a balcony solar panel? A lookup table",
+        "description": "From nothing to over 80% of a panel's output, and one angle decides it. A lookup table from balco.nyc's own shade code, run over 1,152 street geometries.",
+        "url": "https://balco.nyc/how-balcony-shading-is-modeled",
+        "mainEntityOfPage": "https://balco.nyc/how-balcony-shading-is-modeled",
+        "inLanguage": "en-US",
+        "datePublished": "2026-09-23",
+        "dateModified": "2026-09-23",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://balco.nyc/Gemini_Generated_Image_d2ucutd2ucutd2uc.fallback.jpg",
+          "width": 1920,
+          "height": 1047
+        },
+        "author": {
+          "@id": "https://balco.nyc/#org"
+        },
+        "publisher": {
+          "@id": "https://balco.nyc/#org"
+        },
+        "isPartOf": {
+          "@id": "https://balco.nyc/#app"
+        },
+        "citation": [
+          {
+            "@type": "CreativeWork",
+            "name": "NLR (formerly NREL) — PVWatts V8 API",
+            "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "NYC Office of Technology and Innovation — building footprints (NYC Open Data)",
+            "url": "https://data.cityofnewyork.us/City-Government/BUILDING/5zhs-2jue"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "City of New York — building footprints metadata",
+            "url": "https://github.com/CityOfNewYork/nyc-geo-metadata/blob/master/Metadata/Metadata_BuildingFootprints.md"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "NYC Department of City Planning — Primary Land Use Tax Lot Output (PLUTO)",
+            "url": "https://data.cityofnewyork.us/City-Government/Primary-Land-Use-Tax-Lot-Output-PLUTO-/64uk-42ks"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "Sandia PV Performance Modeling Collaborative — isotropic sky diffuse model",
+            "url": "https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-sky-diffuse/isotropic-sky-diffuse-model/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "Sandia PV Performance Modeling Collaborative — POA sky diffuse",
+            "url": "https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-sky-diffuse/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "Sandia PV Performance Modeling Collaborative — POA ground reflected",
+            "url": "https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "NOAA Global Monitoring Laboratory — Solar Calculator",
+            "url": "https://gml.noaa.gov/grad/solcalc/"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "Heisler, “Effects of individual trees on the solar radiation climate of small buildings,” Urban Ecology 9 (1986), US Forest Service",
+            "url": "https://research.fs.usda.gov/treesearch/34772"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "Tian, Loonen, Valckenborg and Hensen, “High-resolution hierarchical PV system performance modeling in urban environments” (arXiv, 2025)",
+            "url": "https://arxiv.org/abs/2511.13424"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "US Census Bureau — Vintage 2025 subcounty population estimates",
+            "url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://balco.nyc/how-balcony-shading-is-modeled#faq",
+        "dateModified": "2026-09-23",
+        "inLanguage": "en-US",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does a building across the street reduce balcony solar output?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It depends almost entirely on one angle: how high the top of the building stands above your balcony, seen from the railing. In balco.nyc's shade model a south-facing panel in New York City loses about 18% of its annual output to a building 20 degrees up, about 41% at 30 degrees and about 64% at 45 degrees. From a third floor across a 20 m street, a six-to-ten-story building costs about 377 of an open view's 604 kWh a year."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I work out the obstruction angle from my balcony?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Subtract your balcony's height from the height of the building opposite, divide by the distance between the two facades, and take the arctangent. A rise of about a third of the distance is 20 degrees, just over half is 30 degrees, and a rise equal to the distance is 45 degrees. Counting floors works: allow about 3 m for each floor of the building opposite that stands above yours."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does a north-facing balcony lose less to the building opposite?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In kilowatt-hours, yes; as a share of its output, no. In balco.nyc's model a north-facing vertical panel lives almost entirely on diffuse light, and a building straight ahead blocks the part of the sky such a panel counts most, so it keeps roughly 1 minus the sine of the obstruction angle: about 66% at 20 degrees, against 82% for a south-facing panel in New York City. But an open north panel there makes only about 167 kWh a year, so at a 42-degree obstruction it loses about 110 kWh while a south one loses about 377."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does shade hit a south-facing balcony hardest in winter?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because the winter sun is low. Once the building opposite rises above the mid-December noon sun, about 26 degrees in New York City, 36 in Jacksonville and 22 in Minneapolis, the balcony loses its direct sun for weeks around the solstice. In balco.nyc's model a New York third floor facing a six-to-ten-story building 20 m away keeps at most 12% of its output in each month from October to February, and those months hold 72% of its annual loss."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does an unshaded north-facing balcony get a shade factor of 1.00?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because the shade factor multiplies PVWatts output, and PVWatts already accounts for which way the panel faces. The factor answers only how much of the light PVWatts assumed actually reaches the balcony, so with nothing in the way it is 1.00 in every direction. Charging a north balcony for the hours the sun is behind it would count orientation twice."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the balco.nyc shade model account for trees, reflections and snow?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Trees are modeled as solid walls all year, though a bare deciduous tree lets much of the winter light through; buildings are treated as non-reflective, which probably makes the model pessimistic for north-facing balconies that face a sunlit facade; and snow is modeled neither on the panel nor on the ground. The balcony slab above, side walls and a shadow falling across only part of a panel are also left out."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How far away does a building need to be before it stops mattering?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Distance matters only through the angle it creates. In balco.nyc's model a third-floor south-facing balcony in New York City keeps 90% of its output with a six-to-ten-story building 80 m away and 76% with an 11-plus-story tower at that distance, against 38% and 19% when the same buildings stand 20 m away."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://balco.nyc/#org",
+        "name": "balco.nyc",
+        "url": "https://balco.nyc/",
+        "logo": "https://balco.nyc/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp",
+        "description": "balco.nyc is an independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings.",
+        "sameAs": [
+          "https://github.com/lowellbw/balconyc"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "balco.nyc",
+            "item": "https://balco.nyc/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Guides",
+            "item": "https://balco.nyc/guides"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Shade from buildings",
+            "item": "https://balco.nyc/how-balcony-shading-is-modeled"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #FFFFFF; --text: #171717; --text-sub: #596580; --text-muted: #8896AB;
+      --accent: #7F1D1D; --accent-hover: #5C1212;
+      --border: #E2E8F0; --border-soft: #EEF0F3;
+      --code-bg: #F7F7F8; --callout-bg: #FAF7F4;
+      --radius: 12px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1360px; margin: 0 auto; padding: 0 40px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    /* NAV (matches index.html scrolled style, but always solid on doc pages) */
+    nav.doc-nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-soft); }
+    nav.doc-nav .container { display: flex; justify-content: space-between; align-items: center; padding-top: 6px; padding-bottom: 6px; }
+    .logo { display: inline-block; text-decoration: none; line-height: 0; }
+    .logo img { height: 64px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
+    .nav-links a:hover { opacity: 0.7; text-decoration: none; }
+
+    /* DOC LAYOUT */
+    main { padding: 56px 0 96px; }
+    .doc-header { max-width: 760px; margin: 0 0 48px; }
+    .doc-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .doc-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .doc-header h1 { font-size: clamp(2rem, 3.6vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; text-wrap: balance; }
+    .doc-header .lede { font-size: 1.15rem; color: var(--text-sub); max-width: 65ch; }
+    .doc-meta-row { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; margin-top: 20px; font-size: 0.88rem; color: var(--text-muted); }
+    .doc-meta-row strong { color: var(--text-sub); font-weight: 600; }
+    .doc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .doc-tag { font-size: 0.78rem; padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--text-sub); }
+
+    /* TWO-COLUMN LAYOUT */
+    .doc-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 64px; align-items: start; }
+    .doc-toc { position: sticky; top: 88px; max-height: calc(100vh - 120px); overflow-y: auto; padding-right: 16px; }
+    .doc-toc h2 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .doc-toc ol { list-style: none; padding: 0; counter-reset: tocsec; }
+    .doc-toc li { counter-increment: tocsec; margin: 0; }
+    .doc-toc a { display: block; padding: 6px 0 6px 28px; position: relative; font-size: 0.92rem; color: var(--text-sub); border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; text-decoration: none; }
+    .doc-toc a::before { content: counter(tocsec) "."; position: absolute; left: 8px; top: 6px; font-variant-numeric: tabular-nums; color: var(--text-muted); font-size: 0.85rem; }
+    .doc-toc a:hover, .doc-toc a.active { color: var(--text); border-left-color: var(--accent); }
+
+    /* DOC CONTENT */
+    .doc-content { max-width: 760px; min-width: 0; }
+    .doc-content section { padding-top: 24px; margin-bottom: 48px; scroll-margin-top: 80px; }
+    .doc-content section + section { border-top: 1px solid var(--border-soft); }
+    .doc-content h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; margin: 0 0 20px; }
+    .doc-content h2 .sec-num { color: var(--text-muted); font-weight: 500; margin-right: 12px; font-variant-numeric: tabular-nums; }
+    .doc-content h3 { font-size: 1.18rem; font-weight: 700; letter-spacing: -0.01em; margin: 36px 0 14px; }
+    .doc-content h4 { font-size: 1rem; font-weight: 700; margin: 24px 0 10px; }
+    .doc-content p { margin-bottom: 16px; color: var(--text); }
+    .doc-content p + p { margin-top: -4px; }
+    .doc-content ul, .doc-content ol { padding-left: 24px; margin-bottom: 18px; }
+    .doc-content li { margin-bottom: 6px; }
+    .doc-content li > ul, .doc-content li > ol { margin: 8px 0; }
+    .doc-content strong { font-weight: 700; }
+    .doc-content em { font-style: italic; color: var(--text-sub); }
+
+    /* CODE */
+    code, pre { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em; }
+    p code, li code, td code { background: var(--code-bg); padding: 1px 6px; border-radius: 4px; color: var(--text); font-size: 0.86em; }
+    pre { background: var(--code-bg); border: 1px solid var(--border-soft); border-radius: 8px; padding: 16px 20px; overflow-x: auto; margin: 12px 0 20px; line-height: 1.55; }
+    pre code { background: none; padding: 0; font-size: 0.86em; }
+
+    /* TABLES */
+    .table-wrap { margin: 8px 0 24px; overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    table th, table td { padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+    table th { background: #FAFAFB; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.02em; text-transform: uppercase; color: var(--text-sub); }
+    table tr:last-child td { border-bottom: none; }
+    table td code { font-size: 0.84em; }
+
+    /* CALLOUT */
+    .callout { background: var(--callout-bg); border-left: 3px solid var(--accent); padding: 14px 18px; border-radius: 4px; margin: 12px 0 22px; font-size: 0.95rem; }
+    .callout p:last-child { margin-bottom: 0; }
+    .callout strong { color: var(--accent); }
+
+    /* SOURCES LIST */
+    .sources-list a { font-weight: 500; }
+    .sources-list .src-host { color: var(--text-muted); font-size: 0.85em; font-family: 'JetBrains Mono', monospace; }
+
+    /* BACK TO TOP / DOC FOOTER */
+    .doc-foot { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-soft); display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.9rem; }
+    .btn-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--accent); color: #fff; border-radius: 999px; font-weight: 700; font-size: 0.92rem; text-decoration: none; }
+    .btn-cta:hover { background: var(--accent-hover); text-decoration: none; }
+
+    /* FOOTER */
+    footer { padding: 48px 0 32px; border-top: 1px solid var(--border-soft); margin-top: 48px; }
+    footer .container { display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; }
+    .footer-logo img { height: 56px; width: auto; opacity: 0.85; }
+    .footer-disclaimer { font-size: 0.84rem; color: var(--text-muted); max-width: 64ch; line-height: 1.6; }
+    .footer-meta { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* MOBILE */
+    @media (max-width: 960px) {
+      .container { padding: 0 24px; }
+      .doc-layout { grid-template-columns: 1fr; gap: 24px; }
+      .doc-toc { position: static; max-height: none; padding: 16px; border: 1px solid var(--border-soft); border-radius: 8px; }
+      .doc-toc a { padding-left: 24px; }
+      main { padding: 32px 0 64px; }
+      .doc-header { margin-bottom: 28px; }
+      .doc-content section { margin-bottom: 36px; }
+      .doc-content h2 { font-size: 1.4rem; }
+      .doc-content h3 { font-size: 1.08rem; }
+      .logo img { height: 52px; }
+    }
+
+    /* --- Shared blocks (tools/sitelib.py) --- */
+    .crumbs { margin: 20px 0 -8px; }
+    .crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; font-size: 0.8rem; color: var(--text-muted); }
+    .crumbs li + li::before { content: "\203A"; margin-right: 6px; color: var(--text-muted); }
+    .crumbs a { color: var(--text-sub); text-decoration: none; }
+    .crumbs a[aria-current="page"] { color: var(--text-muted); }
+    .cta-block { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin: 8px 0 40px; padding: 18px 20px; border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 4px; background: #FCFBF7; }
+    .cta-block p { margin: 0; max-width: 56ch; }
+    .cta-button { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 4px; background: var(--accent); color: #fff !important; font-weight: 700; text-decoration: none !important; }
+    .cta-button:hover { background: var(--accent-hover); }
+    .related { margin: 40px 0 0; padding-top: 24px; border-top: 1px solid var(--border); }
+    .related h2 { font-size: 1.1rem; margin-bottom: 12px; }
+    .related ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .related li a { font-weight: 700; }
+    .related li span { display: block; color: var(--text-sub); font-size: 0.88rem; }
+    .footer-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; width: 100%; max-width: 860px; text-align: left; }
+    .footer-links h2 { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+    .footer-links a { display: block; padding: 4px 0; font-size: 0.88rem; color: var(--text-sub); }
+    @media (max-width: 720px) { .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .hub-content { max-width: 760px; padding-bottom: 24px; }
+    .hub-content section { margin-bottom: 36px; }
+    .hub-content h2 { font-size: 1.35rem; margin-bottom: 12px; }
+    .hub-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .hub-list li a { font-weight: 700; }
+    .hub-list li span { display: block; color: var(--text-sub); font-size: 0.92rem; }
+    .table-note { font-size: 0.85rem; color: var(--text-sub); }
+    .tile-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 4px; margin: 8px 0 12px; }
+    .tile { display: flex; align-items: center; justify-content: center; height: 40px; border-radius: 3px; font-size: 0.78rem; font-weight: 700; text-decoration: none !important; color: #1B1A18; background: #EEF0F3; }
+    .tile.s-in_force { background: #7F1D1D; color: #fff; }
+    .tile.s-enacted_not_yet_effective { background: #C2452A; color: #fff; }
+    .tile.s-passed_awaiting_signature { background: #E46740; color: #fff; }
+    .tile.s-pending { background: #F2C9B8; }
+    .tile.s-failed_or_vetoed { background: #D8D2C8; }
+    .tile.s-no_specific_law { background: #EEF0F3; }
+    .tile.s-unknown { background: #fff; border: 1px dashed #C8C2B8; color: #8896AB; }
+    .tile-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 0.82rem; color: var(--text-sub); }
+    .tile-key::before { content: ""; display: inline-block; width: 12px; height: 12px; margin-right: 6px; border-radius: 2px; vertical-align: -1px; background: #EEF0F3; }
+    .tile-key.s-in_force::before { background: #7F1D1D; }
+    .tile-key.s-enacted_not_yet_effective::before { background: #C2452A; }
+    .tile-key.s-passed_awaiting_signature::before { background: #E46740; }
+    .tile-key.s-pending::before { background: #F2C9B8; }
+    .tile-key.s-failed_or_vetoed::before { background: #D8D2C8; }
+    .tile-key.s-unknown::before { background: #fff; border: 1px dashed #C8C2B8; }
+    .state-table td:nth-child(n+3), .state-table th:nth-child(n+3) { text-align: right; white-space: nowrap; }
+    .doc-content dl { margin: 0 0 24px; }
+    .doc-content dt { font-weight: 700; margin-top: 16px; scroll-margin-top: 90px; }
+    .doc-content dd { margin: 4px 0 0; color: var(--text); }
+  </style>
+</head>
+<body>
+
+<nav class="doc-nav">
+  <div class="container">
+    <a href="/" class="logo"><img src="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco.nyc" width="400" height="218" decoding="async"></a>
+    <div class="nav-links">
+      <a href="/">Calculator</a>
+      <a href="/guides">Guides</a>
+      <a href="/states">States</a>
+      <a href="/methodology">Methodology</a>
+      <a href="/about">About</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <!--shared:start-->
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">balco.nyc</a></li><li><a href="/guides">Guides</a></li><li><a href="/how-balcony-shading-is-modeled" aria-current="page">Shade from buildings</a></li></ol></nav>
+    <!--shared:end-->
+    <header class="doc-header">
+      <div class="doc-eyebrow"><span class="dot"></span> Shade modeling</div>
+      <h1>How much does the building across the street cost a balcony panel?</h1>
+      <p class="lede">Anything from nothing to more than four-fifths of its output, and one angle decides which. balco.nyc ran its own shade code over 1,152 street geometries and found that the loss follows how high the top of the building opposite stands above your balcony: for a south-facing 800&nbsp;W panel in New York City, 20&deg; up costs about <strong>18%</strong> of the year&rsquo;s output, 30&deg; about 41% and 45&deg; about 64%. From a third floor across a 20&nbsp;m street, a six-to-ten-story building costs 377 of an open view&rsquo;s 604&nbsp;kWh a year, about $128 at Con&nbsp;Edison&rsquo;s 34&cent; marginal rate.</p>
+      <div class="doc-meta-row">
+        <div><strong>Last reviewed:</strong> <time datetime="2026-09-23">September 23, 2026</time></div>
+        <div><strong>Reading time:</strong> ~11 minutes</div>
+        <div class="doc-tags">
+          <span class="doc-tag">1,152 geometries modeled</span>
+          <span class="doc-tag">20&deg; up: &minus;18%; 45&deg;: &minus;64%</span>
+          <span class="doc-tag">One angle decides it</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="doc-layout">
+      <aside class="doc-toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#lookup-table">The lookup table</a></li>
+          <li><a href="#how-modeled">How the model works</a></li>
+          <li><a href="#one-angle">One angle predicts the loss</a></li>
+          <li><a href="#direction-latitude">Direction and latitude</a></li>
+          <li><a href="#months">Which months take the loss</a></li>
+          <li><a href="#leaves-out">What the model leaves out</a></li>
+          <li><a href="#describe-your-view">Describing your view</a></li>
+          <li><a href="#questions">Common questions</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ol>
+      </aside>
+
+      <article class="doc-content">
+
+        <section id="lookup-table">
+  <h2><span class="sec-num">1</span>What the building opposite costs, floor by floor</h2>
+  <p>balco.nyc ran the calculator&rsquo;s own shade code, unchanged, over <strong>1,152 street geometries</strong>: six floors (1st, 2nd, 3rd, 5th, 8th and 12th), the calculator&rsquo;s four building heights and four distances, four directions (south, east, west, north) and three cities: Jacksonville (30.3&deg;N), New York City (40.7&deg;N) and Minneapolis (45.0&deg;N), the largest cities in Florida, New York and Minnesota. A second run swept the obstruction angle from 0&deg; to 80&deg; in 1&deg; steps. Each run&rsquo;s twelve monthly shade factors were weighted by that city&rsquo;s PVWatts output for the same direction, month by month, as the calculator applies them, to give one annual factor.</p>
+  <p>Here is the result for a south-facing 800&nbsp;W panel hung vertically on a railing in New York City, 20&nbsp;m (about 65&nbsp;feet) from the building across the street. Each cell gives the share of open-view output kept, then the kWh a year after the 0.95 railing factor (an open view makes 604), then the angle from the railing up to the top of the building opposite.</p>
+  <div class="table-wrap"><table><thead><tr><th>Your floor (panel height)</th><th>1 to 2 floors opposite (7&nbsp;m)</th><th>3 to 5 floors (13&nbsp;m)</th><th>6 to 10 floors (25&nbsp;m)</th><th>11 floors or more (43&nbsp;m)</th></tr></thead><tbody>
+    <tr><td>1st (1.0&nbsp;m)</td><td>0.86 &middot; 521 &middot; 17&deg;</td><td>0.56 &middot; 339 &middot; 31&deg;</td><td>0.29 &middot; 173 &middot; 50&deg;</td><td>0.16 &middot; 98 &middot; 65&deg;</td></tr>
+    <tr><td>2nd (4.0&nbsp;m)</td><td>0.94 &middot; 565 &middot; 8&deg;</td><td>0.76 &middot; 458 &middot; 24&deg;</td><td>0.35 &middot; 211 &middot; 46&deg;</td><td>0.18 &middot; 111 &middot; 63&deg;</td></tr>
+    <tr><td>3rd (7.1&nbsp;m)</td><td>1.00 &middot; 604</td><td>0.86 &middot; 522 &middot; 16&deg;</td><td><strong>0.38 &middot; 227 &middot; 42&deg;</strong></td><td>0.19 &middot; 116 &middot; 61&deg;</td></tr>
+    <tr><td>5th (13.2&nbsp;m)</td><td>1.00 &middot; 604</td><td>1.00 &middot; 604</td><td>0.58 &middot; 349 &middot; 31&deg;</td><td>0.22 &middot; 136 &middot; 56&deg;</td></tr>
+    <tr><td>8th (22.3&nbsp;m)</td><td>1.00 &middot; 604</td><td>1.00 &middot; 604</td><td>0.94 &middot; 569 &middot; 8&deg;</td><td>0.35 &middot; 213 &middot; 46&deg;</td></tr>
+    <tr><td>12th (34.5&nbsp;m)</td><td>1.00 &middot; 604</td><td>1.00 &middot; 604</td><td>1.00 &middot; 604</td><td>0.78 &middot; 473 &middot; 23&deg;</td></tr>
+  </tbody></table></div>
+  <p>Three things stand out. <strong>A building no taller than your balcony costs nothing</strong>: the model counts only what rises above you, which is why the lower-left of the table is all 1.00. <strong>Floors matter because they shrink the rise</strong>: from the 3rd floor to the 8th, the same six-to-ten-story building goes from costing 62% of the year&rsquo;s output to 6%. And <strong>cells with the same angle carry nearly the same loss</strong>, whichever floor and building produced them: the 1st floor opposite three to five stories and the 5th floor opposite six to ten both sit near 31&deg; and keep 0.56 and 0.58, the small gap being the half-degree between them. Section 3 explains why.</p>
+  <p>Two notes on method. Inside New York City the calculator uses the real buildings around you, not this wall (section 2); the wall puts floors, directions and cities on equal terms. And the model&rsquo;s own one-line annual figure, weighted by New York&rsquo;s monthly sunshine, reads high under heavy shade (0.47 rather than 0.38 for the bold cell) because it underweights the winter months a south railing depends on; every figure here uses the PVWatts weighting.</p>
+</section>
+
+        <section id="how-modeled">
+  <h2><span class="sec-num">2</span>How balco.nyc models shade</h2>
+  <p>PVWatts, the production model from NLR (formerly NREL) behind every estimate, assumes nothing stands in front of the panel. The shade model answers one question on top of it: of the light PVWatts assumed, how much reaches this balcony? It works in four steps.</p>
+  <ol>
+    <li><strong>A skyline.</strong> The horizon around the balcony is stored in 360 one-degree compass bins, each holding the highest obstruction angle in that direction. In New York City it is built from the city&rsquo;s building footprints and roof heights for the buildings within 200&nbsp;m (up to 500 of them), with the balcony placed on the wall you pin, at your floor&rsquo;s share of the building&rsquo;s recorded height. Elsewhere there is no national equivalent, so your description becomes a street canyon: a continuous wall parallel to your facade. Looking out at an angle &phi; from straight ahead, it rises to &beta;(&phi;) = atan(max(0, H &minus; h) &times; cos&nbsp;&phi; / D), where H is the building&rsquo;s height, D its distance and h = (floor &minus; 1) &times; 3.05&nbsp;m + 1.0&nbsp;m the height of your balcony.</li>
+    <li><strong>A sun sweep.</strong> On the 15th of each month, every 10 minutes from sunrise to sunset, the sun&rsquo;s position is computed and its light split into beam (60%) and diffuse (40%).</li>
+    <li><strong>Beam and diffuse, separately.</strong> Beam counts only when the sun stands above the skyline in its own compass bin. Diffuse counts in proportion to the sky the panel can still see, treating the sky as uniformly bright. For the described wall, that open share works out to 1 &minus; sin&nbsp;&beta;, where &beta; is the wall&rsquo;s angle straight out; the code reproduces it to within 0.01.</li>
+    <li><strong>A monthly ratio.</strong> Each month&rsquo;s factor is the light received divided by the light assumed, never below 0.10, and the calculator multiplies each month of PVWatts output by its own factor.</li>
+  </ol>
+  <p>The ratio is why <strong>an open view scores 1.00 at every orientation</strong>, north included. PVWatts is told which way the panel faces, so it has already priced the hours when the sun is behind the facade; those hours add almost nothing to either side of the ratio. An earlier version of the site&rsquo;s model charged them as shade, scoring an unobstructed east-facing balcony 0.54 and a north-facing one 0.32 with no building in sight. That was fixed on 31 August 2026; the test suite now asserts 1.00 for an open view in every direction, and every open-view run behind this page returned 1.00.</p>
+</section>
+
+        <!--shared:start-->
+        <aside class="cta-block">
+          <p><strong>Estimate your own balcony.</strong> Enter any US address to see what a panel on your balcony would produce and save, month by month.</p>
+          <a class="cta-button" href="/">Open the calculator &rarr;</a>
+        </aside>
+        <!--shared:end-->
+
+        <section id="one-angle">
+  <h2><span class="sec-num">3</span>The rule: one angle predicts the loss</h2>
+  <p>Behind that pattern is an exact rule, not an approximation. In the model, floor, building height and distance matter only through one number: the angle from your railing up to the top of the building straight across, &beta; = atan((H &minus; h) / D). Scale the rise and the distance together and nothing changes. A 1st-floor balcony 20&nbsp;m from a 13&nbsp;m building and one 40&nbsp;m from a 25&nbsp;m building both look up at 31&deg;, and both keep 0.562 of their output, to three decimals. You can skip the trigonometry and use the rise divided by the distance.</p>
+  <div class="table-wrap"><table><thead><tr><th>Angle to the top</th><th>Rise &divide; distance</th><th>South, Jacksonville</th><th>South, New York</th><th>South, Minneapolis</th><th>East or west, New York</th><th>North, New York</th><th>Open sky, 1 &minus; sin&nbsp;&beta;</th></tr></thead><tbody>
+    <tr><td>10&deg;</td><td>0.18</td><td>0.92</td><td>0.92</td><td>0.92</td><td>0.87</td><td>0.83</td><td>0.83</td></tr>
+    <tr><td>15&deg;</td><td>0.27</td><td>0.88</td><td>0.88</td><td>0.88</td><td>0.80</td><td>0.75</td><td>0.74</td></tr>
+    <tr><td>20&deg;</td><td>0.36</td><td>0.83</td><td><strong>0.82</strong></td><td>0.80</td><td>0.71</td><td>0.66</td><td>0.66</td></tr>
+    <tr><td>25&deg;</td><td>0.47</td><td>0.78</td><td>0.74</td><td>0.66</td><td>0.63</td><td>0.59</td><td>0.58</td></tr>
+    <tr><td>30&deg;</td><td>0.58</td><td>0.72</td><td><strong>0.59</strong></td><td>0.57</td><td>0.54</td><td>0.51</td><td>0.50</td></tr>
+    <tr><td>35&deg;</td><td>0.70</td><td>0.63</td><td>0.51</td><td>0.47</td><td>0.47</td><td>0.44</td><td>0.43</td></tr>
+    <tr><td>40&deg;</td><td>0.84</td><td>0.47</td><td>0.41</td><td>0.41</td><td>0.39</td><td>0.37</td><td>0.36</td></tr>
+    <tr><td>45&deg;</td><td>1.00</td><td>0.39</td><td><strong>0.36</strong></td><td>0.32</td><td>0.32</td><td>0.30</td><td>0.29</td></tr>
+    <tr><td>50&deg;</td><td>1.19</td><td>0.31</td><td>0.29</td><td>0.26</td><td>0.25</td><td>0.24</td><td>0.23</td></tr>
+    <tr><td>60&deg;</td><td>1.73</td><td>0.20</td><td>0.20</td><td>0.18</td><td>0.14</td><td>0.14</td><td>0.13</td></tr>
+  </tbody></table></div>
+  <p>Share of open-view output kept. East and west never differ by more than 0.01; east, west and north change by at most 0.04 between the three cities.</p>
+  <p>Two shapes are in that table. <strong>Facing north, the factor tracks the open-sky column almost exactly.</strong> In the model, 95% of the light a north-facing vertical panel in New York is assumed to receive is diffuse, so it loses whatever share of the sky the building fills: about 1.7 points per degree at first, slowing as the wall climbs. <strong>Facing south, the panel holds up better at first.</strong> With the wall at 20&deg;, 94% of its beam still arrives, so it loses mostly diffuse light, about one point per degree. Then the curve breaks where the wall passes the winter sun. The model&rsquo;s noon sun on 15 December stands 36.4&deg; up in Jacksonville, 26.0&deg; in New York and 21.7&deg; in Minneapolis. Beyond that angle each extra degree removes direct sun from more of the winter, and the factor falls by two to three points a degree, in steps, one for each pair of months whose noon sun the wall overtakes.</p>
+  <p>As a rule for New York: a building 20&deg; above your railing (a rise of about a third of the distance) costs a south balcony about a fifth of its output; 30&deg; (a rise of just over half) about two-fifths; 45&deg; (a rise equal to the distance) about two-thirds. Facing east, west or north, 1 &minus; sin&nbsp;&beta; is a close, slightly low estimate of the share you keep.</p>
+</section>
+
+        <section id="direction-latitude">
+  <h2><span class="sec-num">4</span>Direction and latitude: north loses the largest share and the fewest kWh</h2>
+  <p>The usual intuition is that a north-facing balcony has little to lose to the building opposite, because it lives on diffuse light. That is half right. At every angle north keeps the <em>smallest share</em>: a vertical panel counts the low sky straight ahead most heavily, and that is the part a building fills first. South keeps the largest, because much of its beam comes from above the roofline. In kilowatt-hours the order reverses, because north has far less to lose. New York City, 20&nbsp;m across the street, share kept and kWh a year lost:</p>
+  <div class="table-wrap"><table><thead><tr><th>Balcony</th><th>Angle</th><th>South (open: 604&nbsp;kWh)</th><th>East (446)</th><th>West (421)</th><th>North (167)</th></tr></thead><tbody>
+    <tr><td>3rd floor, 3&ndash;5 floors opposite</td><td>16&deg;</td><td>0.86 (&minus;82)</td><td>0.77 (&minus;102)</td><td>0.77 (&minus;96)</td><td>0.72 (&minus;46)</td></tr>
+    <tr><td>5th floor, 6&ndash;10 floors opposite</td><td>31&deg;</td><td>0.58 (&minus;255)</td><td>0.53 (&minus;208)</td><td>0.54 (&minus;195)</td><td>0.50 (&minus;83)</td></tr>
+    <tr><td>3rd floor, 6&ndash;10 floors opposite</td><td>42&deg;</td><td>0.38 (&minus;377)</td><td>0.36 (&minus;286)</td><td>0.36 (&minus;269)</td><td>0.34 (&minus;110)</td></tr>
+    <tr><td>3rd floor, 11+ floors opposite</td><td>61&deg;</td><td>0.19 (&minus;487)</td><td>0.13 (&minus;386)</td><td>0.13 (&minus;365)</td><td>0.14 (&minus;144)</td></tr>
+  </tbody></table></div>
+  <p>That puts a number on a common argument about apartments. An unobstructed north balcony can out-produce a boxed-in south one, but only at the heavy end: in New York the building opposite has to stand about 53&deg; above a south railing (a rise 1.3 times the distance) before an open north view makes more, and about 25&deg; before an open east or west view does.</p>
+  <p><strong>Latitude matters only for the south-facing column.</strong> The same street takes nearly the same bite out of an east, west or north balcony in all three cities, because their light arrives low or diffuse everywhere. For south, a lower winter sun lets a given building bite earlier: at 30&deg; a south balcony keeps 0.72 in Jacksonville, 0.59 in New York and 0.57 in Minneapolis. (In kWh, the weather PVWatts simulates muddies this: an open south railing makes 612&nbsp;kWh in Jacksonville, 604 in New York and 730 in Minneapolis.)</p>
+</section>
+
+        <section id="months">
+  <h2><span class="sec-num">5</span>Which months take the loss</h2>
+  <p>Because the calculator applies shade month by month, it can also say when the building costs you. For a south-facing New York balcony 20&nbsp;m from the building opposite, the monthly factors are:</p>
+  <div class="table-wrap"><table><thead><tr><th>Month</th><th>16&deg; (3rd floor, 3&ndash;5 opposite)</th><th>31&deg; (5th floor, 6&ndash;10)</th><th>42&deg; (3rd floor, 6&ndash;10)</th><th>61&deg; (3rd floor, 11+)</th></tr></thead><tbody>
+    <tr><td>Jan</td><td>0.87</td><td>0.15</td><td>0.10</td><td>0.10</td></tr>
+    <tr><td>Feb</td><td>0.90</td><td>0.74</td><td>0.11</td><td>0.10</td></tr>
+    <tr><td>Mar</td><td>0.89</td><td>0.80</td><td>0.73</td><td>0.10</td></tr>
+    <tr><td>Apr</td><td>0.86</td><td>0.75</td><td>0.67</td><td>0.25</td></tr>
+    <tr><td>May</td><td>0.82</td><td>0.68</td><td>0.59</td><td>0.46</td></tr>
+    <tr><td>Jun</td><td>0.80</td><td>0.65</td><td>0.54</td><td>0.39</td></tr>
+    <tr><td>Jul</td><td>0.81</td><td>0.66</td><td>0.56</td><td>0.42</td></tr>
+    <tr><td>Aug</td><td>0.85</td><td>0.72</td><td>0.64</td><td>0.52</td></tr>
+    <tr><td>Sep</td><td>0.88</td><td>0.78</td><td>0.72</td><td>0.10</td></tr>
+    <tr><td>Oct</td><td>0.90</td><td>0.79</td><td>0.12</td><td>0.10</td></tr>
+    <tr><td>Nov</td><td>0.88</td><td>0.28</td><td>0.10</td><td>0.10</td></tr>
+    <tr><td>Dec</td><td>0.84</td><td>0.14</td><td>0.10</td><td>0.10</td></tr>
+    <tr><td><strong>Share of the year&rsquo;s loss, Oct&ndash;Feb</strong></td><td>46%</td><td>69%</td><td><strong>72%</strong></td><td>56%</td></tr>
+  </tbody></table></div>
+  <p>Under light shade the loss is spread through the year and even leans slightly toward summer, when diffuse light is a bigger part of what a vertical south panel receives. Once the building passes the winter sun, the dark months arrive together: at 42&deg;, October through February sit between 0.10 and 0.12 while March and September keep more than 0.7. Those five months make half of an open south railing&rsquo;s year in New York, and <strong>72% of this balcony&rsquo;s loss</strong>. Latitude moves the edges: the same geometry leaves three months at 0.11 or lower in Jacksonville (November to January) and five in Minneapolis (October to February), where March also falls to 0.66.</p>
+  <p>Facing east, west or north, the monthly factors barely move (0.73 to 0.80 for an east balcony at 16&deg;), so the loss follows the output, which for those directions peaks in summer. One average factor applied to a whole year would overstate a shaded south balcony, whose worst months are its most productive; <a href="/calculate-balcony-solar-output">how to calculate balcony solar output</a> shows the monthly arithmetic. And 0.10 is a floor, not a measurement: no month may fall below it, so read those entries as &ldquo;almost nothing.&rdquo;</p>
+</section>
+
+        <section id="leaves-out">
+  <h2><span class="sec-num">6</span>What the model leaves out</h2>
+  <p>Several things close to a balcony never reach the skyline:</p>
+  <ul>
+    <li><strong>Trees.</strong> The lowest category is &ldquo;1 to 2 floors, or trees&rdquo;, modeled as a solid 7&nbsp;m wall all year. Real crowns are partly transparent: in a US Forest Service study a sugar maple cut the sunlight on a south wall in its shade by about 80% in leaf and nearly 40% when bare. For a south balcony, whose loss is mostly in winter, a bare street tree costs much less than the model assumes.</li>
+    <li><strong>The slab above and the walls beside you.</strong> The balcony overhead, side partitions and the walls of a recessed balcony cut the sky next to the panel; the model covers only the railing clipping the panel&rsquo;s lower edge, with a flat 0.95 factor. In New York City it skips your own building entirely, so its wings and courtyards are invisible.</li>
+    <li><strong>Gaps and corners.</strong> The described wall has no cross streets or gaps, so a described estimate errs low, and it cannot place a tower on the diagonal.</li>
+    <li><strong>Reflections.</strong> Buildings are treated as black. A sunlit, light-colored facade sends some light back, and a north-facing balcony looks at the sunny side of the building opposite, so the north figures above are probably the most pessimistic. The standard ground-reflection term assumes open ground to the horizon; the shade factor simply scales it with everything else.</li>
+    <li><strong>Snow.</strong> None, on the panel or on the ground. A vertical panel sheds snow quickly but not instantly, and a snowy street reflects more light than the fixed 0.20 ground reflectance the calculator gives PVWatts.</li>
+    <li><strong>Sky and weather.</strong> The model&rsquo;s sky is uniformly bright; real skies are brighter around the sun and near the horizon, the part a building blocks first. Its 60/40 beam-to-diffuse split is a Northeast figure used everywhere, and a cloudier winter would likely soften a south balcony&rsquo;s winter loss a little.</li>
+    <li><strong>Part of a panel in shadow.</strong> Shade is computed at one point, so the panel is either in sun or not. A shadow edge across a panel costs more than its area, because cells are wired in series; a 2025 study validated against field measurements found that coarser models overestimated the monthly energy of a partly shaded string by up to 54%.</li>
+  </ul>
+  <p>None of these figures has been compared with metered balconies. Like everything else the calculator produces, they are modeled, not measured.</p>
+</section>
+
+        <section id="describe-your-view">
+  <h2><span class="sec-num">7</span>How to describe your view in the calculator</h2>
+  <p>Outside New York City the calculator asks two questions about what stands across from your balcony, and turns the answers into the wall described in section 2:</p>
+  <div class="table-wrap"><table><thead><tr><th>What stands opposite</th><th>Modeled height</th><th>How far away</th><th>Modeled distance</th></tr></thead><tbody>
+    <tr><td>Nothing, an open view</td><td>0&nbsp;m</td><td>Very close: an alley, courtyard or light well</td><td>8&nbsp;m</td></tr>
+    <tr><td>1 to 2 floors, or trees</td><td>7&nbsp;m</td><td>Across a street</td><td>20&nbsp;m</td></tr>
+    <tr><td>3 to 5 floors</td><td>13&nbsp;m</td><td>Across a wide road or parking lot</td><td>40&nbsp;m</td></tr>
+    <tr><td>6 to 10 floors</td><td>25&nbsp;m</td><td>Far away</td><td>80&nbsp;m</td></tr>
+    <tr><td>11 floors or more</td><td>43&nbsp;m</td><td></td><td></td></tr>
+  </tbody></table></div>
+  <p>The bands are wide, so a few habits make the answer better:</p>
+  <ul>
+    <li><strong>Describe what is straight out.</strong> The modeled wall is highest dead ahead and lower toward the sides. If a tower stands off to one side, describe the building ahead and expect somewhat less.</li>
+    <li><strong>Only what rises above you counts.</strong> A building no taller than your balcony gives the same result as &ldquo;Nothing, an open view.&rdquo; To estimate your angle, count the floors opposite above yours, allow about 3&nbsp;m each, divide by the distance and use the table in section 3.</li>
+    <li><strong>Measure facade to facade,</strong> not curb to curb.</li>
+    <li><strong>Run the neighboring band.</strong> A six-story building is modeled at 25&nbsp;m, mid-band. Near an edge, run the adjacent band too and read the pair as a range.</li>
+    <li><strong>Remember trees are solid.</strong> Describe a tree by its height, knowing it is modeled as a wall all year.</li>
+  </ul>
+  <p>In New York City these questions do not appear: you pin your balcony on a 3D model of the block, and the calculator uses the real buildings instead. <a href="/balcony-sunlight">Does my balcony get enough sun?</a> covers the sun&rsquo;s path and winter, <a href="/methodology">the methodology</a> documents every constant, and <a href="/">the calculator</a> runs your own address.</p>
+</section>
+
+        <section id="questions">
+          <h2><span class="sec-num">8</span>Common questions</h2>
+        <details>
+          <summary>How much does a building across the street reduce balcony solar output?</summary>
+          <p>It depends almost entirely on one angle: how high the top of the building stands above your balcony, seen from the railing. In balco.nyc's shade model a south-facing panel in New York City loses about 18% of its annual output to a building 20 degrees up, about 41% at 30 degrees and about 64% at 45 degrees. From a third floor across a 20 m street, a six-to-ten-story building costs about 377 of an open view's 604 kWh a year.</p>
+        </details>
+        <details>
+          <summary>How do I work out the obstruction angle from my balcony?</summary>
+          <p>Subtract your balcony's height from the height of the building opposite, divide by the distance between the two facades, and take the arctangent. A rise of about a third of the distance is 20 degrees, just over half is 30 degrees, and a rise equal to the distance is 45 degrees. Counting floors works: allow about 3 m for each floor of the building opposite that stands above yours.</p>
+        </details>
+        <details>
+          <summary>Does a north-facing balcony lose less to the building opposite?</summary>
+          <p>In kilowatt-hours, yes; as a share of its output, no. In balco.nyc's model a north-facing vertical panel lives almost entirely on diffuse light, and a building straight ahead blocks the part of the sky such a panel counts most, so it keeps roughly 1 minus the sine of the obstruction angle: about 66% at 20 degrees, against 82% for a south-facing panel in New York City. But an open north panel there makes only about 167 kWh a year, so at a 42-degree obstruction it loses about 110 kWh while a south one loses about 377.</p>
+        </details>
+        <details>
+          <summary>Why does shade hit a south-facing balcony hardest in winter?</summary>
+          <p>Because the winter sun is low. Once the building opposite rises above the mid-December noon sun, about 26 degrees in New York City, 36 in Jacksonville and 22 in Minneapolis, the balcony loses its direct sun for weeks around the solstice. In balco.nyc's model a New York third floor facing a six-to-ten-story building 20 m away keeps at most 12% of its output in each month from October to February, and those months hold 72% of its annual loss.</p>
+        </details>
+        <details>
+          <summary>Why does an unshaded north-facing balcony get a shade factor of 1.00?</summary>
+          <p>Because the shade factor multiplies PVWatts output, and PVWatts already accounts for which way the panel faces. The factor answers only how much of the light PVWatts assumed actually reaches the balcony, so with nothing in the way it is 1.00 in every direction. Charging a north balcony for the hours the sun is behind it would count orientation twice.</p>
+        </details>
+        <details>
+          <summary>Does the balco.nyc shade model account for trees, reflections and snow?</summary>
+          <p>No. Trees are modeled as solid walls all year, though a bare deciduous tree lets much of the winter light through; buildings are treated as non-reflective, which probably makes the model pessimistic for north-facing balconies that face a sunlit facade; and snow is modeled neither on the panel nor on the ground. The balcony slab above, side walls and a shadow falling across only part of a panel are also left out.</p>
+        </details>
+        <details>
+          <summary>How far away does a building need to be before it stops mattering?</summary>
+          <p>Distance matters only through the angle it creates. In balco.nyc's model a third-floor south-facing balcony in New York City keeps 90% of its output with a six-to-ten-story building 80 m away and 76% with an 11-plus-story tower at that distance, against 38% and 19% when the same buildings stand 20 m away.</p>
+        </details>
+        </section>
+
+        <section id="sources">
+          <h2><span class="sec-num">9</span>Sources</h2>
+          <ul>
+            <li><a href="https://developer.nlr.gov/docs/solar/pvwatts/v8/" target="_blank" rel="noopener">NLR (formerly NREL) &mdash; PVWatts V8 API</a> <span class="src-host">developer.nlr.gov</span> &mdash; the tilt and azimuth inputs, and the monthly AC output (<code>ac_monthly</code>) used to weight each geometry&rsquo;s twelve shade factors into an annual one.</li>
+            <li><a href="https://data.cityofnewyork.us/City-Government/BUILDING/5zhs-2jue" target="_blank" rel="noopener">NYC Office of Technology and Innovation &mdash; building footprints (NYC Open Data)</a> <span class="src-host">data.cityofnewyork.us</span> &mdash; the footprint outlines the New York City shade model draws for every building within 200&nbsp;m of an address.</li>
+            <li><a href="https://github.com/CityOfNewYork/nyc-geo-metadata/blob/master/Metadata/Metadata_BuildingFootprints.md" target="_blank" rel="noopener">City of New York &mdash; building footprints metadata</a> <span class="src-host">github.com</span> &mdash; that each footprint carries its roof height above ground and its ground elevation, and that a zero or null roof height means none was available.</li>
+            <li><a href="https://data.cityofnewyork.us/City-Government/Primary-Land-Use-Tax-Lot-Output-PLUTO-/64uk-42ks" target="_blank" rel="noopener">NYC Department of City Planning &mdash; Primary Land Use Tax Lot Output (PLUTO)</a> <span class="src-host">data.cityofnewyork.us</span> &mdash; tax-lot records, including number of floors, used for the building you pin in New York City.</li>
+            <li><a href="https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-sky-diffuse/isotropic-sky-diffuse-model/" target="_blank" rel="noopener">Sandia PV Performance Modeling Collaborative &mdash; isotropic sky diffuse model</a> <span class="src-host">pvpmc.sandia.gov</span> &mdash; the uniform-sky assumption and the (1 + cos tilt) / 2 sky view the shade model uses for diffuse light.</li>
+            <li><a href="https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-sky-diffuse/" target="_blank" rel="noopener">Sandia PV Performance Modeling Collaborative &mdash; POA sky diffuse</a> <span class="src-host">pvpmc.sandia.gov</span> &mdash; that sky diffuse light has isotropic, circumsolar and horizon-brightening components, of which the model uses only the first.</li>
+            <li><a href="https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/" target="_blank" rel="noopener">Sandia PV Performance Modeling Collaborative &mdash; POA ground reflected</a> <span class="src-host">pvpmc.sandia.gov</span> &mdash; the standard ground-reflection model&rsquo;s assumption of open ground visible to the horizon, with no buildings.</li>
+            <li><a href="https://gml.noaa.gov/grad/solcalc/" target="_blank" rel="noopener">NOAA Global Monitoring Laboratory &mdash; Solar Calculator</a> <span class="src-host">gml.noaa.gov</span> &mdash; reference solar positions; the site&rsquo;s simplified NOAA sun-position code gives the mid-December noon elevations quoted (36.4&deg;, 26.0&deg;, 21.7&deg;).</li>
+            <li><a href="https://research.fs.usda.gov/treesearch/34772" target="_blank" rel="noopener">Heisler, &ldquo;Effects of individual trees on the solar radiation climate of small buildings,&rdquo; <em>Urban Ecology</em> 9 (1986), US Forest Service</a> <span class="src-host">research.fs.usda.gov</span> &mdash; a sugar maple reduced irradiance in its shade on a south-facing wall by about 80% in leaf and nearly 40% leafless.</li>
+            <li><a href="https://arxiv.org/abs/2511.13424" target="_blank" rel="noopener">Tian, Loonen, Valckenborg and Hensen, &ldquo;High-resolution hierarchical PV system performance modeling in urban environments&rdquo; (arXiv, 2025)</a> <span class="src-host">arxiv.org</span> &mdash; that coarse-resolution models under realistic partial shading overestimated a string&rsquo;s monthly energy yield by up to 54%.</li>
+            <li><a href="https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv" target="_blank" rel="noopener">US Census Bureau &mdash; Vintage 2025 subcounty population estimates</a> <span class="src-host">www2.census.gov</span> &mdash; Jacksonville, New York City and Minneapolis as the largest cities in Florida, New York and Minnesota, the three reference points modeled.</li>
+          </ul>
+          <p>This page is maintained by <a href="/">balco.nyc</a>, an independent balcony-solar calculator. Shade and production figures are modeled, not metered; the tables use a described wall at one reference point per city, while the calculator uses your own address and, in New York City, the real buildings around it. It is not financial or legal advice.</p>
+        </section>
+
+        <!--shared:start-->
+        <aside class="related" aria-labelledby="relatedHeading">
+          <h2 id="relatedHeading">Related guides</h2>
+          <ul>
+          <li><a href="/balcony-sunlight">Does my balcony get enough sun?</a><span>How direction, floor height, and nearby buildings affect output.</span></li>
+          <li><a href="/calculate-balcony-solar-output">How do I calculate my balcony’s solar output and savings?</a><span>The six-step chain behind every estimate, worked for Phoenix, Chicago and New York City.</span></li>
+          <li><a href="/balcony-solar-kwh-formula">How do I estimate balcony solar output by hand?</a><span>A five-term formula tested in every state, and why the rooftop one overstates a railing by 60%.</span></li>
+          <li><a href="/800w-balcony-solar-output">How much does an 800 W balcony system produce?</a><span>Unshaded kWh a year for every state&#x27;s largest city, by direction and tilt.</span></li>
+          </ul>
+        </aside>
+        <!--shared:end-->
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <a href="/" class="footer-logo"><img src="/Gemini_Generated_Image_7vmu3f7vmu3f7vmu-removebg-preview.webp" alt="balco" width="400" height="218" loading="lazy" decoding="async"></a>
+    <nav class="footer-links" aria-label="Site">
+      <div>
+        <h2>Calculator</h2>
+        <a href="/">Estimate your balcony</a>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <a href="/balcony-solar-laws-compared">Which states allow plug-in solar, and on what terms?</a>
+        <a href="/calculate-balcony-solar-output">How do I calculate my balcony’s solar output and savings?</a>
+        <a href="/is-balcony-solar-worth-it">Is balcony solar worth it?</a>
+        <a href="/sunny-act">Is plug-in solar legal in New York?</a>
+        <a href="/what-is-balcony-solar">What is balcony solar?</a>
+        <a href="/guides">All guides</a>
+      </div>
+      <div>
+        <h2>By place</h2>
+        <a href="/states">Plug-in solar by state</a>
+        <a href="/sunny-act">New York&rsquo;s SUNNY Act</a>
+      </div>
+      <div>
+        <h2>About</h2>
+        <a href="/about">About balco.nyc</a>
+        <a href="/methodology">Methodology</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </nav>
+    <p class="footer-disclaimer">balco.nyc is an independent, free balcony-solar calculator: it estimates what a plug-in solar panel would produce and save at any US address, with a 3D shade model for New York City buildings. Not affiliated with the City of New York, Con Edison, NYSERDA, NREL, the EIA, the EPA, or any seller of solar equipment. NYC results carry a modeled uncertainty range of about 15%. Plug-in solar rules vary by state; in New York the <a href="/sunny-act">SUNNY Act</a> has passed both chambers and awaits the Governor&#x27;s signature.</p>
+    <p class="footer-meta">&copy; 2026</p>
+  </div>
+</footer>
+
+<script src="/js/analytics.js?v=61ea8fc9"></script>
+
+<script>
+  // Highlight the TOC entry corresponding to the visible section.
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.doc-toc a'));
+    var sections = links.map(function (a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    }).filter(Boolean);
+
+    if (!('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          links.forEach(function (a) {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(function (s) { observer.observe(s); });
+  }());
+</script>
+
+</body>
+</html>

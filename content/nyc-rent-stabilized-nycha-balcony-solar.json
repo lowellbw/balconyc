@@ -1,0 +1,200 @@
+{
+ "slug": "nyc-rent-stabilized-nycha-balcony-solar",
+ "title": "Rent-stabilized and NYCHA apartments: can you install balcony solar? &middot; balco.nyc",
+ "og_title": "Rent-stabilized and NYCHA apartments: who approves balcony solar, and whose bill it cuts",
+ "breadcrumb": "Stabilized and NYCHA",
+ "cluster": "nyc",
+ "pillar": false,
+ "card_title": "Can rent-stabilized and NYCHA tenants install balcony solar?",
+ "card": "Only with permission, and only whoever pays Con Ed saves: 84.5% of stabilized households, 10.5% in NYCHA.",
+ "llms": "what the Rent Stabilization Code and NYCHA's rules mean for a tenant who wants a plug-in panel (no right to install; the lease and NYCHA decide; a 10-day cure before any eviction ground), balco.nyc's 2023 Housing and Vacancy Survey count of who pays for electricity (84.5% of rent-stabilized households, 10.5% of public-housing households), and what a south railing panel saves a stabilized tenant at Con Edison's marginal rate ($205 a year unshaded, $77 on a shaded 3rd floor).",
+ "related": [
+  "balcony-solar-renters",
+  "sunny-act",
+  "nyc-coop-condo-board-balcony-solar"
+ ],
+ "description": "Only with permission. 84.5% of rent-stabilized households pay their own electric bill but just 10.5% in NYCHA, where a panel would mostly save the Authority.",
+ "eyebrow": "NYC renters",
+ "h1": "Rent-stabilized and NYCHA apartments: can you install balcony solar?",
+ "lede": "Only with permission. Neither the Rent Stabilization Code nor NYCHA&rsquo;s rules gives a tenant a right to attach a panel outside the apartment, and the SUNNY Act, which has passed both chambers and {{sunny.phrase}}, would not change that. The second question is who pays the electric bill: balco.nyc&rsquo;s count of the 2023 Housing and Vacancy Survey finds <strong>84.5% of rent-stabilized households</strong> pay for their own electricity but only <strong>10.5% of public-housing households</strong> do, so in most NYCHA apartments a panel would cut the Authority&rsquo;s bill, not the resident&rsquo;s. Where a stabilized tenant pays Con&nbsp;Edison, an 800&nbsp;W south railing panel is worth about <strong>$205 a year</strong> with an open view and <strong>$77</strong> on a 3rd floor facing a 6-to-10-floor building across the street, against a median stabilized rent of $1,500 a month.",
+ "date_label": "Last reviewed",
+ "reviewed": "2026-09-23",
+ "published": "2026-09-23",
+ "reading_time": "~10 minutes",
+ "tags": [
+  "84.5% of stabilized pay their own bill",
+  "10.5% in public housing",
+  "$77&ndash;$205 a year"
+ ],
+ "about_legislation": false,
+ "sections": [
+  {
+   "id": "two-questions",
+   "toc": "Permission and the meter",
+   "html": "        <section id=\"two-questions\">\n  <h2><span class=\"sec-num\">1</span>Two questions: who says yes, and whose meter</h2>\n<p>A plug-in panel in a regulated apartment raises two separate questions. The first is permission. A rent-stabilized tenant needs the landlord&rsquo;s; a public-housing resident needs NYCHA&rsquo;s. Neither the Rent Stabilization Code nor NYCHA&rsquo;s published rules gives a tenant a right to hang equipment outside the apartment, and New York&rsquo;s <a href=\"/sunny-act\">SUNNY Act</a> would not create one.</p>\n  <p>The second question is whose electric bill the panel lowers. A plug-in panel feeds the apartment&rsquo;s circuits, so it only slows the meter those circuits run through. If the electricity is included in the rent, that meter belongs to the landlord or to NYCHA, and so does the saving.</p>\n  <p>To size the second question, balco.nyc counted the public-use microdata of the <strong>2023 New York City Housing and Vacancy Survey</strong> (HVS), the triennial Census Bureau survey, sponsored by the city&rsquo;s housing department, that classifies every rental by regulation status. It asks every household which utilities it pays. The estimates below are weighted, with 90% margins of error from the survey&rsquo;s 80 replicate weights:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Households, 2023</th><th>Occupied units</th><th>Pay for their own electricity</th><th>Electricity included in rent</th></tr></thead><tbody>\n    <tr><td>Rent-stabilized</td><td>960,700 (&plusmn;19,300)</td><td><strong>812,100 &mdash; 84.5%</strong> (&plusmn;1.0 pt)</td><td>148,700 (&plusmn;9,900)</td></tr>\n    <tr><td>Public housing (NYCHA)</td><td>167,700 (&plusmn;2,400)</td><td><strong>17,600 &mdash; 10.5%</strong> (&plusmn;1.8 pt)</td><td>150,100 (&plusmn;3,500)</td></tr>\n    <tr><td>Market-rate renters, for comparison</td><td>1,118,500 (&plusmn;26,900)</td><td>80.4% (&plusmn;1.7 pt)</td><td>219,500 (&plusmn;20,200)</td></tr>\n  </tbody></table></div>\n  <p>So a typical stabilized tenant is in the same position as any renter with a Con&nbsp;Edison account: with the landlord&rsquo;s yes, the panel&rsquo;s output comes off the tenant&rsquo;s own bill. A typical NYCHA resident is not: nine public-housing households in ten have no electric bill for a panel to reduce. Two limits on the count: the survey asks which utilities a household pays, not whom it pays, so a tenant billed by the landlord through a submeter counts as paying; and the Census Bureau imputed the answer for 7.7% of stabilized households and 2.8% of public-housing ones.</p>\n</section>"
+  },
+  {
+   "id": "stabilization-rules",
+   "toc": "What the Code says",
+   "html": "        <section id=\"stabilization-rules\">\n  <h2><span class=\"sec-num\">2</span>Rent stabilization: the lease decides, and the Code keeps it</h2>\n<p>The Rent Stabilization Code regulates rents, renewals and evictions. balco.nyc found nothing in it that gives a stabilized tenant a right to fix equipment to a railing, window or facade, and nothing that singles such equipment out. The question sits in the lease. Read the clauses on alterations and installations, and any on windows, fire escapes and the outside of the building: if they require the owner&rsquo;s consent, you need it before anything goes on the railing.</p>\n  <p>Two provisions of the Code shape what happens next.</p>\n  <ul>\n    <li><strong>Renewals keep the old terms.</strong> Under 9&nbsp;NYCRR &sect;2522.5(f)(1), a renewal lease must be &ldquo;on the same terms and conditions as the expired lease,&rdquo; unless the owner shows a change is needed to comply with a specific law or regulation, or DHCR approves it. A no-alterations clause in your lease will be in the renewal. By the same rule, an owner generally cannot add a new ban at renewal because you asked.</li>\n    <li><strong>A violation must be cured, not just alleged.</strong> Under &sect;2524.3(a), an owner may seek possession on the ground that a tenant is violating &ldquo;a substantial obligation&rdquo; of the tenancy only after the tenant fails to cure it within 10 days of written notice (15 if the notice is mailed). Taking an unapproved panel down within that period would cure it. If a case did reach court, New York&rsquo;s RPAPL &sect;753(4) requires a 30-day stay of the warrant, &ldquo;during which time the respondent may correct such breach.&rdquo;</li>\n  </ul>\n  <p>Whether a given clause is a &ldquo;substantial obligation&rdquo; is for a court to decide. Damage is the part removal does not undo. The same section also covers a tenant who has willfully violated an obligation &ldquo;inflicting serious and substantial injury upon the owner.&rdquo; A clamp that comes off clean is one thing; holes drilled in a facade or railing are another. The proportionate course is to ask first and install only on a written yes.</p>\n</section>"
+  },
+  {
+   "id": "whose-meter",
+   "toc": "Whose bill it cuts",
+   "html": "        <section id=\"whose-meter\">\n  <h2><span class=\"sec-num\">3</span>A panel saves whoever pays the meter</h2>\n<p>For the 148,700 stabilized households whose rent includes electricity, the arithmetic changes completely. DHCR calls these &ldquo;electrical inclusion&rdquo; buildings, where the owner pays for electricity. A panel there lowers the reading on the owner&rsquo;s meter; the tenant&rsquo;s regulated rent does not move.</p>\n  <p>DHCR applies the same logic to air conditioners, in the other direction. Its Fact Sheet #27 lets an owner in an electrical-inclusion building charge a monthly surcharge for each air conditioner, because the owner pays for the power it uses. Since 21 November 2022 (Chapter 619 of the Laws of 2022), an owner may not charge it for a tenant-installed unit when the tenant pays for the electricity. The money follows the meter.</p>\n  <p>Two practical notes:</p>\n  <ul>\n    <li><strong>Submetered buildings.</strong> Some owners bill each apartment from its own submeter. That requires authorization from the Public Service Commission, and residents&rsquo; rates are capped so they never pay more than the utility would charge. A panel lowers the submeter reading, so the saving is the tenant&rsquo;s, valued at the submetered rate rather than necessarily at Con&nbsp;Edison&rsquo;s.</li>\n    <li><strong>Not sure which you are?</strong> If a Con&nbsp;Edison bill arrives in your name, you pay for your electricity. If the owner or a billing company charges you from your apartment&rsquo;s own meter, you are submetered and the saving is still yours. If electricity never appears on any bill, it is included in the rent.</li>\n  </ul>\n</section>"
+  },
+  {
+   "id": "what-it-saves",
+   "toc": "What it is worth",
+   "html": "        <section id=\"what-it-saves\">\n  <h2><span class=\"sec-num\">4</span>What a south-facing panel is worth to a stabilized tenant</h2>\n<p>For a stabilized tenant who pays Con&nbsp;Edison, a kilowatt-hour made and used at home is worth the all-in marginal rate of about <a href=\"/electricity-rate\">{{coned.rate_cents}}&cent;</a>. balco.nyc&rsquo;s PVWatts run for New York City puts an 800&nbsp;W system hanging vertically on a south-facing railing at 635.7&nbsp;kWh a year before the railing loss; the site multiplies that by 0.95 for the railing and hardware, giving <strong>604&nbsp;kWh</strong>, or <strong>$205 a year</strong> at ${{coned.rate_dollars}}.</p>\n  <p>That is the open-view figure, and stabilized apartments are mostly low. The same HVS microdata put <strong>67.6%</strong> (&plusmn;1.5 pt) of stabilized households on the 4th floor or below, where the building across the street matters most. balco.nyc ran the calculator&rsquo;s own shade model for one common case: a 3rd-floor balcony (7.1&nbsp;m up) facing a building of 6 to 10 floors, which the calculator treats as 25&nbsp;m, across a 20&nbsp;m street. Straight ahead, that building&rsquo;s roofline sits 41.8&deg; above the horizon. The model keeps 38% of the output: <strong>227&nbsp;kWh, or $77 a year</strong>.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>South railing, 800&nbsp;W, New York City</th><th>kWh/yr</th><th>Per year</th><th>Per month</th><th>Share of a $1,500 rent</th><th>Payback, ${{kits.mid}} kit</th></tr></thead><tbody>\n    <tr><td>Open view</td><td>604</td><td>$205</td><td>$17.11</td><td>1.1%</td><td>5.5 years</td></tr>\n    <tr><td>3rd floor, 3&ndash;5 floors opposite at 20&nbsp;m</td><td>522</td><td>$177</td><td>$14.79</td><td>1.0%</td><td>6.3 years</td></tr>\n    <tr><td>6th floor, 6&ndash;10 floors opposite at 20&nbsp;m</td><td>463</td><td>$158</td><td>$13.13</td><td>0.9%</td><td>7.1 years</td></tr>\n    <tr><td><strong>3rd floor, 6&ndash;10 floors opposite at 20&nbsp;m</strong></td><td><strong>227</strong></td><td><strong>$77</strong></td><td><strong>$6.43</strong></td><td><strong>0.4%</strong></td><td><strong>13.3 years</strong></td></tr>\n  </tbody></table></div>\n  <p class=\"table-note\">balco.nyc&rsquo;s computation: PVWatts V8 monthly output for New York City &times; 0.95 railing factor &times; the calculator&rsquo;s monthly shade factors, valued at ${{coned.rate_dollars}}/kWh. Payback uses the calculator&rsquo;s loop: prices rising 3% a year, output falling 0.5% a year, nominal dollars. Rent share is against the HVS 2023 median stabilized rent of $1,500 a month ($18,000 a year).</p>\n  <p>Set against rent, the saving is small: about 1% of a median stabilized rent with an open view, 0.4% in the shaded case. Set against how long stabilized tenants stay, it looks better. Half of stabilized households had moved in by 2015, and 45.7% (&plusmn;1.5 pt) had been in place since 2013 or earlier, against a median move-in year of 2020 for market-rate renters. A 5.5-year payback fits inside a typical stabilized tenancy; 13.3 years may not, though a plug-in kit leaves with you.</p>\n  <p>Two assumptions flatter these numbers. Every kWh is assumed to be used in the apartment; anything exported earns nothing (see <a href=\"/balcony-solar-net-metering\">how much of the output a household actually uses</a>). And the figures are modeled, not metered. The full chain is in <a href=\"/calculate-balcony-solar-output\">how to calculate balcony solar output</a>.</p>\n</section>"
+  },
+  {
+   "id": "nycha",
+   "toc": "NYCHA",
+   "html": "        <section id=\"nycha\">\n  <h2><span class=\"sec-num\">5</span>NYCHA: house rules, master meters and the Authority&rsquo;s own solar</h2>\n<p>NYCHA&rsquo;s 2025 Fact Sheet counts 177,565 apartments in 335 developments: 152,926 public-housing apartments in 1,882 residential buildings, and 24,639 in 92 developments converted under PACT/RAD, which private partners now manage. The Fact Sheet does not say how many have balconies. The HVS does not ask (it leaves balconies out of its room count), and NYCHA&rsquo;s house-rules summary mentions balconies only to ban smoking on them.</p>\n  <p><strong>The rules.</strong> Neither NYCHA&rsquo;s <em>Highlights of House Rules, Lease, Law and NYCHA Policy</em> (form 040.821, revised September 2024) nor its December 2024 Resident Handbook mentions solar. The nearest rules are strict. The handbook bars residents from installing &ldquo;a satellite dish or any other antenna that might be attached to window frames, window guards, or the brickwork on the exterior of the building.&rdquo; Roofs are restricted areas. A resident who wants an air conditioner, freezer, dishwasher or washing machine must first sign an Appliance Agreement (form 150.110). And NYCHA &ldquo;may start a proceeding to terminate tenancy&rdquo; when a tenant breaches its rules. The practical reading: nothing goes on a balcony or out of a window without written approval from the development&rsquo;s property management office. In a PACT development, ask the PACT partner&rsquo;s management.</p>\n  <p><strong>The meters.</strong> NYCHA&rsquo;s Admissions and Continued Occupancy Plan says &ldquo;most NYCHA buildings are master metered&rdquo; and that residents in them &ldquo;do not pay utility bills and they do not receive a utility allowance.&rdquo; That matches balco.nyc&rsquo;s HVS count of 150,100 public-housing households with electricity included. For them a panel would trim NYCHA&rsquo;s bill, and NYCHA buys its electricity under its own &ldquo;rates and regulations,&rdquo; in the words of its solar program, so there is no reason to expect Con&nbsp;Edison&rsquo;s residential {{coned.rate_cents}}&cent; to describe that saving either.</p>\n  <p>The exception is the roughly 17,600 public-housing households that pay for their own electricity, in NYCHA&rsquo;s individually metered developments. They pay Con&nbsp;Edison directly and get a utility allowance, deducted from rent, that NYCHA sets from estimated usage rather than from the actual bill. For them a panel&rsquo;s saving would be theirs: $205 a year unshaded is about 2.8% of a year&rsquo;s rent at the average public-housing rent of $621 a month. Public-housing households also live higher: 57.5% (&plusmn;3.1 pt) are on the 5th floor or above, against 31.4% of stabilized households.</p>\n  <p><strong>NYCHA&rsquo;s own solar.</strong> Under its ACCESSolar program, NYCHA leases roofs to developers for community solar. The arrays &ldquo;generate power using their own meters (not behind a NYCHA meter),&rdquo; and credits go to subscribers&rsquo; electric bills. Because of the rates and regulations under which it buys electricity, NYCHA says it cannot purchase the power, and acts only as host. As of May 2025, 6.8&nbsp;MW had been built and 12.5&nbsp;MW more was in design or construction, against a Sustainability Agenda goal of 30&nbsp;MW by 2026. The April 2026 agenda lists &ldquo;Complete NYCHA&rsquo;s 30-megawatt solar goal&rdquo; among its targets for the next five years. The same limit applies as to a balcony panel: a community-solar credit reduces an electric bill, so among NYCHA residents it reaches those who pay their own, a group the program names, not the nine in ten whose electricity comes with the rent.</p>\n</section>"
+  },
+  {
+   "id": "sunny-and-asking",
+   "toc": "SUNNY Act and asking",
+   "html": "        <section id=\"sunny-and-asking\">\n  <h2><span class=\"sec-num\">6</span>What the SUNNY Act changes, and how to ask</h2>\n<p>New York&rsquo;s SUNNY Act (S8512C / A9111C) has passed both chambers and {{sunny.phrase}}. It would stop utilities requiring approval or charging fees for certified plug-in devices of up to 1,200&nbsp;W, starting 90 days after it is signed. Its text says nothing about landlords, tenants or leases, so it would give a stabilized tenant or a NYCHA resident no right to install. Until it is signed and in force, a plug-in panel in New York City still needs <a href=\"/con-edison-plug-in-solar\">Con&nbsp;Edison&rsquo;s approval</a> to connect.</p>\n  <p>The request itself is the one described in <a href=\"/balcony-solar-renters\">the national guide for renters</a>, which has a checklist and a letter. What changes in a New York regulated building:</p>\n  <ul>\n    <li><strong>Say who pays the meter.</strong> If electricity is included in your rent, the owner or NYCHA gets the saving. Say so in the request; it is theirs to weigh.</li>\n    <li><strong>Keep off the fire escape and out of the brick.</strong> No panel, bracket or cable on or across a fire escape, and nothing drilled into the facade: see <a href=\"/nyc-fire-escape-facade-rules\">fire escapes and facade rules</a>. In a historic district or landmark, <a href=\"/nyc-landmarks-balcony-solar\">Landmarks review</a> may apply. If you rent from a unit owner or sponsor in a co-op or condo, <a href=\"/nyc-coop-condo-board-balcony-solar\">the board&rsquo;s rules</a> can apply on top of the lease.</li>\n    <li><strong>Get the yes in writing</strong>, signed by the owner or managing agent, or by NYCHA property management, and keep it with your lease. Managing agents change; a letter does not.</li>\n  </ul>\n  <div class=\"callout\"><p><strong>Not legal advice.</strong> This page summarizes the Rent Stabilization Code, New York statute and NYCHA&rsquo;s published rules as of 23 September 2026. Your lease, any written consent and the facts of your building decide your case.</p></div>\n  <p>Before asking at all, check the number. Run your address through <a href=\"/\">the calculator</a>: a low-floor balcony across a narrow street from a taller building may be worth $77 a year, which is worth knowing before you ask anyone.</p>\n</section>"
+  }
+ ],
+ "faq": [
+  [
+   "Can my landlord stop me from putting a solar panel on my rent-stabilized apartment's balcony?",
+   "Yes. The Rent Stabilization Code gives a stabilized tenant no right to attach equipment to a railing, window or facade, so the lease and the landlord decide; if the lease requires consent for alterations, you need it. Under the Code a renewal lease keeps the same terms as the old one. New York's SUNNY Act, which has passed both chambers and {{sunny.phrase}}, has no landlord or tenant provision."
+  ],
+  [
+   "Could installing balcony solar without permission get a rent-stabilized tenant evicted?",
+   "Not without a chance to fix it. Under 9 NYCRR 2524.3(a) an owner must first give written notice to cure a violation of a substantial lease obligation within 10 days (15 if mailed), and removing the panel cures it; if a case reaches court, RPAPL 753(4) requires a 30-day stay to correct the breach. Damage to the building is treated more seriously. This is not legal advice."
+  ],
+  [
+   "Can NYCHA residents install balcony solar panels?",
+   "Only with NYCHA's written approval. NYCHA's rules do not mention solar, but they bar satellite dishes and antennas attached to window frames, window guards or exterior brickwork, require an Appliance Agreement for major appliances, and allow NYCHA to start termination proceedings for rule breaches. In most NYCHA buildings electricity is included in the rent, so a panel would lower NYCHA's bill, not the resident's."
+  ],
+  [
+   "Will a balcony solar panel lower my bill if electricity is included in my rent?",
+   "No. A plug-in panel only slows the meter its circuit runs through, so if the owner pays for electricity the saving goes to the owner. balco.nyc's count of the 2023 NYC Housing and Vacancy Survey finds about 148,700 rent-stabilized households and 150,100 public-housing households with electricity included in the rent. In a PSC-authorized submetered building the tenant does keep the saving."
+  ],
+  [
+   "How much would a balcony solar panel save a rent-stabilized tenant in NYC?",
+   "If the tenant pays Con Edison, balco.nyc's model puts an 800 W south-facing railing system at 604 kWh a year with an open view, about $205 at Con Edison's {{coned.rate_cents}}-cent marginal rate, or roughly 1.1% of a year's rent at the $1,500 monthly median. On a 3rd floor facing a 6-to-10-floor building across a 20-meter street it falls to 227 kWh, about $77 a year."
+  ],
+  [
+   "How many rent-stabilized tenants pay their own electric bill?",
+   "About 812,100 of 960,700 occupied rent-stabilized apartments, or 84.5% (plus or minus 1.0 point), by balco.nyc's weighted count of the 2023 NYC Housing and Vacancy Survey microdata. Among public-housing households the share is 10.5%, about 17,600, because most NYCHA buildings are master-metered."
+  ],
+  [
+   "Does NYCHA's rooftop solar lower residents' electric bills?",
+   "Only for residents with their own electric bill. NYCHA's ACCESSolar program hosts community solar on its roofs, metered separately from NYCHA, with credits going to subscribers' bills; NYCHA names residents who pay their own utility bills as a target group. As of May 2025, 6.8 MW was built and 12.5 MW more was in design or construction toward a 30 MW goal."
+  ]
+ ],
+ "sources": [
+  {
+   "url": "https://www.nyc.gov/assets/hpd/data/occupied_puf_23.csv",
+   "title": "NYC HPD &mdash; 2023 NYC Housing and Vacancy Survey public use file, occupied units",
+   "note": "UTIL_ELECTRIC, RENT_AMOUNT, HHFIRSTMOVEIN and the FW/FW1&ndash;FW80 weights behind balco.nyc&rsquo;s counts of who pays for electricity and how long tenants stay; merged on CONTROL with the all-units file."
+  },
+  {
+   "url": "https://www.nyc.gov/assets/hpd/data/allunits_puf_23.csv",
+   "title": "NYC HPD &mdash; 2023 NYC Housing and Vacancy Survey public use file, all units",
+   "note": "CSR (32 rent stabilized, 05 public housing, 80 market) and UNIT_FLOOR, used for the regulation and floor breakdowns."
+  },
+  {
+   "url": "https://www.nyc.gov/assets/hpd/downloads/pdfs/about/2023-nychvs-puf-user-guide-codebook.pdf",
+   "title": "NYC HPD &mdash; 2023 NYCHVS PUF User Guide and Codebook",
+   "note": "variable definitions (UTIL_ELECTRIC: household pays for electricity), the floor coding, and that balconies are excluded from the room count."
+  },
+  {
+   "url": "https://www.nyc.gov/assets/hpd/downloads/pdfs/about/2023-nychvs-guide-to-estimating-variances.pdf",
+   "title": "NYC HPD &mdash; 2023 NYCHVS guide to estimating variances",
+   "note": "the successive-difference replication formula (4/80 &times; the sum of squared replicate deviations) used for the margins of error."
+  },
+  {
+   "url": "https://www.nyc.gov/assets/hpd/downloads/pdfs/about/2023-nychvs-selected-initial-findings.pdf",
+   "title": "NYC HPD &mdash; 2023 NYCHVS Selected Initial Findings",
+   "note": "996,600 rent-stabilized units; median monthly rent of $1,500 for stabilized units and $560 for public housing in 2023."
+  },
+  {
+   "url": "https://www.law.cornell.edu/regulations/new-york/9-NYCRR-2522.5",
+   "title": "9 NYCRR &sect;2522.5 &mdash; Rent Stabilization Code, lease agreements (LII)",
+   "note": "&sect;2522.5(f)(1): a renewal lease is on the same terms and conditions as the expired lease, with the stated exceptions."
+  },
+  {
+   "url": "https://www.law.cornell.edu/regulations/new-york/9-NYCRR-2524.3",
+   "title": "9 NYCRR &sect;2524.3 &mdash; Rent Stabilization Code, proceedings for eviction: wrongful acts of tenant (LII)",
+   "note": "&sect;2524.3(a): violation of a substantial obligation, 10-day written notice to cure (15 days by mail), and the willful-injury limb."
+  },
+  {
+   "url": "https://www.nysenate.gov/legislation/laws/RPA/753",
+   "title": "New York State Senate &mdash; RPAPL &sect;753, stay in premises occupied for dwelling purposes",
+   "note": "subdivision 4: a 30-day stay of the warrant in which a tenant may correct a lease breach."
+  },
+  {
+   "url": "https://hcr.ny.gov/leases",
+   "title": "NYS Homes and Community Renewal &mdash; Leases (rent stabilization)",
+   "note": "that a stabilized renewal lease generally keeps the same terms and conditions as the expiring lease."
+  },
+  {
+   "url": "https://hcr.ny.gov/system/files/documents/2024/11/fact-sheet-27-11-2024.pdf",
+   "title": "NYS HCR / DHCR &mdash; Fact Sheet #27, Air Conditioners (11/2024)",
+   "note": "electrical inclusion and exclusion buildings; per-unit air-conditioner surcharges where the owner pays for electricity, barred since 21 November 2022 where the tenant pays."
+  },
+  {
+   "url": "https://dps.ny.gov/electric-submetering-information",
+   "title": "NYS Department of Public Service &mdash; Electric submetering information",
+   "note": "submetering needs Public Service Commission authorization, and residents&rsquo; rates are capped at what the utility charges."
+  },
+  {
+   "url": "https://www.nyc.gov/assets/nycha/downloads/pdf/NYCHA_Fact_Sheet.pdf",
+   "title": "NYCHA &mdash; Fact Sheet 2025",
+   "note": "177,565 apartments in 335 developments; 152,926 public-housing apartments in 1,882 residential buildings; 24,639 PACT/RAD apartments in 92 developments; average public-housing rent of $621."
+  },
+  {
+   "url": "https://www.nyc.gov/assets/nycha/downloads/pdf/pp/house-rules-040821.pdf",
+   "title": "NYCHA &mdash; Highlights of House Rules, Lease, Law and NYCHA Policy (form 040.821, rev. 9/24/24)",
+   "note": "Appliance Agreement for major appliances; antennas only inside apartments; roofs restricted; termination proceedings for breaches of NYCHA rules; balconies named only in the smoke-free rule."
+  },
+  {
+   "url": "https://www.nyc.gov/assets/nycha/downloads/pdf/pp/nycha-public-housing-resident-handbook-2024.pdf",
+   "title": "NYCHA &mdash; Public Housing Resident Handbook (December 2024)",
+   "note": "the ban on dishes and antennas attached to window frames, window guards or exterior brickwork; usage fees for appliances in master-metered buildings; electricity included in rent in most developments."
+  },
+  {
+   "url": "https://www.nyc.gov/site/nycha/residents/acop/chapter-6.page",
+   "title": "NYCHA &mdash; Admissions and Continued Occupancy Plan, Chapter 6: Leasing",
+   "note": "most buildings master-metered with no utility bills or allowance; utility allowances from estimated usage in individually metered developments; Appliance Agreement fees."
+  },
+  {
+   "url": "https://www.nyc.gov/site/nycha/about/accessolar.page",
+   "title": "NYCHA &mdash; ACCESSolar: Accelerating Community-Empowered Shared Solar",
+   "note": "community solar on NYCHA roofs on its own meters; NYCHA as host only, unable to sign PPAs under its electricity rates and regulations; NYCHA residents who pay their own utility bills as a target group; the 30&nbsp;MW by 2026 commitment."
+  },
+  {
+   "url": "https://www.nyc.gov/site/nycha/about/press/pr-2025/pr-20250512.page",
+   "title": "NYCHA &mdash; New solicitation to install 2.9 MW of community solar, 12 May 2025",
+   "note": "6.8&nbsp;MW built and 12.5&nbsp;MW in design or construction under ACCESSolar."
+  },
+  {
+   "url": "https://nychajournal.nyc/nycha-mayor-unveil-2026-sustainability-agenda/",
+   "title": "The NYCHA Journal &mdash; Unveiling NYCHA&rsquo;s 2026 Sustainability Agenda, 23 April 2026",
+   "note": "&ldquo;Complete NYCHA&rsquo;s 30-megawatt solar goal&rdquo; listed among the agenda&rsquo;s five-year goals."
+  },
+  {
+   "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+   "title": "New York State Senate &mdash; S8512C (SUNNY Act)",
+   "note": "1,200&nbsp;W limit, effective 90 days after becoming law, no landlord or tenant provision; last action 28 May 2026, returned to Assembly."
+  },
+  {
+   "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+   "title": "NLR (formerly NREL) &mdash; PVWatts V8 API",
+   "note": "the model behind balco.nyc&rsquo;s New York City run (635.7&nbsp;kWh a year, 800&nbsp;W, vertical, south, before the railing factor)."
+  },
+  {
+   "url": "https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf",
+   "title": "Con Edison &mdash; historical average full-service electric rates",
+   "note": "the SC-1 bill history behind the {{coned.rate_cents}}&cent;/kWh all-in marginal rate used to value self-consumed output."
+  }
+ ],
+ "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not legal advice. Production figures are modeled, not metered; survey counts are estimates with the margins shown. Your lease, any written consent and NYCHA&rsquo;s rules decide your case."
+}

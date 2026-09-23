@@ -1,0 +1,216 @@
+{
+  "slug": "find-your-electricity-rate",
+  "title": "How to find what a kWh really costs you &middot; balco.nyc",
+  "og_title": "How to find what a kWh really costs you, from your electric bill",
+  "breadcrumb": "Your electricity rate",
+  "cluster": "economics",
+  "pillar": false,
+  "card_title": "What does a kWh really cost you?",
+  "card": "Your marginal rate from your own bill, and five utilities worked from their tariffs.",
+  "llms": "how to compute your own marginal electricity rate from a bill, and balco.nyc's tariff-by-tariff computation for five large utilities showing that EIA state averages miss the rate a balcony panel avoids by between 12% too low and 16% too high.",
+  "related": [
+    "electricity-rate",
+    "is-balcony-solar-worth-it",
+    "balcony-solar-net-metering"
+  ],
+  "description": "Add every per-kWh charge on your bill and leave out the fixed fee. Worked from five utility tariffs, state averages missed it by -12% to +16%.",
+  "eyebrow": "Rates",
+  "h1": "How to find what a kWh really costs you, from your electric bill",
+  "lede": "What a kWh really costs you is the sum of every charge on your bill that is billed per kilowatt-hour &mdash; supply, delivery, riders and surcharges, plus the taxes on them &mdash; with the fixed monthly charge left out. That marginal rate is what each kWh a balcony panel replaces is worth. Working from the published tariffs of five large utilities, balco.nyc found it runs from <strong>13.3&cent; at Florida Power &amp; Light to 37.5&cent; at PG&amp;E</strong> for a south-facing railing&rsquo;s output, and that the EIA state average, the calculator&rsquo;s default outside New York City, misses it by between 12% too low and 16% too high.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~10 minutes",
+  "tags": [
+    "Marginal, not average",
+    "13.3&ndash;37.5&cent; at 5 utilities",
+    "State average off &minus;12% to +16%"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "three-rates",
+      "toc": "Three rates on one bill",
+      "html": "        <section id=\"three-rates\">\n  <h2><span class=\"sec-num\">1</span>Average, marginal and the price to compare</h2>\n  <p>There are at least three ways to put a price on a kilowatt-hour, and they answer different questions.</p>\n  <ul>\n    <li><strong>Average price:</strong> the whole bill divided by the kWh on it. It includes the fixed monthly charge, so it rises as your usage falls. The EIA state figures balco.nyc&rsquo;s calculator uses outside New York City are this kind: every utility&rsquo;s residential revenue in the state, which EIA&rsquo;s instructions say includes customer charges, surcharges and franchise fees, divided by kWh sold over the twelve months to June 2026.</li>\n    <li><strong>Price to compare:</strong> the supply part only (generation and, in some states, transmission), published so you can compare offers from retail suppliers. ComEd&rsquo;s is 10.399&cent; for June to September 2026 and PECO&rsquo;s is 11.759&cent; for June to November 2026. By balco.nyc&rsquo;s computation below, those are 61% and 53% of what a kWh actually costs those customers.</li>\n    <li><strong>Marginal price:</strong> what one kWh more, or one fewer, changes on the bill. That is every charge billed per kWh, plus the taxes on them, and nothing that is fixed.</li>\n  </ul>\n  <p>A balcony panel only changes the third. It reduces the kWh you draw from the grid, not the customer charge, which you pay whether you use 50&nbsp;kWh or 5,000.</p>\n  <div class=\"callout\"><p><strong>The rule:</strong> value solar you use yourself at the marginal price. The average spreads a fixed charge you cannot avoid over every kWh; the price to compare leaves out delivery, which you still avoid.</p></div>\n  <p>New York City, where balco.nyc uses Con&nbsp;Edison&rsquo;s all-in marginal rate of about {{coned.rate_cents}}&cent;, has <a href=\"/electricity-rate\">its own page</a>. This one is for everywhere else.</p>\n</section>"
+    },
+    {
+      "id": "from-your-bill",
+      "toc": "Work it out from your bill",
+      "html": "        <section id=\"from-your-bill\">\n  <h2><span class=\"sec-num\">2</span>How to work out your marginal rate from one bill</h2>\n  <p>You need one recent bill that lists each charge with its rate. Then:</p>\n  <ol>\n    <li><strong>Find every charge billed per kWh</strong>: lines shown as &ldquo;kWh &times; rate&rdquo;. Supply or generation, fuel, transmission, distribution or delivery, and riders with names like conservation, environmental, storm protection or energy efficiency. Add up their rates.</li>\n    <li><strong>Leave out anything fixed</strong>: the customer, basic service, base services or meter charge, and any minimum-bill top-up. Leave out one-off credits too, such as Florida Power &amp; Light&rsquo;s one-month storm refund in September 2026 or California&rsquo;s Climate Credit, a flat $36.18 per PG&amp;E household.</li>\n    <li><strong>Keep per-kWh credits that recur.</strong> ComEd&rsquo;s carbon-free resource adjustment is billed per kWh and was a credit in every month of ComEd&rsquo;s filings from June 2025 to January 2026, so it belongs in the sum with a minus sign.</li>\n    <li><strong>Check for tiers.</strong> If the rate changes with how much you use, your marginal price is the rate for the block your last kWh lands in, not the first block.</li>\n    <li><strong>Add the taxes that scale with usage</strong>: taxes charged per kWh, and percentage taxes and fees (gross receipts, franchise, sales tax) applied to the per-kWh total.</li>\n  </ol>\n  <p>Florida Power &amp; Light&rsquo;s own sample bill for a 1,000&nbsp;kWh customer in September 2026 shows how it works. The per-kWh lines are base energy $78.65, fuel $28.93, storm protection $9.95, environmental $3.45, conservation $1.48, capacity $0.52 and a transition credit of &minus;$0.40: $122.58, or 12.26&cent; a kWh. Gross receipts tax and the regulatory fee add 2.65%, which gives <strong>12.58&cent;</strong>. The $10.52 base charge and the $7.97 storm refund are left out. The bill&rsquo;s own total, divided by 1,000, is 12.85&cent;; in a month without the refund it would be 13.66&cent;. Neither is what a kWh costs.</p>\n  <p>The shortcut on <a href=\"/electricity-rate\">the NYC page</a>, total minus the fixed charge divided by kWh, gives the right answer only when every kWh is priced the same. FPL&rsquo;s is not: above 1,000&nbsp;kWh a month its energy and fuel charges each rise by 1&cent;, and the marginal price becomes 14.64&cent;.</p>\n</section>"
+    },
+    {
+      "id": "five-utilities",
+      "toc": "Five utilities, from their tariffs",
+      "html": "        <section id=\"five-utilities\">\n  <h2><span class=\"sec-num\">3</span>Five utilities, worked from their tariffs</h2>\n  <p>balco.nyc read the current residential tariff of five large utilities in five states, taken from the utility&rsquo;s own tariff sheets or the state commission, and added every per-kWh component for a typical customer. The rates are those on bills in September 2026 unless the table says otherwise. PG&amp;E says it moved residential customers to time-of-use plans in 2020, so its row uses E-TOU-C, the plan with a 4&ndash;9&nbsp;p.m. peak.</p>\n  <div class=\"table-wrap\"><table><thead>\n    <tr><th>Utility and tariff</th><th>Fixed charge</th><th>Per-kWh components, &cent;</th><th>All-in marginal</th></tr>\n  </thead><tbody>\n    <tr><td>PG&amp;E (California), E-TOU-C, PG&amp;E supply, off-peak, usage above baseline; total rates effective 1&nbsp;June 2026</td><td>$24.13/month base services charge ($0.79343 a day)</td><td>October&ndash;May: generation, net of a 1.01 power charge indifference credit, 10.03 + transmission 5.10 + distribution with over-baseline adjustment 20.00 + public purpose, wildfire and other charges 1.62 + state surcharge 0.03. June&ndash;September: generation 9.47, distribution 23.74</td><td><strong>36.8&cent;</strong> Oct&ndash;May; <strong>40.0&cent;</strong> Jun&ndash;Sep</td></tr>\n    <tr><td>ComEd (Illinois), apartment without electric heat, ComEd supply, Chicago; September 2026 bills</td><td>$16.50/month (customer 11.51, metering 3.82, low-income discount recovery 1.17)</td><td>Supply 8.68 + purchased electricity adjustment &minus;0.09 + transmission 1.72 + distribution 4.79 + distribution tax charge 0.13 + riders 0.82 (efficiency, renewable energy, zero-emission, energy transition, coal-to-solar, environmental) + franchise cost 0.17 + Illinois excise tax 0.33 + Chicago electricity use tax 0.61</td><td><strong>17.2&cent;</strong> before the monthly carbon-free credit</td></tr>\n    <tr><td>Florida Power &amp; Light, RS-1; rates in force January&ndash;August 2026 and again from 1&nbsp;October</td><td>$10.52/month base charge</td><td>First 1,000&nbsp;kWh: base energy 7.87 + fuel 2.89 + clauses 1.50 (conservation, capacity, environmental, storm protection, less the transition credit), then 2.65% gross receipts tax and regulatory fee. Above 1,000&nbsp;kWh: base energy 8.87, fuel 3.89</td><td><strong>12.6&cent;</strong> to 1,000&nbsp;kWh; <strong>14.6&cent;</strong> above</td></tr>\n    <tr><td>Georgia Power, R-31; bills from June 2026</td><td>$0.4603 a day, about $14.00/month, before riders</td><td>October&ndash;May: base energy 8.21 + environmental and efficiency riders (14.22% of base) 1.17 + fuel 3.86, then 3.08% franchise fee inside city limits. June&ndash;September above 1,000&nbsp;kWh: base energy 15.08 + riders 2.14 + fuel 3.81</td><td><strong>13.6&cent;</strong> Oct&ndash;May; <strong>21.7&cent;</strong> Jun&ndash;Sep above 1,000&nbsp;kWh (14.3&cent; and 21.1&cent; in the lower summer blocks)</td></tr>\n    <tr><td>PECO (Pennsylvania), Rate R, PECO default supply; distribution tariff effective 1&nbsp;April 2026, supply 1&nbsp;June 2026</td><td>$11.29/month</td><td>Distribution 10.28 (universal service, efficiency, transmission and nuclear riders included; two small percentage adjustments) + generation 10.79 + transmission 0.97. No sales tax; gross receipts tax is already inside the rates</td><td><strong>22.0&cent;</strong> all year</td></tr>\n  </tbody></table></div>\n  <p class=\"table-note\">balco.nyc&rsquo;s computation from each utility&rsquo;s published tariff (sources below). Components are rounded to two decimals; the totals are computed from the unrounded rates.</p>\n  <p>Three things stand out. None of the fixed charges, from $10.52 to $24.13 a month, moves when you use less. At PG&amp;E, FPL and Georgia Power the price of a kWh changes with the season, with how much you use, or both; ComEd&rsquo;s summer and winter supply prices differ only slightly, and PECO&rsquo;s changes each June and December. And supply is only a little over half the price: at ComEd and PECO, delivery, riders and taxes add another 6.9&cent; and 10.3&cent; to every kWh.</p>\n  <p>What the computation leaves out:</p>\n  <ul>\n    <li><strong>ComEd&rsquo;s carbon-free resource adjustment</strong> is reset monthly: a 2.38&cent; credit in January 2026 in ComEd&rsquo;s filing, roughly a penny in June 2026 according to the Citizens Utility Board. We found no published September value, so the table stops before it; subtract what your bill shows. The purchased electricity adjustment, also monthly, is included at the Illinois Commerce Commission&rsquo;s September figure, &minus;0.087&cent;.</li>\n    <li><strong>Local taxes that vary by city</strong>: California&rsquo;s utility users taxes, Florida&rsquo;s franchise fees and municipal utility taxes, and Georgia&rsquo;s sales tax, which the Georgia Public Service Commission&rsquo;s bill calculator leaves you to enter. Where they apply, your rate is higher than the table.</li>\n    <li><strong>Other supply</strong>: customers of a community choice aggregator or a retail supplier pay their provider&rsquo;s price instead of the utility&rsquo;s generation charge.</li>\n    <li><strong>ComEd&rsquo;s franchise cost</strong> uses ComEd&rsquo;s system-average 3.538%; Chicago&rsquo;s may differ. Single-family homes pay a higher distribution charge, 6.23&cent;, for a marginal rate of 18.7&cent;.</li>\n  </ul>\n</section>"
+    },
+    {
+      "id": "versus-state-average",
+      "toc": "How far off the state average is",
+      "html": "        <section id=\"versus-state-average\">\n  <h2><span class=\"sec-num\">4</span>How far off the state average is, and which way</h2>\n  <p>What matters is the rate on the kWh a panel actually replaces. A panel hung vertically on a south-facing railing faces the low winter sun almost head-on: in balco.nyc&rsquo;s PVWatts runs for the largest city in every state, it makes a median of <strong>75% of its output from October to May</strong>, from 58% in Anchorage to 82% in Honolulu. Where a tariff is seasonal, balco.nyc weighted it by the railing&rsquo;s month-by-month output, after the site&rsquo;s 0.95 railing factor: the Los Angeles run for PG&amp;E, the nearest in the site&rsquo;s data, with 78% of output from October to May, and Atlanta for Georgia Power, 77%. For FPL&rsquo;s 1,000&nbsp;kWh threshold, EIA&rsquo;s monthly data show the average Florida home used more than 1,000&nbsp;kWh in six of the twelve months to June 2026, May to October; the Jacksonville railing makes 36% of its output in those months.</p>\n  <div class=\"table-wrap\"><table><thead>\n    <tr><th>Utility</th><th>Marginal rate, weighted to a south railing&rsquo;s output</th><th>EIA state average, 12 months to June 2026</th><th>State average against the marginal rate</th></tr>\n  </thead><tbody>\n    <tr><td>PG&amp;E</td><td>37.5&cent;</td><td>California 32.9&cent;</td><td>4.6&cent; too low (&minus;12%)</td></tr>\n    <tr><td>PECO</td><td>22.0&cent;</td><td>Pennsylvania 20.5&cent;</td><td>1.6&cent; too low (&minus;7%)</td></tr>\n    <tr><td>Georgia Power</td><td>15.5&cent;</td><td>Georgia 15.0&cent;</td><td>0.5&cent; too low (&minus;3%)</td></tr>\n    <tr><td>ComEd (apartment)</td><td>17.2&cent; before the monthly credit</td><td>Illinois 18.5&cent;</td><td>1.4&cent; too high (+8%)</td></tr>\n    <tr><td>Florida Power &amp; Light</td><td>13.3&cent;</td><td>Florida 15.4&cent;</td><td>2.1&cent; too high (+16%)</td></tr>\n  </tbody></table></div>\n  <p class=\"table-note\">balco.nyc&rsquo;s computation. State averages are the EIA figures the calculator uses; they include fixed charges and every utility in the state.</p>\n  <p>The state average is not biased in one direction: too low for three utilities, too high for two. Each gap has a traceable cause.</p>\n  <ul>\n    <li><strong>Fixed charges push the average up.</strong> A ComEd apartment customer at Illinois&rsquo;s average of 693&nbsp;kWh a month pays about 19.6&cent; a kWh on average against 17.2&cent; at the margin; at 300&nbsp;kWh the average is 22.9&cent;. With ComEd&rsquo;s carbon-free credit subtracted, the state average overstates the apartment&rsquo;s rate further still.</li>\n    <li><strong>Tiers can push the average down.</strong> At Florida&rsquo;s average of 1,104&nbsp;kWh, an FPL bill averages 13.8&cent;, below the 14.6&cent; marginal rate. But a south railing makes most of its power in winter, when the typical Florida home stays under 1,000&nbsp;kWh and the marginal rate is 12.6&cent;. The Florida average also includes franchise fees, which the table leaves out, and every other utility in the state.</li>\n    <li><strong>A state average mixes utilities.</strong> California&rsquo;s blends PG&amp;E with every other utility in the state and with customers on discounted low-income rates. PG&amp;E customers on its standard tiered plan, E-1, pay 40.7&cent; above baseline, higher still.</li>\n    <li><strong>The average is behind.</strong> PECO&rsquo;s price to compare rose from 11.024&cent; to 11.759&cent; on 1&nbsp;June 2026, after the EIA window closed. At the old price the marginal rate would be 21.3&cent;, still 0.8&cent; above the state average.</li>\n    <li><strong>Seasons can cancel out.</strong> Georgia Power&rsquo;s summer kWh cost up to 21.7&cent;, its winter kWh 13.6&cent;, and the railing&rsquo;s winter-heavy output lands close to the state average.</li>\n  </ul>\n  <p>The error passes straight into the result: first-year savings are output times rate, so a rate 12% too low understates them by 12%. Price already explains most of the difference in <a href=\"/is-balcony-solar-worth-it\">payback between states</a>; it deserves the five minutes this takes.</p>\n</section>"
+    },
+    {
+      "id": "tiers-seasons-tou",
+      "toc": "Tiers, seasons, time of use",
+      "html": "        <section id=\"tiers-seasons-tou\">\n  <h2><span class=\"sec-num\">5</span>Tiers, seasons and time of use: which kWh a railing replaces</h2>\n  <p><strong>Tiers.</strong> A panel takes kWh off the top of your monthly usage, not the bottom. Where the price rises with usage (FPL above 1,000&nbsp;kWh, Georgia Power in summer, PG&amp;E above baseline), the panel saves the top block&rsquo;s price in months you reach it and the lower price in months you do not. If you never leave the first block, the first block is your marginal rate: a small PG&amp;E user within baseline saves 32.6&cent; on the E-1 plan, not 40.7&cent;.</p>\n  <p><strong>Seasons.</strong> Georgia Power charges 13.6&cent; a kWh from October to May and up to 21.7&cent; in summer. Because a south railing makes 77% of its Atlanta output in the cheap season, its kWh are worth 15.5&cent; on average. East- and west-facing railings make 60% to 62% of their Atlanta output from October to May, so their kWh are worth more, 16.7&cent; to 16.9&cent;, though they make about a fifth less power. <a href=\"/800w-balcony-solar-output\">How output splits between winter and summer</a> is set out by state and direction.</p>\n  <p><strong>Time of use.</strong> PG&amp;E&rsquo;s E-TOU-C plan charges its peak price from 4 to 9&nbsp;p.m. every day. A south-facing railing makes most of its output around midday, so it replaces off-peak kWh, 36.8&cent; to 40.0&cent;, rather than peak kWh at up to 52.3&cent;. PECO&rsquo;s optional time-of-use supply price puts the peak earlier: from June to November 2026 it is 32.404&cent; from 2 to 6&nbsp;p.m. on weekdays and 9.336&cent; at most other hours. On that plan, each kWh from a west-facing railing&rsquo;s afternoon output is worth more than one from a south railing at midday.</p>\n  <p>All of this applies only to kWh you use at home. Power the panel sends back to the grid is almost always unpaid, so the share you use yourself matters as much as the rate: <a href=\"/balcony-solar-net-metering\">how much of a panel&rsquo;s output an apartment uses</a>.</p>\n</section>"
+    },
+    {
+      "id": "calculator-rate",
+      "toc": "The number for the calculator",
+      "html": "        <section id=\"calculator-rate\">\n  <h2><span class=\"sec-num\">6</span>Which number to type into the calculator</h2>\n  <p>On the calculator&rsquo;s results page, open <strong>Adjust assumptions</strong> and find the box labeled <strong>Electricity rate (&cent;/kWh)</strong>. Left blank, it uses Con&nbsp;Edison&rsquo;s {{coned.rate_cents}}&cent; marginal rate in New York City and, everywhere else, your state&rsquo;s EIA average, which includes fixed charges and every utility in the state. Savings are output multiplied by this number, so replace the default with your own.</p>\n  <ul>\n    <li><strong>One price all year:</strong> type the sum from your bill, as in the steps above.</li>\n    <li><strong>Seasonal or tiered prices:</strong> weight them by when the panel produces. For a south railing, three-quarters winter (October to May) and one-quarter summer is within five points of balco.nyc&rsquo;s runs in 45 of 51 cities; use the rate of the block your usage actually reaches.</li>\n    <li><strong>Time of use:</strong> use the off-peak rate for a south railing. For an east- or west-facing railing, check how much of your plan&rsquo;s peak window falls in its sunny hours.</li>\n    <li><strong>Retail supplier or community choice:</strong> use your contract&rsquo;s supply price in place of the utility&rsquo;s generation charge, plus the utility&rsquo;s delivery charges, riders and taxes, which you pay regardless.</li>\n  </ul>\n  <p>Then <a href=\"/\">run the calculator</a> with it. The number will not stay put: ComEd&rsquo;s supply price resets on 1&nbsp;October, PECO&rsquo;s on 1&nbsp;December, and fuel and rider charges move through the year. The calculator&rsquo;s rate escalation setting (3% a year by default) covers the long run; the figure you type should be today&rsquo;s.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "How do I find the cost per kWh on my electric bill?",
+      "Add up the rates of every charge billed per kilowatt-hour: supply or generation, fuel, transmission, distribution or delivery, and the per-kWh riders and surcharges. Then add the taxes and fees that scale with usage. Leave out the fixed monthly customer or meter charge and any one-off credits. If the price changes with usage, use the rate for the block your last kWh falls in."
+    ],
+    [
+      "What is the difference between my average and my marginal electricity rate?",
+      "The average rate is your whole bill divided by the kWh on it, so it includes the fixed monthly charge and rises as your usage falls. The marginal rate is what one kWh more or less changes on the bill. For a ComEd apartment customer in Chicago using 693 kWh a month, balco.nyc computed an average of about 19.6 cents against a marginal rate of 17.2 cents in September 2026, before ComEd's monthly carbon-free credit."
+    ],
+    [
+      "Is the price to compare my electricity rate?",
+      "No. The price to compare covers supply only, so you can judge offers from retail suppliers. You also pay delivery charges, riders and taxes on every kWh. In balco.nyc's September 2026 computation, ComEd's price to compare of 10.399 cents was 61% of the all-in marginal rate, and PECO's 11.759 cents was 53%."
+    ],
+    [
+      "Should I use my state's average electricity price to estimate solar savings?",
+      "Only as a starting point. balco.nyc compared EIA state averages with the marginal rate of five large utilities, worked from their published tariffs and weighted to a south-facing railing's output. The average ranged from 12% too low (PG&amp;E, California) to 16% too high (Florida Power &amp; Light), so savings based on it were off by the same proportions."
+    ],
+    [
+      "Which rate should I use if my utility has tiers or time-of-use pricing?",
+      "Use the rate for the kWh the panel replaces. Under tiers, that is the top block you reach in the months the panel produces; a south-facing railing makes about three-quarters of its output from October to May. Under time-of-use pricing, a south railing replaces mostly midday kWh, so the off-peak rate usually applies unless the peak window starts in the early afternoon."
+    ],
+    [
+      "Does a balcony solar panel lower the fixed charge on my bill?",
+      "No. Customer, meter and base services charges are the same whether you use 50 kWh or 5,000, so solar cannot reduce them. That is why a solar kWh is worth the marginal rate, which leaves the fixed charge out, and why using an average rate that includes it overstates savings for most small households."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://www.pge.com/tariffs/assets/pdf/tariffbook/ELEC_SCHEDS_E-TOU-C.pdf",
+      "title": "PG&amp;E &mdash; Electric Schedule E-TOU-C, residential time-of-use (peak 4&ndash;9 p.m.)",
+      "note": "total and unbundled rates effective 1 June 2026 (Advice 7921-E): off-peak 39.940&cent; summer and 36.757&cent; winter, peak 52.240&cent; and 39.757&cent;, baseline credit 8.140&cent;, base services charge $0.79343 a day."
+    },
+    {
+      "url": "https://www.pge.com/en/account/rate-plans/how-rates-work.html",
+      "title": "PG&amp;E &mdash; How rates work",
+      "note": "residential customers were transitioned to a time-of-use rate plan in 2020; tiers and baseline allowances explained."
+    },
+    {
+      "url": "https://www.pge.com/tariffs/assets/pdf/tariffbook/ELEC_SCHEDS_E-1.pdf",
+      "title": "PG&amp;E &mdash; Electric Schedule E-1, residential services",
+      "note": "the standard tiered rate: 32.561&cent; within baseline and 40.702&cent; above, effective 1 June 2026; the $36.18 California Climate Credit."
+    },
+    {
+      "url": "https://cdtfa.ca.gov/formspubs/l1020.pdf",
+      "title": "California Department of Tax and Fee Administration &mdash; 2026 electrical energy surcharge rate",
+      "note": "the state surcharge of $0.0003 per kWh for 2026."
+    },
+    {
+      "url": "https://www.comed.com/cdn/assets/v3/assets/blt3ebb3fed6084be2a/blt3e0ca86b8d7fead8/69826454787b3dd5429100bf/07EXE137950_Res_bill_insert_7574_508.pdf",
+      "title": "ComEd &mdash; Summary of Typical Residential Line Item Charges, January 2026 billing period",
+      "note": "customer, metering and distribution facilities charges by class, the per-kWh riders, the $1.17 low-income discount recovery charge, the 3.538% system-average franchise cost, and a January 2026 carbon-free resource adjustment of &minus;2.613&cent; before its monthly reconciliation."
+    },
+    {
+      "url": "https://plugin.illinois.gov/understanding-the-price-to-compare/price-to-compare-comed.html",
+      "title": "Illinois Commerce Commission, Plugin Illinois &mdash; Price to Compare, ComEd",
+      "note": "supply 8.677&cent; plus transmission 1.722&cent; = 10.399&cent;/kWh for June&ndash;September 2026; the renewable energy adjustment of 0.1722&cent;/kWh from the June 2026 billing period."
+    },
+    {
+      "url": "https://icc.illinois.gov/downloads/public/pluginillinois/HistoricalPriceToCompare.pdf",
+      "title": "Illinois Commerce Commission &mdash; Historical Prices to Compare",
+      "note": "ComEd&rsquo;s purchased electricity adjustment of &minus;0.087&cent;/kWh for September 2026."
+    },
+    {
+      "url": "https://www.icc.illinois.gov/downloads/public/filing/4/394971.pdf",
+      "title": "ComEd filing with the Illinois Commerce Commission &mdash; Rider CFRA Informational Sheet No. 36.1",
+      "note": "monthly carbon-free resource adjustments, a credit in every month shown from June 2025 to January 2026 (total &minus;2.381&cent; in January 2026)."
+    },
+    {
+      "url": "https://www.citizensutilityboard.org/blog/2026/06/10/why-is-comed-price-spiking/",
+      "title": "Citizens Utility Board &mdash; Why is ComEd&rsquo;s electricity price spiking?",
+      "note": "the carbon-free credit at roughly a penny per kWh in June 2026."
+    },
+    {
+      "url": "https://tax.illinois.gov/research/taxrates/excise.html",
+      "title": "Illinois Department of Revenue &mdash; excise tax rates and fees",
+      "note": "electricity excise tax of $0.0033 per kWh on the first 2,000 kWh a month."
+    },
+    {
+      "url": "https://www.chicago.gov/city/en/depts/fin/supp_info/revenue/tax_list/electricity_use_tax.html",
+      "title": "City of Chicago &mdash; Electricity Use Tax",
+      "note": "0.61&cent; per kWh on the first 2,000 kWh a month."
+    },
+    {
+      "url": "https://www.fpl.com/content/dam/fplgp/us/en/rates/pdf/residential-rates-oct2026.pdf",
+      "title": "Florida Power &amp; Light &mdash; Residential Rates and Clauses, effective October 2026",
+      "note": "RS-1 base charge $10.52; energy 7.865&cent;/8.865&cent; and fuel 2.893&cent;/3.893&cent; below/above 1,000 kWh; conservation, capacity, environmental, storm protection and transition clauses; identical to the January 2026 sheet."
+    },
+    {
+      "url": "https://www.fpl.com/content/dam/fplgp/us/en/rates/pdf/residential-explanation.pdf",
+      "title": "Florida Power &amp; Light &mdash; Understanding your bill: residential customers",
+      "note": "the September 2026 sample bill for 1,000 kWh ($128.45), the one-month storm refund, and gross receipts tax and regulatory assessment fee of about 2.6%."
+    },
+    {
+      "url": "https://www.georgiapower.com/content/dam/georgia-power/pdfs/tariffs/r.pdf",
+      "title": "Georgia Power &mdash; Residential Service Schedule R-31",
+      "note": "basic service charge $0.4603 a day; 8.2116&cent; October&ndash;May; summer blocks 8.7738&cent;, 14.5738&cent; and 15.0828&cent;; bills from June 2026."
+    },
+    {
+      "url": "https://www.georgiapower.com/content/dam/georgia-power/pdfs/tariffs/fcr.pdf",
+      "title": "Georgia Power &mdash; Fuel Cost Recovery Schedule FCR-27",
+      "note": "3.8069&cent; June&ndash;September and 3.8561&cent; October&ndash;May for secondary-distribution customers."
+    },
+    {
+      "url": "https://www.georgiapower.com/content/dam/georgia-power/pdfs/tariffs/eccr.pdf",
+      "title": "Georgia Power &mdash; Environmental Compliance Cost Recovery Schedule ECCR-15",
+      "note": "13.0205% of the base bill."
+    },
+    {
+      "url": "https://www.georgiapower.com/content/dam/georgia-power/pdfs/tariffs/dsm-r.pdf",
+      "title": "Georgia Power &mdash; Demand Side Management Residential Schedule DSM-R-16",
+      "note": "1.1969% of the base bill."
+    },
+    {
+      "url": "https://www.georgiapower.com/content/dam/georgia-power/pdfs/tariffs/mff.pdf",
+      "title": "Georgia Power &mdash; Municipal Franchise Fee Schedule MFF-11",
+      "note": "3.0843% inside city limits, 1.1995% outside."
+    },
+    {
+      "url": "https://psc.ga.gov/utilities/electric/georgia-power-bill-calculator/",
+      "title": "Georgia Public Service Commission &mdash; Georgia Power bill calculator",
+      "note": "rates effective 1 June 2026; sales tax is entered by the user because it varies by location."
+    },
+    {
+      "url": "https://www.peco.com/cdn/assets/v3/assets/blt1b5616c79bacadb4/blt9448ea371fcf175a/69cbdc20a21ea55b33ba7d35/Current_Electric_tariff_effective_April_1_2026.pdf",
+      "title": "PECO &mdash; Electric Tariff Pa. P.U.C. No. 8, effective 1 April 2026",
+      "note": "Rate R: fixed distribution charge $11.29, variable distribution charge $0.10276/kWh, which includes the universal service, energy efficiency, non-bypassable transmission and nuclear decommissioning riders; DSIC 0.11% and state tax adjustment &minus;0.04%."
+    },
+    {
+      "url": "https://www.peco.com/cdn/assets/v3/assets/blt1b5616c79bacadb4/bltf7c1eb06cdfe6ab9/6a0e7050df378b4731251e82/2026_RESIDENTIAL_Final_Electric_PTC_Effective_06-01-2026.pdf",
+      "title": "PECO &mdash; Residential Price to Compare, effective 1 June 2026",
+      "note": "11.759&cent; (generation 10.785&cent; plus transmission 0.974&cent;), up from 11.024&cent;, including gross receipts tax; time-of-use generation 31.430&cent; peak (2&ndash;6 p.m. weekdays) and 8.362&cent; off-peak."
+    },
+    {
+      "url": "https://www.pa.gov/agencies/revenue/resources/tax-types-and-information/sales-use-and-hotel-occupancy-tax",
+      "title": "Pennsylvania Department of Revenue &mdash; Sales, Use and Hotel Occupancy Tax",
+      "note": "electricity for residential use listed among items exempt from sales tax."
+    },
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "NLR (formerly NREL) &mdash; PVWatts V8 API documentation",
+      "note": "the production model behind balco.nyc&rsquo;s monthly railing output for each state&rsquo;s largest city, used here to weight seasonal rates."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia861m/",
+      "title": "U.S. EIA &mdash; Form EIA-861M monthly sales and revenue by state",
+      "note": "the state average prices (revenue divided by kWh, twelve months to June 2026) and monthly residential usage per customer used for the Florida threshold months."
+    },
+    {
+      "url": "https://www.eia.gov/survey/form/eia_861/instructions.pdf",
+      "title": "U.S. EIA &mdash; Form EIA-861 instructions",
+      "note": "reported revenue includes customer service charges, environmental surcharges, franchise fees and fuel adjustments, so EIA averages include fixed charges."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not financial advice. Tariffs change, often monthly; the review date above is when these figures were last checked against the utilities&rsquo; published rates."
+}

@@ -11,7 +11,8 @@
   "related": [
     "calculate-balcony-solar-output",
     "balcony-sunlight",
-    "is-balcony-solar-worth-it"
+    "is-balcony-solar-worth-it",
+    "balcony-solar-winter"
   ],
   "description": "An unshaded 800 W south-facing railing makes about 660 kWh a year in the median US state. Every state's largest city, by direction and tilt.",
   "eyebrow": "Output by state",

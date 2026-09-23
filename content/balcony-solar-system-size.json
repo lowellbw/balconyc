@@ -1,0 +1,171 @@
+{
+  "slug": "balcony-solar-system-size",
+  "title": "400, 800 or 1,200 watts: what size balcony solar system makes sense? &middot; balco.nyc",
+  "og_title": "400, 800 or 1,200 W balcony solar? What each extra 400 W is worth, from an hourly model",
+  "breadcrumb": "System size",
+  "cluster": "economics",
+  "pillar": false,
+  "card_title": "What size balcony solar system makes sense?",
+  "card": "What each extra 400 W is worth, how the sizes meet state caps and circuits, and a sizing rule.",
+  "llms": "that each extra 400 W of balcony solar is worth less than the last: from balco.nyc's hourly PVWatts runs for New York City, the self-consumed kWh, dollars and payback of the first to fourth 400 W at four household baseline loads, how a west-facing railing changes that, how 400 to 1,600 W sit against state caps (1,200 W in most, Maine's 420 W tier, Colorado's 1,920 W) and circuit limits, and a rule of about 400 W of panel per 100 W of baseline load.",
+  "related": [
+    "balcony-solar-net-metering",
+    "is-plug-in-solar-safe",
+    "is-balcony-solar-worth-it"
+  ],
+  "description": "Each extra 400 W of balcony solar is worth less than the last. balco.nyc's hourly model, state caps and circuit limits add up to a simple sizing rule.",
+  "eyebrow": "Sizing a system",
+  "h1": "400, 800 or 1,200 watts: what size balcony solar system makes sense?",
+  "lede": "For most apartments, 400 or 800&nbsp;W: the third 400&nbsp;W, which takes a system to 1,200&nbsp;W, repays its cost within about 12 years only where the home draws some 300&nbsp;W all day. balco.nyc&rsquo;s hourly PVWatts model of a south-facing New York City railing prices each extra 400&nbsp;W separately: in an apartment drawing a steady 150&nbsp;W, the first 400&nbsp;W saves about $89 a year and repays its $600 in 6.3 years, the second saves $35 and takes 14.5, and the third saves <strong>$17</strong> and does not repay its cost within the 25 years the calculator models. Size to what your home draws while the sun is up, not to the legal cap.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~10 minutes",
+  "tags": [
+    "Third 400&nbsp;W: $17/yr",
+    "400&nbsp;W per 100&nbsp;W of floor",
+    "Hourly PVWatts, NYC"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "marginal-value",
+      "toc": "Each 400 W is worth less",
+      "html": "        <section id=\"marginal-value\">\n  <h2><span class=\"sec-num\">1</span>Each extra 400&nbsp;W is worth less than the one before</h2>\n  <p>If you use every kilowatt-hour, size does not change payback: output and kit cost both scale with watts, so in New York City an unshaded south-facing railing of 400, 800 or 1,600&nbsp;W pays back in the same 5.5 years at Con&nbsp;Edison&rsquo;s {{coned.rate_cents}}&cent; marginal rate. balco.nyc&rsquo;s calculator makes that assumption. It fails for output the apartment is not drawing at that moment, which flows to the grid and, under every signed state plug-in law, earns nothing.</p>\n  <p>So balco.nyc priced each 400&nbsp;W step separately. It ran <a href=\"/what-is-pvwatts\">PVWatts&nbsp;V8</a>, from the National Laboratory of the Rockies (formerly NREL), hour by hour for a vertical, south-facing New York City railing with the calculator&rsquo;s parameters (reproducing the site&rsquo;s 635.7&nbsp;kWh a year for 800&nbsp;W), scaled the 8,760 hours to each size, applied the 0.95 railing factor, and set every hour against an apartment drawing a steady 100 to 300&nbsp;W. Each step adds 302&nbsp;kWh a year of output. How much of it gets used:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Apartment&rsquo;s steady draw</th><th>First 400&nbsp;W</th><th>Second (to 800&nbsp;W)</th><th>Third (to 1,200&nbsp;W)</th><th>Fourth (to 1,600&nbsp;W)</th></tr></thead><tbody>\n    <tr><td>100&nbsp;W</td><td>216&nbsp;kWh &middot; $74</td><td>59&nbsp;kWh &middot; $20</td><td>31&nbsp;kWh &middot; $10</td><td>21&nbsp;kWh &middot; $7</td></tr>\n    <tr><td>150&nbsp;W</td><td>262&nbsp;kWh &middot; $89</td><td>102&nbsp;kWh &middot; $35</td><td><strong>49&nbsp;kWh &middot; $17</strong></td><td>33&nbsp;kWh &middot; $11</td></tr>\n    <tr><td>200&nbsp;W</td><td>287&nbsp;kWh &middot; $98</td><td>146&nbsp;kWh &middot; $50</td><td>73&nbsp;kWh &middot; $25</td><td>46&nbsp;kWh &middot; $15</td></tr>\n    <tr><td>300&nbsp;W</td><td>302&nbsp;kWh &middot; $103</td><td>222&nbsp;kWh &middot; $76</td><td>125&nbsp;kWh &middot; $43</td><td>80&nbsp;kWh &middot; $27</td></tr>\n  </tbody></table></div>\n  <p>Electricity used at home that each step adds per year, and its value at {{coned.rate_cents}}&cent;: New York City, vertical south-facing railing, no shading, no daytime use above the steady draw.</p>\n  <p>The draws bracket real homes. NRDC&rsquo;s 2015 smart-meter study defined idle load as a home&rsquo;s lowest hourly level: 218&nbsp;W on average across 70,000 northern California homes, with a quarter of a Bay Area subsample below 119&nbsp;W, half above 185&nbsp;W and a quarter above 282&nbsp;W. The one audited apartment idled at 92&nbsp;W. At a 150&nbsp;W floor the third 400&nbsp;W adds <strong>49&nbsp;kWh</strong> of use and sends 84% of its output to the grid, unpaid (see <a href=\"/balcony-solar-net-metering\">whether you get paid for surplus</a>).</p>\n</section>"
+    },
+    {
+      "id": "marginal-payback",
+      "toc": "What the extra 400 W costs",
+      "html": "        <section id=\"marginal-payback\">\n  <h2><span class=\"sec-num\">2</span>What the extra 400&nbsp;W costs, and when it pays for itself</h2>\n  <p>balco.nyc&rsquo;s kit costs scale in a straight line, so the ${{kits.mid}} mid-range figure for 800&nbsp;W makes each 400&nbsp;W step <strong>$600</strong>. The table runs each step through the calculator&rsquo;s payback loop (3% annual price rise, 0.5% yearly degradation, nominal dollars, 25 years), then gives the price at which the step would pay back in 10 years.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Apartment&rsquo;s steady draw</th><th>First 400&nbsp;W</th><th>Second</th><th>Third</th><th>Fourth</th></tr></thead><tbody>\n    <tr><td>100&nbsp;W</td><td>7.5 yrs &middot; $824</td><td>22.6 yrs &middot; $225</td><td>Over 25 &middot; $117</td><td>Over 25 &middot; $79</td></tr>\n    <tr><td>150&nbsp;W</td><td>6.3 yrs &middot; $997</td><td>14.5 yrs &middot; $390</td><td><strong>Over 25</strong> &middot; $187</td><td>Over 25 &middot; $125</td></tr>\n    <tr><td>200&nbsp;W</td><td>5.8 yrs &middot; $1,092</td><td>10.7 yrs &middot; $555</td><td>19.2 yrs &middot; $277</td><td>Over 25 &middot; $173</td></tr>\n    <tr><td>300&nbsp;W</td><td>5.5 yrs &middot; $1,148</td><td>7.3 yrs &middot; $846</td><td>12.2 yrs &middot; $476</td><td>17.9 yrs &middot; $303</td></tr>\n  </tbody></table></div>\n  <p>Payback on the step&rsquo;s $600 &middot; the most the step could cost and still pay back in 10 years. New York City, south-facing railing, {{coned.rate_cents}}&cent;.</p>\n  <p>A whole-system payback hides this. At a 150&nbsp;W floor a 1,200&nbsp;W system pays back its $1,800 in 11.3 years, which looks tolerable, but that averages a 6.3-year first step, a 14.5-year second and a third that returns $568 over 25 years on its $600. Averages flatter the last panel.</p>\n  <p>Lifetime totals pull the other way. Any step that pays back inside 25 years raises the nominal 25-year total net of hardware, so the total peaks at a larger size: 800&nbsp;W for a 150&nbsp;W floor ($3,023, against $2,991 at 1,200&nbsp;W), 1,200&nbsp;W for 200&nbsp;W, 1,600&nbsp;W for 300&nbsp;W. But the steps that get there take 14.5 to 19 years to break even, count a dollar in year 25 as one today, and assume the hardware lasts. A ceiling, not an expectation. The straight-line cost is an assumption too: a panel that shares an inverter may cost less than $600, which is what the second figure in each cell is for.</p>\n</section>"
+    },
+    {
+      "id": "direction",
+      "toc": "West-facing railings",
+      "html": "        <section id=\"direction\">\n  <h2><span class=\"sec-num\">3</span>A west-facing railing can carry more watts</h2>\n  <p>Surplus comes from the midday peak, so a lower peak leaves room for more panel. balco.nyc ran the same hourly model for a west-facing railing (reproducing the site&rsquo;s 443.6&nbsp;kWh for 800&nbsp;W). Each 400&nbsp;W makes 211&nbsp;kWh a year against 302, and 800&nbsp;W peaks at 563&nbsp;W instead of 691&nbsp;W. At a 150&nbsp;W floor:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Step</th><th>South: kWh used added (of 302)</th><th>South: payback on $600</th><th>West: kWh used added (of 211)</th><th>West: payback on $600</th></tr></thead><tbody>\n    <tr><td>First 400&nbsp;W</td><td>262</td><td>6.3 yrs</td><td>196</td><td>8.2 yrs</td></tr>\n    <tr><td>Second</td><td>102</td><td>14.5 yrs</td><td>94</td><td>15.5 yrs</td></tr>\n    <tr><td>Third</td><td>49</td><td>Over 25</td><td><strong>64</strong></td><td>21.3 yrs</td></tr>\n    <tr><td>Fourth</td><td>33</td><td>Over 25</td><td>49</td><td>Over 25</td></tr>\n  </tbody></table></div>\n  <p>The west railing saves less overall, but beyond 800&nbsp;W its next panel is worth more. Its output also leans toward summer, 53&nbsp;kWh in July against 19 in December for 800&nbsp;W before the railing loss, when air conditioners run; a constant floor ignores that, so for an air-conditioned west-facing apartment these figures are conservative. A south railing is the reverse, producing most in winter (see <a href=\"/800w-balcony-solar-output\">why a south railing is a winter panel</a>). An east railing makes a similar annual total to the west one, but balco.nyc did not run it hourly, and a building across the street, which also trims the peak, is not in these runs.</p>\n</section>"
+    },
+    {
+      "id": "state-caps",
+      "toc": "State caps: 420 to 1,920 W",
+      "html": "        <section id=\"state-caps\">\n  <h2><span class=\"sec-num\">4</span>What the laws allow: 1,200&nbsp;W in most states, 420&nbsp;W and 1,920&nbsp;W at the edges</h2>\n  <p>Eight of the nine signed state plug-in laws cap a device at 1,200&nbsp;W, as do New York&rsquo;s SUNNY Act, which has passed both chambers and {{sunny.phrase}}, and California&rsquo;s SB&nbsp;868, with the Governor as of 23 September 2026 (his deadline is 30 September). The caps are written as output: New York&rsquo;s and California&rsquo;s bills, Vermont and Maine say inverter or AC outright; Utah, Connecticut and Virginia say only &ldquo;maximum power output.&rdquo; The calculator&rsquo;s sizes are panel watts, and at its DC-to-AC ratio of 1.1 their inverters are about 364, 727, 1,091 and 1,455&nbsp;W. From balco.nyc&rsquo;s reading of the legislature texts (not legal advice):</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Where</th><th>Cap as written</th><th>400&nbsp;W</th><th>800&nbsp;W</th><th>1,200&nbsp;W</th><th>1,600&nbsp;W</th></tr></thead><tbody>\n    <tr><td><a href=\"/states/utah\">Utah</a>, <a href=\"/states/maryland\">Maryland</a>, <a href=\"/states/vermont\">Vermont</a>, <a href=\"/states/connecticut\">Connecticut</a>, <a href=\"/states/virginia\">Virginia</a>, <a href=\"/states/new-hampshire\">New Hampshire</a>, <a href=\"/states/new-jersey\">New Jersey</a></td><td>1,200&nbsp;W</td><td>Within</td><td>Within</td><td>Within</td><td>Over</td></tr>\n    <tr><td><a href=\"/sunny-act\">New York</a> (bill)</td><td>1,200&nbsp;W aggregate AC inverter nameplate</td><td>Within</td><td>Within</td><td>Within</td><td>Over</td></tr>\n    <tr><td><a href=\"/states/california\">California</a> (bill)</td><td>1,200&nbsp;W AC per dwelling</td><td>Within</td><td>Within</td><td>Within</td><td>Over</td></tr>\n    <tr><td><a href=\"/states/maine\">Maine</a></td><td>420&nbsp;W AC per service address; up to 1,200&nbsp;W with conditions</td><td>Within the 420&nbsp;W tier</td><td>Licensed electrician, dedicated single-outlet circuit, utility notice</td><td>Same conditions</td><td>Over</td></tr>\n    <tr><td><a href=\"/states/colorado\">Colorado</a></td><td>1,920&nbsp;W to the grid, one system per address</td><td>Within</td><td>Within</td><td>Within</td><td>Within</td></tr>\n  </tbody></table></div>\n  <p>For an apartment the cap rarely binds: the rule in section&nbsp;6 reaches 1,200&nbsp;W only at a 300&nbsp;W floor. Maine prices the second step explicitly: 400 to 800&nbsp;W needs a licensed electrician and a dedicated circuit on top of $600 of hardware, for a step worth about $35 a year in the New York example at a 150&nbsp;W floor. Colorado&rsquo;s 1,920&nbsp;W allows 1,600&nbsp;W of panel, but Colorado&rsquo;s EIA average residential price is 16.45&cent; (12 months to June 2026), under half of {{coned.rate_cents}}&cent;, and Denver&rsquo;s stronger sun (805&nbsp;kWh from an 800&nbsp;W south railing, against New York&rsquo;s 604) probably means more surplus at the same floor, though balco.nyc did not run Denver hourly.</p>\n  <p>400&nbsp;W also sits at a second line. Colorado, Maryland and Virginia exempt devices of 391&nbsp;W or less from code or listing provisions that would require rewiring, New Jersey&rsquo;s line is 400&nbsp;W, and from 1 January 2027 Colorado bars selling devices over 391&nbsp;W that are not UL labeled and listed. Whether a product falls under a line depends on how each law measures output. Where a cap counts inverter output, more panel behind a capped inverter is a question of wording; it barely changes self-consumption, since clipping removes only output far above any apartment&rsquo;s floor. <a href=\"/balcony-solar-laws-compared\">Every law side by side</a> has the rest.</p>\n</section>"
+    },
+    {
+      "id": "circuit",
+      "toc": "Circuit headroom",
+      "html": "        <section id=\"circuit\">\n  <h2><span class=\"sec-num\">5</span>The circuit is the other ceiling</h2>\n  <p>Size also sets how much current the inverter adds to a household circuit. balco.nyc&rsquo;s <a href=\"/is-plug-in-solar-safe\">safety guide</a> works through the worst case: at 120&nbsp;V a 400, 800 or 1,200&nbsp;W inverter adds 3.3, 6.7 or 10&nbsp;A, and on a shared 15&nbsp;A circuit, loads beyond the inverter&rsquo;s outlet can pull that plus the breaker&rsquo;s 15&nbsp;A through part of the wire &mdash; 18.3, 21.7 or 25&nbsp;A &mdash; without tripping it. If the gap between the 80% continuous-load convention and the breaker&rsquo;s rating is the only slack, it is 3&nbsp;A on a 15&nbsp;A circuit, about 360&nbsp;W.</p>\n  <p>In the hourly run, a 400&nbsp;W south railing peaked at 345&nbsp;W (2.9&nbsp;A) and never exceeded 360&nbsp;W; 800&nbsp;W did for 455 hours a year, 1,200&nbsp;W for 944 and 1,600&nbsp;W for 1,329. Hourly averages smooth over brief peaks and the worst case is set by the inverter&rsquo;s rating, so read these as exposure, not a safety margin. Maine&rsquo;s 420&nbsp;W tier, about 3.5&nbsp;A, is the one cap near that slack; above it Maine requires a dedicated single-outlet circuit, which removes the worst case at any size. This is not electrical advice: whether a circuit can host a system is a question for a licensed electrician.</p>\n</section>"
+    },
+    {
+      "id": "sizing-rule",
+      "toc": "The sizing rule",
+      "html": "        <section id=\"sizing-rule\">\n  <h2><span class=\"sec-num\">6</span>The sizing rule: about 400&nbsp;W of panel per 100&nbsp;W of floor</h2>\n  <p>At New York City&rsquo;s price, <strong>allow about 400&nbsp;W of panel for every 100&nbsp;W your home draws when nothing is in use</strong>, round down to a 400&nbsp;W step, and stop at your state&rsquo;s cap. In balco.nyc&rsquo;s runs, every step inside that line repaid its $600 in 12.2 years or less (13.7 on the west railing), and every step beyond it took 14.5 years or more, or never repaid.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Floor</th><th>Size by the rule</th><th>Its last 400&nbsp;W pays back in</th><th>The next 400&nbsp;W would take</th></tr></thead><tbody>\n    <tr><td>100&nbsp;W</td><td>400&nbsp;W</td><td>7.5 years</td><td>22.6 years</td></tr>\n    <tr><td>150&nbsp;W</td><td>400&nbsp;W</td><td>6.3 years</td><td>14.5 years</td></tr>\n    <tr><td>200&nbsp;W</td><td><strong>800&nbsp;W</strong></td><td>10.7 years</td><td>19.2 years</td></tr>\n    <tr><td>300&nbsp;W</td><td>1,200&nbsp;W</td><td>12.2 years</td><td>17.9 years</td></tr>\n  </tbody></table></div>\n  <p>South-facing railing, New York City, {{coned.rate_cents}}&cent;, $600 per 400&nbsp;W, the calculator&rsquo;s payback loop.</p>\n  <p><strong>Finding your floor.</strong> Con&nbsp;Edison says its smart meters let customers see electric use in 15-minute increments; the lowest level that recurs overnight and while you are out is your floor, close to how NRDC measured it. Without that, NRDC&rsquo;s idle load was 31% to 36% of annual use in its two climate zones and 29% in the audited apartment, so a third of your average draw is a rough guide: monthly kWh divided by 2.2, in watts. At 350&nbsp;kWh a month that is about 160&nbsp;W, which the rule puts at 400&nbsp;W.</p>\n  <p><strong>Adjusting it.</strong> If someone is home drawing power through the day, size to that daytime draw: a steady 200&nbsp;W while the sun is up justifies 800&nbsp;W whatever the overnight floor. Where power is cheaper, shrink the rule. At the US average of 17.9&cent; (EIA, 12 months to June 2026), the same runs put the first 400&nbsp;W at 9.9 to 13.3 years and the second under 20 only with a floor of 200&nbsp;W or more: roughly halve the rule, which for most apartments means one 400&nbsp;W step. The sun here is New York&rsquo;s; other cities will differ in the numbers more than the direction. balco.nyc&rsquo;s <a href=\"/\">calculator</a> offers all four sizes but assumes every kWh is used, so treat its larger sizes as ceilings.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Is 800 W or 1,200 W balcony solar better?",
+      "For most apartments, 800 W or less. In balco.nyc's hourly New York City model, going from 800 to 1,200 W adds about 302 kWh a year of output, but a home drawing a steady 150 W uses only 49 kWh of it, about $17 a year at Con Edison's {{coned.rate_cents}}-cent rate, which does not repay the step's $600 within 25 years. The extra 400 W pays back in about 12 years only where the home draws a steady 300 W."
+    ],
+    [
+      "What size balcony solar system do I need?",
+      "A rough rule from balco.nyc's hourly model of New York City: about 400 W of panel for every 100 W your home draws when nothing is in use, rounded down to a 400 W step and capped by your state's limit. That gives 400 W for a floor of 100 to 150 W, 800 W for 200 W and 1,200 W for 300 W. Where electricity costs about half New York City's {{coned.rate_cents}} cents, roughly halve it."
+    ],
+    [
+      "Is a 400 W balcony solar system worth it?",
+      "It is usually the best value per dollar, because a home can use nearly all of 400 W as it is produced. balco.nyc's hourly New York City model puts payback on $600 of hardware at 5.5 to 7.5 years for homes drawing a steady 100 to 300 W at Con Edison's {{coned.rate_cents}}-cent rate, and about 10 to 13 years at the US average price of 17.9 cents."
+    ],
+    [
+      "How many solar panels should I put on my balcony?",
+      "For most apartments, 400 to 800 W: one or two panels, if each is rated about 400 W. In balco.nyc's hourly New York City model, a home drawing a steady 150 W uses 262 kWh a year from the first 400 W, 102 from the second and 49 from the third, because every panel peaks at the same midday hours. A third panel pays back within about 12 years only where the home draws 300 W around the clock."
+    ],
+    [
+      "Can I install more than 1,200 W of balcony solar?",
+      "In most states with a plug-in law, not as a plug-in device: eight of the nine signed laws cap a device at 1,200 W, and New York's SUNNY Act, which has passed both chambers and {{sunny.phrase}}, uses the same figure. Colorado allows 1,920 W. Several laws count inverter output rather than panel watts, so check the wording; this is not legal advice."
+    ],
+    [
+      "Why doesn't a bigger balcony solar system save proportionally more?",
+      "Because a home's load does not grow when panels are added, and power not used the moment it is produced goes to the grid, usually unpaid. In balco.nyc's New York City model with a steady 150 W draw, going from 400 to 1,200 W triples output but raises the electricity used at home by only 58%, from 262 to 413 kWh a year."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "National Laboratory of the Rockies (formerly NREL) &mdash; PVWatts V8 API documentation",
+      "note": "the hourly AC output (timeframe=hourly, in watts AC) behind balco.nyc&rsquo;s two New York City runs, south and west vertical railings, with the calculator&rsquo;s parameters; they reproduce the site&rsquo;s 635.7 and 443.6&nbsp;kWh a year for 800&nbsp;W."
+    },
+    {
+      "url": "https://www.nrdc.org/sites/default/files/home-idle-load-IP.pdf",
+      "title": "NRDC &mdash; Home Idle Load: Devices Wasting Huge Amounts of Electricity When Not in Active Use (May 2015)",
+      "note": "idle load defined as the lowest hourly smart-meter level; 218&nbsp;W average across 70,000 homes; Bay Area quartiles of 119, 185 and 282&nbsp;W; idle at 35.6% and 31.0% of annual use in the two climate zones; an audited apartment at 92&nbsp;W and 29%."
+    },
+    {
+      "url": "https://www.coned.com/en/our-energy-future/our-energy-vision/where-we-are-going/smart-meters/how-will-a-smart-meter-help-me",
+      "title": "Con Edison &mdash; Smart meter features and benefits",
+      "note": "customers can see electric usage in 15-minute increments, the data for finding a home&rsquo;s floor."
+    },
+    {
+      "url": "https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf",
+      "title": "Con Edison &mdash; historical average full-service electric rates",
+      "note": "the SC-1 series behind the {{coned.rate_cents}}&cent; marginal rate used for New York City."
+    },
+    {
+      "url": "https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132",
+      "title": "Maine Legislature &mdash; LD 1730, Public Law ch. 644 (35-A MRSA &sect;3475)",
+      "note": "combined inverter output up to 420&nbsp;W AC per service address; above 420 and up to 1,200&nbsp;W only if installed by a Maine-licensed electrician on a dedicated circuit with a single outlet, with utility notification."
+    },
+    {
+      "url": "https://leg.colorado.gov/bill_files/116074/download",
+      "title": "Colorado General Assembly &mdash; HB26-1007, signed act",
+      "note": "a device supplies no more than 1,920&nbsp;W to the grid, one device per wall outlet per address; devices of 391&nbsp;W or less exempt from rewiring requirements; from 1 January 2027 devices over 391&nbsp;W must be UL labeled and listed to be sold."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "New York State Senate &mdash; S8512C (SUNNY Act), text and actions",
+      "note": "a maximum aggregate continuous AC inverter nameplate output of 1,200&nbsp;W; last action 28 May 2026, returned to the Assembly."
+    },
+    {
+      "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB868",
+      "title": "California Legislative Information &mdash; SB 868, enrolled text",
+      "note": "a maximum aggregated AC output of 1,200&nbsp;W per dwelling."
+    },
+    {
+      "url": "https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202520260SB868",
+      "title": "California Legislative Information &mdash; SB 868, bill history",
+      "note": "enrolled and presented to the Governor on 31 August 2026; no later action recorded as of 23 September 2026."
+    },
+    {
+      "url": "https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf",
+      "title": "Utah Legislature &mdash; H.B. 340 Solar Power Amendments, enrolled copy",
+      "note": "a portable solar generation device has a maximum power output of not more than 1,200&nbsp;W, without saying AC or DC."
+    },
+    {
+      "url": "https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf",
+      "title": "Vermont Legislature &mdash; Act 149 (S.202) as enacted",
+      "note": "one or more devices per meter with a maximum combined inverter capacity of 1,200&nbsp;W."
+    },
+    {
+      "url": "https://mgaleg.maryland.gov/2026RS/Chapters_noln/CH_353_hb1532e.pdf",
+      "title": "Maryland General Assembly &mdash; Chapter 353 of 2026 (HB 1532), PUA &sect;7-321",
+      "note": "no more than 1,200&nbsp;W back to the building&rsquo;s electric system; systems of 391&nbsp;W or less exempt from listing provisions that would require alterations to wiring."
+    },
+    {
+      "url": "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00127-R00HB-05340-PA.PDF",
+      "title": "Connecticut General Assembly &mdash; Public Act 26-127, sec. 9",
+      "note": "a maximum power output of not more than 1,200&nbsp;W; effective 1 October 2026."
+    },
+    {
+      "url": "https://lis.blob.core.windows.net/files/1225204.PDF",
+      "title": "Virginia Acts of Assembly &mdash; Chapter 1052 (HB 395)",
+      "note": "a maximum power output of not more than 1,200&nbsp;W per dwelling unit; devices of 391&nbsp;W or less exempt from listing provisions that would require alterations to wiring."
+    },
+    {
+      "url": "https://www.nj.gov/governor/news/2026/approved/20260901a.shtml",
+      "title": "Office of the Governor of New Jersey &mdash; Garden State Balcony Solar Act signed, 1 September 2026",
+      "note": "plug-in solar devices of up to 1,200&nbsp;W."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia861m/",
+      "title": "EIA &mdash; Form EIA-861M monthly sales and revenue",
+      "note": "the data behind balco.nyc&rsquo;s US average (17.9&cent;) and Colorado (16.45&cent;) residential prices: revenue over sales for the 12 months to June 2026, averages that include fixed charges."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not legal, electrical or financial advice; caps and meter rules vary by state and utility. Self-consumption figures are modeled from hourly PVWatts output and a constant household load, not metered."
+}

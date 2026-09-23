@@ -5,9 +5,10 @@
   "breadcrumb": "What a kWh costs",
   "cluster": "economics",
   "card_title": "What does a kilowatt-hour actually cost in NYC?",
-  "card": "How supply, delivery, and surcharges add up to about {{coned.rate_cents}}\u00a2/kWh.",
+  "card": "How supply, delivery, and surcharges add up to about {{coned.rate_cents}}¢/kWh.",
   "llms": "why we value self-consumed solar at the all-in marginal rate rather than a supply-only figure, and which number applies to whom.",
   "related": [
+    "find-your-electricity-rate",
     "balcony-solar-cost",
     "balcony-sunlight",
     "sunny-act"
@@ -67,7 +68,7 @@
   "faq": [
     [
       "Why do different solar calculators show different Con Edison rates?",
-      "Because they are answering different questions, usually without saying which. A figure near 13 to 18 cents is the supply-only Price to Compare, which is the right basis for comparing energy suppliers; a figure near 34 cents is the all-in marginal rate including delivery, surcharges and tax, which is the right basis for valuing electricity you generate and consume yourself. Figures in the low-to-mid 20s are generally consistent with an older data vintage \u2014 Con Edison's own SC-1 average was 29.52 cents as recently as 2023."
+      "Because they are answering different questions, usually without saying which. A figure near 13 to 18 cents is the supply-only Price to Compare, which is the right basis for comparing energy suppliers; a figure near 34 cents is the all-in marginal rate including delivery, surcharges and tax, which is the right basis for valuing electricity you generate and consume yourself. Figures in the low-to-mid 20s are generally consistent with an older data vintage — Con Edison's own SC-1 average was 29.52 cents as recently as 2023."
     ],
     [
       "What is the actual all-in cost of a kWh in New York City?",
@@ -83,11 +84,11 @@
     ],
     [
       "Does a balcony solar panel earn credit for power I don't use?",
-      "No. Under New York's SUNNY Act, plug-in solar is exempt from interconnection and net-metering requirements, which also means there is no export compensation \u2014 surplus generation is simply given to the grid for nothing. This is why the self-consumption fraction matters so much, and why the value of the kWh you do consume is the full marginal retail rate rather than any wholesale or credit rate."
+      "No. Under New York's SUNNY Act, plug-in solar is exempt from interconnection and net-metering requirements, which also means there is no export compensation — surplus generation is simply given to the grid for nothing. This is why the self-consumption fraction matters so much, and why the value of the kWh you do consume is the full marginal retail rate rather than any wholesale or credit rate."
     ],
     [
       "How much does the rate vary across New York City households?",
-      "Reported Con Edison residential rates span roughly 22 to 38 cents per kWh depending on rate plan, and delivery charges are tiered and materially higher from June through September. A single annual number is a simplification worth several cents in either direction \u2014 though the summer skew works in solar's favour, since peak production coincides with peak rates."
+      "Reported Con Edison residential rates span roughly 22 to 38 cents per kWh depending on rate plan, and delivery charges are tiered and materially higher from June through September. A single annual number is a simplification worth several cents in either direction — though the summer skew works in solar's favour, since peak production coincides with peak rates."
     ]
   ],
   "sources": [

@@ -1,0 +1,147 @@
+{
+  "slug": "balcony-solar-panel-angle",
+  "title": "What angle should a balcony solar panel be? &middot; balco.nyc",
+  "og_title": "Vertical or tilted? What each balcony solar panel angle adds by state, in sun and in shade",
+  "breadcrumb": "Panel angle",
+  "cluster": "calculate",
+  "pillar": false,
+  "card_title": "What angle should a balcony solar panel be?",
+  "card": "What 70°, 60° and 35° add over vertical by state, what it is worth, and why shade changes it.",
+  "llms": "balco.nyc's own PVWatts runs for the largest city in every state: tilting a south-facing 800 W balcony panel from vertical adds a median 29% at 70°, 42% at 60° and 59% at 35°, falling about 2.2 points per degree of latitude; most of the gain arrives in summer, so hourly self-consumption cuts its value sharply, while the site's shade model finds a building opposite makes tilting matter more, not less.",
+  "related": [
+    "800w-balcony-solar-output",
+    "install-balcony-solar",
+    "calculate-balcony-solar-output"
+  ],
+  "description": "Tilting a south balcony panel from vertical adds a median 42% at 60° and 59% at 35°. What that is worth by state, and why a building opposite changes it.",
+  "eyebrow": "Tilt and angle",
+  "h1": "Vertical or tilted: what angle should a balcony solar panel be?",
+  "lede": "On output, tilted wins everywhere: balco.nyc&rsquo;s PVWatts runs for the largest city in every state find that leaning a south-facing 800&nbsp;W panel back from vertical adds a median <strong>29% at 70&deg;, 42% at 60&deg; and 59% at 35&deg;</strong>, worth about $33, $48 and $69 a year at each state&rsquo;s average price. A 60&deg; bracket captures about 70% of the 35&deg; gain while projecting about 40% less. The catch is timing: most of the extra arrives at summer middays, when a small apartment already has surplus it gives away, and behind a building across the street tilting matters more, not less.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "reviewed_human": "September 23, 2026",
+  "published": "2026-09-23",
+  "reading_time": "~9 minutes",
+  "tags": [
+    "+42% at 60&deg;, +59% at 35&deg;",
+    "&minus;2.2 points per degree of latitude",
+    "Shade: +187% at 35&deg; (NYC)"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "gain-by-latitude",
+      "toc": "What each angle adds, by latitude",
+      "html": "        <section id=\"gain-by-latitude\">\n  <h2><span class=\"sec-num\">1</span>What each angle adds, and why latitude sets it</h2>\n  <p>balco.nyc asked PVWatts&nbsp;V8, the production model now run by the National Laboratory of the Rockies (formerly NREL), what an 800&nbsp;W south-facing system makes at four angles in the largest city of every state and DC, with the calculator&rsquo;s own parameters. Angles are measured from horizontal, as PVWatts measures them: 90&deg; hangs flat against a railing, 70&deg; leans 20&deg; back, 60&deg; leans 30&deg; back and 35&deg; is roughly a roof pitch. Every result is multiplied by the site&rsquo;s railing factor, exactly as the calculator does: 0.95 at 90&deg;, 0.97 at 70&deg;, 0.98 at 60&deg; and 0.99 at 35&deg;, because the railing and its hardware clip the lower edge of an upright panel more than a leaning one. The national medians are on <a href=\"/800w-balcony-solar-output\">the 800&nbsp;W output page</a>; this page is about how the gain varies and what it is worth.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Latitude</th><th>Cities</th><th>Vertical (kWh/yr)</th><th>Lean to 70&deg;</th><th>60&deg;</th><th>35&deg;</th></tr></thead><tbody>\n    <tr><td>Honolulu, 21&deg;N</td><td>1</td><td>510</td><td>+50% (+257)</td><td>+79% (+403)</td><td>+129% (+659)</td></tr>\n    <tr><td>29&ndash;33&deg;N</td><td>5</td><td>605</td><td>+37% (+225)</td><td>+55% (+333)</td><td>+81% (+495)</td></tr>\n    <tr><td>33&ndash;37&deg;N</td><td>11</td><td>654</td><td>+34% (+213)</td><td>+48% (+314)</td><td>+69% (+461)</td></tr>\n    <tr><td>37&ndash;41&deg;N</td><td>14</td><td>660</td><td>+29% (+189)</td><td>+42% (+277)</td><td>+59% (+394)</td></tr>\n    <tr><td>41&ndash;44&deg;N</td><td>13</td><td>692</td><td>+26% (+172)</td><td>+37% (+252)</td><td>+51% (+358)</td></tr>\n    <tr><td>44&ndash;48&deg;N</td><td>6</td><td>679</td><td>+23% (+155)</td><td>+34% (+228)</td><td>+46% (+313)</td></tr>\n    <tr><td>Anchorage, 61&deg;N</td><td>1</td><td>535</td><td>+16% (+85)</td><td>+24% (+130)</td><td>+33% (+178)</td></tr>\n  </tbody></table></div>\n  <p>Medians within each band, unshaded, after the railing factor; kWh a year added in brackets. Fitted across the 49 cities between 29&deg; and 48&deg;N, the gain from a 35&deg; tilt falls by about <strong>2.2 percentage points for every degree of latitude</strong>, 1.4 at 60&deg; and 0.9 at 70&deg;. Latitude alone accounts for about four-fifths of the variation (R&sup2; = 0.79). Much of the rest tracks how sunny a city&rsquo;s winter is compared with its summer. The cities furthest below the line, 5 to 10 points under it, are Manchester (New Hampshire), Cheyenne, Sioux Falls, Omaha and Minneapolis, where a vertical panel already makes 1.7 to 2.1 times as much from December to February as from June to August (1.5 to 1.6 in Chicago, Detroit and Milwaukee). Seattle and Portland, Oregon, sit 16 to 18 points above it, because their cloudy winters give a railing little to work with.</p>\n  <p><strong>Most of the gain comes from the first 30&deg; of lean.</strong> In every city, 60&deg; captures between 61% and 74% of what 35&deg; adds (median 71%), and 70&deg; between 39% and 51%.</p>\n</section>"
+    },
+    {
+      "id": "seasons",
+      "toc": "Winter is a draw; summer decides it",
+      "html": "        <section id=\"seasons\">\n  <h2><span class=\"sec-num\">2</span>Winter is a draw; summer decides it</h2>\n  <p>The low winter sun already strikes an upright panel nearly square on, so leaning it back does comparatively little from November to February. The gain arrives when the sun is high. Three cities at different latitudes show the shape, in kWh from an unshaded 800&nbsp;W panel after the railing factor:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>City</th><th>Dec&ndash;Feb: 90&deg; / 60&deg; / 35&deg;</th><th>Jun&ndash;Aug: 90&deg; / 60&deg; / 35&deg;</th><th>Share of the 35&deg; gain made Apr&ndash;Sep</th><th>Best month, vertical / 35&deg;</th></tr></thead><tbody>\n    <tr><td><a href=\"/states/texas\">Houston</a>, 29.8&deg;N</td><td>184 / 225 / 226</td><td>81 / 191 / 275</td><td>73%</td><td>November / March</td></tr>\n    <tr><td><a href=\"/states/new-york\">New York City</a>, 40.7&deg;N</td><td>191 / 216 / 205</td><td>104 / 213 / 283</td><td>83%</td><td>January / July</td></tr>\n    <tr><td><a href=\"/states/minnesota\">Minneapolis</a>, 45.0&deg;N</td><td>226 / 230 / 209</td><td>132 / 241 / 307</td><td>95%</td><td>March / July</td></tr>\n  </tbody></table></div>\n  <p>In winter the three angles sit within 10% to 23% of one another in these cities, and in Minneapolis the vertical panel beats 35&deg; outright in December, January and February. Across all 51 cities, a vertical panel out-produces a 35&deg; one over those three months in 16, and 60&deg; is the best of the four angles for them in 48; only Honolulu, Houston and New Orleans favor 35&deg;. In summer the order reverses completely: in New York a 35&deg; panel makes <strong>2.7 times</strong> what a vertical one does from June to August. Across the 51 cities, a median 84% of the 35&deg; gain is made from April to September.</p>\n  <p>That makes an adjustable bracket less useful than it sounds. Picking the best of the four angles every month, rather than leaving the panel at 35&deg;, adds a median <strong>1.5%</strong> a year in balco.nyc&rsquo;s runs, and 2.7% at most (Sioux Falls). The angle is worth choosing once, carefully, and then leaving alone.</p>\n</section>"
+    },
+    {
+      "id": "dollars",
+      "toc": "What the angle is worth",
+      "html": "        <section id=\"dollars\">\n  <h2><span class=\"sec-num\">3</span>What the angle is worth, and why less of it reaches your bill</h2>\n  <p>At each state&rsquo;s average residential price, which balco.nyc computes from EIA sales and revenue for the 12 months to June 2026, tilting from vertical is worth a median <strong>$33 a year at 70&deg;, $48 at 60&deg; and $69 at 35&deg;</strong>. Those averages include fixed monthly charges, so they can overstate what an avoided kWh saves. Where power is expensive, the same kWh are worth several times more:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>State (city, price)</th><th>70&deg;</th><th>60&deg;</th><th>35&deg;</th><th>Payback on a ${{kits.mid}} kit: 90&deg; &rarr; 60&deg; &rarr; 35&deg;</th></tr></thead><tbody>\n    <tr><td><a href=\"/states/hawaii\">Hawaii</a> (Honolulu, 42.75&cent;)</td><td>$110</td><td>$172</td><td>$282</td><td>5.2 &rarr; 3.0 &rarr; 2.4 yrs</td></tr>\n    <tr><td><a href=\"/states/california\">California</a> (Los Angeles, 32.89&cent;)</td><td>$91</td><td>$131</td><td>$186</td><td>4.8 &rarr; 3.2 &rarr; 2.8 yrs</td></tr>\n    <tr><td>New York City (Con&nbsp;Edison, {{coned.rate_cents}}&cent; marginal)</td><td>$62</td><td>$91</td><td>$131</td><td>5.5 &rarr; 3.9 &rarr; 3.5 yrs</td></tr>\n    <tr><td>Median of 51 cities (each column separately)</td><td>$33</td><td>$48</td><td>$69</td><td>9.9 &rarr; 7.2 &rarr; 6.5 yrs</td></tr>\n    <tr><td><a href=\"/states/texas\">Texas</a> (Houston, 15.90&cent;)</td><td>$34</td><td>$51</td><td>$78</td><td>11.5 &rarr; 7.7 &rarr; 6.6 yrs</td></tr>\n    <tr><td><a href=\"/states/washington\">Washington</a> (Seattle, 14.02&cent;)</td><td>$21</td><td>$31</td><td>$44</td><td>13.9 &rarr; 10.2 &rarr; 9.2 yrs</td></tr>\n    <tr><td><a href=\"/states/north-dakota\">North Dakota</a> (Fargo, 12.30&cent;)</td><td>$19</td><td>$28</td><td>$38</td><td>12.1 &rarr; 9.5 &rarr; 8.8 yrs</td></tr>\n  </tbody></table></div>\n  <p>Payback uses the calculator&rsquo;s loop (prices up 3% a year, output down 0.5%) and excludes whatever the bracket costs. balco.nyc could not find a neutral published price range for tilting brackets, only sellers&rsquo; listings, so none is quoted here. The test is simple: a bracket earns its cost back within five years only if it costs less than five years of its gain, about $250 for a 60&deg; bracket in the median state.</p>\n  <p>All of these figures assume every extra kWh is used at home, and the extra arrives at the wrong time for that. A tilted panel&rsquo;s gain comes mostly at summer middays, when an apartment&rsquo;s steady load is already covered and the surplus goes to the grid, usually for nothing (see <a href=\"/balcony-solar-net-metering\">whether you get paid for surplus</a>). balco.nyc ran PVWatts hour by hour in New York City at each angle and set the output against a constant household draw, the same method as that page:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Apartment&rsquo;s steady draw</th><th>60&deg;: extra kWh used (of 269)</th><th>Worth at {{coned.rate_cents}}&cent;</th><th>35&deg;: extra kWh used (of 384)</th><th>Worth at {{coned.rate_cents}}&cent;</th></tr></thead><tbody>\n    <tr><td>100&nbsp;W</td><td>34 (13%)</td><td>$11</td><td>54 (14%)</td><td>$18</td></tr>\n    <tr><td>150&nbsp;W</td><td>59 (22%)</td><td>$20</td><td>91 (24%)</td><td>$31</td></tr>\n    <tr><td>300&nbsp;W</td><td>158 (59%)</td><td>$54</td><td>223 (58%)</td><td>$76</td></tr>\n    <tr><td>Everything used</td><td>269 (100%)</td><td>$91</td><td>384 (100%)</td><td>$131</td></tr>\n  </tbody></table></div>\n  <p>An apartment idling at 150&nbsp;W uses about a quarter of what tilting adds. A constant draw is the empty-apartment case: someone home in the daytime, or an air conditioner running on summer afternoons, raises the share, and in a state or utility that credits exports the full figure applies. But for a small household, much of what leaning all the way to 35&deg; adds is surplus.</p>\n</section>"
+    },
+    {
+      "id": "shade",
+      "toc": "Behind a building, tilting matters more",
+      "html": "        <section id=\"shade\">\n  <h2><span class=\"sec-num\">4</span>Behind a building, tilting matters more, not less</h2>\n  <p>A building across the street takes the low winter sun a vertical panel depends on. To see what that does to the choice of angle, balco.nyc ran its own shade code for a third-floor, south-facing balcony facing a six-to-ten-story building 20&nbsp;m away, the case worked on <a href=\"/calculate-balcony-solar-output\">the calculation page</a>. Straight out, the wall rises 41.8&deg; above the balcony. The code computed a shade factor for each month at each angle, and each was applied to the PVWatts run for that angle. In New York City:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Angle</th><th>Open view (kWh/yr)</th><th>Behind the building</th><th>Share kept</th><th>Gain over vertical, open</th><th>Gain over vertical, behind the building</th></tr></thead><tbody>\n    <tr><td>90&deg;</td><td>604</td><td>227</td><td>38%</td><td>&mdash;</td><td>&mdash;</td></tr>\n    <tr><td>70&deg;</td><td>787</td><td>389</td><td>49%</td><td>+30%</td><td>+72%</td></tr>\n    <tr><td>60&deg;</td><td>872</td><td>475</td><td>54%</td><td>+44%</td><td>+110%</td></tr>\n    <tr><td>35&deg;</td><td>988</td><td>651</td><td>66%</td><td>+64%</td><td><strong>+187%</strong></td></tr>\n  </tbody></table></div>\n  <p>Across all 51 cities the median gain behind the building is +69% at 70&deg;, +105% at 60&deg; and +178% at 35&deg;, against +29%, +42% and +59% in the open. In kilowatt-hours the picture is closer: 35&deg; adds more behind the building than in the open in 50 of the 51 cities (a median 449&nbsp;kWh against 390), while 60&deg; and 70&deg; add slightly less (266 against 279, and 175 against 190). Obstruction, in short, makes tilting matter much more in proportion, and about as much or more in kilowatt-hours.</p>\n  <p>Two things drive it, roughly equally. The building removes winter sun: in New York the vertical panel&rsquo;s October-to-February output falls from 304&nbsp;kWh to 32, while the high summer sun that a leaning panel gains from clears the roofline from March to September. And a leaning panel faces more of the sky overhead, which the wall does not reach: it leaves 33% of a vertical panel&rsquo;s sky view open, 53% at 60&deg; and 68% at 35&deg;. Blocking only the direct sun, tilting to 35&deg; gains 102% in New York; cutting only the diffuse sky light, 93%.</p>\n  <p>This is a simplified model: a continuous wall, a fixed split of direct and diffuse light, and a floor of 0.10 on each monthly factor, which if anything flatters the vertical panel in winter. Its largest blind spot is the balcony above. A slab overhead, or a recessed balcony, takes away exactly the high sky and high summer sun a tilted panel gains from, most of all if the panel sits back from the edge. Treat the direction of this result as sound and its size as an upper bound, and see <a href=\"/balcony-sunlight\">does my balcony get enough sun?</a> for how obstruction works.</p>\n</section>"
+    },
+    {
+      "id": "constraints",
+      "toc": "What limits the angle in practice",
+      "html": "        <section id=\"constraints\">\n  <h2><span class=\"sec-num\">5</span>What limits the angle in practice</h2>\n  <p>The model does not decide the angle; the balcony and the building usually do. Four things set the limit.</p>\n  <ul>\n    <li><strong>Depth.</strong> For every meter of panel length, a 70&deg; lean needs 0.34&nbsp;m of depth, 60&deg; needs 0.50&nbsp;m and 35&deg; needs 0.82&nbsp;m, the cosine of the angle. The panel either leans into the balcony, taking floor space, or out beyond the railing over whatever is below. Check your panel&rsquo;s length and multiply.</li>\n    <li><strong>Egress.</strong> New York City&rsquo;s Fire Code requires every required means of egress to be &ldquo;continuously maintained free from obstructions,&rdquo; and fire escapes and access to them likewise (sections 1027.3 and 1027.7). A panel on a bracket must not narrow a path to a door, window or fire escape used for escape.</li>\n    <li><strong>Wind.</strong> New York City&rsquo;s Building Code requires wind loads to be determined under ASCE&nbsp;7, the national structural loads standard (section 1609.1.1). In it, velocity pressure, the starting point for any wind load, rises with the square of the wind speed and with height above ground. A panel held out on a bracket adds leverage: the further it sits from the clamp, the harder the same gust twists the clamp and the railing. Guards are designed to resist 50&nbsp;lb per linear foot and a 200&nbsp;lb point load, and their balusters and infill 50&nbsp;lb (section 1607.8.1); a panel adds its own wind load, through a clamp, on top. Anything that projects should be checked by an engineer.</li>\n    <li><strong>The building&rsquo;s rules.</strong> In New York City, the facade inspection rule for buildings over six stories treats railings, guard rails and &ldquo;any equipment attached to or protruding from the facade&rdquo; as appurtenances the owner&rsquo;s inspector must examine, and classes a guard whose parts are not positively secured against movement as unsafe. A bracket that projects is something the building has to inspect, and a reasonable board may refuse it where it would accept a panel clamped flat inside the railing.</li>\n  </ul>\n  <p>Ask for the specific angle, the projection, the weight and the secondary tether when you seek permission; <a href=\"/install-balcony-solar\">how to install balcony solar</a> covers the rest, and <a href=\"/balcony-solar-condo-hoa\">condo and co-op rules</a> and <a href=\"/balcony-solar-renters\">renters&rsquo; rights</a> cover who can say no. Nothing here is legal advice, and rules vary by state, city and building.</p>\n</section>"
+    },
+    {
+      "id": "choosing",
+      "toc": "How to choose",
+      "html": "        <section id=\"choosing\">\n  <h2><span class=\"sec-num\">6</span>How to choose an angle</h2>\n  <p>Put together, the runs point to a short set of rules:</p>\n  <ul>\n    <li><strong>If only vertical is allowed, it is not a bad answer.</strong> An upright south panel makes about 63% of what the same panel makes at 35&deg; in the median city, and gives up little in winter, when the angle matters least.</li>\n    <li><strong>For a small household that gives surplus away, 60&deg; to 70&deg; captures most of the usable gain.</strong> 70&deg; gets about half of the 35&deg; gain with 42% of its depth, and 60&deg; about 70% with 61% of the depth; at a steady 150&nbsp;W draw, 35&deg; adds only $11 a year more of used power than 60&deg; in New York.</li>\n    <li><strong>Leaning all the way to 35&deg; pays where the extra is used or credited:</strong> a large daytime load, summer air conditioning, a high price, or an export credit.</li>\n    <li><strong>Behind a building on a low floor, tilting helps most</strong>, provided the panel sees open sky overhead rather than the balcony above.</li>\n  </ul>\n  <p>The <a href=\"/\">calculator</a> takes 90&deg;, 70&deg;, 60&deg; or 35&deg; for any US address, with shade from what stands opposite, and <a href=\"/methodology\">the methodology</a> documents every constant used here.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "What is the best angle for a balcony solar panel?",
+      "For output alone, as close to 35 degrees as your balcony and building allow: in balco.nyc's PVWatts runs for the largest city in every state, a south-facing panel leaned back to 35 degrees makes a median 59% more than a vertical one, and 60 degrees makes 42% more. In practice 60 to 70 degrees captures about half to three-quarters of that gain with far less projection, and much of the extra from leaning further back arrives at summer middays, when a small apartment may give it away as unpaid surplus."
+    ],
+    [
+      "How much more does a tilted balcony solar panel produce than a vertical one?",
+      "It depends mostly on latitude. In balco.nyc's runs, tilting a south-facing panel from vertical to 35 degrees adds about 81% between 29 and 33 degrees north, 59% between 37 and 41 degrees, and 46% between 44 and 48 degrees; 60 degrees adds 55%, 42% and 34%. The gain falls about 2.2 percentage points per degree of latitude for 35 degrees, and cities whose winters are sunny relative to their summers gain less than their latitude predicts."
+    ],
+    [
+      "Are vertical solar panels efficient?",
+      "Less productive over a year, but not in winter. A vertical south-facing panel makes a median of about 63% of what the same panel makes at 35 degrees across balco.nyc's 51 city runs, and most of the shortfall comes from April to September. From December to February, vertical, 60-degree and 35-degree panels are within 20% of each other in 46 of the 51 cities, and in 16 a vertical panel out-produces a 35-degree one over those three months."
+    ],
+    [
+      "Is a tilting bracket worth the money?",
+      "At state average prices, tilting from vertical to 60 degrees is worth a median $48 a year and to 35 degrees $69, if every extra kWh is used at home. Hourly modeling for New York City shows an apartment drawing a steady 150 W uses only about a quarter of the extra, because it arrives at summer middays. A bracket is worth buying only if it costs less than a few years of the gain you will actually use."
+    ],
+    [
+      "Does tilting a balcony panel help if a building across the street blocks the sun?",
+      "Yes, more than in the open, in balco.nyc's shade model. For a third-floor south balcony facing a six-to-ten-story building 20 m away in New York City, tilting from vertical to 35 degrees raises modeled output from 227 to 651 kWh a year, a 187% gain against 64% with an open view. The model does not include a balcony slab above, which would take away some of the overhead sky a tilted panel relies on."
+    ],
+    [
+      "Is it allowed to tilt a solar panel out beyond my balcony railing?",
+      "That depends on your building, city and state, and this is not legal advice. A projecting bracket adds wind load and leverage at the clamp and the railing, can hang over a sidewalk, and must never obstruct a means of egress or fire escape. In New York City, facade inspection rules for buildings over six stories cover equipment attached to or protruding from the facade, so landlords and boards have reason to ask for an engineer's review."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "National Laboratory of the Rockies &mdash; PVWatts V8 API documentation",
+      "note": "the model behind every run here: tilt (0&ndash;90&deg;) and azimuth inputs, albedo and monthly soiling, and the monthly and hourly AC outputs."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/",
+      "title": "PVWatts Calculator",
+      "note": "the public interface to the same model, for reproducing any figure at your own address and angle."
+    },
+    {
+      "url": "https://www.energy.gov/cmei/articles/energy-department-renames-nrel-national-lab-rockies",
+      "title": "U.S. Department of Energy &mdash; Energy Department Renames NREL &ldquo;National Lab of the Rockies&rdquo;",
+      "note": "the renaming of NREL, which now hosts PVWatts at nlr.gov."
+    },
+    {
+      "url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv",
+      "title": "U.S. Census Bureau &mdash; Vintage 2025 subcounty population estimates (SUB-EST2025)",
+      "note": "the largest city in each state and DC, which sets the 51 reference points."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia861m/",
+      "title": "EIA &mdash; Form EIA-861M monthly sales and revenue by state",
+      "note": "the residential revenue and sales from which balco.nyc computes each state&rsquo;s average price for the 12 months to June 2026."
+    },
+    {
+      "url": "https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf",
+      "title": "Con Edison &mdash; historical average full-service electric rates",
+      "note": "the NYC SC-1 residential rate (33.83&cent;/kWh in 2025) that the {{coned.rate_cents}}&cent; marginal rate starts from."
+    },
+    {
+      "url": "https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-sky-diffuse/isotropic-sky-diffuse-model/",
+      "title": "Sandia PV Performance Modeling Collaborative &mdash; Isotropic sky diffuse model",
+      "note": "the (1 + cos tilt)/2 sky view factor: a tilted panel sees more of the sky dome than a vertical one."
+    },
+    {
+      "url": "https://www.fema.gov/sites/default/files/documents/fema_asce-7-22-tornado-loads-design-guide_012023.pdf",
+      "title": "FEMA and NIST &mdash; Design Guide for New Tornado Load Requirements in ASCE 7-22 (January 2023)",
+      "note": "that ASCE&nbsp;7 velocity pressure multiplies the square of the speed by an exposure coefficient that adjusts for height above ground, as in its Chapter 26 wind equation."
+    },
+    {
+      "url": "https://up.codes/viewer/new_york_city/nyc-building-code-2022/chapter/16/structural-design",
+      "title": "NYC Building Code 2022, Chapter 16 &mdash; Structural Design",
+      "note": "section 1607.8.1 (guards designed for 50&nbsp;plf and a 200&nbsp;lb concentrated load; 50&nbsp;lb for balusters and infill) and section 1609.1.1 (wind loads per ASCE&nbsp;7 Chapters 26&ndash;31)."
+    },
+    {
+      "url": "https://www.nyc.gov/assets/buildings/rules/1_RCNY_103-04.pdf",
+      "title": "NYC Department of Buildings &mdash; 1 RCNY &sect;103-04, Periodic Inspection of Exterior Walls and Appurtenances",
+      "note": "the definition of appurtenances, including railings and any equipment attached to or protruding from the facade; the over-six-stories scope; and the requirement that guards be positively secured."
+    },
+    {
+      "url": "https://up.codes/viewer/new_york_city/nyc-fire-code-2022/chapter/10/means-of-egress",
+      "title": "NYC Fire Code 2022, Chapter 10 &mdash; Means of Egress",
+      "note": "sections 1027.3 and 1027.7: means of egress and fire escapes continuously maintained free from obstructions."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. Production figures are modeled with PVWatts and balco.nyc&rsquo;s shade code, not metered; each state is represented by its largest city. It is not legal, engineering or financial advice."
+}

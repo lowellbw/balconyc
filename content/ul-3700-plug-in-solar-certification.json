@@ -1,0 +1,250 @@
+{
+ "slug": "ul-3700-plug-in-solar-certification",
+ "title": "UL 3700 and plug-in solar certification, explained &middot; balco.nyc",
+ "og_title": "UL 3700 and whole-system certification for plug-in solar: what it is and what state laws require",
+ "breadcrumb": "UL 3700 certification",
+ "cluster": "legal",
+ "pillar": false,
+ "card_title": "Is my balcony solar kit certified?",
+ "card": "What UL 3700 covers, why listed parts are not a listed system, and what each state law asks for.",
+ "llms": "what UL 3700 is (a December 2025 UL outline of investigation, not a consensus standard), why listed components are not a listed plug-in system, that no complete system is listed to it as of September 2026, and balco.nyc's compilation showing only Maine and Vermont of nine signed state laws require a system-level listing.",
+ "related": [
+  "balcony-solar-laws-compared",
+  "is-plug-in-solar-safe",
+  "install-balcony-solar"
+ ],
+ "description": "UL 3700 is the first US safety outline for whole plug-in solar systems. None is listed to it yet, and only 2 of 9 signed state laws require one.",
+ "eyebrow": "Certification",
+ "h1": "UL 3700 and whole-system certification for plug-in solar, explained",
+ "lede": "UL&nbsp;3700 is the first US safety document written for a plug-in solar system as a whole, with panel, microinverter, cord and plug evaluated together. As of 23&nbsp;September 2026 <strong>no complete plug-in system is listed to it</strong>. Only components, mainly microinverters, carry UL&nbsp;3700 claims. balco.nyc read the certification clause in all nine signed state laws: only 2, Maine and Vermont, ask for a listing of the whole system, and they hold 0.6% of US residents. New York&rsquo;s SUNNY Act, which has passed both chambers and {{sunny.phrase}}, would require a &ldquo;complete plug-in photovoltaic system&rdquo; listing that no product holds.",
+ "date_label": "Last reviewed",
+ "reviewed": "2026-09-23",
+ "published": "2026-09-23",
+ "reading_time": "~10 minutes",
+ "tags": [
+  "0 complete systems listed",
+  "2 of 9 laws need a system listing",
+  "Outline dated Dec 2025"
+ ],
+ "about_legislation": false,
+ "sections": [
+  {
+   "id": "what-it-is",
+   "toc": "What UL 3700 is, and is not",
+   "html": "        <section id=\"what-it-is\">\n  <h2><span class=\"sec-num\">1</span>What UL&nbsp;3700 is, and what it is not</h2>\n  <p>UL&nbsp;3700&rsquo;s full name is the <em>Outline of Investigation for Interactive Plug-In PV (PIPV) Equipment and Systems</em>. Edition&nbsp;1 is dated 11&nbsp;December 2025 and is sold through the standards store of UL Standards &amp; Engagement (ULSE), labeled a UL&nbsp;LLC outline. UL Solutions opened certification against it on 8&nbsp;January 2026.</p>\n  <p>The word &ldquo;outline&rdquo; matters. ULSE&rsquo;s glossary defines an outline of investigation as a certification document owned by UL&nbsp;LLC, not a consensus document and not developed through ULSE&rsquo;s standards process. It is a certifier&rsquo;s document for a category too new for a full standard: a normal first step, and what Maine, Vermont and New Jersey cite, but not an established national standard.</p>\n  <p>Its scope, as ULSE publishes it, is plug-in PV equipment and systems that connect by a plug-in PV cord and plug to a permanently installed receptacle meant for that purpose; Intertek, which also certifies to UL&nbsp;3700, calls it a dedicated plug-in PV receptacle. The DC side is capped at 64&nbsp;V open-circuit under the outline&rsquo;s test conditions, and rooftop, building-integrated and hard-wired PV are excluded. The aim is the hazards that only exist once panel, microinverter, cord and household circuit are combined: current the breaker cannot see, plug blades that stay live, interference with ground-fault protection, and current flowing backward through devices built for one direction.</p>\n  <p>The case for it is a finding UL Solutions has made public. Its vice president of principal engineering, Ken Boyce, told PV Tech in August 2026 that the company bought plug-in products on the open market, tested them against UL&nbsp;3700, and none complied. Whether that matters for your purchase depends on your state; balco.nyc&rsquo;s compilation of every signed law&rsquo;s certification wording is in section&nbsp;4.</p>\n</section>"
+  },
+  {
+   "id": "vocabulary",
+   "toc": "UL 1741, IEEE 1547, NRTL and “listed”",
+   "html": "        <section id=\"vocabulary\">\n  <h2><span class=\"sec-num\">2</span>UL&nbsp;1741, IEEE&nbsp;1547, NRTL and &ldquo;listed&rdquo;: the vocabulary</h2>\n  <p>Four documents come up, and they answer different questions:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Document</th><th>What it evaluates</th><th>What it does not tell you</th></tr></thead><tbody>\n    <tr><td><strong>UL&nbsp;3700</strong> (outline, 2025)</td><td>Plug-in PV equipment, or a complete plug-in system with its cord, plug and protection</td><td>Anything not submitted to it: a microinverter evaluated to it is not a system evaluated to it</td></tr>\n    <tr><td><strong>UL&nbsp;1741</strong> (ed.&nbsp;3, ANSI)</td><td>Inverters and other grid-interconnection equipment; used with IEEE&nbsp;1547 and 1547.1 for grid-connected units</td><td>The panels, the cord and plug, or the circuit it feeds</td></tr>\n    <tr><td><strong>IEEE&nbsp;1547-2018</strong></td><td>How a generator interconnects with the grid, including islanding</td><td>Fire and shock safety of the product</td></tr>\n    <tr><td><strong>UL&nbsp;61730</strong></td><td>The PV module (panel)</td><td>Everything downstream of the panel</td></tr>\n  </tbody></table></div>\n  <p>Islanding is why utilities care: a generator that keeps energizing a line after the grid fails can shock a worker who believes it is dead. Most state laws add their own anti-islanding clause; Maine&rsquo;s requires inverters that shut off 0.2&nbsp;seconds after power is disrupted.</p>\n  <p>The legal vocabulary comes from federal workplace-safety rules. A <strong>nationally recognized testing laboratory (NRTL)</strong>, under 29&nbsp;CFR&nbsp;1910.7, is an OSHA-recognized organization that tests for safety, lists or labels equipment, inspects production and is independent of the manufacturers it tests. OSHA&rsquo;s current list has 21, including UL&nbsp;LLC, CSA Group, Intertek and both T&Uuml;V organizations. Every law below accepts an equivalent NRTL, not only UL, except Colorado&rsquo;s 2027 sales rule, which says &ldquo;UL labeled and listed&rdquo;.</p>\n  <ul>\n    <li><strong>Listed</strong> (29&nbsp;CFR&nbsp;1910.399): named in a list published by an NRTL that inspects production, as meeting recognized standards or tested safe for use in a specified manner. <strong>Labeled</strong>: carrying that NRTL&rsquo;s mark.</li>\n    <li><strong>Certified</strong> is not defined there. UL uses &ldquo;Certified (Listed)&rdquo; interchangeably for end products; the state laws mix &ldquo;certified&rdquo;, &ldquo;listed or certified&rdquo; and &ldquo;labeled and listed&rdquo; without distinguishing them.</li>\n    <li><strong>Recognized component</strong> (the backward &ldquo;UR&rdquo; mark): a part evaluated for use inside a larger certified product. UL says it is not a certification of a standalone product.</li>\n  </ul>\n</section>"
+  },
+  {
+   "id": "parts-vs-system",
+   "toc": "Why listed parts are not a listed system",
+   "html": "        <section id=\"parts-vs-system\">\n  <h2><span class=\"sec-num\">3</span>Why a listed inverter and listed panels are not a listed plug-in system</h2>\n  <p>A listing covers the product submitted, in the configuration tested, for a specified use. A microinverter listed to UL&nbsp;1741 has been evaluated for its own safety and its behavior on the grid. A panel listed to UL&nbsp;61730 has been evaluated for shock and fire safety as a panel. Neither was tested with the other, with the kit&rsquo;s cord and plug, or feeding a shared 15&nbsp;A kitchen circuit. Put them in one box and you have two listings, not one.</p>\n  <p>The hazards UL&nbsp;3700 targets belong to the combination. An inverter feeding a circuit at one outlet while appliances draw at others can push more current through part of the wire than the breaker sees; balco.nyc&rsquo;s worst case is <a href=\"/is-plug-in-solar-safe\">25&nbsp;A on a 15&nbsp;A circuit</a>. No test of the inverter alone can find that. Live plug blades and GFCI interaction also depend on how the parts are connected.</p>\n  <p>The market shows the distinction. Bright Saver, a nonprofit that sells plug-in kits at cost, describes the microinverter in its kit as UL&nbsp;3700 compliant. The same page says it cannot ship to New York, Maine or Vermont because their laws require &ldquo;whole-system certification, which no system on the market has achieved yet.&rdquo; In New York the law in question is the SUNNY Act&rsquo;s text, which is not yet law. The kit ships to the rest of the continental US, which is how the market reads the other statutes: where a law names no system standard, a kit of listed components is sold as compliant. No regulator or court has tested that reading.</p>\n</section>"
+  },
+  {
+   "id": "state-laws",
+   "toc": "What each state law asks for",
+   "html": "        <section id=\"state-laws\">\n  <h2><span class=\"sec-num\">4</span>What each state law asks for: balco.nyc&rsquo;s compilation</h2>\n  <p>balco.nyc read the certification clause in the enacted text of all nine signed plug-in solar laws, and in the New York and California bills, as of 23&nbsp;September 2026. Quotation marks show statutory wording; the last column is our reading, not legal advice.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>State</th><th>Status</th><th>What the text requires</th><th>What it means in practice</th></tr></thead><tbody>\n    <tr><td><a href=\"/states/utah\">Utah</a></td><td>In force since 7&nbsp;May 2025</td><td>&ldquo;Certified by Underwriters Laboratories or an equivalent nationally recognized testing laboratory.&rdquo;</td><td>No standard named. Kits of listed components are sold as compliant; whether &ldquo;the device&rdquo; means the whole kit is unsettled.</td></tr>\n    <tr><td><a href=\"/states/maryland\">Maryland</a></td><td>In force since 1&nbsp;July 2026</td><td>&ldquo;Certified by Underwriters Laboratory or an equivalent&rdquo; NRTL</td><td>As Utah. The customer also gives the utility a certification of safety features and capacity.</td></tr>\n    <tr><td><a href=\"/states/colorado\">Colorado</a></td><td>In force since 12&nbsp;Aug 2026</td><td>The system &ldquo;and associated equipment&rdquo; is &ldquo;labeled and listed&rdquo; by an NRTL; from 2027, no sales over 391&nbsp;W unless &ldquo;UL labeled and listed&rdquo;</td><td>No standard named. &ldquo;System&rdquo; leans toward a system listing; the 2027 rule names UL, not any NRTL.</td></tr>\n    <tr><td><a href=\"/states/connecticut\">Connecticut</a></td><td>From 1&nbsp;Oct 2026</td><td>UL or equivalent NRTL, and &ldquo;meets the requirements set forth in Underwriters Laboratories Standard Number 1741&rdquo;; IEEE&nbsp;1547; NEC</td><td>The one standard named is the inverter standard, which a listed microinverter already meets.</td></tr>\n    <tr><td><a href=\"/states/new-hampshire\">New Hampshire</a></td><td>From 1&nbsp;Jan 2027</td><td>NRTL certification to nationally recognized safety standards</td><td>No standard named. The building-code section waits until the state certifies a national plug-in standard exists.</td></tr>\n    <tr><td><a href=\"/states/virginia\">Virginia</a></td><td>From 1&nbsp;Jan 2027</td><td>&ldquo;Certified by a nationally recognized testing laboratory, as described in 29 C.F.R. &sect; 1910.7, or an equivalent&rdquo; NRTL</td><td>As Utah. Tenants must show the landlord documentation that the device qualifies.</td></tr>\n    <tr><td><a href=\"/states/new-jersey\">New Jersey</a></td><td>From 1&nbsp;Mar 2027</td><td>Listed or certified to UL&nbsp;3700, or a comparable standard or combination of standards, by an NRTL</td><td>Names UL&nbsp;3700, but <em>combination of standards</em> leaves open whether stacked component listings count.</td></tr>\n    <tr><td><a href=\"/states/maine\">Maine</a></td><td>In force since 29&nbsp;July 2026</td><td>System &ldquo;listed or certified in accordance with UL 3700&rdquo; or a comparable NRTL standard, or &ldquo;configured in accordance with the National Electrical Code&rdquo;</td><td>System-level listing. The NEC route is unclear: the 2026 NEC has no plug-in PV provisions.</td></tr>\n    <tr><td><a href=\"/states/vermont\">Vermont</a></td><td>In force since 1&nbsp;July 2026</td><td>&ldquo;Complies with UL 3700 for plug-in photovoltaic systems by UL Solutions or an equivalent certification&rdquo;; IEEE&nbsp;1547-2018</td><td>System-level listing. No complete system has one.</td></tr>\n    <tr><td><a href=\"/states/new-york\">New York</a> (bill)</td><td>Passed both chambers; not yet delivered to the Governor</td><td>&ldquo;Listed or certified by an accredited nationally recognized testing laboratory as a complete plug-in photovoltaic system to a standard&rdquo;</td><td>The strictest wording. No standard named, but the complete system must be listed.</td></tr>\n    <tr><td><a href=\"/states/california\">California</a> (bill)</td><td>With the Governor since 31&nbsp;Aug 2026</td><td>&ldquo;Certified as a plug-in photovoltaic system&rdquo; by UL or an equivalent NRTL, plus a certified anti-backfeed feature</td><td>System-level. From 2030 it would ban sales of plug-in devices that do not qualify.</td></tr>\n  </tbody></table></div>\n  <p><strong>The count.</strong> Of the nine signed laws, three name UL&nbsp;3700: Maine, Vermont and New Jersey. Only <strong>two, Maine and Vermont, ask for UL&nbsp;3700 or an equivalent listing of the system itself</strong>, with no route through a combination of other standards. Five name no standard (Utah, Maryland, Colorado, Virginia, New Hampshire), and Connecticut names only the inverter standard. That is six of nine whose wording a kit of separately listed parts can plausibly meet, two that require a system listing, and New Jersey in between.</p>\n  <p><strong>Weighted by population</strong> (Census Bureau 2025 estimates), Maine (1,414,874) and Vermont (644,663) hold 2,059,537 people: <strong>0.6%</strong> of the 341.8&nbsp;million US residents, and 5.0% of the 41.4&nbsp;million in states with a signed law. If New York (20,002,427) and California (39,355,309) enact their bills, a system-level requirement would cover 61,417,273 people: <strong>18.0%</strong> of US residents and 61% of everyone under one of these eleven texts. The missing product would go from a two-small-state problem to the main constraint for most people these laws cover.</p>\n  <p>The laws differ on much more than certification; <a href=\"/balcony-solar-laws-compared\">the provision-by-provision comparison</a> has the rest.</p>\n</section>"
+  },
+  {
+   "id": "market-status",
+   "toc": "Where certification stands",
+   "html": "        <section id=\"market-status\">\n  <h2><span class=\"sec-num\">5</span>Where certification stands in September 2026</h2>\n  <p><strong>No complete plug-in system is listed to UL&nbsp;3700 as of 23&nbsp;September 2026.</strong> In late August, PV Tech reported that UL Solutions was still working toward its first UL&nbsp;3700 certification. On 23&nbsp;September, Bright Saver&rsquo;s kit page still said no system on the market had achieved whole-system certification.</p>\n  <p>What exists are equipment-level claims for microinverters. On 15&nbsp;July 2026 APsystems said its EZ1 plug-in microinverter was certified to UL&nbsp;3700 by CSA Group, an NRTL on OSHA&rsquo;s list. The same day Hoymiles launched its HiFlow Pro as the first UL&nbsp;3700-compliant plug-in microinverter in the US; the coverage named no certifying lab. Neither claim is a listing of a complete system with panels, cabling and mounting, which is what Maine, Vermont and New York&rsquo;s bill describe.</p>\n  <p>Two limits: balco.nyc could not search UL&rsquo;s Product iQ directory, which requires an account, and has not searched every NRTL&rsquo;s listings. If a complete system is listed after the review date above, the certifier&rsquo;s directory is the authority, not this page.</p>\n  <p>For New York the timing is the point. The SUNNY Act has passed both chambers and {{sunny.phrase}}. If signed, it takes effect {{sunny.effective_after_days}} days later, and its interconnection exemption would cover only devices listed as complete plug-in systems; on today&rsquo;s market, none. It grants no right to install, so renters and co-op residents still need permission (<a href=\"/sunny-act\">what the Act does and does not change</a>).</p>\n</section>"
+  },
+  {
+   "id": "check-a-listing",
+   "toc": "How to check a claim",
+   "html": "        <section id=\"check-a-listing\">\n  <h2><span class=\"sec-num\">6</span>How to check a listing, and what &ldquo;UL certified&rdquo; can mean</h2>\n  <p>A seller&rsquo;s &ldquo;UL certified&rdquo; is a claim about some part of the product, to some standard. Four checks make it verifiable:</p>\n  <ol>\n    <li><strong>Find the mark and file number on each part</strong>: the inverter&rsquo;s nameplate and the panel&rsquo;s label, not the box or the product page.</li>\n    <li><strong>Look it up with the certifier.</strong> UL&rsquo;s Product iQ is free with an account and searches by file number, category code or model; CSA Group&rsquo;s product listing is public. By the federal definition, a listed product is one that appears in such a list.</li>\n    <li><strong>Read what the listing covers</strong>: which standard, which model numbers, and whether it is the kit as sold or one part of it.</li>\n    <li><strong>Get it in writing and keep it.</strong> Ask the seller which lab listed which product, to which standard, under which file number. Maryland has you give the utility a certification of safety features, and Virginia tenants must show their landlord documentation.</li>\n  </ol>\n  <div class=\"table-wrap\"><table><thead><tr><th>The claim</th><th>What it can mean</th><th>What it does not establish</th></tr></thead><tbody>\n    <tr><td>&ldquo;UL certified&rdquo; or &ldquo;UL listed&rdquo;</td><td>Some part is listed by UL</td><td>Which part, to which standard</td></tr>\n    <tr><td>&ldquo;UL&nbsp;1741&rdquo;, &ldquo;UL&nbsp;1741&nbsp;SB&rdquo;, &ldquo;IEEE&nbsp;1547&rdquo;</td><td>The inverter&rsquo;s safety and grid behavior</td><td>Anything about panels, cord, plug or circuit</td></tr>\n    <tr><td>&ldquo;UL&nbsp;3700 compliant&rdquo;</td><td>The maker&rsquo;s own statement</td><td>A listing by any NRTL</td></tr>\n    <tr><td>A microinverter certified to UL&nbsp;3700</td><td>That equipment was evaluated to the outline</td><td>That the complete system was</td></tr>\n    <tr><td>&ldquo;ETL listed&rdquo;, &ldquo;CSA certified&rdquo;</td><td>Listed by another NRTL, which most of the laws accept as equivalent</td><td>Which standard, until you look it up</td></tr>\n    <tr><td>Backward &ldquo;UR&rdquo; mark</td><td>A recognized component for factory assembly</td><td>Suitability as a standalone product</td></tr>\n  </tbody></table></div>\n  <div class=\"callout\"><p><strong>Not legal advice.</strong> Whether a kit satisfies a statute is for that state&rsquo;s regulators, code officials and courts, and can vary by utility and building. Check the enacted text linked from your <a href=\"/states\">state page</a>; a plug-in law binds the utility, not your landlord, board or insurer, unless it says so.</p></div>\n</section>"
+  }
+ ],
+ "faq": [
+  [
+   "What is UL 3700?",
+   "UL 3700 is the Outline of Investigation for Interactive Plug-In PV (PIPV) Equipment and Systems, edition 1, dated 11 December 2025. It is a UL LLC certification document rather than a consensus standard, and UL Solutions began certifying to it on 8 January 2026. It evaluates plug-in solar equipment or a complete plug-in system, including the cord, plug, receptacle arrangement and ground-fault and overcurrent behavior, rather than the panel or inverter alone."
+  ],
+  [
+   "Is any balcony solar kit certified to UL 3700?",
+   "Not as a complete system, as of 23 September 2026. Some microinverters carry UL 3700 claims: APsystems says its EZ1 was certified by CSA Group in July 2026, and Hoymiles launched its HiFlow Pro as UL 3700-compliant. But no complete kit with panels, cabling and mounting is listed to UL 3700. PV Tech reported in August 2026 that UL Solutions was still working toward its first UL 3700 certification, and Bright Saver says no system on the market has achieved whole-system certification."
+  ],
+  [
+   "If my kit has a UL 1741 microinverter and UL-listed panels, is it UL certified?",
+   "Its parts are, but the kit as a whole is not. A listing covers the product submitted, in the configuration tested. UL 1741 covers the inverter's safety and grid behavior, and UL 61730 covers the panel. Neither tests the combination with the cord, plug and household circuit, which is where plug-in hazards such as unseen overcurrent arise. Whether separately listed parts satisfy a particular state law depends on that law's wording."
+  ],
+  [
+   "Which states require UL 3700 for plug-in solar?",
+   "Of the nine states with signed plug-in solar laws as of 23 September 2026, Maine, Vermont and New Jersey name UL 3700. Maine and Vermont ask for UL 3700 or an equivalent listing of the system itself. Maine also allows a system configured to the state-adopted electrical code. New Jersey also accepts a comparable standard or combination of standards. Utah, Maryland, Colorado, Virginia and New Hampshire require NRTL certification without naming a standard, and Connecticut names UL 1741."
+  ],
+  [
+   "Does New York's SUNNY Act require UL 3700?",
+   "It does not name UL 3700, but it is stricter. The bill requires a device listed or certified by an accredited nationally recognized testing laboratory as a complete plug-in photovoltaic system. As of 23 September 2026 no complete system holds such a listing. The SUNNY Act has passed both chambers and {{sunny.phrase}}; if signed, it takes effect {{sunny.effective_after_days}} days later and grants no right to install."
+  ],
+  [
+   "What is an NRTL?",
+   "A nationally recognized testing laboratory is defined in federal rule 29 CFR 1910.7. It is an organization recognized by OSHA that tests equipment for safety, lists or labels it, inspects production and is independent of the manufacturers it tests. OSHA's list has 21, including UL LLC, CSA Group, Intertek and TÜV SÜD. State plug-in laws that say UL generally accept an equivalent NRTL as well."
+  ],
+  [
+   "How can I check whether a plug-in solar product is really listed?",
+   "Find the certification mark and file number on the nameplate of each part, then look it up in the certifier's own directory: UL's Product iQ (free with an account) or CSA Group's public product listing, for example. Check which standard the listing is to and whether it covers the complete kit or one component. A claim of being UL 3700 compliant is the maker's own statement, not a listing."
+  ]
+ ],
+ "sources": [
+  {
+   "url": "https://www.shopulstandards.com/ProductDetail.aspx?UniqueKey=49440",
+   "title": "UL Standards &amp; Engagement &mdash; UL 3700, Outline of Investigation for Interactive Plug-In PV (PIPV) Equipment and Systems",
+   "note": "edition 1 dated 11&nbsp;December 2025, labeled a UL&nbsp;LLC outline; scope covering PIPV cord-and-plug connection to a permanently installed PIPV receptacle, the 64&nbsp;VDC open-circuit limit, and the exclusion of rooftop, BIPV and hard-wired PV."
+  },
+  {
+   "url": "https://www.shopulstandards.com/ProductGlossary.aspx",
+   "title": "UL Standards &amp; Engagement &mdash; product glossary",
+   "note": "that outlines of investigation are UL&nbsp;LLC certification documents, not consensus documents developed through the ULSE standards process."
+  },
+  {
+   "url": "https://www.ul.com/news/ul-solutions-debuts-testing-and-certification-framework-safer-plug-solar-across-united-states",
+   "title": "UL Solutions &mdash; testing and certification framework for plug-in solar (8 January 2026)",
+   "note": "launch of the UL&nbsp;3700 certification program and the hazards it addresses, including current flowing in the wrong direction."
+  },
+  {
+   "url": "https://www.pv-tech.org/us-plug-in-solar-questions-remain-over-safety-certifications-and-regulation/",
+   "title": "PV Tech &mdash; US plug-in solar: questions remain over safety, certifications and regulation (26 August 2026)",
+   "note": "UL Solutions&rsquo; Ken Boyce: market products tested against UL&nbsp;3700 did not comply, and UL Solutions was working toward its first certification."
+  },
+  {
+   "url": "https://pv-magazine-usa.com/2026/01/28/how-to-build-a-balcony-solar-kit-to-ul-standards/",
+   "title": "pv magazine USA &mdash; How to build a balcony solar kit to UL certification (28 January 2026)",
+   "note": "component listings (UL&nbsp;1741 inverters, UL&nbsp;61730 modules) versus system evaluation under UL&nbsp;3700; overcurrent, touch-safety and GFCI risk categories."
+  },
+  {
+   "url": "https://www.shopulstandards.com/ProductDetail.aspx?productId=UL1741_3_S_20210928",
+   "title": "UL Standards &amp; Engagement &mdash; UL 1741, Inverters, Converters, Controllers and Interconnection System Equipment",
+   "note": "edition 3 (2021), ANSI-approved; for grid-interactive equipment used with IEEE&nbsp;1547 and IEEE&nbsp;1547.1."
+  },
+  {
+   "url": "https://standards.ieee.org/ieee/1547/5915/",
+   "title": "IEEE &mdash; IEEE 1547-2018, interconnection and interoperability of distributed energy resources",
+   "note": "scope of the interconnection standard, including islanding."
+  },
+  {
+   "url": "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1910/subpart-A/section-1910.7",
+   "title": "eCFR &mdash; 29 CFR 1910.7, definition and requirements for a nationally recognized testing laboratory",
+   "note": "OSHA recognition, factory inspection and independence requirements for an NRTL; cited by Virginia&rsquo;s law."
+  },
+  {
+   "url": "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1910/subpart-S/subject-group-ECFR314553c63ae81f4/section-1910.399",
+   "title": "eCFR &mdash; 29 CFR 1910.399, electrical definitions",
+   "note": "the federal definitions of &ldquo;listed&rdquo; and &ldquo;labeled&rdquo;."
+  },
+  {
+   "url": "https://www.osha.gov/nationally-recognized-testing-laboratory-program/current-list-of-nrtls",
+   "title": "OSHA &mdash; Current list of NRTLs",
+   "note": "the 21 recognized laboratories, including UL&nbsp;LLC, CSA Group, Intertek, T&Uuml;V S&Uuml;D and T&Uuml;V Rheinland."
+  },
+  {
+   "url": "https://www.ul.com/thecodeauthority/knowledge/ul-component-recognition-classification",
+   "title": "UL Solutions &mdash; The UL component recognition classification",
+   "note": "recognized components are for building into a larger certified product, under conditions of acceptability, and are not a standalone product certification."
+  },
+  {
+   "url": "https://www.ul.com/thecodeauthority/knowledge/ul-listed-certified-database-product-iq",
+   "title": "UL Solutions &mdash; Finding UL listed and certified products with Product iQ",
+   "note": "Product iQ access with a complimentary account; search by file number, category code or model."
+  },
+  {
+   "url": "https://www.csagroup.org/testing-certification/product-listing/",
+   "title": "CSA Group &mdash; Product listing",
+   "note": "public directory of products bearing a CSA mark, searchable by file number, class or manufacturer."
+  },
+  {
+   "url": "https://www.intertek.com/solar/ul-3700-solutions/",
+   "title": "Intertek &mdash; UL 3700 testing and certification",
+   "note": "that NRTLs other than UL certify to UL&nbsp;3700, and its description of a dedicated plug-in PV receptacle."
+  },
+  {
+   "url": "https://www.brightsaver.org/balcony-solar-kits",
+   "title": "Bright Saver &mdash; balcony solar kit page (checked 23 September 2026)",
+   "note": "cited, not recommended: the statement that it cannot ship to New York, Maine or Vermont because those laws require whole-system certification no system has achieved, and its description of the kit&rsquo;s microinverter as UL&nbsp;3700 compliant."
+  },
+  {
+   "url": "https://usa.apsystems.com/ez1-proven-portable-solar-ul-3700-certified/",
+   "title": "APsystems &mdash; EZ1 UL 3700 announcement (15 July 2026)",
+   "note": "the manufacturer&rsquo;s claim that its EZ1 microinverter is CSA-certified to UL&nbsp;3700; a component claim, not a system listing."
+  },
+  {
+   "url": "https://pv-magazine-usa.com/2026/07/15/hoymiles-introduces-first-ul-3700-compliant-plug-in-microinverter-to-u-s-market/",
+   "title": "pv magazine USA &mdash; Hoymiles introduces first UL 3700-compliant plug-in microinverter (15 July 2026)",
+   "note": "a microinverter described as UL&nbsp;3700-compliant, with no certifying lab named."
+  },
+  {
+   "url": "https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf",
+   "title": "Utah Legislature &mdash; H.B. 340 Solar Power Amendments, enrolled copy (2025)",
+   "note": "certification by UL or an equivalent NRTL; no standard named; 7&nbsp;May 2025 effective date."
+  },
+  {
+   "url": "https://mgaleg.maryland.gov/2026RS/Chapters_noln/CH_353_hb1532e.pdf",
+   "title": "Maryland General Assembly &mdash; Chapter 353 of 2026 (HB 1532), Public Utilities &sect;7-321",
+   "note": "certification by UL or an equivalent NRTL, and the customer&rsquo;s certification of safety features to the utility."
+  },
+  {
+   "url": "https://leg.colorado.gov/bill_files/116074/download",
+   "title": "Colorado General Assembly &mdash; HB26-1007 signed act (C.R.S. 40-2-140)",
+   "note": "&ldquo;labeled and listed&rdquo; by an NRTL, and the 2027 &ldquo;UL labeled and listed&rdquo; sales rule above 391&nbsp;W."
+  },
+  {
+   "url": "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00127-R00HB-05340-PA.PDF",
+   "title": "Connecticut General Assembly &mdash; Public Act 26-127 (HB 5340), section 9",
+   "note": "UL or equivalent NRTL certification plus UL&nbsp;1741, IEEE&nbsp;1547 and the NEC; effective 1&nbsp;October 2026."
+  },
+  {
+   "url": "https://pv-magazine-usa.com/2026/05/12/new-hampshire-legislature-advances-plug-in-solar-bill-to-governor/",
+   "title": "pv magazine USA &mdash; New Hampshire legislature advances plug-in solar bill (SB 540)",
+   "note": "NRTL certification with no standard named, the building-code provision waiting on a national plug-in standard, and that the 2026 NEC has no plug-in PV language."
+  },
+  {
+   "url": "https://lis.blob.core.windows.net/files/1225204.PDF",
+   "title": "Virginia Acts of Assembly &mdash; 2026 Chapter 1052 (HB 395)",
+   "note": "NRTL certification &ldquo;as described in 29 C.F.R. &sect; 1910.7&rdquo;; tenant documentation to the landlord; effective 1&nbsp;January 2027."
+  },
+  {
+   "url": "https://pv-magazine-usa.com/2026/09/01/new-jersey-legalizes-plug-in-solar-up-to-1200-w/",
+   "title": "pv magazine USA &mdash; New Jersey legalizes plug-in solar up to 1,200 W (1 September 2026)",
+   "note": "the Garden State Balcony Solar Act&rsquo;s UL&nbsp;3700 listing requirement."
+  },
+  {
+   "url": "https://www.nj.gov/governor/news/2026/approved/20260901a.shtml",
+   "title": "Office of the Governor of New Jersey &mdash; Garden State Balcony Solar Act signed (1 September 2026)",
+   "note": "signing of S2368/A4836."
+  },
+  {
+   "url": "https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132",
+   "title": "Maine Legislature &mdash; LD 1730, Public Law 2026 chapter 644 (35-A MRSA &sect;3475)",
+   "note": "&ldquo;eligible system&rdquo; listed or certified to UL&nbsp;3700 or a comparable NRTL standard, or configured to the adopted NEC; inverters that shut off after 0.2&nbsp;seconds."
+  },
+  {
+   "url": "https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf",
+   "title": "Vermont Legislature &mdash; Act 149 (S.202) as enacted",
+   "note": "compliance with UL&nbsp;3700 for plug-in photovoltaic systems or an equivalent NRTL certification, and IEEE&nbsp;1547-2018."
+  },
+  {
+   "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+   "title": "New York State Senate &mdash; S8512C (SUNNY Act), text and actions",
+   "note": "listing &ldquo;as a complete plug-in photovoltaic system&rdquo; by an accredited NRTL; last action 28&nbsp;May 2026."
+  },
+  {
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB868",
+   "title": "California Legislative Information &mdash; SB 868, enrolled text",
+   "note": "certification &ldquo;as a plug-in photovoltaic system&rdquo;, the certified anti-backfeed feature, and the 2030 sales ban."
+  },
+  {
+   "url": "https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202520260SB868",
+   "title": "California Legislative Information &mdash; SB 868 history",
+   "note": "presented to the Governor 31&nbsp;August 2026, no action recorded as of 23&nbsp;September."
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv",
+   "title": "US Census Bureau &mdash; Vintage 2025 population estimates (SUB-EST2025)",
+   "note": "state populations behind the 0.6%, 5.0%, 18.0% and 61% shares."
+  }
+ ],
+ "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It summarizes enacted text and public certification statements as of 23&nbsp;September 2026 and is not legal or electrical advice. Certification status changes; the certifier&rsquo;s own directory is the authority."
+}

@@ -1,0 +1,35 @@
+{
+ "intro_html": "<p>Neither of Hawaii&rsquo;s 2026 plug-in bills passed, and the next chance is the session that opens in January 2027. Until then Hawaiian Electric&rsquo;s rules apply in Honolulu: new customer systems, including those in its Smart Renewable Energy Non-Export program for systems that send nothing to the grid, apply through its Customer Interconnection Tool, and every Non-Export participant needs an advanced meter.</p>\n  <p>Hawaii&rsquo;s solar-rights law, HRS &sect;196-7, stops covenants, bylaws and even leases from preventing a solar device &ldquo;on any single-family residential dwelling or townhouse that the person owns&rdquo;, and defines the device by reference to those buildings. It does not reach an apartment in a Honolulu condominium tower, and it protects owners, not tenants.</p>\n  <p>Latitude matters here as much as law. balco.nyc&rsquo;s PVWatts runs, after the railing loss, give a vertical south-facing panel in Honolulu 510&nbsp;kWh a year, the lowest of any state&rsquo;s largest city, because the sun stands high for most of the year; east- and west-facing railings do slightly better, and the same panel tilted to 35&deg; would make about 1,170&nbsp;kWh. What still makes the numbers work is price: Hawaii&rsquo;s 42.8&cent; average is the highest in the country, and Hawaiian Electric&rsquo;s own figure for Oahu homes in 2025 was 40.5&cent;.</p>",
+ "sources": [
+  {
+   "url": "https://data.capitol.hawaii.gov/hrscurrent/Vol03_Ch0121-0200D/HRS0196/HRS_0196-0007.htm",
+   "title": "Hawaii State Legislature &mdash; HRS &sect;196-7, Placement of solar energy devices",
+   "note": "protects solar energy devices on a single-family residential dwelling or townhouse the person owns."
+  },
+  {
+   "url": "https://www.hawaiianelectric.com/products-and-services/smart-renewable-energy-programs",
+   "title": "Hawaiian Electric &mdash; Smart Renewable Energy programs",
+   "note": "new customers apply for programs through the Customer Interconnection Tool."
+  },
+  {
+   "url": "https://www.hawaiianelectric.com/products-and-services/smart-renewable-energy-programs/smart-renewable-energy-non-export",
+   "title": "Hawaiian Electric &mdash; Smart Renewable Energy Non-Export",
+   "note": "for systems that do not export; all participants must use advanced meters."
+  },
+  {
+   "url": "https://www.hawaiianelectric.com/billing-and-payment/rates-and-regulations/average-price-of-electricity",
+   "title": "Hawaiian Electric &mdash; Average price of electricity",
+   "note": "Oahu Schedule R residential average of 40.54 cents/kWh in 2025."
+  }
+ ],
+ "faq": [
+  [
+   "Does Hawaii's solar rights law cover condo apartments?",
+   "No. HRS &sect;196-7 stops covenants, bylaws and leases from preventing a solar energy device on a single-family dwelling or townhouse the person owns, and defines the device by reference to those buildings. It does not reach an apartment in a condominium tower."
+  ],
+  [
+   "Which way should a balcony panel face in Honolulu?",
+   "Tilt matters more than direction. In balco.nyc&rsquo;s PVWatts runs for Honolulu, after the railing loss, a vertical 800&nbsp;W panel makes about 510&nbsp;kWh a year facing south, 543 facing east, 536 facing west and 576 facing southwest, while the same panel tilted to 35&deg; toward the south makes about 1,170&nbsp;kWh, because at Honolulu&rsquo;s latitude the sun is high in the sky for most of the year."
+  ]
+ ]
+}

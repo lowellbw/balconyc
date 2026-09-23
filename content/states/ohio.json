@@ -1,0 +1,21 @@
+{
+ "intro_html": "<p>HB&nbsp;755 and its Senate companion SB&nbsp;383 have had no committee vote, and bills still pending when the 136th General Assembly ends in December 2026 die. Until a law passes, a Columbus resident deals with AEP Ohio. Its homeowner guide says that if a customer-owned generator is connected to its system, &ldquo;then your equipment is interconnected&rdquo;, and walks through an application, an interconnection service agreement, an AC disconnect switch that must be &ldquo;lockable and accessible to our crews at all times&rdquo;, a post-installation field verification and a new two-way meter. The process is written for hard-wired rooftop systems, not a device on a plug.</p>\n  <p>Ohio&rsquo;s 2022 solar-access law does little for apartments. For condominiums, Revised Code &sect;5311.192 lets an owner install a solar device only on &ldquo;the roof of&rdquo; a &ldquo;solar appropriate unit&rdquo;, one with no other unit directly above or below it, only where that roof is the owner&rsquo;s responsibility or the declaration provides for solar devices, and only &ldquo;unless specifically prohibited in the declaration&rdquo;. The association keeps the power to restrict size, place and manner. A balcony in a mid-rise building is outside the statute, and renters are not covered at all.</p>\n  <p>balco.nyc&rsquo;s calculator models a specific Columbus address and lets you enter the rate from your own bill in place of Ohio&rsquo;s 18.0&cent; average.</p>",
+ "sources": [
+  {
+   "url": "https://www.aepohio.com/lib/docs/cleanenergy/renewable/solar/QuickStartGuide-AEPOhio.pdf",
+   "title": "AEP Ohio &mdash; Connecting Rooftop Solar and Other Distributed Energy Resources: a quick guide for homeowners",
+   "note": "connected customer generation is interconnected; application, interconnection service agreement, lockable AC disconnect, field verification and bidirectional meter."
+  },
+  {
+   "url": "https://codes.ohio.gov/ohio-revised-code/section-5311.192",
+   "title": "Ohio Laws &mdash; Revised Code &sect;5311.192, Solar energy collection devices",
+   "note": "condominium owners may install on the roof of a &ldquo;solar appropriate unit&rdquo; unless the declaration specifically prohibits it; effective 13 September 2022 (SB 61)."
+  }
+ ],
+ "faq": [
+  [
+   "Does Ohio's condominium solar law cover balconies?",
+   "No. Revised Code &sect;5311.192 lets a condominium owner install a solar device on the roof of a &ldquo;solar appropriate unit&rdquo;, one with no other unit directly above or below it, and only unless the declaration specifically prohibits it. A panel on a balcony in a multi-story building is outside its scope."
+  ]
+ ]
+}

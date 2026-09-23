@@ -1,0 +1,35 @@
+{
+ "intro_html": "<p>HB&nbsp;1971 has not moved since it was referred to the House Energy Committee in October 2025, and the session ends on 30&nbsp;November 2026, when bills that have not passed die. For the coming year, then, the rules in Philadelphia are PECO&rsquo;s. Its interconnection page says applications &ldquo;are required for all private generator facilities connecting to PECO&rsquo;s distribution system&rdquo;. An inverter-based unit of 10&nbsp;kW or less, which includes an 800&nbsp;W kit, goes through its Level&nbsp;1 process under the Public Utility Commission&rsquo;s interconnection rules, and PECO notes that contractors typically file the application for the customer.</p>\n  <p>Nor is there a statutory backstop for condo and townhouse owners: Pennsylvania has no law that stops a homeowners or condominium association from refusing solar. HB&nbsp;1239, which passed the House 109&ndash;93 on 1&nbsp;July 2026 and now sits in the Senate Urban Affairs and Housing Committee, would change that only for a &ldquo;detached roof&rdquo; solely owned by an individual. As written it would not reach a panel on a balcony railing in a multi-unit building, and it faces the same 30&nbsp;November deadline. Renters need the landlord&rsquo;s agreement in any case.</p>\n  <p>balco.nyc&rsquo;s calculator models a specific Philadelphia address and lets you enter the rate from your own PECO bill in place of the state average.</p>",
+ "sources": [
+  {
+   "url": "https://www.peco.com/smart-energy/my-green-power-connection/developers-contractors/smaller-generators",
+   "title": "PECO &mdash; Smaller Generators",
+   "note": "interconnection applications required for all private generator facilities; Level 1 for inverter-based units of 10 kW and under; contractors typically apply."
+  },
+  {
+   "url": "https://www.palegis.us/legislation/bills/2025/hb1239",
+   "title": "Pennsylvania General Assembly &mdash; HB 1239 (2025&ndash;2026)",
+   "note": "House final passage 109&ndash;93 on 1 July 2026; referred to Senate Urban Affairs and Housing on 9 July 2026."
+  },
+  {
+   "url": "https://www.palegis.us/legislation/bills/text/HTM/2025/0/HB1239/PN2022",
+   "title": "Pennsylvania General Assembly &mdash; HB 1239, Printer&rsquo;s No. 2022",
+   "note": "associations may not prohibit solar energy systems on a &ldquo;detached roof&rdquo; solely owned by an individual."
+  },
+  {
+   "url": "https://solarunitedneighbors.org/resources/homeowners-associations-and-solar-access-in-pennsylvania/",
+   "title": "Solar United Neighbors &mdash; Homeowners associations and solar access in Pennsylvania",
+   "note": "Pennsylvania has no rules preventing HOAs from stopping residents going solar."
+  }
+ ],
+ "faq": [
+  [
+   "Does PECO require an application for a plug-in solar panel?",
+   "PECO&rsquo;s interconnection page says applications are required for all private generator facilities connecting to its distribution system, and inverter-based units of 10&nbsp;kW or less go through its Level&nbsp;1 process. Pennsylvania has no plug-in solar law exempting small devices; HB&nbsp;1971, which would, has not left committee."
+  ],
+  [
+   "Would Pennsylvania's HB 1239 let condo owners put solar on a balcony?",
+   "As written, no. HB&nbsp;1239, which passed the House on 1&nbsp;July 2026, bars condominium and planned-community associations from prohibiting solar only on a &ldquo;detached roof&rdquo; solely owned by an individual. It says nothing about balconies, and it is still in a Senate committee with the session ending on 30&nbsp;November 2026."
+  ]
+ ]
+}

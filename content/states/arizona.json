@@ -1,0 +1,35 @@
+{
+ "intro_html": "<p>Both of Arizona&rsquo;s 2026 plug-in bills died in committee, and a new one would have to be filed when the Legislature convenes in January 2027. Phoenix is split between APS, an investor-owned utility regulated by the Arizona Corporation Commission, and SRP, a public power district that sets its own rules. SRP&rsquo;s FAQ addresses store-bought modular kits directly: &ldquo;All systems, small or large, go through the SRP application and review process,&rdquo; and all grid-tied equipment must carry UL certification.</p>\n  <p>Arizona&rsquo;s solar-rights statutes are broad. A.R.S. &sect;33-439 voids any covenant, restriction or condition in a deed, contract or other instrument affecting real property that &ldquo;effectively prohibits&rdquo; a solar energy device; &sect;33-1816 bars planned-community associations from prohibiting one, allowing only placement rules that do not impair it or add to its cost; and &sect;44-1761 defines the device to include systems serving on-site demand &ldquo;at a residential dwelling unit or multifamily structure&rdquo;. Read literally, that covers a balcony panel. But the statutes were written with rooftop systems in mind, we found no court decision applying them to a plug-in device, and they limit private restrictions, not the utility&rsquo;s interconnection rules.</p>\n  <p>balco.nyc&rsquo;s calculator models a specific Phoenix address and lets you enter the rate from your APS or SRP bill in place of Arizona&rsquo;s 15.4&cent; average.</p>",
+ "sources": [
+  {
+   "url": "https://www.srpnet.com/energy-savings-rebates/home/residential-solar/solar-energy-system-faq",
+   "title": "SRP &mdash; Home solar energy system FAQ",
+   "note": "&ldquo;Can I install my own small system?&rdquo;: all systems, small or large, go through the SRP application and review process; grid-tied equipment must have UL certification."
+  },
+  {
+   "url": "https://www.azleg.gov/ars/33/00439.htm",
+   "title": "Arizona Legislature &mdash; A.R.S. &sect;33-439",
+   "note": "covenants and other real-property instruments that effectively prohibit a solar energy device are void."
+  },
+  {
+   "url": "https://www.azleg.gov/ars/33/01816.htm",
+   "title": "Arizona Legislature &mdash; A.R.S. &sect;33-1816",
+   "note": "planned-community associations may not prohibit a solar energy device; only reasonable placement rules."
+  },
+  {
+   "url": "https://www.azleg.gov/ars/44/01761.htm",
+   "title": "Arizona Legislature &mdash; A.R.S. &sect;44-1761",
+   "note": "definition of solar energy device, including systems serving on-site demand at a residential dwelling unit or multifamily structure."
+  }
+ ],
+ "faq": [
+  [
+   "Can an Arizona HOA ban a balcony solar panel?",
+   "Arizona law is protective on paper. A.R.S. &sect;33-1816 bars planned-community associations from prohibiting a solar energy device, &sect;33-439 voids covenants in deeds and other real-property instruments that effectively prohibit one, and &sect;44-1761 defines the device to include systems serving a residential unit or multifamily structure. We found no court decision applying these to a plug-in device, and they do not remove the utility&rsquo;s interconnection requirement. This is not legal advice."
+  ],
+  [
+   "Does SRP allow self-installed small solar kits?",
+   "Only through its normal process. SRP&rsquo;s FAQ, answering a question about installing a small system yourself, says all systems, small or large, go through the SRP application and review process, and that all grid-tied solar equipment must have UL certification."
+  ]
+ ]
+}

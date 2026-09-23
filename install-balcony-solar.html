@@ -130,7 +130,7 @@
             "name": "Will balcony solar power my apartment during a blackout?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Grid-tied microinverters must have anti-islanding protection, which shuts the inverter down within a fraction of a second when grid power disappears. This exists so the system cannot energise wiring that a utility worker or firefighter believes is dead. A standard plug-in solar kit has no battery, so it produces nothing at all during an outage."
+              "text": "No. Grid-tied microinverters must have anti-islanding protection, which shuts the inverter down within two seconds when grid power disappears. This exists so the system cannot energize wiring that a utility worker or firefighter believes is dead. A standard plug-in solar kit has no battery, so it produces nothing at all during an outage."
             }
           },
           {
@@ -411,14 +411,14 @@
   <p>A balcony solar system is short and simple compared to a rooftop array. One to three rigid panels are fixed to your railing or stood on the balcony floor. Their DC leads run a metre or so into a microinverter, usually a sealed brick that mounts behind or beneath the panels. The microinverter has a single AC cord ending in a standard plug. That plug goes into an outdoor outlet.</p>
   <p>Nothing is drilled into the building. Nothing goes on the roof. Nobody opens your service panel. The whole thing can be taken down and carried out in a lift.</p>
   <p>The microinverter is the part that matters. It converts panel DC into AC matched to the grid&rsquo;s voltage, frequency and phase, so the power it makes flows into your apartment&rsquo;s wiring and is consumed by whatever is running at that moment &mdash; the fridge, the router, the standby loads. It is not stored.</p>
-  <p>It also does the safety-critical job: <strong>anti-islanding</strong>. When grid power disappears, the inverter detects the loss and stops producing within a fraction of a second. This is why a plug-in system cannot energise wiring that a utility worker or a firefighter believes is dead &mdash; and also why, having no battery, it gives you nothing at all during a blackout. People are regularly surprised by that. It is a direct consequence of the safety design, not a defect.</p>
-  <p>UL&nbsp;1741 is the long-standing US standard covering grid-interactive inverter behaviour, including anti-islanding. UL&nbsp;3700, published in December 2025 with certification launched in January 2026, is newer and narrower: it covers the complete plug-in photovoltaic system as a product, not just the inverter inside it.</p>
+  <p>It also does the safety-critical job: <strong>anti-islanding</strong>. When grid power disappears, the inverter detects the loss and stops producing within two seconds, the limit set by IEEE 1547, the interconnection standard inverters are certified against. This is why a plug-in system cannot energize wiring that a utility worker or a firefighter believes is dead &mdash; and also why, having no battery, it gives you nothing at all during a blackout. People are regularly surprised by that. It is a direct consequence of the safety design, not a defect.</p>
+  <p>UL&nbsp;1741 is the long-standing US standard covering grid-interactive inverter behavior, including anti-islanding. UL&nbsp;3700, published in December 2025 with certification launched in January 2026, is newer and narrower: it covers the complete plug-in photovoltaic system as a product, not just the inverter inside it.</p>
 </section>
 
         <section id="sequencing">
   <h2><span class="sec-num">2</span>Why the installation itself waits</h2>
   <p>The SUNNY Act (S8512C / A9111C) passed the New York Senate in April 2026 and the Assembly in late May 2026. As of today it has not been signed. Governor Hochul has until the end of 2026 to act, and the bill takes effect on the ninetieth day after it becomes law &mdash; so the earliest realistic date on which a compliant device is squarely inside the rules is some months after a signature, not the day of one.</p>
-  <p>The Act defines a <em>portable solar generation device</em> as a photovoltaic system supplying a maximum aggregate continuous AC inverter nameplate output of no more than 1,200 watts to the grid. It must be listed or certified by an accredited nationally recognised testing laboratory as a complete plug-in photovoltaic system, must include a mechanism preventing it from energising the building&rsquo;s wiring or the grid during an outage, and must be installed in accordance with the New York State fire prevention and building code and the manufacturer&rsquo;s instructions. Compliant devices are exempted from interconnection and net-metering requirements. Full detail is on the <a href="/sunny-act">SUNNY Act page</a>.</p>
+  <p>The Act defines a <em>portable solar generation device</em> as a photovoltaic system supplying a maximum aggregate continuous AC inverter nameplate output of no more than 1,200 watts to the grid. It must be listed or certified by an accredited nationally recognised testing laboratory as a complete plug-in photovoltaic system, must include a mechanism preventing it from energizing the building&rsquo;s wiring or the grid during an outage, and must be installed in accordance with the New York State fire prevention and building code and the manufacturer&rsquo;s instructions. Compliant devices are exempted from interconnection and net-metering requirements. Full detail is on the <a href="/sunny-act">SUNNY Act page</a>.</p>
   <div class="callout"><p><strong>The SUNNY Act removes the utility barrier. It does not grant you the right to install anything.</strong></p></div>
   <p>There is a second, practical reason to wait. The Act directs the State Fire Prevention and Building Code Council to update the code for these devices. Those installation rules &mdash; the ones a New York City inspector or an insurer would eventually cite &mdash; do not exist yet. Installing now means guessing at requirements that are about to be written down, and possibly having to redo the mounting when they are.</p>
   <p>None of this stops you preparing. Permission, site checks and product selection are the slow parts anyway, and none of them require a panel on your railing.</p>
@@ -461,7 +461,7 @@
   <ul>
     <li><strong>Buy a certified complete system, not assembled parts.</strong> A UL&nbsp;1741 inverter bolted to panels you bought separately is not a certified plug-in system. The SUNNY Act asks for listing of the complete system, which is what UL&nbsp;3700 is for. When UL Solutions tested plug-in solar products already on the US market, it reported that none of them met the UL&nbsp;3700 requirements &mdash; so the certification mark is a real filter, not a formality.</li>
     <li><strong>Anti-islanding is not optional.</strong> Any device you consider must shut down when the grid does. This protects utility crews and firefighters working on what they reasonably believe is a dead circuit.</li>
-    <li><strong>Live prongs.</strong> A panel in sunlight is generating whether or not it is plugged in. UL&nbsp;3700 requires the plug&rsquo;s prongs to de-energise in under a second when it is pulled. Without that feature you can unplug a working system and be holding energised metal.</li>
+    <li><strong>Live prongs.</strong> A panel in sunlight is generating whether or not it is plugged in, so the blades of an ordinary plug on a solar cord can be live when it is pulled. Anti-islanding should shut the inverter down, but it is allowed up to two seconds and is not evaluated as shock protection. UL&nbsp;3700 addresses this by covering systems with a dedicated plug-in PV plug and receptacle rather than a household plug; <a href="/is-plug-in-solar-safe">the live-plug problem is explained here</a>.</li>
     <li><strong>Backfeeding masks the breaker.</strong> A breaker measures only the net current flowing through it. If solar is feeding a circuit while appliances draw from it, the breaker sees the difference, not the total. The wiring between the solar and the loads can then carry more current than the breaker ever detects &mdash; heating conductors without tripping anything. Overcurrent protection is one of the three risk categories UL identified for these systems, alongside touch safety and ground faults.</li>
     <li><strong>Never an extension cord, a power strip or a multi-outlet adapter.</strong> These are built to carry power one way to a load. They add cord length and connections on the source side, and their own fuse or breaker cannot see the real current on the circuit either. Use the manufacturer&rsquo;s cord, straight into a properly rated wall receptacle.</li>
     <li><strong>One system per circuit, and know what shares it.</strong> A balcony outlet that also feeds a bedroom running a portable air conditioner is not a good host.</li>
@@ -503,7 +503,7 @@
         </details>
         <details>
           <summary>Will balcony solar power my apartment during a blackout?</summary>
-          <p>No. Grid-tied microinverters must have anti-islanding protection, which shuts the inverter down within a fraction of a second when grid power disappears. This exists so the system cannot energise wiring that a utility worker or firefighter believes is dead. A standard plug-in solar kit has no battery, so it produces nothing at all during an outage.</p>
+          <p>No. Grid-tied microinverters must have anti-islanding protection, which shuts the inverter down within two seconds when grid power disappears. This exists so the system cannot energize wiring that a utility worker or firefighter believes is dead. A standard plug-in solar kit has no battery, so it produces nothing at all during an outage.</p>
         </details>
         <details>
           <summary>Can I plug a balcony solar panel into an extension cord or power strip?</summary>
@@ -541,7 +541,7 @@
           <li><a href="/sunny-act">Is plug-in solar legal in New York?</a><span>Current bill status, utility rules, and building permission.</span></li>
           <li><a href="/what-is-balcony-solar">What is balcony solar?</a><span>Panels, microinverters, the outlet, and the apartment circuit.</span></li>
           <li><a href="/balcony-sunlight">Does my balcony get enough sun?</a><span>How direction, floor height, and nearby buildings affect output.</span></li>
-          <li><a href="/calculate-balcony-solar-output">How do I calculate my balcony’s solar output and savings?</a><span>The six-step chain behind every estimate, worked for Phoenix, Chicago and New York City.</span></li>
+          <li><a href="/balcony-solar-condo-hoa">Can my condo, co-op or HOA ban balcony solar?</a><span>Ten solar-access laws read against a railing panel: one covers it, two are unclear, seven do not.</span></li>
           </ul>
         </aside>
         <!--shared:end-->
@@ -561,6 +561,7 @@
       </div>
       <div>
         <h2>Guides</h2>
+        <a href="/balcony-solar-laws-compared">Which states allow plug-in solar, and on what terms?</a>
         <a href="/calculate-balcony-solar-output">How do I calculate my balcony’s solar output and savings?</a>
         <a href="/is-balcony-solar-worth-it">Is balcony solar worth it?</a>
         <a href="/sunny-act">Is plug-in solar legal in New York?</a>

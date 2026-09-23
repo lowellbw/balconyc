@@ -1,0 +1,35 @@
+{
+ "intro_html": "<p>As of 23&nbsp;September 2026 Governor Newsom has neither signed nor vetoed SB&nbsp;868. If he does nothing by 30&nbsp;September it becomes law without his signature, and either way it would take effect on 1&nbsp;January 2027. The enrolled text covers municipal utilities as well as PG&amp;E, SCE and SDG&amp;E, which matters in Los Angeles: the city is served by LADWP, a city department, not Southern California Edison. Two limits are easy to miss. The exemption covers only a device certified as a complete plug-in system, and as of September 2026 no complete system has been certified to UL&nbsp;3700, the standard written for them (<a href=\"/install-balcony-solar\">what that means</a>). And the bill says nothing about landlords, tenants or associations.</p>\n  <p>For condo owners, Civil Code &sect;714 voids association rules that &ldquo;effectively prohibit or restrict&rdquo; a solar energy system. But unless the declaration says otherwise, &sect;4145 makes a balcony &ldquo;exclusive use common area&rdquo;, and &sect;714.1 lets an association limit systems in common areas to those it approves. What &sect;714 guarantees is process: the decision must be in writing, and an application not denied within 45&nbsp;days is deemed approved.</p>\n  <p>The 32.9&cent; state average below blends investor-owned and municipal utilities. LADWP&rsquo;s standard R-1A rate charges 24.4 to 27.3&cent; per kWh in its first tier in 2026 and 30.2 to 33.2&cent; in its second, before tax, and a kWh a panel displaces comes off the highest tier a household reaches. balco.nyc&rsquo;s calculator takes the rate from your own bill for a specific Los Angeles address.</p>",
+ "sources": [
+  {
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=714.",
+   "title": "California Legislative Information &mdash; Civil Code &sect;714",
+   "note": "voids governing-document provisions that effectively prohibit or restrict a solar energy system; association decisions in writing, deemed approved if not denied within 45 days."
+  },
+  {
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=714.1.",
+   "title": "California Legislative Information &mdash; Civil Code &sect;714.1",
+   "note": "an association may restrict solar energy systems in common areas to those it approves."
+  },
+  {
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=4145.",
+   "title": "California Legislative Information &mdash; Civil Code &sect;4145",
+   "note": "balconies are exclusive use common area unless the declaration provides otherwise."
+  },
+  {
+   "url": "https://www.ladwp.com/account/customer-service/electric-rates/residential-rates",
+   "title": "Los Angeles Department of Water and Power &mdash; Residential rates",
+   "note": "2026 R-1A total consumption charges by tier and season, excluding taxes."
+  }
+ ],
+ "faq": [
+  [
+   "Would SB 868 apply to LADWP customers in Los Angeles?",
+   "Yes, if it becomes law. The enrolled bill exempts qualifying plug-in devices from the interconnection rules of local publicly owned utilities such as LADWP as well as investor-owned utilities, and bars either from requiring approval, fees or extra equipment, though a utility may ask for a simple online registration. It would take effect on 1&nbsp;January 2027, and the exemption lapses on 1&nbsp;January 2030 unless the Legislature extends it."
+  ],
+  [
+   "Can a California condo association stop a balcony solar panel?",
+   "It can require approval. Civil Code &sect;714 voids association rules that effectively prohibit or restrict a solar energy system, but a balcony is exclusive use common area unless the declaration says otherwise (&sect;4145), and &sect;714.1 lets an association limit systems in common areas to those it approves. The association must decide in writing, and an application it has not denied within 45&nbsp;days is deemed approved. This summarizes the statutes and is not legal advice."
+  ]
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "intro_html": "<p>H&nbsp;7269 passed the House 70&ndash;0 in June 2026 but never reached a Senate vote, and Rhode Island bills do not carry over, so it would have to be refiled when the General Assembly returns in January 2027. Until then Providence residents deal with Rhode Island Energy, whose interconnection pages leave no room for doubt: customers are &ldquo;NOT permitted to operate any generation capacity prior to receiving an official Authorization to Interconnect&rdquo;, and are liable for damage caused by unauthorized operation.</p>\n  <p>The formal route for a small system is the Simplified Process under the utility&rsquo;s interconnection tariff (RIPUC No.&nbsp;2244). It is written for contractors, asking for a one-line diagram, a site diagram and specification sheets for every piece of equipment, and the same application is how a system signs up for net metering &mdash; which H&nbsp;7269 would have closed to plug-in devices altogether.</p>\n  <p>At 29.0&cent;/kWh Rhode Island&rsquo;s average price is the fourth highest in the country, which is why the question matters more here than in most states. balco.nyc&rsquo;s calculator models a specific Providence address and lets you enter the rate from your own bill.</p>",
+ "sources": [
+  {
+   "url": "https://portalconnect.rienergy.com/RI/s/article/Interconnection-Process-RI",
+   "title": "Rhode Island Energy &mdash; RI Simplified: Interconnection Process",
+   "note": "no operation before an official Authorization to Interconnect, with liability for unauthorized operation; Simplified Process documents under RIPUC 2244, including net metering forms."
+  }
+ ],
+ "faq": [
+  [
+   "Can I use a plug-in solar panel on Rhode Island Energy's grid?",
+   "Not without its approval under current rules. Rhode Island Energy says interconnecting customers are not permitted to operate any generation before receiving an official Authorization to Interconnect, and are liable for damage from unauthorized operation. H&nbsp;7269, which would have exempted devices of up to 1,200&nbsp;W, passed the House in 2026 but died without a Senate vote."
+  ]
+ ]
+}

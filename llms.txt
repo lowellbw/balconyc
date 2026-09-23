@@ -27,7 +27,13 @@
 ## Guides: rules and permission
 
 - [Is plug-in solar legal in New York?](https://balco.nyc/sunny-act): the SUNNY Act's status, what it changes, and what it deliberately does not — it removes the utility barrier only and grants no right to install, so renters and co-op residents still need permission.
+- [Which states allow plug-in solar, and on what terms?](https://balco.nyc/balcony-solar-laws-compared): a provision-by-provision comparison, compiled by balco.nyc from legislature pages on 23 September 2026, of the nine signed US plug-in solar laws and the New York and California bills awaiting a governor: all nine bar utility approval, eight cap devices at 1,200 W, six take them out of net metering, and only four limit what landlords, associations or towns can do.
+- [Can my condo, co-op or HOA ban balcony solar?](https://balco.nyc/balcony-solar-condo-hoa): which state solar-access statutes and plug-in solar laws limit what a condo, co-op or HOA can do about a railing-mounted panel, with a verdict per state read from the statute text as of September 2026.
+- [Can renters install balcony solar?](https://balco.nyc/balcony-solar-renters): which US laws limit a landlord's power to refuse a tenant's plug-in solar device (Vermont in force; Virginia, Colorado and New Jersey from 2027), how many renter households they reach by balco.nyc's Census count (3.3 million, 7.2% of US renters; 0.17% today), and what to put in a request to a landlord.
+- [Do you get paid for balcony solar power you don't use?](https://balco.nyc/balcony-solar-net-metering): that no US plug-in solar law signed by September 2026 pays for exported power, what different meters do with it, and, from balco.nyc's hourly PVWatts model, how much of an 800 W New York City railing's output an apartment uses and what that does to payback.
 - [How do I put a solar panel on my balcony?](https://balco.nyc/install-balcony-solar): permission, outlet and circuit checks, mounting and wind loading, the electrical risks, and NYC egress rules.
+- [Is my balcony solar kit certified?](https://balco.nyc/ul-3700-plug-in-solar-certification): what UL 3700 is (a December 2025 UL outline of investigation, not a consensus standard), why listed components are not a listed plug-in system, that no complete system is listed to it as of September 2026, and balco.nyc's compilation showing only Maine and Vermont of nine signed state laws require a system-level listing.
+- [Is plug-in solar safe?](https://balco.nyc/is-plug-in-solar-safe): balco.nyc's worst-case branch-circuit arithmetic for 400, 800 and 1,200 W plug-in inverters on 15 A and 20 A circuits (up to 25 A, 67% over a 14 AWG wire's rating, without tripping the breaker), how rarely full output occurs, what UL 3700, anti-islanding and GFCI rules address, what US laws require, and why Germany has modeling but no systematic incident data.
 
 ## Guides: basics
 
@@ -36,19 +42,30 @@
 ## By state
 
 - [Plug-in solar in every state](https://balco.nyc/states): each state's plug-in solar law with its bill, dates and sources, average residential electricity price, and what an 800W balcony system would produce and save there. Also as a CSV: https://balco.nyc/data/states.csv
+- [Balcony solar in Arizona](https://balco.nyc/states/arizona): bill did not pass; an 800 W south-facing balcony panel in Phoenix makes about 778 kWh and saves about $120 a year at 15.4¢/kWh.
+- [Balcony solar in California](https://balco.nyc/states/california): passed, awaiting signature; an 800 W south-facing balcony panel in Los Angeles makes about 720 kWh and saves about $237 a year at 32.9¢/kWh.
 - [Balcony solar in Colorado](https://balco.nyc/states/colorado): law in effect; an 800 W south-facing balcony panel in Denver makes about 805 kWh and saves about $132 a year at 16.4¢/kWh.
 - [Balcony solar in Connecticut](https://balco.nyc/states/connecticut): signed, not yet in effect; an 800 W south-facing balcony panel in Bridgeport makes about 631 kWh and saves about $179 a year at 28.4¢/kWh.
+- [Balcony solar in District of Columbia](https://balco.nyc/states/district-of-columbia): bill pending; an 800 W south-facing balcony panel in Washington makes about 675 kWh and saves about $162 a year at 24.0¢/kWh.
 - [Balcony solar in Florida](https://balco.nyc/states/florida): no plug-in solar law; an 800 W south-facing balcony panel in Jacksonville makes about 612 kWh and saves about $94 a year at 15.4¢/kWh.
+- [Balcony solar in Georgia](https://balco.nyc/states/georgia): bill did not pass; an 800 W south-facing balcony panel in Atlanta makes about 618 kWh and saves about $93 a year at 15.0¢/kWh.
+- [Balcony solar in Hawaii](https://balco.nyc/states/hawaii): bill did not pass; an 800 W south-facing balcony panel in Honolulu makes about 510 kWh and saves about $218 a year at 42.8¢/kWh.
 - [Balcony solar in Illinois](https://balco.nyc/states/illinois): bill pending; an 800 W south-facing balcony panel in Chicago makes about 616 kWh and saves about $114 a year at 18.5¢/kWh.
 - [Balcony solar in Maine](https://balco.nyc/states/maine): law in effect; an 800 W south-facing balcony panel in Portland makes about 692 kWh and saves about $201 a year at 29.0¢/kWh.
 - [Balcony solar in Maryland](https://balco.nyc/states/maryland): law in effect; an 800 W south-facing balcony panel in Baltimore makes about 673 kWh and saves about $140 a year at 20.8¢/kWh.
 - [Balcony solar in Massachusetts](https://balco.nyc/states/massachusetts): bill pending; an 800 W south-facing balcony panel in Boston makes about 673 kWh and saves about $204 a year at 30.4¢/kWh.
+- [Balcony solar in Michigan](https://balco.nyc/states/michigan): bill pending; an 800 W south-facing balcony panel in Detroit makes about 638 kWh and saves about $132 a year at 20.8¢/kWh.
 - [Balcony solar in Minnesota](https://balco.nyc/states/minnesota): bill did not pass; an 800 W south-facing balcony panel in Minneapolis makes about 730 kWh and saves about $118 a year at 16.1¢/kWh.
 - [Balcony solar in New Hampshire](https://balco.nyc/states/new-hampshire): signed, not yet in effect; an 800 W south-facing balcony panel in Manchester makes about 697 kWh and saves about $183 a year at 26.3¢/kWh.
 - [Balcony solar in New Jersey](https://balco.nyc/states/new-jersey): signed, not yet in effect; an 800 W south-facing balcony panel in Newark makes about 643 kWh and saves about $153 a year at 23.8¢/kWh.
+- [Balcony solar in New Mexico](https://balco.nyc/states/new-mexico): bill did not pass; an 800 W south-facing balcony panel in Albuquerque makes about 819 kWh and saves about $125 a year at 15.3¢/kWh.
 - [Balcony solar in New York](https://balco.nyc/states/new-york): passed, awaiting signature; an 800 W south-facing balcony panel in New York City makes about 604 kWh and saves about $169 a year at 28.0¢/kWh.
+- [Balcony solar in North Carolina](https://balco.nyc/states/north-carolina): bill pending; an 800 W south-facing balcony panel in Charlotte makes about 640 kWh and saves about $93 a year at 14.6¢/kWh.
+- [Balcony solar in Ohio](https://balco.nyc/states/ohio): bill pending; an 800 W south-facing balcony panel in Columbus makes about 622 kWh and saves about $112 a year at 18.0¢/kWh.
 - [Balcony solar in Oklahoma](https://balco.nyc/states/oklahoma): bill did not pass; an 800 W south-facing balcony panel in Oklahoma City makes about 711 kWh and saves about $97 a year at 13.6¢/kWh.
 - [Balcony solar in Oregon](https://balco.nyc/states/oregon): bill did not pass; an 800 W south-facing balcony panel in Portland makes about 526 kWh and saves about $81 a year at 15.5¢/kWh.
+- [Balcony solar in Pennsylvania](https://balco.nyc/states/pennsylvania): bill pending; an 800 W south-facing balcony panel in Philadelphia makes about 663 kWh and saves about $136 a year at 20.5¢/kWh.
+- [Balcony solar in Rhode Island](https://balco.nyc/states/rhode-island): bill did not pass; an 800 W south-facing balcony panel in Providence makes about 670 kWh and saves about $194 a year at 29.0¢/kWh.
 - [Balcony solar in Texas](https://balco.nyc/states/texas): no plug-in solar law; an 800 W south-facing balcony panel in Houston makes about 576 kWh and saves about $92 a year at 15.9¢/kWh.
 - [Balcony solar in Utah](https://balco.nyc/states/utah): law in effect; an 800 W south-facing balcony panel in Salt Lake City makes about 724 kWh and saves about $97 a year at 13.4¢/kWh.
 - [Balcony solar in Vermont](https://balco.nyc/states/vermont): law in effect; an 800 W south-facing balcony panel in Burlington makes about 658 kWh and saves about $156 a year at 23.6¢/kWh.

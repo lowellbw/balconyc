@@ -37,9 +37,9 @@
   "card": "Bill did not pass; about 778 kWh and $120 a year for a south-facing 800 W panel in Phoenix.",
   "llms": "bill did not pass; an 800 W south-facing balcony panel in Phoenix makes about 778 kWh and saves about $120 a year at 15.4\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 148
+  "unique_words": 359
  },
  {
   "url_path": "/states/arkansas",
@@ -65,9 +65,9 @@
   "card": "Passed, awaiting signature; about 720 kWh and $237 a year for a south-facing 800 W panel in Los Angeles.",
   "llms": "passed, awaiting signature; an 800 W south-facing balcony panel in Los Angeles makes about 720 kWh and saves about $237 a year at 32.9\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 121
+  "unique_words": 372
  },
  {
   "url_path": "/states/colorado",
@@ -121,9 +121,9 @@
   "card": "Bill pending; about 675 kWh and $162 a year for a south-facing 800 W panel in Washington.",
   "llms": "bill pending; an 800 W south-facing balcony panel in Washington makes about 675 kWh and saves about $162 a year at 24.0\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 114
+  "unique_words": 322
  },
  {
   "url_path": "/states/florida",
@@ -149,9 +149,9 @@
   "card": "Bill did not pass; about 618 kWh and $93 a year for a south-facing 800 W panel in Atlanta.",
   "llms": "bill did not pass; an 800 W south-facing balcony panel in Atlanta makes about 618 kWh and saves about $93 a year at 15.0\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 129
+  "unique_words": 340
  },
  {
   "url_path": "/states/hawaii",
@@ -163,9 +163,9 @@
   "card": "Bill did not pass; about 510 kWh and $218 a year for a south-facing 800 W panel in Honolulu.",
   "llms": "bill did not pass; an 800 W south-facing balcony panel in Honolulu makes about 510 kWh and saves about $218 a year at 42.8\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 125
+  "unique_words": 329
  },
  {
   "url_path": "/states/idaho",
@@ -317,9 +317,9 @@
   "card": "Bill pending; about 638 kWh and $132 a year for a south-facing 800 W panel in Detroit.",
   "llms": "bill pending; an 800 W south-facing balcony panel in Detroit makes about 638 kWh and saves about $132 a year at 20.8\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 122
+  "unique_words": 362
  },
  {
   "url_path": "/states/minnesota",
@@ -443,9 +443,9 @@
   "card": "Bill did not pass; about 819 kWh and $125 a year for a south-facing 800 W panel in Albuquerque.",
   "llms": "bill did not pass; an 800 W south-facing balcony panel in Albuquerque makes about 819 kWh and saves about $125 a year at 15.3\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 141
+  "unique_words": 388
  },
  {
   "url_path": "/states/new-york",
@@ -471,9 +471,9 @@
   "card": "Bill pending; about 640 kWh and $93 a year for a south-facing 800 W panel in Charlotte.",
   "llms": "bill pending; an 800 W south-facing balcony panel in Charlotte makes about 640 kWh and saves about $93 a year at 14.6\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 126
+  "unique_words": 342
  },
  {
   "url_path": "/states/north-dakota",
@@ -499,9 +499,9 @@
   "card": "Bill pending; about 622 kWh and $112 a year for a south-facing 800 W panel in Columbus.",
   "llms": "bill pending; an 800 W south-facing balcony panel in Columbus makes about 622 kWh and saves about $112 a year at 18.0\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 111
+  "unique_words": 329
  },
  {
   "url_path": "/states/oklahoma",
@@ -541,9 +541,9 @@
   "card": "Bill pending; about 663 kWh and $136 a year for a south-facing 800 W panel in Philadelphia.",
   "llms": "bill pending; an 800 W south-facing balcony panel in Philadelphia makes about 663 kWh and saves about $136 a year at 20.5\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 93
+  "unique_words": 308
  },
  {
   "url_path": "/states/rhode-island",
@@ -555,9 +555,9 @@
   "card": "Bill did not pass; about 670 kWh and $194 a year for a south-facing 800 W panel in Providence.",
   "llms": "bill did not pass; an 800 W south-facing balcony panel in Providence makes about 670 kWh and saves about $194 a year at 29.0\u00a2/kWh.",
   "reviewed": "2026-09-23",
-  "indexable": false,
+  "indexable": true,
   "related": [],
-  "unique_words": 138
+  "unique_words": 325
  },
  {
   "url_path": "/states/south-carolina",

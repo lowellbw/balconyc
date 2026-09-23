@@ -1,0 +1,181 @@
+{
+  "slug": "balcony-solar-net-metering",
+  "title": "Do you get paid for balcony solar power you don&rsquo;t use? &middot; balco.nyc",
+  "og_title": "Do you get paid for balcony solar power you don't use? What the laws, your meter and an hourly model say",
+  "breadcrumb": "Surplus power",
+  "cluster": "legal",
+  "pillar": false,
+  "card_title": "Do you get paid for balcony solar power you don't use?",
+  "card": "Exports are unpaid under every signed law. What your meter does, and how much you actually use.",
+  "llms": "that no US plug-in solar law signed by September 2026 pays for exported power, what different meters do with it, and, from balco.nyc's hourly PVWatts model, how much of an 800 W New York City railing's output an apartment uses and what that does to payback.",
+  "related": [
+    "is-balcony-solar-worth-it",
+    "balcony-solar-laws-compared",
+    "electricity-rate"
+  ],
+  "description": "No signed US plug-in solar law pays for surplus power. balco.nyc's hourly model shows how much an apartment uses itself, and what that does to payback.",
+  "eyebrow": "Exports and net metering",
+  "h1": "Do you get paid for balcony solar power you don&rsquo;t use?",
+  "lede": "Almost certainly not. None of the nine state plug-in solar laws signed so far requires a utility to pay for power a balcony system sends back to the grid, five of them expressly shut these devices out of net metering, and New York&rsquo;s SUNNY Act says exports &ldquo;shall be uncompensated.&rdquo; So the number that matters is how much you use yourself: balco.nyc&rsquo;s hourly PVWatts run for an 800&nbsp;W south-facing railing in New York City finds that an apartment drawing a steady 150&nbsp;W uses about <strong>60%</strong> of the output and gives the other 240&nbsp;kWh a year away.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~9 minutes",
+  "tags": [
+    "Exports unpaid",
+    "60% used at 150&nbsp;W",
+    "NYC payback 5.5&rarr;8.8 yrs"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "given-away",
+      "toc": "Surplus is given away, not sold",
+      "html": "        <section id=\"given-away\">\n  <h2><span class=\"sec-num\">1</span>Surplus power is given away, not sold</h2>\n  <p>A plug-in panel&rsquo;s power goes first to whatever the apartment is drawing at that moment: the fridge, the router, a laptop charger. Only when the panel produces more than the apartment uses does anything flow back out through the meter to the neighbors. That outflow is the surplus.</p>\n  <p>The arrangement that pays for exports is net metering, under which the kilowatt-hours you send out are credited against the ones you buy. Net metering normally comes with an interconnection application and utility approval &mdash; exactly the paperwork plug-in laws exempt these devices from. The trade the states have made is consistent: no application, no fee, no credit. This is not legal advice, and it varies by state and utility, but the safe planning assumption is that surplus earns <strong>nothing</strong>.</p>\n  <p>That makes one number decisive: the share of the panel&rsquo;s output you use at the moment it is produced. balco.nyc&rsquo;s calculator, like most, assumes that share is 100% and values every kWh at Con&nbsp;Edison&rsquo;s all-in marginal rate of {{coned.rate_cents}}&cent;. That is a ceiling. To see how far below it a real apartment sits, balco.nyc ran NREL&rsquo;s PVWatts&nbsp;V8 hour by hour for an 800&nbsp;W system on a vertical, south-facing railing in New York City, with the calculator&rsquo;s own parameters. The hourly run reproduces the 635.7&nbsp;kWh a year in the site&rsquo;s state data exactly; less the 5% railing loss the site applies to vertical panels (a factor of 0.95), that is about <strong>604&nbsp;kWh</strong>. Set hour by hour against an apartment drawing a steady 150&nbsp;W, 364&nbsp;kWh of it is used at home and <strong>240&nbsp;kWh</strong> leaves through the meter. At {{coned.rate_cents}}&cent; that is a saving of about $124 a year, not the $205 the 100% assumption gives.</p>\n</section>"
+    },
+    {
+      "id": "what-the-laws-say",
+      "toc": "What each law says about exports",
+      "html": "        <section id=\"what-the-laws-say\">\n  <h2><span class=\"sec-num\">2</span>What each plug-in law says about exported power</h2>\n  <p>Nine states have signed plug-in solar laws, and bills in New York and California have passed their legislatures. balco.nyc read each in the legislature&rsquo;s own text. Five expressly shut plug-in devices out of net metering, three say nothing about paying for exports, and Connecticut requires a warning that exports may be billed. None requires a utility to pay for them.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>State</th><th>Law</th><th>Status (23 Sep 2026)</th><th>What it says about exports</th></tr></thead><tbody>\n    <tr><td><a href=\"/states/utah\">Utah</a></td><td>HB 340 (2025)</td><td>In force since 7 May 2025</td><td>&ldquo;Not subject to the net metering program requirements&rdquo;; residential net metering now starts above 1,200&nbsp;W. <strong>Unpaid.</strong></td></tr>\n    <tr><td><a href=\"/states/maryland\">Maryland</a></td><td>HB 1532, ch. 353</td><td>In force since 1 July 2026</td><td>Not subject to &sect;7-306, the state&rsquo;s net-metering statute, or &sect;7-306.1. <strong>Unpaid.</strong></td></tr>\n    <tr><td><a href=\"/states/vermont\">Vermont</a></td><td>Act 149 (S.202)</td><td>In force since 1 July 2026</td><td>&ldquo;Shall not be eligible for net metering&rdquo;; exports &ldquo;shall not be compensated.&rdquo; Smart meter required. <strong>Unpaid.</strong></td></tr>\n    <tr><td><a href=\"/states/maine\">Maine</a></td><td>LD 1730, ch. 644</td><td>In force since 29 July 2026</td><td>&ldquo;May not be used for net energy billing.&rdquo; <strong>Unpaid.</strong></td></tr>\n    <tr><td><a href=\"/states/colorado\">Colorado</a></td><td>HB26-1007</td><td>In force since 12 August 2026</td><td>Silent: bars utility approval and fees, says nothing about credit. Assume unpaid.</td></tr>\n    <tr><td><a href=\"/states/connecticut\">Connecticut</a></td><td>Public Act 26-127, sec. 9</td><td>From 1 October 2026</td><td>Device must warn that excess generation is &ldquo;charged to the customer as usage&rdquo; unless the customer has a net-metering meter. <strong>Unpaid, possibly billed.</strong></td></tr>\n    <tr><td><a href=\"/states/virginia\">Virginia</a></td><td>HB 395 / SB 250</td><td>From 1 January 2027</td><td>Excluded from the definition of an eligible customer-generator for net metering. <strong>Unpaid.</strong></td></tr>\n    <tr><td><a href=\"/states/new-hampshire\">New Hampshire</a></td><td>SB 540, ch. 262</td><td>From 1 January 2027</td><td>Exempt from interconnection review; no provision pays for exports. Assume unpaid.</td></tr>\n    <tr><td><a href=\"/states/new-jersey\">New Jersey</a></td><td>P.L.2026, c.82</td><td>From 1 March 2027</td><td>Exempt from interconnection and metering requirements; silent on payment. Assume unpaid.</td></tr>\n    <tr><td><a href=\"/states/new-york\">New York</a></td><td>SUNNY Act, S8512C / A9111C</td><td>Passed both chambers; {{sunny.phrase}}</td><td>Exports &ldquo;shall be uncompensated&rdquo; unless the customer voluntarily enters a net-metering or other compensation agreement. <strong>Unpaid.</strong></td></tr>\n    <tr><td><a href=\"/states/california\">California</a></td><td>SB 868</td><td>On the Governor&rsquo;s desk; he has until 30 September 2026 to act</td><td>Silent. Assume unpaid.</td></tr>\n  </tbody></table></div>\n  <p>Silence is not a credit: where a law says nothing, balco.nyc assumes no payment unless a utility publishes a tariff for plug-in devices. New York&rsquo;s bill leaves one door open: an owner may voluntarily enter an interconnection or net-metering agreement, and exports stay unpaid unless they do. Getting paid, in other words, means doing the paperwork the bill otherwise waives. Size limits, certification and the right to install are in the <a href=\"/balcony-solar-laws-compared\">side-by-side comparison of the laws</a>, and New York in detail on <a href=\"/sunny-act\">the SUNNY Act page</a>.</p>\n</section>"
+    },
+    {
+      "id": "your-meter",
+      "toc": "Does the meter spin backwards?",
+      "html": "        <section id=\"your-meter\">\n  <h2><span class=\"sec-num\">3</span>Does the meter spin backwards?</h2>\n  <p>&ldquo;Spinning backwards&rdquo; is the old picture of net metering: while you export, the meter subtracts, and you are billed for the difference. Whether anything like that happens with a plug-in panel depends on the meter, not the law. The Maryland Public Service Commission&rsquo;s balcony-solar guidance describes what a meter that cannot track exports may do: treat the surplus as zero consumption, or add it to your consumption in error, depending on the meter type. That gives three possibilities.</p>\n  <ul>\n    <li><strong>Not counted.</strong> The surplus vanishes from the bill in both directions. This is the outcome balco.nyc&rsquo;s figures assume: you lose its value and nothing more.</li>\n    <li><strong>Counted as usage.</strong> A meter that registers power flowing either way as consumption bills you at the full retail rate for electricity you gave away. Connecticut&rsquo;s law requires every device to carry a warning saying exactly this. In the New York example above, the 240&nbsp;kWh exported would be billed at about $82 a year, cutting a $124 saving to about <strong>$42</strong>.</li>\n    <li><strong>Netted.</strong> A meter set up for net metering does subtract exports. That is the only version of &ldquo;spinning backwards&rdquo; that pays you, and under these laws it comes with a net-metering arrangement, not with the plug.</li>\n  </ul>\n  <p>Utilities are beginning to say which applies. Potomac Edison, a FirstEnergy utility in Maryland, states that its standard service meter has no separate register to track energy a customer feeds back to its system. Vermont&rsquo;s law allows plug-in devices only on smart-metered service. In New York City, Con&nbsp;Edison describes a net meter for customers enrolled in net metering; what an ordinary meter records when power flows out is worth asking Con&nbsp;Edison before the SUNNY Act, which {{sunny.phrase}}, takes effect. The practical step is the same everywhere: ask your utility, in writing, how your meter records power flowing out of the apartment.</p>\n</section>"
+    },
+    {
+      "id": "how-much-you-use",
+      "toc": "How much of the output you use",
+      "html": "        <section id=\"how-much-you-use\">\n  <h2><span class=\"sec-num\">4</span>How much of the output an apartment actually uses</h2>\n  <p>The share you use depends on how much the panel produces in each hour and how much the apartment draws in that hour. The second has a hard lower limit. Every home has a floor it never drops below: the fridge, the router, standby electronics, smoke alarms. NRDC&rsquo;s 2015 study of smart-meter data from 70,000 northern California homes found that floor, the lowest hourly level, averaged <strong>218&nbsp;W</strong>; the one multifamily home in its ten-home audit, occupied by a couple it described as unusually energy-conscious, idled at 92&nbsp;W. A smaller apartment will usually sit below the study average, so 100 to 300&nbsp;W brackets most floors.</p>\n  <p>balco.nyc set the hourly New York output against a constant load at each of those levels. A constant floor is what an apartment draws with nobody home, so these shares hold even for an apartment empty all day; daytime cooking, working or laundry raises them.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Apartment&rsquo;s steady draw</th><th>400&nbsp;W system (302&nbsp;kWh/yr)</th><th>800&nbsp;W system (604&nbsp;kWh/yr)</th><th>1,200&nbsp;W system (906&nbsp;kWh/yr)</th></tr></thead><tbody>\n    <tr><td>100&nbsp;W</td><td>72%</td><td>46%</td><td>34%</td></tr>\n    <tr><td>150&nbsp;W</td><td>87%</td><td><strong>60%</strong></td><td>46%</td></tr>\n    <tr><td>200&nbsp;W</td><td>95%</td><td>72%</td><td>56%</td></tr>\n    <tr><td>300&nbsp;W</td><td>~100%</td><td>87%</td><td>72%</td></tr>\n  </tbody></table></div>\n  <p>Share of annual output used at home: New York City, vertical south-facing railing, PVWatts&nbsp;V8 hourly, 0.95 railing factor, no shading. For an 800&nbsp;W railing, most apartments will use between about 60% and 90% of the output; a small, efficient apartment that is empty in the daytime can use less than half. Hourly averages flatter these figures slightly, since passing cloud and a cycling fridge make supply and demand miss each other within the hour; real loads sitting above the floor for much of the day push the other way.</p>\n  <p>The surplus is seasonal, and not in the direction most people expect. A vertical south-facing panel meets the low winter sun almost head-on, so in New York it produces most in winter: 69&nbsp;kWh in January against 30&nbsp;kWh in June, with midday peaks near 690&nbsp;W. Against a 150&nbsp;W floor only 43% of January&rsquo;s output is used at home; in June, 96%. The kilowatt-hours given away are winter ones, which in New York are the cheaper ones, since Con&nbsp;Edison&rsquo;s delivery charges are higher from June through September (see <a href=\"/electricity-rate\">what a kWh costs</a>).</p>\n  <p><strong>Why a 400&nbsp;W system uses more of its output than a 1,200&nbsp;W one.</strong> The apartment&rsquo;s load does not grow when you add panels. Every extra panel produces in the same midday hours as the first, when the floor is already covered, so most of its output is surplus. At a 150&nbsp;W floor, going from 400 to 800&nbsp;W adds 302&nbsp;kWh a year of output but only 102&nbsp;kWh used at home; going from 800 to 1,200&nbsp;W adds another 302&nbsp;kWh of output and only <strong>49&nbsp;kWh</strong> used, about $17 a year at {{coned.rate_cents}}&cent;. The table has a simple symmetry that shows why: a 400&nbsp;W system against a 150&nbsp;W floor behaves exactly like an 800&nbsp;W system against 300&nbsp;W. What matters is the ratio of system size to what the apartment draws.</p>\n</section>"
+    },
+    {
+      "id": "payback",
+      "toc": "What it does to payback",
+      "html": "        <section id=\"payback\">\n  <h2><span class=\"sec-num\">5</span>What self-consumption does to payback</h2>\n  <p>Because surplus earns nothing, savings scale directly with the share you use, and payback stretches with it. The table runs the calculator&rsquo;s own payback loop &mdash; a 3% annual rise in the electricity price, 0.5% yearly panel degradation, no discounting &mdash; for an unshaded 800&nbsp;W south-facing railing in each state&rsquo;s largest city, on the ${{kits.mid}} mid-range kit, at three self-consumption levels.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>State (city)</th><th>Output</th><th>Price used</th><th>100% used</th><th>80% used</th><th>60% used</th></tr></thead><tbody>\n    <tr><td>New York (NYC)</td><td>604&nbsp;kWh</td><td>{{coned.rate_cents}}&cent; Con&nbsp;Edison marginal</td><td>$205/yr &middot; 5.5 yrs</td><td>$164/yr &middot; 6.8 yrs</td><td>$123/yr &middot; <strong>8.8 yrs</strong></td></tr>\n    <tr><td>Illinois (Chicago)</td><td>616&nbsp;kWh</td><td>18.54&cent; EIA average</td><td>$114/yr &middot; 9.4 yrs</td><td>$91/yr &middot; 11.5 yrs</td><td>$69/yr &middot; <strong>14.7 yrs</strong></td></tr>\n    <tr><td>California (Los Angeles)</td><td>720&nbsp;kWh</td><td>32.89&cent; EIA average</td><td>$237/yr &middot; 4.8 yrs</td><td>$190/yr &middot; 6.0 yrs</td><td>$142/yr &middot; <strong>7.8 yrs</strong></td></tr>\n  </tbody></table></div>\n  <p>First-year saving and nominal payback; output is PVWatts&nbsp;V8 for each city less the 0.95 railing factor. The Illinois and California prices are EIA averages for the 12 months to June 2026, which include fixed monthly charges and so overstate what an avoided kWh is worth. Illinois has no plug-in law (its bill stalled in 2026) and California&rsquo;s awaits the Governor; they show a cheap-power state and a sunny, expensive one.</p>\n  <p>At 60% self-consumption, payback is about 1.6 times the 100% figure in all three. In New York, 60% is what the hourly run gives an empty apartment with a 150&nbsp;W floor, so the 5.5-year headline becomes 8.8. In Illinois it becomes 14.7 years, well over half the 25-year span the calculator models. The self-consumption shares are computed for New York&rsquo;s sun; Chicago and Los Angeles will differ somewhat at the same floor, but the direction is the same. <a href=\"/is-balcony-solar-worth-it\">Whether balcony solar is worth it</a> sets out the 100% figures for every state.</p>\n</section>"
+    },
+    {
+      "id": "using-more",
+      "toc": "Batteries, timers and size",
+      "html": "        <section id=\"using-more\">\n  <h2><span class=\"sec-num\">6</span>Batteries, timers and system size</h2>\n  <p>A battery stores midday surplus for the evening, so its value is capped by how much surplus there is. balco.nyc ran the same hourly New York data with a 2&nbsp;kWh battery (1.92&nbsp;kWh usable, 90% round-trip efficiency) that captures each day&rsquo;s surplus up to its capacity and releases all of it in the evening &mdash; a generous setup that ignores the battery&rsquo;s own standby draw. The last column applies the calculator&rsquo;s 3% annual price rise.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Apartment&rsquo;s steady draw</th><th>kWh shifted a year</th><th>Worth at {{coned.rate_cents}}&cent;</th><th>Price at which it pays back in 10 years</th></tr></thead><tbody>\n    <tr><td>100&nbsp;W</td><td>262</td><td>$89</td><td>about $1,020</td></tr>\n    <tr><td>150&nbsp;W</td><td>201</td><td>$68</td><td>about $780</td></tr>\n    <tr><td>200&nbsp;W</td><td>149</td><td>$51</td><td>about $580</td></tr>\n    <tr><td>300&nbsp;W</td><td>72</td><td>$24</td><td>about $280</td></tr>\n  </tbody></table></div>\n  <p>The more you already use, the less a battery has to work with; at balcony scale the ceiling is tens of dollars a year. Modeling in Germany points the same way: the nonprofit balkon.solar, using HTW Berlin&rsquo;s plug-in solar simulator with a vertical west-facing array and no pay for exports, found a 2&nbsp;kWh battery stretched payback from 5&ndash;6 years to about 13 for small households with small arrays, improving to about 8 only with larger arrays and higher consumption.</p>\n  <p>The cheaper ways to use more of the output cost nothing. Put the dishwasher, the washing machine or a laptop charger on a timer for the middle of the day, especially from October to March, when a south-facing railing has the most to give. And weigh size by the marginal panel rather than the average one: in the empty-apartment case above, each step up in size buys less than the one before it.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Do you get paid for balcony solar power you don't use?",
+      "Not under any US plug-in solar law signed as of September 2026. Utah, Maine, Maryland, Vermont and Virginia expressly exclude plug-in devices from net metering, Colorado, New Hampshire and New Jersey say nothing about payment, and Connecticut requires a warning that exports may be billed as usage. New York's SUNNY Act, which has passed both chambers and {{sunny.phrase}}, says exports are uncompensated unless the owner voluntarily signs a net-metering or other compensation agreement."
+    ],
+    [
+      "Does my electric meter spin backwards with a plug-in solar panel?",
+      "Only if it is set up for net metering, which plug-in solar laws do not provide by default. On a meter that cannot track exports, the Maryland Public Service Commission says the surplus may be treated as zero consumption or erroneously added to consumption, depending on the meter type. Ask your utility how your meter records power flowing out before plugging a panel in."
+    ],
+    [
+      "Can a balcony solar panel make my electric bill go up?",
+      "It can on a meter that counts exported power as consumption, which is why Connecticut's plug-in law requires every device to warn that excess generation will be charged as usage unless the customer has a net-metering meter. In balco.nyc's New York example, an 800 W railing in an apartment drawing a steady 150 W exports about 240 kWh a year; billed at Con Edison's {{coned.rate_cents}}-cent rate, that would cut a $124 annual saving to about $42."
+    ],
+    [
+      "How much of a balcony solar system's output does an apartment use?",
+      "It depends on what the apartment draws while the sun is up. balco.nyc's hourly PVWatts model of an 800 W south-facing railing in New York City finds that an apartment drawing a steady 150 W uses about 60% of the output, one drawing 100 W about 46%, and one drawing 300 W about 87%. Those shares assume nobody is home in the daytime; daytime activity raises them."
+    ],
+    [
+      "Why does a smaller balcony solar system use more of its output?",
+      "Because the apartment's load stays the same while each added panel produces in the same midday hours as the first. In balco.nyc's New York model with a 150 W floor, a 400 W system uses 87% of its output, an 800 W system 60% and a 1,200 W system 46%. The step from 800 to 1,200 W adds about 302 kWh a year of output but only 49 kWh used at home."
+    ],
+    [
+      "Is a battery worth adding to balcony solar?",
+      "Rarely at balcony scale. In balco.nyc's hourly New York model, a 2 kWh battery on an 800 W railing is worth about $24 to $89 a year at Con Edison's {{coned.rate_cents}}-cent rate, depending on how much the apartment already uses, so it would have to cost roughly $280 to $1,020 to pay for itself in 10 years. The more electricity the household already uses in daylight, the less surplus the battery has to store."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "New York State Senate &mdash; S8512C (SUNNY Act), text and actions",
+      "note": "devices &ldquo;shall not be subject to interconnection or net metering requirements&rdquo;; exports &ldquo;shall be uncompensated&rdquo; unless the customer voluntarily enters a net-metering or other compensation agreement."
+    },
+    {
+      "url": "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00127-R00HB-05340-PA.PDF",
+      "title": "Connecticut General Assembly &mdash; Public Act 26-127, sec. 9",
+      "note": "the required warning that excess generation is charged to the customer as usage unless the customer has a net-metering meter; effective 1 October 2026."
+    },
+    {
+      "url": "https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf",
+      "title": "Utah Legislature &mdash; H.B. 340 Solar Power Amendments, enrolled copy",
+      "note": "portable devices are not subject to net metering program requirements; residential customer generation systems start above 1,200&nbsp;W."
+    },
+    {
+      "url": "https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132",
+      "title": "Maine Legislature &mdash; LD 1730, Public Law ch. 644 (35-A MRSA &sect;3475)",
+      "note": "eligible plug-in systems &ldquo;may not be used for net energy billing.&rdquo;"
+    },
+    {
+      "url": "https://mgaleg.maryland.gov/2026RS/Chapters_noln/CH_353_hb1532e.pdf",
+      "title": "Maryland General Assembly &mdash; Chapter 353 of 2026 (HB 1532), PUA &sect;7-321",
+      "note": "portable systems are not subject to &sect;&sect;7-306 (net metering) and 7-306.1, and may not generate renewable energy credits."
+    },
+    {
+      "url": "https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf",
+      "title": "Vermont Legislature &mdash; Act 149 (S.202) as enacted",
+      "note": "plug-in devices only on smart-metered systems, not eligible for net metering, exports not compensated."
+    },
+    {
+      "url": "https://lis.blob.core.windows.net/files/1225204.PDF",
+      "title": "Virginia Acts of Assembly &mdash; Chapter 1052 (HB 395), approved 22 April 2026",
+      "note": "small portable solar generation devices excluded from the definition of an eligible customer-generator for net energy metering."
+    },
+    {
+      "url": "https://leg.colorado.gov/bills/hb26-1007",
+      "title": "Colorado General Assembly &mdash; HB26-1007",
+      "note": "signed 7 May 2026, effective 12 August 2026; the new &sect;40-2-140 bars utility approval and fees and does not address export credit."
+    },
+    {
+      "url": "https://www.nj.gov/governor/news/2026/approved/20260901a.shtml",
+      "title": "Office of the Governor of New Jersey &mdash; Garden State Balcony Solar Act signed, 1 September 2026",
+      "note": "devices up to 1,200&nbsp;W exempted from utility interconnection and metering requirements; no export payment described."
+    },
+    {
+      "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB868",
+      "title": "California Legislative Information &mdash; SB 868, enrolled text",
+      "note": "1,200&nbsp;W per dwelling; the enrolled text does not address net metering or export compensation."
+    },
+    {
+      "url": "https://psc.maryland.gov/regulated-utilities/electricity/renewable-energy/balcony-solar/",
+      "title": "Maryland Public Service Commission &mdash; Balcony Solar",
+      "note": "a meter that cannot track exports may treat the excess as zero consumption or add it to consumption in error, depending on meter type."
+    },
+    {
+      "url": "https://www.firstenergycorp.com/feconnect/maryland.html",
+      "title": "FirstEnergy (Potomac Edison) &mdash; Maryland interconnection",
+      "note": "Potomac Edison&rsquo;s standard service meter has no separate register for energy fed back to its system."
+    },
+    {
+      "url": "https://www.coned.com/en/save-money/using-distributed-generation-energy-sources/solar-energy/solar-energy-installation-faq",
+      "title": "Con Edison &mdash; Solar energy installation FAQ",
+      "note": "Con Edison&rsquo;s description of the net meter used for net-metered solar customers."
+    },
+    {
+      "url": "https://developer.nlr.gov/docs/solar/pvwatts/v8/",
+      "title": "NREL &mdash; PVWatts V8 API documentation",
+      "note": "the hourly AC output (W) behind balco.nyc&rsquo;s self-consumption and battery computations; the run used the calculator&rsquo;s parameters and reproduces its 635.7&nbsp;kWh."
+    },
+    {
+      "url": "https://www.nrdc.org/sites/default/files/home-idle-load-IP.pdf",
+      "title": "NRDC &mdash; Home Idle Load: Devices Wasting Huge Amounts of Electricity When Not in Active Use (May 2015)",
+      "note": "idle load, the lowest hourly smart-meter level, averaged 218&nbsp;W across 70,000 northern California homes; one audited apartment idled at 92&nbsp;W."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia861m/",
+      "title": "EIA &mdash; Form EIA-861M monthly sales and revenue",
+      "note": "the data behind balco.nyc&rsquo;s Illinois (18.54&cent;) and California (32.89&cent;) average residential prices: revenue over sales for the 12 months to June 2026."
+    },
+    {
+      "url": "https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf",
+      "title": "Con Edison &mdash; historical average full-service electric rates",
+      "note": "the SC-1 series behind the {{coned.rate_cents}}&cent; marginal rate used for New York City."
+    },
+    {
+      "url": "https://balkon.solar/news/2026/01/05/fuer-wen-lohnt-sich-ein-steckerspeicher-stand-januar-2026/",
+      "title": "balkon.solar &mdash; F&uuml;r wen lohnt sich ein Steckerspeicher? (January 2026, in German)",
+      "note": "HTW Berlin simulator scenarios at &euro;0.33/kWh with no export pay: a 2&nbsp;kWh battery lengthens payback from 5&ndash;6 to about 13 years for small arrays."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not legal or financial advice; export rules and meter behavior vary by state and utility. Self-consumption figures are modeled from hourly PVWatts output and a constant household load, not metered."
+}

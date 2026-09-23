@@ -1,0 +1,21 @@
+{
+ "intro_html": "<p>HB&nbsp;1129 has not moved since April 2026, and unless lawmakers adopt a new adjournment resolution it cannot be taken up before the 2025&ndash;26 General Assembly ends; a new bill would have to be filed when the legislature convenes in January 2027. In Charlotte the utility is Duke Energy Carolinas, and North Carolina&rsquo;s statewide interconnection procedures route even a certified inverter-based system of 20&nbsp;kW or less through an interconnection request and a certificate of completion. Until the utility&rsquo;s witness test is done or waived, the owner &ldquo;has no right to operate in parallel&rdquo; with the grid.</p>\n  <p>The state&rsquo;s solar-access statute, G.S.&nbsp;22B-20, voids covenants that would prohibit solar collectors on &ldquo;residential property&rdquo;, but that term excludes any condominium &ldquo;located in a multi-story building&rdquo; whose units have horizontal boundaries &mdash; stacked flats, in other words. Even where the statute applies, it lets a covenant bar collectors visible from the ground on a facade facing a street or common area, which can include a front balcony. A condo owner in a Charlotte tower, like a renter, needs permission.</p>\n  <p>At North Carolina&rsquo;s average price of 14.6&cent;, well below the US average of 17.9&cent;, payback is long, so the details of a particular balcony matter; balco.nyc&rsquo;s calculator models a specific Charlotte address with the rate from your own bill.</p>",
+ "sources": [
+  {
+   "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_22B/GS_22B-20.html",
+   "title": "North Carolina General Assembly &mdash; G.S. 22B-20, Deed restrictions and other agreements prohibiting solar collectors",
+   "note": "voids covenants prohibiting solar collectors on residential property, excluding condominiums in multi-story buildings with horizontal unit boundaries; facade-visibility exception."
+  },
+  {
+   "url": "https://www.duke-energy.com/_/media/pdfs/rates/ncinterconnections-dep.pdf?la=en",
+   "title": "North Carolina Utilities Commission &mdash; North Carolina Interconnection Procedures, Forms, and Agreements (Docket E-100, Sub 101), as published by Duke Energy",
+   "note": "20 kW Inverter Process for certified inverter-based generators; no right to operate in parallel until a witness test is performed or waived."
+  }
+ ],
+ "faq": [
+  [
+   "Does North Carolina's solar access law protect condo balconies?",
+   "No. G.S.&nbsp;22B-20 voids covenants that would prohibit solar collectors on residential property, but it excludes condominiums in multi-story buildings whose units have horizontal boundaries, and it still allows covenants barring collectors visible from the ground on a facade facing a street or common area."
+  ]
+ ]
+}

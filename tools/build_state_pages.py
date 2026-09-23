@@ -179,9 +179,14 @@ def export_text(st):
     return table.get(st.get("export_compensation") or "unknown")
 
 
-def rights_sentence(st):
+def rights_sentence(st, has_intro=False):
     if st["status"] not in ("in_force", "enacted_not_yet_effective", "passed_awaiting_signature"):
-        return "No state law gives a right to install one, so a renter needs the landlord&rsquo;s permission and a condo or co-op resident the board&rsquo;s."
+        if has_intro:
+            return ("No plug-in solar law gives a right to install one. The state&rsquo;s general solar-access rules, "
+                    "where they exist, were mostly written for roofs; the notes above say what they cover. Otherwise a "
+                    "renter needs the landlord&rsquo;s permission and a condo or co-op resident the board&rsquo;s.")
+        return ("No plug-in solar law gives a right to install one, so a renter needs the landlord&rsquo;s permission "
+                "and a condo or co-op resident the board&rsquo;s, unless a general solar-access law covers the balcony.")
     g = st.get("grants_right_to_install")
     if g is True:
         return "Yes, in part: the law limits a landlord&rsquo;s or association&rsquo;s power to refuse. The details are in the notes above."
@@ -294,7 +299,7 @@ def state_page(r, rows, energy, extra, pages):
          if st["status"] in ("in_force", "enacted_not_yet_effective", "passed_awaiting_signature") else
          f"{name} has no plug-in solar law, so there is no rule for it; connecting a device that exports "
          f"power normally needs the utility&rsquo;s approval first. The estimates here assume surplus power earns nothing."),
-        (f"Do renters in {name} need permission to install balcony solar?", rights_sentence(st)),
+        (f"Do renters in {name} need permission to install balcony solar?", rights_sentence(st, bool(intro))),
     ]
     sources = [{"url": s["url"], "title": S.esc(s["title"]), "note": "Plug-in solar law (primary source)." if s.get("primary") else "Reporting on the law."}
                for s in (st.get("sources") or [])]

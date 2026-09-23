@@ -1,0 +1,200 @@
+{
+  "slug": "is-plug-in-solar-safe",
+  "title": "Is plug-in solar safe? The circuit arithmetic and the evidence &middot; balco.nyc",
+  "og_title": "Is plug-in solar safe? What a 1,200 W inverter can do to a 15 A circuit, and what Germany shows",
+  "breadcrumb": "Plug-in solar safety",
+  "cluster": "legal",
+  "pillar": false,
+  "card_title": "Is plug-in solar safe?",
+  "card": "Worst-case circuit arithmetic for 400 to 1,200 W, and what certification and Germany do and don't show.",
+  "llms": "balco.nyc's worst-case branch-circuit arithmetic for 400, 800 and 1,200 W plug-in inverters on 15 A and 20 A circuits (up to 25 A, 67% over a 14 AWG wire's rating, without tripping the breaker), how rarely full output occurs, what UL 3700, anti-islanding and GFCI rules address, what US laws require, and why Germany has modeling but no systematic incident data.",
+  "related": [
+    "install-balcony-solar",
+    "ul-3700-plug-in-solar-certification",
+    "balcony-solar-laws-compared"
+  ],
+  "description": "A 1,200 W plug-in inverter can let a 15 A circuit's wire carry 25 A without tripping the breaker. The worst-case arithmetic, standards and Germany's record.",
+  "eyebrow": "Safety and wiring",
+  "h1": "Is plug-in solar safe? The circuit arithmetic and the evidence",
+  "lede": "It can be, but not automatically, and the reason is arithmetic rather than paperwork. balco.nyc&rsquo;s worst-case calculation: a 1,200&nbsp;W plug-in inverter on a shared 15&nbsp;A, 120&nbsp;V circuit can let part of that circuit&rsquo;s wire carry <strong>25&nbsp;A</strong> &mdash; 67% over its rating &mdash; without the breaker ever tripping. That case needs full sun, heavy loads and an unlucky outlet at the same moment, which is rare, and a dedicated circuit removes it. Germany, with about 1.3 million registered systems at a smaller 800&nbsp;VA limit, has reassuring modeling but no systematic incident data.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~11 minutes",
+  "tags": [
+    "25&nbsp;A on a 15&nbsp;A circuit",
+    "Worst case, not typical",
+    "No German incident data"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "circuit-arithmetic",
+      "toc": "The breaker cannot see what the inverter adds",
+      "html": "        <section id=\"circuit-arithmetic\">\n  <h2><span class=\"sec-num\">1</span>The breaker cannot see what the inverter adds</h2>\n  <p>A household branch circuit assumes that power arrives from one end. The breaker measures the current leaving the panel, and the wire is sized to carry whatever the breaker allows: under the National Electrical Code, 14&nbsp;AWG copper may be protected at no more than 15&nbsp;A and 12&nbsp;AWG at no more than 20&nbsp;A, matching those wires&rsquo; ratings in the 60&nbsp;&deg;C column that applies to NM-B house cable.</p>\n  <p>A plug-in inverter injects current at an outlet partway along the circuit. Anything plugged in beyond that outlet can then draw from both sources at once: up to the breaker&rsquo;s rating from the panel, plus the inverter&rsquo;s output. The breaker measures only its own share, so it does not trip &mdash; the mechanism UL Solutions&rsquo; white paper on plug-in PV illustrates with a 600&nbsp;VA unit. Here is balco.nyc&rsquo;s arithmetic for the sizes US laws allow, at 120&nbsp;V (heat rises with the square of current):</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Circuit (breaker / wire)</th><th>Inverter</th><th>Inverter current</th><th>Worst-case current in the wire</th><th>Over the wire&rsquo;s rating</th><th>Heat vs. at rating</th></tr></thead><tbody>\n    <tr><td>15&nbsp;A / 14&nbsp;AWG</td><td>400&nbsp;W</td><td>3.3&nbsp;A</td><td>18.3&nbsp;A</td><td>+22%</td><td>1.5&times;</td></tr>\n    <tr><td>15&nbsp;A / 14&nbsp;AWG</td><td>800&nbsp;W</td><td>6.7&nbsp;A</td><td>21.7&nbsp;A</td><td>+44%</td><td>2.1&times;</td></tr>\n    <tr><td>15&nbsp;A / 14&nbsp;AWG</td><td>1,200&nbsp;W</td><td>10.0&nbsp;A</td><td><strong>25.0&nbsp;A</strong></td><td><strong>+67%</strong></td><td>2.8&times;</td></tr>\n    <tr><td>20&nbsp;A / 12&nbsp;AWG</td><td>400&nbsp;W</td><td>3.3&nbsp;A</td><td>23.3&nbsp;A</td><td>+17%</td><td>1.4&times;</td></tr>\n    <tr><td>20&nbsp;A / 12&nbsp;AWG</td><td>800&nbsp;W</td><td>6.7&nbsp;A</td><td>26.7&nbsp;A</td><td>+33%</td><td>1.8&times;</td></tr>\n    <tr><td>20&nbsp;A / 12&nbsp;AWG</td><td>1,200&nbsp;W</td><td>10.0&nbsp;A</td><td>30.0&nbsp;A</td><td>+50%</td><td>2.3&times;</td></tr>\n  </tbody></table></div>\n  <p>Read the table as a ceiling, not an expectation. It needs three things at once: the inverter near full output, its outlet between the panel and the loads rather than at the end of the run, and those loads drawing the breaker&rsquo;s full rating. On the last outlet of a circuit, or alone on a dedicated one, no wire carries more than the larger of the two currents. Concretely: two 1,500&nbsp;W space heaters on one 15&nbsp;A circuit draw 25&nbsp;A and trip the breaker. Add a 1,200&nbsp;W inverter at full output on an outlet between them and the panel, and the breaker sees exactly 15&nbsp;A and holds while the cable to the heaters carries 25&nbsp;A.</p>\n  <p>An overload is not ignition. The same 14&nbsp;AWG copper is rated 25&nbsp;A in the ampacity table&rsquo;s 90&nbsp;&deg;C column, and UL Solutions frames the risk as fire or shock through damaged conductors, insulation and connected equipment. What the extra current spends is the code&rsquo;s margin, which the continuous-load convention narrows: continuous loads are held to 80% of a circuit&rsquo;s rating, and the NEC&rsquo;s interconnection rules count inverter output at 125%. If the 80&ndash;100% gap is the only spare capacity, it is 3&nbsp;A &mdash; <strong>360&nbsp;W</strong> &mdash; on a 15&nbsp;A circuit and 4&nbsp;A (480&nbsp;W) on a 20&nbsp;A one. Only one row fits: 400&nbsp;W on 20&nbsp;A.</p>\n  <p>Full output is also uncommon. balco.nyc ran NREL&rsquo;s PVWatts&nbsp;V8 hour by hour for New York City with the calculator&rsquo;s settings (800&nbsp;W of panel, DC/AC ratio 1.1, the site&rsquo;s mount-loss factors of 0.95 vertical and 0.99 at 35&deg; applied). A vertical south-facing railing system ran at 90% or more of its inverter&rsquo;s rating for about <strong>5 hours a year</strong>, and at 75% or more for 57; tilted to 35&deg;, for 22 and 273 hours. More panel behind the same inverter means far more hours at the ceiling (section&nbsp;4).</p>\n  <div class=\"callout\"><p><strong>Not electrical advice.</strong> This is worst-case arithmetic. Whether a given circuit can host a given system is for a licensed electrician applying the NEC as your jurisdiction has adopted it.</p></div>\n</section>"
+    },
+    {
+      "id": "panel-and-cap",
+      "toc": "The panel, the 120% rule and the 1,200 W number",
+      "html": "        <section id=\"panel-and-cap\">\n  <h2><span class=\"sec-num\">2</span>The panel, the 120% rule and the 1,200&nbsp;W number</h2>\n  <p>The panel has the same problem at a larger scale, and there the NEC has a rule, written for hard-wired solar. Section 705.12 allows a source on a panel&rsquo;s busbar if 125% of its output current plus the main breaker&rsquo;s rating stays within the busbar&rsquo;s rating &mdash; or within 120% of it, the &ldquo;120% rule,&rdquo; when the source and the main breaker sit at opposite ends of the busbar. For a 120&nbsp;V plug-in source, balco.nyc&rsquo;s arithmetic:</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>Panel (busbar / main)</th><th>Room under the 120% rule</th><th>Largest inverter current</th><th>Largest inverter at 120&nbsp;V</th><th>1,200&nbsp;W device (counted as 12.5&nbsp;A)</th></tr></thead><tbody>\n    <tr><td>60&nbsp;A / 60&nbsp;A</td><td>12&nbsp;A</td><td>9.6&nbsp;A</td><td>1,152&nbsp;W</td><td>Over by 0.5&nbsp;A</td></tr>\n    <tr><td>100&nbsp;A / 100&nbsp;A</td><td>20&nbsp;A</td><td>16&nbsp;A</td><td>1,920&nbsp;W</td><td>Fits</td></tr>\n    <tr><td>200&nbsp;A / 200&nbsp;A</td><td>40&nbsp;A</td><td>32&nbsp;A</td><td>3,840&nbsp;W</td><td>Fits</td></tr>\n  </tbody></table></div>\n  <p>At the panel, then, 1,200&nbsp;W binds only on a small one. But a plug-in enters the busbar wherever its branch breaker sits, and the stricter 100% version of the rule leaves no room on a panel whose main breaker matches its busbar. UL Solutions says the 120% permission does not apply to branch-circuit wiring, where section&nbsp;1&rsquo;s arithmetic lives, and notes that the 2026 NEC, like every earlier edition, does not recognize plug-in PV.</p>\n  <p><strong>Why 1,200&nbsp;W?</strong> The rationale is not stated in the laws. Utah&rsquo;s HB&nbsp;340, the first, sets 1,200&nbsp;W on a standard 120&nbsp;V outlet with no stated reason. New York&rsquo;s SUNNY Act, which has passed both chambers and {{sunny.phrase}}, uses the same figure, and neither its text nor its sponsor memo explains it. Colorado&rsquo;s legislative declaration is silent on its 1,920&nbsp;W. The arithmetic shows where each number sits:</p>\n  <ul>\n    <li><strong>1,200&nbsp;W</strong> is 10&nbsp;A at 120&nbsp;V: two-thirds of a 15&nbsp;A circuit&rsquo;s rating.</li>\n    <li><strong>Germany&rsquo;s 800&nbsp;VA</strong> at 230&nbsp;V is about 3.5&nbsp;A: 22% of the 16&nbsp;A circuit HTW Berlin modeled.</li>\n    <li><strong>Maine&rsquo;s 420&nbsp;W</strong> do-it-yourself tier is 3.5&nbsp;A, almost exactly the German current; the law does not say that is why.</li>\n    <li><strong>Colorado&rsquo;s 1,920&nbsp;W</strong> is 16&nbsp;A: 80% of a 20&nbsp;A circuit, and the 120%-rule limit of a 100&nbsp;A panel. The statute does not say which, if either, was intended.</li>\n  </ul>\n  <p>The common US cap puts nearly three times Germany&rsquo;s current on a household circuit. That does not make it unsafe by itself, but it means the German record describes a smaller overload.</p>\n</section>"
+    },
+    {
+      "id": "plugs-and-blackouts",
+      "toc": "Blackouts, live plugs and GFCIs",
+      "html": "        <section id=\"plugs-and-blackouts\">\n  <h2><span class=\"sec-num\">3</span>Blackouts, live plugs and GFCIs</h2>\n  <p><strong>Anti-islanding protects the grid.</strong> A microinverter follows the utility&rsquo;s voltage and frequency and cannot create a supply of its own; UL&nbsp;1741 and IEEE&nbsp;1547 require it to stop energizing its output within two seconds of losing the grid. That is why a plug-in system shuts down in a blackout and cannot feed a line a utility crew believes is dead &mdash; and why, without a battery, it gives no backup power. Maine requires inverters that shut off 0.2 seconds after a disruption.</p>\n  <p><strong>A live plug is a different hazard.</strong> On a plug-in solar cord the source sits behind the plug, so in sunlight the blades are connected to a generator &mdash; the reason a homemade cord with plugs on both ends is called a &ldquo;suicide cord.&rdquo; Pulling the plug looks to the inverter like losing the grid, so it should stop, and advocates&rsquo; testimony to the Vermont legislature relies on that. UL Solutions does not accept it as sufficient: anti-islanding is a grid function allowed up to two seconds, never evaluated as shock protection that must survive a component or software fault. Its proposed fixes are a uniquely shaped plug and receptacle with no exposed live parts, or an inverter output separately evaluated as touch-safe.</p>\n  <p>The standards reflect that. UL 3700, the Outline of Investigation for plug-in PV equipment that UL issued on 11 December 2025 (an outline, not yet a consensus standard), covers equipment with a plug-in PV plug for a permanently installed plug-in PV receptacle, and requires receptacles, GFCIs and overcurrent devices in the circuit to be listed for current in both directions. Germany&rsquo;s DIN&nbsp;VDE&nbsp;V&nbsp;0126-95 allows an ordinary household plug only with covered contacts, a disconnect in the plug or protective devices in the inverter.</p>\n  <p><strong>GFCIs were not designed for backfeed.</strong> Outdoor receptacles at US homes need GFCI protection, and GFCIs are evaluated for one-way current. In UL Solutions&rsquo; tests with an inverter backfeeding the circuit, GFCI circuit breakers averaged 32.8 to 36.7 milliseconds to clear a simulated body fault, beyond the standard&rsquo;s 28.6&nbsp;ms limit, because the inverter kept feeding the fault until anti-islanding cut in. GFCI receptacles, which open both conductors, stayed within the limit.</p>\n</section>"
+    },
+    {
+      "id": "germany",
+      "toc": "What Germany's record does and does not show",
+      "html": "        <section id=\"germany\">\n  <h2><span class=\"sec-num\">4</span>What Germany&rsquo;s record does and does not show</h2>\n  <p>Germany is the evidence everyone cites. Since the Solarpaket&nbsp;I amendments took effect on 16 May 2024, a <em>Steckersolarger&auml;t</em> may have up to 800&nbsp;VA of inverter output and 2,000&nbsp;W of panels, and must be registered in the Bundesnetzagentur&rsquo;s Marktstammdatenregister. The first product standard, DIN&nbsp;VDE&nbsp;V&nbsp;0126-95, followed in December 2025. By April 2026 the register held about 1.31 million devices.</p>\n  <p><strong>There is no systematic incident data.</strong> We found no German register, insurer series or fire-service statistic that counts fires or shocks attributable to plug-in solar; the official register records installations, not incidents. The PV fire figure most often quoted &mdash; Fraunhofer ISE&rsquo;s 2013 count of 120 fires caused by PV systems over 20 years, among 1.3 million installations &mdash; predates the balcony boom and concerns conventional systems. The advocates&rsquo; Vermont testimony says four million German systems are in use with no significant incidents reported. It cites no dataset, and &ldquo;none reported&rdquo; is not &ldquo;none&rdquo; when nothing is set up to collect reports.</p>\n  <p><strong>What exists is modeling.</strong> A February 2025 HTW Berlin report tested the 800&nbsp;W limit on a 16&nbsp;A German circuit. In a deliberately extreme case &mdash; cable in insulation, already loaded to 1.13 times its rating around the clock &mdash; an 800&nbsp;W device pushed part of the circuit to 21.6&nbsp;A, 135% of rating, for up to 16 hours a year, and the modeled conductor to 104&nbsp;&deg;C for a few minutes: above its 70&nbsp;&deg;C operating temperature, below the ignition point of common building materials, and enough to age insulation faster. With 2,000&nbsp;W of panel behind the inverter, full output lasted about 1,000 hours a year. With load profiles from 74 real households, the device made no significant difference to conductor temperature or to the modeled number of fires.</p>\n  <p>Three reasons not to import that conclusion whole. The current is smaller: 3.5&nbsp;A, against 10&nbsp;A for a 1,200&nbsp;W US device on a circuit rated lower. European residual-current devices open both conductors, which UL&rsquo;s tests found keeps shock protection intact under backfeed; a US GFCI circuit breaker does not. And Germany&rsquo;s grid-standards forum, VDE&nbsp;FNN, still advises that an electrician first check whether an existing circuit is adequately sized and protected for feed-in, to avoid overload and fire.</p>\n</section>"
+    },
+    {
+      "id": "us-laws",
+      "toc": "What the US laws require",
+      "html": "        <section id=\"us-laws\">\n  <h2><span class=\"sec-num\">5</span>What the US laws require</h2>\n  <p>Every enacted US plug-in law makes the same basic trade: the utility loses the right to demand approval, fees or extra equipment, and the device must be listed by a nationally recognized testing laboratory and must stop energizing the building and the grid in an outage. Beyond that they diverge. The table comes from balco.nyc&rsquo;s <a href=\"/states\">state tracker</a>, built from the legislatures&rsquo; bill pages. It is not legal advice, and details vary by utility.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>State</th><th>Status</th><th>Cap</th><th>Certification</th><th>Meter, circuit and notice rules</th></tr></thead><tbody>\n    <tr><td><a href=\"/states/utah\">Utah</a></td><td>In force since May 2025</td><td>1,200&nbsp;W</td><td>UL or equivalent; must meet the NEC</td><td>No utility approval or fees</td></tr>\n    <tr><td><a href=\"/states/maine\">Maine</a></td><td>In force July 2026</td><td>420&nbsp;W; up to 1,200&nbsp;W with conditions</td><td>UL&nbsp;3700 or comparable, or configured per the NEC; off within 0.2&nbsp;s</td><td>Above 420&nbsp;W: licensed electrician, dedicated single-outlet circuit, notice within 30 days</td></tr>\n    <tr><td><a href=\"/states/vermont\">Vermont</a></td><td>In force July 2026</td><td>1,200&nbsp;W per meter</td><td>UL&nbsp;3700 or equivalent; IEEE&nbsp;1547-2018</td><td>Smart meter required; &ldquo;temporarily but securely attached&rdquo;</td></tr>\n    <tr><td><a href=\"/states/connecticut\">Connecticut</a></td><td>From 1 October 2026</td><td>1,200&nbsp;W</td><td>UL or equivalent; UL&nbsp;1741; IEEE&nbsp;1547; NEC</td><td>One device per meter</td></tr>\n    <tr><td><a href=\"/states/colorado\">Colorado</a></td><td>In force August 2026</td><td>1,920&nbsp;W</td><td>Listed by a recognized laboratory</td><td>One device per wall outlet per address; utility may require notice</td></tr>\n    <tr><td><a href=\"/sunny-act\">New York</a> (SUNNY Act)</td><td>Passed both chambers; {{sunny.phrase}}</td><td>1,200&nbsp;W AC</td><td>Listed as a complete plug-in system</td><td>Notify the utility within 30 days</td></tr>\n  </tbody></table></div>\n  <p>Three things stand out. The caps are per meter, per address or per outlet, not per circuit: they stop a household from stacking devices but say nothing about what else shares the circuit a device lands on. Maine is the exception; above 420&nbsp;W it requires exactly the dedicated circuit that makes section&nbsp;1&rsquo;s worst case impossible. Several laws require compliance with the NEC, which does not yet recognize plug-in PV, so &ldquo;meets the NEC&rdquo; is not yet a well-defined test. And under the standard written for these hazards, UL&nbsp;3700, components have been listed but no complete system had been as of September 2026; <a href=\"/ul-3700-plug-in-solar-certification\">what UL&nbsp;3700 covers and where certification stands</a> has the detail.</p>\n  <p>Maryland and Virginia also require notice to the utility before installation, and Colorado, Maryland and Virginia exempt devices of 391&nbsp;W or less from code or listing provisions that would require rewiring; New Jersey draws that line at 400&nbsp;W. <a href=\"/balcony-solar-laws-compared\">Every law side by side</a> has the rest.</p>\n</section>"
+    },
+    {
+      "id": "checklist",
+      "toc": "A practical checklist",
+      "html": "        <section id=\"checklist\">\n  <h2><span class=\"sec-num\">6</span>A practical checklist</h2>\n  <p>None of this replaces a licensed electrician, the NEC as adopted where you live, or the product&rsquo;s instructions; the <a href=\"/install-balcony-solar\">installation guide</a> has more detail.</p>\n  <ul>\n    <li><strong>A dedicated circuit if you can get one.</strong> With nothing else on the circuit, no wire can carry breaker current plus inverter current. It is the first mitigation UL Solutions lists and what Maine requires above 420&nbsp;W. If the outlet is shared, find out what else is on that breaker and keep heaters, air conditioners and hair dryers off it while the system is producing.</li>\n    <li><strong>An outdoor-rated, GFCI-protected receptacle</strong> with an in-use cover. Ordinary GFCIs are evaluated for one-way current, so follow the system&rsquo;s instructions on whether the protection must be listed for backfeed. No outdoor outlet means an electrician and, in an apartment, the building&rsquo;s approval.</li>\n    <li><strong>The manufacturer&rsquo;s cord, straight into the wall.</strong> No extension cords, power strips or adapters. The same masking arithmetic applies inside a power strip, and every added plug is another set of blades never evaluated as a generator&rsquo;s output.</li>\n    <li><strong>One system per circuit, within your state&rsquo;s cap.</strong> Two inverters on one circuit add their currents to the worst case.</li>\n    <li><strong>A complete listed system, unmodified.</strong> A listed inverter paired with separately bought panels is not a listed plug-in system.</li>\n    <li><strong>Secure mounting, sized for wind.</strong> A panel is a sail: use the system&rsquo;s brackets and a secondary tether, mount inside the railing where you can, and re-check after storms.</li>\n    <li><strong>Never on a fire escape or in an egress path.</strong> New York City&rsquo;s Fire Code requires means of egress and fire escapes to be kept free of obstructions; panels, brackets and cables count.</li>\n  </ul>\n  <p>Call an electrician first if you cannot identify the breaker, if the receptacle has no ground or trips repeatedly, or if the wiring is old enough that you are guessing.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Is balcony solar safe?",
+      "It can be, but not automatically. A plug-in system listed by a recognized testing laboratory, on a suitable circuit, is designed to be safe, but the hazards are specific: undetected circuit overload, live plug blades and interference with GFCI protection. balco.nyc's worst-case arithmetic shows a 1,200 W inverter on a shared 15 A circuit can let part of the wire carry 25 A without tripping the breaker. That needs full sun, heavy loads and an unlucky outlet at once, which is rare, and a dedicated circuit removes it."
+    ],
+    [
+      "Can plug-in solar overload a circuit without tripping the breaker?",
+      "Yes, in a worst case. The breaker measures only current coming from the panel, so if loads beyond the inverter's outlet draw the breaker's full rating plus the inverter's output, the wire between them carries both. By balco.nyc's arithmetic, on a 15 A, 120 V circuit that is 18.3 A with a 400 W inverter, 21.7 A with 800 W and 25 A with 1,200 W, or 22% to 67% over the wire's rating. UL Solutions identifies this as one of the three main risks of plug-in PV."
+    ],
+    [
+      "Does plug-in solar work during a blackout?",
+      "No. UL 1741 and IEEE 1547 require grid-interactive inverters to stop energizing their output within two seconds of losing the grid, so a plug-in system shuts down in an outage. This anti-islanding function protects utility crews working on lines they believe are dead. Without a battery, the system provides no backup power."
+    ],
+    [
+      "Are the prongs on a plug-in solar cord live when it is unplugged?",
+      "They can be, which is one reason certification matters. A microinverter should stop when unplugged because it loses the grid, but UL Solutions says that grid function, which is allowed up to two seconds and is not evaluated as shock protection, is not enough on its own. UL 3700 and Germany's DIN VDE V 0126-95 add protection such as a dedicated receptacle design, covered contacts or protective devices in the inverter."
+    ],
+    [
+      "Has balcony solar caused fires in Germany?",
+      "Nobody can say precisely, because Germany has no systematic incident register for plug-in solar; its official register records about 1.31 million installations, not incidents. The strongest evidence is modeling: a 2025 HTW Berlin report found that with real household loads an 800 W device did not significantly raise wiring temperatures or the modeled number of fires, though a deliberately extreme case aged insulation faster. A 1,200 W US device puts nearly three times as much current on a circuit."
+    ],
+    [
+      "Why do US plug-in solar laws cap systems at 1,200 watts?",
+      "The laws do not say. Utah's HB 340, the first, allows up to 1,200 W on a standard 120 V outlet without a stated rationale, and later laws and bills, including New York's SUNNY Act, which has passed both chambers and awaits the Governor's signature, use the figure without explaining it. At 120 V, 1,200 W is 10 A, two-thirds of a 15 A circuit's rating, compared with about 3.5 A for Germany's 800 VA limit at 230 V."
+    ],
+    [
+      "Can I plug a balcony solar system into an extension cord or power strip?",
+      "No. A power strip has the same blind spot as a wall breaker, so loads plugged into it can draw the strip's rating plus the inverter's output through its internal wiring, and every extra plug adds blades never evaluated as the output of a generator. Use the manufacturer's cord directly in a properly rated, GFCI-protected outdoor receptacle, and ask an electrician if there is none."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://legislature.maine.gov/testimony/resources/EUT20260106Soltan134125472587136094.pdf",
+      "title": "UL Solutions &mdash; Interactions of Plug-In PV with Protection of Existing Power Systems (white paper, filed as Maine legislative testimony)",
+      "note": "the undetected-overload mechanism and 600&nbsp;VA example; that the 705.12(B) 120% permission does not apply to branch-circuit wiring; the 80% continuous convention; the two-second anti-islanding allowance and why it is not touch protection; the GFCI test results (32.8&ndash;36.7&nbsp;ms against 28.6&nbsp;ms); dedicated-circuit and unique-receptacle mitigations; European devices opening both conductors."
+    },
+    {
+      "url": "https://www.shopulstandards.com/ProductDetail.aspx?UniqueKey=49440",
+      "title": "UL Standards &amp; Engagement &mdash; UL&nbsp;3700, Outline of Investigation for Interactive Plug-In PV (PIPV) Equipment and Systems",
+      "note": "edition 1 published 11 December 2025; scope covers a PIPV plug for a permanently installed PIPV receptacle and requires circuit components to be listed for bidirectional current."
+    },
+    {
+      "url": "https://www.ul.com/thecodeauthority/knowledge/coordination-between-model-codes-standards09",
+      "title": "UL Solutions &mdash; The Code Authority: coordination between model codes and standards, 2026 NEC",
+      "note": "that the 2026 NEC, like all previous editions, does not recognize plug-in PV."
+    },
+    {
+      "url": "https://www.mikeholt.com/instructor2/img/product/pdf/1678822939.pdf",
+      "title": "Mike Holt Enterprises &mdash; Fundamental 2023 NEC Calculations, 240.4 Overcurrent Protection",
+      "note": "NEC 240.4(D): overcurrent protection not to exceed 15&nbsp;A for 14&nbsp;AWG copper and 20&nbsp;A for 12&nbsp;AWG copper."
+    },
+    {
+      "url": "https://www.cerrowire.com/products/resources/tables-calculators/ampacity-charts/",
+      "title": "Cerrowire &mdash; Ampacity chart (based on NEC Table 310.16)",
+      "note": "14&nbsp;AWG copper 15&nbsp;A and 12&nbsp;AWG 20&nbsp;A in the 60&nbsp;&deg;C (NM-B) column; 25&nbsp;A and 30&nbsp;A at 90&nbsp;&deg;C."
+    },
+    {
+      "url": "https://www.mayfield.energy/technical-articles/code-corner-2020-nec-705-12b31-and-2/",
+      "title": "Mayfield Renewables &mdash; Code Corner: NEC 705.12(B)(3)(1) and (2)",
+      "note": "the text of the 100% and 120% busbar rules, including the 125% factor on source current and the opposite-ends condition."
+    },
+    {
+      "url": "https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132",
+      "title": "Maine Legislature &mdash; Public Law 2025 ch.&nbsp;644 (LD&nbsp;1730), 35-A MRSA &sect;3475",
+      "note": "the 420&nbsp;W tier; above it, a licensed electrician and a dedicated circuit with a single outlet; 30-day notice; UL&nbsp;3700 or comparable listing; inverters off within 0.2 seconds."
+    },
+    {
+      "url": "https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf",
+      "title": "Utah Legislature &mdash; H.B.&nbsp;340 (2025), enrolled copy",
+      "note": "the 1,200&nbsp;W, 120&nbsp;V definition, NEC and UL-or-equivalent requirements and outage feature, with no stated rationale for the cap."
+    },
+    {
+      "url": "https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf",
+      "title": "Vermont Legislature &mdash; Act 149 (S.202) as enacted",
+      "note": "1,200&nbsp;W combined per meter, UL&nbsp;3700 or equivalent, IEEE&nbsp;1547-2018, smart meters, temporary but secure attachment."
+    },
+    {
+      "url": "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00127-R00HB-05340-PA.PDF",
+      "title": "Connecticut General Assembly &mdash; Public Act 26-127, section 9",
+      "note": "1,200&nbsp;W on a 120&nbsp;V outlet, UL&nbsp;1741, IEEE&nbsp;1547 and NEC requirements, one device per meter, the excess-generation warning."
+    },
+    {
+      "url": "https://leg.colorado.gov/bill_files/116074/download",
+      "title": "Colorado General Assembly &mdash; HB26-1007, signed act",
+      "note": "1,920&nbsp;W, NRTL listing, one device per wall outlet per address, the 391&nbsp;W exemption, and a legislative declaration that does not explain the cap."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "New York State Senate &mdash; S8512C (SUNNY Act)",
+      "note": "1,200&nbsp;W AC, listing as a complete plug-in system, outage feature and 30-day notice; the sponsor memo gives no rationale for the cap."
+    },
+    {
+      "url": "https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/ErneuerbareEnergien/Solaranlagen/Balkon_table.html",
+      "title": "Bundesnetzagentur &mdash; Balkon-Solaranlagen",
+      "note": "the 800&nbsp;VA inverter and 2,000&nbsp;W module limits under the Solarpaket rules in force since 16 May 2024, and Marktstammdatenregister registration."
+    },
+    {
+      "url": "https://www.vde.com/en/press/press-releases/first-product-standard-for-plug-in-solar-devices",
+      "title": "VDE &mdash; First product standard for plug-in solar devices (DIN VDE V 0126-95)",
+      "note": "December 2025 publication, 800&nbsp;VA, 960&nbsp;Wp with a household plug, and the plug protection options."
+    },
+    {
+      "url": "https://www.vde.com/fnn-pv-stecker",
+      "title": "VDE FNN &mdash; Steckerfertige PV-Anlagen (Steckersolarger&auml;te)",
+      "note": "the advice that an electrician first check whether an existing circuit is adequately sized and protected for feed-in."
+    },
+    {
+      "url": "https://solar.htw-berlin.de/wp-content/uploads/BERGNER-2025-Kurzbericht-800-W.pdf",
+      "title": "HTW Berlin &mdash; Kurzbericht: Steckersolar 800&nbsp;W (Bergner, February 2025)",
+      "note": "the 21.6&nbsp;A (135%) extreme case, up to 16 hours a year, 104&nbsp;&deg;C, about 1,000 hours with 2,000&nbsp;W of panel, and no significant change with 74 real household load profiles."
+    },
+    {
+      "url": "https://strom-report.com/balkonkraftwerk/",
+      "title": "Strom-Report &mdash; Balkonkraftwerk statistics",
+      "note": "1,311,919 plug-in systems in the Marktstammdatenregister as of 15 April 2026."
+    },
+    {
+      "url": "https://www.ise.fraunhofer.de/en/press-media/press-releases/2013/fire-protection-in-photovoltaic-systems.html",
+      "title": "Fraunhofer ISE &mdash; Fire protection in photovoltaic systems (February 2013)",
+      "note": "120 fires caused by PV systems over 20 years among 1.3 million German installations, a figure that predates plug-in systems."
+    },
+    {
+      "url": "https://legislature.vermont.gov/Documents/2026/Workgroups/House%20Energy%20and%20Digital/Bills/S.202/Witness%20Testimony/S.202~Wesley%20Schrock~Safety%20of%20Plug-in%20Solar~3-17-2026.pdf",
+      "title": "Vermont Legislature witness testimony &mdash; Safety of Plug-in Solar (Permit Power, Brooks Engineering, Bright Saver, 2026)",
+      "note": "the advocates&rsquo; claims that unplugged prongs go dead like the lineman protection and that four million German systems have no significant reported incidents, quoted here in order to qualify them."
+    },
+    {
+      "url": "https://pvwatts.nlr.gov/",
+      "title": "NREL PVWatts Calculator",
+      "note": "the V8 hourly model behind balco.nyc&rsquo;s count of hours near full inverter output in New York City."
+    },
+    {
+      "url": "https://up.codes/viewer/new_york_city/nyc-fire-code-2022/chapter/10/means-of-egress",
+      "title": "NYC Fire Code 2022, Chapter 10 &mdash; Means of Egress",
+      "note": "sections 1027.3 and 1027.7: means of egress and fire escapes continuously maintained free from obstructions."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not electrical or legal advice: questions about a specific circuit belong with a licensed electrician applying the NEC and local code, and the law varies by state and utility. Circuit figures are worst-case arithmetic, not measurements."
+}

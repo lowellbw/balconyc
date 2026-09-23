@@ -1,0 +1,176 @@
+{
+  "slug": "balcony-solar-renters",
+  "title": "Can renters install balcony solar? &middot; balco.nyc",
+  "og_title": "Can renters install balcony solar? What each state lets a landlord refuse",
+  "breadcrumb": "Renters and landlords",
+  "cluster": "legal",
+  "pillar": false,
+  "card_title": "Can renters install balcony solar?",
+  "card": "Four states limit a landlord&rsquo;s no; only Vermont&rsquo;s limit is in force. What each law says and how to ask.",
+  "llms": "which US laws limit a landlord's power to refuse a tenant's plug-in solar device (Vermont in force; Virginia, Colorado and New Jersey from 2027), how many renter households they reach by balco.nyc's Census count (3.3 million, 7.2% of US renters; 0.17% today), and what to put in a request to a landlord.",
+  "related": [
+    "balcony-solar-condo-hoa",
+    "balcony-solar-laws-compared",
+    "install-balcony-solar"
+  ],
+  "description": "Usually only with permission. Four states limit a landlord's no, and only Vermont's limit is in force. What each law says, who it covers, and how to ask.",
+  "eyebrow": "Renters and the law",
+  "h1": "Can renters install balcony solar?",
+  "lede": "Usually only with the landlord&rsquo;s permission. As of 23 September 2026, four states &mdash; Vermont, Virginia, New Jersey and Colorado &mdash; have signed laws that limit a landlord&rsquo;s power to refuse, and only Vermont&rsquo;s protection is in force; the other three start in January or March 2027. balco.nyc&rsquo;s count of Census data puts 3.3&nbsp;million renter households, 7.2% of the US total, in those four states, and 76,431 (0.17%) in the one where the protection works today. New York&rsquo;s SUNNY Act has passed both chambers and {{sunny.phrase}}, and it grants no right to install.",
+  "date_label": "Last reviewed",
+  "reviewed": "2026-09-23",
+  "published": "2026-09-23",
+  "reading_time": "~10 minutes",
+  "tags": [
+    "4 states limit landlords",
+    "Vermont in force",
+    "7.2% of US renters"
+  ],
+  "about_legislation": false,
+  "sections": [
+    {
+      "id": "short-answer",
+      "toc": "The short answer, and the four exceptions",
+      "html": "        <section id=\"short-answer\">\n  <h2><span class=\"sec-num\">1</span>The short answer, and the four exceptions</h2>\n<p>A plug-in kit hangs on a railing the landlord owns and plugs into wiring the landlord owns, so in most of the country the lease and the landlord decide. A law that makes plug-in solar <em>legal</em> is not one that makes it your <em>right</em>: five of the nine signed US plug-in laws stop the utility from demanding approval and give tenants nothing.</p>\n  <p>balco.nyc read the enacted text of every law in its <a href=\"/states\">state tracker</a>. Four limit a landlord&rsquo;s power to refuse: <a href=\"/states/vermont\">Vermont</a> (in force since 1&nbsp;July 2026; after 10&nbsp;days&rsquo; notice with no answer, the tenant may proceed), <a href=\"/states/virginia\">Virginia</a> (from 1&nbsp;January 2027; landlords who own more than four rental units), <a href=\"/states/new-jersey\">New Jersey</a> (from 1&nbsp;March 2027; tenants who pay their own electric bill) and <a href=\"/states/colorado\">Colorado</a> (from 1&nbsp;January 2027; no person may &ldquo;unreasonably prohibit&rdquo; a device). All four still let the landlord impose reasonable restrictions.</p>\n  <p>balco.nyc&rsquo;s count from the Census Bureau&rsquo;s 2024 American Community Survey puts <strong>3,334,151 renter households</strong> in those four states, 7.2% of the 46.1&nbsp;million in the United States. Until the 2027 start dates, the protected group is Vermont&rsquo;s 76,431 renter households: <strong>0.17% of American renters</strong>. New York alone has 3,575,503 renter households, more than the four states combined, and its <a href=\"/sunny-act\">SUNNY Act</a> would give none of them a right to install. Everyone else needs permission.</p>\n  <div class=\"callout\"><p><strong>Not legal advice.</strong> This page summarizes statutes and bills as of 23 September 2026. Your lease, your state&rsquo;s law and any association rules decide your case, and a law that is signed but not yet in effect protects nobody.</p></div>\n</section>"
+    },
+    {
+      "id": "tenant-provisions",
+      "toc": "Every tenant provision, compared",
+      "html": "        <section id=\"tenant-provisions\">\n  <h2><span class=\"sec-num\">2</span>Every tenant provision, compared</h2>\n<p>balco.nyc&rsquo;s compilation of every US plug-in solar law or 2026 bill that addresses tenants, from the legislatures&rsquo; own pages, as of 23 September 2026. Quoted words are statutory or bill text. The rest of each law (caps, certification, utility notice) is in <a href=\"/balcony-solar-laws-compared\">the provision-by-provision comparison</a>.</p>\n  <div class=\"table-wrap\"><table><thead><tr><th>State</th><th>Law or bill</th><th>Status</th><th>Who it protects, and how</th><th>What the landlord keeps</th></tr></thead><tbody>\n    <tr><td><a href=\"/states/vermont\">Vermont</a></td><td>Act&nbsp;149 (S.202)</td><td>In force 1&nbsp;Jul 2026</td><td>All tenants, for a device that meets the Act (UL&nbsp;3700 or equivalent, 1,200&nbsp;W per meter). 10&nbsp;days&rsquo; notice; &ldquo;If the landlord does not respond within 10 days, the tenant may proceed with installation.&rdquo;</td><td>&ldquo;Any reasonable restrictions,&rdquo; including making the tenant pay a licensed electrician for any electrical work. No electrical work without the landlord&rsquo;s permission.</td></tr>\n    <tr><td><a href=\"/states/virginia\">Virginia</a></td><td>HB&nbsp;395 / SB&nbsp;250 (Chs.&nbsp;1052, 998)</td><td>Signed 22&nbsp;Apr 2026; effective 1&nbsp;Jan 2027</td><td>&ldquo;No landlord who owns more than four rental dwelling units&rdquo; (or more than a 10% interest in more than four) &ldquo;shall prohibit a tenant from installing&rdquo; a device &ldquo;on the exterior of the tenant&rsquo;s premises.&rdquo; 7&nbsp;days&rsquo; notice with documentation. Not units on a ratio utility billing system.</td><td>Reasonable restrictions on &ldquo;size, place, and manner of placement&rdquo;; may bar devices elsewhere on the premises. The tenant is responsible for any damage.</td></tr>\n    <tr><td><a href=\"/states/new-jersey\">New Jersey</a></td><td>P.L.2026, c.82 (S2368 / A4836)</td><td>Signed 1&nbsp;Sep 2026; effective 1&nbsp;Mar 2027</td><td>Tenants who pay their own electric bill, within their leased premises including a balcony or patio. 14&nbsp;days&rsquo; written notice with documentation.*</td><td>Reasonable restrictions on the device&rsquo;s physical dimensions, placement and manner of placement; no blanket ban.*</td></tr>\n    <tr><td><a href=\"/states/colorado\">Colorado</a></td><td>HB26-1007 (C.R.S. 40-2-140)</td><td>In force 12&nbsp;Aug 2026; tenant clause from 1&nbsp;Jan 2027</td><td>&ldquo;A person shall not directly or indirectly unreasonably prohibit&rdquo; a device. The Act does not mention landlords or tenants.</td><td>&ldquo;Reasonable restrictions,&rdquo; including prior notice and limits aimed at fire or electrical overload, damage, and the device&rsquo;s location.</td></tr>\n    <tr><td><a href=\"/states/illinois\">Illinois</a></td><td>SB&nbsp;3104 (House: HB&nbsp;4524)</td><td>Pending; re-referred to Assignments 22&nbsp;May 2026</td><td>Landlords could not enforce a lease that &ldquo;unreasonably restricts or prohibits&rdquo; a system.*</td><td>As amended, the bill bars systems over 391&nbsp;W until the National Electrical Code has a standard for them.</td></tr>\n    <tr><td><a href=\"/states/north-carolina\">North Carolina</a></td><td>HB&nbsp;1129</td><td>Pending; in House Rules since 30&nbsp;Apr 2026</td><td>Tenants of landlords who own more than four rental dwellings. 7&nbsp;days&rsquo; notice.</td><td>Size and placement limits only &ldquo;if required to prevent&rdquo; blocked egress or &ldquo;unreasonable property damage.&rdquo;</td></tr>\n    <tr><td><a href=\"/states/oregon\">Oregon</a></td><td>HB&nbsp;4080</td><td>Died in committee, March 2026</td><td>Would have limited restrictions by landlords, HOAs and condo associations.*</td><td>&mdash;</td></tr>\n    <tr><td><a href=\"/states/washington\">Washington</a></td><td>SSB&nbsp;6050</td><td>Died in Senate Rules, 2026</td><td>A landlord could not require its approval, or any fee, before a tenant used a device.</td><td>&mdash;</td></tr>\n    <tr><td><a href=\"/states/south-carolina\">South Carolina</a></td><td>H&nbsp;4579</td><td>Died in committee, 2026</td><td>A lease or rental agreement &ldquo;must not prohibit or have the effect of prohibiting&rdquo; a balcony solar panel.</td><td>&mdash;</td></tr>\n  </tbody></table></div>\n  <p class=\"table-note\">* New Jersey&rsquo;s row is summarized from the Governor&rsquo;s signing announcement, published legal summaries and balco.nyc&rsquo;s state tracker; the Illinois and Oregon rows are from the legislatures&rsquo; official bill digests, not the bill text.</p>\n  <p><strong>Laws with nothing for tenants.</strong> <a href=\"/states/utah\">Utah</a>, <a href=\"/states/maryland\">Maryland</a>, <a href=\"/states/connecticut\">Connecticut</a>, <a href=\"/states/new-hampshire\">New Hampshire</a> and <a href=\"/states/maine\">Maine</a> have signed plug-in laws with no tenant right; Maine&rsquo;s only requires anyone installing on a structure they do not own to protect it and restore it on removal, a duty rather than a right. The same silence runs through <a href=\"/states/new-york\">New York</a>&rsquo;s SUNNY Act, which has passed both chambers and {{sunny.phrase}}; <a href=\"/states/california\">California</a>&rsquo;s SB&nbsp;868, awaiting the Governor&rsquo;s decision; and pending bills in <a href=\"/states/massachusetts\">Massachusetts</a>, <a href=\"/states/michigan\">Michigan</a>, <a href=\"/states/pennsylvania\">Pennsylvania</a> and the <a href=\"/states/district-of-columbia\">District of Columbia</a>. Tracker summaries saying the Massachusetts and Pennsylvania bills protect tenants describe provisions balco.nyc could not find in either text.</p>\n</section>"
+    },
+    {
+      "id": "how-many-renters",
+      "toc": "How many renters the laws reach",
+      "html": "        <section id=\"how-many-renters\">\n  <h2><span class=\"sec-num\">3</span>How many renters the laws reach</h2>\n<p>A law&rsquo;s reach is a head count, so balco.nyc made one: renter-occupied homes (households) by state from the Census Bureau&rsquo;s 2024 American Community Survey 1-year estimates, table <strong>B25003</strong> (Tenure). That is the newest 1-year release; on 4&nbsp;August 2026 the Bureau said the 2025 release date &ldquo;is being determined.&rdquo; Two laws cover only some tenants, so each gets a narrower estimate:</p>\n  <ul>\n    <li><strong>Virginia</strong> turns on how many units the landlord owns, which no Census table records. The nearest proxy is renters in buildings of five or more units (table <strong>B25032</strong>): 555,373, or 49.0% of the state&rsquo;s renters.</li>\n    <li><strong>New Jersey</strong> turns on paying your own electric bill. The published tables do not split electricity billing by tenure, but <strong>B25069</strong> records renters who pay extra for at least one utility: 1,152,187, against 126,937 who pay for none. The first figure is a ceiling.</li>\n  </ul>\n  <div class=\"table-wrap\"><table><thead><tr><th>State</th><th>Renter households (B25003)</th><th>Narrower estimate</th><th>What the narrower figure counts</th><th>Protection starts</th></tr></thead><tbody>\n    <tr><td>Vermont</td><td>76,431</td><td>76,431</td><td>All tenants</td><td>1&nbsp;Jul 2026</td></tr>\n    <tr><td>Colorado</td><td>844,547</td><td>844,547</td><td>All tenants</td><td>1&nbsp;Jan 2027</td></tr>\n    <tr><td>Virginia</td><td>1,134,049</td><td>555,373</td><td>Renters in buildings of 5+ units (B25032)</td><td>1&nbsp;Jan 2027</td></tr>\n    <tr><td>New Jersey</td><td>1,279,124</td><td>1,152,187</td><td>Renters paying for at least one utility (B25069)</td><td>1&nbsp;Mar 2027</td></tr>\n    <tr><td><strong>Four states</strong></td><td><strong>3,334,151</strong></td><td><strong>2,628,538</strong></td><td></td><td></td></tr>\n    <tr><td>Share of US renter households (46,101,640)</td><td>7.2%</td><td>5.7%</td><td></td><td></td></tr>\n  </tbody></table></div>\n  <p>The arithmetic: 76,431 + 844,547 + 1,134,049 + 1,279,124 = 3,334,151, and 3,334,151 &divide; 46,101,640 = 7.2%; the narrower column sums to 2,628,538, or 5.7%. The Census margin of error on the four-state total is about &plusmn;25,000 at 90% confidence. For scale, New York has 3,575,503 renter households (45.7% of its households), and the five states with a plug-in law but no tenant clause hold 1,939,324 renter households for whom plugging in is, or will shortly be, legal and the landlord still decides.</p>\n  <p>The same data qualifies a figure in New Jersey&rsquo;s signing announcement, where an advocate says the law benefits &ldquo;roughly 40 percent of New Jerseyans who rent or live in apartments.&rdquo; That counts people and includes apartment owners, who fall under the law&rsquo;s association provisions, not its tenant clause. By households, the ACS puts renters at 36.1% of the state&rsquo;s total (1,279,124 of 3,543,944), and the tenant clause reaches at most 32.5% (1,152,187).</p>\n  <p>What these numbers are not: they count households, not balconies. The ACS does not ask whether a home has a balcony, a patio or an outdoor outlet, so the renters who could actually use these protections are fewer than every figure above, by an amount nobody has measured. The Virginia proxy is loose both ways: it includes condo units rented out by small owners, who are not covered, and units on ratio utility billing, which the law excludes; it misses houses owned by large landlords, who are covered.</p>\n</section>"
+    },
+    {
+      "id": "what-landlords-keep",
+      "toc": "What &ldquo;can&rsquo;t prohibit&rdquo; still allows",
+      "html": "        <section id=\"what-landlords-keep\">\n  <h2><span class=\"sec-num\">4</span>What &ldquo;can&rsquo;t prohibit&rdquo; still allows</h2>\n<p>None of the four laws hands the balcony to the tenant. Read closely, they replace a landlord&rsquo;s veto with a landlord&rsquo;s conditions:</p>\n  <ul>\n    <li><strong>Reasonable restrictions survive everywhere.</strong> Virginia names &ldquo;size, place, and manner of placement&rdquo; and lets the landlord bar devices anywhere but the exterior of the tenant&rsquo;s premises; Colorado lists notice, fire and overload risk, damage and location. What is reasonable has not been tested in any of the four states.</li>\n    <li><strong>Notice comes first.</strong> Seven days in Virginia, with documentation that the device qualifies and where it will go; ten in Vermont; fourteen, in writing, in New Jersey. The laws protect a tenant who gives notice before installing.</li>\n    <li><strong>Wiring stays the landlord&rsquo;s.</strong> Vermont says a landlord &ldquo;shall not be compelled to perform or pay for electrical work&rdquo;; Virginia requires express written approval for anything that alters wiring or panels. If your balcony has no outdoor outlet, none of these laws gets you one.</li>\n    <li><strong>Damage is the tenant&rsquo;s.</strong> Virginia makes the tenant responsible for any damage the device causes.</li>\n    <li><strong>Only a qualifying device is protected.</strong> Vermont covers devices certified to UL&nbsp;3700 &ldquo;or an equivalent certification.&rdquo; No complete plug-in system is certified to UL&nbsp;3700 as of September 2026 (components are), so a Vermont tenant&rsquo;s protection depends on whether a kit&rsquo;s listing counts as equivalent, which the Act does not settle. New Jersey also accepts a comparable standard; Virginia and Colorado ask for certification or listing by a nationally recognized testing laboratory.</li>\n    <li><strong>Surplus power earns nothing.</strong> Vermont says exports &ldquo;shall not be compensated,&rdquo; Virginia excludes the devices from net metering, and New Jersey and Colorado are silent. Assume what you do not use is given away.</li>\n    <li><strong>Association rules may still bind.</strong> Virginia&rsquo;s law does not override condominium or HOA documents, so a tenant in a rented condo can be protected against the landlord and still refused by the association; New Jersey&rsquo;s and Colorado&rsquo;s bind associations too. See <a href=\"/balcony-solar-condo-hoa\">condos, co-ops and HOAs</a>.</li>\n  </ul>\n</section>"
+    },
+    {
+      "id": "asking",
+      "toc": "Asking your landlord: checklist and letter",
+      "html": "        <section id=\"asking\">\n  <h2><span class=\"sec-num\">5</span>Asking your landlord: a checklist and a letter</h2>\n<p>In most states the request is the whole process; in the four above it doubles as the statutory notice. A specific written request is easier to approve than a general one. Do the physical checks first with <a href=\"/install-balcony-solar\">the installation guide</a>; if the landlord&rsquo;s worry is fire or shock, <a href=\"/is-plug-in-solar-safe\">the safety evidence</a> is summarized separately. Include:</p>\n  <ul>\n    <li><strong>The device:</strong> make, model, panel count, maximum AC output, and the certification exactly as the listing states it, including the anti-islanding feature each of the four laws requires.</li>\n    <li><strong>Size and weight</strong> of the panels with brackets.</li>\n    <li><strong>Mounting without drilling:</strong> clamps or hooks inside the railing, nothing fixed to the facade, secured against wind.</li>\n    <li><strong>The outlet:</strong> which existing outdoor outlet, whether it is GFCI-protected and covered, no extension cord, and no new wiring without written approval.</li>\n    <li><strong>Insurance:</strong> your renters policy&rsquo;s liability limit, and acceptance of responsibility for damage.</li>\n    <li><strong>Removal</strong> at move-out, or on short notice for building work, with the railing restored.</li>\n    <li><strong>The law, if one applies:</strong> the statute and the notice period.</li>\n  </ul>\n  <div class=\"callout\">\n    <p><strong>A neutral template.</strong></p>\n    <p>Dear [landlord or managing agent],</p>\n    <p>I would like to install a small plug-in solar system on the balcony of [unit]. The details are below, and I am happy to discuss any conditions.</p>\n    <p><em>Device:</em> [make and model], [number] panels, [watts] maximum AC output, listed to [standard] by [laboratory]. It switches off automatically if grid power is lost. Specification sheet attached.</p>\n    <p><em>Size and mounting:</em> [dimensions], [total weight]. It clamps to the inside of the railing; nothing is drilled into or fixed to the building.</p>\n    <p><em>Power:</em> it plugs into the existing outdoor outlet at [location]. No extension cord and no change to the wiring.</p>\n    <p><em>Insurance:</em> my renters policy with [insurer] carries [amount] of liability coverage, and I will be responsible for any damage the system causes.</p>\n    <p><em>Removal:</em> I will remove it and restore the railing when I move out, or within [number] days if you need access for building work.</p>\n    <p>[If a state law applies: I am giving this notice under [statute], [number] days before installation on [date].]</p>\n    <p>I would be grateful for your written approval, or for any conditions you would attach.</p>\n  </div>\n  <p>The template is a starting point, not legal advice. Where a statute applies, match its wording: Virginia&rsquo;s notice, for example, must include documentation that the device meets the law&rsquo;s definition and identify the proposed location.</p>\n</section>"
+    },
+    {
+      "id": "if-no",
+      "toc": "If the answer is no",
+      "html": "        <section id=\"if-no\">\n  <h2><span class=\"sec-num\">6</span>If the answer is no</h2>\n<p>Outside the four states, a refusal usually stands until the lease changes. A no to a vague request is sometimes a yes to a specific one: a smaller system, a floor stand instead of a railing mount, proof of insurance, a firm removal commitment. Lease renewal is a natural moment to ask again.</p>\n  <p>Where one of the four laws covers you, the landlord can restrict but not refuse, and a dispute over what is &ldquo;reasonable&rdquo; goes through the ordinary landlord-tenant channels. In <a href=\"/states/new-york\">New York</a> the SUNNY Act has passed both chambers and {{sunny.phrase}}, and nothing in it limits a landlord&rsquo;s answer: <a href=\"/sunny-act\">renters will need permission after it is signed, as they do now</a>.</p>\n  <p>Before asking at all, check it is worth asking. Output depends mostly on how much sky the balcony sees, which is <a href=\"/balcony-sunlight\">a kilowatt-hour number, not a yes or no</a>; the <a href=\"/\">calculator</a> gives it for any US address, and a shaded balcony may not pay back in the time you expect to stay.</p>\n</section>"
+    }
+  ],
+  "faq": [
+    [
+      "Can my landlord stop me from installing balcony solar?",
+      "In most US states, yes: a plug-in kit attaches to a railing and outlet the landlord owns, so the lease and the landlord decide. As of September 2026 four states have signed laws limiting that power. Vermont's protection is in force; Virginia's and Colorado's start on 1 January 2027 and New Jersey's on 1 March 2027. Even there, the landlord may impose reasonable restrictions."
+    ],
+    [
+      "Which states give renters a right to install plug-in solar?",
+      "Vermont (in force since 1 July 2026, 10 days' notice), Virginia (from 1 January 2027, tenants of landlords owning more than four rental units, excluding ratio-utility-billed units), New Jersey (from 1 March 2027, tenants who pay their own electric bill, 14 days' written notice) and Colorado (from 1 January 2027, no unreasonable prohibition). Tenant bills in Illinois and North Carolina are pending but stalled."
+    ],
+    [
+      "Does New York's SUNNY Act let renters install balcony solar?",
+      "No. The SUNNY Act (S8512C / A9111C) has passed both chambers and {{sunny.phrase}}, and it contains no landlord or tenant provision. A New York renter would still need the landlord's permission after it is signed."
+    ],
+    [
+      "How many renters do state balcony solar tenant protections cover?",
+      "balco.nyc's count from the Census Bureau's 2024 American Community Survey (table B25003) puts 3,334,151 renter households, 7.2% of the US total, in Vermont, Virginia, New Jersey and Colorado; about 2.6 million (5.7%) narrowed to the tenants each law covers. Until 2027 only Vermont's 76,431, or 0.17%, are protected."
+    ],
+    [
+      "Does my landlord have to add an outdoor outlet for balcony solar?",
+      "No. None of the four state laws with tenant provisions requires a landlord to add wiring. Vermont's says a landlord shall not be compelled to perform or pay for electrical work, and Virginia's requires the landlord's express written approval for anything that alters wiring or electrical panels."
+    ],
+    [
+      "What should a balcony solar request to a landlord include?",
+      "The device's make, model, AC wattage and certification; its size and weight; how it mounts without drilling; which existing outdoor outlet it uses, with no extension cord; your renters insurance and acceptance of responsibility for damage; removal and restoration at move-out; and, where a state tenant law applies, the statute and notice period."
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://lis.blob.core.windows.net/files/1225204.PDF",
+      "title": "Virginia Acts of Assembly &mdash; 2026 Reconvened Session, Chapter 1052 (HB&nbsp;395)",
+      "note": "the enacted text of &sect;55.1-1212.1 (landlords owning more than four units; exterior of the premises; 7 days&rsquo; notice; tenant liable for damage; ratio-utility-billing exclusion), &sect;56-596.7 and enactment clause 4 (effective 1 January 2027); approved 22 April 2026."
+    },
+    {
+      "url": "https://lis.virginia.gov/bill-details/20261/HB395",
+      "title": "Virginia LIS &mdash; HB&nbsp;395, 2026 Regular Session",
+      "note": "bill history and versions; SB&nbsp;250 (Chapter 998) is identical."
+    },
+    {
+      "url": "https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf",
+      "title": "Vermont Legislature &mdash; Act No. 149 (S.202) as enacted",
+      "note": "30 V.S.A. &sect;256(g): 10 days&rsquo; notice, reasonable restrictions, proceed if no response, no compelled electrical work; the UL&nbsp;3700-or-equivalent definition; uncompensated exports; effective 1 July 2026."
+    },
+    {
+      "url": "https://legislature.vermont.gov/bill/status/2026/S.202",
+      "title": "Vermont Legislature &mdash; S.202 bill status",
+      "note": "signed by the Governor on 16 June 2026 as Act 149."
+    },
+    {
+      "url": "https://leg.colorado.gov/bill_files/116074/download",
+      "title": "Colorado General Assembly &mdash; HB26-1007, signed act",
+      "note": "C.R.S. 40-2-140(7): from 1 January 2027 a person may not &ldquo;unreasonably prohibit&rdquo; a device and an owner may impose reasonable restrictions; NRTL listing; section 6 effective date."
+    },
+    {
+      "url": "https://www.nj.gov/governor/news/2026/approved/20260901a.shtml",
+      "title": "Office of the Governor of New Jersey &mdash; signing of the Garden State Balcony Solar Act, 1 September 2026",
+      "note": "signing date; landlords and associations barred from broadly prohibiting devices; the advocate&rsquo;s &ldquo;roughly 40 percent&rdquo; figure qualified here."
+    },
+    {
+      "url": "https://www.capehart.com/new-jersey-becomes-the-10th-state-to-legalize-and-regulate-portable-solar-generation-devices/",
+      "title": "Capehart Scatchard &mdash; New Jersey becomes the 10th state to legalize and regulate portable solar generation devices",
+      "note": "legal summary of P.L.2026, c.82: no blanket bans for tenants who pay their own electric bills, 14 days&rsquo; written notice, reasonable restrictions, effective 1 March 2027."
+    },
+    {
+      "url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=3104&GAID=18&DocTypeID=SB&SessionID=114&GA=104",
+      "title": "Illinois General Assembly &mdash; SB&nbsp;3104 bill status (archived 15 June 2026)",
+      "note": "the official digest of the landlord provision and the 391&nbsp;W limit in Senate Committee Amendment 2; last action 22 May 2026, re-referred to Assignments."
+    },
+    {
+      "url": "https://www.ncleg.gov/Sessions/2025/Bills/House/PDF/H1129v0.pdf",
+      "title": "North Carolina General Assembly &mdash; HB&nbsp;1129 &ldquo;Balcony Solar&rdquo; as filed (archived)",
+      "note": "proposed G.S. 42-42.4: landlords owning more than four rental dwellings; 7 days&rsquo; notice; restrictions only for egress or unreasonable property damage."
+    },
+    {
+      "url": "https://olis.oregonlegislature.gov/liz/2026R1/Measures/Overview/HB4080",
+      "title": "Oregon Legislature (OLIS) &mdash; HB&nbsp;4080 overview (archived 10 June 2026)",
+      "note": "digest: limits restrictions by landlords, HOAs and condominium associations; still in House committee when the session ended."
+    },
+    {
+      "url": "https://lawfilesext.leg.wa.gov/biennium/2025-26/Pdf/Bills/Senate%20Bills/6050-S.pdf",
+      "title": "Washington Legislature &mdash; Substitute Senate Bill 6050 (2026)",
+      "note": "would have barred a landlord from requiring approval or fees for a portable solar generation device."
+    },
+    {
+      "url": "https://www.scstatehouse.gov/sess126_2025-2026/bills/4579.htm",
+      "title": "South Carolina Legislature &mdash; H&nbsp;4579",
+      "note": "proposed &sect;27-1-65: a lease or rental agreement must not prohibit a balcony solar panel; referred to committee with no further action."
+    },
+    {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C",
+      "title": "New York State Senate &mdash; S8512C (SUNNY Act)",
+      "note": "bill text with no landlord or tenant provision."
+    },
+    {
+      "url": "https://data.census.gov/table/ACSDT1Y2024.B25003",
+      "title": "US Census Bureau &mdash; ACS 2024 1-year, table B25003 (Tenure)",
+      "note": "renter-occupied housing units by state and for the US (46,101,640), the base of balco.nyc&rsquo;s coverage count."
+    },
+    {
+      "url": "https://data.census.gov/table/ACSDT1Y2024.B25032",
+      "title": "US Census Bureau &mdash; ACS 2024 1-year, table B25032 (Tenure by Units in Structure)",
+      "note": "Virginia renters in buildings of five or more units (555,373), the proxy for the more-than-four-units rule."
+    },
+    {
+      "url": "https://data.census.gov/table/ACSDT1Y2024.B25069",
+      "title": "US Census Bureau &mdash; ACS 2024 1-year, table B25069 (Inclusion of Utilities in Rent)",
+      "note": "New Jersey renters who pay extra for at least one utility (1,152,187) and for none (126,937)."
+    },
+    {
+      "url": "https://www.census.gov/newsroom/press-releases/2026/iphi-acs-media-advisory.html",
+      "title": "US Census Bureau &mdash; media advisory on 2026 releases, 4 August 2026",
+      "note": "that the 2025 ACS 1-year release date &ldquo;is being determined,&rdquo; which is why 2024 figures are used."
+    }
+  ],
+  "disclaimer": "This page is maintained by <a href=\"/\">balco.nyc</a>, an independent balcony-solar calculator. It is not legal advice. Statutes, bills and effective dates change; check the enacted text for your state, and your lease, before relying on this page."
+}

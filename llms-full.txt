@@ -190,6 +190,154 @@ Unshaded, a vertical south-facing railing at New York's City Hall makes about 60
 
 ---
 
+# Condo, co-op and HOA rules: do solar-access laws cover balcony solar?
+
+URL: https://balco.nyc/balcony-solar-condo-hoa  
+Last reviewed: 2026-09-23
+
+Rarely. balco.nyc read ten state solar-access statutes against a plug-in panel clamped to a condo or co-op balcony railing: one clearly covers it (Vermont, and only since a July 2026 amendment), two are unclear and seven do not. Most protect roofs or the owner’s own property and leave associations in control of common elements, which is where condo balconies commonly sit. Of the nine plug-in solar laws enacted so far, balco.nyc’s state tracker finds three that curb association bans (New Jersey, Vermont and, from 2027, Colorado), one that expressly preserves them (Virginia) and five that say nothing.
+
+## Why solar-access laws mostly stop at the balcony
+
+Solar-access laws, sometimes called solar-rights laws, are old and were written for one situation: a homeowner who wants panels on the roof of a house they own, and an association that wants to stop it. Florida’s dates from 1980. DSIRE, the state-policy database run by the NC Clean Energy Technology Center, counts solar access or easement laws in **45 states plus DC** as of March 2026, but that figure combines two different things. Easement statutes only let neighbors record an agreement not to block sunlight. Access statutes void association rules. Only the second kind helps with a board.
+
+Three things in an access statute decide whether a railing panel is inside it:
+
+- **What it protects.** Most define the device broadly enough to include a plug-in panel. New York’s does not: it covers only a system “installed on a rooftop”.
+
+- **Where it applies.** Most protect installations on the owner’s own property, then give the association express control of the common elements.
+
+- **Whom it binds.** Most name homeowners’ and condominium associations. Few mention co-ops.
+
+The second point sinks most balcony claims. In a condominium you own your unit plus a share of everything else, and the balcony, its slab and its railing are commonly a *limited common element*: owned in common, reserved for your use. California makes that the default. Unless the declaration says otherwise, balconies and patios outside a unit are “exclusive use common area” (Civil Code §4145). Colorado’s 2026 plug-in law writes of a “limited common element patio, deck, or balcony”. A statute that protects the owner’s property and leaves common elements to the association therefore protects the roof of a house, not the railing of a condo. A co-op is further removed. The corporation owns the building and you hold shares and a proprietary lease, so there is no real property of yours for a statute to protect.
+
+If you own a house or townhouse under an HOA and the deck is part of your own lot, several of these laws do reach it, subject to “reasonable” restrictions. This page is mainly about condos and co-ops, where the answer is mostly no.
+
+> **Not legal advice.** This page summarizes statutes as written on 23 September 2026. Your declaration, bylaws or proprietary lease, and how your state’s courts read them, decide your case.
+
+## Ten statutes, read against a railing panel
+
+balco.nyc read the current text of each statute and asked one question: would a plug-in panel clamped to the railing of a condo or co-op balcony plausibly fall inside it? For each we noted how the statute defines the protected system, where it says the protection applies, and what it leaves to the association. “Unclear” means the text can reasonably be read either way. We did not survey case law, so a court in your state may already have settled a point we mark as open.
+
+| State and statute | What it protects | Where it stops | A railing panel in a condo or co-op? |
+|---|---|---|---|
+| California, Civil Code §§714, 714.1, 4746 | Any “solar energy system”, defined broadly enough to include a plug-in panel. Governing-document rules that “effectively prohibit or restrict” one are void. A decision must be in writing, and an application not denied within 45 days is deemed approved. | In common areas the association may limit installations to “those systems approved by the association”. A balcony is common area unless the declaration says otherwise. The firmest protections (§714.1(b), §4746) are written for roofs. Stock cooperatives are covered. | Partly. The panel is inside the statute and the approval rules apply, but on the balcony the association keeps the power to approve. |
+| Florida, §163.04 | Solar collectors and “other energy devices based on renewable resources”. Permission may not be denied “within the boundaries of a condominium unit”. | “This section shall not apply to patio railings in condominiums, cooperatives, or apartments.” | No for a railing mount. A panel standing inside the unit’s legal boundary is a closer question. |
+| Texas, Property Code §202.010 | Any “solar energy device”. The chapter’s definitions include condominium regimes. | An association may prohibit a device on property it owns or maintains, on property owned in common, or anywhere on the owner’s property except the roof or a fenced yard or patio. | No. |
+| Arizona, A.R.S. §§33-1816, 33-439 | A “solar energy device”, defined to include one serving a “multifamily structure”. Planned-community HOAs may not prohibit one. Covenants that “effectively prohibit” one are void. | §33-1816 excludes condominiums, leaving condo owners only §33-439, which says nothing about common elements. Arizona has no plug-in law, so utility rules still apply. | Unclear for condos. More plausible in a planned-community HOA. |
+| Colorado, C.R.S. 38-30-168 | Covenants that restrict a “renewable energy generation device” are void. Reasonable aesthetic limits are allowed. | Confers no right to place a device on “a limited common element or general common element”. | No, today. From 1 January 2027 the plug-in law overrides this for limited common elements (section 3). |
+| North Carolina, G.S. 22B-20 | Solar collectors on “residential property”. | “Residential property” excludes a condominium “in a multi-story building containing units having horizontal boundaries”. Covenants may also ban collectors visible from the ground on a facade facing common or public areas. | No. |
+| Virginia, Code §55.1-1951.1 (condos), §55.1-1820.1 (HOAs) | A “solar energy collection device” on “that owner’s property”. | Protected only “unless the recorded declaration” prohibits it. The association “may prohibit or restrict” devices on common elements. | No. |
+| Maryland, Real Property §2-119 | A “solar collector system” on “the roof or exterior walls” the owner owns or has exclusive use of. Condo bylaws and rules are covered. | An association “may prohibit or restrict” installation in common elements. | Unlikely. A railing is neither roof nor wall, and is usually a common element. |
+| New York, Real Property Law §342 | A “solar power system”, defined as one “installed on a rooftop”, against HOA rules. | Associations may ban systems on property they own or members own in common. Condos and co-ops are not mentioned. | No. A railing is not a rooftop. |
+| Vermont, 27 V.S.A. §544, amended by Act 149 | Solar collectors and, since 1 July 2026, plug-in devices “appurtenant to buildings”. Covenants may not prohibit them. | The old carve-out for “patio railings in condominiums, cooperatives, or apartments” now ends “except for a plug-in photovoltaic device”. | Yes, for a device that meets the Act’s definition (section 3). |
+
+The tally is **one yes, two unclear and seven that do not** (or, in Maryland’s case, almost certainly do not). The one yes is recent and deliberate. Florida and Vermont had the same railing carve-out, word for word. Vermont amended its version in 2026 to except plug-in devices; Florida has not. Where a statute is silent about balconies the usual pattern decides it: protection for the owner’s property, association control of the common elements.
+
+## The plug-in laws that reach associations
+
+The new plug-in solar laws are mostly about the utility: they stop it requiring approval or an interconnection agreement for a small device. balco.nyc’s state tracker counts nine enacted as of 23 September 2026. Five — [Utah](https://balco.nyc/states/utah), [Maine](https://balco.nyc/states/maine), Maryland, [Connecticut](https://balco.nyc/states/connecticut) and [New Hampshire](https://balco.nyc/states/new-hampshire) — say nothing about associations. Maine comes closest. A customer who installs on “a structure the customer does not own” must protect its integrity and restore it on removal, which fits a condo balcony exactly but gives no right to use one. The other four go in different directions:
+
+- **[New Jersey](https://balco.nyc/states/new-jersey)** (P.L.2026, c.82, signed 1 September 2026, effective 1 March 2027). Homeowners’ associations, condominium associations and cooperative housing corporations may not enforce governing documents that bar an owner or tenant from placing a device on the exterior of their premises. They keep “reasonable restrictions concerning the size, placement, or manner of placement of a portable solar generation device on the exterior of a unit owner’s or tenant’s premises”, and contrary provisions of a master deed or bylaws are void. Residents give 14 days’ written notice.
+
+- **Vermont** (Act 149, in force 1 July 2026). The covenant rule in the table above now reaches railings, but only for a device that meets the Act’s definition: certified to UL 3700 “or an equivalent certification”, on a smart-metered supply, and “temporarily but securely attached”. As of September 2026 no complete plug-in system has been certified to UL 3700, so which products qualify is for now an open question.
+
+- **Colorado** (HB26-1007; the association clauses apply from 1 January 2027). A covenant that “unreasonably” prohibits a device is void, and an owner “may install, use, or operate a device on real property that is a limited common element”. The association may require the device to be reasonably secured “to their unit or any limited common element patio, deck, or balcony”, and may put liability, costs and indemnity on the owner. It is the most balcony-specific text in any US statute we have read. Its express permission covers limited common elements, not general ones.
+
+- **Virginia** (Chapters 1052 and 998, from 1 January 2027). The section that stops towns banning the devices says: “Nothing in this section shall be construed to supersede or limit” condominium instruments, the cooperative instruments of a co-op, or a property owners’ association declaration. Tenants of landlords with more than four units get a right to install. Condo owners do not, and a tenant renting a condo unit can be approved by the landlord and still refused by the association.
+
+Both bills awaiting a governor are silent on associations. New York’s SUNNY Act has passed both chambers and awaits the Governor's signature. California’s SB 868 was presented to Governor Newsom on 31 August, with a 30 September deadline. Two bills that would have limited association rules died in 2026: [Oregon](https://balco.nyc/states/oregon)’s HB 4080 and [South Carolina](https://balco.nyc/states/south-carolina)’s H 4579. [Hawaii](https://balco.nyc/states/hawaii)’s condo-only SB 2902 also died, and would not have overridden association rules anyway.
+
+**What the new right is worth.** balco.nyc’s PVWatts runs for each state’s largest city put an unshaded, south-facing 800 W railing system, after the site’s 0.95 railing factor, at 676.6 × 0.95 = **643 kWh** a year in Newark, 658 in Burlington and 805 in Denver. At each state’s EIA average residential price over the 12 months to June 2026 (23.81¢, 23.65¢ and 16.45¢), that is roughly **$153, $156 and $132** a year. Those are ceilings, not expectations: no shade, the best orientation, and state averages that include fixed charges and so overstate what a saved kWh is worth. The value of these laws is less the money than that they turn a flat no into a negotiation about placement.
+
+## Co-ops, condos and New York City
+
+For a New York City apartment none of section 2 helps. The state’s solar-rights statute, Real Property Law §342 (enacted in August 2021), covers rooftop systems and homeowners’ associations and mentions neither condos nor co-ops. The [SUNNY Act](https://balco.nyc/sunny-act), which has passed both chambers and awaits the Governor's signature, would remove the utility barrier and nothing else. Its text says nothing about landlords, associations, co-ops or leases. In New York City, permission is entirely the board’s to give.
+
+**Co-ops are not HOAs.** A co-op is a corporation that owns the building. You own shares and hold a proprietary lease, and the lease and house rules typically require the board’s written consent for alterations. Expect the request to become an alteration agreement. A condo is closer to an HOA. A board of managers administers the declaration and bylaws, and the balcony is often a limited common element, so a railing mount is a change to property you do not own alone.
+
+**Courts defer to the board.** New York reviews co-op and condo board decisions under the business judgment rule set out in *Levandusky v. One Fifth Avenue Apartment Corp.* (1990). A decision made in good faith, within the board’s authority and for the building’s purposes will generally stand. Later cases carve out decisions with no legitimate relationship to the building’s welfare, or ones that single out an individual. There is no statute for a shareholder to invoke against a refusal.
+
+**Why the board cares.** Owners of buildings over six stories must have their exterior walls and “appurtenances” inspected every five years under the city’s Façade Inspection & Safety Program. The rule’s list of appurtenances includes “railings” and “any equipment attached to or protruding from the facade”. A panel clamped to a railing plausibly falls into the second category. The building’s inspector would then have to examine it, and if it came loose it would be the building’s problem. Landmarked buildings add Landmarks Preservation Commission review. The practical detail is on [how to install balcony solar](https://balco.nyc/install-balcony-solar).
+
+## How to ask a board
+
+Where a statute does not decide it, which is most places, the board does. A vague request invites a vague refusal, so answer the board’s questions before it asks them:
+
+- **Read your documents first.** Condo owners need the declaration, bylaws and rules. Co-op shareholders need the proprietary lease and house rules. Look for clauses on alterations, the exterior, terraces and anything attached to railings. In New Jersey, Vermont, Colorado or California, quote the specific statute text above. In New York, do not lead with the law, because there is none on your side.
+
+- **One page on the hardware.** Name the product and its certification listing, the panel’s size and weight, and how it attaches. The strongest answers are inside the railing, clamped rather than drilled, with a secondary tether. Say which outlet the cable reaches and by what route, and how the whole thing comes down.
+
+- **Offer the paperwork.** Offer an alteration agreement with an indemnity, and a certificate of insurance. California’s rule for systems on a shared condo roof is a usable model: liability coverage kept in force, with a certificate within 14 days of approval and every year after (§4746). Commit to removal and restoration at your own cost on sale, on request, and for facade inspections or repairs.
+
+- **An engineer’s letter if asked.** The install guide recommends one anyway for glass or aged railings. Weigh its cost against the money at stake. balco.nyc’s New York City band is 400 to 900 kWh a year for an 800 W system, roughly $136 to $306 at Con Edison’s 34¢ marginal rate. Conditions costing more than a year or two of that change the decision. [The calculator](https://balco.nyc/) gives the figure for your own balcony.
+
+- **Time the request.** In New York you can ask for approval conditional on the SUNNY Act taking effect, since the utility barrier stays until it does. In Colorado and New Jersey, the dates in section 3 change what a board is allowed to refuse.
+
+- **Get the answer in writing**, including any conditions, and keep it with your lease or deed.
+
+If the board says no in a state without a plug-in association clause, that is usually the end of it. A floor-standing panel that attaches to nothing still needs an outdoor outlet and still falls under the building’s rules. It is a better request, not a way around the board. If the answer is a firm no, [renters’ options](https://balco.nyc/balcony-solar-renters) and [the state laws side by side](https://balco.nyc/balcony-solar-laws-compared) show what may change and when.
+
+## Common questions
+
+**Can my HOA or condo association ban solar panels on my balcony?**
+
+In most states, yes, if the balcony is a common element, which it commonly is in a condominium. Solar-access laws generally protect roofs or the owner's own property and let associations prohibit or restrict devices on common elements. The exceptions for plug-in panels are Vermont (since 1 July 2026), New Jersey (from 1 March 2027) and Colorado (from 1 January 2027), where associations may set reasonable limits on placement but may not simply ban the devices. This is a summary of statutes, not legal advice.
+
+**Does my state's solar access law protect a balcony solar panel?**
+
+Usually not for a condo or co-op balcony. balco.nyc read ten state statutes (California, Florida, Texas, Arizona, Colorado, North Carolina, Virginia, Maryland, New York and Vermont) against a railing-mounted plug-in panel: only Vermont's clearly covers it, California's and Arizona's are unclear, and the other seven either exclude condo railings, protect only roofs, or let associations control common elements. Florida's statute says outright that it does not apply to patio railings in condominiums, cooperatives or apartments.
+
+**Can a New York City co-op board refuse balcony solar?**
+
+Yes. New York's solar-rights statute, Real Property Law section 342, covers only rooftop systems and homeowners' associations and does not mention co-ops, and the SUNNY Act, which awaits the Governor's signature, would give no right to install. Co-op alterations are governed by the proprietary lease and house rules, and New York courts review board decisions under the business judgment rule, so a refusal made in good faith and within the board's authority will generally stand.
+
+**Does the SUNNY Act let me install balcony solar in my co-op or condo?**
+
+No. The SUNNY Act (S8512C / A9111C) has passed both chambers of the New York Legislature and awaits the Governor's signature. It would exempt small plug-in devices from utility interconnection and approval, but its text says nothing about landlords, associations, co-ops or leases, so board permission would still be required.
+
+**Which states stop condo associations from banning plug-in solar?**
+
+As of 23 September 2026, three: Vermont, whose covenant rule has covered qualifying plug-in devices on condo, co-op and apartment patio railings since 1 July 2026; New Jersey, where associations may not enforce bans on exterior placement from 1 March 2027; and Colorado, where from 1 January 2027 an owner may install a device on a limited common element such as a balcony. Virginia's law expressly does not override condominium, co-op or HOA documents, and the other five enacted plug-in laws are silent on associations.
+
+**What should I give my board when asking to install balcony solar?**
+
+A one-page description of the product and its certification, its size and weight, how it attaches (ideally inside the railing, clamped not drilled, with a secondary tether), which outlet it uses and how it is removed. Offer an alteration agreement with an indemnity, a certificate of liability insurance, and a commitment to remove it and restore the railing at your own cost on sale, on request or for facade work. Get the answer and any conditions in writing.
+
+## Sources
+
+- [DSIRE (NC Clean Energy Technology Center) — Solar Access and Easement Policy map, March 2026](https://ncsolarcen-prod.s3.amazonaws.com/wp-content/uploads/2026/03/DSIRE_Solar_Access_Laws_March2026.pdf): the compilation used as a starting point: solar access or easement laws in 45 states plus DC, a count that combines both kinds.
+- [California Legislative Information — Civil Code §714](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=714.): governing-document rules that effectively prohibit or restrict a solar energy system are void; written decisions and the 45-day deemed approval.
+- [California Legislative Information — Civil Code §714.1](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=714.1.): an association may restrict installations in common areas to systems it approves; the rooftop-only protections in subdivision (b).
+- [California Legislative Information — Civil Code §4145](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=4145.): balconies and patios outside a unit are exclusive use common area unless the declaration provides otherwise.
+- [California Legislative Information — Civil Code §4746](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=4746.): rules for solar on a multifamily common-area roof, including liability coverage and a certificate of insurance within 14 days and annually.
+- [The Florida Senate — Florida Statutes §163.04](https://www.flsenate.gov/Laws/Statutes/2025/163.04): the protection within condominium unit boundaries, and the exclusion of patio railings in condominiums, cooperatives or apartments.
+- [Texas Legislature — Property Code Chapter 202 (§§202.001, 202.010)](https://tcss.legis.texas.gov/resources/PR/htm/PR.202.htm): the exceptions letting an association prohibit devices on common property and off the roof or fenced yard or patio; condominium regimes within the definitions.
+- [Arizona Legislature — A.R.S. §33-1816](https://www.azleg.gov/ars/33/01816.htm): planned-community associations may not prohibit a solar energy device; reasonable placement rules allowed.
+- [Arizona Legislature — A.R.S. §33-1802](https://www.azleg.gov/ars/33/01802.htm): the planned-community definition excludes condominiums governed by chapter 9.
+- [Arizona Legislature — A.R.S. §33-439](https://www.azleg.gov/ars/33/00439.htm): covenants that effectively prohibit a solar energy device are void, with no reference to common elements.
+- [C.R.S. 38-30-168 (text of the Colorado Revised Statutes, via Public.Law)](https://colorado.public.law/statutes/crs_38-30-168): no right to place a device on a limited or general common element (subsection 3).
+- [Colorado General Assembly — HB26-1007, signed act](https://leg.colorado.gov/bill_files/116074/download): C.R.S. 40-2-140(7): from 1 January 2027, unreasonable prohibitions void and devices allowed on limited common elements, including balconies.
+- [North Carolina General Assembly — G.S. 22B-20](https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_22B/GS_22B-20.html): the exclusion of multi-story condominiums from residential property, and the facade exception.
+- [Code of Virginia — §55.1-1951.1 (Condominium Act)](https://law.lis.virginia.gov/vacode/title55.1/chapter19/section55.1-1951.1/): protection only on the owner’s property and only unless the declaration prohibits; associations may prohibit on common elements.
+- [Code of Virginia — §55.1-1820.1 (Property Owners’ Association Act)](https://law.lis.virginia.gov/vacode/title55.1/chapter18/section55.1-1820.1/): the same rule for property owners’ associations.
+- [Virginia Acts of Assembly 2026, Chapter 1052 (HB 395)](https://lis.blob.core.windows.net/files/1225204.PDF): the plug-in law, effective 1 January 2027, and its clause preserving condominium, cooperative and association instruments.
+- [Maryland General Assembly — Real Property §2-119](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=grp&section=2-119&enactments=false): protection limited to roofs or exterior walls the owner owns or has exclusive use of; associations may prohibit in common elements.
+- [New York State Senate — Real Property Law §342](https://www.nysenate.gov/legislation/laws/RPP/342): a solar power system is defined as one installed on a rooftop; associations may prohibit systems on common property.
+- [New York State Senate — S8512C (SUNNY Act)](https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C): status, and a text that contains no landlord, association, co-op or lease provision.
+- [Vermont Legislature — Act 149 (S.202) as enacted](https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf): the amended 27 V.S.A. §544 railing carve-out, the device definition (UL 3700 or equivalent, smart meter) and the 1 July 2026 effective date.
+- [State of New Jersey, Office of the Governor — Garden State Balcony Solar Act signed, 1 September 2026](https://www.nj.gov/governor/news/2026/approved/20260901a.shtml): the signing, and that associations may not broadly prohibit the devices.
+- [Capehart Scatchard — New Jersey becomes the 10th state to legalize and regulate portable solar generation devices](https://www.capehart.com/new-jersey-becomes-the-10th-state-to-legalize-and-regulate-portable-solar-generation-devices/): the association provisions: no blanket bans, reasonable limits on size and placement, 14 days’ notice, contrary governing documents void.
+- [pv magazine USA — New Jersey legalizes plug-in solar up to 1,200 W](https://pv-magazine-usa.com/2026/09/01/new-jersey-legalizes-plug-in-solar-up-to-1200-w/): the quoted reasonable-restrictions language and the 1 March 2027 effective date.
+- [Maine Legislature — LD 1730 (chapter 644), enacting 35-A MRSA §3475](https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132): subsection 8: protect and restore a structure the customer does not own; no right to install.
+- [Herrick, Feinstein (New York Law Journal) — Board repair obligations, revisited](https://www.herrick.com/publications/board-repair-obligations-revisited/): the business judgment rule applies to co-ops and condos (Levandusky, 1990), and its limits.
+- [NYC Department of Buildings — 1 RCNY §103-04](https://www.nyc.gov/assets/buildings/rules/1_RCNY_103-04.pdf): the definition of appurtenance, including railings and any equipment attached to or protruding from the facade.
+- [NYC Department of Buildings — Façade Inspection & Safety Program filing instructions](https://www.nyc.gov/site/buildings/safety/facade-inspection-safety-program-fisp-filing-instructions.page): buildings over six stories inspected every five years.
+- [NREL PVWatts Calculator](https://pvwatts.nlr.gov/): the V8 model behind balco.nyc’s per-state runs for Newark, Burlington and Denver.
+- [EIA — Form EIA-861M monthly sales and revenue](https://www.eia.gov/electricity/data/eia861m/): state average residential prices, 12 months to June 2026, which include fixed charges.
+
+---
+
 # What does a balcony solar kit cost in NYC?
 
 URL: https://balco.nyc/balcony-solar-cost  
@@ -481,6 +629,171 @@ Accurate enough to tell a 600 kWh balcony from a 200 kWh one. Against PVWatts, b
 
 ---
 
+# What the US plug-in solar laws actually say, provision by provision
+
+URL: https://balco.nyc/balcony-solar-laws-compared  
+Last reviewed: 2026-09-23
+
+Nine US states have signed plug-in solar laws, and five are in force today: Utah, Maine, Colorado, Maryland and Vermont. All nine stop the utility from requiring its approval and eight cap a device at 1,200 W, but only four limit what a landlord, association or town can do, and the certification wording differs enough that a kit can qualify in one state and not the next. balco.nyc’s compilation of the legislature pages, weighted by Census population, puts 5.2% of US residents under a law in force today, and 29.5% if every signed law and the New York and California bills take effect.
+
+## The count on 23 September 2026
+
+balco.nyc checked plug-in solar legislation in all 50 states and the District of Columbia on 23 September 2026, from each legislature’s own bill pages and enacted text rather than third-party trackers, which disagree with the primary sources on several effective dates. (Trackers list Maryland’s as taking effect on signing or on 1 October; the act and the state’s fiscal note both say 1 July 2026.) The result:
+
+| Status | Count | Where | Share of US residents |
+|---|---|---|---|
+| In force | 5 | Utah, Maine, Colorado, Maryland, Vermont | 5.2% |
+| Signed, not yet in force | 4 | Connecticut (1 Oct 2026), Virginia and New Hampshire (1 Jan 2027), New Jersey (1 Mar 2027) | 6.9% |
+| Passed, awaiting a governor | 2 | New York, California | 17.4% |
+| Bill pending | 7 | District of Columbia, Illinois, Massachusetts, Michigan, North Carolina, Ohio, Pennsylvania | 19.6% |
+| Bill died, 2025–26 | 18 | Alaska, Arizona, Delaware, Georgia, Hawaii, Idaho, Indiana, Iowa, Minnesota, Missouri, New Mexico, Oklahoma, Oregon, Rhode Island, South Carolina, Washington, West Virginia, Wyoming | 21.7% |
+| No bill found | 15 | Alabama, Arkansas, Florida, Kansas, Kentucky, Louisiana, Mississippi, Montana, Nebraska, Nevada, North Dakota, South Dakota, Tennessee, Texas, Wisconsin | 29.3% |
+
+The shares are balco.nyc’s arithmetic: each jurisdiction’s July 2025 Census Bureau population estimate, summed by status, over the 341.8 million total for the 50 states and DC (rounded). Read cumulatively, **5.2% of US residents** live where a plug-in law is in force today, 12.1% will once New Jersey’s starts on 1 March 2027, and 29.5% would if New York and California enact theirs. Sources for every state are on [the states page](https://balco.nyc/states).
+
+> **No law is not the same as a ban.** Before its act passed, Maryland’s legislative analysts noted that balcony solar was not prohibited there, but that utilities “frequently require customers to enter into interconnection agreements” first. That is broadly the position in the 42 jurisdictions without a signed law. A plug-in law takes the device out of that process.
+
+## “Exempt from interconnection” is not a right to install
+
+Every plug-in law can answer two separate questions. Most answer only the first.
+
+**The utility question** is whether you need your power company’s permission. A device that feeds power into your wiring while the grid is live is, in utility rules, a small generator, which normally needs an interconnection application and agreement before it runs. All nine signed laws bar the utility from requiring its approval, charging a fee or demanding extra equipment; eight expressly free the device from interconnection agreements or review, and Colorado gets there by listing what the utility may not demand. That is “exempt from interconnection”, and it is the whole of what Utah, Maine, Maryland, Connecticut and New Hampshire do.
+
+**The property question** is whether anyone else can stop you: a landlord, a lease, a condominium declaration, a homeowners’ association, a town’s zoning. An interconnection exemption does not touch any of it. A *right to install* is a separate clause that makes some of those prohibitions unenforceable, usually while allowing “reasonable” limits on size and placement. Only Vermont, Virginia, New Jersey and Colorado have one.
+
+Two points get lost in between. **Notice is not approval**: Maryland and Virginia require notice to the utility before installing, Maine within 30 days above 420 W, and none lets the utility refuse a compliant device. And **codes still apply**: Connecticut says its exemption does not reach the building and fire codes or “any local ordinance or regulation”, and Colorado and New Jersey require installation to meet the fire, electrical or construction codes.
+
+## The utility side, law by law
+
+The first matrix is what each enacted text says about the device and the utility, quoting the statute where the wording matters. “Not addressed” means we read the provision and it is silent; “unclear” means it says something that does not settle the point. NRTL is a nationally recognized testing laboratory; NEC the National Electrical Code. The two bills awaiting a governor are in italics; they are not law.
+
+| Law | In force | Size cap, as worded | Certification wording | Utility notice | Net metering and exports |
+|---|---|---|---|---|---|
+| UtahHB 340 | 7 May 2025 | 1,200 W “maximum power output”; AC or DC not stated | “Certified by Underwriters Laboratories or an equivalent” NRTL; NEC | None | “Not subject to” net metering |
+| MaineLD 1730 | 29 Jul 2026 | 1,200 W AC inverter output per address; above 420 W, licensed electrician and dedicated circuit | “In accordance with UL 3700”, a comparable NRTL standard, or configured per the NEC | Within 30 days, above 420 W only | “May not be used for net energy billing” |
+| ColoradoHB26-1007 | 12 Aug 2026; property rules 1 Jan 2027 | 1,920 W “to the electric grid”; one system per address | “Labeled and listed” by an NRTL; from 2027, over 391 W must be “UL labeled and listed” to be sold | Utility may ask for presence and size | Not addressed |
+| MarylandHB 1532 | 1 Jul 2026 | 1,200 W supplied back to the building; one per meter | “Certified by Underwriters Laboratory or an equivalent” NRTL | Before installing, with a safety and capacity certification | Outside net metering; no renewable energy credits |
+| VermontAct 149 | 1 Jul 2026 | 1,200 W combined inverter capacity per meter; smart meter required | “Complies with UL 3700” or an equivalent certification; IEEE 1547 | None | Ineligible; exports “shall not be compensated” |
+| ConnecticutPA 26-127 | 1 Oct 2026 | 1,200 W “maximum power output”; one per meter | UL or an equivalent NRTL, “and meets” UL 1741; IEEE 1547; NEC | None | Must warn that excess is “charged to the customer as usage” without a net-metering meter |
+| VirginiaHB 395 / SB 250 | 1 Jan 2027 | 1,200 W per customer or multifamily unit | An NRTL (29 CFR 1910.7) or equivalent; NEC | State form before installing; utility has 15 days to query it | Outside net metering |
+| New HampshireSB 540 | 1 Jan 2027 | 1,200 W AC inverter output; one per metered customer | An NRTL, to “nationally recognized safety standards” (none named) | Optional, after installation | Unclear: no credit provided |
+| New JerseyS2368 / A4836 | 1 Mar 2027 | 1,200 W combined per address or dwelling unit | “In accordance with” UL 3700 or “a comparable standard”, by an NRTL | None | Outside net-metering requirements; credit not addressed |
+| New YorkSUNNY Act (bill) | 90 days after enactment | 1,200 W AC inverter nameplate, to the grid | NRTL listing “as a complete plug-in photovoltaic system” | Within 30 days | “Uncompensated” unless the owner opts in |
+| CaliforniaSB 868 (bill) | 1 Jan 2027 if enacted; exemption ends 2030 | 1,200 W aggregated AC per dwelling | “Certified as a plug-in photovoltaic system” by UL or an NRTL | Utility may require online registration | Not addressed |
+
+The caps do not all measure the same thing. Maine, Vermont, New Hampshire and California’s bill cap inverter AC output, so panel wattage behind a smaller inverter does not count; Maryland, Colorado and New York’s bill cap what is supplied back to the building or grid; Utah, Connecticut and New Jersey say only “maximum power output”. Several also limit the number of devices: one per meter in Maryland, Connecticut and New Hampshire, one system per address in Colorado.
+
+## The property side: landlords, associations and towns
+
+The second matrix is where the laws genuinely diverge. Five of the nine say nothing about who else may stop you; four do, each in its own way.
+
+| Law | Landlord and tenant | HOA, condo and co-op | Local government |
+|---|---|---|---|
+| Utah | Not addressed | Not addressed | Not addressed |
+| Maine | No right; on a structure you do not own you must protect it, meet building, fire and zoning codes, and restore it | Not addressed | Not addressed |
+| Colorado | From 2027, no “unreasonable” prohibition; the owner may set reasonable limits, including prior notice | From 2027, unreasonable covenants are void; may install on a limited common element such as a balcony | Fire and local building codes apply; the 2027 bar binds any “person”, which includes governments (our reading) |
+| Maryland | Not addressed | Not addressed | Not addressed in §7-321 |
+| Vermont | 10 days’ notice; the landlord may set reasonable restrictions; silence lets the tenant proceed | Covenants may not prohibit, including on condo, co-op and apartment patio railings | Zoning bylaws may not regulate them |
+| Connecticut | Not addressed | Not addressed | Local ordinances and codes still apply |
+| Virginia | Landlords with more than four units may not prohibit on the tenant’s exterior; reasonable limits; 7 days’ notice | Not overridden: association, condo and co-op instruments preserved | May not prohibit on residential structures; height, setback and historic rules apply |
+| New Hampshire | Not addressed | Not addressed | Not addressed |
+| New Jersey | May not bar tenants who pay their own electric bill, including on a balcony or patio; reasonable limits; 14 days’ notice | May not enforce bans on exterior placement; reasonable limits allowed | May not prohibit, or require a permit, fee or approval |
+| New York (bill) | Not addressed | Not addressed | Not addressed |
+| California (bill) | Not addressed | Not addressed | Not addressed |
+
+The four rights are not one right. Vermont’s turns on notice: silence from the landlord lets the tenant proceed. Virginia’s covers only tenants of landlords with more than four units, and leaves condominium and association documents intact. New Jersey’s covers tenants who pay their own electric bill and also binds associations and towns. Colorado’s bars “unreasonable” prohibitions from 1 January 2027; our reading that it reaches towns rests on state law defining a “person” to include governmental subdivisions.
+
+On balco.nyc’s population arithmetic those four states hold **7.3%** of US residents, but three of the four rights are not yet operative. The only one in force today is Vermont’s, covering about 0.2%. What this means in practice is covered in [balcony solar for renters](https://balco.nyc/balcony-solar-renters) and [condos, co-ops and HOAs](https://balco.nyc/balcony-solar-condo-hoa).
+
+## Why a kit that qualifies in one state may not qualify in the next
+
+Each law protects only a device that meets its own definition, and the definitions differ most in the certification clause:
+
+- **Certified by a lab, standard unnamed:** Utah, Maryland, Virginia and Colorado. None says certified *to what*, or whether listings of the separate components count.
+
+- **A component standard, or a description of one:** Connecticut adds UL 1741, the inverter standard; New Hampshire asks for “nationally recognized safety standards” without naming one.
+
+- **UL 3700 or something comparable:** Maine, Vermont and New Jersey. Maine and New Jersey identify UL 3700 by its title, an “Outline of Investigation”, and Maine also accepts a system configured to the electrical code.
+
+- **Certified as a complete system:** New York’s bill and California’s.
+
+The spread matters because, as of September 2026, no complete plug-in system has been certified to UL 3700; the components (panels, microinverters) carry their own listings. A kit sold with a UL 1741-listed microinverter and listed panels may therefore satisfy the unnamed-standard wording of Utah or Maryland, while in Vermont the question becomes what counts as an “equivalent certification”, and under New York’s or California’s bill whether any complete-system listing exists for it at all. The statutes do not answer those questions and we cannot either. The standard itself is covered in [what UL 3700 is, and is not](https://balco.nyc/ul-3700-plug-in-solar-certification), and the hazards these clauses target in [is plug-in solar safe?](https://balco.nyc/is-plug-in-solar-safe)
+
+Certification is not the only trap. A device sized to Colorado’s 1,920 W cap falls outside every other state’s definition. An 800 W kit that meets Utah’s definition with no installer requirement needs, in Maine, a licensed electrician and a dedicated circuit. Vermont allows devices only on smart-metered services. And a second unit behind the same meter in Connecticut or Maryland takes you outside the law even if each unit qualifies.
+
+## The patterns: 1,200 W, 391 W, and exports nobody pays for
+
+**1,200 W is the default.** Of the 36 jurisdictions where balco.nyc found a plug-in bill in 2025–26, 34 wrote in a wattage figure, and 30 of those chose 1,200 W, including eight of the nine signed laws and both bills now with a governor. The exceptions: Colorado’s 1,920 W, also proposed by [New Mexico](https://balco.nyc/states/new-mexico)’s SB 157 before it died; [Delaware](https://balco.nyc/states/delaware)’s 800 W bill; and Illinois. Utah’s 2025 law, the first, is visibly the template: Connecticut, Virginia and New Jersey reuse its definition almost word for word, down to “intended primarily to offset part of the customer’s electricity consumption”.
+
+**391 W is the other number.** Colorado, Maryland and Virginia exempt devices at or below 391 W from code or listing provisions that would require rewiring; New Jersey sets that line at 400 W, and Maine’s unconditional tier stops at 420 W. None of the texts explains 391, and we could not trace its origin. [Illinois’](https://balco.nyc/states/illinois) SB 3104, as amended in committee in March 2026, would make it a ceiling: it prohibits any system above 391 W until the National Electrical Code adopts a standard for them, about a third of what every signed law allows. It cleared committee 9–4, was sent back to the Assignments committee on 22 May 2026, and has not moved since.
+
+**Exports are almost never paid for.** Six of the nine signed laws expressly take the device out of net metering (Utah, Maine, Maryland, Vermont, Virginia, New Jersey), and none provides another credit. Vermont says exports “shall not be compensated”; Connecticut goes further, requiring a warning that excess generation is charged as usage unless the meter allows net metering. Colorado is silent, and New Hampshire shields the utility from “compensation or charges” without saying more. The one bill in balco.nyc’s data that would have credited exports, [Oregon](https://balco.nyc/states/oregon)’s HB 4080, died in March 2026. See [why surplus earns nothing](https://balco.nyc/balcony-solar-net-metering).
+
+**Who is bound varies by utility.** The statutes bind utilities under different labels (“electrical corporation”, “electric company”, “electric distribution company”, “electric public utility”, “provider of retail electric service”), each defined by its own state’s law. California’s bill names local publicly owned utilities outright; most others leave it to those definitions, which we have not resolved state by state. If you buy power from a municipal utility or a cooperative, ask it whether the law applies.
+
+## The two bills on a governor’s desk, and checking your own state
+
+[New York](https://balco.nyc/states/new-york)’s SUNNY Act (S8512C / A9111C) has passed both chambers and awaits the Governor's signature. The final version cleared both on 28 May 2026; as of 23 September the Assembly’s record shows no delivery to the Governor, so her decision clock has not started. If signed, it takes effect on the 90th day. It would exempt devices of up to 1,200 W AC from interconnection and net metering, leave exports uncompensated unless the owner opts into an agreement, require notice within 30 days, and require listing as a complete system. It grants no right to install: renters, co-op shareholders and condo owners would still need permission. [The SUNNY Act in detail](https://balco.nyc/sunny-act).
+
+[California](https://balco.nyc/states/california)’s SB 868 was presented to Governor Newsom on 31 August 2026. Under the state constitution he has until 30 September to act, or it becomes law without his signature; if enacted, it takes effect on 1 January 2027. It binds local publicly owned utilities as well as investor-owned ones, and is silent on exports, landlords and associations. It is the only text here with an end date: the exemption is repealed on 1 January 2030, the day a ban begins on selling plug-in devices that do not meet its code and certification conditions.
+
+For any state, check five things against the enacted text before relying on a summary, including this one: the effective date; how the cap is measured; the certification wording, against your device’s paperwork; whether and when the utility must be told; and whether the law mentions your landlord, association or town — if it does not, their rules still apply. This page summarizes statutes as written. It is not legal advice, and a utility, court or building department may read a clause differently.
+
+## Common questions
+
+**Which states allow plug-in or balcony solar?**
+
+As of 23 September 2026, nine states have signed plug-in solar laws. Five are in force: Utah, Maine, Colorado, Maryland and Vermont. Connecticut's takes effect on 1 October 2026, Virginia's and New Hampshire's on 1 January 2027, and New Jersey's on 1 March 2027. New York's SUNNY Act and California's SB 868 have passed both chambers and await their governors. Elsewhere a plug-in system is not necessarily banned, but the utility's ordinary interconnection rules for generators apply.
+
+**Which states give renters a right to install balcony solar?**
+
+Four signed laws limit a landlord's power to say no, each differently. Vermont lets a tenant proceed if the landlord does not answer a 10-day notice; Virginia bars landlords with more than four units from prohibiting devices on the exterior of the tenant's premises; New Jersey protects tenants who pay their own electric bill; Colorado bars unreasonable prohibitions. Only Vermont's is in force today: Colorado's and Virginia's start on 1 January 2027 and New Jersey's on 1 March 2027. Utah, Maine, Maryland, Connecticut and New Hampshire give tenants no such right, and neither would New York's SUNNY Act.
+
+**Is 1,200 watts the limit in every state?**
+
+Nearly. Eight of the nine signed plug-in solar laws cap devices at 1,200 W, and 30 of the 34 jurisdictions whose 2025-26 plug-in bills set a wattage figure chose 1,200 W. Colorado allows 1,920 W supplied to the grid. Maine allows up to 420 W with no conditions and up to 1,200 W only if a licensed electrician installs each system on a dedicated circuit and the utility is notified. The caps are also measured differently: some count inverter AC output, some the power supplied back to the building or grid, and some just say maximum power output.
+
+**Do plug-in solar laws pay you for electricity sent to the grid?**
+
+Almost never. Six of the nine signed laws take plug-in devices out of net metering and none provides another credit; Vermont's says exported power shall not be compensated, and Connecticut's requires a warning that excess generation will be charged as usage unless the meter allows net metering. New York's SUNNY Act would leave exports uncompensated unless the owner opts into an agreement. Plan on the value coming only from electricity you use yourself.
+
+**What does 'exempt from interconnection' mean for plug-in solar?**
+
+It means the utility cannot make you apply, sign an interconnection agreement, pay a fee or add equipment before using a compliant device, as it can for a rooftop array. It says nothing about whether a landlord, condo board, homeowners' association or town can stop you; that takes a separate right-to-install clause, which only four of the nine signed plug-in laws (Vermont, Virginia, New Jersey and Colorado) contain.
+
+**If a plug-in solar kit is legal in one state, is it legal in another?**
+
+Not necessarily. Each law protects only devices that meet its own definition, and the certification wording differs: Utah and Maryland ask for certification by UL or an equivalent lab without naming a standard, Maine, Vermont and New Jersey name UL 3700 or a comparable standard, and New York's and California's bills require certification as a complete plug-in system. As of September 2026 no complete plug-in system has been certified to UL 3700. Wattage caps, per-meter device limits and Vermont's smart-meter requirement also differ.
+
+**Is balcony solar legal in New York or California yet?**
+
+Not yet in either. New York's SUNNY Act has passed both chambers and awaits the Governor's signature; it had not been delivered to her as of 23 September 2026 and would take effect 90 days after becoming law. California's SB 868 was presented to Governor Newsom on 31 August 2026; he has until 30 September 2026 to act, it becomes law without his signature if he does not, and it would take effect on 1 January 2027.
+
+## Sources
+
+- [Utah Legislature — H.B. 340 Solar Power Amendments, enrolled copy (2025)](https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf): the 1,200 W “maximum power output” definition, UL-or-NRTL certification, anti-islanding, exemption from interconnection and net metering, and the 7 May 2025 effective date.
+- [Maine Legislature — LD 1730, Public Law 2026 chapter 644 (35-A MRSA §3475)](https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132): the 420 W and 1,200 W tiers, electrician and dedicated-circuit condition, 30-day notice, UL 3700 wording, the net energy billing bar and the duties on structures the customer does not own.
+- [Maine Legislature — home page](https://legislature.maine.gov/): the 29 July 2026 general effective date for non-emergency laws of the 2026 session.
+- [Colorado General Assembly — HB26-1007 bill page](https://leg.colorado.gov/bills/hb26-1007): signed 7 May 2026, Session Law chapter 127, effective 12 August 2026.
+- [Colorado General Assembly — HB26-1007 signed act (C.R.S. 40-2-140)](https://leg.colorado.gov/bill_files/116074/download): the 1,920 W cap, NRTL listing, optional notice, 391 W exemption, and the 1 January 2027 UL sales rule, ban on unreasonable prohibitions and limited-common-element provision.
+- [C.R.S. §2-4-401 definitions (FindLaw)](https://codes.findlaw.com/co/title-2-legislative/co-rev-st-sect-2-4-401/): that “person” in Colorado statutes includes a government or governmental subdivision, the basis of our reading of the 2027 clause.
+- [Maryland General Assembly — Chapter 353 of 2026 (HB 1532), Public Utilities §7-321](https://mgaleg.maryland.gov/2026RS/Chapters_noln/CH_353_hb1532e.pdf): the text of the portable solar section: 1,200 W, one per meter, notice, net-metering and REC exclusions, 391 W exemption.
+- [Maryland Department of Legislative Services — Fiscal and Policy Note, HB 1532 (Enrolled - Revised)](https://mgaleg.maryland.gov/2026RS/fnotes/bil_0002/hb1532.pdf): the 1 July 2026 effective date for the portable solar provisions, notice before installation, and the description of utilities’ prior practice.
+- [Vermont Legislature — Act 149 (S.202) as enacted](https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf): UL 3700 wording, smart-meter condition, uncompensated exports, tenant notice, covenant and zoning provisions, 1 July 2026 effective date.
+- [Connecticut General Assembly — Public Act 26-127 (HB 5340), sections 9–10](https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00127-R00HB-05340-PA.PDF): the device definition including UL 1741 and the excess-generation warning, one device per meter, retained codes and local ordinances, 1 October 2026 effective date.
+- [Virginia Acts of Assembly — 2026 Chapter 1052 (HB 395)](https://lis.blob.core.windows.net/files/1225204.PDF): the landlord, locality and utility sections, the state notification form, and the 1 January 2027 effective date.
+- [New Hampshire General Court — SB 540-FN, Chapter 262, Laws of 2026](https://gc.nh.gov/bill_status/legacy/bs2016/billText.aspx?sy=2026&id=1317&txtFormat=html): one 1,200 W AC system per metered customer, certification wording, optional notice, liability clause, 1 January 2027 effective date.
+- [New Jersey Legislature — S2368 [Third Reprint], Garden State Balcony Solar Act](https://pub.njleg.gov/Bills/2026/S2500/2368_R3.HTM): the UL 3700 wording, 400 W exemption, landlord, association and municipal sections, and the six-month effective date.
+- [Office of the Governor of New Jersey — Garden State Balcony Solar Act signed, 1 September 2026](https://www.nj.gov/governor/news/2026/approved/20260901a.shtml): the signing date that sets the 1 March 2027 effective date.
+- [New York State Assembly — A09111C (SUNNY Act) actions and text](https://nyassembly.gov/leg/?default_fld=&bn=A09111&term=2025&Summary=Y&Actions=Y&Text=Y&Memo=Y): passage on 28 May 2026, no delivery to the Governor recorded, and the bill text: 1,200 W AC, complete-system listing, uncompensated exports, 30-day notice, 90-day effective date.
+- [California Legislative Information — SB 868, enrolled text](https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB868): 1,200 W per dwelling, complete-system certification, optional registration, the 2030 repeal and sales ban.
+- [California Legislative Information — SB 868 history](https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202520260SB868): presented to the Governor on 31 August 2026, with no later action recorded as of 23 September.
+- [California Constitution, article IV §10](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CONS&sectionNum=SEC.%2010.&article=IV): the 30 September deadline for bills in the Governor’s possession on or after 1 September of the biennium’s second year.
+- [Illinois General Assembly — SB 3104 bill status (archived 15 June 2026)](https://www.ilga.gov/Legislation/BillStatus?DocNum=3104&GAID=18&DocTypeID=SB&SessionID=114&GA=104): the committee amendment prohibiting systems above 391 W until the NEC adopts a standard, and the bill’s actions; ilga.gov itself did not load from our network.
+- [US Census Bureau — Vintage 2025 population estimates (SUB-EST2025)](https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv): July 2025 state populations used for the share-of-residents figures.
+
+---
+
 # Balcony solar claims, checked: nine numbers traced to their source
 
 URL: https://balco.nyc/balcony-solar-myths  
@@ -665,6 +978,306 @@ Not for a kit installed now. The residential clean energy credit under IRC secti
 
 ---
 
+# Do you get paid for balcony solar power you don’t use?
+
+URL: https://balco.nyc/balcony-solar-net-metering  
+Last reviewed: 2026-09-23
+
+Almost certainly not. None of the nine state plug-in solar laws signed so far requires a utility to pay for power a balcony system sends back to the grid, five of them expressly shut these devices out of net metering, and New York’s SUNNY Act says exports “shall be uncompensated.” So the number that matters is how much you use yourself: balco.nyc’s hourly PVWatts run for an 800 W south-facing railing in New York City finds that an apartment drawing a steady 150 W uses about 60% of the output and gives the other 240 kWh a year away.
+
+## Surplus power is given away, not sold
+
+A plug-in panel’s power goes first to whatever the apartment is drawing at that moment: the fridge, the router, a laptop charger. Only when the panel produces more than the apartment uses does anything flow back out through the meter to the neighbors. That outflow is the surplus.
+
+The arrangement that pays for exports is net metering, under which the kilowatt-hours you send out are credited against the ones you buy. Net metering normally comes with an interconnection application and utility approval — exactly the paperwork plug-in laws exempt these devices from. The trade the states have made is consistent: no application, no fee, no credit. This is not legal advice, and it varies by state and utility, but the safe planning assumption is that surplus earns **nothing**.
+
+That makes one number decisive: the share of the panel’s output you use at the moment it is produced. balco.nyc’s calculator, like most, assumes that share is 100% and values every kWh at Con Edison’s all-in marginal rate of 34¢. That is a ceiling. To see how far below it a real apartment sits, balco.nyc ran NREL’s PVWatts V8 hour by hour for an 800 W system on a vertical, south-facing railing in New York City, with the calculator’s own parameters. The hourly run reproduces the 635.7 kWh a year in the site’s state data exactly; less the 5% railing loss the site applies to vertical panels (a factor of 0.95), that is about **604 kWh**. Set hour by hour against an apartment drawing a steady 150 W, 364 kWh of it is used at home and **240 kWh** leaves through the meter. At 34¢ that is a saving of about $124 a year, not the $205 the 100% assumption gives.
+
+## What each plug-in law says about exported power
+
+Nine states have signed plug-in solar laws, and bills in New York and California have passed their legislatures. balco.nyc read each in the legislature’s own text. Five expressly shut plug-in devices out of net metering, three say nothing about paying for exports, and Connecticut requires a warning that exports may be billed. None requires a utility to pay for them.
+
+| State | Law | Status (23 Sep 2026) | What it says about exports |
+|---|---|---|---|
+| Utah | HB 340 (2025) | In force since 7 May 2025 | “Not subject to the net metering program requirements”; residential net metering now starts above 1,200 W. Unpaid. |
+| Maryland | HB 1532, ch. 353 | In force since 1 July 2026 | Not subject to §7-306, the state’s net-metering statute, or §7-306.1. Unpaid. |
+| Vermont | Act 149 (S.202) | In force since 1 July 2026 | “Shall not be eligible for net metering”; exports “shall not be compensated.” Smart meter required. Unpaid. |
+| Maine | LD 1730, ch. 644 | In force since 29 July 2026 | “May not be used for net energy billing.” Unpaid. |
+| Colorado | HB26-1007 | In force since 12 August 2026 | Silent: bars utility approval and fees, says nothing about credit. Assume unpaid. |
+| Connecticut | Public Act 26-127, sec. 9 | From 1 October 2026 | Device must warn that excess generation is “charged to the customer as usage” unless the customer has a net-metering meter. Unpaid, possibly billed. |
+| Virginia | HB 395 / SB 250 | From 1 January 2027 | Excluded from the definition of an eligible customer-generator for net metering. Unpaid. |
+| New Hampshire | SB 540, ch. 262 | From 1 January 2027 | Exempt from interconnection review; no provision pays for exports. Assume unpaid. |
+| New Jersey | P.L.2026, c.82 | From 1 March 2027 | Exempt from interconnection and metering requirements; silent on payment. Assume unpaid. |
+| New York | SUNNY Act, S8512C / A9111C | Passed both chambers; awaits the Governor's signature | Exports “shall be uncompensated” unless the customer voluntarily enters a net-metering or other compensation agreement. Unpaid. |
+| California | SB 868 | On the Governor’s desk; he has until 30 September 2026 to act | Silent. Assume unpaid. |
+
+Silence is not a credit: where a law says nothing, balco.nyc assumes no payment unless a utility publishes a tariff for plug-in devices. New York’s bill leaves one door open: an owner may voluntarily enter an interconnection or net-metering agreement, and exports stay unpaid unless they do. Getting paid, in other words, means doing the paperwork the bill otherwise waives. Size limits, certification and the right to install are in the [side-by-side comparison of the laws](https://balco.nyc/balcony-solar-laws-compared), and New York in detail on [the SUNNY Act page](https://balco.nyc/sunny-act).
+
+## Does the meter spin backwards?
+
+“Spinning backwards” is the old picture of net metering: while you export, the meter subtracts, and you are billed for the difference. Whether anything like that happens with a plug-in panel depends on the meter, not the law. The Maryland Public Service Commission’s balcony-solar guidance describes what a meter that cannot track exports may do: treat the surplus as zero consumption, or add it to your consumption in error, depending on the meter type. That gives three possibilities.
+
+- **Not counted.** The surplus vanishes from the bill in both directions. This is the outcome balco.nyc’s figures assume: you lose its value and nothing more.
+
+- **Counted as usage.** A meter that registers power flowing either way as consumption bills you at the full retail rate for electricity you gave away. Connecticut’s law requires every device to carry a warning saying exactly this. In the New York example above, the 240 kWh exported would be billed at about $82 a year, cutting a $124 saving to about **$42**.
+
+- **Netted.** A meter set up for net metering does subtract exports. That is the only version of “spinning backwards” that pays you, and under these laws it comes with a net-metering arrangement, not with the plug.
+
+Utilities are beginning to say which applies. Potomac Edison, a FirstEnergy utility in Maryland, states that its standard service meter has no separate register to track energy a customer feeds back to its system. Vermont’s law allows plug-in devices only on smart-metered service. In New York City, Con Edison describes a net meter for customers enrolled in net metering; what an ordinary meter records when power flows out is worth asking Con Edison before the SUNNY Act, which awaits the Governor's signature, takes effect. The practical step is the same everywhere: ask your utility, in writing, how your meter records power flowing out of the apartment.
+
+## How much of the output an apartment actually uses
+
+The share you use depends on how much the panel produces in each hour and how much the apartment draws in that hour. The second has a hard lower limit. Every home has a floor it never drops below: the fridge, the router, standby electronics, smoke alarms. NRDC’s 2015 study of smart-meter data from 70,000 northern California homes found that floor, the lowest hourly level, averaged **218 W**; the one multifamily home in its ten-home audit, occupied by a couple it described as unusually energy-conscious, idled at 92 W. A smaller apartment will usually sit below the study average, so 100 to 300 W brackets most floors.
+
+balco.nyc set the hourly New York output against a constant load at each of those levels. A constant floor is what an apartment draws with nobody home, so these shares hold even for an apartment empty all day; daytime cooking, working or laundry raises them.
+
+| Apartment’s steady draw | 400 W system (302 kWh/yr) | 800 W system (604 kWh/yr) | 1,200 W system (906 kWh/yr) |
+|---|---|---|---|
+| 100 W | 72% | 46% | 34% |
+| 150 W | 87% | 60% | 46% |
+| 200 W | 95% | 72% | 56% |
+| 300 W | ~100% | 87% | 72% |
+
+Share of annual output used at home: New York City, vertical south-facing railing, PVWatts V8 hourly, 0.95 railing factor, no shading. For an 800 W railing, most apartments will use between about 60% and 90% of the output; a small, efficient apartment that is empty in the daytime can use less than half. Hourly averages flatter these figures slightly, since passing cloud and a cycling fridge make supply and demand miss each other within the hour; real loads sitting above the floor for much of the day push the other way.
+
+The surplus is seasonal, and not in the direction most people expect. A vertical south-facing panel meets the low winter sun almost head-on, so in New York it produces most in winter: 69 kWh in January against 30 kWh in June, with midday peaks near 690 W. Against a 150 W floor only 43% of January’s output is used at home; in June, 96%. The kilowatt-hours given away are winter ones, which in New York are the cheaper ones, since Con Edison’s delivery charges are higher from June through September (see [what a kWh costs](https://balco.nyc/electricity-rate)).
+
+**Why a 400 W system uses more of its output than a 1,200 W one.** The apartment’s load does not grow when you add panels. Every extra panel produces in the same midday hours as the first, when the floor is already covered, so most of its output is surplus. At a 150 W floor, going from 400 to 800 W adds 302 kWh a year of output but only 102 kWh used at home; going from 800 to 1,200 W adds another 302 kWh of output and only **49 kWh** used, about $17 a year at 34¢. The table has a simple symmetry that shows why: a 400 W system against a 150 W floor behaves exactly like an 800 W system against 300 W. What matters is the ratio of system size to what the apartment draws.
+
+## What self-consumption does to payback
+
+Because surplus earns nothing, savings scale directly with the share you use, and payback stretches with it. The table runs the calculator’s own payback loop — a 3% annual rise in the electricity price, 0.5% yearly panel degradation, no discounting — for an unshaded 800 W south-facing railing in each state’s largest city, on the $1,200 mid-range kit, at three self-consumption levels.
+
+| State (city) | Output | Price used | 100% used | 80% used | 60% used |
+|---|---|---|---|---|---|
+| New York (NYC) | 604 kWh | 34¢ Con Edison marginal | $205/yr · 5.5 yrs | $164/yr · 6.8 yrs | $123/yr · 8.8 yrs |
+| Illinois (Chicago) | 616 kWh | 18.54¢ EIA average | $114/yr · 9.4 yrs | $91/yr · 11.5 yrs | $69/yr · 14.7 yrs |
+| California (Los Angeles) | 720 kWh | 32.89¢ EIA average | $237/yr · 4.8 yrs | $190/yr · 6.0 yrs | $142/yr · 7.8 yrs |
+
+First-year saving and nominal payback; output is PVWatts V8 for each city less the 0.95 railing factor. The Illinois and California prices are EIA averages for the 12 months to June 2026, which include fixed monthly charges and so overstate what an avoided kWh is worth. Illinois has no plug-in law (its bill stalled in 2026) and California’s awaits the Governor; they show a cheap-power state and a sunny, expensive one.
+
+At 60% self-consumption, payback is about 1.6 times the 100% figure in all three. In New York, 60% is what the hourly run gives an empty apartment with a 150 W floor, so the 5.5-year headline becomes 8.8. In Illinois it becomes 14.7 years, well over half the 25-year span the calculator models. The self-consumption shares are computed for New York’s sun; Chicago and Los Angeles will differ somewhat at the same floor, but the direction is the same. [Whether balcony solar is worth it](https://balco.nyc/is-balcony-solar-worth-it) sets out the 100% figures for every state.
+
+## Batteries, timers and system size
+
+A battery stores midday surplus for the evening, so its value is capped by how much surplus there is. balco.nyc ran the same hourly New York data with a 2 kWh battery (1.92 kWh usable, 90% round-trip efficiency) that captures each day’s surplus up to its capacity and releases all of it in the evening — a generous setup that ignores the battery’s own standby draw. The last column applies the calculator’s 3% annual price rise.
+
+| Apartment’s steady draw | kWh shifted a year | Worth at 34¢ | Price at which it pays back in 10 years |
+|---|---|---|---|
+| 100 W | 262 | $89 | about $1,020 |
+| 150 W | 201 | $68 | about $780 |
+| 200 W | 149 | $51 | about $580 |
+| 300 W | 72 | $24 | about $280 |
+
+The more you already use, the less a battery has to work with; at balcony scale the ceiling is tens of dollars a year. Modeling in Germany points the same way: the nonprofit balkon.solar, using HTW Berlin’s plug-in solar simulator with a vertical west-facing array and no pay for exports, found a 2 kWh battery stretched payback from 5–6 years to about 13 for small households with small arrays, improving to about 8 only with larger arrays and higher consumption.
+
+The cheaper ways to use more of the output cost nothing. Put the dishwasher, the washing machine or a laptop charger on a timer for the middle of the day, especially from October to March, when a south-facing railing has the most to give. And weigh size by the marginal panel rather than the average one: in the empty-apartment case above, each step up in size buys less than the one before it.
+
+## Common questions
+
+**Do you get paid for balcony solar power you don't use?**
+
+Not under any US plug-in solar law signed as of September 2026. Utah, Maine, Maryland, Vermont and Virginia expressly exclude plug-in devices from net metering, Colorado, New Hampshire and New Jersey say nothing about payment, and Connecticut requires a warning that exports may be billed as usage. New York's SUNNY Act, which has passed both chambers and awaits the Governor's signature, says exports are uncompensated unless the owner voluntarily signs a net-metering or other compensation agreement.
+
+**Does my electric meter spin backwards with a plug-in solar panel?**
+
+Only if it is set up for net metering, which plug-in solar laws do not provide by default. On a meter that cannot track exports, the Maryland Public Service Commission says the surplus may be treated as zero consumption or erroneously added to consumption, depending on the meter type. Ask your utility how your meter records power flowing out before plugging a panel in.
+
+**Can a balcony solar panel make my electric bill go up?**
+
+It can on a meter that counts exported power as consumption, which is why Connecticut's plug-in law requires every device to warn that excess generation will be charged as usage unless the customer has a net-metering meter. In balco.nyc's New York example, an 800 W railing in an apartment drawing a steady 150 W exports about 240 kWh a year; billed at Con Edison's 34-cent rate, that would cut a $124 annual saving to about $42.
+
+**How much of a balcony solar system's output does an apartment use?**
+
+It depends on what the apartment draws while the sun is up. balco.nyc's hourly PVWatts model of an 800 W south-facing railing in New York City finds that an apartment drawing a steady 150 W uses about 60% of the output, one drawing 100 W about 46%, and one drawing 300 W about 87%. Those shares assume nobody is home in the daytime; daytime activity raises them.
+
+**Why does a smaller balcony solar system use more of its output?**
+
+Because the apartment's load stays the same while each added panel produces in the same midday hours as the first. In balco.nyc's New York model with a 150 W floor, a 400 W system uses 87% of its output, an 800 W system 60% and a 1,200 W system 46%. The step from 800 to 1,200 W adds about 302 kWh a year of output but only 49 kWh used at home.
+
+**Is a battery worth adding to balcony solar?**
+
+Rarely at balcony scale. In balco.nyc's hourly New York model, a 2 kWh battery on an 800 W railing is worth about $24 to $89 a year at Con Edison's 34-cent rate, depending on how much the apartment already uses, so it would have to cost roughly $280 to $1,020 to pay for itself in 10 years. The more electricity the household already uses in daylight, the less surplus the battery has to store.
+
+## Sources
+
+- [New York State Senate — S8512C (SUNNY Act), text and actions](https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C): devices “shall not be subject to interconnection or net metering requirements”; exports “shall be uncompensated” unless the customer voluntarily enters a net-metering or other compensation agreement.
+- [Connecticut General Assembly — Public Act 26-127, sec. 9](https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00127-R00HB-05340-PA.PDF): the required warning that excess generation is charged to the customer as usage unless the customer has a net-metering meter; effective 1 October 2026.
+- [Utah Legislature — H.B. 340 Solar Power Amendments, enrolled copy](https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf): portable devices are not subject to net metering program requirements; residential customer generation systems start above 1,200 W.
+- [Maine Legislature — LD 1730, Public Law ch. 644 (35-A MRSA §3475)](https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132): eligible plug-in systems “may not be used for net energy billing.”
+- [Maryland General Assembly — Chapter 353 of 2026 (HB 1532), PUA §7-321](https://mgaleg.maryland.gov/2026RS/Chapters_noln/CH_353_hb1532e.pdf): portable systems are not subject to §§7-306 (net metering) and 7-306.1, and may not generate renewable energy credits.
+- [Vermont Legislature — Act 149 (S.202) as enacted](https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf): plug-in devices only on smart-metered systems, not eligible for net metering, exports not compensated.
+- [Virginia Acts of Assembly — Chapter 1052 (HB 395), approved 22 April 2026](https://lis.blob.core.windows.net/files/1225204.PDF): small portable solar generation devices excluded from the definition of an eligible customer-generator for net energy metering.
+- [Colorado General Assembly — HB26-1007](https://leg.colorado.gov/bills/hb26-1007): signed 7 May 2026, effective 12 August 2026; the new §40-2-140 bars utility approval and fees and does not address export credit.
+- [Office of the Governor of New Jersey — Garden State Balcony Solar Act signed, 1 September 2026](https://www.nj.gov/governor/news/2026/approved/20260901a.shtml): devices up to 1,200 W exempted from utility interconnection and metering requirements; no export payment described.
+- [California Legislative Information — SB 868, enrolled text](https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB868): 1,200 W per dwelling; the enrolled text does not address net metering or export compensation.
+- [Maryland Public Service Commission — Balcony Solar](https://psc.maryland.gov/regulated-utilities/electricity/renewable-energy/balcony-solar/): a meter that cannot track exports may treat the excess as zero consumption or add it to consumption in error, depending on meter type.
+- [FirstEnergy (Potomac Edison) — Maryland interconnection](https://www.firstenergycorp.com/feconnect/maryland.html): Potomac Edison’s standard service meter has no separate register for energy fed back to its system.
+- [Con Edison — Solar energy installation FAQ](https://www.coned.com/en/save-money/using-distributed-generation-energy-sources/solar-energy/solar-energy-installation-faq): Con Edison’s description of the net meter used for net-metered solar customers.
+- [NREL — PVWatts V8 API documentation](https://developer.nlr.gov/docs/solar/pvwatts/v8/): the hourly AC output (W) behind balco.nyc’s self-consumption and battery computations; the run used the calculator’s parameters and reproduces its 635.7 kWh.
+- [NRDC — Home Idle Load: Devices Wasting Huge Amounts of Electricity When Not in Active Use (May 2015)](https://www.nrdc.org/sites/default/files/home-idle-load-IP.pdf): idle load, the lowest hourly smart-meter level, averaged 218 W across 70,000 northern California homes; one audited apartment idled at 92 W.
+- [EIA — Form EIA-861M monthly sales and revenue](https://www.eia.gov/electricity/data/eia861m/): the data behind balco.nyc’s Illinois (18.54¢) and California (32.89¢) average residential prices: revenue over sales for the 12 months to June 2026.
+- [Con Edison — historical average full-service electric rates](https://www.coned.com/-/media/files/coned/documents/save-energy-money/using-private-generation/historical-average-full-service-electric-rates.pdf): the SC-1 series behind the 34¢ marginal rate used for New York City.
+- [balkon.solar — Für wen lohnt sich ein Steckerspeicher? (January 2026, in German)](https://balkon.solar/news/2026/01/05/fuer-wen-lohnt-sich-ein-steckerspeicher-stand-januar-2026/): HTW Berlin simulator scenarios at €0.33/kWh with no export pay: a 2 kWh battery lengthens payback from 5–6 to about 13 years for small arrays.
+
+---
+
+# Can renters install balcony solar?
+
+URL: https://balco.nyc/balcony-solar-renters  
+Last reviewed: 2026-09-23
+
+Usually only with the landlord’s permission. As of 23 September 2026, four states — Vermont, Virginia, New Jersey and Colorado — have signed laws that limit a landlord’s power to refuse, and only Vermont’s protection is in force; the other three start in January or March 2027. balco.nyc’s count of Census data puts 3.3 million renter households, 7.2% of the US total, in those four states, and 76,431 (0.17%) in the one where the protection works today. New York’s SUNNY Act has passed both chambers and awaits the Governor's signature, and it grants no right to install.
+
+## The short answer, and the four exceptions
+
+A plug-in kit hangs on a railing the landlord owns and plugs into wiring the landlord owns, so in most of the country the lease and the landlord decide. A law that makes plug-in solar *legal* is not one that makes it your *right*: five of the nine signed US plug-in laws stop the utility from demanding approval and give tenants nothing.
+
+balco.nyc read the enacted text of every law in its [state tracker](https://balco.nyc/states). Four limit a landlord’s power to refuse: [Vermont](https://balco.nyc/states/vermont) (in force since 1 July 2026; after 10 days’ notice with no answer, the tenant may proceed), [Virginia](https://balco.nyc/states/virginia) (from 1 January 2027; landlords who own more than four rental units), [New Jersey](https://balco.nyc/states/new-jersey) (from 1 March 2027; tenants who pay their own electric bill) and [Colorado](https://balco.nyc/states/colorado) (from 1 January 2027; no person may “unreasonably prohibit” a device). All four still let the landlord impose reasonable restrictions.
+
+balco.nyc’s count from the Census Bureau’s 2024 American Community Survey puts **3,334,151 renter households** in those four states, 7.2% of the 46.1 million in the United States. Until the 2027 start dates, the protected group is Vermont’s 76,431 renter households: **0.17% of American renters**. New York alone has 3,575,503 renter households, more than the four states combined, and its [SUNNY Act](https://balco.nyc/sunny-act) would give none of them a right to install. Everyone else needs permission.
+
+> **Not legal advice.** This page summarizes statutes and bills as of 23 September 2026. Your lease, your state’s law and any association rules decide your case, and a law that is signed but not yet in effect protects nobody.
+
+## Every tenant provision, compared
+
+balco.nyc’s compilation of every US plug-in solar law or 2026 bill that addresses tenants, from the legislatures’ own pages, as of 23 September 2026. Quoted words are statutory or bill text. The rest of each law (caps, certification, utility notice) is in [the provision-by-provision comparison](https://balco.nyc/balcony-solar-laws-compared).
+
+| State | Law or bill | Status | Who it protects, and how | What the landlord keeps |
+|---|---|---|---|---|
+| Vermont | Act 149 (S.202) | In force 1 Jul 2026 | All tenants, for a device that meets the Act (UL 3700 or equivalent, 1,200 W per meter). 10 days’ notice; “If the landlord does not respond within 10 days, the tenant may proceed with installation.” | “Any reasonable restrictions,” including making the tenant pay a licensed electrician for any electrical work. No electrical work without the landlord’s permission. |
+| Virginia | HB 395 / SB 250 (Chs. 1052, 998) | Signed 22 Apr 2026; effective 1 Jan 2027 | “No landlord who owns more than four rental dwelling units” (or more than a 10% interest in more than four) “shall prohibit a tenant from installing” a device “on the exterior of the tenant’s premises.” 7 days’ notice with documentation. Not units on a ratio utility billing system. | Reasonable restrictions on “size, place, and manner of placement”; may bar devices elsewhere on the premises. The tenant is responsible for any damage. |
+| New Jersey | P.L.2026, c.82 (S2368 / A4836) | Signed 1 Sep 2026; effective 1 Mar 2027 | Tenants who pay their own electric bill, within their leased premises including a balcony or patio. 14 days’ written notice with documentation.* | Reasonable restrictions on the device’s physical dimensions, placement and manner of placement; no blanket ban.* |
+| Colorado | HB26-1007 (C.R.S. 40-2-140) | In force 12 Aug 2026; tenant clause from 1 Jan 2027 | “A person shall not directly or indirectly unreasonably prohibit” a device. The Act does not mention landlords or tenants. | “Reasonable restrictions,” including prior notice and limits aimed at fire or electrical overload, damage, and the device’s location. |
+| Illinois | SB 3104 (House: HB 4524) | Pending; re-referred to Assignments 22 May 2026 | Landlords could not enforce a lease that “unreasonably restricts or prohibits” a system.* | As amended, the bill bars systems over 391 W until the National Electrical Code has a standard for them. |
+| North Carolina | HB 1129 | Pending; in House Rules since 30 Apr 2026 | Tenants of landlords who own more than four rental dwellings. 7 days’ notice. | Size and placement limits only “if required to prevent” blocked egress or “unreasonable property damage.” |
+| Oregon | HB 4080 | Died in committee, March 2026 | Would have limited restrictions by landlords, HOAs and condo associations.* | — |
+| Washington | SSB 6050 | Died in Senate Rules, 2026 | A landlord could not require its approval, or any fee, before a tenant used a device. | — |
+| South Carolina | H 4579 | Died in committee, 2026 | A lease or rental agreement “must not prohibit or have the effect of prohibiting” a balcony solar panel. | — |
+
+* New Jersey’s row is summarized from the Governor’s signing announcement, published legal summaries and balco.nyc’s state tracker; the Illinois and Oregon rows are from the legislatures’ official bill digests, not the bill text.
+
+**Laws with nothing for tenants.** [Utah](https://balco.nyc/states/utah), [Maryland](https://balco.nyc/states/maryland), [Connecticut](https://balco.nyc/states/connecticut), [New Hampshire](https://balco.nyc/states/new-hampshire) and [Maine](https://balco.nyc/states/maine) have signed plug-in laws with no tenant right; Maine’s only requires anyone installing on a structure they do not own to protect it and restore it on removal, a duty rather than a right. The same silence runs through [New York](https://balco.nyc/states/new-york)’s SUNNY Act, which has passed both chambers and awaits the Governor's signature; [California](https://balco.nyc/states/california)’s SB 868, awaiting the Governor’s decision; and pending bills in [Massachusetts](https://balco.nyc/states/massachusetts), [Michigan](https://balco.nyc/states/michigan), [Pennsylvania](https://balco.nyc/states/pennsylvania) and the [District of Columbia](https://balco.nyc/states/district-of-columbia). Tracker summaries saying the Massachusetts and Pennsylvania bills protect tenants describe provisions balco.nyc could not find in either text.
+
+## How many renters the laws reach
+
+A law’s reach is a head count, so balco.nyc made one: renter-occupied homes (households) by state from the Census Bureau’s 2024 American Community Survey 1-year estimates, table **B25003** (Tenure). That is the newest 1-year release; on 4 August 2026 the Bureau said the 2025 release date “is being determined.” Two laws cover only some tenants, so each gets a narrower estimate:
+
+- **Virginia** turns on how many units the landlord owns, which no Census table records. The nearest proxy is renters in buildings of five or more units (table **B25032**): 555,373, or 49.0% of the state’s renters.
+
+- **New Jersey** turns on paying your own electric bill. The published tables do not split electricity billing by tenure, but **B25069** records renters who pay extra for at least one utility: 1,152,187, against 126,937 who pay for none. The first figure is a ceiling.
+
+| State | Renter households (B25003) | Narrower estimate | What the narrower figure counts | Protection starts |
+|---|---|---|---|---|
+| Vermont | 76,431 | 76,431 | All tenants | 1 Jul 2026 |
+| Colorado | 844,547 | 844,547 | All tenants | 1 Jan 2027 |
+| Virginia | 1,134,049 | 555,373 | Renters in buildings of 5+ units (B25032) | 1 Jan 2027 |
+| New Jersey | 1,279,124 | 1,152,187 | Renters paying for at least one utility (B25069) | 1 Mar 2027 |
+| Four states | 3,334,151 | 2,628,538 |  |  |
+| Share of US renter households (46,101,640) | 7.2% | 5.7% |  |  |
+
+The arithmetic: 76,431 + 844,547 + 1,134,049 + 1,279,124 = 3,334,151, and 3,334,151 ÷ 46,101,640 = 7.2%; the narrower column sums to 2,628,538, or 5.7%. The Census margin of error on the four-state total is about ±25,000 at 90% confidence. For scale, New York has 3,575,503 renter households (45.7% of its households), and the five states with a plug-in law but no tenant clause hold 1,939,324 renter households for whom plugging in is, or will shortly be, legal and the landlord still decides.
+
+The same data qualifies a figure in New Jersey’s signing announcement, where an advocate says the law benefits “roughly 40 percent of New Jerseyans who rent or live in apartments.” That counts people and includes apartment owners, who fall under the law’s association provisions, not its tenant clause. By households, the ACS puts renters at 36.1% of the state’s total (1,279,124 of 3,543,944), and the tenant clause reaches at most 32.5% (1,152,187).
+
+What these numbers are not: they count households, not balconies. The ACS does not ask whether a home has a balcony, a patio or an outdoor outlet, so the renters who could actually use these protections are fewer than every figure above, by an amount nobody has measured. The Virginia proxy is loose both ways: it includes condo units rented out by small owners, who are not covered, and units on ratio utility billing, which the law excludes; it misses houses owned by large landlords, who are covered.
+
+## What “can’t prohibit” still allows
+
+None of the four laws hands the balcony to the tenant. Read closely, they replace a landlord’s veto with a landlord’s conditions:
+
+- **Reasonable restrictions survive everywhere.** Virginia names “size, place, and manner of placement” and lets the landlord bar devices anywhere but the exterior of the tenant’s premises; Colorado lists notice, fire and overload risk, damage and location. What is reasonable has not been tested in any of the four states.
+
+- **Notice comes first.** Seven days in Virginia, with documentation that the device qualifies and where it will go; ten in Vermont; fourteen, in writing, in New Jersey. The laws protect a tenant who gives notice before installing.
+
+- **Wiring stays the landlord’s.** Vermont says a landlord “shall not be compelled to perform or pay for electrical work”; Virginia requires express written approval for anything that alters wiring or panels. If your balcony has no outdoor outlet, none of these laws gets you one.
+
+- **Damage is the tenant’s.** Virginia makes the tenant responsible for any damage the device causes.
+
+- **Only a qualifying device is protected.** Vermont covers devices certified to UL 3700 “or an equivalent certification.” No complete plug-in system is certified to UL 3700 as of September 2026 (components are), so a Vermont tenant’s protection depends on whether a kit’s listing counts as equivalent, which the Act does not settle. New Jersey also accepts a comparable standard; Virginia and Colorado ask for certification or listing by a nationally recognized testing laboratory.
+
+- **Surplus power earns nothing.** Vermont says exports “shall not be compensated,” Virginia excludes the devices from net metering, and New Jersey and Colorado are silent. Assume what you do not use is given away.
+
+- **Association rules may still bind.** Virginia’s law does not override condominium or HOA documents, so a tenant in a rented condo can be protected against the landlord and still refused by the association; New Jersey’s and Colorado’s bind associations too. See [condos, co-ops and HOAs](https://balco.nyc/balcony-solar-condo-hoa).
+
+## Asking your landlord: a checklist and a letter
+
+In most states the request is the whole process; in the four above it doubles as the statutory notice. A specific written request is easier to approve than a general one. Do the physical checks first with [the installation guide](https://balco.nyc/install-balcony-solar); if the landlord’s worry is fire or shock, [the safety evidence](https://balco.nyc/is-plug-in-solar-safe) is summarized separately. Include:
+
+- **The device:** make, model, panel count, maximum AC output, and the certification exactly as the listing states it, including the anti-islanding feature each of the four laws requires.
+
+- **Size and weight** of the panels with brackets.
+
+- **Mounting without drilling:** clamps or hooks inside the railing, nothing fixed to the facade, secured against wind.
+
+- **The outlet:** which existing outdoor outlet, whether it is GFCI-protected and covered, no extension cord, and no new wiring without written approval.
+
+- **Insurance:** your renters policy’s liability limit, and acceptance of responsibility for damage.
+
+- **Removal** at move-out, or on short notice for building work, with the railing restored.
+
+- **The law, if one applies:** the statute and the notice period.
+
+> **A neutral template.** Dear [landlord or managing agent], I would like to install a small plug-in solar system on the balcony of [unit]. The details are below, and I am happy to discuss any conditions. *Device:* [make and model], [number] panels, [watts] maximum AC output, listed to [standard] by [laboratory]. It switches off automatically if grid power is lost. Specification sheet attached. *Size and mounting:* [dimensions], [total weight]. It clamps to the inside of the railing; nothing is drilled into or fixed to the building. *Power:* it plugs into the existing outdoor outlet at [location]. No extension cord and no change to the wiring. *Insurance:* my renters policy with [insurer] carries [amount] of liability coverage, and I will be responsible for any damage the system causes. *Removal:* I will remove it and restore the railing when I move out, or within [number] days if you need access for building work. [If a state law applies: I am giving this notice under [statute], [number] days before installation on [date].] I would be grateful for your written approval, or for any conditions you would attach.
+
+The template is a starting point, not legal advice. Where a statute applies, match its wording: Virginia’s notice, for example, must include documentation that the device meets the law’s definition and identify the proposed location.
+
+## If the answer is no
+
+Outside the four states, a refusal usually stands until the lease changes. A no to a vague request is sometimes a yes to a specific one: a smaller system, a floor stand instead of a railing mount, proof of insurance, a firm removal commitment. Lease renewal is a natural moment to ask again.
+
+Where one of the four laws covers you, the landlord can restrict but not refuse, and a dispute over what is “reasonable” goes through the ordinary landlord-tenant channels. In [New York](https://balco.nyc/states/new-york) the SUNNY Act has passed both chambers and awaits the Governor's signature, and nothing in it limits a landlord’s answer: [renters will need permission after it is signed, as they do now](https://balco.nyc/sunny-act).
+
+Before asking at all, check it is worth asking. Output depends mostly on how much sky the balcony sees, which is [a kilowatt-hour number, not a yes or no](https://balco.nyc/balcony-sunlight); the [calculator](https://balco.nyc/) gives it for any US address, and a shaded balcony may not pay back in the time you expect to stay.
+
+## Common questions
+
+**Can my landlord stop me from installing balcony solar?**
+
+In most US states, yes: a plug-in kit attaches to a railing and outlet the landlord owns, so the lease and the landlord decide. As of September 2026 four states have signed laws limiting that power. Vermont's protection is in force; Virginia's and Colorado's start on 1 January 2027 and New Jersey's on 1 March 2027. Even there, the landlord may impose reasonable restrictions.
+
+**Which states give renters a right to install plug-in solar?**
+
+Vermont (in force since 1 July 2026, 10 days' notice), Virginia (from 1 January 2027, tenants of landlords owning more than four rental units, excluding ratio-utility-billed units), New Jersey (from 1 March 2027, tenants who pay their own electric bill, 14 days' written notice) and Colorado (from 1 January 2027, no unreasonable prohibition). Tenant bills in Illinois and North Carolina are pending but stalled.
+
+**Does New York's SUNNY Act let renters install balcony solar?**
+
+No. The SUNNY Act (S8512C / A9111C) has passed both chambers and awaits the Governor's signature, and it contains no landlord or tenant provision. A New York renter would still need the landlord's permission after it is signed.
+
+**How many renters do state balcony solar tenant protections cover?**
+
+balco.nyc's count from the Census Bureau's 2024 American Community Survey (table B25003) puts 3,334,151 renter households, 7.2% of the US total, in Vermont, Virginia, New Jersey and Colorado; about 2.6 million (5.7%) narrowed to the tenants each law covers. Until 2027 only Vermont's 76,431, or 0.17%, are protected.
+
+**Does my landlord have to add an outdoor outlet for balcony solar?**
+
+No. None of the four state laws with tenant provisions requires a landlord to add wiring. Vermont's says a landlord shall not be compelled to perform or pay for electrical work, and Virginia's requires the landlord's express written approval for anything that alters wiring or electrical panels.
+
+**What should a balcony solar request to a landlord include?**
+
+The device's make, model, AC wattage and certification; its size and weight; how it mounts without drilling; which existing outdoor outlet it uses, with no extension cord; your renters insurance and acceptance of responsibility for damage; removal and restoration at move-out; and, where a state tenant law applies, the statute and notice period.
+
+## Sources
+
+- [Virginia Acts of Assembly — 2026 Reconvened Session, Chapter 1052 (HB 395)](https://lis.blob.core.windows.net/files/1225204.PDF): the enacted text of §55.1-1212.1 (landlords owning more than four units; exterior of the premises; 7 days’ notice; tenant liable for damage; ratio-utility-billing exclusion), §56-596.7 and enactment clause 4 (effective 1 January 2027); approved 22 April 2026.
+- [Virginia LIS — HB 395, 2026 Regular Session](https://lis.virginia.gov/bill-details/20261/HB395): bill history and versions; SB 250 (Chapter 998) is identical.
+- [Vermont Legislature — Act No. 149 (S.202) as enacted](https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf): 30 V.S.A. §256(g): 10 days’ notice, reasonable restrictions, proceed if no response, no compelled electrical work; the UL 3700-or-equivalent definition; uncompensated exports; effective 1 July 2026.
+- [Vermont Legislature — S.202 bill status](https://legislature.vermont.gov/bill/status/2026/S.202): signed by the Governor on 16 June 2026 as Act 149.
+- [Colorado General Assembly — HB26-1007, signed act](https://leg.colorado.gov/bill_files/116074/download): C.R.S. 40-2-140(7): from 1 January 2027 a person may not “unreasonably prohibit” a device and an owner may impose reasonable restrictions; NRTL listing; section 6 effective date.
+- [Office of the Governor of New Jersey — signing of the Garden State Balcony Solar Act, 1 September 2026](https://www.nj.gov/governor/news/2026/approved/20260901a.shtml): signing date; landlords and associations barred from broadly prohibiting devices; the advocate’s “roughly 40 percent” figure qualified here.
+- [Capehart Scatchard — New Jersey becomes the 10th state to legalize and regulate portable solar generation devices](https://www.capehart.com/new-jersey-becomes-the-10th-state-to-legalize-and-regulate-portable-solar-generation-devices/): legal summary of P.L.2026, c.82: no blanket bans for tenants who pay their own electric bills, 14 days’ written notice, reasonable restrictions, effective 1 March 2027.
+- [Illinois General Assembly — SB 3104 bill status (archived 15 June 2026)](https://www.ilga.gov/Legislation/BillStatus?DocNum=3104&GAID=18&DocTypeID=SB&SessionID=114&GA=104): the official digest of the landlord provision and the 391 W limit in Senate Committee Amendment 2; last action 22 May 2026, re-referred to Assignments.
+- [North Carolina General Assembly — HB 1129 “Balcony Solar” as filed (archived)](https://www.ncleg.gov/Sessions/2025/Bills/House/PDF/H1129v0.pdf): proposed G.S. 42-42.4: landlords owning more than four rental dwellings; 7 days’ notice; restrictions only for egress or unreasonable property damage.
+- [Oregon Legislature (OLIS) — HB 4080 overview (archived 10 June 2026)](https://olis.oregonlegislature.gov/liz/2026R1/Measures/Overview/HB4080): digest: limits restrictions by landlords, HOAs and condominium associations; still in House committee when the session ended.
+- [Washington Legislature — Substitute Senate Bill 6050 (2026)](https://lawfilesext.leg.wa.gov/biennium/2025-26/Pdf/Bills/Senate%20Bills/6050-S.pdf): would have barred a landlord from requiring approval or fees for a portable solar generation device.
+- [South Carolina Legislature — H 4579](https://www.scstatehouse.gov/sess126_2025-2026/bills/4579.htm): proposed §27-1-65: a lease or rental agreement must not prohibit a balcony solar panel; referred to committee with no further action.
+- [New York State Senate — S8512C (SUNNY Act)](https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C): bill text with no landlord or tenant provision.
+- [US Census Bureau — ACS 2024 1-year, table B25003 (Tenure)](https://data.census.gov/table/ACSDT1Y2024.B25003): renter-occupied housing units by state and for the US (46,101,640), the base of balco.nyc’s coverage count.
+- [US Census Bureau — ACS 2024 1-year, table B25032 (Tenure by Units in Structure)](https://data.census.gov/table/ACSDT1Y2024.B25032): Virginia renters in buildings of five or more units (555,373), the proxy for the more-than-four-units rule.
+- [US Census Bureau — ACS 2024 1-year, table B25069 (Inclusion of Utilities in Rent)](https://data.census.gov/table/ACSDT1Y2024.B25069): New Jersey renters who pay extra for at least one utility (1,152,187) and for none (126,937).
+- [US Census Bureau — media advisory on 2026 releases, 4 August 2026](https://www.census.gov/newsroom/press-releases/2026/iphi-acs-media-advisory.html): that the 2025 ACS 1-year release date “is being determined,” which is why 2024 figures are used.
+
+---
+
 # Is there a tax credit for balcony solar in 2026?
 
 URL: https://balco.nyc/balcony-solar-tax-credit  
@@ -735,7 +1348,7 @@ We checked every state with a plug-in solar law in force or signed — Utah, Mai
 
 An exemption is worth the sales tax you would otherwise pay. New York City is the largest case: residential solar equipment is exempt from the 4% state tax and the 0.375% Metropolitan Commuter Transportation District tax, and the city’s own rate on it is zero, so a qualifying $1,200 kit would avoid the full 8.875% combined rate, or **$106.50**. That is under a third of the $360 the federal credit used to be worth, and it depends on a retailer accepting an exemption certificate for a product the rules never contemplated. Ask before you pay: the exemption is normally claimed by giving the seller a certificate at the time of sale. In New York the question is also premature, since until the SUNNY Act is signed and takes effect the utility’s approval is still required to connect a kit.
 
-This is not legal or tax advice. Sales-tax treatment can turn on facts the published guidance does not address, local rates vary, and we found no state agency that has ruled on a plug-in kit. For what each state’s law allows, see the individual [state pages](https://balco.nyc/states); for whether a kit is worth buying at full price, see [is balcony solar worth it](https://balco.nyc/is-balcony-solar-worth-it).
+This is not legal or tax advice. Sales-tax treatment can turn on facts the published guidance does not address, local rates vary, and we found no state agency that has ruled on a plug-in kit. For what each state’s law allows, see [how the state laws compare](https://balco.nyc/balcony-solar-laws-compared) or the individual [state pages](https://balco.nyc/states); for whether a kit is worth buying at full price, see [is balcony solar worth it](https://balco.nyc/is-balcony-solar-worth-it).
 
 ## Common questions
 
@@ -1277,15 +1890,15 @@ Nothing is drilled into the building. Nothing goes on the roof. Nobody opens you
 
 The microinverter is the part that matters. It converts panel DC into AC matched to the grid’s voltage, frequency and phase, so the power it makes flows into your apartment’s wiring and is consumed by whatever is running at that moment — the fridge, the router, the standby loads. It is not stored.
 
-It also does the safety-critical job: **anti-islanding**. When grid power disappears, the inverter detects the loss and stops producing within a fraction of a second. This is why a plug-in system cannot energise wiring that a utility worker or a firefighter believes is dead — and also why, having no battery, it gives you nothing at all during a blackout. People are regularly surprised by that. It is a direct consequence of the safety design, not a defect.
+It also does the safety-critical job: **anti-islanding**. When grid power disappears, the inverter detects the loss and stops producing within two seconds, the limit set by IEEE 1547, the interconnection standard inverters are certified against. This is why a plug-in system cannot energize wiring that a utility worker or a firefighter believes is dead — and also why, having no battery, it gives you nothing at all during a blackout. People are regularly surprised by that. It is a direct consequence of the safety design, not a defect.
 
-UL 1741 is the long-standing US standard covering grid-interactive inverter behaviour, including anti-islanding. UL 3700, published in December 2025 with certification launched in January 2026, is newer and narrower: it covers the complete plug-in photovoltaic system as a product, not just the inverter inside it.
+UL 1741 is the long-standing US standard covering grid-interactive inverter behavior, including anti-islanding. UL 3700, published in December 2025 with certification launched in January 2026, is newer and narrower: it covers the complete plug-in photovoltaic system as a product, not just the inverter inside it.
 
 ## Why the installation itself waits
 
 The SUNNY Act (S8512C / A9111C) passed the New York Senate in April 2026 and the Assembly in late May 2026. As of today it has not been signed. Governor Hochul has until the end of 2026 to act, and the bill takes effect on the ninetieth day after it becomes law — so the earliest realistic date on which a compliant device is squarely inside the rules is some months after a signature, not the day of one.
 
-The Act defines a *portable solar generation device* as a photovoltaic system supplying a maximum aggregate continuous AC inverter nameplate output of no more than 1,200 watts to the grid. It must be listed or certified by an accredited nationally recognised testing laboratory as a complete plug-in photovoltaic system, must include a mechanism preventing it from energising the building’s wiring or the grid during an outage, and must be installed in accordance with the New York State fire prevention and building code and the manufacturer’s instructions. Compliant devices are exempted from interconnection and net-metering requirements. Full detail is on the [SUNNY Act page](https://balco.nyc/sunny-act).
+The Act defines a *portable solar generation device* as a photovoltaic system supplying a maximum aggregate continuous AC inverter nameplate output of no more than 1,200 watts to the grid. It must be listed or certified by an accredited nationally recognised testing laboratory as a complete plug-in photovoltaic system, must include a mechanism preventing it from energizing the building’s wiring or the grid during an outage, and must be installed in accordance with the New York State fire prevention and building code and the manufacturer’s instructions. Compliant devices are exempted from interconnection and net-metering requirements. Full detail is on the [SUNNY Act page](https://balco.nyc/sunny-act).
 
 > **The SUNNY Act removes the utility barrier. It does not grant you the right to install anything.**
 
@@ -1327,7 +1940,7 @@ Plug-in solar is unusual because a cord-and-plug connection bypasses the safegua
 
 - **Anti-islanding is not optional.** Any device you consider must shut down when the grid does. This protects utility crews and firefighters working on what they reasonably believe is a dead circuit.
 
-- **Live prongs.** A panel in sunlight is generating whether or not it is plugged in. UL 3700 requires the plug’s prongs to de-energise in under a second when it is pulled. Without that feature you can unplug a working system and be holding energised metal.
+- **Live prongs.** A panel in sunlight is generating whether or not it is plugged in, so the blades of an ordinary plug on a solar cord can be live when it is pulled. Anti-islanding should shut the inverter down, but it is allowed up to two seconds and is not evaluated as shock protection. UL 3700 addresses this by covering systems with a dedicated plug-in PV plug and receptacle rather than a household plug; [the live-plug problem is explained here](https://balco.nyc/is-plug-in-solar-safe).
 
 - **Backfeeding masks the breaker.** A breaker measures only the net current flowing through it. If solar is feeding a circuit while appliances draw from it, the breaker sees the difference, not the total. The wiring between the solar and the loads can then carry more current than the breaker ever detects — heating conductors without tripping anything. Overcurrent protection is one of the three risk categories UL identified for these systems, alongside touch safety and ground faults.
 
@@ -1377,7 +1990,7 @@ A certified plug-in kit is designed to connect to an existing outdoor outlet wit
 
 **Will balcony solar power my apartment during a blackout?**
 
-No. Grid-tied microinverters must have anti-islanding protection, which shuts the inverter down within a fraction of a second when grid power disappears. This exists so the system cannot energise wiring that a utility worker or firefighter believes is dead. A standard plug-in solar kit has no battery, so it produces nothing at all during an outage.
+No. Grid-tied microinverters must have anti-islanding protection, which shuts the inverter down within two seconds when grid power disappears. This exists so the system cannot energize wiring that a utility worker or firefighter believes is dead. A standard plug-in solar kit has no battery, so it produces nothing at all during an outage.
 
 **Can I plug a balcony solar panel into an extension cord or power strip?**
 
@@ -1557,6 +2170,173 @@ Enough to roughly double it. In balco.nyc's shade model, a south-facing 3rd-floo
 
 ---
 
+# Is plug-in solar safe? The circuit arithmetic and the evidence
+
+URL: https://balco.nyc/is-plug-in-solar-safe  
+Last reviewed: 2026-09-23
+
+It can be, but not automatically, and the reason is arithmetic rather than paperwork. balco.nyc’s worst-case calculation: a 1,200 W plug-in inverter on a shared 15 A, 120 V circuit can let part of that circuit’s wire carry 25 A — 67% over its rating — without the breaker ever tripping. That case needs full sun, heavy loads and an unlucky outlet at the same moment, which is rare, and a dedicated circuit removes it. Germany, with about 1.3 million registered systems at a smaller 800 VA limit, has reassuring modeling but no systematic incident data.
+
+## The breaker cannot see what the inverter adds
+
+A household branch circuit assumes that power arrives from one end. The breaker measures the current leaving the panel, and the wire is sized to carry whatever the breaker allows: under the National Electrical Code, 14 AWG copper may be protected at no more than 15 A and 12 AWG at no more than 20 A, matching those wires’ ratings in the 60 °C column that applies to NM-B house cable.
+
+A plug-in inverter injects current at an outlet partway along the circuit. Anything plugged in beyond that outlet can then draw from both sources at once: up to the breaker’s rating from the panel, plus the inverter’s output. The breaker measures only its own share, so it does not trip — the mechanism UL Solutions’ white paper on plug-in PV illustrates with a 600 VA unit. Here is balco.nyc’s arithmetic for the sizes US laws allow, at 120 V (heat rises with the square of current):
+
+| Circuit (breaker / wire) | Inverter | Inverter current | Worst-case current in the wire | Over the wire’s rating | Heat vs. at rating |
+|---|---|---|---|---|---|
+| 15 A / 14 AWG | 400 W | 3.3 A | 18.3 A | +22% | 1.5× |
+| 15 A / 14 AWG | 800 W | 6.7 A | 21.7 A | +44% | 2.1× |
+| 15 A / 14 AWG | 1,200 W | 10.0 A | 25.0 A | +67% | 2.8× |
+| 20 A / 12 AWG | 400 W | 3.3 A | 23.3 A | +17% | 1.4× |
+| 20 A / 12 AWG | 800 W | 6.7 A | 26.7 A | +33% | 1.8× |
+| 20 A / 12 AWG | 1,200 W | 10.0 A | 30.0 A | +50% | 2.3× |
+
+Read the table as a ceiling, not an expectation. It needs three things at once: the inverter near full output, its outlet between the panel and the loads rather than at the end of the run, and those loads drawing the breaker’s full rating. On the last outlet of a circuit, or alone on a dedicated one, no wire carries more than the larger of the two currents. Concretely: two 1,500 W space heaters on one 15 A circuit draw 25 A and trip the breaker. Add a 1,200 W inverter at full output on an outlet between them and the panel, and the breaker sees exactly 15 A and holds while the cable to the heaters carries 25 A.
+
+An overload is not ignition. The same 14 AWG copper is rated 25 A in the ampacity table’s 90 °C column, and UL Solutions frames the risk as fire or shock through damaged conductors, insulation and connected equipment. What the extra current spends is the code’s margin, which the continuous-load convention narrows: continuous loads are held to 80% of a circuit’s rating, and the NEC’s interconnection rules count inverter output at 125%. If the 80–100% gap is the only spare capacity, it is 3 A — **360 W** — on a 15 A circuit and 4 A (480 W) on a 20 A one. Only one row fits: 400 W on 20 A.
+
+Full output is also uncommon. balco.nyc ran NREL’s PVWatts V8 hour by hour for New York City with the calculator’s settings (800 W of panel, DC/AC ratio 1.1, the site’s mount-loss factors of 0.95 vertical and 0.99 at 35° applied). A vertical south-facing railing system ran at 90% or more of its inverter’s rating for about **5 hours a year**, and at 75% or more for 57; tilted to 35°, for 22 and 273 hours. More panel behind the same inverter means far more hours at the ceiling (section 4).
+
+> **Not electrical advice.** This is worst-case arithmetic. Whether a given circuit can host a given system is for a licensed electrician applying the NEC as your jurisdiction has adopted it.
+
+## The panel, the 120% rule and the 1,200 W number
+
+The panel has the same problem at a larger scale, and there the NEC has a rule, written for hard-wired solar. Section 705.12 allows a source on a panel’s busbar if 125% of its output current plus the main breaker’s rating stays within the busbar’s rating — or within 120% of it, the “120% rule,” when the source and the main breaker sit at opposite ends of the busbar. For a 120 V plug-in source, balco.nyc’s arithmetic:
+
+| Panel (busbar / main) | Room under the 120% rule | Largest inverter current | Largest inverter at 120 V | 1,200 W device (counted as 12.5 A) |
+|---|---|---|---|---|
+| 60 A / 60 A | 12 A | 9.6 A | 1,152 W | Over by 0.5 A |
+| 100 A / 100 A | 20 A | 16 A | 1,920 W | Fits |
+| 200 A / 200 A | 40 A | 32 A | 3,840 W | Fits |
+
+At the panel, then, 1,200 W binds only on a small one. But a plug-in enters the busbar wherever its branch breaker sits, and the stricter 100% version of the rule leaves no room on a panel whose main breaker matches its busbar. UL Solutions says the 120% permission does not apply to branch-circuit wiring, where section 1’s arithmetic lives, and notes that the 2026 NEC, like every earlier edition, does not recognize plug-in PV.
+
+**Why 1,200 W?** The rationale is not stated in the laws. Utah’s HB 340, the first, sets 1,200 W on a standard 120 V outlet with no stated reason. New York’s SUNNY Act, which has passed both chambers and awaits the Governor's signature, uses the same figure, and neither its text nor its sponsor memo explains it. Colorado’s legislative declaration is silent on its 1,920 W. The arithmetic shows where each number sits:
+
+- **1,200 W** is 10 A at 120 V: two-thirds of a 15 A circuit’s rating.
+
+- **Germany’s 800 VA** at 230 V is about 3.5 A: 22% of the 16 A circuit HTW Berlin modeled.
+
+- **Maine’s 420 W** do-it-yourself tier is 3.5 A, almost exactly the German current; the law does not say that is why.
+
+- **Colorado’s 1,920 W** is 16 A: 80% of a 20 A circuit, and the 120%-rule limit of a 100 A panel. The statute does not say which, if either, was intended.
+
+The common US cap puts nearly three times Germany’s current on a household circuit. That does not make it unsafe by itself, but it means the German record describes a smaller overload.
+
+## Blackouts, live plugs and GFCIs
+
+**Anti-islanding protects the grid.** A microinverter follows the utility’s voltage and frequency and cannot create a supply of its own; UL 1741 and IEEE 1547 require it to stop energizing its output within two seconds of losing the grid. That is why a plug-in system shuts down in a blackout and cannot feed a line a utility crew believes is dead — and why, without a battery, it gives no backup power. Maine requires inverters that shut off 0.2 seconds after a disruption.
+
+**A live plug is a different hazard.** On a plug-in solar cord the source sits behind the plug, so in sunlight the blades are connected to a generator — the reason a homemade cord with plugs on both ends is called a “suicide cord.” Pulling the plug looks to the inverter like losing the grid, so it should stop, and advocates’ testimony to the Vermont legislature relies on that. UL Solutions does not accept it as sufficient: anti-islanding is a grid function allowed up to two seconds, never evaluated as shock protection that must survive a component or software fault. Its proposed fixes are a uniquely shaped plug and receptacle with no exposed live parts, or an inverter output separately evaluated as touch-safe.
+
+The standards reflect that. UL 3700, the Outline of Investigation for plug-in PV equipment that UL issued on 11 December 2025 (an outline, not yet a consensus standard), covers equipment with a plug-in PV plug for a permanently installed plug-in PV receptacle, and requires receptacles, GFCIs and overcurrent devices in the circuit to be listed for current in both directions. Germany’s DIN VDE V 0126-95 allows an ordinary household plug only with covered contacts, a disconnect in the plug or protective devices in the inverter.
+
+**GFCIs were not designed for backfeed.** Outdoor receptacles at US homes need GFCI protection, and GFCIs are evaluated for one-way current. In UL Solutions’ tests with an inverter backfeeding the circuit, GFCI circuit breakers averaged 32.8 to 36.7 milliseconds to clear a simulated body fault, beyond the standard’s 28.6 ms limit, because the inverter kept feeding the fault until anti-islanding cut in. GFCI receptacles, which open both conductors, stayed within the limit.
+
+## What Germany’s record does and does not show
+
+Germany is the evidence everyone cites. Since the Solarpaket I amendments took effect on 16 May 2024, a *Steckersolargerät* may have up to 800 VA of inverter output and 2,000 W of panels, and must be registered in the Bundesnetzagentur’s Marktstammdatenregister. The first product standard, DIN VDE V 0126-95, followed in December 2025. By April 2026 the register held about 1.31 million devices.
+
+**There is no systematic incident data.** We found no German register, insurer series or fire-service statistic that counts fires or shocks attributable to plug-in solar; the official register records installations, not incidents. The PV fire figure most often quoted — Fraunhofer ISE’s 2013 count of 120 fires caused by PV systems over 20 years, among 1.3 million installations — predates the balcony boom and concerns conventional systems. The advocates’ Vermont testimony says four million German systems are in use with no significant incidents reported. It cites no dataset, and “none reported” is not “none” when nothing is set up to collect reports.
+
+**What exists is modeling.** A February 2025 HTW Berlin report tested the 800 W limit on a 16 A German circuit. In a deliberately extreme case — cable in insulation, already loaded to 1.13 times its rating around the clock — an 800 W device pushed part of the circuit to 21.6 A, 135% of rating, for up to 16 hours a year, and the modeled conductor to 104 °C for a few minutes: above its 70 °C operating temperature, below the ignition point of common building materials, and enough to age insulation faster. With 2,000 W of panel behind the inverter, full output lasted about 1,000 hours a year. With load profiles from 74 real households, the device made no significant difference to conductor temperature or to the modeled number of fires.
+
+Three reasons not to import that conclusion whole. The current is smaller: 3.5 A, against 10 A for a 1,200 W US device on a circuit rated lower. European residual-current devices open both conductors, which UL’s tests found keeps shock protection intact under backfeed; a US GFCI circuit breaker does not. And Germany’s grid-standards forum, VDE FNN, still advises that an electrician first check whether an existing circuit is adequately sized and protected for feed-in, to avoid overload and fire.
+
+## What the US laws require
+
+Every enacted US plug-in law makes the same basic trade: the utility loses the right to demand approval, fees or extra equipment, and the device must be listed by a nationally recognized testing laboratory and must stop energizing the building and the grid in an outage. Beyond that they diverge. The table comes from balco.nyc’s [state tracker](https://balco.nyc/states), built from the legislatures’ bill pages. It is not legal advice, and details vary by utility.
+
+| State | Status | Cap | Certification | Meter, circuit and notice rules |
+|---|---|---|---|---|
+| Utah | In force since May 2025 | 1,200 W | UL or equivalent; must meet the NEC | No utility approval or fees |
+| Maine | In force July 2026 | 420 W; up to 1,200 W with conditions | UL 3700 or comparable, or configured per the NEC; off within 0.2 s | Above 420 W: licensed electrician, dedicated single-outlet circuit, notice within 30 days |
+| Vermont | In force July 2026 | 1,200 W per meter | UL 3700 or equivalent; IEEE 1547-2018 | Smart meter required; “temporarily but securely attached” |
+| Connecticut | From 1 October 2026 | 1,200 W | UL or equivalent; UL 1741; IEEE 1547; NEC | One device per meter |
+| Colorado | In force August 2026 | 1,920 W | Listed by a recognized laboratory | One device per wall outlet per address; utility may require notice |
+| New York (SUNNY Act) | Passed both chambers; awaits the Governor's signature | 1,200 W AC | Listed as a complete plug-in system | Notify the utility within 30 days |
+
+Three things stand out. The caps are per meter, per address or per outlet, not per circuit: they stop a household from stacking devices but say nothing about what else shares the circuit a device lands on. Maine is the exception; above 420 W it requires exactly the dedicated circuit that makes section 1’s worst case impossible. Several laws require compliance with the NEC, which does not yet recognize plug-in PV, so “meets the NEC” is not yet a well-defined test. And under the standard written for these hazards, UL 3700, components have been listed but no complete system had been as of September 2026; [what UL 3700 covers and where certification stands](https://balco.nyc/ul-3700-plug-in-solar-certification) has the detail.
+
+Maryland and Virginia also require notice to the utility before installation, and Colorado, Maryland and Virginia exempt devices of 391 W or less from code or listing provisions that would require rewiring; New Jersey draws that line at 400 W. [Every law side by side](https://balco.nyc/balcony-solar-laws-compared) has the rest.
+
+## A practical checklist
+
+None of this replaces a licensed electrician, the NEC as adopted where you live, or the product’s instructions; the [installation guide](https://balco.nyc/install-balcony-solar) has more detail.
+
+- **A dedicated circuit if you can get one.** With nothing else on the circuit, no wire can carry breaker current plus inverter current. It is the first mitigation UL Solutions lists and what Maine requires above 420 W. If the outlet is shared, find out what else is on that breaker and keep heaters, air conditioners and hair dryers off it while the system is producing.
+
+- **An outdoor-rated, GFCI-protected receptacle** with an in-use cover. Ordinary GFCIs are evaluated for one-way current, so follow the system’s instructions on whether the protection must be listed for backfeed. No outdoor outlet means an electrician and, in an apartment, the building’s approval.
+
+- **The manufacturer’s cord, straight into the wall.** No extension cords, power strips or adapters. The same masking arithmetic applies inside a power strip, and every added plug is another set of blades never evaluated as a generator’s output.
+
+- **One system per circuit, within your state’s cap.** Two inverters on one circuit add their currents to the worst case.
+
+- **A complete listed system, unmodified.** A listed inverter paired with separately bought panels is not a listed plug-in system.
+
+- **Secure mounting, sized for wind.** A panel is a sail: use the system’s brackets and a secondary tether, mount inside the railing where you can, and re-check after storms.
+
+- **Never on a fire escape or in an egress path.** New York City’s Fire Code requires means of egress and fire escapes to be kept free of obstructions; panels, brackets and cables count.
+
+Call an electrician first if you cannot identify the breaker, if the receptacle has no ground or trips repeatedly, or if the wiring is old enough that you are guessing.
+
+## Common questions
+
+**Is balcony solar safe?**
+
+It can be, but not automatically. A plug-in system listed by a recognized testing laboratory, on a suitable circuit, is designed to be safe, but the hazards are specific: undetected circuit overload, live plug blades and interference with GFCI protection. balco.nyc's worst-case arithmetic shows a 1,200 W inverter on a shared 15 A circuit can let part of the wire carry 25 A without tripping the breaker. That needs full sun, heavy loads and an unlucky outlet at once, which is rare, and a dedicated circuit removes it.
+
+**Can plug-in solar overload a circuit without tripping the breaker?**
+
+Yes, in a worst case. The breaker measures only current coming from the panel, so if loads beyond the inverter's outlet draw the breaker's full rating plus the inverter's output, the wire between them carries both. By balco.nyc's arithmetic, on a 15 A, 120 V circuit that is 18.3 A with a 400 W inverter, 21.7 A with 800 W and 25 A with 1,200 W, or 22% to 67% over the wire's rating. UL Solutions identifies this as one of the three main risks of plug-in PV.
+
+**Does plug-in solar work during a blackout?**
+
+No. UL 1741 and IEEE 1547 require grid-interactive inverters to stop energizing their output within two seconds of losing the grid, so a plug-in system shuts down in an outage. This anti-islanding function protects utility crews working on lines they believe are dead. Without a battery, the system provides no backup power.
+
+**Are the prongs on a plug-in solar cord live when it is unplugged?**
+
+They can be, which is one reason certification matters. A microinverter should stop when unplugged because it loses the grid, but UL Solutions says that grid function, which is allowed up to two seconds and is not evaluated as shock protection, is not enough on its own. UL 3700 and Germany's DIN VDE V 0126-95 add protection such as a dedicated receptacle design, covered contacts or protective devices in the inverter.
+
+**Has balcony solar caused fires in Germany?**
+
+Nobody can say precisely, because Germany has no systematic incident register for plug-in solar; its official register records about 1.31 million installations, not incidents. The strongest evidence is modeling: a 2025 HTW Berlin report found that with real household loads an 800 W device did not significantly raise wiring temperatures or the modeled number of fires, though a deliberately extreme case aged insulation faster. A 1,200 W US device puts nearly three times as much current on a circuit.
+
+**Why do US plug-in solar laws cap systems at 1,200 watts?**
+
+The laws do not say. Utah's HB 340, the first, allows up to 1,200 W on a standard 120 V outlet without a stated rationale, and later laws and bills, including New York's SUNNY Act, which has passed both chambers and awaits the Governor's signature, use the figure without explaining it. At 120 V, 1,200 W is 10 A, two-thirds of a 15 A circuit's rating, compared with about 3.5 A for Germany's 800 VA limit at 230 V.
+
+**Can I plug a balcony solar system into an extension cord or power strip?**
+
+No. A power strip has the same blind spot as a wall breaker, so loads plugged into it can draw the strip's rating plus the inverter's output through its internal wiring, and every extra plug adds blades never evaluated as the output of a generator. Use the manufacturer's cord directly in a properly rated, GFCI-protected outdoor receptacle, and ask an electrician if there is none.
+
+## Sources
+
+- [UL Solutions — Interactions of Plug-In PV with Protection of Existing Power Systems (white paper, filed as Maine legislative testimony)](https://legislature.maine.gov/testimony/resources/EUT20260106Soltan134125472587136094.pdf): the undetected-overload mechanism and 600 VA example; that the 705.12(B) 120% permission does not apply to branch-circuit wiring; the 80% continuous convention; the two-second anti-islanding allowance and why it is not touch protection; the GFCI test results (32.8–36.7 ms against 28.6 ms); dedicated-circuit and unique-receptacle mitigations; European devices opening both conductors.
+- [UL Standards & Engagement — UL 3700, Outline of Investigation for Interactive Plug-In PV (PIPV) Equipment and Systems](https://www.shopulstandards.com/ProductDetail.aspx?UniqueKey=49440): edition 1 published 11 December 2025; scope covers a PIPV plug for a permanently installed PIPV receptacle and requires circuit components to be listed for bidirectional current.
+- [UL Solutions — The Code Authority: coordination between model codes and standards, 2026 NEC](https://www.ul.com/thecodeauthority/knowledge/coordination-between-model-codes-standards09): that the 2026 NEC, like all previous editions, does not recognize plug-in PV.
+- [Mike Holt Enterprises — Fundamental 2023 NEC Calculations, 240.4 Overcurrent Protection](https://www.mikeholt.com/instructor2/img/product/pdf/1678822939.pdf): NEC 240.4(D): overcurrent protection not to exceed 15 A for 14 AWG copper and 20 A for 12 AWG copper.
+- [Cerrowire — Ampacity chart (based on NEC Table 310.16)](https://www.cerrowire.com/products/resources/tables-calculators/ampacity-charts/): 14 AWG copper 15 A and 12 AWG 20 A in the 60 °C (NM-B) column; 25 A and 30 A at 90 °C.
+- [Mayfield Renewables — Code Corner: NEC 705.12(B)(3)(1) and (2)](https://www.mayfield.energy/technical-articles/code-corner-2020-nec-705-12b31-and-2/): the text of the 100% and 120% busbar rules, including the 125% factor on source current and the opposite-ends condition.
+- [Maine Legislature — Public Law 2025 ch. 644 (LD 1730), 35-A MRSA §3475](https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132): the 420 W tier; above it, a licensed electrician and a dedicated circuit with a single outlet; 30-day notice; UL 3700 or comparable listing; inverters off within 0.2 seconds.
+- [Utah Legislature — H.B. 340 (2025), enrolled copy](https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf): the 1,200 W, 120 V definition, NEC and UL-or-equivalent requirements and outage feature, with no stated rationale for the cap.
+- [Vermont Legislature — Act 149 (S.202) as enacted](https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf): 1,200 W combined per meter, UL 3700 or equivalent, IEEE 1547-2018, smart meters, temporary but secure attachment.
+- [Connecticut General Assembly — Public Act 26-127, section 9](https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00127-R00HB-05340-PA.PDF): 1,200 W on a 120 V outlet, UL 1741, IEEE 1547 and NEC requirements, one device per meter, the excess-generation warning.
+- [Colorado General Assembly — HB26-1007, signed act](https://leg.colorado.gov/bill_files/116074/download): 1,920 W, NRTL listing, one device per wall outlet per address, the 391 W exemption, and a legislative declaration that does not explain the cap.
+- [New York State Senate — S8512C (SUNNY Act)](https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C): 1,200 W AC, listing as a complete plug-in system, outage feature and 30-day notice; the sponsor memo gives no rationale for the cap.
+- [Bundesnetzagentur — Balkon-Solaranlagen](https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/ErneuerbareEnergien/Solaranlagen/Balkon_table.html): the 800 VA inverter and 2,000 W module limits under the Solarpaket rules in force since 16 May 2024, and Marktstammdatenregister registration.
+- [VDE — First product standard for plug-in solar devices (DIN VDE V 0126-95)](https://www.vde.com/en/press/press-releases/first-product-standard-for-plug-in-solar-devices): December 2025 publication, 800 VA, 960 Wp with a household plug, and the plug protection options.
+- [VDE FNN — Steckerfertige PV-Anlagen (Steckersolargeräte)](https://www.vde.com/fnn-pv-stecker): the advice that an electrician first check whether an existing circuit is adequately sized and protected for feed-in.
+- [HTW Berlin — Kurzbericht: Steckersolar 800 W (Bergner, February 2025)](https://solar.htw-berlin.de/wp-content/uploads/BERGNER-2025-Kurzbericht-800-W.pdf): the 21.6 A (135%) extreme case, up to 16 hours a year, 104 °C, about 1,000 hours with 2,000 W of panel, and no significant change with 74 real household load profiles.
+- [Strom-Report — Balkonkraftwerk statistics](https://strom-report.com/balkonkraftwerk/): 1,311,919 plug-in systems in the Marktstammdatenregister as of 15 April 2026.
+- [Fraunhofer ISE — Fire protection in photovoltaic systems (February 2013)](https://www.ise.fraunhofer.de/en/press-media/press-releases/2013/fire-protection-in-photovoltaic-systems.html): 120 fires caused by PV systems over 20 years among 1.3 million German installations, a figure that predates plug-in systems.
+- [Vermont Legislature witness testimony — Safety of Plug-in Solar (Permit Power, Brooks Engineering, Bright Saver, 2026)](https://legislature.vermont.gov/Documents/2026/Workgroups/House%20Energy%20and%20Digital/Bills/S.202/Witness%20Testimony/S.202~Wesley%20Schrock~Safety%20of%20Plug-in%20Solar~3-17-2026.pdf): the advocates’ claims that unplugged prongs go dead like the lineman protection and that four million German systems have no significant reported incidents, quoted here in order to qualify them.
+- [NREL PVWatts Calculator](https://pvwatts.nlr.gov/): the V8 hourly model behind balco.nyc’s count of hours near full inverter output in New York City.
+- [NYC Fire Code 2022, Chapter 10 — Means of Egress](https://up.codes/viewer/new_york_city/nyc-fire-code-2022/chapter/10/means-of-egress): sections 1027.3 and 1027.7: means of egress and fire escapes continuously maintained free from obstructions.
+
+---
+
 # Is plug-in solar legal in New York?
 
 URL: https://balco.nyc/sunny-act  
@@ -1681,6 +2461,175 @@ Yes. Utah passed the first plug-in solar law in 2025, and by September 2026 Main
 
 ---
 
+# UL 3700 and whole-system certification for plug-in solar, explained
+
+URL: https://balco.nyc/ul-3700-plug-in-solar-certification  
+Last reviewed: 2026-09-23
+
+UL 3700 is the first US safety document written for a plug-in solar system as a whole, with panel, microinverter, cord and plug evaluated together. As of 23 September 2026 no complete plug-in system is listed to it. Only components, mainly microinverters, carry UL 3700 claims. balco.nyc read the certification clause in all nine signed state laws: only 2, Maine and Vermont, ask for a listing of the whole system, and they hold 0.6% of US residents. New York’s SUNNY Act, which has passed both chambers and awaits the Governor's signature, would require a “complete plug-in photovoltaic system” listing that no product holds.
+
+## What UL 3700 is, and what it is not
+
+UL 3700’s full name is the *Outline of Investigation for Interactive Plug-In PV (PIPV) Equipment and Systems*. Edition 1 is dated 11 December 2025 and is sold through the standards store of UL Standards & Engagement (ULSE), labeled a UL LLC outline. UL Solutions opened certification against it on 8 January 2026.
+
+The word “outline” matters. ULSE’s glossary defines an outline of investigation as a certification document owned by UL LLC, not a consensus document and not developed through ULSE’s standards process. It is a certifier’s document for a category too new for a full standard: a normal first step, and what Maine, Vermont and New Jersey cite, but not an established national standard.
+
+Its scope, as ULSE publishes it, is plug-in PV equipment and systems that connect by a plug-in PV cord and plug to a permanently installed receptacle meant for that purpose; Intertek, which also certifies to UL 3700, calls it a dedicated plug-in PV receptacle. The DC side is capped at 64 V open-circuit under the outline’s test conditions, and rooftop, building-integrated and hard-wired PV are excluded. The aim is the hazards that only exist once panel, microinverter, cord and household circuit are combined: current the breaker cannot see, plug blades that stay live, interference with ground-fault protection, and current flowing backward through devices built for one direction.
+
+The case for it is a finding UL Solutions has made public. Its vice president of principal engineering, Ken Boyce, told PV Tech in August 2026 that the company bought plug-in products on the open market, tested them against UL 3700, and none complied. Whether that matters for your purchase depends on your state; balco.nyc’s compilation of every signed law’s certification wording is in section 4.
+
+## UL 1741, IEEE 1547, NRTL and “listed”: the vocabulary
+
+Four documents come up, and they answer different questions:
+
+| Document | What it evaluates | What it does not tell you |
+|---|---|---|
+| UL 3700 (outline, 2025) | Plug-in PV equipment, or a complete plug-in system with its cord, plug and protection | Anything not submitted to it: a microinverter evaluated to it is not a system evaluated to it |
+| UL 1741 (ed. 3, ANSI) | Inverters and other grid-interconnection equipment; used with IEEE 1547 and 1547.1 for grid-connected units | The panels, the cord and plug, or the circuit it feeds |
+| IEEE 1547-2018 | How a generator interconnects with the grid, including islanding | Fire and shock safety of the product |
+| UL 61730 | The PV module (panel) | Everything downstream of the panel |
+
+Islanding is why utilities care: a generator that keeps energizing a line after the grid fails can shock a worker who believes it is dead. Most state laws add their own anti-islanding clause; Maine’s requires inverters that shut off 0.2 seconds after power is disrupted.
+
+The legal vocabulary comes from federal workplace-safety rules. A **nationally recognized testing laboratory (NRTL)**, under 29 CFR 1910.7, is an OSHA-recognized organization that tests for safety, lists or labels equipment, inspects production and is independent of the manufacturers it tests. OSHA’s current list has 21, including UL LLC, CSA Group, Intertek and both TÜV organizations. Every law below accepts an equivalent NRTL, not only UL, except Colorado’s 2027 sales rule, which says “UL labeled and listed”.
+
+- **Listed** (29 CFR 1910.399): named in a list published by an NRTL that inspects production, as meeting recognized standards or tested safe for use in a specified manner. **Labeled**: carrying that NRTL’s mark.
+
+- **Certified** is not defined there. UL uses “Certified (Listed)” interchangeably for end products; the state laws mix “certified”, “listed or certified” and “labeled and listed” without distinguishing them.
+
+- **Recognized component** (the backward “UR” mark): a part evaluated for use inside a larger certified product. UL says it is not a certification of a standalone product.
+
+## Why a listed inverter and listed panels are not a listed plug-in system
+
+A listing covers the product submitted, in the configuration tested, for a specified use. A microinverter listed to UL 1741 has been evaluated for its own safety and its behavior on the grid. A panel listed to UL 61730 has been evaluated for shock and fire safety as a panel. Neither was tested with the other, with the kit’s cord and plug, or feeding a shared 15 A kitchen circuit. Put them in one box and you have two listings, not one.
+
+The hazards UL 3700 targets belong to the combination. An inverter feeding a circuit at one outlet while appliances draw at others can push more current through part of the wire than the breaker sees; balco.nyc’s worst case is [25 A on a 15 A circuit](https://balco.nyc/is-plug-in-solar-safe). No test of the inverter alone can find that. Live plug blades and GFCI interaction also depend on how the parts are connected.
+
+The market shows the distinction. Bright Saver, a nonprofit that sells plug-in kits at cost, describes the microinverter in its kit as UL 3700 compliant. The same page says it cannot ship to New York, Maine or Vermont because their laws require “whole-system certification, which no system on the market has achieved yet.” In New York the law in question is the SUNNY Act’s text, which is not yet law. The kit ships to the rest of the continental US, which is how the market reads the other statutes: where a law names no system standard, a kit of listed components is sold as compliant. No regulator or court has tested that reading.
+
+## What each state law asks for: balco.nyc’s compilation
+
+balco.nyc read the certification clause in the enacted text of all nine signed plug-in solar laws, and in the New York and California bills, as of 23 September 2026. Quotation marks show statutory wording; the last column is our reading, not legal advice.
+
+| State | Status | What the text requires | What it means in practice |
+|---|---|---|---|
+| Utah | In force since 7 May 2025 | “Certified by Underwriters Laboratories or an equivalent nationally recognized testing laboratory.” | No standard named. Kits of listed components are sold as compliant; whether “the device” means the whole kit is unsettled. |
+| Maryland | In force since 1 July 2026 | “Certified by Underwriters Laboratory or an equivalent” NRTL | As Utah. The customer also gives the utility a certification of safety features and capacity. |
+| Colorado | In force since 12 Aug 2026 | The system “and associated equipment” is “labeled and listed” by an NRTL; from 2027, no sales over 391 W unless “UL labeled and listed” | No standard named. “System” leans toward a system listing; the 2027 rule names UL, not any NRTL. |
+| Connecticut | From 1 Oct 2026 | UL or equivalent NRTL, and “meets the requirements set forth in Underwriters Laboratories Standard Number 1741”; IEEE 1547; NEC | The one standard named is the inverter standard, which a listed microinverter already meets. |
+| New Hampshire | From 1 Jan 2027 | NRTL certification to nationally recognized safety standards | No standard named. The building-code section waits until the state certifies a national plug-in standard exists. |
+| Virginia | From 1 Jan 2027 | “Certified by a nationally recognized testing laboratory, as described in 29 C.F.R. § 1910.7, or an equivalent” NRTL | As Utah. Tenants must show the landlord documentation that the device qualifies. |
+| New Jersey | From 1 Mar 2027 | Listed or certified to UL 3700, or a comparable standard or combination of standards, by an NRTL | Names UL 3700, but combination of standards leaves open whether stacked component listings count. |
+| Maine | In force since 29 July 2026 | System “listed or certified in accordance with UL 3700” or a comparable NRTL standard, or “configured in accordance with the National Electrical Code” | System-level listing. The NEC route is unclear: the 2026 NEC has no plug-in PV provisions. |
+| Vermont | In force since 1 July 2026 | “Complies with UL 3700 for plug-in photovoltaic systems by UL Solutions or an equivalent certification”; IEEE 1547-2018 | System-level listing. No complete system has one. |
+| New York (bill) | Passed both chambers; not yet delivered to the Governor | “Listed or certified by an accredited nationally recognized testing laboratory as a complete plug-in photovoltaic system to a standard” | The strictest wording. No standard named, but the complete system must be listed. |
+| California (bill) | With the Governor since 31 Aug 2026 | “Certified as a plug-in photovoltaic system” by UL or an equivalent NRTL, plus a certified anti-backfeed feature | System-level. From 2030 it would ban sales of plug-in devices that do not qualify. |
+
+**The count.** Of the nine signed laws, three name UL 3700: Maine, Vermont and New Jersey. Only **two, Maine and Vermont, ask for UL 3700 or an equivalent listing of the system itself**, with no route through a combination of other standards. Five name no standard (Utah, Maryland, Colorado, Virginia, New Hampshire), and Connecticut names only the inverter standard. That is six of nine whose wording a kit of separately listed parts can plausibly meet, two that require a system listing, and New Jersey in between.
+
+**Weighted by population** (Census Bureau 2025 estimates), Maine (1,414,874) and Vermont (644,663) hold 2,059,537 people: **0.6%** of the 341.8 million US residents, and 5.0% of the 41.4 million in states with a signed law. If New York (20,002,427) and California (39,355,309) enact their bills, a system-level requirement would cover 61,417,273 people: **18.0%** of US residents and 61% of everyone under one of these eleven texts. The missing product would go from a two-small-state problem to the main constraint for most people these laws cover.
+
+The laws differ on much more than certification; [the provision-by-provision comparison](https://balco.nyc/balcony-solar-laws-compared) has the rest.
+
+## Where certification stands in September 2026
+
+**No complete plug-in system is listed to UL 3700 as of 23 September 2026.** In late August, PV Tech reported that UL Solutions was still working toward its first UL 3700 certification. On 23 September, Bright Saver’s kit page still said no system on the market had achieved whole-system certification.
+
+What exists are equipment-level claims for microinverters. On 15 July 2026 APsystems said its EZ1 plug-in microinverter was certified to UL 3700 by CSA Group, an NRTL on OSHA’s list. The same day Hoymiles launched its HiFlow Pro as the first UL 3700-compliant plug-in microinverter in the US; the coverage named no certifying lab. Neither claim is a listing of a complete system with panels, cabling and mounting, which is what Maine, Vermont and New York’s bill describe.
+
+Two limits: balco.nyc could not search UL’s Product iQ directory, which requires an account, and has not searched every NRTL’s listings. If a complete system is listed after the review date above, the certifier’s directory is the authority, not this page.
+
+For New York the timing is the point. The SUNNY Act has passed both chambers and awaits the Governor's signature. If signed, it takes effect 90 days later, and its interconnection exemption would cover only devices listed as complete plug-in systems; on today’s market, none. It grants no right to install, so renters and co-op residents still need permission ([what the Act does and does not change](https://balco.nyc/sunny-act)).
+
+## How to check a listing, and what “UL certified” can mean
+
+A seller’s “UL certified” is a claim about some part of the product, to some standard. Four checks make it verifiable:
+
+- **Find the mark and file number on each part**: the inverter’s nameplate and the panel’s label, not the box or the product page.
+
+- **Look it up with the certifier.** UL’s Product iQ is free with an account and searches by file number, category code or model; CSA Group’s product listing is public. By the federal definition, a listed product is one that appears in such a list.
+
+- **Read what the listing covers**: which standard, which model numbers, and whether it is the kit as sold or one part of it.
+
+- **Get it in writing and keep it.** Ask the seller which lab listed which product, to which standard, under which file number. Maryland has you give the utility a certification of safety features, and Virginia tenants must show their landlord documentation.
+
+| The claim | What it can mean | What it does not establish |
+|---|---|---|
+| “UL certified” or “UL listed” | Some part is listed by UL | Which part, to which standard |
+| “UL 1741”, “UL 1741 SB”, “IEEE 1547” | The inverter’s safety and grid behavior | Anything about panels, cord, plug or circuit |
+| “UL 3700 compliant” | The maker’s own statement | A listing by any NRTL |
+| A microinverter certified to UL 3700 | That equipment was evaluated to the outline | That the complete system was |
+| “ETL listed”, “CSA certified” | Listed by another NRTL, which most of the laws accept as equivalent | Which standard, until you look it up |
+| Backward “UR” mark | A recognized component for factory assembly | Suitability as a standalone product |
+
+> **Not legal advice.** Whether a kit satisfies a statute is for that state’s regulators, code officials and courts, and can vary by utility and building. Check the enacted text linked from your [state page](https://balco.nyc/states); a plug-in law binds the utility, not your landlord, board or insurer, unless it says so.
+
+## Common questions
+
+**What is UL 3700?**
+
+UL 3700 is the Outline of Investigation for Interactive Plug-In PV (PIPV) Equipment and Systems, edition 1, dated 11 December 2025. It is a UL LLC certification document rather than a consensus standard, and UL Solutions began certifying to it on 8 January 2026. It evaluates plug-in solar equipment or a complete plug-in system, including the cord, plug, receptacle arrangement and ground-fault and overcurrent behavior, rather than the panel or inverter alone.
+
+**Is any balcony solar kit certified to UL 3700?**
+
+Not as a complete system, as of 23 September 2026. Some microinverters carry UL 3700 claims: APsystems says its EZ1 was certified by CSA Group in July 2026, and Hoymiles launched its HiFlow Pro as UL 3700-compliant. But no complete kit with panels, cabling and mounting is listed to UL 3700. PV Tech reported in August 2026 that UL Solutions was still working toward its first UL 3700 certification, and Bright Saver says no system on the market has achieved whole-system certification.
+
+**If my kit has a UL 1741 microinverter and UL-listed panels, is it UL certified?**
+
+Its parts are, but the kit as a whole is not. A listing covers the product submitted, in the configuration tested. UL 1741 covers the inverter's safety and grid behavior, and UL 61730 covers the panel. Neither tests the combination with the cord, plug and household circuit, which is where plug-in hazards such as unseen overcurrent arise. Whether separately listed parts satisfy a particular state law depends on that law's wording.
+
+**Which states require UL 3700 for plug-in solar?**
+
+Of the nine states with signed plug-in solar laws as of 23 September 2026, Maine, Vermont and New Jersey name UL 3700. Maine and Vermont ask for UL 3700 or an equivalent listing of the system itself. Maine also allows a system configured to the state-adopted electrical code. New Jersey also accepts a comparable standard or combination of standards. Utah, Maryland, Colorado, Virginia and New Hampshire require NRTL certification without naming a standard, and Connecticut names UL 1741.
+
+**Does New York's SUNNY Act require UL 3700?**
+
+It does not name UL 3700, but it is stricter. The bill requires a device listed or certified by an accredited nationally recognized testing laboratory as a complete plug-in photovoltaic system. As of 23 September 2026 no complete system holds such a listing. The SUNNY Act has passed both chambers and awaits the Governor's signature; if signed, it takes effect 90 days later and grants no right to install.
+
+**What is an NRTL?**
+
+A nationally recognized testing laboratory is defined in federal rule 29 CFR 1910.7. It is an organization recognized by OSHA that tests equipment for safety, lists or labels it, inspects production and is independent of the manufacturers it tests. OSHA's list has 21, including UL LLC, CSA Group, Intertek and TÜV SÜD. State plug-in laws that say UL generally accept an equivalent NRTL as well.
+
+**How can I check whether a plug-in solar product is really listed?**
+
+Find the certification mark and file number on the nameplate of each part, then look it up in the certifier's own directory: UL's Product iQ (free with an account) or CSA Group's public product listing, for example. Check which standard the listing is to and whether it covers the complete kit or one component. A claim of being UL 3700 compliant is the maker's own statement, not a listing.
+
+## Sources
+
+- [UL Standards & Engagement — UL 3700, Outline of Investigation for Interactive Plug-In PV (PIPV) Equipment and Systems](https://www.shopulstandards.com/ProductDetail.aspx?UniqueKey=49440): edition 1 dated 11 December 2025, labeled a UL LLC outline; scope covering PIPV cord-and-plug connection to a permanently installed PIPV receptacle, the 64 VDC open-circuit limit, and the exclusion of rooftop, BIPV and hard-wired PV.
+- [UL Standards & Engagement — product glossary](https://www.shopulstandards.com/ProductGlossary.aspx): that outlines of investigation are UL LLC certification documents, not consensus documents developed through the ULSE standards process.
+- [UL Solutions — testing and certification framework for plug-in solar (8 January 2026)](https://www.ul.com/news/ul-solutions-debuts-testing-and-certification-framework-safer-plug-solar-across-united-states): launch of the UL 3700 certification program and the hazards it addresses, including current flowing in the wrong direction.
+- [PV Tech — US plug-in solar: questions remain over safety, certifications and regulation (26 August 2026)](https://www.pv-tech.org/us-plug-in-solar-questions-remain-over-safety-certifications-and-regulation/): UL Solutions’ Ken Boyce: market products tested against UL 3700 did not comply, and UL Solutions was working toward its first certification.
+- [pv magazine USA — How to build a balcony solar kit to UL certification (28 January 2026)](https://pv-magazine-usa.com/2026/01/28/how-to-build-a-balcony-solar-kit-to-ul-standards/): component listings (UL 1741 inverters, UL 61730 modules) versus system evaluation under UL 3700; overcurrent, touch-safety and GFCI risk categories.
+- [UL Standards & Engagement — UL 1741, Inverters, Converters, Controllers and Interconnection System Equipment](https://www.shopulstandards.com/ProductDetail.aspx?productId=UL1741_3_S_20210928): edition 3 (2021), ANSI-approved; for grid-interactive equipment used with IEEE 1547 and IEEE 1547.1.
+- [IEEE — IEEE 1547-2018, interconnection and interoperability of distributed energy resources](https://standards.ieee.org/ieee/1547/5915/): scope of the interconnection standard, including islanding.
+- [eCFR — 29 CFR 1910.7, definition and requirements for a nationally recognized testing laboratory](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1910/subpart-A/section-1910.7): OSHA recognition, factory inspection and independence requirements for an NRTL; cited by Virginia’s law.
+- [eCFR — 29 CFR 1910.399, electrical definitions](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1910/subpart-S/subject-group-ECFR314553c63ae81f4/section-1910.399): the federal definitions of “listed” and “labeled”.
+- [OSHA — Current list of NRTLs](https://www.osha.gov/nationally-recognized-testing-laboratory-program/current-list-of-nrtls): the 21 recognized laboratories, including UL LLC, CSA Group, Intertek, TÜV SÜD and TÜV Rheinland.
+- [UL Solutions — The UL component recognition classification](https://www.ul.com/thecodeauthority/knowledge/ul-component-recognition-classification): recognized components are for building into a larger certified product, under conditions of acceptability, and are not a standalone product certification.
+- [UL Solutions — Finding UL listed and certified products with Product iQ](https://www.ul.com/thecodeauthority/knowledge/ul-listed-certified-database-product-iq): Product iQ access with a complimentary account; search by file number, category code or model.
+- [CSA Group — Product listing](https://www.csagroup.org/testing-certification/product-listing/): public directory of products bearing a CSA mark, searchable by file number, class or manufacturer.
+- [Intertek — UL 3700 testing and certification](https://www.intertek.com/solar/ul-3700-solutions/): that NRTLs other than UL certify to UL 3700, and its description of a dedicated plug-in PV receptacle.
+- [Bright Saver — balcony solar kit page (checked 23 September 2026)](https://www.brightsaver.org/balcony-solar-kits): cited, not recommended: the statement that it cannot ship to New York, Maine or Vermont because those laws require whole-system certification no system has achieved, and its description of the kit’s microinverter as UL 3700 compliant.
+- [APsystems — EZ1 UL 3700 announcement (15 July 2026)](https://usa.apsystems.com/ez1-proven-portable-solar-ul-3700-certified/): the manufacturer’s claim that its EZ1 microinverter is CSA-certified to UL 3700; a component claim, not a system listing.
+- [pv magazine USA — Hoymiles introduces first UL 3700-compliant plug-in microinverter (15 July 2026)](https://pv-magazine-usa.com/2026/07/15/hoymiles-introduces-first-ul-3700-compliant-plug-in-microinverter-to-u-s-market/): a microinverter described as UL 3700-compliant, with no certifying lab named.
+- [Utah Legislature — H.B. 340 Solar Power Amendments, enrolled copy (2025)](https://le.utah.gov/Session/2025/bills/enrolled/HB0340.pdf): certification by UL or an equivalent NRTL; no standard named; 7 May 2025 effective date.
+- [Maryland General Assembly — Chapter 353 of 2026 (HB 1532), Public Utilities §7-321](https://mgaleg.maryland.gov/2026RS/Chapters_noln/CH_353_hb1532e.pdf): certification by UL or an equivalent NRTL, and the customer’s certification of safety features to the utility.
+- [Colorado General Assembly — HB26-1007 signed act (C.R.S. 40-2-140)](https://leg.colorado.gov/bill_files/116074/download): “labeled and listed” by an NRTL, and the 2027 “UL labeled and listed” sales rule above 391 W.
+- [Connecticut General Assembly — Public Act 26-127 (HB 5340), section 9](https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00127-R00HB-05340-PA.PDF): UL or equivalent NRTL certification plus UL 1741, IEEE 1547 and the NEC; effective 1 October 2026.
+- [pv magazine USA — New Hampshire legislature advances plug-in solar bill (SB 540)](https://pv-magazine-usa.com/2026/05/12/new-hampshire-legislature-advances-plug-in-solar-bill-to-governor/): NRTL certification with no standard named, the building-code provision waiting on a national plug-in standard, and that the 2026 NEC has no plug-in PV language.
+- [Virginia Acts of Assembly — 2026 Chapter 1052 (HB 395)](https://lis.blob.core.windows.net/files/1225204.PDF): NRTL certification “as described in 29 C.F.R. § 1910.7”; tenant documentation to the landlord; effective 1 January 2027.
+- [pv magazine USA — New Jersey legalizes plug-in solar up to 1,200 W (1 September 2026)](https://pv-magazine-usa.com/2026/09/01/new-jersey-legalizes-plug-in-solar-up-to-1200-w/): the Garden State Balcony Solar Act’s UL 3700 listing requirement.
+- [Office of the Governor of New Jersey — Garden State Balcony Solar Act signed (1 September 2026)](https://www.nj.gov/governor/news/2026/approved/20260901a.shtml): signing of S2368/A4836.
+- [Maine Legislature — LD 1730, Public Law 2026 chapter 644 (35-A MRSA §3475)](https://legislature.maine.gov/legis/bills/getPDF.asp?paper=SP0676&item=5&snum=132): “eligible system” listed or certified to UL 3700 or a comparable NRTL standard, or configured to the adopted NEC; inverters that shut off after 0.2 seconds.
+- [Vermont Legislature — Act 149 (S.202) as enacted](https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT149/ACT149%20As%20Enacted.pdf): compliance with UL 3700 for plug-in photovoltaic systems or an equivalent NRTL certification, and IEEE 1547-2018.
+- [New York State Senate — S8512C (SUNNY Act), text and actions](https://www.nysenate.gov/legislation/bills/2025/S8512/amendment/C): listing “as a complete plug-in photovoltaic system” by an accredited NRTL; last action 28 May 2026.
+- [California Legislative Information — SB 868, enrolled text](https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB868): certification “as a plug-in photovoltaic system”, the certified anti-backfeed feature, and the 2030 sales ban.
+- [California Legislative Information — SB 868 history](https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202520260SB868): presented to the Governor 31 August 2026, no action recorded as of 23 September.
+- [US Census Bureau — Vintage 2025 population estimates (SUB-EST2025)](https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv): state populations behind the 0.6%, 5.0%, 18.0% and 61% shares.
+
+---
+
 # What is balcony solar?
 
 URL: https://balco.nyc/what-is-balcony-solar  
@@ -1716,9 +2665,9 @@ The microinverter is the whole trick. It is a *grid-following* device: it reads 
 
 Once that current is on the branch circuit, ordinary physics takes over. Electricity flows to the nearest load, so a fridge on the same circuit draws from the inverter before it draws from the street. Your meter simply records less coming in. There is no switching, no controller, and nothing for you to operate.
 
-If the grid goes down, the inverter loses its reference waveform and stops within about two seconds. This is called anti-islanding, and it is a safety requirement, not a defect: it stops your panels from energising a line that a utility crew believes is dead. The practical consequence for you is that **balcony solar gives you no backup power whatsoever**. In a blackout it is inert.
+If the grid goes down, the inverter loses its reference waveform and stops within about two seconds. This is called anti-islanding, and it is a safety requirement, not a defect: it stops your panels from energizing a line that a utility crew believes is dead. The practical consequence for you is that **balcony solar gives you no backup power whatsoever**. In a blackout it is inert.
 
-The wattage caps you see in legislation come from the outlet, not the panels. At 120 volts, 1,200 watts is ten amps — a load a normal household branch circuit and its breaker can absorb without anyone recalculating anything. Certification standards for this equipment cover the same ground: anti-islanding behaviour, voltage and frequency trip limits, and the safety of a plug that is energised from both ends.
+Most state laws cap a plug-in system at 1,200 watts, though none balco.nyc has read says why. At 120 volts that is ten amps, and it is not trivial: the breaker protecting a branch circuit only sees the current drawn from the panel, so a device feeding ten amps in at an outlet can let loads further along the circuit draw more through part of the wiring than the breaker allows. That is why the laws insist on certified equipment and why an electrician’s look at the circuit is worth having; [the circuit arithmetic is worked here](https://balco.nyc/is-plug-in-solar-safe). Certification standards for this equipment cover anti-islanding behavior, voltage and frequency trip limits, and the safety of a plug that is energized from both ends.
 
 ## Where the savings come from
 
@@ -1726,7 +2675,7 @@ A balcony system saves money in exactly one way: by displacing electricity you w
 
 In Con Edison territory the number that matters is the all-in marginal rate — supply, delivery and surcharges together — which balco.nyc models at **$0.34/kWh**. Every kilowatt-hour your panels produce *and you consume at that moment* is worth that much. Every kilowatt-hour produced while the apartment is empty flows out to the grid and, in the states that have legalised these devices, generally earns nothing at all.
 
-That makes self-consumption the dominant variable, and it is a behavioural one rather than a technical one. A refrigerator, a router, a standby television and a hot-water recirculation pump run through the middle of the day whether or not you are home, and they absorb a real share of a small system’s output. Beyond that baseload, the value depends on who is in the flat at noon.
+That makes self-consumption the dominant variable, and it is a behavioral one rather than a technical one. A refrigerator, a router, a standby television and a hot-water recirculation pump run through the middle of the day whether or not you are home, and they absorb a real share of a small system’s output. Beyond that baseload, the value depends on who is in the flat at noon.
 
 For sizing, balco.nyc models a typical 800 W NYC system at roughly **400–900 kWh a year**. That is a wide band on purpose. A high-floor, south-facing balcony produces about **three times** what a low-floor, north-facing one does, and the difference between those two cases is far larger than the difference between a budget kit and a premium one.
 
@@ -1794,7 +2743,7 @@ Balcony solar, also called plug-in solar, is a small photovoltaic system of roug
 
 **How does balcony solar work?**
 
-The panels feed a microinverter that reads the voltage and frequency already present at the wall outlet and pushes matching AC current onto that circuit. Appliances draw from this nearby source before drawing from the grid, so the meter records less imported electricity. Because the inverter needs an existing grid signal to synchronise with, it shuts down automatically within about two seconds if the power goes out.
+The panels feed a microinverter that reads the voltage and frequency already present at the wall outlet and pushes matching AC current onto that circuit. Appliances draw from this nearby source before drawing from the grid, so the meter records less imported electricity. Because the inverter needs an existing grid signal to synchronize with, it shuts down automatically within about two seconds if the power goes out.
 
 **Is balcony solar legal in New York?**
 
@@ -1802,7 +2751,7 @@ No. As of September 2026, New York still requires an interconnection agreement w
 
 **Does balcony solar work during a power outage?**
 
-No. Grid-following microinverters require an existing grid waveform to synchronise with, and safety rules require them to stop energising the circuit within about two seconds of an outage so that utility crews are not exposed to a live line. Balcony solar therefore provides no backup power at all. Blackout resilience requires a separate battery system.
+No. Grid-following microinverters require an existing grid waveform to synchronize with, and safety rules require them to stop energizing the circuit within about two seconds of an outage so that utility crews are not exposed to a live line. Balcony solar therefore provides no backup power at all. Blackout resilience requires a separate battery system.
 
 **Will I still need my landlord's or co-op board's permission?**
 
